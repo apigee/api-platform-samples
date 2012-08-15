@@ -1,0 +1,6 @@
+<OAuthV2 name="ValidateOAuth">
+  <!-- This policy verifies that the request contains a proper OAuth 2.0 bearer token, and checks
+       to see that the api product is selected and allows the application to be authorized -->
+  <Operation>VerifyAccessToken</Operation>
+</OAuthV2>
+
