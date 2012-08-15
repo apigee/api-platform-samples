@@ -1,0 +1,124 @@
+This directory contains setup instructions and scripts for these samples. 
+
+** Files in this directory **
+
+FreeProduct.xml, CheapProduct.xml, and ExpensiveProduct.xml
+  These are "API Product" definitions that describe how an API is exposed through Apigee.
+
+joe.xml, thomas.xml
+  These are "Developer" definitions that represent developers who use our APIs
+
+joe-app.xml, thomas-app.xml
+  These are "Application" definitions that describe applications that use the APIs and API Products
+
+joe-app-product.xml, thomas-app-product.xmlk
+  These are files that instruct Apigee to associate particular applications to API products.
+
+** Installation Instructions **
+
+First, run "./setup.sh" to install the API products, developers, and apps. It is fairly straightforward
+and you can look at it to see how it installs the components above.
+
+Next, use the "deploy.py" script to deploy the API proxies
+
+(This script requires Python -- it is present in most Linux environments, on a Mac with XCode
+installed, on a Windows machine with Cygwin installed, and in many other places.)
+
+To deploy the "apikey" app (which adds API key validation), run the following from this directory,
+filling in your username and password and the name of your Apigee organization below:
+
+./deploy.py -n apikeysample -u USERNAME:PASSWORD -o ORGANIZATION -e test -d ../apikey
+
+Do the same to deploy the "oauth" app:
+
+./deploy.py -n oauthsample -u USERNAME:PASSWORD -o ORGANIZATION -e test -d ../apikey
+
+** Testing with API keys **
+
+Now, to test the API key app, first take a look at the app that was created to see its client c
+credentials:
+
+curl -u USERNAME:PASSWORD https://api.enterprise.apigee.com/v1/o/ORGANIZATION/apps/thomas-app
+
+{
+  "accessType" : "read",
+  "appFamily" : "default",
+  "attributes" : [ {
+    "name" : "DisplayName",
+    "value" : "Tom's Weather App"
+  } ],
+  "callbackUrl" : "",
+  "createdAt" : 1345009112912,
+  "createdBy" : "your@email",
+  "credentials" : [ {
+    "apiProducts" : [ {
+      "apiproduct" : "FreeProduct",
+      "status" : "approved"
+    } ],
+    "attributes" : [ ],
+    "consumerKey" : "xxxxx",
+    "consumerSecret" : "yyyyy",
+    "status" : "approved"
+  } ],
+  "lastModifiedAt" : 1345009112912,
+  "lastModifiedBy" : "your@email",
+  "name" : "thomas-app",
+  "status" : "approved"
+}
+
+You'll need the "consumerKey" from above to function as the API key for this sample.
+
+You invoke the API as follows:
+
+curl "http://ORGANIZATION-test.apigee.net/weatherapikey/forecastrss?w=12761326&apikey=xxxxx"
+
+where "xxxx" is the "consumerKey" that you got before. You should get back a weather forecast.
+
+Note that if you leave off the "apikey" query parameter, or submit an invalid parameter, you will
+get back an error.
+
+Similarly, notice that using this particular API key, you get a very low quota of two API calls 
+per minute -- so after a few requests you will get a quota exception.
+
+However, "thomas" has an app with a higher quota. Get the "consumerKey" from the other
+app that we created and use that -- the quota exceptions will be gone.
+
+curl -u USERNAME:PASSWORD https://api.enterprise.apigee.com/v1/o/ORGANIZATION/apps/joe-app
+
+If you are curious as to how this works, you'll see that both apps are associated with different
+API products. You can see the different API product definitions like this:
+
+curl -u USERNAME:PASSWORD https://api.enterprise.apigee.com/v1/o/ORGANIZATION/apiproducts/FreeProduct
+curl -u USERNAME:PASSWORD https://api.enterprise.apigee.com/v1/o/ORGANIZATION/apiproducts/ExpensiveProduct
+
+** Testing with OAuth **
+
+The OAuth sample is very similar, but instead of using the "API key" pattern it achieves the same thing
+using OAuth 2.0. It uses the "client credentials" grant type, which lets the user exchange the
+API key for an OAuth token using no other parameters.
+
+To use this sample, you'll need both the consumer key AND the secret that you retrieved above. Assuming 
+that you substitute them instead of "xxx" and "yyy" then you can get an OAuth token like this:
+
+curl 
+  -u xxxx:yyyy
+  https://ORGANIZATION-test.apigee.net/weatheroauth/oauth/accesstoken 
+  -d 'grant_type=client_credentials'
+
+{
+	"issued_at":1345016506911,
+	"scope":"READ",
+	"application_name":"joe-app",
+	"status":"approved",
+	"organization_id":0,
+	"expires_in":599,
+	"api_profile_name":"null",
+	"refresh_token":"null",
+	"access_token":"zzzzzzz",
+	"refresh_count":0
+}
+
+and once you have that, you can make API calls by including the proper OAuth 2.0 
+"Authorization" header, like this:
+
+curl -H "Authorization: Bearer zzzzz" https://ORGANIZATION-test.apigee.net/weatheroauth/forecastrss?w=12761326
