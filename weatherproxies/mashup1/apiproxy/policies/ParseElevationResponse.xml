@@ -1,0 +1,10 @@
+<ExtractVariables name="ParseElevationResponse">
+  <!-- Parse the XML that we got back from the elevation service using XPath. 
+       (That service could have returned JSON too but this is a sample, right?) -->
+  <VariablePrefix>elevationresponse</VariablePrefix>
+  <XMLPayload>
+    <Variable name="elevation" type="float">
+      <XPath>/ElevationResponse/result[1]/elevation/text()</XPath>
+    </Variable>
+  </XMLPayload>
+</ExtractVariables>
