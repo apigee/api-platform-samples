@@ -40,7 +40,7 @@ Do the same to deploy the "oauth" app:
 Now, to test the API key app, first take a look at the app that was created to see its client c
 credentials:
 
-curl -u USERNAME:PASSWORD https://api.enterprise.apigee.com/v1/o/ORGANIZATION/apps/thomas-app
+curl -u myname:mypass https://api.enterprise.apigee.com/v1/o/myorg/apps/thomas-app
 
 {
   "accessType" : "read",
