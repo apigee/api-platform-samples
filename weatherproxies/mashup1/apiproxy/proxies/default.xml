@@ -16,6 +16,8 @@
 	<Step><Name>ParseElevationResponse</Name></Step>
 	<!-- Generate the final response JSON -->
 	<Step><Name>GenerateResponse</Name></Step>
+	<!-- Collect custom analytics variables and send them to the database -->
+	<Step><Name>CollectAnalytics</Name></Step>
       </Response>
     </Flow>
   </Flows>
