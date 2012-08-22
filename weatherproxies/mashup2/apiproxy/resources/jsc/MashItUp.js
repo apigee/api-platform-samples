@@ -3,16 +3,16 @@ response.content = '';
 response.headers['Content-Type'] = 'application/json';
 
 try {
-   if ((request.queryParams['postalcode'] === undefined) ||
-       (request.queryParams['country'] === undefined)) {
+   if ((request.queryParams.postalcode == undefined) ||
+       (request.queryParams.country == undefined)) {
      throw '"postalcode" and "country" query parameters are required';
    }
 
    // Send an HTTP GET to the URL that we construct
    var geocoding = httpClient.get(
         'http://maps.googleapis.com/maps/api/geocode/json?address=' +
-        request.queryParams['postalcode'] +
-        '&region=' + request.queryParams['country'] +
+        request.queryParams.postalcode +
+        '&region=' + request.queryParams.country +
         '&sensor=false');
     geocoding.waitForComplete();
     if (!geocoding.isSuccess()) {
@@ -54,8 +54,8 @@ try {
 
     // Final assembly, then turn it into a JSON object
     var body = response.content.asJSON;
-    body.country = request.queryParams['country'];
-    body.postalcode = request.queryParams['postalcode'];
+    body.country = request.queryParams.country;
+    body.postalcode = request.queryParams.postalcode;
     body.elevation = location;
     body.altitude = altitude;
 
