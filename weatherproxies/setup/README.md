@@ -193,3 +193,27 @@ And now we can use the access token in our request exactly as we did before:
 
 curl -H "Authorization: Bearer I29OwHlGRi1AkbBCIRLLMC5efFgu" \
   https://the-brails-test.apigee.net/weatheroauthauthcode/forecastrss?w=12761326
+
+## Testing the Mashup samples
+
+The "mashup1" and "mashup2" samples both do the same thing in two different ways. First, they call
+the Google Geocoding web service to turn an international postal code into a latitude and 
+longitude, and then the Google Altitude web service to turn the location into an altitude.
+They then return the result as JSON.
+
+"mashup1" uses the AssignMessage, ExtractVariables, and ServiceCallout policies to accomplish
+this in the proxy using standard XML policy configuration files.
+
+"mashup2" does the same thing, but it does it using a Javascript policy which does all these steps
+in one script.
+
+Both work the same way: they take two parameters: "country" is an international US country
+code, and "postalcode" is a postal code valid for that country.
+
+For instance:
+
+curl "http://ORGANIZATION-test.apigee.net/altitude?country=us&postalcode=08008"
+{"country":"us","postalcode":"08008","elevation":{"meters":0.5045232,"feet":1.6552599030345978},"location":{"latitude":39.75007129999999,"longitude":-74.1357407}}
+
+curl "http://ORGANIZATION-test.apigee.net/altitude?country=in&postalcode=560034"
+{"country":"in","postalcode":"560034","elevation":{"meters":887.5546,"feet":2911.9246319354556},"location":{"latitude":12.9320617,"longitude":77.6278377}}
