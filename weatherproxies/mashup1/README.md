@@ -25,10 +25,16 @@ previous policies.
 7. A StatisticsCollector policy to send the values of "country" and "postalcode"
 to Analytics for use in a custom report.
 
-For example:
+## Example
 
 curl "http://ORGANIZATION-test.apigee.net/altitude?country=us&postalcode=08008"
 
 {"country":"us","postalcode":"08008","elevation":{"meters":0.5045232,"feet":1.6552599030345978},
  "location":{"latitude":39.75007129999999,"longitude":-74.1357407}}
+
+## To Deploy
+
+Read the instructions in setup/README.md, or try this command from this directory:
+
+../setup/deploy.py -u $USER:$PASS -o $ORG -e test -n mashup1 -d .
 
