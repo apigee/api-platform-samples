@@ -1,1 +1,1 @@
-This directory will contain samples for the Apigee API Platform.
+This directory contains samples for the Apigee API Platform.
