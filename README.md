@@ -6,5 +6,3 @@ samples of API proxies that demonstrate:
 * API key validation
 * OAuth 2.0
 * Basic "mash-up" functionality
-
-Look for more proxies over time.
