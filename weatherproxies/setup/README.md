@@ -4,16 +4,16 @@ This directory contains setup instructions and scripts for these samples.
 
 ## Files in this directory 
 
-* *FreeProduct.xml*, *CheapProduct.xml*, and *ExpensiveProduct.xml*: 
+* *FreeProduct.xml, CheapProduct.xml, and ExpensiveProduct.xml*: 
 These are "API Product" definitions that describe how an API is exposed through Apigee.
 
-* *joe.xml*, *thomas.xml:
+* *joe.xml, thomas.xml:
 These are "Developer" definitions that represent developers who use our APIs
 
-* *joe-app.xml*, *thomas-app.xml*:
+* *joe-app.xml, thomas-app.xml*:
 These are "Application" definitions that describe applications that use the APIs and API Products
 
-* *joe-app-product.xml*, * thomas-app-product.xml*:
+* *joe-app-product.xml, thomas-app-product.xml*:
 These are files that instruct Apigee to associate particular applications to API products.
 
 ## Installation Instructions 
