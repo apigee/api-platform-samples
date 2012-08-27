@@ -1,13 +1,17 @@
 #!/bin/sh
 
-echo "Enter the name of your Apigee organization, followed by [ENTER]:"
-read org
+echo This script creates all entities in your organization required for the OAuth Quick Start
+echo To run the script, use the credentials you use to login to enterprise.apigee.com/login
+echo If you need an account, visit enterprise.apigee.com/trial to request a trial account
 
-echo "Enter your username for the Apigee organization, followed by [ENTER]:"
+echo "Enter your USERNAME (the email you use to login to enterprise.apigee.com/login), followed by [ENTER]:"
 read username
 
-echo "Enter your password for the Apigee organization, followed by [ENTER]:"
+echo "Enter your PASSWORD (the password you use to login to enterprise.apigee.com/login), followed by [ENTER]:"
 read -s password
+
+echo "Enter the name of your Apigee ORGANIZATION (check settings in enterprise.apigee.com/login), followed by [ENTER]:"
+read org
 
 echo using $username and $org
 
@@ -46,18 +50,26 @@ curl -u ${username}:${password} \
 key=`curl -u ${username}:${password} \
      https://api.enterprise.apigee.com/v1/o/${org}/developers/thomas@weathersample.com/apps/thomas-app \
      | grep consumerKey | awk -F '\"' '{ print $4 }'`
-echo "thomas-app key is ${key}"
 
 curl -u ${username}:${password} \
-  https://api.enterprise.apigee.com/v1/o/${org}/developers/thomas@weathersample.com/apps/thomas-app/keys/${key}
+  https://api.enterprise.apigee.com/v1/o/${org}/developers/thomas@weathersample.com/apps/thomas-app/keys/${key} \
   -H "Content-Type: application/xml" -X POST -T thomas-app-product.xml
 
 key=`curl -u ${username}:${password} \
      https://api.enterprise.apigee.com/v1/o/${org}/developers/joe@weathersample.com/apps/joe-app \
      | grep consumerKey | awk -F '\"' '{ print $4 }'`
-echo "joe-app key is ${key}"
 
 curl -u ${username}:${password} \
   https://api.enterprise.apigee.com/v1/o/${org}/developers/joe@weathersample.com/apps/joe-app/keys/${key} \
   -H "Content-Type: application/xml" -X POST -T joe-app-product.xml
+
+key=`curl -u ${username}:${password} \
+     https://api.enterprise.apigee.com/v1/o/${org}/developers/thomas@weathersample.com/apps/thomas-app \
+     | grep consumerKey | awk -F '\"' '{ print $4 }'`
+echo "Consumer key for thomas-app is ${key}"
+
+key=`curl -u ${username}:${password} \
+     https://api.enterprise.apigee.com/v1/o/${org}/developers/joe@weathersample.com/apps/joe-app \
+     | grep consumerKey | awk -F '\"' '{ print $4 }'`
+echo "Consumer key for joe-app is ${key}"
 

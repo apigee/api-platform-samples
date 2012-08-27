@@ -1,0 +1,4 @@
+<Javascript name="GenerateResponse">
+  <!-- Launch the JavaScript... -->
+  <ResourceURL>jsc://GenerateResponse.js</ResourceURL>
+</Javascript>

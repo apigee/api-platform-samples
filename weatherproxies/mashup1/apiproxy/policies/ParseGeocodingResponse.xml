@@ -1,0 +1,13 @@
+<ExtractVariables name="ParseGeocodingResponse">
+  <!-- Look at the result from the geocoding callout and parse the JSON -->
+  <Source>GeocodingResponse</Source>
+  <VariablePrefix>geocoderesponse</VariablePrefix>
+  <JSONPayload>
+    <Variable name="latitude">
+       <JSONPath>$.results[0].geometry.location.lat</JSONPath>
+    </Variable>
+    <Variable name="longitude">
+       <JSONPath>$.results[0].geometry.location.lng</JSONPath>
+    </Variable>
+  </JSONPayload>
+</ExtractVariables>

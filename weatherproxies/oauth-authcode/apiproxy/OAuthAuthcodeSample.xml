@@ -1,4 +1,4 @@
-<APIProxy name="OAuthSample">
+<APIProxy name="OAuthAuthcodeSample">
   <!-- This is the root of the application -->
   <Description>A sample application that adds API key-based authentication</Description>
 </APIProxy>

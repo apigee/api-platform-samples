@@ -1,0 +1,24 @@
+<ProxyEndpoint name="default">
+  <Flows>
+    <Flow name="default">
+      <Request/>
+      <Response>
+	<!-- Call the JavaScript that is going to do most of the work -->
+	<Step><Name>MashItUp</Name></Step>
+	<!-- Collect custom analytics variables and send them to the database -->
+	<Step><Name>CollectAnalytics</Name></Step>
+      </Response>
+    </Flow>
+  </Flows>
+
+  <HTTPProxyConnection>
+    <!-- Add a base path to the proxy to distinguish from others in the environment -->
+    <BasePath>/altitude2</BasePath>
+    <!-- Listen on both HTTP and HTTPS endpoints -->
+    <VirtualHost>default</VirtualHost>
+    <VirtualHost>secure</VirtualHost>
+  </HTTPProxyConnection>
+  <RouteRule name="default">
+    <!-- No route. The proxy will return the request and not call a back end. -->
+  </RouteRule>
+</ProxyEndpoint>
