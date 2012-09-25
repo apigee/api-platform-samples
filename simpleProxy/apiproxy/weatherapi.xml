@@ -1,0 +1,3 @@
+<!-- The most basic API proxy defines a revision number and a name -->
+<APIProxy revision="1" name="weatherAPI">
+</APIProxy>
