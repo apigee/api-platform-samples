@@ -1,17 +1,14 @@
 
-echo This deletes all entities created by ApigeeAPISetup 
+echo This deletes all entities created by Apigee script 'apiSetup.sh'
 
-echo "Enter the name of your Apigee organization, followed by [ENTER]:"
-
-read org
-
-echo "Enter your username for the Apigee organization, followed by [ENTER]:"
-
+echo "Enter your USERNAME (the email you use to login to enterprise.apigee.com/login), followed by [ENTER]:"
 read username
 
-echo "Enter your password for the Apigee organization, followed by [ENTER]:"
+echo "Enter your PASSWORD (the password you use to login to enterprise.apigee.com/login), followed by [ENTER]:"
+read -s password
 
-read password
+echo "Enter the name of your Apigee ORGANIZATION (check settings in enterprise.apigee.com/login), followed by [ENTER]:"
+read org
 
 echo using $username and $org
 
