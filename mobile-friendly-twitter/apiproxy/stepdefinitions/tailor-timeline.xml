@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Javascript timeLimit="0" enabled="true" continueOnError="false" async="false" name="tailor-timeline">
+    <!-- The statuses/user_timeline.json response is tailored by JavaScript processing -->
+    <ResourceURL>jsc://tailor-timeline</ResourceURL>
+</Javascript>
