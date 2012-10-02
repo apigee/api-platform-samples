@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ProxyEndpoint name="default">
+    <Description>Twitter timeline oEmbed proxy endpoint</Description>
+    <PreFlow>
+        <!-- Enable Cross Origin Resource Sharing access to this endpoint -->
+        <Response>
+            <Step>
+                <Name>cors</Name>
+            </Step>
+        </Response>
+    </PreFlow>
+    <Flows>
+        <!-- Define a conditional flow for the GET /statuses/user_timeline.json resource.
+
+             The response for this resource will be transformed into an oEmbed entity
+             containing an HTML representation of the timeline. -->
+        <Flow name="GET-statuses-user_timeline">
+            <Description>Returns a collection of the most recent Tweets posted by the user indicated by the screen_name or user_id parameters.</Description>
+            <!-- Process the response from the resource with JavaScript step -->
+            <Response>
+                <Step>
+                    <Name>timeline-oembed</Name>
+                </Step>
+            </Response>
+            <!-- This flow is only triggered when the request path suffix (following the API façade URL)
+                 matches the resource path and when it's a GET request -->
+            <Condition>(proxy.pathsuffix MatchesPath &quot;/statuses/user_timeline.json&quot;) and (request.verb = &quot;GET&quot;)</Condition>
+        </Flow>
+
+        <!-- Apply the same logic and processing to the GET /statuses/public_timeline.json resource.
+             To avoid duplication, the Condition in the previous flow could be modified to include this resource. -->
+        <Flow name="GET-statuses-public_timeline">
+            <Description>Returns the 20 most recent statuses, including retweets if they exist, from non-protected users.</Description>
+            <Response>
+                <Step>
+                    <Name>timeline-oembed</Name>
+                </Step>
+            </Response>
+            <Condition>(proxy.pathsuffix MatchesPath &quot;/statuses/public_timeline.json&quot;) and (request.verb = &quot;GET&quot;)</Condition>
+        </Flow>
+    </Flows>
+    <HTTPProxyConnection>
+        <!-- API façade URL -->
+        <BasePath>/twitter-oembed/1</BasePath>
+        <VirtualHost>default</VirtualHost>
+    </HTTPProxyConnection>
+    <RouteRule name="default">
+        <!-- The default, and only, target is the Twitter API, defined in targets/default.xml -->
+        <TargetEndpoint>default</TargetEndpoint>
+    </RouteRule>
+</ProxyEndpoint>
