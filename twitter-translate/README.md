@@ -40,6 +40,10 @@ A demo application that consumes the API and displays a translated public timeli
 
 ## To Deploy
 
+Sign up for [Microsoft Translator API](http://www.microsofttranslator.com/dev/) access,
+and replace the `clientId` and `clientSecret` in `apiproxy/resources/jsc/timeline-translate`
+with your application credentials.
+
 Read the instructions in setup/README.md, or try this command from this directory:
 
     ../setup/deploy.py -u $USER:$PASS -o $ORG -e test -n twitter-translate -d .

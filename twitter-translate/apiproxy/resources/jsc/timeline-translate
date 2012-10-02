@@ -5,8 +5,8 @@
 // Microsoft Translator API credentials
 // https://datamarket.azure.com/dataset/1899a118-d202-492c-aa16-ba21c33c06cb
 var translatorApi = {
-  clientId: 'twitter-translate',
-  clientSecret: '5lLybQTApaUpw9c4Z5Mk8QyC/I/9RQvCqwigqMcOlAo=',
+  clientId: '<<< YOUR CLIENT ID HERE >>>',
+  clientSecret: '<<< YOUR CLIENT SECRET HERE >>>',
 
   authUrl: 'https://datamarket.accesscontrol.windows.net/v2/OAuth2-13/',
   scopeUrl: 'http://api.microsofttranslator.com',
