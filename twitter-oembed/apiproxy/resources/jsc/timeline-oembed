@@ -77,6 +77,14 @@ if (Array.isArray(origResponse)) {
 
   oembed.html = html;
 
-  // Send the oEmbed object back as JSON
-  response.content = JSON.stringify(oembed);
+  // If the request is made with an Accept: application/json header, send the
+  // oEmbed object, or the raw HTML otherwise
+  if (request.headers['Accept'] &&
+      request.headers['Accept'][0] === 'application/json') {
+    // Send the oEmbed object back as JSON
+    response.content = JSON.stringify(oembed);
+  } else {
+    response.content = html;
+    response.headers['Content-Type'] = 'text/html';
+  }
 }
