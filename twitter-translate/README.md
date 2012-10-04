@@ -9,7 +9,7 @@ A demo application that consumes the API and displays a translated public timeli
 
 ## Example
 
-    curl "http://demo-prod.apigee.net/mobile-friendly-twitter/1/statuses/user_timeline.json?screen_name=Apigee"
+    curl "http://demo-prod.apigee.net/twitter-translate/1/statuses/public_timeline.json"
 
     [{"id_str":"253222923593216000",
       "retweeted":false,
