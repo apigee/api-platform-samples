@@ -11,7 +11,7 @@ A demo application that consumes the API and displays a timeline is included.
 
 ### oEmbed
 
-    curl -H "Accept: application/json" "http://demo-prod.apigee.net/mobile-friendly-twitter/1/statuses/user_timeline.json?screen_name=Apigee"
+    curl -H "Accept: application/json" "http://demo-prod.apigee.net/twitter-oembed/1/statuses/user_timeline.json?screen_name=Apigee"
 
     {"type":"rich",
      "version":"1.0",
@@ -25,9 +25,9 @@ A demo application that consumes the API and displays a timeline is included.
 
 ### HTML
 
-    curl "http://demo-prod.apigee.net/mobile-friendly-twitter/1/statuses/user_timeline.json?screen_name=Apigee"
+    curl "http://demo-prod.apigee.net/twitter-oembed/1/statuses/user_timeline.json?screen_name=Apigee"
 
-    <blockquote class=\"twitter-tweet\"><p>Applying Universal Design Principles to API Initiatives (video &amp; slides from Webcast 9/18 ) <a href=\"http://t.co/jQwtxIaW\">http://t.co/jQwtxIaW</a> thx @<a href=\"http://twitter.com/13protons\">13protons</a> @<a href=\"http://twitter.com/kevinswiber\">kevinswiber</a></p>&mdash; Apigee(@Apigee) <a href=\"https://twitter.com/Apigee/statuses/252831118057934848\" data-datetime=\"2012-10-01T18:03:30Z\">October 1, 2012 6:03:30 PM UTC</a></blockquote>...
+    <blockquote class="twitter-tweet"><p>Applying Universal Design Principles to API Initiatives (video &amp; slides from Webcast 9/18 ) <a href="http://t.co/jQwtxIaW">http://t.co/jQwtxIaW</a> thx @<a href="http://twitter.com/13protons">13protons</a> @<a href="http://twitter.com/kevinswiber">kevinswiber</a></p>&mdash; Apigee(@Apigee) <a href="https://twitter.com/Apigee/statuses/252831118057934848" data-datetime="2012-10-01T18:03:30Z">October 1, 2012 6:03:30 PM UTC</a></blockquote>...
 
 ## To Deploy
 
