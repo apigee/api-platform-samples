@@ -1,6 +1,6 @@
 <TargetEndpoint name="default">
     <HTTPTargetConnection>
 	    <!-- The URL to which this proxy directs outbound requests -->
-        <URL>http://weather.yahooapis.com/forecastrss?w=12797282</URL>
+        <URL>http://weather.yahooapis.com</URL>
     </HTTPTargetConnection>
 </TargetEndpoint>
