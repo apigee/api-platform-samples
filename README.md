@@ -22,7 +22,7 @@ Apigee's API Platform provides developers with:
   analytics to help you keep your code solid and your app 
   end users happy
 
-Fully-featured, free accounts are available at
+Fully-featured, free accounts are available at:
 http://enterprise.apigee.com/signup
 
 Learn more at http://apigee.com/docs
@@ -97,7 +97,7 @@ invoked on the API platform, with examples of:
 ----------------------------
 Get support! 
 
-Share you eperience and pick up tips and tricks
+Share you experience and pick up tips and tricks
 on the Apigee developer forum at:
 http://support.apigee.com
 
