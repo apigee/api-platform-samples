@@ -1,7 +1,7 @@
 <ApiProduct name='ApiKeySampleProduct'>
   <DisplayName>API Key Validation Service Product</DisplayName>
   <ApiResources>
-        <ApiResource>/4g-samples-apikey</ApiResource>
+        <ApiResource>/apikey</ApiResource>
   </ApiResources>
   <Scopes>
         <Scope>read</Scope>
