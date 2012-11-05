@@ -1,4 +1,4 @@
-HELLOWORLD SAMPLE
+API Key Validation SAMPLE
 --------------------------
 DISCLAIMER: 
 --------------------------
@@ -23,40 +23,39 @@ limitations under the License.
 --------------------------
 Description
 --------------------------
-This sample demonstrates a simple scenario pass thru proxy<input>". 
+This sample demonstrates scenario where API Key is validated for each request. 
 This reference helps in understanding the process of building, deploying, activating and accessing this sample.
 
 --------------------------
 Pre-Conditions
---------------------------
-1. Identify server name/IP Address and port of the Apigee Gateway installation.
-2. Identify the credentials for the Apigee Gateway installation.
-3. Identify the organization, environment and virtual host name and port for your instance.
-[You can get this information from person who setup the Apigee installation.]
-4. Needs twitter credentials for getting a response back from twitter APIs
 
+* The username and password that you use to login to enterprise.apigee.com.
+* The name of the organization in which you have an account. Login to 
+  enterprise.apigee.com and check account settings.
+
+You can obtain a free account at http://enterprise.apigee.com/signup
 
 --------------------------
 Configure sample project
 --------------------------
-Update the setenv.sh for you environment details
-
---------------------------
-Import and deploy sample project
---------------------------
 Execute "sh deploy.sh"
+
+Make a note of Consumer Key for the Develop App
 
 --------------------------
 Testing
---------------------------
-1. To test the deployed sample execute the below curl command, 
-curl http://<virtualhost>:<port>/4g-samples-passthru
 
-2. The response should return twitter's page
+Run
+
+$ curl http:{myorg}-test.apigee.net/apikey -H apikey=<ConsumerKey from create app response>
+
+If the apikey is valid, you should see valid Twitter page, 200 response 
+If the apikey in not valid, server will return the following response,
+<?xml version='1.0' encoding='UTF-8'?><fault><faultstring>ClientId is Invalid</faultstring>
+<detail><errorcode>keymanagement.service.invalid_client-invalid_client_id</errorcode></detail></fault>
 
 --------------------------
 Clean up
 --------------------------
-Execute "sh cleanup.sh"
-
-
+Run
+$ ./cleanup.sh

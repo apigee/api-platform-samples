@@ -2,9 +2,20 @@
 
 source setenv.sh
 
+
 apiName=samples-conditional-policy
 basePath=/condition
 
-./cleanup.sh
+find . -name '*.DS_Store' -type f -delete
 
-../tools/deploy.py -n samples-conditional-policy -u $credentials -o $org -e $environment -d ../ConditionalPolicies
+##Cleanup
+rm -rf apiproxy.zip
+zip -r apiproxy apiproxy
+sh cleanup.sh
+
+
+##Import the sample in gateway instance. 
+curl -u $credentials "$url/v1/organizations/$org/apis?action=import&name=$apiName" -T apiproxy.zip -H "Content-Type: application/octet-stream" -X POST -k
+
+##Deploy the sample in gateway instance.
+curl -u $credentials "$url/v1/organizations/$org/apis/$apiName/revisions/1/deployments?action=deploy&env=$environment&basepath=$basePath" -X POST -H "Content-Type: application/octet-stream" -k
