@@ -6,7 +6,7 @@
 org="<ORG>"
 environment="<ENV>"
 credentials="<USER>:<PASSWD>"
-url="api.enterprise.apigee.com"
+url="<SERVER_URL>"
 
 ## DONNOT change anything below this line
 ## --------------------------------------
