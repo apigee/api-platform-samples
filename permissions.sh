@@ -1,3 +1,5 @@
+#!/bin/bash
+
 source setenv.sh
 
 apiName=4g-samples-apikey

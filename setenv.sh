@@ -1,3 +1,5 @@
+#!/bin/bash
+
 ##Update below section for your environment
 ## --------------------------------------
 
