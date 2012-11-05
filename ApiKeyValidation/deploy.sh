@@ -2,8 +2,10 @@
 
 source setenv.sh
 
-apiName=samples-apikey
-basePath=/samples-apikey
+apiName=4g-samples-apikey
+basePath=/4g-samples-apikey
+
+find . -name '*.DS_Store' -type f -delete
 
 ##Cleanup
 rm -rf apiproxy.zip
@@ -19,6 +21,8 @@ curl -u $credentials "$url/v1/organizations/$org/developers" -T createDeveloper.
 ##Create Developer Apps:
 curl -u $credentials "$url/v1/organizations/$org/developers/4gsample@apigee.com/apps" -T createDeveloperApp.xml -H "Content-Type: application/xml" -X POST -k
 
-##Import and Deploy
+##Import the sample in gateway instance. 
+curl -u $credentials "$url/v1/organizations/$org/apis?action=import&name=4g-samples-apikey" -T apiproxy.zip -H "Content-Type: application/octet-stream" -X POST -k
 
-$ ../tools/deploy.py -n contentrouting -u $credentials -o $org -e $environment -d ../apikey
+##Deploy the sample in gateway instance.
+curl -u $credentials "$url/v1/organizations/$org/apis/4g-samples-apikey/revisions/1/deployments?action=deploy&env=$environment&basepath=$basePath" -X POST -H "Content-Type: application/octet-stream" -k

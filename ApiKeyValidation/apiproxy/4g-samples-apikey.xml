@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<APIProxy name="apikey">
+<APIProxy revision="1" name="4g-samples-apikey">
     <ConfigurationVersion minorVersion="0" majorVersion="4"/>
     <ProxyEndpoints/>
     <Resources/>

@@ -23,18 +23,19 @@ limitations under the License.
 --------------------------
 Description
 --------------------------
-This sample demonstrates the ability of Apigee to change the target endpoint 
-dynamically at run-time. In this sample,  the request is either routed to Facebook or Twitter 
-based on routeTo query param.
+This sample demonstrates the ability of Apigee to change the target end point dynamically at run-time. In this sample, 
+the request is either routed to facebook or twitter based on routeTo query param.
+This reference helps in understanding the process of building, deploying, activating and accessing this sample.
 
 --------------------------
 Pre-Conditions
 --------------------------
-* The username and password that you use to login to enterprise.apigee.com.
-* The name of the organization in which you have an account. Login to 
-  enterprise.apigee.com and check account settings.
-
-You can obtain a free account at http://enterprise.apigee.com/signup
+1. Identify server name/IP Address and port of the Apigee Gateway installation.
+2. Identify the credentials for the Apigee Gateway installation.
+3. Identify the organization, environment and virtual host name and port for your instance.
+You can get this information from person who setup the Apigee installation.
+4. Ensure you have Firefox with RestClient add-on enabled(https://addons.mozilla.org/en-US/firefox/addon/restclient/)
+The instructions in this sample assume you are using Firefox add-on rest client but you may use any other rest client also.
 
 --------------------------
 Configure sample project

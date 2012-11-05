@@ -1,1 +1,1 @@
-flow.setVariable("flow.resource.name","/apikey");
+flow.setVariable("flow.resource.name","/4g-samples-apikey");

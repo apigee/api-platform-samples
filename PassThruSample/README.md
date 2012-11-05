@@ -1,4 +1,4 @@
-API Key Validation SAMPLE
+HELLOWORLD SAMPLE
 --------------------------
 DISCLAIMER: 
 --------------------------
@@ -23,7 +23,7 @@ limitations under the License.
 --------------------------
 Description
 --------------------------
-This sample demonstrates scenario where API Key is validated for each request. 
+This sample demonstrates a simple scenario pass thru proxy<input>". 
 This reference helps in understanding the process of building, deploying, activating and accessing this sample.
 
 --------------------------
@@ -32,32 +32,31 @@ Pre-Conditions
 1. Identify server name/IP Address and port of the Apigee Gateway installation.
 2. Identify the credentials for the Apigee Gateway installation.
 3. Identify the organization, environment and virtual host name and port for your instance.
-You can get this information from person who setup the Apigee installation.
-4. Ensure you have Firefox with RestClient add-on enabled (https://addons.mozilla.org/en-US/firefox/addon/restclient/)
-The instructions in this sample assume you are using Firefox add-on rest client but you may use any other rest client also.
+[You can get this information from person who setup the Apigee installation.]
+4. Needs twitter credentials for getting a response back from twitter APIs
+
 
 --------------------------
 Configure sample project
 --------------------------
-Execute "sh deploy.sh"
+Update the setenv.sh for you environment details
 
-Make a note of Consumer Key for the Develop App
+--------------------------
+Import and deploy sample project
+--------------------------
+Execute "sh deploy.sh"
 
 --------------------------
 Testing
 --------------------------
-1. Using the REST Client, open the following request,
+1. To test the deployed sample execute the below curl command, 
+curl http://{myorg}-test.apigee.net/4g-samples-passthru
 
-URL: http://<vhost>:<port>/4g-samples-apikey/
-Method: GET
-Request Header: apikey=<ConsumerKey from create app response>
-
-If the apikey is valid, you should see valid twitter page, 200 response 
-If the apikey in not valid, server will return the following response,
-<?xml version='1.0' encoding='UTF-8'?><fault><faultstring>ClientId is Invalid</faultstring>
-<detail><errorcode>keymanagement.service.invalid_client-invalid_client_id</errorcode></detail></fault>
+2. The response should return twitter's page
 
 --------------------------
 Clean up
 --------------------------
 Execute "sh cleanup.sh"
+
+
