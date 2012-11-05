@@ -1,8 +1,0 @@
-<App name='4gSampleApp'>
-    <AccessType>read</AccessType>
-    <CallbackUrl>www.apigee.com</CallbackUrl>
-    <ApiProducts>
-        <ApiProduct>ApiKeySampleProduct</ApiProduct>
-    </ApiProducts>
-    <Attributes/>
-</App>
