@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ProxyEndpoint name="proxy">
+	<PreFlow>
+		<Request/>
+		<Response>
+			<Step>
+				<Condition>request.header.responsetime="true"</Condition>
+				<Name>add-responsetime-header</Name>
+			</Step>
+		</Response>
+	</PreFlow>
+	<HTTPProxyConnection>
+		<BasePath>/</BasePath>
+		<VirtualHost>default</VirtualHost>
+	</HTTPProxyConnection>
+	<RouteRule name="default">
+		<TargetEndpoint>twitter</TargetEndpoint>
+	</RouteRule>
+</ProxyEndpoint>

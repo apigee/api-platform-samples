@@ -1,0 +1,13 @@
+<TargetEndpoint name="facebook">
+  <Description/>
+  <PreFlow>
+    <Request>
+	</Request>
+	<Response>
+		
+	</Response>
+    </PreFlow>
+  <HTTPTargetConnection>
+    <URL>http://developers.facebook.com</URL>
+  </HTTPTargetConnection>
+</TargetEndpoint>

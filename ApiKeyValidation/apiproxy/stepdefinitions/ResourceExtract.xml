@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Script name="ResourceExtract">
+    <Properties />
+    <ResourceURL>js://js_extract_resource.js</ResourceURL>
+</Script>
