@@ -28,13 +28,12 @@ This reference helps in understanding the process of building, deploying, activa
 
 --------------------------
 Pre-Conditions
---------------------------
-1. Identify server name/IP Address and port of the Apigee Gateway installation.
-2. Identify the credentials for the Apigee Gateway installation.
-3. Identify the organization, environment and virtual host name and port for your instance.
-You can get this information from person who setup the Apigee installation.
-4. Ensure you have Firefox with RestClient add-on enabled (https://addons.mozilla.org/en-US/firefox/addon/restclient/)
-The instructions in this sample assume you are using Firefox add-on rest client but you may use any other rest client also.
+
+* The username and password that you use to login to enterprise.apigee.com.
+* The name of the organization in which you have an account. Login to 
+  enterprise.apigee.com and check account settings.
+
+You can obtain a free account at http://enterprise.apigee.com/signup
 
 --------------------------
 Configure sample project
@@ -45,14 +44,12 @@ Make a note of Consumer Key for the Develop App
 
 --------------------------
 Testing
---------------------------
-1. Using the REST Client, open the following request,
 
-URL: http://<vhost>:<port>/4g-samples-apikey/
-Method: GET
-Request Header: apikey=<ConsumerKey from create app response>
+Run
 
-If the apikey is valid, you should see valid twitter page, 200 response 
+$ curl http:{myorg}-test.apigee.net/apikey -H apikey=<ConsumerKey from create app response>
+
+If the apikey is valid, you should see valid Twitter page, 200 response 
 If the apikey in not valid, server will return the following response,
 <?xml version='1.0' encoding='UTF-8'?><fault><faultstring>ClientId is Invalid</faultstring>
 <detail><errorcode>keymanagement.service.invalid_client-invalid_client_id</errorcode></detail></fault>
@@ -60,4 +57,5 @@ If the apikey in not valid, server will return the following response,
 --------------------------
 Clean up
 --------------------------
-Execute "sh cleanup.sh"
+Run
+$ ./cleanup.sh

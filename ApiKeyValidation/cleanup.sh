@@ -5,7 +5,6 @@ source setenv.sh
 apiName=4g-samples-apikey
 basePath=/4g-samples-apikey
 
-
 find . -name '*.DS_Store' -type f -delete
 
 #1. Undeploy
