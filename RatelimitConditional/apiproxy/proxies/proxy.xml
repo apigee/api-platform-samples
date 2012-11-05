@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ProxyEndpoint name="proxy">
+    <Description>Devices</Description>
+    <FaultRules/>
+    <Flows>        
+    </Flows>
+    <PostFlow>
+        <Request/>
+        <Response/>
+    </PostFlow>
+    <PreFlow>
+        <Request>
+            <Step>
+                <FaultRules/>
+                <Condition>request.queryparam.lang = "fil"</Condition>
+                <Name>QuotaPolicy</Name>
+            </Step>
+        </Request>
+        <Response/>
+     </PreFlow>
+    <Statistics>
+        <EnableAll>true</EnableAll>
+    </Statistics>
+    <HTTPProxyConnection>
+        <BasePath>/</BasePath>
+        <Properties/>
+        <VirtualHost>default</VirtualHost>
+    </HTTPProxyConnection>
+    <RouteRule name="default">
+        <URL>http://api.twitter.com</URL>
+    </RouteRule>
+</ProxyEndpoint>

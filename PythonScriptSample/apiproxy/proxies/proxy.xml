@@ -1,0 +1,19 @@
+<ProxyEndpoint name="proxy">
+    <PreFlow>
+    <Request>
+		
+	</Request>
+	<Response>		
+		<Step>
+			<Name>pythonscriptpolicy</Name>
+		</Step>		
+	</Response>
+    </PreFlow>
+    <HTTPProxyConnection>
+        <BasePath>/</BasePath>
+        <VirtualHost>default</VirtualHost>
+    </HTTPProxyConnection>     
+    <RouteRule name="default">
+        <TargetEndpoint>facebook</TargetEndpoint>
+    </RouteRule>
+</ProxyEndpoint>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ProxyEndpoint name="ApikeyProxyEndpoint">
+    <Description>API Key Validation Service</Description>
+    <FaultRules/>
+    <Flows/>
+    <PreFlow>
+        <Request>
+			<Step>
+				<FaultRules/>
+				<Name>ResourceExtract</Name>
+			</Step>				
+			<Step>
+				<FaultRules/>
+				<Name>AuthenticateKey</Name>
+			</Step>			
+        </Request>
+        <Response/>
+    </PreFlow>
+
+    <HTTPProxyConnection>
+        <BasePath>/</BasePath>
+        <Properties/>
+        <VirtualHost>default</VirtualHost>
+    </HTTPProxyConnection>
+    <RouteRule name="Route">
+		<TargetEndpoint>twitter</TargetEndpoint>
+	</RouteRule>
+</ProxyEndpoint>

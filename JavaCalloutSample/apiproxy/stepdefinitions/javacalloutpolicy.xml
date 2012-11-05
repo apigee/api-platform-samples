@@ -1,0 +1,6 @@
+<JavaCallout name="javacalloutpolicy">
+   <ResourceURL>java://javacallout.jar</ResourceURL>
+   <ClassName>com.apigee.netflix.javacallout.JavaCalloutSample</ClassName>
+</JavaCallout>
+
+
