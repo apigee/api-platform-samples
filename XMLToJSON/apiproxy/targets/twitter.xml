@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<TargetEndpoint name="twitter">
+  <Description/>
+  <HTTPTargetConnection>
+    <URL>http://en.wikipedia.org/w/api.php</URL>
+  </HTTPTargetConnection>
+</TargetEndpoint>
