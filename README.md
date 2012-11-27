@@ -2,8 +2,8 @@
 
 # Apigee API Platform Samples
 
-Apigee API Platform Samples are designed to help you, the app and
-API developer, learn how to use the Apigee API Platform.
+Apigee API Platform Samples are designed to help developers 
+learn how to use the Apigee API Platform.
 
 Apigee's API Platform provides developers with:
 
@@ -12,15 +12,14 @@ Apigee's API Platform provides developers with:
 * API Key and OAuth 1 and 2 support
 * Out-of-the-box policies for functionality that you would rather
   not code yourself (like quotas, transformations, response
-  caching, etc)
-* APIs and scripting support for functionality that you WOULD 
+  caching, etc.)
+* APIs and scripting support for functionality that you would 
   rather innovate and code yourself
 * The ability to share your work with other developers, and to 
   reuse it across your own projects, by exposing it as
   APIs that you own and control
 * Scalable, managed test and prod environments with operational 
-  analytics to help you keep your code solid and your app 
-  end users happy
+  analytics
 
 Fully-featured, free accounts are available at:
 http://enterprise.apigee.com/signup
