@@ -1,0 +1,24 @@
+<application xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+             xmlns:apigee="http://api.apigee.com/wadl/2010/07/"
+             xmlns="http://wadl.dev.java.net/2009/02"
+             xsi:schemaLocation="http://wadl.dev.java.net/2009/02 http://apigee.com/schemas/wadl-schema.xsd http://api.apigee.com/wadl/2010/07/ http://apigee.com/schemas/apigee-wadl-extensions.xsd">
+    <resources base="http://{myorg}-test.apigee.net/v1">
+		<resource path="weather">
+		    <method id="getGeocodedElevation" name="GET" apigee:displayName="Get Geocoded Elevation">
+		        <apigee:tags>
+		            <apigee:tag primary="true">Weather</apigee:tag>
+		        </apigee:tags>
+		        <apigee:authentication required="false"/>
+		        <apigee:example url="weather"/>
+		        <doc apigee:url="http://apigee.com/docs/api/content/building-composite-service-2-javascript-app">
+		        	Return geocoded elevation data based on postal code and country code.
+		        </doc>
+		        <request>
+		            <param name="postalcode" type="xsd:string" style="query" default=""/>
+		            <param name="country" type="xsd:string" style="query" default=""/>
+		        </request>
+		    </method>
+		</resource>
+    </resources>
+</application>
