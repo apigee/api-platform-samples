@@ -17,31 +17,39 @@ limitations under the License.
 -------------------------------
 
 This directory contains a number of API proxies that operate on the Yahoo Weather APIs.
-The subdirectories here are:
 
-*setup/*
+These proxies are the basis for the Apigee API Platform Developer Quick Starts:
 
-  Go here for instructions on how to install these samples
+http://apigee.com/docs/api/quick-starts-index/
 
-*apikey/*
+The Quick Starts walk you through the process of configuring and deploying the functionality 
+in each of these samples, with some slight differences.
 
-  A proxy that validates incoming requests based on an "api key"
-*oauth/*
+Contents:
+
+./setup/
+
+Instructions on how to install these samples
+
+./apikey/
+
+A proxy that validates incoming requests based on an "API Key"
+
+./oauth/
 
   A proxy that validates incoming requests using OAuth
 
-*oauth-authcode/*
+./oauth-authcode/
 
-  A proxy that extends "oauth" to use the "authorization code" grant type
+A proxy that extends "OAuth" to use the "authorization code" grant type
 
-*mashup1/*
+./mashup1/
 
-  A simple mash-up proxy that combines results from two services
+A simple mash-up proxy that combines results from two services using policy composition
 
-*mashup2/*
+./mashup2
 
-  The same mash-up proxy, implemented mostly in JavaScript
+The same mash-up proxy, implemented mostly in JavaScript
 
-*setup/*
+Visit the Developer Forum at http://support.apigee.com
 
-  Scripts and data for setting up this sample. Go here for setup instructions.
