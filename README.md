@@ -1,6 +1,6 @@
 10/31/2012
 
-##Apigee API Platform Samples
+# Apigee API Platform Samples
 
 Welcome to API Platform Samples for the Apigee API Platform
 
@@ -43,7 +43,7 @@ You also require:
 
 Python, to use the deployment tool.
 
-##Contents
+## Contents
 
 /simpleProxy
 
