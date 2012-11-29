@@ -1,7 +1,5 @@
 10/31/2012
 
-##Apigee API Platform Samples
-
 Welcome to API Platform Samples for the Apigee API Platform
 
 Apigee API Platform Samples are designed to help you, the app and
@@ -25,50 +23,65 @@ Apigee's API Platform provides developers with:
   end users happy
 
 Fully-featured, free accounts are available at:
+http://enterprise.apigee.com/signup
 
-<http://enterprise.apigee.com/signup>
+Learn more at http://apigee.com/docs
 
-Learn more at <http://apigee.com/docs>
+Copyright 2012 Apigee Corporation
 
+Licensed under the Apache License, Version 2.0 (the "License"); you may 
+not use this file except in compliance with the License. You may obtain 
+a copy of the License at
 
-##Getting started
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+
+---------------------------
+Get started:
 
 All of these samples require you to have an account on:
-<http://enterprise.apigee.com>
+http://enterprise.apigee.com
 
 You can sign up for a trial account at:
-<http://enterprise.apigee.com/signup>
+http://enterprise.apigee.com/signup
 
 You also require:
 
 Python, to use the deployment tool.
 
-##Contents
+---------------------------
+What's here:
 
 /simpleProxy
 
 A basic API proxy that is used in the API Platform Quick Starts at:
-http://apigee.com/docs/api/quick-starts-index
-
+http://apigee.com/docs/api/quick-starts-index/
 These Quick Starts show you how to build API facades that run on the 
 API platform, and they include API Keys, OAuth 1 and 2, developer
 and app provisioning, custom scripting tutorials, and more.
 
 /tools
 
-Contains a Python deployment tool (deploy.py) that imports an API proxy to an
+Contains a deployment tool (deploy.py) that imports an API proxy to an
 organization on the Apigee platform and then deploys it to the environment
 specified.
 
-/twitterproxies
+/mobile-friendly-twitter
 
-A set of proxies that modify the default behavior of the Twitter API:
+Optimize Twitter activity streams for resource-constrained mobile devices.
 
-* Mobile-friendly Twitter: Strips out most parameters from a tweet to
-conserve resources.
+/twitter-oembed
 
-* 
+Implement Twitter oembed, while supporting CORS
 
+/twitter-translate
+
+Call out to a third-party translation API to localize Tweets in real time.
 
 /weatherproxies
 
@@ -86,25 +99,10 @@ Get support!
 
 Share you experience and pick up tips and tricks
 on the Apigee developer forum at:
-
-<http://support.apigee.com>
+http://support.apigee.com
 
 Thanks,
 
 The Apigee Team 
-
-Copyright 2012 Apigee Corporation
-
-Licensed under the Apache License, Version 2.0 (the "License"); you may 
-not use this file except in compliance with the License. You may obtain 
-a copy of the License at
-
-http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
 
 
