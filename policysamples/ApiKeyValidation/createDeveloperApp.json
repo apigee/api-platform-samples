@@ -1,0 +1,10 @@
+{
+  "accessType" : "read",
+  "attributes" : [ {
+	"name" : "Language",
+	"value" : "java"
+  } ],
+  "apiProducts": [ "ApiKeyValidationSample"],
+  "callbackUrl" : "login.mytestapp.com",
+  "name" : "MyTestApp"
+}

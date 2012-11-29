@@ -1,8 +1,0 @@
-<App name='SampleApp'>
-    <AccessType>read</AccessType>
-    <CallbackUrl>login.myapp.com</CallbackUrl>
-    <ApiProducts>
-        <ApiProduct>ApiKeySampleProduct</ApiProduct>
-    </ApiProducts>
-    <Attributes/>
-</App>
