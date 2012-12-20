@@ -1,0 +1,79 @@
+var translatorApi = {
+  basePath: 'http://api.microsofttranslator.com/V2/Http.svc/'
+};
+
+function serializeQuery(obj) {
+  var str = [];
+  for (var p in obj) {
+    str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+  }
+  return str.join("&");
+}
+
+/**
+ * Detect the language of the text
+ */
+function detect(accessToken, text) {
+  var headers = {
+      'Authorization': 'Bearer ' + accessToken
+    },
+    queryObj = {
+      'text': text
+    };
+
+  var req = new Request(translatorApi.basePath + 'Detect?' + serializeQuery(queryObj), 'GET', headers);
+  var exchange = httpClient.send(req);
+
+  // Wait for the asynchronous GET request to finish
+  exchange.waitForComplete();
+
+  if (exchange.isSuccess()) {
+    var responseObj = exchange.getResponse().content.asXML;
+
+    return responseObj.toString();
+  } else if (exchange.isError()) {
+    throw new Error(exchange.getError());
+  }
+}
+
+/**
+ * Translate the text to the targetLanguage
+ */
+function translate(accessToken, targetLanguage, text) {
+  var headers = {
+      'Authorization': 'Bearer ' + accessToken
+    },
+    queryObj = {
+      'text': text,
+      'to': targetLanguage
+    };
+
+  var req = new Request(translatorApi.basePath + 'Translate?' + serializeQuery(queryObj), 'GET', headers);
+  var exchange = httpClient.send(req);
+
+  // Wait for the asynchronous GET request to finish
+  exchange.waitForComplete();
+
+  if (exchange.isSuccess()) {
+    var responseObj = exchange.getResponse().content.asXML;
+
+    return responseObj.toString();
+  } else if (exchange.isError()) {
+    throw new Error(exchange.getError());
+  }
+}
+
+var q = context.getVariable('request.queryparam.q'),
+  lang = context.getVariable('request.queryparam.lang');
+
+if (q && lang) {
+  // Retrieve the access token for the Translator API
+  var accessToken = context.getVariable('translator-access-token');
+
+  var queryOrigLang = detect(accessToken, q);
+  context.setVariable('target-language', queryOrigLang);
+
+  var translatedQuery = translate(accessToken, lang, q);
+  // Set the new translated query
+  context.setVariable('request.queryparam.q', translatedQuery);
+}

@@ -16,12 +16,9 @@ limitations under the License.
 
 -------------------------------
 
-This sample translates tweets in a Twitter timeline to a single language
-(English by default) using the [Microsoft Translator API](http://www.microsofttranslator.com/dev/).
-Statuses are filtered by the user's language and translated if it doesn't
-match the target language.
+This sample uses the Twitter Search API to find tweets in a given language and translate them to the language the query was made in using the [Microsoft Translator API](http://www.microsofttranslator.com/dev/).
 
-A demo application that consumes the API and displays a translated public timeline is included.
+A demo application that performs a search and renders the results in HTML is included.
 
 ## Example
 
@@ -65,8 +62,7 @@ A demo application that consumes the API and displays a translated public timeli
 ## To Deploy
 
 Sign up for [Microsoft Translator API](http://www.microsofttranslator.com/dev/) access,
-and replace the `clientId` and `clientSecret` in `apiproxy/resources/jsc/timeline-translate`
-with your application credentials.
+and replace the `clientId` and `clientSecret` in `apiproxy/resources/jsc/get-translator-access-token` with your application credentials.
 
 Read the instructions in setup/README.md, or try this command from this directory:
 
