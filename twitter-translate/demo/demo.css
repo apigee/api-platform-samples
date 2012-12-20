@@ -1,6 +1,7 @@
 body {
     font: 1em/1.5em Helvetica, Arial, sans-serif;
     color: #222;
+    padding: 2em;
 }
 
 a {
@@ -12,9 +13,42 @@ a:hover {
     text-decoration: underline;
 }
 
+form label {
+    display: block;
+    float: left;
+    clear: left;
+    margin: 0.25rem 0;
+}
+
+form label span {
+    display: block;
+    float: left;
+    width: 5rem;
+    margin-right: 1rem;
+    font-weight: bold;
+}
+
+form label input,
+form label textarea,
+form label select {
+    float: left;
+}
+
+form input[type="submit"] {
+    float: left;
+    clear: both;
+    margin: 0.5rem 0 0 6rem;
+}
+
+form:before, form:after {
+    content: " ";
+    display: block;
+}
+form:after { clear: both; }
+
 .tweetlist {
-    width: 30em;
-    margin-top: 2em;
+    width: 35em;
+    padding: 0;
 }
 
 .tweetlist li {
