@@ -1,0 +1,49 @@
+// Microsoft Translator API credentials
+// https://datamarket.azure.com/dataset/1899a118-d202-492c-aa16-ba21c33c06cb
+var translatorApi = {
+  clientId: '<<< YOUR CLIENT ID HERE >>>',
+  clientSecret: '<<< YOUR CLIENT SECRET HERE >>>',
+
+  authUrl: 'https://datamarket.accesscontrol.windows.net/v2/OAuth2-13/',
+  scopeUrl: 'http://api.microsofttranslator.com',
+  grantType: 'client_credentials',
+};
+
+function serializeQuery(obj) {
+  var str = [];
+  for (var p in obj) {
+    str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+  }
+  return str.join("&");
+}
+
+// Retrieve an access token from the Microsoft Translator API
+function getAccessToken() {
+  var bodyObj = {
+    'grant_type': translatorApi.grantType,
+    'scope': translatorApi.scopeUrl,
+    'client_id': translatorApi.clientId,
+    'client_secret': translatorApi.clientSecret
+  };
+
+  var req = new Request(translatorApi.authUrl, 'POST', {}, serializeQuery(bodyObj));
+  var exchange = httpClient.send(req);
+
+  // Wait for the asynchronous POST request to finish
+  exchange.waitForComplete();
+
+  if (exchange.isSuccess()) {
+    var responseObj = exchange.getResponse().content.asJSON;
+
+    if (responseObj.error) {
+      throw new Error(responseObj.error_description);
+    }
+
+    return responseObj.access_token;
+  } else if (exchange.isError()) {
+    throw new Error(exchange.getError());
+  }
+}
+
+// Retrieve an access token for the Translator API
+context.setVariable('translator-access-token', getAccessToken());
