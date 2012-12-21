@@ -1,7 +1,9 @@
-var translatorApi = {
-  basePath: 'http://api.microsofttranslator.com/V2/Http.svc/'
-};
+var translatorApi = context.getVariable('twitter-translate.translatorApi');
 
+/**
+ * Serialize an object to a query parameter string
+ * e.g. { a: 'b', c: 'd' } --> 'a=b&c=d'
+ */
 function serializeQuery(obj) {
   var str = [];
   for (var p in obj) {
@@ -12,10 +14,11 @@ function serializeQuery(obj) {
 
 /**
  * Detect the language of the text
+ * http://msdn.microsoft.com/en-us/library/ff512411.aspx
  */
-function detect(accessToken, text) {
+function detect(apiAccessToken, text) {
   var headers = {
-      'Authorization': 'Bearer ' + accessToken
+      'Authorization': 'Bearer ' + apiAccessToken
     },
     queryObj = {
       'text': text
@@ -38,10 +41,11 @@ function detect(accessToken, text) {
 
 /**
  * Translate the text to the targetLanguage
+ * http://msdn.microsoft.com/en-us/library/ff512421.aspx
  */
-function translate(accessToken, targetLanguage, text) {
+function translate(apiAccessToken, targetLanguage, text) {
   var headers = {
-      'Authorization': 'Bearer ' + accessToken
+      'Authorization': 'Bearer ' + apiAccessToken
     },
     queryObj = {
       'text': text,
@@ -68,12 +72,16 @@ var q = context.getVariable('request.queryparam.q'),
 
 if (q && lang) {
   // Retrieve the access token for the Translator API
-  var accessToken = context.getVariable('translator-access-token');
+  var apiAccessToken = context.getVariable('twitter-translate.apiAccessToken');
 
-  var queryOrigLang = detect(accessToken, q);
-  context.setVariable('target-language', queryOrigLang);
+  // Detect the language the query was made in -- search results will be translated
+  // from the language `lang` to this language.
+  var queryOrigLang = detect(apiAccessToken, q);
+  context.setVariable('twitter-translate.targetLanguage', queryOrigLang);
 
-  var translatedQuery = translate(accessToken, lang, q);
-  // Set the new translated query
+  // Translate the query to the language `lang` we are searching in
+  var translatedQuery = translate(apiAccessToken, lang, q);
+
+  // Replace the Search API query parameter with the new translated query
   context.setVariable('request.queryparam.q', translatedQuery);
 }

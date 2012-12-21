@@ -1,4 +1,4 @@
-# Twitter Timeline Translate
+# Twitter Translate
 
 Copyright 2012 Apigee Corporation
 
@@ -61,10 +61,13 @@ A demo application that performs a search and renders the results in HTML is inc
 
 ## To Deploy
 
-Sign up for [Microsoft Translator API](http://www.microsofttranslator.com/dev/) access,
-and replace the `clientId` and `clientSecret` in `apiproxy/resources/jsc/get-translator-access-token` with your application credentials.
+1. Sign up for [Microsoft Translator API](http://www.microsofttranslator.com/dev/) access,
+and replace the `clientId` and `clientSecret` in `apiproxy/resources/jsc/api-config` with your application credentials.
 
-Read the instructions in setup/README.md, or try this command from this directory:
+2. Create a cache in the organization and environment you will be deploying the bundle in, using the definition in `twitter-translate-cache.xml`. This is used to cache the Translator API access token across requests. Try the following command:
 
-    ../setup/deploy.py -u $USER:$PASS -o $ORG -e test -n twitter-translate -d .
+        curl -v -X POST -H "Content-Type: application/xml" -d @twitter-translate-cache.xml https://api.enterprise.apigee.com/v1/organizations/$ORG/environments/$ENV/caches -u $USER:$PASS
 
+3. Read the instructions in setup/README.md, or try this command from this directory:
+
+        ../setup/deploy.py -u $USER:$PASS -o $ORG -e test -n twitter-translate -d .
