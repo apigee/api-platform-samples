@@ -1,48 +1,70 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <ProxyEndpoint name="default">
-    <Description>Twitter timeline translation proxy endpoint</Description>
+    <Description>Twitter translation proxy endpoint</Description>
     <PreFlow>
-        <!-- Enable Cross Origin Resource Sharing access to this endpoint -->
+        <Request>
+            <!-- Set some common variables for the Translator API, including
+                 client ID and secret for authentication -->
+            <Step>
+                <Name>api-config</Name>
+            </Step>
+            <!-- Fetch the Translator API access token from the cache, if it's there -->
+            <Step>
+                <Name>api-token-lookup-cache</Name>
+            </Step>
+            <!-- On cache miss, fetch a new access token -->
+            <Step>
+                <Condition>lookupcache.api-token-lookup-cache.cachehit == &quot;false&quot;</Condition>
+                <Name>api-token-get</Name>
+            </Step>
+            <!-- On cache miss, put the new access token in the cache -->
+            <Step>
+                <Condition>lookupcache.api-token-lookup-cache.cachehit == &quot;false&quot;</Condition>
+                <Name>api-token-populate-cache</Name>
+            </Step>
+        </Request>
         <Response>
+            <!-- Enable Cross Origin Resource Sharing access to this endpoint -->
             <Step>
                 <Name>cors</Name>
+            </Step>
+            <!-- Set a response header, API-Token-Cache-Hit, reflecting the access token
+                 cache hit/miss status for this request -->
+            <Step>
+                <Name>api-token-cache-hit-header</Name>
             </Step>
         </Response>
     </PreFlow>
     <Flows>
-        <!-- Define a conditional flow for the GET /statuses/user_timeline.json resource. -->
-        <Flow name="GET-statuses-user_timeline">
-            <Description>Returns a collection of the most recent Tweets posted by the user indicated by the screen_name or user_id parameters.</Description>
-            <!-- Process the response from the resource with JavaScript step -->
-            <Response>
+        <Flow name="GET-search">
+            <!-- This flow translates the query and results passed to the Search API
+                 method GET /search.json (see: https://dev.twitter.com/docs/using-search).
+                 The proxy request includes the API façade URL, so we check the path prefix
+                 that represents the path relative to the target endpoint -->
+            <Condition>(proxy.pathsuffix MatchesPath &quot;/search.json&quot;) and (request.verb = &quot;GET&quot;)</Condition>
+            <Request>
+                <!-- Detect the language the search query (`q` query param) was made in
+                     and translate it to the language we are searching for (`lang`) -->
                 <Step>
-                    <Name>timeline-translate</Name>
+                    <Name>translate-query</Name>
+                </Step>
+            </Request>
+            <Response>
+                <!-- Translate the search results from the language being searched
+                     for (`lang`) to the language the query was made in -->
+                <Step>
+                    <Name>translate-results</Name>
                 </Step>
             </Response>
-            <!-- This flow is only triggered when the request path suffix (following the API façade URL)
-                 matches the resource path and when it's a GET request -->
-            <Condition>(proxy.pathsuffix MatchesPath &quot;/statuses/user_timeline.json&quot;) and (request.verb = &quot;GET&quot;)</Condition>
-        </Flow>
-
-        <!-- Apply the same logic and processing to the GET /statuses/public_timeline.json resource.
-             To avoid duplication, the Condition in the previous flow could be modified to include this resource. -->
-        <Flow name="GET-statuses-public_timeline">
-            <Description>Returns the 20 most recent statuses, including retweets if they exist, from non-protected users.</Description>
-            <Response>
-                <Step>
-                    <Name>timeline-translate</Name>
-                </Step>
-            </Response>
-            <Condition>(proxy.pathsuffix MatchesPath &quot;/statuses/public_timeline.json&quot;) and (request.verb = &quot;GET&quot;)</Condition>
         </Flow>
     </Flows>
     <HTTPProxyConnection>
         <!-- API façade URL -->
-        <BasePath>/twitter-translate/1</BasePath>
+        <BasePath>/twitter-translate</BasePath>
         <VirtualHost>default</VirtualHost>
     </HTTPProxyConnection>
     <RouteRule name="default">
-        <!-- The default, and only, target is the Twitter API, defined in targets/default.xml -->
+        <!-- The default, and only, target is the Twitter Search API, defined in targets/default.xml -->
         <TargetEndpoint>default</TargetEndpoint>
     </RouteRule>
 </ProxyEndpoint>
