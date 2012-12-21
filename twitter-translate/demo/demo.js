@@ -1,7 +1,5 @@
-function relative_time(time_value) {
-  var values = time_value.split(" ");
-  time_value = values[1] + " " + values[2] + ", " + values[5] + " " + values[3];
-  var parsed_date = Date.parse(time_value);
+function relative_time(date_str) {
+  var parsed_date = Date.parse(date_str);
   var relative_to = (arguments.length > 1) ? arguments[1] : new Date();
   var delta = parseInt((relative_to.getTime() - parsed_date) / 1000, 10);
   delta = delta + (relative_to.getTimezoneOffset() * 60);
@@ -37,15 +35,19 @@ function linkifyStatusText(statusText) {
     .replace(/\B@([_a-z0-9]+)/ig, linkifyReply);
 }
 
-$(function() {
-  $.getJSON('http://demo-prod.apigee.net/twitter-translate/1/statuses/public_timeline.json',
-    function(timeline) {
+function search(q, lang) {
+  $.getJSON('http://demo-prod.apigee.net/twitter-translate/search.json',
+    {
+      q: q,
+      lang: lang,
+    },
+    function(res) {
       var statusHTML = [],
         statusTextHTML,
         status;
 
-      for (var i = 0, len = timeline.length; i < len; ++i){
-        status = timeline[i];
+      for (var i = 0, len = res.results.length; i < len; ++i){
+        status = res.results[i];
 
         if (status.text_orig) {
           statusTextHTML =
@@ -56,11 +58,11 @@ $(function() {
         }
 
         statusHTML.push('<li>' +
-          '<img src="'+status.user.profile_image_url+'" class="avatar"/>'+
+          '<img src="'+status.profile_image_url+'" class="avatar"/>'+
           '<div>'+
-            '<span class="name">'+status.user.name+'</span> '+
-            '<span class="screen_name">@'+status.user.screen_name+'</span>'+
-            '<a class="time" href="http://twitter.com/'+status.user.screen_name+'/statuses/'+status.id_str+'">'+relative_time(status.created_at)+'</a>' +
+            '<span class="name">'+status.from_user_name+'</span> '+
+            '<span class="screen_name">@'+status.from_user+'</span>'+
+            '<a class="time" href="http://twitter.com/'+status.from_user+'/statuses/'+status.id_str+'">'+relative_time(status.created_at)+'</a>' +
           '</div>'+
           statusTextHTML +
         '</li>');
@@ -69,5 +71,16 @@ $(function() {
       $('#tweets').html(statusHTML);
     }
   );
+}
+
+$(function() {
+  $('#searchform').submit(function () {
+    var q = $('#search_q').val(),
+      lang = $('#search_lang').val();
+
+    search(q, lang);
+
+    return false;
+  });
 
 });
