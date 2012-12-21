@@ -1,14 +1,9 @@
-// Microsoft Translator API credentials
-// https://datamarket.azure.com/dataset/1899a118-d202-492c-aa16-ba21c33c06cb
-var translatorApi = {
-  clientId: '<<< YOUR CLIENT ID HERE >>>',
-  clientSecret: '<<< YOUR CLIENT SECRET HERE >>>',
+var translatorApi = context.getVariable('twitter-translate.translatorApi');
 
-  authUrl: 'https://datamarket.accesscontrol.windows.net/v2/OAuth2-13/',
-  scopeUrl: 'http://api.microsofttranslator.com',
-  grantType: 'client_credentials',
-};
-
+/**
+ * Serialize an object to a query parameter string
+ * e.g. { a: 'b', c: 'd' } --> 'a=b&c=d'
+ */
 function serializeQuery(obj) {
   var str = [];
   for (var p in obj) {
@@ -17,7 +12,10 @@ function serializeQuery(obj) {
   return str.join("&");
 }
 
-// Retrieve an access token from the Microsoft Translator API
+/**
+ * Retrieve an access token for the Microsoft Translator API
+ * http://msdn.microsoft.com/en-us/library/hh454950.aspx
+ */
 function getAccessToken() {
   var bodyObj = {
     'grant_type': translatorApi.grantType,
@@ -45,5 +43,4 @@ function getAccessToken() {
   }
 }
 
-// Retrieve an access token for the Translator API
-context.setVariable('translator-access-token', getAccessToken());
+context.setVariable('twitter-translate.apiAccessToken', getAccessToken());

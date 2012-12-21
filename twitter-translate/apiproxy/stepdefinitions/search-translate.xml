@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<Javascript timeLimit="0" enabled="true" continueOnError="false" async="false" name="search-translate">
-    <!-- This JavaScript translates the search results -->
-    <ResourceURL>jsc://search-translate</ResourceURL>
-</Javascript>
