@@ -1,0 +1,4 @@
+<Script name="CalculateNewAddress">
+  <ResourceURL>py://calculateaddress.py</ResourceURL>
+</Script>
+
