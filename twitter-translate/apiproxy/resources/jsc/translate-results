@@ -1,7 +1,9 @@
-var translatorApi = {
-  basePath: 'http://api.microsofttranslator.com/V2/Http.svc/'
-};
+var translatorApi = context.getVariable('twitter-translate.translatorApi');
 
+/**
+ * Serialize an object to a query parameter string
+ * e.g. { a: 'b', c: 'd' } --> 'a=b&c=d'
+ */
 function serializeQuery(obj) {
   var str = [];
   for (var p in obj) {
@@ -13,9 +15,9 @@ function serializeQuery(obj) {
 /**
  * Translate the text to the targetLanguage
  */
-function translate(accessToken, targetLanguage, text) {
+function translate(apiAccessToken, targetLanguage, text) {
   var headers = {
-      'Authorization': 'Bearer ' + accessToken
+      'Authorization': 'Bearer ' + apiAccessToken
     },
     queryObj = {
       'text': text,
@@ -37,8 +39,8 @@ function translate(accessToken, targetLanguage, text) {
   }
 }
 
-var targetLanguage = context.getVariable('target-language'),
-  accessToken = context.getVariable('translator-access-token');
+var targetLanguage = context.getVariable('twitter-translate.targetLanguage'),
+  apiAccessToken = context.getVariable('twitter-translate.apiAccessToken');
 
 var q = context.getVariable('request.queryparam.q'),
   lang = context.getVariable('request.queryparam.lang');
@@ -52,17 +54,15 @@ if (origResponse === Object(origResponse) &&
     results = origResponse['results'],
     status;
 
-  // Translate statuses if the user's language is not the target language
+  // Translate each status to the target language
   for (var i = 0, len = results.length; i < len; ++i) {
     status = results[i];
 
-    if (lang !== targetLanguage) {
-      // Save the original text and update with a translated version
-      status.text_orig = status.text;
-      status.text = translate(accessToken, targetLanguage, status.text);
-    }
+    // Save the original text and update with a translated version
+    status.text_orig = status.text;
+    status.text = translate(apiAccessToken, targetLanguage, status.text);
   }
 
-  // Send the timeline back as JSON
+  // Send the results back as JSON
   response.content = JSON.stringify(responseObj);
 }
