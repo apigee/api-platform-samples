@@ -1,0 +1,16 @@
+<AssignMessage name="AssignElevationParameters">
+  <!-- Remove query parameters from the original request and add the ones that the elevation
+       service will require -->
+  <Remove>
+    <QueryParams>
+      <QueryParam name="country"/>
+      <QueryParam name="postalcode"/>
+    </QueryParams>
+  </Remove>
+  <Set>
+    <QueryParams>
+      <QueryParam name="locations">{geocoderesponse.latitude},{geocoderesponse.longitude}</QueryParam>
+      <QueryParam name="sensor">false</QueryParam>
+    </QueryParams>
+  </Set>
+</AssignMessage>

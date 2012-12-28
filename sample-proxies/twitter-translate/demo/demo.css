@@ -1,0 +1,101 @@
+body {
+    font: 1em/1.5em Helvetica, Arial, sans-serif;
+    color: #222;
+    padding: 2em;
+}
+
+a {
+    color: #70757A;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+form label {
+    display: block;
+    float: left;
+    clear: left;
+    margin: 0.25rem 0;
+}
+
+form label span {
+    display: block;
+    float: left;
+    width: 5rem;
+    margin-right: 1rem;
+    font-weight: bold;
+}
+
+form label input,
+form label textarea,
+form label select {
+    float: left;
+}
+
+form input[type="submit"] {
+    float: left;
+    clear: both;
+    margin: 0.5rem 0 0 6rem;
+}
+
+form:before, form:after {
+    content: " ";
+    display: block;
+}
+form:after { clear: both; }
+
+.tweetlist {
+    width: 35em;
+    padding: 0;
+}
+
+.tweetlist li {
+    list-style-type: none;
+
+    padding: 0.75em 0 0.75em 56px;
+
+    position: relative;
+
+    border-bottom: 1px solid #ddd;
+}
+
+.tweetlist .name {
+    font-weight: bold;
+}
+
+.tweetlist .screen_name,
+.tweetlist .time {
+    font-size: 0.8em;
+    color: #999;
+}
+
+.tweetlist .avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 5px;
+
+    position: absolute;
+    top: 0.8em;
+    left: 0;
+}
+
+.tweetlist .time {
+    float: right;
+}
+
+
+.arrow {
+    font-size: 5em;
+}
+
+.untranslated {
+    color: #888;
+    display: block;
+}
+
+.translated {
+    background: #ffd;
+}
+

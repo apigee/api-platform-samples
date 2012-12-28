@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<APIProxy name="twitter-oembed">
+    <ConfigurationVersion minorVersion="0" majorVersion="4"/>
+    <Description>Twitter Timeline oEmbed</Description>
+    <DisplayName>twitter-oembed</DisplayName>
+    <Policies>
+        <Policy>cors</Policy>
+        <Policy>timeline-oembed</Policy>
+    </Policies>
+    <ProxyEndpoints>
+        <ProxyEndpoint>default</ProxyEndpoint>
+    </ProxyEndpoints>
+    <Resources>
+        <Resource>jsc://cors</Resource>
+        <Resource>jsc://timeline-oembed</Resource>
+    </Resources>
+    <TargetServers/>
+    <TargetEndpoints>
+        <TargetEndpoint>default</TargetEndpoint>
+    </TargetEndpoints>
+</APIProxy>

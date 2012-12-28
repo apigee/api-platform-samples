@@ -1,0 +1,3 @@
+<APIProxy name="OAuthSample">
+  <Description>A sampleAPI proxy that enforces OAuth 2.0 client credentials</Description>
+</APIProxy>

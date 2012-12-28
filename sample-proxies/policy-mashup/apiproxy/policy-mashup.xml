@@ -1,0 +1,3 @@
+<APIProxy name="policy-mashup">
+  <Description>A sample API proxy that does a basic mash-up using policy composition</Description>
+</APIProxy>
