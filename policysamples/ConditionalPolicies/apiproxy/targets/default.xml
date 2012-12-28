@@ -1,6 +1,6 @@
-<TargetEndpoint name="twitter">
+<TargetEndpoint name="default">
   <Description/>
   <HTTPTargetConnection>
-    <URL>http://api.twitter.com</URL>
+    <URL>http://weather.yahooapis.com</URL>
   </HTTPTargetConnection>
 </TargetEndpoint>

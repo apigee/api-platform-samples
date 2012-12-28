@@ -1,5 +1,0 @@
-#response_time = flow.getVariable("client.sent.start.timestamp") - flow.getVariable("client.received.start.timestamp");
-#response.setVariable("header.X-Apigee-total-responseTime", response_time);
-#response.setVariable("header.X-Apigee-start-time", flow.getVariable("client.sent.start.time"));
-response.setVariable("header.X-Apigee-end-time", flow.getVariable("client.received.start.time"));
-# response.setVariable("header.X-Apigee-Demo-target", flow.getVariable("target.name"));
