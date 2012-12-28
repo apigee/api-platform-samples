@@ -1,0 +1,7 @@
+<AssignMessage name="SaveHostHeader">
+  <AssignVariable>
+    <Name>OriginalHostHeader</Name>
+    <Ref>request.header.Host</Ref>
+  </AssignVariable>
+</AssignMessage>
+

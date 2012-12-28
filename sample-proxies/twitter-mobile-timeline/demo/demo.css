@@ -1,0 +1,52 @@
+body {
+    font: 1em/1.5em Helvetica, Arial, sans-serif;
+    color: #222;
+}
+
+a {
+    color: #70757A;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.tweetlist {
+    width: 30em;
+    margin-top: 2em;
+}
+
+.tweetlist li {
+    list-style-type: none;
+
+    padding: 0.75em 0 0.75em 56px;
+
+    position: relative;
+
+    border-bottom: 1px solid #ddd;
+}
+
+.tweetlist .name {
+    font-weight: bold;
+}
+
+.tweetlist .screen_name,
+.tweetlist .time {
+    font-size: 0.8em;
+    color: #999;
+}
+
+.tweetlist .avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 5px;
+
+    position: absolute;
+    top: 0.8em;
+    left: 0;
+}
+
+.tweetlist .time {
+    float: right;
+}
