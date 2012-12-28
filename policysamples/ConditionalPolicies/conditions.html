@@ -1,0 +1,73 @@
+Executing conditional logic using API flow variables
+
+<p>The Apigee API Platform defines a set of predefined variables that are useful for enabling dynamic dynamic behavior in your API flow.</p>
+
+<p>For example, it is extremely useful to execute certain logic on when a request is received from a mobile device, or to customize a response message based on the locale of the requesting app.</p>
+
+<p>Conditions can be used at several levels. Conditions can apply to individual policies, and, by extension, individual code snippets or apps.</p> 
+
+<p>Conditions can apply to named flows, and thus to sequences of policies.</p>
+
+<p>Conditions can also be applied to route definitions, enabling you to route requests to different backend services based on values in the request message, the time of day, the IP address of the client, and so on. 
+</p>
+<p>It is a useful exercise to read through the complete of predefined variables to imagine how you might optimize the behavior of APIs for your customers.
+</p>
+<p>You are also free to define custom variables. Custom variables are typically based on specific data that you expect in request or response messages. For example, you might create a custom variable that defines the value for forecast in a weather report. You could then modify responses to an end user based on the weather forecast for her locale. </p> 
+
+<p>In this example, you conditionally execute a Python script based on the presence of an HTTP header.</p>
+
+<div id="well"><pre>response_time = flow.getVariable("target.received.start.timestamp") - flow.getVariable("target.sent.start.timestamp");
+response.setVariable("header.X-Apigee-target", flow.getVariable("target.url"));
+response.setVariable("header.X-Apigee-request-uri", flow.getVariable("request.uri"));
+response.setVariable("header.X-Apigee-request-verb", flow.getVariable("request.verb"));
+response.setVariable("header.X-Apigee-start-time", flow.getVariable("target.sent.start.time"));
+response.setVariable("header.X-Apigee-start-timestamp", flow.getVariable("target.sent.start.timestamp"));
+response.setVariable("header.X-Apigee-end-time", flow.getVariable("target.sent.end.time"));
+response.setVariable("header.X-Apigee-end-timestamp", flow.getVariable("target.received.start.timestamp"));
+response.setVariable("header.X-Apigee-target-responseTime", response_time);<pre></div>
+	
+	
+	<VariableAccess>
+        <Get name="organization.name" value="apigee-pm"/>
+        <Get name="environment.name" value="test"/>
+        <Get name="apiproxy.name" value="weather-timer"/>
+        <Get name="apiproxy.revision" value="14"/>
+        <Get name="proxy.name" value="default"/>
+        <Get name="proxy.basepath" value="/weather-timer"/>
+        <Get name="proxy.pathsuffix" value="/forecastrss"/>
+        <Get name="request.header.X-Forwarded-For"/>
+        <Get name="proxy.client.ip" value="24.214.157.215"/>
+        <Get name="target.name" value="default"/>
+        <Get name="dynamic.target"/>
+        <Get name="target.basepath" value=""/>
+        <Get name="dynamic.target"/>
+        <Get name="target.url" value="http://weather.yahooapis.com"/>
+        <Get name="target.ip" value="98.137.204.103"/>
+        <Get name="client.ip" value="24.214.157.215"/>
+        <Get name="is.error" value="false"/>
+        <Get name="target.sent.start.timestamp" value="1354914980259"/>
+        <Get name="target.sent.end.timestamp" value="1354914980259"/>
+        <Get name="target.received.start.timestamp" value="1354914980305"/>
+        <Get name="target.received.end.timestamp" value="1354914980348"/>
+        <Get name="client.received.start.timestamp" value="1354914980199"/>
+        <Get name="client.received.end.timestamp" value="1354914980200"/>
+        <Get name="response.status.code" value="200"/>
+        <Get name="request.uri" value="/forecastrss?w=12797282"/>
+        <Get name="request.path" value="/forecastrss"/>
+        <Get name="request.verb" value="GET"/>
+        <Get name="virtualhost.name" value="default"/>
+        <Get name="developer.app.name"/>
+        <Get name="apiproduct.name"/>
+        <Get name="access_token"/>
+        <Get name="client_id"/>
+        <Get name="flow.resource.name"/>
+        <Get name="gateway.flow.id"/>
+        <Get name="sla"/>
+        <Get name="client.received.content.length" value="0"/>
+        <Get name="target.received.content.length" value="2336"/>
+        <Get name="cachehit"/>
+        <Get name="developer.id"/>
+        <Get name="organization.name" value="apigee-pm"/>
+        <Get name="environment.name" value="test"/>
+
+

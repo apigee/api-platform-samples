@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ProxyEndpoint name="proxy">
+<ProxyEndpoint name="default">
 	<PreFlow>
 		<Request/>
 		<Response>
 			<Step>
 				<Condition>request.header.responsetime="true"</Condition>
-				<Name>add-responsetime-header</Name>
+				<Name>Timer</Name>
 			</Step>
 		</Response>
 	</PreFlow>
 	<HTTPProxyConnection>
-		<BasePath>/</BasePath>
+		<BasePath>/weather-timer</BasePath>
 		<VirtualHost>default</VirtualHost>
 	</HTTPProxyConnection>
 	<RouteRule name="default">
-		<TargetEndpoint>twitter</TargetEndpoint>
+		<TargetEndpoint>default</TargetEndpoint>
 	</RouteRule>
 </ProxyEndpoint>

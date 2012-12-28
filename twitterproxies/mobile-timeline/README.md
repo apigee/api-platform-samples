@@ -29,7 +29,7 @@ To pretty print JSON where python is available:
 
 $ curl "http://api.twitter.com/1/statuses/user_timeline.json?screen_name=Apigee" | python -mjson.tool
 
-Note the structure of each twwet.
+Note the structure of each tweet.
 
 ## Step 2: Deploy the API proxy
 
@@ -60,7 +60,7 @@ $ curl "http://{myorg}-test.apigee.net/mobile-friendly-twitter/1/statuses/user_t
 
 # Get Help
 
-Post any insights or issues to the Apigee Developer Forum at support.apigee.com.
+Post any insights or issues to the Apigee Developer Forum at support.apigee.com.s
 
 
 

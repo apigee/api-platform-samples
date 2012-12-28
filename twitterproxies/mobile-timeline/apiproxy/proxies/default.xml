@@ -5,7 +5,7 @@
         <!-- Enable Cross Origin Resource Sharing access to this endpoint -->
         <Response>
             <Step>
-                <Name>cors</Name>
+                <Name>CORS</Name>
             </Step>
         </Response>
     </PreFlow>
@@ -17,10 +17,10 @@
              other resources will be passed through as-is. -->
         <Flow name="GET-statuses-user_timeline">
             <Description>Returns a collection of the most recent Tweets posted by the user indicated by the screen_name or user_id parameters.</Description>
-            <!-- Process the response from the resource with JavaScript step -->
+            <!-- Process the response from the resource with JavaScript -->
             <Response>
                 <Step>
-                    <Name>tailor-timeline</Name>
+                    <Name>MobileTimeline</Name>
                 </Step>
             </Response>
             <!-- This flow is only triggered when the request path suffix (following the API façade URL)
@@ -34,7 +34,7 @@
             <Description>Returns the 20 most recent statuses, including retweets if they exist, from non-protected users.</Description>
             <Response>
                 <Step>
-                    <Name>tailor-timeline</Name>
+                    <Name>MobileTimeline</Name>
                 </Step>
             </Response>
             <Condition>(proxy.pathsuffix MatchesPath &quot;/statuses/public_timeline.json&quot;) and (request.verb = &quot;GET&quot;)</Condition>
@@ -42,7 +42,7 @@
     </Flows>
     <HTTPProxyConnection>
         <!-- API façade URL -->
-        <BasePath>/mobile-friendly-twitter/1</BasePath>
+        <BasePath>/mobile-timeline/1</BasePath>
         <VirtualHost>default</VirtualHost>
     </HTTPProxyConnection>
     <RouteRule name="default">
