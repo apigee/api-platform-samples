@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<GetOAuthV2Info name="AuthenticateKey" async="false" continueOnError="false" enabled="true"> 
-  <ClientId ref="request.header.apikey"/> 
-</GetOAuthV2Info>

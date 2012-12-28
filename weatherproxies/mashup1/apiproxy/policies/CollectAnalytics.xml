@@ -1,8 +1,0 @@
-<StatisticsCollector name="CollectAnalytics">
-  <!-- This is an optional policy that sends custom variable fields to the analytics
-       system. Each variable below may be used as a dimension in a custom analytics report. -->
-  <Statistics>
-    <Statistic name="postalcode" ref="request.queryparam.postalcode" type="string">00000</Statistic>
-    <Statistic name="country" ref="request.queryparam.country" type="string">ZZ</Statistic>
-  </Statistics>
-</StatisticsCollector>
