@@ -1,12 +1,13 @@
 <ProxyEndpoint name="default">
-    <HTTPProxyConnection>
-        <!-- Base path used to route inbound requests to this API proxy -->
-        <BasePath>/weather</BasePath>
-        <!-- The named virtual host that defines the base URL for requests to this proxy -->
-        <VirtualHost>default</VirtualHost>
-    </HTTPProxyConnection>
+  <!-- Inbound HTTP configuration -->
+  <HTTPProxyConnection>
+   <!-- The URI fragment used to classify requests to this proxy from client apps -->
+    <BasePath>/weather</BasePath>
+   <!-- The named virtual host that defines the base URL for this API facade -->
+    <VirtualHost>default</VirtualHost>
+  </HTTPProxyConnection>
   <RouteRule name="default">
-    <!-- Connects the proxy to the target defined under /targets -->
+  <!-- The named TargetEndpoint (under ./targets) where requests will be routed -->
     <TargetEndpoint>default</TargetEndpoint>
   </RouteRule>
 </ProxyEndpoint>
