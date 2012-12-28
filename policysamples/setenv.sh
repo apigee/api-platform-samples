@@ -12,9 +12,9 @@
 ## You can obtain a free account at http://enterprise.apigee.com/signup
 ## --------------------------------------
 
-org="apigee-pm"
-credentials="rsaha@apigee.com:welcome123"
-environment="test"
+org=""
+credentials=""
+environment=""
 url="https://api.enterprise.apigee.com"
 
 
