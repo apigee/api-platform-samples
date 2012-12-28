@@ -2,9 +2,6 @@
 
 # Apigee API Platform Samples
 
-Welcome to API Platform Samples for the Apigee API Platform
-=======
-
 Apigee API Platform Samples are designed to help developers 
 learn how to use the Apigee API Platform.
 
@@ -24,16 +21,7 @@ Apigee's API Platform provides developers with:
 * Scalable, managed test and prod environments with operational 
   analytics
 
-Fully-featured, free accounts are available at:
-
-<http://enterprise.apigee.com/signup>
-
-Learn more at <http://apigee.com/docs>
-
-
-##Getting started
-=======
-Get started:
+# Getting started
 
 All of these samples require you to have an account on:
 <http://enterprise.apigee.com>
@@ -41,62 +29,53 @@ All of these samples require you to have an account on:
 You can sign up for a trial account at:
 <http://enterprise.apigee.com/signup>
 
+Learn more at <http://apigee.com/docs>
+
 You also require:
 
 Python, to use the deployment tool.
 
 ## Contents
-=======
+
 # What's here:
+
+/sample-proxies
+
+A set of fully-functional API proxies that you can deploy and invoke
+on the Apigee API Platform.
+
+/schemas
+
+XML schemas that you can  use as a reference when working with policies, API proxy configuration,
+API products, apps, and developers.
+
+/setup
+
+Simple scripts to help you deploy the sample API proxies and profiles that they 
+rely on, including API products, developers, and apps.
 
 /simpleProxy
 
 A basic API proxy that is used in the API Platform Quick Starts at:
+
 http://apigee.com/docs/api/quick-starts-index
 
-These Quick Starts show you how to build API facades that run on the 
+These quick starts show you how to build API facades that run on the 
 API platform, and they include API Keys, OAuth 1 and 2, developer
 and app provisioning, custom scripting tutorials, and more.
 
-## /tools
+/tools
 
 Contains a Python deployment tool (deploy.py) that imports an API proxy to an
 organization on the Apigee platform and then deploys it to the environment
 specified.
 
-/twitterproxies
+# Get support
 
-A set of proxies that modify the default behavior of the Twitter API:
-=======
-## /mobile-friendly-twitter
+Share you experiences and pick up tips and tricks
+on the Apigee Developer Forum at:
 
-Optimize Twitter activity streams for resource-constrained mobile devices.
-
-## /twitter-oembed
->>>>>>> fa05a8c4c41ac88c2df4a6d925f040761618dee0
-
-* Mobile-friendly Twitter: Strips out most parameters from a tweet to
-conserve resources.
-
-=======
-## /twitter-translate
-* Invoke a remote API to translate Tweets. Demonstrates how to use
-OAuth access tokens to invoke targets from the API Platform.
-
-## /weatherproxies
-
-Fully configured API proxies that can be immediately deployed and
-invoked on the API platform, with examples of:
-
-* API key validation
-* OAuth 2.0
-* Composite services built using policy composition and Javascript, that 
-  mashup the Google location and elevation APIs and expose their own 
-  API for sharing and reuse.
-
-# Get help and interact with other API developers
-
-<http://support.apigee.com>
+http://support.apigee.com
 
 Copyright 2012 Apigee Corporation
 

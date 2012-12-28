@@ -1,8 +1,0 @@
-<RaiseFault name="Return404">
-  <FaultResponse>
-    <Set>
-      <StatusCode>404</StatusCode>
-      <ReasonPhrase>Not Found</ReasonPhrase>
-    </Set>
-  </FaultResponse>
-</RaiseFault>
