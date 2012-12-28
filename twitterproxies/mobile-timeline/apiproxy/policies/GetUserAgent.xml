@@ -1,0 +1,8 @@
+<ExtractVariables name="GetUserAgent">
+    <Source>request</Source>
+    <VariablePrefix>device</VariablePrefix>
+    <IgnoreUnresolvedVariables>false</IgnoreUnresolvedVariables>  
+    <Header name="User-Agent">
+        <Pattern>{User-Agent}</Pattern>
+    </Header>
+</ExtractVariables>
