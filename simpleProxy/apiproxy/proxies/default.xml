@@ -11,3 +11,82 @@
     <TargetEndpoint>default</TargetEndpoint>
   </RouteRule>
 </ProxyEndpoint>
+
+
+<!--
+
+The sample configuration below shows all ProxyEndpoint configuration options. For more
+more information, refer to the XML schema under ./schemas and for usage, refer to
+http://apigee.com/docs/api/quick-starts-index/.
+
+<ProxyEndpoint name="default">
+	<PreFlow>
+	  <Request>
+	    <Step><Name>PolicyName</Name></Step>
+	    . . .
+	  </Request>
+	  <Response>
+	    <Step><Name>PolicyName</Name></Step>
+	    . . .
+	  </Response>
+	</PreFlow>
+
+	<Flows>
+		<Flow name="First conditional flow">
+		<Condition>(variable.name <operator> <value or regular expression>)</Condition>
+		  <Request>
+		    <Step><Name>PolicyName</Name></Step>
+			<Step><Name>PolicyName</Name></Step>
+			. . .
+		  </Request>
+		  <Response>
+		    <Step><Name>PolicyName</Name></Step>
+			<Step><Name>PolicyName</Name></Step>
+			. . .
+		  </Response>
+		</Flow>
+		<Flow name="Second conditional flow">
+		<Condition>(variable.name <operator> <value or regular expression>)</Condition>
+		  <Request>
+		    <Step><Name>PolicyName</Name></Step>
+			<Step><Name>PolicyName</Name></Step>
+			. . .
+		  </Request>
+		  <Response>
+		    <Step><Name>PolicyName</Name></Step>
+			<Step><Name>PolicyName</Name></Step>
+			. . .
+		  </Response>
+		</Flow>
+	</Flows>
+
+	<PostFlow>
+	  <Request>
+	    <Step><Name>PolicyName</Name></Step>
+	    . . .
+	  </Request>
+	  <Response>
+	    <Step><Name>PolicyName</Name></Step>
+	    . . .
+	  </Response>
+	</PostFlow>
+
+	<HTTPProxyConnection>
+	  <Condition>(variable.name <operator> <value or regular expression>)</Condition>
+	  <BasePath>/weather</BasePath>
+	  <VirtualHost>default</VirtualHost>
+	</HTTPProxyConnection>
+
+	<RouteRule name="default">
+	  <Condition>(variable.name <operator> <value or regular expression>)</Condition>
+	  <TargetEndpoint>NamedTargetConfiguration1</TargetEndpoint>
+	</RouteRule>
+	<RouteRule name="default">
+	  <Condition>(variable.name <operator> <value or regular expression>)</Condition>
+	  <TargetEndpoint>NamedTargetConfiguration2</TargetEndpoint>
+	</RouteRule>
+	<RouteRule name="default">
+	  <TargetEndpoint>api.example.com</TargetEndpoint>
+	</RouteRule>
+</ProxyEndpoint>
+-->
