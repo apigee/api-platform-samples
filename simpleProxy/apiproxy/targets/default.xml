@@ -8,8 +8,9 @@
 
 <!--
 
-The sample configuration below shows all TargetEndpoint configuration options. For more
-more information, refer to the XML schema under ./schemas and for usage, refer to
+The sample configuration below shows all TargetEndpoint configuration options. For more information, 
+refer to the XML schema under ./schemas.
+For usage, refer to:
 http://apigee.com/docs/api/quick-starts-index/.
 
 <TargetEndpoint name="default">
