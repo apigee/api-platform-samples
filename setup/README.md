@@ -1,4 +1,4 @@
-# Apigee API Samples Setup
+# Apigee Platform API Samples Setup
 
 This directory provides scripts that configure your local 
 environment and deploy sample API proxies to your organization
@@ -13,9 +13,11 @@ http://enterprise.apigee.com/signup
 2. In the file setenv.sh, configure values for your
 organization, username, environment.
 
-3a. To deploy individual samples, run deply.sh and follow prompts.
+3a. To deploy individual samples, run deploy.sh from the ./setup directory.
+Follow prompts.
 
-3b. To deploy all samples, run deploy_all.sh and follow prompts.
+3b. To deploy all samples, run deploy_all.sh from the ./setup directory. 
+Follow prompts.
 
 4. Navigate to the sample-proxies directory. Each sample API proxy 
 directory contains 	an invoke.sh file. Run invoke.sh to submit a request
