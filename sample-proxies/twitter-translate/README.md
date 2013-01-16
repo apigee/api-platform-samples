@@ -15,8 +15,10 @@ See the License for the specific language governing permissions and
 limitations under the License.
 
 -------------------------------
-
-This sample uses the Twitter Search API to find tweets in a given language and translate them to the language the query was made in using the [Microsoft Translator API](http://www.microsofttranslator.com/dev/).
+01234567890123456789012345678901234567890123456789012345678901234567890123456789
+This sample uses the Twitter Search API to find tweets in a given language and
+translate them to the language the query was made in using the
+[Microsoft Translator API](http://www.microsofttranslator.com/dev/).
 
 A demo application that performs a search and renders the results in HTML is included.
 

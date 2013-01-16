@@ -1,6 +1,8 @@
 #### SOAP Samples
 
-This directory contains an API proxy sample that demonstrates "passthrough proxy" for a SOAP web service, which  returns a WSDL with the correct proxied URI for a backend SOAP service.
+This directory contains an API proxy sample that demonstrates "passthrough
+proxy" for a SOAP web service, which returns a WSDL with the correct proxied
+URI for a backend SOAP service.
 
 This sample use the Forecast SOAP service from the US National
 Weather Service.
