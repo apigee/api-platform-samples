@@ -6,7 +6,7 @@ echo Be sure to run scripts under ./setup/provisioning
 
 source ../../setup/setenv.sh
 
-curl http://$org-$env.apigee.net/altitude?"country=us&postalcode=08008"
+curl "http://$org-$env.apigee.net/altitude?country=us&postalcode=08008"
 
 echo Get app profile
 
@@ -28,7 +28,7 @@ set -x
 
 echo Request access token
 
-curl -u $key:$secret http://$org-$env..apigee.net/weather/accesstoken?"grant_type=client_credentials"
+curl -u "$key:$secret http://$org-$env.apigee.net/weather/accesstoken?grant_type=client_credentials"
 
 echo Invoke API with access token
 
@@ -36,4 +36,4 @@ echo "Enter the access token, followed by [ENTER]:"
 
 read token
 
-curl -H "Authorization: Bearer $token" http://$org-$env.apigee.net/weather/forecastrss?"w=12797282"
+curl -H "Authorization: Bearer $token" "http://$org-$env.apigee.net/weather/forecastrss?w=12797282"
