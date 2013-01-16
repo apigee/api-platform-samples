@@ -16,7 +16,7 @@ org="your org name on enterprise.apigee.com"
 username="your user name on enterprise.apigee.com"
 env="environment on enterprise.apigee.com--either 'test' or 'prod'"
 url="https://api.enterprise.apigee.com"
-
+api_domain="apigee.net"
 
 ## Do not change the settings below
 ## --------------------------------------
@@ -24,3 +24,4 @@ export org=$org
 export username=$username
 export env=$env
 export url=$url
+export api_domain=$api_domain

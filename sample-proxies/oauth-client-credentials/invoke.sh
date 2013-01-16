@@ -6,7 +6,7 @@ echo Be sure to run scripts under ./setup/provisioning
 
 source ../../setup/setenv.sh
 
-curl "http://$org-$env.apigee.net/altitude?country=us&postalcode=08008"
+#curl "http://$org-$env.$api_domain/altitude?country=us&postalcode=08008"
 
 echo Get app profile
 
@@ -14,26 +14,15 @@ echo "Enter your password for the Apigee Enterprise organization $org, followed 
 
 read -s password
 
-curl $username:$password https://api.enterprise.apigee.com/v1/o/$org/apps/weatherapp
+echo "Fetching consumer key and secret for joe-app"
+ks=`curl -u "$username:$password" "$url/v1/o/$org/developers/joe@weathersample.com/apps/joe-app" 2>/dev/null | egrep "consumer(Key|Secret)"`
+key=`echo $ks | awk -F '\"' '{ print $4 }'`
+secret=`echo $ks | awk -F '\"' '{ print $8 }'`
 
-echo "Enter the app's consumer key, followed by [ENTER]:"
+echo "Requesting access token"
 
-read key
+token=`curl -k -u "$key:$secret" "https://$org-$env.$api_domain/weatheroauth/accesstoken?grant_type=client_credentials" 2>/dev/null | grep access_token | awk -F '\"' '{ print $4 } '`
 
-echo "Enter the app's consumer secret, followed by [ENTER]:"
+echo "Invoking API with access token $token"
 
-read secret
-
-set -x
-
-echo Request access token
-
-curl -u "$key:$secret http://$org-$env.apigee.net/weather/accesstoken?grant_type=client_credentials"
-
-echo Invoke API with access token
-
-echo "Enter the access token, followed by [ENTER]:"
-
-read token
-
-curl -H "Authorization: Bearer $token" "http://$org-$env.apigee.net/weather/forecastrss?w=12797282"
+curl -k -H "Authorization: Bearer $token" "https://$org-$env.$api_domain/weatheroauth/forecastrss?w=12797282"
