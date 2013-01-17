@@ -1,0 +1,9 @@
+<Quota name="CheckQuota"> 
+  <!-- This policy tells us to maintain a separate quota per application, based on the unique client credentials,
+       and to set the parameters based on the API product that was selected in the 
+       previous policy. -->
+  <Interval ref="apiproduct.developer.quota.interval"/>
+  <TimeUnit ref="apiproduct.developer.quota.timeunit"/>
+  <Allow countRef="apiproduct.developer.quota.limit"/>
+  <Identifier ref="client_id"/>
+</Quota>

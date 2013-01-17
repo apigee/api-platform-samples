@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ProxyEndpoint name="default">
+	<PreFlow>
+		<Response>
+			<Step>
+				<Condition>request.header.responsetime="true"</Condition>
+				<Name>Timer</Name>
+			</Step>
+		</Response>
+	</PreFlow>
+	<HTTPProxyConnection>
+		<BasePath>/timer</BasePath>
+		<VirtualHost>default</VirtualHost>
+	</HTTPProxyConnection>
+	<RouteRule name="default">
+		<TargetEndpoint>default</TargetEndpoint>
+	</RouteRule>
+</ProxyEndpoint>

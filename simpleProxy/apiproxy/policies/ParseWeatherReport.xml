@@ -1,0 +1,40 @@
+<ExtractVariables name="ParseWeatherReport">
+  <!-- Parse the XML weather report using XPath. -->
+  <VariablePrefix>weather</VariablePrefix>
+  <XMLPayload>
+	<Namespaces>
+		<Namespace prefix="yweather">http://xml.weather.yahoo.com/ns/rss/1.0</Namespace>
+	</Namespaces>
+    <Variable name="location" type="string">
+      	<XPath>/rss/channel/yweather:location/@city</XPath>
+    </Variable>
+    <Variable name="condition" type="string">
+      	<XPath>/rss/channel/item/yweather:condition/@text</XPath>
+    </Variable>
+    <Variable name="forecast_today" type="string">
+      	<XPath>/rss/channel/item/yweather:forecast[1]/@text</XPath>
+    </Variable>
+	<Variable name="forecast_tomorrow" type="string">
+      	<XPath>/rss/channel/item/yweather:forecast[2]/@text</XPath>
+    </Variable>
+  </XMLPayload>
+</ExtractVariables>
+
+<!--
+
+Example using JSOnPath
+
+<ExtractVariables name="ParseGeocodingResponse">
+  <Source>GeocodingResponse</Source>
+  <VariablePrefix>geocoderesponse</VariablePrefix>
+  <JSONPayload>
+    <Variable name="latitude">
+       <JSONPath>$.results[0].geometry.location.lat</JSONPath>
+    </Variable>
+    <Variable name="longitude">
+       <JSONPath>$.results[0].geometry.location.lng</JSONPath>
+    </Variable>
+  </JSONPayload>
+</ExtractVariables>
+
+-->

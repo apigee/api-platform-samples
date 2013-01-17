@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<TargetEndpoint name="default">
+    <Description>Default Twitter API v1 target</Description>
+    <HTTPTargetConnection>
+        <URL>http://api.twitter.com/1</URL>
+    </HTTPTargetConnection>
+</TargetEndpoint>

@@ -1,0 +1,9 @@
+<XMLToJSON async="false" continueOnError="false" enabled="true" name="ConvertToJSON">
+	<Options>
+		<NamespaceBlockName>#namespaces</NamespaceBlockName>
+		<DefaultNamespaceNodeName>$default</DefaultNamespaceNodeName>
+		<NamespaceSeparator>_</NamespaceSeparator>
+	</Options>
+	<OutputVariable>response</OutputVariable>
+	<Source>response</Source>
+</XMLToJSON>
