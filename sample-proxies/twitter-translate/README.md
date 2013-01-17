@@ -1,6 +1,6 @@
 # Twitter Translate
 
-Copyright 2012 Apigee Corporation
+Copyright 2013 Apigee Corporation
 
 Licensed under the Apache License, Version 2.0 (the "License"); you may 
 not use this file except in compliance with the License. You may obtain 
@@ -88,7 +88,7 @@ Run:
 
 For assistance, post to http://support.apigee.com
 
-Copyright 2012 Apigee Corporation
+Copyright 2013 Apigee Corporation
 
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use
 this file except in compliance with the License. You may obtain a copy
