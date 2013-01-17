@@ -1,0 +1,7 @@
+<XSL name="TransformWSDL">
+  <ResourceURL>xsl://fixwsdl.xsl</ResourceURL>
+  <Parameters ignoreUnresolvedVariables="false">
+    <Parameter name="SOAPAddress" ref="SOAPAddress"/>
+  </Parameters>
+</XSL>
+

@@ -1,0 +1,8 @@
+<StatisticsCollector name="AnalyzeWeatherReport">
+  <Statistics>
+    <Statistic name="location" ref="weather.location" type="string">Earth</Statistic>
+    <Statistic name="condition" ref="weather.condition" type="string">Sunny</Statistic>
+    <Statistic name="forecast_today" ref="weather.forecast_today" type="string">Rainy</Statistic>
+    <Statistic name="forecast_tomorrow" ref="weather.forecast_tomorrow" type="string">Balmy</Statistic>
+  </Statistics>
+</StatisticsCollector>

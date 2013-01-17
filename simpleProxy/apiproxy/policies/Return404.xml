@@ -1,0 +1,9 @@
+<RaiseFault name="Return404">
+  <FaultResponse>
+    <Set>
+      <StatusCode>404</StatusCode>
+      <ReasonPhrase>Not Found</ReasonPhrase>
+      <Payload contentType="text/plain">Not Found</Payload>
+    </Set>
+  </FaultResponse>
+</RaiseFault>

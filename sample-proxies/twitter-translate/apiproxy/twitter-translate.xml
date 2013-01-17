@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<APIProxy name="twitter-translate">
+    <ConfigurationVersion minorVersion="0" majorVersion="4"/>
+    <Description>Twitter Translate</Description>
+    <DisplayName>twitter-translate</DisplayName>
+    <Policies>
+        <Policy>cors</Policy>
+        <Policy>timeline-translate</Policy>
+    </Policies>
+    <ProxyEndpoints>
+        <ProxyEndpoint>default</ProxyEndpoint>
+    </ProxyEndpoints>
+    <Resources>
+        <Resource>jsc://cors</Resource>
+        <Resource>jsc://timeline-translate</Resource>
+    </Resources>
+    <TargetServers/>
+    <TargetEndpoints>
+        <TargetEndpoint>default</TargetEndpoint>
+    </TargetEndpoints>
+</APIProxy>

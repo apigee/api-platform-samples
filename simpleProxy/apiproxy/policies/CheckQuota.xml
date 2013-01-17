@@ -1,0 +1,7 @@
+<Quota name="CheckQuota"> 
+  <Interval ref="apiproduct.developer.quota.interval"/>
+  <TimeUnit ref="apiproduct.developer.quota.timeunit"/>
+  <Allow countRef="apiproduct.developer.quota.limit"/>
+  <Identifier ref="request.queryparam.apikey"/>
+<!--  <Identifier ref="client_id"/> -->
+</Quota>

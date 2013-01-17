@@ -1,0 +1,12 @@
+<ExtractVariables name="ExtractAddress">
+  <XMLPayload>
+    <Namespaces>
+      <Namespace prefix="wsdl">http://schemas.xmlsoap.org/wsdl/</Namespace>
+      <Namespace prefix="soap">http://schemas.xmlsoap.org/wsdl/soap/</Namespace>
+    </Namespaces>
+    <Variable name="address" type="string">
+      <XPath>/wsdl:definitions/wsdl:service/wsdl:port/soap:address/@location</XPath>
+    </Variable>
+  </XMLPayload>
+</ExtractVariables>
+

@@ -1,0 +1,5 @@
+<TargetEndpoint name="facebook">
+  <HTTPTargetConnection>
+    <URL>http://developers.facebook.com</URL>
+  </HTTPTargetConnection>
+</TargetEndpoint>

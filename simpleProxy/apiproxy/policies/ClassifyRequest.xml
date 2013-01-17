@@ -1,0 +1,6 @@
+<AssignMessage name="ClassifyRequest">
+  <AssignVariable>
+    <Name>flow.resource.name</Name>
+    <Ref>proxy.pathsuffix</Ref>
+  </AssignVariable>
+</AssignMessage>
