@@ -1,10 +1,6 @@
 <TargetEndpoint name="default">
     <!-- Outbound HTTP configuration -->
-<<<<<<< HEAD
     <HTTPTargetConnection>
-=======
-    <HttpTargetConnection>
->>>>>>> d93a2a64a7ab862d514fec097e2d30c184f784de
 	    <!-- The URL for outbound requests -->
         <URL>http://weather.yahooapis.com</URL>
     </HttpTargetConnection>
