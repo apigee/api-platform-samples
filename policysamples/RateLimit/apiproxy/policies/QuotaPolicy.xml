@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<Quota enabled="true" continueOnError="false" async="false" name="QuotaPolicy">
-    <Allow count="2"/>
-    <Interval>1</Interval>
-    <TimeUnit>minute</TimeUnit>
-</Quota>
