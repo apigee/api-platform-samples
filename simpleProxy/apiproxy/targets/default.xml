@@ -3,7 +3,7 @@
     <HTTPTargetConnection>
 	    <!-- The URL for outbound requests -->
         <URL>http://weather.yahooapis.com</URL>
-    </HttpTargetConnection>
+    </HTTPTargetConnection>
 </TargetEndpoint>
 
 <!--
