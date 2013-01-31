@@ -7,7 +7,7 @@
 		</Response>
 	</PreFlow>
 	<HTTPProxyConnection>
-		<BasePath>/</BasePath>
+		<BasePath>/simple-javascript</BasePath>
 		<VirtualHost>default</VirtualHost>
 	</HTTPProxyConnection>
 	<RouteRule name="default">
