@@ -1,9 +1,23 @@
 # Simple JavaScript Sample
 
-This sample demonstrates a simple scenario of attaching a JavaScript policy in
-the response that adds a header value. The proxy uses the twitter API as a
-target endpoint This reference helps in understanding the process of building,
-deploying, activating and accessing this sample.
+This sample demonstrates how to write, attach, and execute simple JavaScript in
+an API proxy flow. The JavaScript in this sample gets a variable from the flow, 
+the target URI, and sets that variable as an HTTP header on the response message.
+
+Store JavaScript under /resources in an API Proxy, and then reference 
+that JavaScript in a policy of type JavaScript. Then attach the JavaScript 
+policy to the API Proxy flow to have it execute at appropriate point in the
+processing pipeline.
+
+# References
+
+Apigee API Platform JavaScript Object Model:
+
+https://apigee.com/docs/enterprise/content/apigee-javascript-object-model
+
+JavaScript API Platform Developer Guide Topic:
+
+https://apigee.com/docs/enterprise/content/scripting-api-flow
 
 # Set up
 
