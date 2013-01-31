@@ -24,20 +24,6 @@ Learn more at http://apigee.com/docs
 For instructions and deploy scripts, refer to /setup directory in the 
 base directory of API Platform Samples distribution.
 
-# Contribute
-
-If you have a sample that you would like to have considered
-for inclusion:
-
-1. Create a branch on the Github repository
-2. Create a README and an invoke.sh file
-3. Update the /setup/deply script with your sample
-4. Push your changes to the branch you created
-5. Issue a pull request
-
-We will review your sample and iterate with you as necessary to
-make it useful to the API Platform developer community.
-
 # Get support
 
 Post to the Apigee Developer Forum at:
