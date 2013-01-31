@@ -6,6 +6,8 @@ echo This script deploys all sample API proxies under ./sample-proxies to your o
 
 echo Be sure to populate values in setenv.sh in this directory before running this script.
 
+echo Using $username in $org.
+
 echo "Enter your password for the Apigee Enterprise organization $org, followed by [ENTER]:"
 
 read -s password
@@ -15,8 +17,6 @@ echo Deploying all samples to $env using $username and $org
 ../tools/deploy.py -n apikey -u $username:$password -o $org -e $env -p / -d ../sample-proxies/apikey
 
 ../tools/deploy.py -n conditional-policy -u $username:$password -o $org -e $env -p / -d ../sample-proxies/conditional-policy
-
-../tools/deploy.py -n conditional-rate-limit -u $username:$password -o $org -e $env -p / -d ../sample-proxies/conditional-rate-limit
 
 ../tools/deploy.py -n conditional-routing -u $username:$password -o $org -e $env -p / -d ../sample-proxies/conditional-routing
 
@@ -32,8 +32,6 @@ echo Deploying all samples to $env using $username and $org
 
 ../tools/deploy.py -n policy-mashup -u $username:$password -o $org -e $env -p / -d ../sample-proxies/policy-mashup
 
-../tools/deploy.py -n rate-limit -u $username:$password -o $org -e $env -p / -d ../sample-proxies/rate-limit
-
 ../tools/deploy.py -n simple-javascript -u $username:$password -o $org -e $env -p / -d ../sample-proxies/simple-javascript
 
 ../tools/deploy.py -n simple-python -u $username:$password -o $org -e $env -p / -d ../sample-proxies/simple-python
@@ -48,7 +46,13 @@ echo Deploying all samples to $env using $username and $org
 
 ../tools/deploy.py -n xmltojson -u $username:$password -o $org -e $env -p / -d ../sample-proxies/xmltojson
 
-echo Complete. Sample API proxies are deployed to the $env environment in the $org organization.
+echo "Deployment complete. Sample API proxies are deployed to the $env environment in the organization $org"
+
+echo "Login to enterprise.apigee.com to view and interact with the sample API proxies"
+
+echo "To invoke the samples, run invoke.sh found in each sample's directory in this distribution.""
+
+
 
 	
 
