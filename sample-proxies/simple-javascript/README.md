@@ -21,6 +21,8 @@ https://apigee.com/docs/enterprise/content/scripting-api-flow
 
 # Set up
 
+What you need:
+
 * The username and password that you use to login to enterprise.apigee.com.
 * The name of the organization in which you have an account. Login to 
   enterprise.apigee.com and check account settings.
