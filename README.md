@@ -1,9 +1,6 @@
-12/28/2012
+2/12013
 
 # Apigee API Platform Samples
-
-Welcome to API Platform Samples for the Apigee API Platform
-=======
 
 Apigee API Platform Samples are designed to help developers 
 learn how to use the Apigee API Platform.
@@ -46,11 +43,6 @@ Python, to use the deployment tool.
 
 # What's here:
 
-/simpleProxy
-
-A basic API proxy that is used in the API Platform Developer Guide at:
-http://apigee.com/docs
-
 /sample-proxies
 
 A set of fully-functional API proxies that you can deploy and invoke
@@ -61,16 +53,15 @@ on the Apigee API Platform.
 XML schemas that you can  use as a reference when working with policies, API proxy configuration,
 API products, apps, and developers.
 
+/simpleProxy
+
+A basic API proxy that is used in the API Platform Developer Guide at:
+http://apigee.com/docs
+
 /setup
 
 Simple scripts to help you deploy the sample API proxies and profiles that they 
 rely on, including API products, developers, and apps.
-
-/simpleProxy
-
-A basic API proxy that is used in the API Developer Guide at:
-
-http://apigee.com/docs
 
 /tools
 
