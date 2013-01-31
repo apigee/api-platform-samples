@@ -1,9 +1,15 @@
 # Apigee API Platform Policy Samples
 
-The policy samples directory contains a set of API proxies designed to 
-show concrete usage of the policies documented here:
+The policy samples directory contains a set of API proxies that demonstrate how to 
+build API proxies using policies. 
 
-http://apigee.com/docs/enterprise/index
+Refer to the API Platform Policy Reference:
+
+https://apigee.com/docs/enterprise/content/customize-apis
+
+Refer to the API Platform Developer Guide:
+
+https://apigee.com/docs/enterprise/content/developer_guide
 
 Each directory contains a sample API proxy along with directions
 on how to configure, deploy, and test it on the Apigee API Platform.
@@ -12,6 +18,11 @@ Fully-featured, free accounts are available at:
 http://enterprise.apigee.com/signup
 
 Learn more at http://apigee.com/docs
+
+# Deploy the samples
+
+For instructions and deploy scripts, refer to /setup directory in the 
+base directory of API Platform Samples distribution.
 
 # Get support
 

@@ -1,4 +1,4 @@
-Simple JavaScript Sample
+# Simple JavaScript Sample
 
 This sample demonstrates a simple scenario of attaching a JavaScript policy in
 the response that adds a header value. The proxy uses the twitter API as a
