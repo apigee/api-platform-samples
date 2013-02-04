@@ -1,60 +1,79 @@
-<!--
-  ~ Copyright (c) 2010, Apigee Corporation.  All rights reserved.
-  ~ Apigee(TM) and the Apigee logo are trademarks or
-  ~ registered trademarks of Apigee Corp. or its subsidiaries.  All other
-  ~ trademarks are the property of their respective owners.
-  -->
-
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
-    <xs:include schemaLocation="common_definitions.xsd"/>
-
-    <xs:element name="ApiProducts">
-        <xs:complexType>
-            <xs:sequence>
-                <xs:element ref="ApiProduct" minOccurs="0" maxOccurs="unbounded"/>
-            </xs:sequence>
-        </xs:complexType>
-    </xs:element>
-
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema">
     <xs:element name="ApiProduct">
         <xs:complexType>
-            <xs:all>
-                <xs:element ref="ApiResources" minOccurs="0"/>
-                <xs:element name="DisplayName" type="xs:string"/>
-                <xs:element name="Description" type="xs:string"/>
-                <xs:element ref="Scopes" minOccurs="0"/>
-                <xs:element ref="Attributes" minOccurs="0"/>
-                <xs:element name="CreatedAt" type="xs:long"/>
-                <xs:element name="CreatedBy" type="xs:string"/>
-                <xs:element name="LastModifiedAt" type="xs:long"/>
-                <xs:element name="LastModifiedBy" type="xs:string"/>
-                <xs:element name="ApprovalType" type="ApprovalTypeDef"/>
-            </xs:all>
-            <xs:attribute name="name" use="required" type="xs:string"/>
-        </xs:complexType>
-    </xs:element>
-
-    <xs:element name="ApiResources">
-        <xs:complexType>
             <xs:sequence>
-                <xs:element name="ApiResource" minOccurs="0" maxOccurs="unbounded" type="xs:string"/>
+                <xs:element type="xs:string" name="Description"/>
+                <xs:element type="xs:string" name="DisplayName"/>
+                <xs:element name="ApprovalType">
+                    <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                            <xs:enumeration value="auto"/>
+                            <xs:enumeration value="manual"/>
+                        </xs:restriction>
+                    </xs:simpleType>
+                </xs:element>
+                <xs:element name="ApiResources">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element type="xs:string" name="ApiResource" maxOccurs="unbounded" minOccurs="0"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="Scopes">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element type="xs:string" name="Scope" maxOccurs="unbounded" minOccurs="0"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="Environments">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element type="xs:string" name="Environment" maxOccurs="unbounded" minOccurs="0"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="Proxies">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element type="xs:string" name="Proxy" maxOccurs="unbounded" minOccurs="0"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element type="xs:long" name="CreatedAt"/>
+                <xs:element type="xs:string" name="CreatedBy"/>
+                <xs:element type="xs:long" name="LastModifiedAt"/>
+                <xs:element type="xs:string" name="LastModifiedBy"/>
+                <xs:element type="xs:long" name="Quota" maxOccurs="1" minOccurs="0"/>
+                <xs:element type="xs:long" name="QuotaInterval" maxOccurs="1" minOccurs="0"/>
+                <xs:element name="QuotaTimeUnit" maxOccurs="1" minOccurs="0">
+                    <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                            <xs:enumeration value="second"/>
+                            <xs:enumeration value="minute"/>
+                            <xs:enumeration value="hour"/>
+                            <xs:enumeration value="day"/>
+                            <xs:enumeration value="month"/>
+                        </xs:restriction>
+                    </xs:simpleType>
+                </xs:element>
+                <xs:element name="Attributes">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="Attribute" maxOccurs="unbounded" minOccurs="0">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element type="xs:string" name="Name"/>
+                                        <xs:element type="xs:string" name="Value"/>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
             </xs:sequence>
+            <xs:attribute type="xs:string" name="name"/>
         </xs:complexType>
     </xs:element>
-
-    <xs:element name="Scopes">
-        <xs:complexType>
-            <xs:sequence>
-                <xs:element name="Scope" minOccurs="0" maxOccurs="unbounded" type="xs:string"/>
-            </xs:sequence>
-        </xs:complexType>
-    </xs:element>
-
-    <xs:simpleType name="ApprovalTypeDef">
-        <xs:restriction base="xs:string">
-            <xs:enumeration value="manual"/>
-            <xs:enumeration value="auto"/>
-        </xs:restriction>
-    </xs:simpleType>
-
 </xs:schema>
