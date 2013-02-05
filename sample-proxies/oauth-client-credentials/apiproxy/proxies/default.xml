@@ -1,10 +1,4 @@
 <ProxyEndpoint name="default">
-  <PreFlow>
-    <!-- This runs before any of the other flows -->
-    <Request>
-      <Step><Name>ClassifyRequest</Name></Step>
-    </Request>
-  </PreFlow>
   
   <Flows>
     <Flow name="GetAccessToken">

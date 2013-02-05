@@ -26,3 +26,5 @@ token=`curl -k -u "$key:$secret" "https://$org-$env.$api_domain/weatheroauth/acc
 echo "Invoking API with access token $token"
 
 curl -k -H "Authorization: Bearer $token" "https://$org-$env.$api_domain/weatheroauth/forecastrss?w=12797282"
+
+echo "Access token is $token"
