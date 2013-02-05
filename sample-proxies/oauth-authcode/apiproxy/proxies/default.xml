@@ -18,7 +18,6 @@
     <Flow name="default">
       <!-- This policy flow is selected for all other API calls -->
       <Request>
-	<Step><Name>ClassifyRequest</Name></Step>
 	<Step><Name>ValidateOAuth</Name></Step>
 	<Step><Name>CheckQuota</Name></Step>
       </Request>
