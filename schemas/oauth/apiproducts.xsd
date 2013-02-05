@@ -1,3 +1,10 @@
+<!--
+Copyright (c) 2013, Apigee Corporation.  All rights reserved.
+Apigee(TM) and the Apigee logo are trademarks or
+registered trademarks of Apigee Corp. or its subsidiaries.  All other
+trademarks are the property of their respective owners.
+ -->
+
 <xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified"
            xmlns:xs="http://www.w3.org/2001/XMLSchema">
     <xs:element name="ApiProduct">
