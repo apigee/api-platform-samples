@@ -1,11 +1,9 @@
 <ProxyEndpoint name="proxy">
-	<PreFlow>
+	<PostFlow>
 		<Response>
-			<Step>
-				<Name>javascriptpolicy</Name>
-			</Step>
+			<Step><Name>javascriptpolicy</Name></Step>
 		</Response>
-	</PreFlow>
+	</PostFlow>
 	<HTTPProxyConnection>
 		<BasePath>/simple-javascript</BasePath>
 		<VirtualHost>default</VirtualHost>
