@@ -1,0 +1,20 @@
+<ResponseCache name="ResponseCache">
+    <CacheKey>
+        <KeyFragment ref="request.queryparam.w" />
+    </CacheKey>
+    <!-- Explicitly refresh the cached response -->
+    <SkipCacheLookup>request.header.bypass-cache = "true"</SkipCacheLookup>
+    <ExpirySettings>
+        <TimeoutInSec>600</TimeoutInSec>
+    </ExpirySettings>
+</ResponseCache>
+
+<!-- Attach to the TargetEndpoint PreFlow as follows:
+<PreFlow name="PreFlow">
+    <Request>
+        <Step><Name>ResponseCache</Name></Step>
+    </Request>
+    <Response>
+        <Step><Name>ResponseCache</Name></Step>
+    </Response>
+</PreFlow> -->
