@@ -41,6 +41,24 @@ You also require:
 
 Python, to use the deployment tool.
 
+Deploy all sample proxies at once:
+
+$ cd /setup
+
+Set your Apigee API Platform account settings in setenv.sh.
+
+Run:
+
+$ sh deploy_all.sh
+
+Navigate to /sample-proxies.
+
+Each sample API proxy directory contains a script called
+invoke.sh that issues a curl command to the API exposed 
+by the sample API proxy..
+
+$ sh invoke.sh
+
 # What's here:
 
 /sample-proxies
