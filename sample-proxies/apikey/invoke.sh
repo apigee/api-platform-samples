@@ -14,7 +14,7 @@ curl -u $username:$password $url/v1/o/$org/developers/thomas@weathersample.com/a
 
 echo Get API key--aka consumer key--from app profile
 
-key=`curl -u $username:$password $url/v1/o/$org/developers/thomas@weathersample.com/apps/thomas-app \
+key=`curl -u $username:$password $url/v1/o/$org/developers/thomas@weathersample.com/apps/thomas-app 2>/dev/null \
      | grep consumerKey | awk -F '\"' '{ print $4 }'`
 
 echo "Consumer key for thomas-app is $key"
