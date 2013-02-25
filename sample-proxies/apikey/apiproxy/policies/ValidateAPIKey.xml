@@ -1,5 +1,5 @@
-<GetOAuthV1Info name="ValidateAPIKey">
+<VerifyAPIKey name="ValidateAPIKey">
   <!-- This policy will check the query param &quot;apikey&quot; against the apps defined in our
        organization, fail the request if it does not match, and then validate the API product -->
-  <AppKey ref="request.queryparam.apikey"/>
-</GetOAuthV1Info>
+    <APIKey ref="request.queryparam.apikey"/>
+</VerifyAPIKey>
