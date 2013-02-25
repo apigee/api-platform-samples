@@ -13,8 +13,7 @@
       <Environment>test</Environment>
    </Environments>
    <Proxies>
-      <Proxy>oauth-client-credentials</Proxy>
-      <Proxy>oauth-authcode</Proxy>
+      <Proxy>PROXY</Proxy>
    </Proxies>
     <Quota>1</Quota>
     <QuotaInterval>1</QuotaInterval>

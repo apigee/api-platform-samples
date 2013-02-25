@@ -10,6 +10,8 @@ echo using $username and $org
 
 # Install API Products
 
+sh ./setProxy.sh
+
 curl -u $username:$password $url/v1/o/$org/apiproducts \
   -H "Content-Type: application/xml" -X POST -T FreeProduct.xml
 
@@ -18,6 +20,10 @@ curl -u $username:$password $url/v1/o/$org/apiproducts \
 
 curl -u $username:$password $url/v1/o/$org/apiproducts \
   -H "Content-Type: application/xml" -X POST -T ExpensiveProduct.xml
+
+mv FreeProduct.xml.orig FreeProduct.xml
+mv CheapProduct.xml.orig CheapProduct.xml
+mv ExpensiveProduct.xml.orig ExpensiveProduct.xml
 
 # Create developers
 
@@ -38,10 +44,10 @@ curl -u $username:$password \
   -H "Content-Type: application/xml" -X POST -T joe-app.xml
 
 # Get consumer key and attach API product
-# Do this in a quick and dirty way that doesn't require python or anything
+# Do this in a quick and clean way that doesn't require python or anything
 
 key=`curl -u $username:$password \
-     $url/v1/o/$org/developers/thomas@weathersample.com/apps/thomas-app \
+     $url/v1/o/$org/developers/thomas@weathersample.com/apps/thomas-app 2>/dev/null \
      | grep consumerKey | awk -F '\"' '{ print $4 }'`
 
 curl -u $username:$password \
@@ -49,7 +55,7 @@ curl -u $username:$password \
   -H "Content-Type: application/xml" -X POST -T thomas-app-product.xml
 
 key=`curl -u $username:$password \
-     $url/v1/o/$org/developers/joe@weathersample.com/apps/joe-app \
+     $url/v1/o/$org/developers/joe@weathersample.com/apps/joe-app 2>/dev/null \
      | grep consumerKey | awk -F '\"' '{ print $4 }'`
 
 curl -u $username:$password \
@@ -57,14 +63,13 @@ curl -u $username:$password \
   -H "Content-Type: application/xml" -X POST -T joe-app-product.xml
 
 key=`curl -u $username:$password \
-     $url/v1/o/$org/developers/thomas@weathersample.com/apps/thomas-app \
+     $url/v1/o/$org/developers/thomas@weathersample.com/apps/thomas-app 2>/dev/null \
      | grep consumerKey | awk -F '\"' '{ print $4 }'`
 
-echo "Consumer key for thomas-app is ${key}"
+echo "\n\nConsumer key for thomas-app is ${key}"
 
 key=`curl -u $username:$password \
-     $url/v1/o/$org/developers/joe@weathersample.com/apps/joe-app \
+     $url/v1/o/$org/developers/joe@weathersample.com/apps/joe-app 2>/dev/null \
      | grep consumerKey | awk -F '\"' '{ print $4 }'`
 
-echo "Consumer key for joe-app is ${key}"
-
+echo "Consumer key for joe-app is ${key}\n"
