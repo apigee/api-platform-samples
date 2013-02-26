@@ -2,7 +2,6 @@
   <PreFlow>
     <!-- This policy flow will be executed for all requests -->
     <Request>
-      <Step><Name>ClassifyRequest</Name></Step>
       <Step><Name>ValidateAPIKey</Name></Step>
       <Step><Name>CheckQuota</Name></Step>
     </Request>
