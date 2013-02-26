@@ -24,7 +24,7 @@ Update /setup/setenv.sh with your environment details
 
 Run:
 
-/setup/deploy.sh
+$ sh deploy.sh
 
 Testing
 
