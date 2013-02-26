@@ -3,7 +3,7 @@
    <Description>An inexpensive alternative</Description>
    <DisplayName>Entry level API bundle</DisplayName>
    <ApiResources>
-      <ApiResource>/**S</ApiResource>
+      <ApiResource>/**</ApiResource>
    </ApiResources>
    <ApprovalType>auto</ApprovalType>
    <Scopes>
@@ -13,8 +13,7 @@
       <Environment>test</Environment>
    </Environments>
    <Proxies>
-      <Proxy>oauth-client-credentials</Proxy>
-      <Proxy>oauth-authcode</Proxy>
+      <Proxy>PROXY</Proxy>
    </Proxies>
     <Quota>10</Quota>
     <QuotaInterval>2</QuotaInterval>

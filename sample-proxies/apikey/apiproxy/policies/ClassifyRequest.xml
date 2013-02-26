@@ -1,9 +1,0 @@
-<AssignMessage name="ClassifyRequest">
-  <!-- This policy is necessary in order for the API Product functionality to work properly.
-       It tells the API Product the name of the "resource" to use. Since we have no pre-defined
-       resources here, we simply use the URI path. -->
-  <AssignVariable>
-    <Name>flow.resource.name</Name>
-    <Ref>proxy.pathsuffix</Ref>
-  </AssignVariable>
-</AssignMessage>
