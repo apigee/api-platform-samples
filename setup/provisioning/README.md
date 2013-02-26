@@ -8,7 +8,7 @@ Directions:
 
 http://enterprise.apigee.com/signup
 
-2. In the file setenv.sh, configure values for your
+2. In the file ../setenv.sh, configure values for your
 organization, username, environment.
 
 3. Run setup.sh in this directory to deploy all sample profiles.
