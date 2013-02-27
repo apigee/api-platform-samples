@@ -1,5 +1,5 @@
 #!/bin/bash
-
+echo "Reading your account settings from /setup/setenv.sh"
 source ../../setup/setenv.sh
 
 echo "Enter your password for the Apigee Enterprise organization $org, followed by [ENTER]:"

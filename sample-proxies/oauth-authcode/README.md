@@ -1,4 +1,4 @@
-# Three-Legged OAuth
+# Three-Legged OAuth 2.0 Sample API Proxy
 
 This sample shows how use the OAuth 2.0 "authorization code" grant type, which redirects
 the end user to a login page, then once the user is authenticated, it returns
