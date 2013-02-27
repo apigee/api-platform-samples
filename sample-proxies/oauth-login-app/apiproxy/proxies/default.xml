@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ProxyEndpoint name="default">
+    <Description>Default Proxy to create flows on an API</Description>
+    <FaultRules/>
+    <Flows>
+        <Flow name="SampleLoginPage">
+            
+            THIS IS A SAMPLE LOGIN PAGE.... In Production this flow has to be removed and the 
+            
+    		<Condition>(proxy.pathsuffix MatchesPath &quot;/samplelogingpage&quot;) and (request.verb = &quot;GET&quot;)</Condition>
+    		
+    		<Description/>
+            <Request>
+ 				<Step>
+ 				    <Condition>(request.queryparam.response_type EQUALS "code")</Condition>
+                    <FaultRules/>
+ 					<Name>sample.loginpage.webserverflow</Name>
+                </Step>
+ 				<Step>
+ 				    <Condition>(request.queryparam.response_type EQUALS "token")</Condition>
+                    <FaultRules/>
+ 					<Name>sample.loginpage.implicitflow</Name>
+                </Step>
+            </Request>
+    	</Flow>
+    	<Flow name="authorize">
+    		<Condition>(proxy.pathsuffix MatchesPath &quot;/authorize&quot;) and (request.verb = &quot;GET&quot;)</Condition>
+    		<Description/>
+            <Request>
+ 				<Step>
+                    <FaultRules/>
+ 					<Condition>(request.queryparam.response_type is empty)</Condition>
+                    <Name>MissingResponseTypeParameter</Name>
+                </Step>
+                <Step>
+                    <FaultRules/>
+                    <Name>AuthorizationRequest</Name>
+                </Step>
+ 				<Step>
+                    <FaultRules/>
+                    <Name>RedirectToLoginApp</Name>
+                </Step>
+            </Request>
+    	</Flow>
+    	<Flow name="authorizationcode">
+    		<Condition>(proxy.pathsuffix MatchesPath &quot;/authorizationcode&quot;) and (request.verb = &quot;GET&quot;) and (request.queryparam.response_type = &quot;code&quot;)</Condition>
+    		<Description/>
+            <Request>
+                <Step>
+                    <FaultRules/>
+                    <Name>GenerateAuthorizationCode</Name>
+                </Step>
+            </Request>
+  			<Response>
+                <Step>
+                    <FaultRules/>
+                    <Name>AuthorizationCodeResponse</Name>
+                </Step>
+            </Response>
+    	</Flow>
+    	<Flow name="token">
+    		<Condition>(proxy.pathsuffix MatchesPath &quot;/token&quot;)</Condition>
+    		<Description/>
+            <Request>
+ 				<Step>
+                    <FaultRules/>
+                    <Name>DeleteForwardedHeaders</Name>
+                </Step>
+                <Step>
+                    <FaultRules/>
+ 					<Condition>request.queryparam.response_type = &quot;token&quot;</Condition>
+                    <Name>GenerateAccessTokenImplicitGrant</Name>
+                </Step>
+ 				<Step>
+                    <FaultRules/>
+ 					<Condition>not (request.queryparam.response_type = &quot;token&quot;)</Condition>
+                    <Name>GenerateAccessToken</Name>
+                </Step>
+            </Request>
+    	</Flow>
+    </Flows>
+    <PreFlow name="PreFlow"/>
+    <HTTPProxyConnection>
+        <BasePath>/oauth</BasePath>
+        <Properties/>
+        <VirtualHost>default</VirtualHost>
+    </HTTPProxyConnection>
+    <RouteRule name="NoRoute"/>
+</ProxyEndpoint>

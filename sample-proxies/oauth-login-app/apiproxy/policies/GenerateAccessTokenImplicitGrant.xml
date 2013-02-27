@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<OAuthV2 name="GenerateAccessTokenImplicitGrant">
+	<FaultRules/>
+    <Properties/>
+    <Operation>GenerateAccessTokenImplicitGrant</Operation>
+    <ExpiresIn>100000000000</ExpiresIn>
+    <Scope>request.queryparam.scope</Scope>
+     <UserName>request.queryparam.userId</UserName> 
+    <SupportedGrantTypes>
+    	<GrantType>implicit</GrantType>
+    </SupportedGrantTypes>
+    <GenerateResponse/>
+</OAuthV2>
+
