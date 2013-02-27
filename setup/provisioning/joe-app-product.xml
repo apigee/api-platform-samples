@@ -1,5 +1,5 @@
 <CredentialRequest>
   <ApiProducts>
-    <ApiProduct>ExpensiveProduct</ApiProduct>
+    <ApiProduct>FreeProduct</ApiProduct>
   </ApiProducts>
 </CredentialRequest>
