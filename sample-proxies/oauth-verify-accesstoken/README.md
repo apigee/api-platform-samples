@@ -1,21 +1,21 @@
 # Three-Legged OAuth
 
-This sample shows how use the OAuth 2.0 AccessToken is used to access a protected resource.
-It also validates incoming requests using the access token, and 
-uses an API Product to assign a quota value to each client and enforces that quota.
+This sample API proxy shows how an OAuth 2.0 access token is used to access a resource
+protected by OAuth policies. The API Proxy validates incoming requests using the access token, 
+and reads Quota settings from an API Product to rate-limit client apps.
 
-It contains the following policies:
+The API proxy contains the following policies:
 
-1. An OAuth 2.0 policy to validate the access token for the request URL, and to look
-up attributes from the API Product associated with the application.
-2. A policy to enforce a quota on the number of API calls based on the values set
-in the API Product.
+1. OAuth 2.0: Validates the access token for the request URL, and looks up
+attributes from the API Product associated with the client app
+2. Quota: Enforces a limit on the number of API calls, based on the values set
+in the API product
 
 # Note
 
-As, this flow involves Generation of AccessToken before requesting the protected resource,
-the "invoke.sh" will guide you through the Generation of AccessToken flow, 
-before proceeding with the Verification
+As, this flow involves generation of access token before requesting the protected resource,
+the "invoke.sh" will guide you through the generation of access token flow.
+Simply follow prompts.
 
 
 # Set up
@@ -26,19 +26,20 @@ before proceeding with the Verification
 
 # Configure 
 
-Update /setup/setenv.sh with your environment details
+Update /setup/setenv.sh with your account settings
 
-Configure API products, developers, and apps in your organization:
+Configure API products, developers, and apps in your organization by
+running the following script:
 
 Run:
 
-/setup/provisioning/setup.sh
+$ sh ../setup/provisioning/setup.sh
 
 # Import and deploy sample project
 
 Run:
 
-/setup/deploy.sh
+$ sh deploy.sh
 
 Testing
 

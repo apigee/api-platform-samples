@@ -1,4 +1,9 @@
 <ProxyEndpoint name="default">
+	<PostFlow>
+	    <Response>
+	      <Step><Name>Redirect</Name></Step>
+	    </Response>
+	</PostFlow>
   <!-- Inbound HTTP configuration -->
   <HTTPProxyConnection>
    <!-- The URI fragment used to classify requests to this proxy from client apps -->
