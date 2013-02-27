@@ -9,6 +9,6 @@
          type because it allows a client to get access to a token with no user authentication -->
     <GrantType>authorization_code</GrantType>
   </SupportedGrantTypes>
-    <GrantType>request.queryparam.grant_type</GrantType>
+  <GrantType>request.queryparam.grant_type</GrantType>
   <GenerateResponse/>
 </OAuthV2>

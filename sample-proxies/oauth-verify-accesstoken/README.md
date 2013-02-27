@@ -1,12 +1,22 @@
-# Two-Legged OAuth
+# Three-Legged OAuth
 
-This sample shows how use the OAuth 2.0 "client credentials" grant type to return an OAuth
-access token for an application based on the application's own credentials. (This is 
-sometimes called "two-legged OAuth.") 
+This sample shows how use the OAuth 2.0 AccessToken is used to access a protected resource.
+It also validates incoming requests using the access token, and 
+uses an API Product to assign a quota value to each client and enforces that quota.
 
 It contains the following policies:
 
-1. An OAuth 2.0 policy to generate the access token on a specific URL.
+1. An OAuth 2.0 policy to validate the access token for the request URL, and to look
+up attributes from the API Product associated with the application.
+2. A policy to enforce a quota on the number of API calls based on the values set
+in the API Product.
+
+# Note
+
+As, this flow involves Generation of AccessToken before requesting the protected resource,
+the "invoke.sh" will guide you through the Generation of AccessToken flow, 
+before proceeding with the Verification
+
 
 # Set up
 
