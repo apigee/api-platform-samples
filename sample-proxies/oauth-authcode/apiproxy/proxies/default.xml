@@ -1,4 +1,5 @@
 <ProxyEndpoint name="default">
+
   <Flows>
     <Flow name="GetAuthCode">
       <!-- This policy flow is selected when the path exactly matches what's below -->
@@ -7,6 +8,7 @@
 	<Step><Name>GenerateAuthCode</Name></Step>
       </Request>
     </Flow>
+
     <Flow name="GetAccessToken">
       <!-- This policy flow is selected when the path exactly matches what's below -->
       <Condition>proxy.pathsuffix == "/oauth/accesstoken"</Condition>
@@ -15,11 +17,11 @@
       </Request>
     </Flow>
 
-    <Flow name="default">
-      <!-- This policy flow is selected for all other API calls -->
+    <Flow name="RefreshAccessToken">
+      <!-- This policy flow is selected when the path exactly matches what's below -->
+      <Condition>proxy.pathsuffix == "/oauth/refresh_accesstoken"</Condition>
       <Request>
-	<Step><Name>ValidateOAuth</Name></Step>
-	<Step><Name>CheckQuota</Name></Step>
+	<Step><Name>RefreshAccessToken</Name></Step>
       </Request>
     </Flow>
   </Flows>
@@ -30,8 +32,5 @@
     <!-- Listen only on the HTTPS endpoint since OAuth 2.0 requires that -->
     <VirtualHost>secure</VirtualHost>
   </HTTPProxyConnection>
-  <RouteRule name="default">
-    <!-- This connects our proxy to the target defined elsewhere -->
-    <TargetEndpoint>default</TargetEndpoint>
-  </RouteRule>
+  <RouteRule name="NoRoute"/>
 </ProxyEndpoint>

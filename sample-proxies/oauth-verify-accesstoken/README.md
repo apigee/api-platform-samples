@@ -1,15 +1,22 @@
 # Three-Legged OAuth
 
-This sample shows how use the OAuth 2.0 "authorization code" grant type, which redirects
-the end user to a login page, then once the user is authenticated, it returns
-an access token. Also, shows how to refresh the accesstoken once it got expired. 
+This sample shows how use the OAuth 2.0 AccessToken is used to access a protected resource.
+It also validates incoming requests using the access token, and 
+uses an API Product to assign a quota value to each client and enforces that quota.
 
 It contains the following policies:
 
-1. An OAuth 2.0 AuthorizationCode policy to generate the authorization code on a specific URL, called Authorization Endpoint
-   This authorization code is is required in order to authenticate a user.
-2. An OAuth 2.0 AccessToken policy to generate the access token on a specific URL, called AccessToken Endpoint
-3. An OAuth 2.0 RefreshToken policy to generate new access token on a specific URL, called RefreshToken Endpoint
+1. An OAuth 2.0 policy to validate the access token for the request URL, and to look
+up attributes from the API Product associated with the application.
+2. A policy to enforce a quota on the number of API calls based on the values set
+in the API Product.
+
+# Note
+
+As, this flow involves Generation of AccessToken before requesting the protected resource,
+the "invoke.sh" will guide you through the Generation of AccessToken flow, 
+before proceeding with the Verification
+
 
 # Set up
 
