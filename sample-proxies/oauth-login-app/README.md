@@ -55,7 +55,7 @@ https://<yourdomin>/<loginpageURL>?client_id={request.queryparam.client_id}&amp;
 
 Run:
 
-/setup/deploy.sh
+$ sh deploy.sh
 
 Testing
 
