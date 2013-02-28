@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RaiseFault name="RedirectToLoginApp">
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+    <FaultResponse>
+        <Set>
+            <Headers>
+                <Header name="Location">
+			{proxy.basepath}/samplelogingpage?client_id={request.queryparam.client_id}&amp;response_type={request.queryparam.response_type}&amp;scope={request.queryparam.scope}
+		</Header>
+            </Headers>
+            <Payload contentType="text/plain">
+			{proxy.basepath}/samplelogingpage?client_id={request.queryparam.client_id}&amp;response_type={request.queryparam.response_type}&amp;scope={request.queryparam.scope}
+	    </Payload>
+            <StatusCode>302</StatusCode>
+            <ReasonPhrase>Login App Redirect</ReasonPhrase>
+        </Set>
+    </FaultResponse>
+</RaiseFault>
+
