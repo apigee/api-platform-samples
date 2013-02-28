@@ -1,0 +1,3 @@
+<Javascript name="ChangeResponse" timeout="10000">
+  <ResourceURL>jsc://changeResponse.jsc</ResourceURL>
+</Javascript>
