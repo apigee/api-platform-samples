@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<TargetEndpoint name="default">
+    <Description></Description>
+    <FaultRules/>
+    <PreFlow name="PreFlow"/>
+    <Flows/>
+	<HTTPTargetConnection>
+        <Properties/>
+        <URL>http://null-target</URL>
+    </HTTPTargetConnection>
+</TargetEndpoint>

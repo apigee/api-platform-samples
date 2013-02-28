@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AssignMessage enabled="true" continueOnError="false" async="false" name="DeleteForwardedHeaders">
+    <FaultRules />
+    <Properties />
+    <Remove>
+        <Headers>
+            <Header name="Content-Type" />
+        </Headers>
+    </Remove>
+    <Add>
+        <Headers>
+            <Header name="Content-Type">application/x-www-form-urlencoded</Header>
+        </Headers>
+    </Add>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+    <AssignTo createNew="false" transport="http" type="response" />
+</AssignMessage>
+
