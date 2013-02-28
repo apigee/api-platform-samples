@@ -3,8 +3,5 @@
     <FaultRules/>
     <Properties/>
     <Operation>GenerateAuthorizationCode</Operation>
-     <UserName>request.queryparam.userId</UserName> 
-    <GenerateResponse enabled="true">
-        <Format>QUERY_PARAM</Format>
-    </GenerateResponse>
+    <GenerateResponse/>
 </OAuthV2>
