@@ -1,0 +1,9 @@
+<AssignMessage name="AuthorizationCodeResponse">
+ <Description>Authorization Code Response</Description>
+<IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+<Set>
+    <Payload contentType="text/plain">
+{response.header.Location}
+    </Payload>
+</Set>
+</AssignMessage>

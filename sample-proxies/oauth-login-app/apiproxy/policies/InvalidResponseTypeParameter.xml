@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<RaiseFault name="InvalidResponseTypeParameter">
+ <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+ <FaultResponse>
+   <Set>
+     <Headers>
+       <Header name="content-type">application/json</Header>
+     </Headers>
+     <Payload contentType="application/json">\{"ErrorCode" : "invalid_request", "Error" :"Response type must be token"}</Payload>
+     <StatusCode>400</StatusCode>
+   </Set>
+ </FaultResponse>
+</RaiseFault>
