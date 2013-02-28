@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<OAuthV2 enabled="true" continueOnError="false" async="false" name="GenerateAuthorizationCode">
+    <FaultRules/>
+    <Properties/>
+    <Operation>GenerateAuthorizationCode</Operation>
+     <UserName>request.queryparam.userId</UserName> 
+    <GenerateResponse enabled="true">
+        <Format>QUERY_PARAM</Format>
+    </GenerateResponse>
+</OAuthV2>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<APIProxy revision="1" name="OAuth20">
+    <ConfigurationVersion minorVersion="0" majorVersion="4"/>
+    <CreatedAt>1346941647430</CreatedAt>
+    <CreatedBy>orgAdmin</CreatedBy>
+    <Description>null</Description>
+    <DisplayName>OAuth20</DisplayName>
+    <LastModifiedAt>1346941647430</LastModifiedAt>
+    <LastModifiedBy>orgAdmin</LastModifiedBy>
+    <Policies>
+        <Policy>DeleteForwardedHeaders</Policy>
+        <Policy>GenerateAccessToken</Policy>
+    </Policies>
+    <ProxyEndpoints>
+        <ProxyEndpoint>proxy</ProxyEndpoint>
+    </ProxyEndpoints>
+    <Resources/>
+    <TargetServers/>
+    <TargetEndpoints>
+        <TargetEndpoint>default</TargetEndpoint>
+    </TargetEndpoints>
+</APIProxy>
