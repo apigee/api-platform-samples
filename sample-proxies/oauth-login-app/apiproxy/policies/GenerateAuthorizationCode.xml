@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<OAuthV2 enabled="true" continueOnError="false" async="false" name="GenerateAuthorizationCode">
+    <FaultRules/>
+    <Properties/>
+    <Operation>GenerateAuthorizationCode</Operation>
+    <GenerateResponse/>
+</OAuthV2>

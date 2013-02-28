@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<GetOAuthV1Info enabled="true" continueOnError="false" async="false" name="AuthorizationRequest">
+    <Description>Authorization Request</Description>
+    <AppKey ref="request.queryparam.client_id"/>
+</GetOAuthV1Info>
