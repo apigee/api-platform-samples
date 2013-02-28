@@ -1,12 +1,8 @@
 <ProxyEndpoint name="default">
-	<PostFlow>
-	    <Response>
-	      <Step><Name>Redirect</Name></Step>
-	    </Response>
-	</PostFlow>
+  <!-- Add Flows here, and attach policies. See samples in comments section below -->
   <!-- Inbound HTTP configuration -->
   <HTTPProxyConnection>
-   <!-- The URI fragment used to classify requests to this proxy from client apps -->
+   <!-- The URI fragment used to classify requests to this API proxy from client apps -->
     <BasePath>/weather</BasePath>
    <!-- The named virtual host that defines the base URL for this API facade -->
     <VirtualHost>default</VirtualHost>
