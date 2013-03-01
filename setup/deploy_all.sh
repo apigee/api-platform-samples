@@ -52,10 +52,4 @@ echo "Login to enterprise.apigee.com to view and interact with the sample API pr
 
 echo "To invoke the samples, run invoke.sh found in each sample's directory in this distribution."
 
-echo "For OAuth, run setup.sh in /setup/provisioning directory to install sample API products, developers and apps in your org."
-
-
-
-	
-
-
+sh provisioning_for_oauth.sh apikey,oauth-authcode,oauth-client-credentials,oauth-verify-accesstoken

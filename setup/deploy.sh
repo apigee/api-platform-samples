@@ -17,3 +17,5 @@ echo Deploying $proxy to $env on $url using $username and $org
 echo "If 'State: deployed', then your API Proxy is ready to be invoked."
 
 echo "Change directory to the sample API proxy deployed, and run 'invoke.sh'"
+
+sh provisioning_for_oauth.sh $proxy
