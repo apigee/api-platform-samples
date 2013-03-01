@@ -1,0 +1,14 @@
+{
+  "apiResources" : [ "/**" ],
+  "approvalType" : "auto",
+  "attributes" : [ ],
+  "description" : "The Rolls Royce of API bundles",
+  "displayName" : "Premium API bundle",
+  "environments" : [ "test", "prod" ],
+  "name" : "ExpensiveProduct",
+  "proxies" : [ PROXY ],
+  "quota" : "100000000",
+  "quotaInterval" : "1",
+  "quotaTimeUnit" : "month",
+  "scopes" : [ "READ", "WRITE" ]
+}

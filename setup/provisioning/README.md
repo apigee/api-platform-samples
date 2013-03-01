@@ -5,13 +5,12 @@ This directory provides profiles for API products, developers, and apps.
 Directions:
 
 1. If you do not have an account yet, register at: 
-
-http://enterprise.apigee.com/signup
+>http://enterprise.apigee.com/signup
 
 2. In the file ../setenv.sh, configure values for your
 organization, username, environment.
 
-3. Run setup.sh in this directory to deploy all sample profiles.
+3. Run setup.sh in this directory to create all sample entities.
 
 # Get help
 

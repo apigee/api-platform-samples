@@ -1,0 +1,14 @@
+{
+  "apiResources" : [ "/**" ],
+  "approvalType" : "auto",
+  "attributes" : [ ],
+  "description" : "An inexpensive alternative",
+  "displayName" : "Entry level API bundle",
+  "environments" : [ "test", "prod" ],
+  "name" : "CheapProduct",
+  "proxies" : [ PROXY ],
+  "quota" : "10",
+  "quotaInterval" : "2",
+  "quotaTimeUnit" : "hour",
+  "scopes" : [ "READ" ]
+}

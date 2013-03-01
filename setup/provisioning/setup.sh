@@ -10,20 +10,20 @@ echo using $username and $org
 
 # Install API Products
 
-sh ./setProxy.sh
+sh ./setProxy.sh $1
 
 curl -u $username:$password $url/v1/o/$org/apiproducts \
-  -H "Content-Type: application/xml" -X POST -T FreeProduct.xml
+  -H "Content-Type: application/json" -X POST -T FreeProduct.json
 
 curl -u $username:$password $url/v1/o/$org/apiproducts \
-  -H "Content-Type: application/xml" -X POST -T CheapProduct.xml
+  -H "Content-Type: application/json" -X POST -T CheapProduct.json
 
 curl -u $username:$password $url/v1/o/$org/apiproducts \
-  -H "Content-Type: application/xml" -X POST -T ExpensiveProduct.xml
+  -H "Content-Type: application/json" -X POST -T ExpensiveProduct.json
 
-mv FreeProduct.xml.orig FreeProduct.xml
-mv CheapProduct.xml.orig CheapProduct.xml
-mv ExpensiveProduct.xml.orig ExpensiveProduct.xml
+mv FreeProduct.json.orig FreeProduct.json
+mv CheapProduct.json.orig CheapProduct.json
+mv ExpensiveProduct.json.orig ExpensiveProduct.json
 
 # Create developers
 

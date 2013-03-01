@@ -28,3 +28,4 @@ curl -u $username:$password $url/v1/o/$org/apiproducts/CheapProduct -X DELETE
 
 curl -u $username:$password $url/v1/o/$org/apiproducts/ExpensiveProduct -X DELETE
 
+echo "\nCleanup Completed\n"
