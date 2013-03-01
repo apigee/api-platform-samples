@@ -9,8 +9,6 @@ The directory /apiproxy contains a sample API proxy for the following OAuth 2.0 
 This API proxy provides a sample login app to demonstrate the interaction between 
 the Apigee API Platform OAuth infrastructure and a third-party login app. 
 
-
-
 # Web-Server flow:
 
 1. Authorization Request:	

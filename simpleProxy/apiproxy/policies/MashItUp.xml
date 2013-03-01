@@ -1,3 +1,3 @@
-<Javascript name="MashItUp" timeout="10000">
-  <ResourceURL>jsc://MashItUp.jsc</ResourceURL>
+<Javascript name="MashItUp" timeout="200">
+  <ResourceURL>jsc://MashItUp.js</ResourceURL>
 </Javascript>

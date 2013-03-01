@@ -11,7 +11,7 @@
 The sample configuration below shows all TargetEndpoint configuration options. For more information, 
 refer to the XML schema under ./schemas.
 For usage, refer to:
-http://apigee.com/docs/api/quick-starts-index/.
+http://apigee.com/docs/enterprise/content/developer_guide
 
 <TargetEndpoint name="default">
 	<PreFlow>
