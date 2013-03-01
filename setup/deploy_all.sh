@@ -26,6 +26,8 @@ echo Deploying all samples to $env using $username and $org
 
 ../tools/deploy.py -n oauth-authcode -u $username:$password -o $org -e $env -p / -d ../sample-proxies/oauth-authcode
 
+../tools/deploy.py -n oauth-login-app -u $username:$password -o $org -e $env -p / -d ../sample-proxies/oauth-login-app
+
 ../tools/deploy.py -n oauth-client-credentials -u $username:$password -o $org -e $env -p / -d ../sample-proxies/oauth-client-credentials
 
 ../tools/deploy.py -n policy-mashup -u $username:$password -o $org -e $env -p / -d ../sample-proxies/policy-mashup
@@ -50,4 +52,4 @@ echo "Login to enterprise.apigee.com to view and interact with the sample API pr
 
 echo "To invoke the samples, run invoke.sh found in each sample's directory in this distribution."
 
-sh provisioning_for_oauth.sh apikey,oauth-authcode,oauth-client-credentials,oauth-verify-accesstoken
+sh provisioning_for_oauth.sh apikey,oauth-authcode,oauth-client-credentials,oauth-verify-accesstoken, oauth-login-app

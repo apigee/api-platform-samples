@@ -2,7 +2,7 @@
   <PreFlow>
     <Request>
       <Step><Name>ValidateAPIKey</Name></Step>
-      <Step><Name>CheckQuota</Name></Step>
+      <!-- <Step><Name>CheckQuota</Name></Step> -->
     </Request>
   </PreFlow>
 
