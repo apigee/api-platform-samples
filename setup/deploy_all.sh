@@ -22,8 +22,6 @@ echo Deploying all samples to $env using $username and $org
 
 ../tools/deploy.py -n dynamic-endpoint -u $username:$password -o $org -e $env -p / -d ../sample-proxies/dynamic-endpoint
 
-../tools/deploy.py -n java-callout -u $username:$password -o $org -e $env -p / -d ../sample-proxies/java-callout
-
 ../tools/deploy.py -n javascript-mashup -u $username:$password -o $org -e $env -p / -d ../sample-proxies/javascript-mashup
 
 ../tools/deploy.py -n oauth-authcode -u $username:$password -o $org -e $env -p / -d ../sample-proxies/oauth-authcode
