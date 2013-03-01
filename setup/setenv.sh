@@ -12,9 +12,9 @@
 ## You can obtain a free account at http://enterprise.apigee.com/signup
 ## --------------------------------------
 
-org="your org name on enterprise.apigee.com"
-username="your user name on enterprise.apigee.com"
-env="environment on enterprise.apigee.com--either 'test' or 'prod'"
+org="apifactory"
+username="ambrown2000@yahoo.com"
+env="test"
 url="https://api.enterprise.apigee.com"
 api_domain="apigee.net"
 
