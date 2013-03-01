@@ -2,29 +2,36 @@
 
 #Backup the original ApiProduct Payload
 
-if [ ! -f CheapProduct.xml.orig ]; then
-	cp CheapProduct.xml CheapProduct.xml.orig
-	cp ExpensiveProduct.xml ExpensiveProduct.xml.orig
-	cp FreeProduct.xml FreeProduct.xml.orig
+if [ ! -f CheapProduct.json.orig ]; then
+	cp CheapProduct.json CheapProduct.json.orig
+	cp ExpensiveProduct.json ExpensiveProduct.json.orig
+	cp FreeProduct.json FreeProduct.json.orig
 fi
 
-echo "Enter the ApiProxy to be used in ApiProduct:"
+if [ -z $1 ]; then
+	echo "Enter the ApiProxy(ies) to attach in ApiProduct (Comma separated):"
+	while [ -z $apiproxy ]; do
+		read apiproxy
+	done
+else
+	apiproxy=$1
+fi
 
-while [ -z $apiproxy ]; do
-read apiproxy
-done
+
+value=$apiproxy
+apiproxy=`echo $value | sed -e 's/ //g' | sed -e 's/,/","/g'`
 
 echo "Filling the ProxyDetail in ApiProduct"
 
 TMP_FILE=`mktemp /tmp/config.XXXXXXXXXX`
-sed -e "s/PROXY/$apiproxy/" CheapProduct.xml > $TMP_FILE
-mv $TMP_FILE CheapProduct.xml
+sed -e "s/PROXY/\"$apiproxy\"/" CheapProduct.json > $TMP_FILE
+mv $TMP_FILE CheapProduct.json
 
 TMP_FILE=`mktemp /tmp/config.XXXXXXXXXX`
-sed -e "s/PROXY/$apiproxy/" ExpensiveProduct.xml > $TMP_FILE
-mv $TMP_FILE ExpensiveProduct.xml
+sed -e "s/PROXY/\"$apiproxy\"/" ExpensiveProduct.json > $TMP_FILE
+mv $TMP_FILE ExpensiveProduct.json
 
 TMP_FILE=`mktemp /tmp/config.XXXXXXXXXX`
-sed -e "s/PROXY/$apiproxy/" FreeProduct.xml > $TMP_FILE
-mv $TMP_FILE FreeProduct.xml
+sed -e "s/PROXY/\"$apiproxy\"/" FreeProduct.json > $TMP_FILE
+mv $TMP_FILE FreeProduct.json
 
