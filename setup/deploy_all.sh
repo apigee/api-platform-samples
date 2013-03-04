@@ -52,4 +52,4 @@ echo "Login to enterprise.apigee.com to view and interact with the sample API pr
 
 echo "To invoke the samples, run invoke.sh found in each sample's directory in this distribution."
 
-sh provisioning_for_oauth.sh apikey,oauth-authcode,oauth-client-credentials,oauth-verify-accesstoken, oauth-login-app
+sh provisioning_for_oauth.sh apikey,oauth-authcode,oauth-client-credentials,oauth-verify-accesstoken,oauth-login-app
