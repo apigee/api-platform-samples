@@ -1,17 +1,23 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ProxyEndpoint name="proxy">
+<ProxyEndpoint name="default">
   <PreFlow>
     <Response>
       <Step>
-	    <Name>xmljson</Name>
-	  </Step>						
+	    <Name>xmltojson</Name>
+	  </Step>
     </Response>
   </PreFlow>
+  <!-- <PostFlow>
+    <Response>
+	  <Step>
+	    <Name>jsontoxml</Name>
+	  </Step>
+    </Response>
+  </PostFlow> -->
   <HTTPProxyConnection>
     <BasePath>/xmltojson</BasePath>    
     <VirtualHost>default</VirtualHost>
   </HTTPProxyConnection>
   <RouteRule name="Route">
-    <TargetEndpoint>twitter</TargetEndpoint>
+    <TargetEndpoint>default</TargetEndpoint>
   </RouteRule>
 </ProxyEndpoint>
