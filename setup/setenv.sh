@@ -12,9 +12,9 @@
 ## You can obtain a free account at http://enterprise.apigee.com/signup
 ## --------------------------------------
 
-org="apifactory"
-username="ambrown2000@yahoo.com"
-env="test"
+org="Your name of your organization on the API Platform"
+username="The username for your account on the API Platform"
+env="The environment where you would like deploy API proxies ('test' or 'prod')"
 url="https://api.enterprise.apigee.com"
 api_domain="apigee.net"
 
