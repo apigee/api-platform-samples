@@ -51,20 +51,30 @@ Run:
 
 $ sh deploy_all.sh
 
+Note this step also deploys all API products, developers, and apps needed for OAuth.)
+
 Navigate to /sample-proxies.
 
 Each sample API proxy directory contains a script called
 invoke.sh that issues a curl command to the API exposed 
-by the sample API proxy..
+by the sample API proxy.
 
 $ sh invoke.sh
+
+If you make changes to the sample API proxy, simply run:
+
+$ sh deploy.sh
+
+in the sample AIP proxy's directory to import the proxy and
+deploy changes.
 
 # What's here:
 
 /sample-proxies
 
 A set of fully-functional API proxies that you can deploy and invoke
-on the Apigee API Platform.
+on the Apigee API Platform. Feel free to modify them as needed.
+(Be sure to deploy changes for them to take effect.)
 
 /schemas
 
@@ -80,6 +90,23 @@ http://apigee.com/docs
 
 Simple scripts to help you deploy the sample API proxies and profiles that they 
 rely on, including API products, developers, and apps.
+
+Set you Apigee API Platform account settings in 
+
+setenv.sh
+
+(You can obtain a free account at http://eneterprise.apigee.com/signup)
+
+To deploy a single sample, run 
+
+$ sh deploy.sh
+
+And provide the name of the directory under /saple-proxies that
+contains the proxy you want to deploy.
+
+To deploy all samples and API products, run:
+
+$ deploy_all.sh
 
 /tools
 
