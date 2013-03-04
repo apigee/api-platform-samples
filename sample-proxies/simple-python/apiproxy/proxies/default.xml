@@ -1,4 +1,4 @@
-<ProxyEndpoint name="proxy">
+<ProxyEndpoint name="default">
     <PreFlow>
     <Request>
 		
