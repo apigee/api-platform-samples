@@ -1,15 +1,16 @@
 * XML to JSON Transformation
 --------------------------
 
-This sample demonstrates a simple scenario in which an XML response is transformed to JSON.
- 
-This reference helps in understanding the process of building, deploying, activating and accessing this sample.
+This sample demonstrates how you can use an XMLtoJSON policy to convert an XML-formatted 
+weather report into JSON.
 
-# Set up
+You can also refer to the Developer Guide topic:
 
-* The username and password that you use to login to enterprise.apigee.com.
-* The name of the organization in which you have an account. Login to 
-  enterprise.apigee.com and check account settings.
+http://apigee.com/docs/enterprise/content/customizing-responses-mobile-devices
+
+And the API Platform Policy reference:
+
+http://apigee.com/docs/enterprise/content/policies/convert-json-xml-format
 
 # Configure 
 
@@ -19,11 +20,17 @@ Update /setup/setenv.sh with your environment details
 
 Run:
 
-/setup/deploy.sh
+$ sh deploy.sh
 
 Testing
 
 $ sh invoke.sh
+
+If you have Python installed locally, you can run
+
+$ sh invoke_pretty_print.sh
+
+to obtain a pretty-printed JSON response
 
 # Get help
 
