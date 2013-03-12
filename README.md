@@ -19,26 +19,22 @@ Apigee's API Platform provides developers with:
 * Scalable, managed test and prod environments with operational 
   analytics
 
-Fully-featured, free accounts are available at:
-
-<http://enterprise.apigee.com/signup>
 
 # Getting started
 
-All of these samples require you to have an account on:
-<http://enterprise.apigee.com>
+You require an API Platform account.
 
-You can sign up for a trial account at:
-<http://enterprise.apigee.com/signup>
+[Sign up for a free trial account](http://enterprise.apigee.com/signup)
 
 You also require:
 
-Python, to use the deployment tool.
+[http://www.python.org/getit/](Python programming language), to use the deployment tool.
 
 # Deploy
 
 You can deploy all of the samples to your
-organization at once.
+organization at once using a simple setup script
+provided in this distribution:
 
 $ cd /setup
 
@@ -61,7 +57,7 @@ List available proxies:
 $ ls
 
 Each sample API proxy directory contains a script called
-invoke.sh that issues a curl command to the sample API proxy.
+invoke.sh that issues a sample HTTP request to the API.
 
 $ sh invoke.sh
 
@@ -83,7 +79,7 @@ them to take effect.
 
 For a detailed overview of the available sample see:
 
-<http://apigee.com/docs/enterprise/content/api-platform-samples>
+[API Platform Samples](http://apigee.com/docs/enterprise/content/api-platform-samples)
 
 */schemas*
 
