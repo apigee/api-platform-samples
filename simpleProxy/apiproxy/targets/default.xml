@@ -1,4 +1,5 @@
 <TargetEndpoint name="default">
+	<!-- Flows go here. See comments below for formats. -->
     <!-- Outbound HTTP configuration -->
     <HTTPTargetConnection>
 	    <!-- The URL for outbound requests -->

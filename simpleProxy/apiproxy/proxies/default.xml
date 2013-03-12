@@ -1,18 +1,16 @@
 <ProxyEndpoint name="default">
-  <!-- Add Flows here, and attach policies. See samples in comments section below -->
-  <!-- Inbound HTTP configuration -->
-  <HTTPProxyConnection>
-   <!-- The URI fragment used to classify requests to this API proxy from client apps -->
-    <BasePath>/weather</BasePath>
-   <!-- The named virtual host that defines the base URL for this API facade -->
-    <VirtualHost>default</VirtualHost>
-  </HTTPProxyConnection>
+   <!-- Flows go here. See comments below for formats -->
+    <HTTPProxyConnection>
+        <!-- Base path used to route inbound requests to this API proxy -->
+        <BasePath>/weather</BasePath>
+        <!-- The named virtual host that defines the base URL for requests to this proxy -->
+        <VirtualHost>default</VirtualHost>
+    </HTTPProxyConnection>
   <RouteRule name="default">
-  <!-- The named TargetEndpoint (under ./targets) where requests will be routed -->
+    <!-- Connects the proxy to the TargetEndpoint named 'default', under /targets -->
     <TargetEndpoint>default</TargetEndpoint>
   </RouteRule>
 </ProxyEndpoint>
-
 
 <!--
 
