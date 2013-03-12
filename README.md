@@ -73,7 +73,7 @@ to deploy your changes.
 
 # What's here:
 
-/sample-proxies
+*/sample-proxies*
 
 A set of fully-functional API proxies that you can deploy and invoke
 on the Apigee API Platform. 
@@ -83,19 +83,19 @@ them to take effect.
 
 For a detailed overview of the available sample see:
 
-http://apigee.com/docs/enterprise/content/api-platform-samples
+<http://apigee.com/docs/enterprise/content/api-platform-samples>
 
-/schemas
+*/schemas*
 
 XML schemas that you can  use as a reference when working with policies, API proxy configuration,
 API products, apps, and developers.
 
-/simpleProxy
+*/simpleProxy*
 
 A basic API proxy that is used in the API Platform Developer Guide at:
 http://apigee.com/docs
 
-/setup
+*/setup*
 
 Simple scripts to help you deploy the sample API proxies and profiles that they 
 rely on, including API products, developers, and apps.
@@ -117,7 +117,7 @@ To deploy all samples and API products, run:
 
 $ deploy_all.sh
 
-/tools
+*/tools*
 
 deploy.py: Python deployment tool (deploy.py) that imports an API proxy to an
 organization on the Apigee platform and then deploys it to the environment
@@ -128,7 +128,7 @@ locally generate an API proxy scaffold.
 
 # Get help and interact with other API developers
 
-<http://support.apigee.com>
+[The Apigee Developer Forum](http://support.apigee.com)
 
 Copyright 2013 Apigee Corporation
 
