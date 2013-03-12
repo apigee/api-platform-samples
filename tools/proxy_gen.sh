@@ -67,6 +67,8 @@ mkdir ./apiproxy/resources
 
 echo "Done"
 
+echo "You can invoke you API proxy at http://$org-$env/apigee.net$basepath, and it will proxy requests to $target_url"
+
  
 
 
