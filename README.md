@@ -28,7 +28,7 @@ You require an API Platform account.
 
 You also require:
 
-[Python programming language]http://www.python.org/getit/), to use the deployment tool.
+[Python programming language](http://www.python.org/getit/), to use the deployment tool.
 
 # Deploy
 
