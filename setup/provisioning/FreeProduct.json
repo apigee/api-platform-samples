@@ -1,0 +1,14 @@
+{
+  "apiResources" : [ "/**" ],
+  "approvalType" : "auto",
+  "attributes" : [ ],
+  "description" : "You get what you pay for!",
+  "displayName" : "Free API bundle",
+  "environments" : [ "test", "prod" ],
+  "name" : "FreeProduct",
+  "proxies" : [ PROXY ],
+  "quota" : "1",
+  "quotaInterval" : "1",
+  "quotaTimeUnit" : "minute",
+  "scopes" : [ "READ" ]
+}

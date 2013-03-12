@@ -1,0 +1,40 @@
+<!--
+  ~ Copyright (c) 2013, Apigee Corporation.  All rights reserved.
+  ~ Apigee(TM) and the Apigee logo are trademarks or
+  ~ registered trademarks of Apigee Corp. or its subsidiaries.  All other
+  ~ trademarks are the property of their respective owners.
+  -->
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:include schemaLocation="stepDefinition.xsd"/>
+
+    <xs:element name="XSL">
+        <xs:complexType>
+            <xs:complexContent>
+                <xs:extension base="stepDefinitionType">
+                    <xs:sequence>
+                        <xs:element name="ResourceURL" type="xs:string"/>
+                        <xs:element name="Source" type="xs:NCName" minOccurs="0" default="message"/>
+                        <xs:element name="Parameters" minOccurs="0">
+                            <xs:complexType>
+                                <xs:sequence>
+                                    <xs:element name="Parameter" minOccurs="0" maxOccurs="unbounded">
+                                        <xs:complexType>
+                                            <xs:sequence/>
+                                            <xs:attribute name="name" type="xs:NCName" use="required"/>
+                                            <xs:attribute name="ref" type="xs:NCName" use="optional"/>
+                                            <xs:attribute name="value" type="xs:string" use="optional"/>
+                                        </xs:complexType>
+                                    </xs:element>
+                                </xs:sequence>
+                                <xs:attribute name="ignoreUnresolvedVariables" type="xs:boolean" default="false"/>
+                            </xs:complexType>
+                        </xs:element>
+                        <xs:element name="OutputVariable" type="xs:NCName" minOccurs="0"/>
+                    </xs:sequence>
+                </xs:extension>
+            </xs:complexContent>
+        </xs:complexType>
+    </xs:element>
+
+</xs:schema>

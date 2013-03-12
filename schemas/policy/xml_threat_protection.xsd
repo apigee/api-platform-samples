@@ -1,0 +1,68 @@
+<!--
+  ~ Copyright (c) 2013, Apigee Corporation.  All rights reserved.
+  ~ Apigee(TM) and the Apigee logo are trademarks or
+  ~ registered trademarks of Apigee Corp. or its subsidiaries.  All other
+  ~ trademarks are the property of their respective owners.
+  -->
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:include schemaLocation="stepDefinition.xsd"/>
+
+    <xs:element name="XMLThreatProtection">
+        <xs:complexType>
+            <xs:complexContent>
+                <xs:extension base="stepDefinitionType">
+                    <xs:sequence>
+                        <xs:element name="Source" type="xs:NCName" minOccurs="0"/>
+                        <xs:element name="StructureLimits" minOccurs="0">
+                            <xs:complexType>
+                                <xs:sequence>
+                                    <xs:element name="NodeDepth" type="xs:int" default="-1" minOccurs="0"/>
+                                    <xs:element name="AttributeCountPerElement" type="xs:int" default="-1" minOccurs="0"/>
+                                    <xs:element name="NamespaceCountPerElement" type="xs:int" default="-1" minOccurs="0"/>
+                                    <xs:element name="ChildCount" minOccurs="0">
+                                        <xs:complexType>
+                                            <xs:simpleContent>
+                                                <xs:extension base="xs:int">
+                                                    <xs:attribute name="includeText" type="xs:boolean" default="true"/>
+                                                    <xs:attribute name="includeComment" type="xs:boolean"
+                                                                  default="true"/>
+                                                    <xs:attribute name="includeProcessingInstruction" type="xs:boolean"
+                                                                  default="true"/>
+                                                    <xs:attribute name="includeElement" type="xs:boolean"
+                                                                  default="true"/>
+                                                </xs:extension>
+                                            </xs:simpleContent>
+                                        </xs:complexType>
+                                    </xs:element>
+                                </xs:sequence>
+                            </xs:complexType>
+                        </xs:element>
+                        <xs:element name="ValueLimits" minOccurs="0">
+                            <xs:complexType>
+                                <xs:sequence>
+                                    <xs:element name="Text" type="xs:int" default="-1" minOccurs="0"/>
+                                    <xs:element name="Attribute" type="xs:int" default="-1" minOccurs="0"/>
+                                    <xs:element name="NamespaceURI" type="xs:int" default="-1" minOccurs="0"/>
+                                    <xs:element name="Comment" type="xs:int" default="-1" minOccurs="0"/>
+                                    <xs:element name="ProcessingInstructionData" type="xs:int" default="-1" minOccurs="0"/>
+                                </xs:sequence>
+                            </xs:complexType>
+                        </xs:element>
+                        <xs:element name="NameLimits" minOccurs="0">
+                            <xs:complexType>
+                                <xs:sequence>
+                                    <xs:element name="Element" type="xs:int" default="-1" minOccurs="0"/>
+                                    <xs:element name="Attribute" type="xs:int" default="-1" minOccurs="0"/>
+                                    <xs:element name="NamespacePrefix" type="xs:int" default="-1" minOccurs="0"/>
+                                    <xs:element name="ProcessingInstructionTarget" type="xs:int" default="-1" minOccurs="0"/>
+                                </xs:sequence>
+                            </xs:complexType>
+                        </xs:element>
+                    </xs:sequence>
+                </xs:extension>
+            </xs:complexContent>
+        </xs:complexType>
+    </xs:element>
+
+</xs:schema>

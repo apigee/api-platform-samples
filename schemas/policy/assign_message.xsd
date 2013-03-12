@@ -1,0 +1,150 @@
+<!--
+  ~ Copyright (c) 2013, Apigee Corporation.  All rights reserved.
+  ~ Apigee(TM) and the Apigee logo are trademarks or
+  ~ registered trademarks of Apigee Corp. or its subsidiaries.  All other
+  ~ trademarks are the property of their respective owners.
+  -->
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:include schemaLocation="stepDefinition.xsd"/>
+
+    <xs:element name="AssignMessage">
+        <xs:complexType>
+            <xs:complexContent>
+                <xs:extension base="stepDefinitionType">
+                    <xs:sequence>
+                        <xs:element name="AssignTo" minOccurs="0">
+                            <xs:complexType>
+                                <xs:simpleContent>
+                                    <xs:extension base="variable">
+                                        <xs:attribute name="createNew" type="xs:boolean"/>
+                                        <xs:attribute name="type" default="request">
+                                            <xs:simpleType>
+                                                <xs:restriction base="xs:string">
+                                                    <xs:enumeration value="request"/>
+                                                    <xs:enumeration value="response"/>
+                                                </xs:restriction>
+                                            </xs:simpleType>
+                                        </xs:attribute>
+                                    </xs:extension>
+                                </xs:simpleContent>
+                            </xs:complexType>
+                        </xs:element>
+                        <xs:element name="IgnoreUnresolvedVariables" minOccurs="0" type="xs:boolean" default="false"/>
+
+                        <xs:choice minOccurs="0" maxOccurs="unbounded">
+                            <xs:element name="Copy" type="copyType"/>
+                            <xs:element name="Remove" type="nameActionType"/>
+                            <xs:element name="Add" type="nameValueActionType"/>
+                            <xs:element name="Set" type="setType"/>
+                        </xs:choice>
+                    </xs:sequence>
+                </xs:extension>
+            </xs:complexContent>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="copyType">
+        <xs:complexContent>
+            <xs:extension base="nameActionType">
+                <xs:sequence>
+                    <xs:element name="Verb" minOccurs="0" type="xs:boolean"/>
+                    <xs:element name="Version" minOccurs="0" type="xs:boolean"/>
+                    <xs:element name="Path" minOccurs="0" type="xs:boolean"/>
+                    <xs:element name="StatusCode" minOccurs="0" type="xs:boolean"/>
+                    <xs:element name="ReasonPhrase" minOccurs="0" type="xs:boolean"/>
+                </xs:sequence>
+                <xs:attribute name="source" type="variable" use="required"/>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="setType">
+        <xs:complexContent>
+            <xs:extension base="nameValueActionType">
+                <xs:sequence>
+                    <xs:element name="Payload" minOccurs="0">
+                        <xs:complexType mixed="true">
+                            <xs:sequence>
+                                <xs:any minOccurs="0" maxOccurs="unbounded"/>
+                            </xs:sequence>
+                            <xs:attribute name="contentType" type="template" use="optional"/>
+                        </xs:complexType>
+                    </xs:element>
+                    <xs:element name="Verb" minOccurs="0" type="template"/>
+                    <xs:element name="Version" minOccurs="0" type="template"/>
+                    <xs:element name="Path" minOccurs="0" type="template"/>
+                    <xs:element name="StatusCode" minOccurs="0" type="template"/>
+                    <xs:element name="ReasonPhrase" minOccurs="0" type="template"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="nameActionType">
+        <xs:sequence>
+            <xs:element name="Headers" minOccurs="0">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="Header" type="nameType" minOccurs="0" maxOccurs="unbounded"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="QueryParams" minOccurs="0">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="QueryParam" type="nameType" minOccurs="0" maxOccurs="unbounded"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="FormParams" minOccurs="0">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="FormParam" type="nameType" minOccurs="0" maxOccurs="unbounded"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="Payload" minOccurs="0" type="xs:boolean"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="nameValueActionType">
+        <xs:sequence>
+            <xs:element name="Headers" minOccurs="0">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="Header" type="nameValueType" minOccurs="0" maxOccurs="unbounded"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="QueryParams" minOccurs="0">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="QueryParam" type="nameValueType" minOccurs="0" maxOccurs="unbounded"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="FormParams" minOccurs="0">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="FormParam" type="nameValueType" minOccurs="0" maxOccurs="unbounded"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="nameValueType">
+        <xs:simpleContent>
+            <xs:extension base="template">
+                <xs:attribute name="name" type="xs:string" use="required"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+
+    <xs:complexType name="nameType">
+        <xs:sequence/>
+        <xs:attribute name="name" type="xs:string" use="required"/>
+    </xs:complexType>
+
+</xs:schema>

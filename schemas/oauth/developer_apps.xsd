@@ -1,0 +1,99 @@
+<!--
+  ~ Copyright (c) 2013, Apigee Corporation.  All rights reserved.
+  ~ Apigee(TM) and the Apigee logo are trademarks or
+  ~ registered trademarks of Apigee Corp. or its subsidiaries.  All other
+  ~ trademarks are the property of their respective owners.
+  -->
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+    <xs:include schemaLocation="common_definitions.xsd"/>
+
+    <xs:element name="Apps">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="App" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="App">
+        <xs:complexType>
+            <xs:all>
+                <xs:element name="AccessType" type="xs:string"/>
+                <xs:element name="CallbackUrl" type="xs:string"/>
+                <xs:element ref="ApiProducts" minOccurs="0"/>
+                <xs:element ref="Credentials" minOccurs="0"/>
+                <xs:element ref="Attributes" minOccurs="0"/>
+                <xs:element name="developerEmail" minOccurs="0" type="xs:string"/>
+                <xs:element name="Status" minOccurs="0" type="statusType"/>
+                <xs:element name="CreatedAt" type="xs:long"/>
+                <xs:element name="CreatedBy" type="xs:string"/>
+                <xs:element name="LastModifiedAt" type="xs:long"/>
+                <xs:element name="LastModifiedBy" type="xs:string"/>
+            </xs:all>
+            <xs:attribute name="name" use="required" type="xs:string"/>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="Credentials">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="Credential" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="Credential">
+        <xs:complexType>
+            <xs:all>
+                <xs:element name="ConsumerKey" type="xs:string"/>
+                <xs:element name="ConsumerSecret" type="xs:string"/>
+                <xs:element ref="ApiProducts"/>
+                <xs:element name="Status" minOccurs="0" type="statusType"/>
+                <xs:element ref="Attributes" minOccurs="0"/>
+            </xs:all>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="CredentialRequest">
+        <xs:complexType>
+            <xs:all>
+                <xs:element name="ConsumerKey" type="xs:string"/>
+                <xs:element name="Status" minOccurs="0" type="statusType"/>
+                <xs:element ref="Attributes" minOccurs="0"/>
+                <xs:element name="ApiProducts" minOccurs="0" type="ApiProductNamesType"/>
+            </xs:all>
+        </xs:complexType>
+    </xs:element>
+
+
+    <xs:element name="ApiProducts">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="ApiProduct" minOccurs="0" maxOccurs="unbounded">
+                    <xs:complexType>
+                        <xs:all>
+                            <xs:element name="Name" type="xs:string"/>
+                            <xs:element name="Status" minOccurs="0" type="statusType"/>
+                        </xs:all>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+
+    <xs:complexType name="ApiProductNamesType">
+        <xs:sequence>
+            <xs:element name="ApiProduct" maxOccurs="unbounded" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:simpleType name="statusType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="approved"/>
+            <xs:enumeration value="revoked"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+</xs:schema>

@@ -1,0 +1,111 @@
+<!--
+  ~ Copyright (c) 2013, Apigee Corporation.  All rights reserved.
+  ~ Apigee(TM) and the Apigee logo are trademarks or
+  ~ registered trademarks of Apigee Corp. or its subsidiaries.  All other
+  ~ trademarks are the property of their respective owners.
+  -->
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:include schemaLocation="stepDefinition.xsd"/>
+    <xs:include schemaLocation="../properties.xsd"/>
+
+    <xs:element name="LookupCache">
+        <xs:complexType>
+            <xs:complexContent>
+                <xs:extension base="cacheStepDefinitionType">
+                    <xs:sequence>
+                        <xs:element name="AssignTo" type="xs:NCName"/>
+                    </xs:sequence>
+                </xs:extension>
+            </xs:complexContent>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="PopulateCache">
+        <xs:complexType>
+            <xs:complexContent>
+                <xs:extension base="cacheStepDefinitionType">
+                    <xs:sequence>
+                        <xs:element name="Source" type="xs:NCName"/>
+                        <xs:element ref="ExpirySettings" minOccurs="0"/>
+                    </xs:sequence>
+                </xs:extension>
+            </xs:complexContent>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="InvalidateCache">
+        <xs:complexType>
+            <xs:complexContent>
+                <xs:extension base="cacheStepDefinitionType">
+                    <xs:sequence>
+                        <xs:element name="CacheContext" minOccurs="0">
+                            <xs:complexType>
+                                <xs:sequence>
+                                    <xs:element name="ApplicationName" type="propertyType" minOccurs="0"/>
+                                    <xs:element name="TargetName" type="propertyType" minOccurs="0"/>
+                                    <xs:element name="ProxyName" type="propertyType" minOccurs="0"/>
+                                </xs:sequence>
+                            </xs:complexType>
+                        </xs:element>
+                        <xs:element name="PurgeChildEntries" type="xs:boolean" minOccurs="0" default="false"/>
+                    </xs:sequence>
+                </xs:extension>
+            </xs:complexContent>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="ResponseCache">
+        <xs:complexType>
+            <xs:complexContent>
+                <xs:extension base="cacheStepDefinitionType">
+                    <xs:sequence>
+                        <xs:element name="SkipCacheLookup" type="xs:string" minOccurs="0"/>
+                        <xs:element name="SkipCachePopulation" type="xs:string" minOccurs="0"/>
+                        <xs:element ref="ExpirySettings" minOccurs="0"/>
+                    </xs:sequence>
+                </xs:extension>
+            </xs:complexContent>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="cacheStepDefinitionType">
+        <xs:complexContent>
+            <xs:extension base="stepDefinitionType">
+                <xs:sequence>
+                    <xs:element name="CacheResource" type="xs:NCName"/>
+                    <xs:element name="Scope">
+                        <xs:simpleType>
+                            <xs:restriction base="xs:string">
+                                <xs:enumeration value="Global"/>
+                                <xs:enumeration value="Application"/>
+                                <xs:enumeration value="Proxy"/>
+                                <xs:enumeration value="Target"/>
+                                <xs:enumeration value="Exclusive"/>
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:element>
+                    <xs:element name="CacheKey">
+                        <xs:complexType>
+                            <xs:sequence>
+                                <xs:element name="Prefix" type="xs:string" minOccurs="0"/>
+                                <xs:element name="KeyFragment" type="propertyType" minOccurs="0" maxOccurs="unbounded"/>
+                            </xs:sequence>
+                        </xs:complexType>
+                    </xs:element>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:element name="ExpirySettings">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="TimeOfDay" type="propertyType" minOccurs="0"/>
+                <xs:element name="TimeoutInSec" type="propertyType" minOccurs="0"/>
+                <xs:element name="ExpiryDate" type="propertyType" minOccurs="0"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+</xs:schema>

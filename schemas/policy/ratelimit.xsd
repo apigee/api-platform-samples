@@ -1,0 +1,123 @@
+<!--
+  ~ Copyright (c) 2013, Apigee Corporation.  All rights reserved.
+  ~ Apigee(TM) and the Apigee logo are trademarks or
+  ~ registered trademarks of Apigee Corp. or its subsidiaries.  All other
+  ~ trademarks are the property of their respective owners.
+  -->
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:include schemaLocation="stepDefinition.xsd"/>
+    <xs:include schemaLocation="../destinations.xsd"/>
+
+    <xs:element name="Quota">
+        <xs:complexType>
+            <xs:complexContent>
+                <xs:extension base="ratelimitType">
+                    <xs:sequence>
+                        <xs:element name="Interval" type="intervalType"/>
+                        <xs:element name="Allow">
+                            <xs:complexType>
+                                <xs:sequence>
+                                    <xs:element name="Class">
+                                        <xs:complexType>
+                                            <xs:sequence>
+                                                <xs:element name="Allow" minOccurs="0" maxOccurs="unbounded">
+                                                    <xs:complexType>
+                                                        <xs:sequence/>
+                                                        <xs:attribute name="class" type="xs:string" default="_default"/>
+                                                        <xs:attribute name="count" type="xs:int"/>
+                                                        <xs:attribute name="countRef" type="xs:NCName"/>
+                                                    </xs:complexType>
+                                                </xs:element>
+                                            </xs:sequence>
+                                            <xs:attribute name="ref" type="xs:NCName" use="required"/>
+                                        </xs:complexType>
+                                    </xs:element>
+                                </xs:sequence>
+                                <xs:attribute name="count" type="xs:int"/>
+                                <xs:attribute name="countRef" type="xs:NCName"/>
+                            </xs:complexType>
+                        </xs:element>
+
+                        <xs:element name="Alert">
+                            <xs:complexType>
+                                <xs:sequence>
+                                    <xs:element name="NotificationIntervalInSec" type="xs:int" minOccurs="0"/>
+                                    <xs:element ref="Destination" maxOccurs="unbounded"/>
+                                </xs:sequence>
+                                <xs:attribute name="count" type="xs:int" use="required"/>
+                            </xs:complexType>
+                        </xs:element>
+                    </xs:sequence>
+                </xs:extension>
+            </xs:complexContent>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="SpikeArrest">
+        <xs:complexType>
+            <xs:complexContent>
+                <xs:extension base="ratelimitType">
+                    <xs:sequence>
+                        <xs:element name="Rate" type="xs:string"/>
+                    </xs:sequence>
+                </xs:extension>
+            </xs:complexContent>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="ResetQuota">
+        <xs:complexType>
+            <xs:complexContent>
+                <xs:extension base="stepDefinitionType">
+                    <xs:sequence>
+                        <xs:element name="Quota">
+                            <xs:complexType>
+                                <xs:sequence>
+                                    <xs:element name="Identifier" minOccurs="0" maxOccurs="unbounded">
+                                        <xs:complexType>
+                                            <xs:sequence>
+                                                <xs:element name="Class" minOccurs="0" maxOccurs="unbounded">
+                                                    <xs:complexType>
+                                                        <xs:sequence>
+
+                                                        </xs:sequence>
+                                                        <xs:attribute name="name" type="xs:NCName" use="optional"/>
+                                                        <xs:attribute name="ref" type="xs:NCName" use="optional"/>
+                                                        <xs:attribute name="allow" type="xs:long" use="optional"/>
+                                                    </xs:complexType>
+                                                </xs:element>
+                                            </xs:sequence>
+                                            <xs:attribute name="name" type="xs:NCName" use="optional"/>
+                                            <xs:attribute name="ref" type="xs:NCName" use="optional"/>
+                                            <xs:attribute name="allow" type="xs:long" use="optional"/>
+                                        </xs:complexType>
+                                    </xs:element>
+                                </xs:sequence>
+                                <xs:attribute name="name" type="xs:NCName" use="optional"/>
+                                <xs:attribute name="ref" type="xs:NCName" use="optional"/>
+                            </xs:complexType>
+                        </xs:element>
+                    </xs:sequence>
+                </xs:extension>
+            </xs:complexContent>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="ratelimitType">
+        <xs:complexContent>
+            <xs:extension base="stepDefinitionType">
+                <xs:sequence>
+                    <xs:element name="Identifier" type="refType" minOccurs="0"/>
+                    <xs:element name="MessageWeight" type="refType" minOccurs="0"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="refType">
+        <xs:sequence/>
+        <xs:attribute name="ref" type="xs:NCName" use="required"/>
+    </xs:complexType>
+
+</xs:schema>

@@ -1,0 +1,131 @@
+<!--
+  ~ Copyright (c) 2013, Apigee Corporation.  All rights reserved.
+  ~ Apigee(TM) and the Apigee logo are trademarks or
+  ~ registered trademarks of Apigee Corp. or its subsidiaries.  All other
+  ~ trademarks are the property of their respective owners.
+  -->
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:include schemaLocation="sslinfo.xsd"/>
+
+    <xs:element name="Organization">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Description" type="xs:string" minOccurs="0"/>
+                <xs:element name="DisplayName" type="xs:string"/>
+                <xs:element name="AutoGenerateForAppKey" type="xs:boolean" minOccurs="0" default="false"/>
+                <xs:element name="CreatedAt" type="xs:long"/>
+                <xs:element name="CreatedBy" type="xs:string"/>
+                <xs:element name="LastModifiedAt" type="xs:long"/>
+                <xs:element name="LastModifiedBy" type="xs:string"/>
+            </xs:sequence>
+            <xs:attribute name="name" type="xs:NCName" use="required"/>
+            <xs:attribute name="type" type="OrgTypeValue"/>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="Environment">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Description" type="xs:string" minOccurs="0"/>
+                <xs:element name="CreatedAt" type="xs:long"/>
+                <xs:element name="CreatedBy" type="xs:string"/>
+                <xs:element name="LastModifiedAt" type="xs:long"/>
+                <xs:element name="LastModifiedBy" type="xs:string"/>
+            </xs:sequence>
+            <xs:attribute name="name" type="xs:NCName" use="required"/>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="APIProxy">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Description" type="xs:string" minOccurs="0"/>
+                <xs:element name="ConfigurationVersion">
+                    <xs:complexType>
+                        <xs:sequence/>
+                        <xs:attribute name="majorVersion" type="xs:int" fixed="4"/>
+                        <xs:attribute name="minorVersion" type="xs:int" fixed="0"/>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="CreatedAt" type="xs:long"/>
+                <xs:element name="CreatedBy" type="xs:string"/>
+                <xs:element name="LastModifiedAt" type="xs:long"/>
+                <xs:element name="LastModifiedBy" type="xs:string"/>
+            </xs:sequence>
+            <xs:attribute name="name" type="xs:NCName" use="required"/>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="VirtualHost">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Description" type="xs:string" minOccurs="0"/>
+                <xs:element name="Interfaces" minOccurs="0">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="Interface" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="HostAliases" minOccurs="0">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="HostAlias" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element ref="Port"/>
+                <xs:element name="IOTimeoutInMilliSeconds" type="xs:long" minOccurs="0"/>
+                <xs:element name="MaximumKeepAliveClientCount" type="xs:int" minOccurs="0"/>
+                <xs:element ref="SSLInfo" minOccurs="0"/>
+            </xs:sequence>
+            <xs:attribute name="name" type="xs:NCName" use="required"/>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="KeyStore">
+        <xs:complexType>
+            <xs:sequence/>
+            <xs:attribute name="name" type="xs:NCName" use="required"/>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="CRLStore">
+        <xs:complexType>
+            <xs:sequence/>
+            <xs:attribute name="name" type="xs:NCName" use="required"/>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="TargetServer">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Description" type="xs:string" minOccurs="0"/>
+                <xs:element name="IsEnabled" type="xs:boolean" minOccurs="0" default="true"/>
+                <xs:element name="Host" type="xs:string" minOccurs="1"/>
+                <xs:element ref="Port"/>
+                <xs:element ref="SSLInfo" minOccurs="0"/>
+
+            </xs:sequence>
+            <xs:attribute name="name" type="xs:NCName" use="required"/>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="Port">
+        <xs:simpleType>
+            <xs:restriction base="xs:int">
+                <xs:minInclusive value="1"/>
+                <xs:maxInclusive value="65535"/>
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+
+    <xs:simpleType name="OrgTypeValue">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="trial"/>
+            <xs:enumeration value="paid"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+</xs:schema>

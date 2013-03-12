@@ -1,0 +1,28 @@
+<!--
+  ~ Copyright (c) 2013, Apigee Corporation.  All rights reserved.
+  ~ Apigee(TM) and the Apigee logo are trademarks or
+  ~ registered trademarks of Apigee Corp. or its subsidiaries.  All other
+  ~ trademarks are the property of their respective owners.
+  -->
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:include schemaLocation="access_control.xsd"/>
+    <xs:include schemaLocation="assign_message.xsd"/>
+    <xs:include schemaLocation="cache.xsd"/>
+    <xs:include schemaLocation="extract_variables.xsd"/>
+    <xs:include schemaLocation="java_callout.xsd"/>
+    <xs:include schemaLocation="json_to_xml.xsd"/>
+    <xs:include schemaLocation="keyvaluemap-operations.xsd"/>
+    <xs:include schemaLocation="message_logging.xsd"/>
+    <xs:include schemaLocation="message_validation.xsd"/>
+    <xs:include schemaLocation="oauth.xsd"/>
+    <xs:include schemaLocation="raise_fault.xsd"/>
+    <xs:include schemaLocation="ratelimit.xsd"/>
+    <xs:include schemaLocation="regular_expression_protection.xsd"/>
+    <xs:include schemaLocation="script.xsd"/>
+    <xs:include schemaLocation="service_callout.xsd"/>
+    <xs:include schemaLocation="xml_threat_protection.xsd"/>
+    <xs:include schemaLocation="json_threat_protection.xsd"/>
+    <xs:include schemaLocation="xml_to_json.xsd"/>
+    <xs:include schemaLocation="xsl.xsd"/>
+</xs:schema>

@@ -1,0 +1,22 @@
+<AssignMessage name="GenerateGeocodingRequest">
+  <!-- Create a message to send to the geocoding service. It's a GET so all
+       it needs in this case are query parameters -->
+  <AssignTo createNew="true" type="request">GeocodingRequest</AssignTo>
+  <Set>
+    <QueryParams>
+      <QueryParam name="address">{request.queryparam.postalcode}</QueryParam>
+      <QueryParam name="region">{request.queryparam.country}</QueryParam>
+      <QueryParam name="sensor">false</QueryParam>
+    </QueryParams>
+    <Verb>GET</Verb>
+  </Set>
+  <!-- While we're at it, save these in variables so we can use them in the response -->
+  <AssignVariable>
+    <Name>PostalCode</Name>
+    <Ref>request.queryparam.postalcode</Ref>
+  </AssignVariable>
+  <AssignVariable>
+    <Name>Country</Name>
+    <Ref>request.queryparam.country</Ref>
+  </AssignVariable>
+</AssignMessage>

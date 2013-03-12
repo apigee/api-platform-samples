@@ -1,0 +1,85 @@
+<!--
+  ~ Copyright (c) 2013, Apigee Corporation.  All rights reserved.
+  ~ Apigee(TM) and the Apigee logo are trademarks or
+  ~ registered trademarks of Apigee Corp. or its subsidiaries.  All other
+  ~ trademarks are the property of their respective owners.
+  -->
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:include schemaLocation="stepDefinition.xsd"/>
+    <xs:include schemaLocation="../properties.xsd"/>
+
+    <xs:element name="KeyValueMapOperations">
+        <xs:complexType>
+            <xs:complexContent>
+                <xs:extension base="stepDefinitionType">
+                    <xs:sequence>
+                        <xs:element name="ExclusiveCache" minOccurs="0" type="xs:boolean" default="false"/>
+                        <xs:element name="ExpiryTimeInSecs" minOccurs="0" type="xs:int" default="-1"/>
+
+                        <xs:element name="InitialEntries" minOccurs="0">
+                            <xs:complexType>
+                                <xs:sequence>
+                                    <xs:element name="Entry" minOccurs="0" maxOccurs="unbounded">
+                                        <xs:complexType>
+                                            <xs:sequence>
+                                                <xs:element name="Key">
+                                                    <xs:complexType>
+                                                        <xs:sequence>
+                                                            <xs:element name="Parameter" type="xs:string" minOccurs="1"
+                                                                        maxOccurs="unbounded"/>
+                                                        </xs:sequence>
+                                                    </xs:complexType>
+                                                </xs:element>
+                                                <xs:element name="Value" type="xs:string" minOccurs="1"
+                                                            maxOccurs="unbounded"/>
+                                            </xs:sequence>
+                                        </xs:complexType>
+                                    </xs:element>
+                                </xs:sequence>
+                            </xs:complexType>
+                        </xs:element>
+
+                        <xs:choice minOccurs="1" maxOccurs="unbounded">
+                            <xs:element name="Put">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element ref="Key" minOccurs="1"/>
+                                        <xs:element name="Value" type="propertyType" minOccurs="1"
+                                                    maxOccurs="unbounded"/>
+                                    </xs:sequence>
+                                    <xs:attribute name="override" type="xs:boolean" default="false"/>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="Get">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element ref="Key" minOccurs="1"/>
+                                    </xs:sequence>
+                                    <xs:attribute name="assignTo" type="xs:string" use="required"/>
+                                    <xs:attribute name="index" type="xs:int" use="optional"/>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="Delete">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element ref="Key" minOccurs="1"/>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:choice>
+                    </xs:sequence>
+                </xs:extension>
+            </xs:complexContent>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="Key">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Parameter" type="xs:string" minOccurs="1"
+                            maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

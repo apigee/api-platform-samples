@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Javascript timeLimit="0" enabled="true" continueOnError="false" async="false" name="translate-results">
+    <ResourceURL>jsc://translate-results.js</ResourceURL>
+</Javascript>

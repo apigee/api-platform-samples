@@ -1,0 +1,3 @@
+<APIProxy name="simple-javascript">
+  <Description>The smallest possible Javascript app that can be run on the Apigee Platform. For details, see http://apigee.com/docs/api/content/apigee-javascript-object-model</Description>
+</APIProxy>

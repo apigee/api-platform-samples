@@ -1,0 +1,38 @@
+<!--
+  ~ Copyright (c) 2013, Apigee Corporation.  All rights reserved.
+  ~ Apigee(TM) and the Apigee logo are trademarks or
+  ~ registered trademarks of Apigee Corp. or its subsidiaries.  All other
+  ~ trademarks are the property of their respective owners.
+  -->
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="SSLInfo">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Enabled" type="xs:boolean" minOccurs="0" default="false"/>
+                <xs:element name="ClientAuthEnabled" type="xs:boolean" minOccurs="0" default="false"/>
+                <xs:element name="KeyStore" type="xs:string" minOccurs="0"/>
+                <xs:element name="KeyAlias" type="xs:string" minOccurs="0"/>
+                <xs:element name="CommonName" type="xs:string" minOccurs="0"/>
+                <xs:element name="Protocols" minOccurs="0">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="Protocol" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="Ciphers" minOccurs="0">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="Cipher" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="TrustStore" type="xs:string" minOccurs="0"/>
+                <xs:element name="IgnoreValidationErrors" type="xs:boolean" minOccurs="0" default="false"/>
+                <xs:element name="CRLStore" type="xs:string" minOccurs="0"/>
+            </xs:sequence>
+            <xs:attribute name="name" type="xs:string" use="required"/>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

@@ -1,0 +1,104 @@
+<!--
+  ~ Copyright (c) 2013, Apigee Corporation.  All rights reserved.
+  ~ Apigee(TM) and the Apigee logo are trademarks or
+  ~ registered trademarks of Apigee Corp. or its subsidiaries.  All other
+  ~ trademarks are the property of their respective owners.
+  -->
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+    <xs:include schemaLocation="common_definitions.xsd"/>
+
+    <xs:element name="RequestTokens">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="RequestToken" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+
+    </xs:element>
+
+    <xs:element name="RequestToken">
+        <xs:complexType>
+            <xs:all>
+                <xs:element name="Scope" type="xs:string"/>
+                <xs:element name="CallbackUrl" type="xs:string"/>
+                <xs:element name="App" minOccurs="0" type="xs:string"/>
+                <xs:element ref="Attributes" minOccurs="0"/>
+                <xs:element name="ConsumerKey" minOccurs="0" type="xs:string"/>
+                <xs:element name="ExpiresAt" minOccurs="0" type="xs:long"/>
+                <xs:element name="IssuedAt" minOccurs="0" type="xs:long"/>
+                <xs:element name="Secret" minOccurs="0" type="xs:string"/>
+                <xs:element name="Token" minOccurs="0" type="xs:string"/>
+                <xs:element name="Status" minOccurs="0" type="oauthv1TokenStatus"/>
+                <xs:element name="CreatedAt" type="xs:long"/>
+                <xs:element name="CreatedBy" type="xs:string"/>
+                <xs:element name="LastModifiedAt" type="xs:long"/>
+                <xs:element name="LastModifiedBy" type="xs:string"/>
+            </xs:all>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="Verifiers">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="Verifier" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="Verifier">
+        <xs:complexType>
+            <xs:all>
+                <xs:element name="AppUserId" type="xs:string"/>
+                <xs:element ref="Attributes"/>
+                <xs:element name="ExpiresAt" type="xs:long"/>
+                <xs:element name="IssuedAt" type="xs:long"/>
+                <xs:element name="RequestToken" type="xs:string"/>
+                <xs:element name="Code" type="xs:integer"/>
+                <xs:element name="CreatedAt" type="xs:long"/>
+                <xs:element name="CreatedBy" type="xs:string"/>
+                <xs:element name="LastModifiedAt" type="xs:long"/>
+                <xs:element name="LastModifiedBy" type="xs:string"/>
+            </xs:all>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="AccessTokens">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="AccessToken" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="AccessToken">
+        <xs:complexType>
+            <xs:all>
+                <xs:element name="Scope" type="xs:string"/>
+                <xs:element name="Token" minOccurs="0" type="xs:string"/>
+                <xs:element name="Secret" minOccurs="0" type="xs:string"/>
+                <xs:element name="App" minOccurs="0" type="xs:string"/>
+                <xs:element ref="Attributes" minOccurs="0"/>
+                <xs:element name="ConsumerKey" minOccurs="0" type="xs:string"/>
+                <xs:element name="AppUserId" minOccurs="0" type="xs:string"/>
+                <xs:element name="ExpiresAt" minOccurs="0" type="xs:long"/>
+                <xs:element name="IssuedAt" minOccurs="0" type="xs:long"/>
+                <xs:element name="Status" minOccurs="0" type="oauthv1TokenStatus"/>
+                <xs:element name="Verifier" minOccurs="0" type="xs:string"/>
+                <xs:element name="CreatedAt" type="xs:long"/>
+                <xs:element name="CreatedBy" type="xs:string"/>
+                <xs:element name="LastModifiedAt" type="xs:long"/>
+                <xs:element name="LastModifiedBy" type="xs:string"/>
+            </xs:all>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:simpleType name="oauthv1TokenStatus">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="approved"/>
+            <xs:enumeration value="revoked"/>
+            <xs:enumeration value="expired"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+</xs:schema>

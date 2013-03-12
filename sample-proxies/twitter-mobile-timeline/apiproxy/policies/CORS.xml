@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Javascript timeLimit="200" enabled="true" continueOnError="false" async="false" name="CORS">
+    <!-- This script adds a CORS header to the response -->
+    <ResourceURL>jsc://CORS.js</ResourceURL>
+</Javascript>

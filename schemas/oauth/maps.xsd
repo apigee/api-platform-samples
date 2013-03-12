@@ -1,0 +1,32 @@
+<!--
+  ~ Copyright (c) 2013, Apigee Corporation.  All rights reserved.
+  ~ Apigee(TM) and the Apigee logo are trademarks or
+  ~ registered trademarks of Apigee Corp. or its subsidiaries.  All other
+  ~ trademarks are the property of their respective owners.
+  -->
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+
+    <xs:element name="Maps">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="Map" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="Map">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" minOccurs="1" ref="Entry"/>
+            </xs:sequence>
+            <xs:attribute name="name" use="required" type="xs:string"/>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="Entry">
+        <xs:complexType mixed="true">
+            <xs:attribute name="name" use="required" type="xs:string"/>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

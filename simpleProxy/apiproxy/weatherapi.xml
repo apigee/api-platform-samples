@@ -1,0 +1,3 @@
+<!-- The most basic API proxy defines a name -->
+<APIProxy name="weatherapi">
+</APIProxy>

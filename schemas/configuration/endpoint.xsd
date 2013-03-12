@@ -1,0 +1,94 @@
+<!--
+  ~ Copyright (c) 2013, Apigee Corporation.  All rights reserved.
+  ~ Apigee(TM) and the Apigee logo are trademarks or
+  ~ registered trademarks of Apigee Corp. or its subsidiaries.  All other
+  ~ trademarks are the property of their respective owners.
+  -->
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:complexType name="endpointType">
+        <xs:sequence>
+            <xs:element name="Description" type="xs:string" minOccurs="0"/>
+            <xs:element name="Statistics" minOccurs="0">
+                <xs:complexType>
+                    <xs:choice>
+                        <xs:element name="EnableAll" type="xs:boolean"/>
+                        <xs:element name="Statistic" type="xs:string" maxOccurs="unbounded"/>
+                    </xs:choice>
+                </xs:complexType>
+            </xs:element>
+
+            <xs:element name="PreFlow" type="flowType" minOccurs="0"/>
+            <xs:element name="PostFlow" type="flowType" minOccurs="0"/>
+            <xs:element name="Flows" minOccurs="0">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="Flow" type="conditionalFlowType" minOccurs="0" maxOccurs="unbounded"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+
+            <xs:element ref="FaultRules" minOccurs="0"/>
+        </xs:sequence>
+        <xs:attribute name="name" type="xs:NCName" use="required"/>
+    </xs:complexType>
+
+    <xs:element name="FaultRules">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="FaultRule" minOccurs="0" maxOccurs="unbounded">
+                    <xs:complexType>
+                        <xs:complexContent>
+                            <xs:extension base="stepsType">
+                                <xs:sequence>
+                                    <xs:element name="Description" type="xs:string" minOccurs="0"/>
+                                    <xs:element name="Condition" type="xs:string" minOccurs="0"/>
+                                </xs:sequence>
+                            </xs:extension>
+                        </xs:complexContent>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="stepsType">
+        <xs:sequence>
+            <xs:element name="Step" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="Name" type="xs:NCName"/>
+                        <xs:element name="Condition" type="xs:string" minOccurs="0"/>
+                        <xs:element ref="FaultRules" minOccurs="0"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="flowType">
+        <xs:sequence>
+            <xs:element name="Description" type="xs:string" minOccurs="0"/>
+            <xs:element name="Request" type="stepsType" minOccurs="0"/>
+            <xs:element name="Response" type="stepsType" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="conditionalFlowType">
+        <xs:complexContent>
+            <xs:extension base="flowType">
+                <xs:sequence>
+                    <xs:element name="Condition" type="xs:string" minOccurs="0"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:element name="Flows">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Flow" type="flowType" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>    

@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Javascript timeLimit="0" enabled="true" continueOnError="false" async="false" name="timeline-translate">
+    <!-- This JavaScript translates the Twitter timeline to English -->
+    <ResourceURL>jsc://timeline-translate.js</ResourceURL>
+</Javascript>

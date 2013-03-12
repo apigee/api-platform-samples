@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<App name="thomas-app">
+    <CallbackUrl>http://tom.app/login</CallbackUrl>
+    <AccessType>read</AccessType>
+    <Attributes>
+      <Attribute>
+          <Name>DisplayName</Name>
+          <Value>Tom's Weather App</Value>
+      </Attribute>
+    </Attributes>
+</App>

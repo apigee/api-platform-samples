@@ -1,0 +1,17 @@
+<ProxyEndpoint name="default">
+	<HTTPProxyConnection>
+		<BasePath>/dynamic-endpoint</BasePath>
+		<VirtualHost>default</VirtualHost>
+	</HTTPProxyConnection>
+	<RouteRule name="fbroute">
+		<Condition>request.queryparam.routeTo = "fb"</Condition>
+		<TargetEndpoint>facebook</TargetEndpoint>
+	</RouteRule>
+	<RouteRule name="twroute">
+		<Condition>request.queryparam.routeTo = "tw"</Condition>
+		<TargetEndpoint>twitter</TargetEndpoint>
+	</RouteRule>
+	<RouteRule name="default">
+		<TargetEndpoint>twitter</TargetEndpoint>
+	</RouteRule>	
+</ProxyEndpoint>

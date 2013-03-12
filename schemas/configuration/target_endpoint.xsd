@@ -1,0 +1,145 @@
+<!--
+  ~ Copyright (c) 2013, Apigee Corporation.  All rights reserved.
+  ~ Apigee(TM) and the Apigee logo are trademarks or
+  ~ registered trademarks of Apigee Corp. or its subsidiaries.  All other
+  ~ trademarks are the property of their respective owners.
+  -->
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:include schemaLocation="endpoint.xsd"/>
+    <xs:include schemaLocation="sslinfo.xsd"/>
+    <xs:include schemaLocation="properties.xsd"/>
+
+    <xs:element name="TargetEndpoint">
+        <xs:complexType>
+            <xs:complexContent>
+                <xs:extension base="endpointType">
+                    <xs:sequence>
+                        <xs:element ref="HTTPTargetConnection"/>
+                    </xs:sequence>
+                </xs:extension>
+            </xs:complexContent>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="HTTPTargetConnection">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:choice>
+                    <xs:sequence>
+                        <xs:element name="URL" type="xs:string" minOccurs="1"/>
+                        <xs:element ref="SSLInfo" minOccurs="0"/>
+                    </xs:sequence>
+                    <xs:sequence>
+                        <xs:element name="Path" type="xs:string"/>
+                        <xs:element name="ErrorResponse" type="responseType" minOccurs="0"/>
+                        <xs:element ref="HealthMonitor" minOccurs="0"/>
+                        <xs:element ref="SessionCache" minOccurs="0"/>
+                        <xs:element ref="LoadBalancer" minOccurs="0"/>
+                    </xs:sequence>
+                </xs:choice>
+                <xs:element ref="Properties" minOccurs="0"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="Header">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:string">
+                    <xs:attribute name="name" use="required"/>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="responseType">
+        <xs:sequence>
+            <xs:element ref="Header" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="ResponseCode" type="xs:positiveInteger" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:element name="HealthMonitor">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="IsEnabled" minOccurs="0" type="xs:boolean" default="false"/>
+                <xs:element name="IntervalInSec" type="xs:int"/>
+                <xs:choice>
+                    <xs:element name="HTTPMonitor">
+                        <xs:complexType>
+                            <xs:sequence>
+                                <xs:element name="Request">
+                                    <xs:complexType>
+                                        <xs:sequence>
+                                            <xs:element name="Port" type="xs:int"/>
+                                            <xs:element name="ConnectTimeoutInSec" type="xs:int" minOccurs="0" default="30000"/>
+                                            <xs:element name="SocketReadTimeoutInSec" type="xs:int"/>
+                                            <xs:element name="Verb" type="xs:string" minOccurs="0" default="GET"/>
+                                            <xs:element name="Path" type="xs:string" minOccurs="0" default="/"/>
+                                            <xs:element ref="Header" minOccurs="0" maxOccurs="unbounded"/>
+                                            <xs:element name="Payload" type="xs:string"/>
+                                        </xs:sequence>
+                                    </xs:complexType>
+                                </xs:element>
+                                <xs:element name="Response" type="responseType"/>
+                            </xs:sequence>
+                        </xs:complexType>
+                    </xs:element>
+                    <xs:element name="TCPMonitor">
+                        <xs:complexType>
+                            <xs:sequence>
+                                <xs:element name="Port" type="xs:int"/>
+                                <xs:element name="ConnectTimeoutInSec" type="xs:int"/>
+                            </xs:sequence>
+                        </xs:complexType>
+                    </xs:element>
+                </xs:choice>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="LoadBalancer">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Algorithm" minOccurs="1">
+                    <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                            <xs:enumeration value="RoundRobin"/>
+                            <xs:enumeration value="Weighted"/>
+                            <xs:enumeration value="LeastConnections"/>
+                        </xs:restriction>
+                    </xs:simpleType>
+                </xs:element>
+                <xs:element name="MaxFailures" type="xs:int" minOccurs="0" default="0"/>
+                <xs:element name="RetryEnabled" type="xs:boolean" minOccurs="0" default="true"/>
+                <xs:element name="Server" minOccurs="1" maxOccurs="unbounded">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="IsEnabled" minOccurs="0" type="xs:boolean" default="true"/>
+                            <xs:element name="IsFallback" minOccurs="0" type="xs:boolean" default="false"/>
+                            <xs:element name="Weight" minOccurs="0" type="xs:positiveInteger" default="1"/>
+                        </xs:sequence>
+                        <xs:attribute name="name" type="xs:string" use="required"/>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="SessionCache">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="SessionKey" type="xs:string" minOccurs="1"/>
+                <xs:element name="KeyType" minOccurs="0" default="Cookie">
+                    <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                            <xs:enumeration value="Cookie"/>
+                        </xs:restriction>
+                    </xs:simpleType>
+                </xs:element>
+                <xs:element name="SessionTimeoutInSec" type="propertyType" minOccurs="0" default="-1"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>    

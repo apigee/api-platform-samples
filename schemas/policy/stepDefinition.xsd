@@ -1,0 +1,30 @@
+<!--
+  ~ Copyright (c) 2013, Apigee Corporation.  All rights reserved.
+  ~ Apigee(TM) and the Apigee logo are trademarks or
+  ~ registered trademarks of Apigee Corp. or its subsidiaries.  All other
+  ~ trademarks are the property of their respective owners.
+  -->
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+    <xs:complexType name="stepDefinitionType">
+        <xs:sequence/>
+        <xs:attribute name="name" type="xs:string" use="required"/>
+        <xs:attribute name="async" type="xs:boolean" use="optional" default="false"/>
+        <xs:attribute name="continueOnError" type="xs:boolean" use="optional" default="false"/>
+    </xs:complexType>
+    <xs:element name="StepDefinition" type="stepDefinitionType"/>
+
+    <xs:complexType name="messageWeightType">
+        <xs:attribute name="ref" type="xs:string" use="required"/>
+    </xs:complexType>
+
+    <xs:simpleType name="variable">
+        <xs:restriction base="xs:string"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="template">
+        <xs:restriction base="xs:string"/>
+    </xs:simpleType>
+
+    <xs:element name="MessageWeight" type="messageWeightType"/>
+</xs:schema>

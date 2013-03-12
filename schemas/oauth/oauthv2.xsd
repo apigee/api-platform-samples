@@ -1,0 +1,100 @@
+<!--
+  ~ Copyright (c) 2013, Apigee Corporation.  All rights reserved.
+  ~ Apigee(TM) and the Apigee logo are trademarks or
+  ~ registered trademarks of Apigee Corp. or its subsidiaries.  All other
+  ~ trademarks are the property of their respective owners.
+  -->
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+    <xs:include schemaLocation="common_definitions.xsd"/>
+
+    <xs:element name="AuthorizationCodes">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="AuthorizationCode" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="AuthorizationCode">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="Attributes"/>
+                <xs:element name="ClientId" type="xs:string"/>
+                <xs:element name="Code" type="xs:string"/>
+                <xs:element name="ExpiresAt" type="xs:long"/>
+                <xs:element name="IssuedAt" type="xs:long"/>
+                <xs:element name="RedirectUri" type="xs:string"/>
+                <xs:element name="Scope" type="xs:string"/>
+                <xs:element name="Status">
+                    <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                            <xs:enumeration value="active"/>
+                            <xs:enumeration value="expired"/>
+                        </xs:restriction>
+                    </xs:simpleType>
+                </xs:element>
+                <xs:element name="CreatedAt" type="xs:long"/>
+                <xs:element name="CreatedBy" type="xs:string"/>
+                <xs:element name="LastModifiedAt" type="xs:long"/>
+                <xs:element name="LastModifiedBy" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="AccessTokens">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="AccessToken" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="AccessToken">
+        <xs:complexType>
+            <xs:all>
+                <xs:element name="Scope" type="xs:string"/>
+                <xs:element name="Token" minOccurs="0" type="xs:string"/>
+                <xs:element name="TokenSecret" minOccurs="0" type="xs:string"/>
+                <xs:element name="App" minOccurs="0" type="xs:string"/>
+                <xs:element ref="Attributes" minOccurs="0"/>
+                <xs:element name="ClientId" minOccurs="0" type="xs:string"/>
+                <xs:element name="ExpiresAt" minOccurs="0" type="xs:long"/>
+                <xs:element name="IssuedAt" minOccurs="0" type="xs:long"/>
+                <xs:element name="refreshCount" minOccurs="0" type="xs:integer"/>
+                <xs:element name="GrantType">
+                    <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                            <xs:enumeration value="password"/>
+                            <xs:enumeration value="authorization_code"/>
+                            <xs:enumeration value="client_credentials"/>
+                            <xs:enumeration value="implicit"/>
+                            <xs:enumeration value="refresh_token"/>
+                        </xs:restriction>
+                    </xs:simpleType>
+                </xs:element>
+                <xs:element name="Status">
+                    <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                            <xs:enumeration value="approved"/>
+                            <xs:enumeration value="revoked"/>
+                            <xs:enumeration value="expired"/>
+                        </xs:restriction>
+                    </xs:simpleType>
+                </xs:element>
+                <xs:element name="TokenType">
+                    <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                            <xs:enumeration value="BearerToken"/>
+                        </xs:restriction>
+                    </xs:simpleType>
+                </xs:element>
+                <xs:element name="CreatedAt" type="xs:long"/>
+                <xs:element name="CreatedBy" type="xs:string"/>
+                <xs:element name="LastModifiedAt" type="xs:long"/>
+                <xs:element name="LastModifiedBy" type="xs:string"/>
+            </xs:all>
+        </xs:complexType>
+    </xs:element>
+
+</xs:schema>

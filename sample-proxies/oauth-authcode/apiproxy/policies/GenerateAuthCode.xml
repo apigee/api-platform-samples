@@ -1,0 +1,6 @@
+<OAuthV2 name="GenerateAuthCode">
+  <Operation>GenerateAuthorizationCode</Operation>
+  <!-- The authorization code expires in 10 minutes -->
+  <ExpiresIn>600000</ExpiresIn>
+  <GenerateResponse/>
+</OAuthV2>

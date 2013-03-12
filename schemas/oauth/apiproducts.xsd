@@ -1,0 +1,86 @@
+<!--
+Copyright (c) 2013, Apigee Corporation.  All rights reserved.
+Apigee(TM) and the Apigee logo are trademarks or
+registered trademarks of Apigee Corp. or its subsidiaries.  All other
+trademarks are the property of their respective owners.
+ -->
+
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="ApiProduct">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element type="xs:string" name="Description"/>
+                <xs:element type="xs:string" name="DisplayName"/>
+                <xs:element name="ApprovalType">
+                    <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                            <xs:enumeration value="auto"/>
+                            <xs:enumeration value="manual"/>
+                        </xs:restriction>
+                    </xs:simpleType>
+                </xs:element>
+                <xs:element name="ApiResources">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element type="xs:string" name="ApiResource" maxOccurs="unbounded" minOccurs="0"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="Scopes">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element type="xs:string" name="Scope" maxOccurs="unbounded" minOccurs="0"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="Environments">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element type="xs:string" name="Environment" maxOccurs="unbounded" minOccurs="0"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="Proxies">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element type="xs:string" name="Proxy" maxOccurs="unbounded" minOccurs="0"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element type="xs:long" name="CreatedAt"/>
+                <xs:element type="xs:string" name="CreatedBy"/>
+                <xs:element type="xs:long" name="LastModifiedAt"/>
+                <xs:element type="xs:string" name="LastModifiedBy"/>
+                <xs:element type="xs:long" name="Quota" maxOccurs="1" minOccurs="0"/>
+                <xs:element type="xs:long" name="QuotaInterval" maxOccurs="1" minOccurs="0"/>
+                <xs:element name="QuotaTimeUnit" maxOccurs="1" minOccurs="0">
+                    <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                            <xs:enumeration value="second"/>
+                            <xs:enumeration value="minute"/>
+                            <xs:enumeration value="hour"/>
+                            <xs:enumeration value="day"/>
+                            <xs:enumeration value="month"/>
+                        </xs:restriction>
+                    </xs:simpleType>
+                </xs:element>
+                <xs:element name="Attributes">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="Attribute" maxOccurs="unbounded" minOccurs="0">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element type="xs:string" name="Name"/>
+                                        <xs:element type="xs:string" name="Value"/>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+            <xs:attribute type="xs:string" name="name"/>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

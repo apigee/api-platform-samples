@@ -1,0 +1,22 @@
+<ProxyEndpoint name="default">
+  <Flows>
+    <Flow name="default">
+      <!-- This policy flow is selected for all other API calls -->
+      <Request>
+	<Step><Name>ValidateOAuth</Name></Step>
+	<Step><Name>CheckQuota</Name></Step>
+      </Request>
+    </Flow>
+  </Flows>
+
+  <HTTPProxyConnection>
+    <!-- Add a base path to the proxy to distinguish from others in the environment -->
+    <BasePath>/weather</BasePath>
+    <!-- Listen only on the HTTPS endpoint since OAuth 2.0 requires that -->
+    <VirtualHost>secure</VirtualHost>
+  </HTTPProxyConnection>
+  <RouteRule name="default">
+    <!-- This connects our proxy to the target defined elsewhere -->
+    <TargetEndpoint>default</TargetEndpoint>
+  </RouteRule>
+</ProxyEndpoint>

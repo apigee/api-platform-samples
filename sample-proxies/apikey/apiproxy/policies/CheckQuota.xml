@@ -1,0 +1,9 @@
+<Quota name="CheckQuota"> 
+  <!-- This policy tells us to maintain a separate quota per application, based on api key,
+       and to set the parameters based on the api product that was selected in the 
+       previous policy. -->
+  <Interval ref="verifyapikey.ValidateAPIKey.apiproduct.developer.quota.interval"/>
+  <TimeUnit ref="verifyapikey.ValidateAPIKey.apiproduct.developer.quota.timeunit"/>
+  <Allow countRef="verifyapikey.ValidateAPIKey.apiproduct.developer.quota.limit"/>
+  <Identifier ref="request.queryparam.apikey"/>
+</Quota>

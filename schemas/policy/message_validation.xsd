@@ -1,0 +1,50 @@
+<!--
+  ~ Copyright (c) 2013, Apigee Corporation.  All rights reserved.
+  ~ Apigee(TM) and the Apigee logo are trademarks or
+  ~ registered trademarks of Apigee Corp. or its subsidiaries.  All other
+  ~ trademarks are the property of their respective owners.
+  -->
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:include schemaLocation="stepDefinition.xsd"/>
+
+    <xs:element name="MessageValidation">
+        <xs:complexType>
+            <xs:complexContent>
+                <xs:extension base="stepDefinitionType">
+                    <xs:sequence>
+                        <xs:element name="ResourceURL" type="xs:string" minOccurs="0">
+                            <xs:annotation>
+                                <xs:documentation>only resource of type xsd and wsdl are allowed</xs:documentation>
+                            </xs:annotation>
+                        </xs:element>
+                        <xs:element name="Source" type="xs:NCName" minOccurs="0"/>
+                        <xs:element name="SOAPMessage" minOccurs="0">
+                            <xs:complexType>
+                                <xs:sequence/>
+                                <xs:attribute name="version">
+                                    <xs:simpleType>
+                                        <xs:restriction base="xs:string">
+                                            <xs:enumeration value="1.1"/>
+                                            <xs:enumeration value="1.2"/>
+                                        </xs:restriction>
+                                    </xs:simpleType>
+                                </xs:attribute>
+                            </xs:complexType>
+                        </xs:element>
+                        <xs:element name="Element" minOccurs="0" maxOccurs="unbounded">
+                            <xs:complexType>
+                                <xs:simpleContent>
+                                    <xs:extension base="xs:NCName">
+                                        <xs:attribute name="namespace" type="xs:string" use="optional"/>
+                                    </xs:extension>
+                                </xs:simpleContent>
+                            </xs:complexType>
+                        </xs:element>
+                    </xs:sequence>
+                </xs:extension>
+            </xs:complexContent>
+        </xs:complexType>
+    </xs:element>
+
+</xs:schema>

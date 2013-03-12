@@ -1,0 +1,37 @@
+<!--
+  ~ Copyright (c) 2013, Apigee Corporation.  All rights reserved.
+  ~ Apigee(TM) and the Apigee logo are trademarks or
+  ~ registered trademarks of Apigee Corp. or its subsidiaries.  All other
+  ~ trademarks are the property of their respective owners.
+  -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           elementFormDefault="qualified">
+
+    <xs:include schemaLocation="stepDefinition.xsd"/>
+    <xs:include schemaLocation="assign_message.xsd"/>
+
+    <xs:complexType name="raiseFaultType">
+        <xs:complexContent>
+            <xs:extension base="stepDefinitionType">
+                <xs:sequence>
+                    <xs:element name="IgnoreUnresolvedVariables" type="xs:boolean" minOccurs="0" default="true"/>
+                    <xs:element ref="FaultResponse" minOccurs="0"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="faultResponseType">
+        <xs:sequence>
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+                <xs:element name="Copy" type="copyType"/>
+                <xs:element name="Remove" type="nameActionType"/>
+                <xs:element name="Add" type="nameValueActionType"/>
+                <xs:element name="Set" type="setType"/>
+            </xs:choice>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:element name="FaultResponse" type="faultResponseType"/>
+    <xs:element name="RaiseFault" type="raiseFaultType" substitutionGroup="StepDefinition"/>
+</xs:schema>

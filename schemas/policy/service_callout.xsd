@@ -1,0 +1,34 @@
+<!--
+  ~ Copyright (c) 2013, Apigee Corporation.  All rights reserved.
+  ~ Apigee(TM) and the Apigee logo are trademarks or
+  ~ registered trademarks of Apigee Corp. or its subsidiaries.  All other
+  ~ trademarks are the property of their respective owners.
+  -->
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:include schemaLocation="stepDefinition.xsd"/>
+    <xs:include schemaLocation="../target_endpoint.xsd"/>
+
+    <xs:element name="ServiceCallout">
+        <xs:complexType>
+            <xs:complexContent>
+                <xs:extension base="stepDefinitionType">
+                    <xs:sequence>
+                        <xs:element name="Request" minOccurs="0">
+                            <xs:complexType>
+                                <xs:simpleContent>
+                                    <xs:extension base="xs:NCName">
+                                        <xs:attribute name="clearPayload" type="xs:boolean" default="false"/>
+                                    </xs:extension>
+                                </xs:simpleContent>
+                            </xs:complexType>
+                        </xs:element>
+                        <xs:element name="Response" minOccurs="0" type="xs:NCName"/>
+                        <xs:element ref="HTTPTargetConnection"/>
+                    </xs:sequence>
+                </xs:extension>
+            </xs:complexContent>
+        </xs:complexType>
+    </xs:element>
+
+</xs:schema>

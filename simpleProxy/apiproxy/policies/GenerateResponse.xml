@@ -1,0 +1,3 @@
+<Javascript name="GenerateResponse" timeout="200">
+  <ResourceURL>jsc://generateResponse.js</ResourceURL>
+</Javascript>

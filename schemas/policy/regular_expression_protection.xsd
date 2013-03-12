@@ -1,0 +1,112 @@
+<!--
+  ~ Copyright (c) 2013, Apigee Corporation.  All rights reserved.
+  ~ Apigee(TM) and the Apigee logo are trademarks or
+  ~ registered trademarks of Apigee Corp. or its subsidiaries.  All other
+  ~ trademarks are the property of their respective owners.
+  -->
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:include schemaLocation="stepDefinition.xsd"/>
+
+    <xs:element name="RegularExpressionProtection">
+        <xs:complexType>
+            <xs:complexContent>
+                <xs:extension base="stepDefinitionType">
+                    <xs:sequence>
+                        <xs:element name="Source" minOccurs="0" type="xs:string"/>
+                        <xs:element name="IgnoreUnresolvedVariables" minOccurs="0" type="xs:boolean" default="false"/>
+                        <xs:choice minOccurs="0" maxOccurs="unbounded">
+                            <xs:element name="URIPath" type="patternsType"/>
+                            <xs:element name="QueryParam" type="namedPatternsType"/>
+                            <xs:element name="Header" type="namedPatternsType"/>
+                            <xs:element name="FormParam" type="namedPatternsType"/>
+                            <xs:element name="Variable" type="namedPatternsType"/>
+                        </xs:choice>
+                        <xs:element name="XMLPayload" minOccurs="0">
+                            <xs:complexType>
+                                <xs:sequence>
+                                    <xs:element name="Namespaces" minOccurs="0">
+                                        <xs:complexType>
+                                            <xs:sequence>
+                                                <xs:element name="Namespace" maxOccurs="unbounded">
+                                                    <xs:complexType>
+                                                        <xs:simpleContent>
+                                                            <xs:extension base="xs:string">
+                                                                <xs:attribute name="prefix" type="xs:string"
+                                                                              use="required"/>
+                                                            </xs:extension>
+                                                        </xs:simpleContent>
+                                                    </xs:complexType>
+                                                </xs:element>
+                                            </xs:sequence>
+                                        </xs:complexType>
+                                    </xs:element>
+                                    <xs:element name="XPath" minOccurs="0" maxOccurs="unbounded">
+                                        <xs:complexType>
+                                            <xs:sequence>
+                                                <xs:element name="Expression" type="xs:string"/>
+                                                <xs:element name="Type" minOccurs="0" default="string">
+                                                    <xs:simpleType>
+                                                        <xs:restriction base="xs:string">
+                                                            <xs:enumeration value="string"/>
+                                                            <xs:enumeration value="boolean"/>
+                                                            <xs:enumeration value="int"/>
+                                                            <xs:enumeration value="long"/>
+                                                            <xs:enumeration value="float"/>
+                                                            <xs:enumeration value="double"/>
+                                                            <xs:enumeration value="nodeset"/>
+                                                        </xs:restriction>
+                                                    </xs:simpleType>
+                                                </xs:element>
+                                                <xs:element name="Pattern" minOccurs="1" maxOccurs="unbounded"
+                                                            type="xs:string"/>
+                                            </xs:sequence>
+                                        </xs:complexType>
+                                    </xs:element>
+                                </xs:sequence>
+                            </xs:complexType>
+                        </xs:element>
+                        <xs:element name="JSONPayload" minOccurs="0">
+                            <xs:complexType>
+                                <xs:sequence>
+                                    <xs:element name="JSONPath" minOccurs="0" maxOccurs="unbounded">
+                                        <xs:complexType>
+                                            <xs:sequence>
+                                                <xs:element name="Expression" type="xs:string"/>
+                                                <xs:element name="Pattern" minOccurs="1" maxOccurs="unbounded"
+                                                            type="xs:string"/>
+                                            </xs:sequence>
+                                            <xs:attribute name="name" type="xs:string" use="required"/>
+                                        </xs:complexType>
+                                    </xs:element>
+                                </xs:sequence>
+                            </xs:complexType>
+                        </xs:element>
+                    </xs:sequence>
+                </xs:extension>
+            </xs:complexContent>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="patternsType">
+        <xs:sequence>
+            <xs:element name="Pattern" minOccurs="1" maxOccurs="unbounded">
+                <xs:complexType>
+                    <xs:simpleContent>
+                        <xs:extension base="xs:string">
+                            <xs:attribute name="ignoreCase" type="xs:boolean" default="false"/>
+                        </xs:extension>
+                    </xs:simpleContent>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="namedPatternsType">
+        <xs:complexContent>
+            <xs:extension base="patternsType">
+                <xs:attribute name="name" type="xs:string" use="required"/>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+</xs:schema>

@@ -1,0 +1,121 @@
+<!--
+  ~ Copyright (c) 2013, Apigee Corporation.  All rights reserved.
+  ~ Apigee(TM) and the Apigee logo are trademarks or
+  ~ registered trademarks of Apigee Corp. or its subsidiaries.  All other
+  ~ trademarks are the property of their respective owners.
+  -->
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:include schemaLocation="stepDefinition.xsd"/>
+    <xs:include schemaLocation="../properties.xsd"/>
+
+    <xs:element name="GetOAuthV1Info">
+        <xs:complexType>
+            <xs:complexContent>
+                <xs:extension base="stepDefinitionType">
+                    <xs:sequence>
+                        <xs:element name="OAuthConfig" type="xs:NCName" minOccurs="0"/>
+                        <xs:choice>
+                            <xs:element name="RequestToken" type="propertyType"/>
+                            <xs:element name="AccessToken" type="propertyType"/>
+                            <xs:element name="ConsumerKey" type="propertyType"/>
+                        </xs:choice>
+                    </xs:sequence>
+                </xs:extension>
+            </xs:complexContent>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="GetOAuthV2Info">
+        <xs:complexType>
+            <xs:complexContent>
+                <xs:extension base="stepDefinitionType">
+                    <xs:sequence>
+                        <xs:element name="OAuthConfig" type="xs:NCName" minOccurs="0"/>
+                        <xs:choice>
+                            <xs:element name="RequestToken" type="propertyType"/>
+                            <xs:element name="AccessToken" type="propertyType"/>
+                            <xs:element name="ClientId" type="propertyType"/>
+                            <xs:element name="AuthorizationCode" type="propertyType"/>
+                        </xs:choice>
+                    </xs:sequence>
+                </xs:extension>
+            </xs:complexContent>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="OAuthV1">
+        <xs:complexType>
+            <xs:complexContent>
+                <xs:extension base="stepDefinitionType">
+                    <xs:sequence>
+                        <xs:element name="OAuthConfig" type="xs:NCName" minOccurs="0"/>
+                        <xs:element name="Operation">
+                            <xs:simpleType>
+                                <xs:restriction base="xs:string">
+                                    <xs:enumeration value="GenerateRequestToken"/>
+                                    <xs:enumeration value="GenerateAccessToken"/>
+                                    <xs:enumeration value="VerifyAccessToken"/>
+                                </xs:restriction>
+                            </xs:simpleType>
+                        </xs:element>
+                        <xs:element name="GenerateResponse" type="generateResponseType" minOccurs="0"/>
+                        <xs:element ref="GenerateErrorResponse" minOccurs="0"/>
+                    </xs:sequence>
+                </xs:extension>
+            </xs:complexContent>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="OAuthV2">
+        <xs:complexType>
+            <xs:complexContent>
+                <xs:extension base="stepDefinitionType">
+                    <xs:sequence>
+                        <xs:element name="OAuthConfig" type="xs:NCName" minOccurs="0"/>
+                        <xs:element name="Operation">
+                            <xs:simpleType>
+                                <xs:restriction base="xs:string">
+                                    <xs:enumeration value="GenerateAuthorizationCode"/>
+                                    <xs:enumeration value="GenerateAccessToken"/>
+                                    <xs:enumeration value="GenerateAccessTokenImplicitGrant"/>
+                                    <xs:enumeration value="RefreshAccessToken"/>
+                                    <xs:enumeration value="VerifyAccessToken"/>
+                                </xs:restriction>
+                            </xs:simpleType>
+                        </xs:element>
+                        <xs:element name="GenerateResponse" type="generateResponseType" minOccurs="0"/>
+                        <xs:element ref="GenerateErrorResponse" minOccurs="0"/>
+                    </xs:sequence>
+                </xs:extension>
+            </xs:complexContent>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="generateResponseType">
+        <xs:sequence>
+            <xs:element name="Format">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:enumeration value="XML"/>
+                        <xs:enumeration value="FORM_PARAM"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute name="enabled" type="xs:boolean" default="true"/>
+    </xs:complexType>
+
+    <xs:element name="GenerateErrorResponse">
+        <xs:complexType>
+            <xs:complexContent>
+                <xs:extension base="generateResponseType">
+                    <xs:sequence>
+                        <xs:element name="Realm" type="xs:string" minOccurs="0"/>
+                    </xs:sequence>
+                </xs:extension>
+            </xs:complexContent>
+        </xs:complexType>
+    </xs:element>
+
+</xs:schema>

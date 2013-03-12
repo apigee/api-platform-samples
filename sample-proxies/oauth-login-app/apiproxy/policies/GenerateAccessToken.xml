@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<OAuthV2 name="GenerateAccessToken">
+    <FaultRules/>
+    <Properties/>
+    <ExpiresIn>3600000</ExpiresIn> 
+    <SupportedGrantTypes>
+        <GrantType>authorization_code</GrantType>
+        <GrantType>implicit</GrantType>
+        <GrantType>client_credentials</GrantType>
+    </SupportedGrantTypes>
+    <GenerateResponse/>
+</OAuthV2>
+

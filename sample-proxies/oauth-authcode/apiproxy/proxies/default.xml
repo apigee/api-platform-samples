@@ -1,0 +1,36 @@
+<ProxyEndpoint name="default">
+
+  <Flows>
+    <Flow name="GetAuthCode">
+      <!-- This policy flow is selected when the path exactly matches what's below -->
+      <Condition>proxy.pathsuffix == "/oauth/authorize"</Condition>
+      <Request>
+	<Step><Name>GenerateAuthCode</Name></Step>
+      </Request>
+    </Flow>
+
+    <Flow name="GetAccessToken">
+      <!-- This policy flow is selected when the path exactly matches what's below -->
+      <Condition>proxy.pathsuffix == "/oauth/accesstoken"</Condition>
+      <Request>
+	<Step><Name>GenerateAccessToken</Name></Step>
+      </Request>
+    </Flow>
+
+    <Flow name="RefreshAccessToken">
+      <!-- This policy flow is selected when the path exactly matches what's below -->
+      <Condition>proxy.pathsuffix == "/oauth/refresh_accesstoken"</Condition>
+      <Request>
+	<Step><Name>RefreshAccessToken</Name></Step>
+      </Request>
+    </Flow>
+  </Flows>
+
+  <HTTPProxyConnection>
+    <!-- Add a base path to the proxy to distinguish from others in the environment -->
+    <BasePath>/weatheroauthauthcode</BasePath>
+    <!-- Listen only on the HTTPS endpoint since OAuth 2.0 requires that -->
+    <VirtualHost>secure</VirtualHost>
+  </HTTPProxyConnection>
+  <RouteRule name="NoRoute"/>
+</ProxyEndpoint>

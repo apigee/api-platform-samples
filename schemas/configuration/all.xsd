@@ -1,0 +1,20 @@
+<!--
+  ~ Copyright (c) 2013, Apigee Corporation.  All rights reserved.
+  ~ Apigee(TM) and the Apigee logo are trademarks or
+  ~ registered trademarks of Apigee Corp. or its subsidiaries.  All other
+  ~ trademarks are the property of their respective owners.
+  -->
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:include schemaLocation="entities.xsd"/>
+    <xs:include schemaLocation="proxy_endpoint.xsd"/>
+    <xs:include schemaLocation="target_endpoint.xsd"/>
+    <xs:include schemaLocation="steps/all.xsd"/>
+
+    <xs:simpleType name="deployAction">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="deploy"/>
+            <xs:enumeration value="undeploy"/>
+        </xs:restriction>
+    </xs:simpleType>
+</xs:schema>

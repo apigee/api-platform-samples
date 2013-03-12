@@ -1,0 +1,49 @@
+<!--
+  ~ Copyright (c) 2013, Apigee Corporation.  All rights reserved.
+  ~ Apigee(TM) and the Apigee logo are trademarks or
+  ~ registered trademarks of Apigee Corp. or its subsidiaries.  All other
+  ~ trademarks are the property of their respective owners.
+  -->
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:include schemaLocation="stepDefinition.xsd"/>
+
+    <xs:element name="JSONToXML">
+        <xs:complexType>
+            <xs:complexContent>
+                <xs:extension base="stepDefinitionType">
+                    <xs:sequence>
+                        <xs:element name="Source" type="xs:NCName" default="message" minOccurs="0"/>
+                        <xs:element name="OutputVariable" type="xs:NCName" minOccurs="0"/>
+                        <xs:element name="Options" minOccurs="0">
+                            <xs:complexType>
+                                <xs:sequence>
+                                    <xs:element name="NullValue" type="xs:string" minOccurs="0"/>
+
+                                    <xs:element name="NamespaceBlockName" type="xs:string" minOccurs="0"/>
+                                    <xs:element name="DefaultNamespaceNodeName" type="xs:string" minOccurs="0"/>
+                                    <xs:element name="NamespaceSeparator" type="xs:string" minOccurs="0"/>
+
+                                    <xs:element name="TextNodeName" type="xs:string" minOccurs="0"/>
+
+                                    <xs:element name="AttributeBlockName" type="xs:string" minOccurs="0"/>
+                                    <xs:element name="AttributePrefix" type="xs:string" minOccurs="0"/>
+
+                                    <xs:element name="InvalidCharsReplacement" type="xs:string" minOccurs="0"/>
+
+                                    <xs:element name="ObjectRootElementName" type="xs:NCName" minOccurs="0"
+                                                default="Root"/>
+                                    <xs:element name="ArrayRootElementName" type="xs:NCName" minOccurs="0"
+                                                default="Array"/>
+                                    <xs:element name="ArrayItemElementName" type="xs:NCName" minOccurs="0"
+                                                default="Item"/>
+                                </xs:sequence>
+                            </xs:complexType>
+                        </xs:element>
+                    </xs:sequence>
+                </xs:extension>
+            </xs:complexContent>
+        </xs:complexType>
+    </xs:element>
+
+</xs:schema>
