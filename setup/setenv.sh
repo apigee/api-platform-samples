@@ -1,4 +1,4 @@
-#!/bin/bash
+	#!/bin/bash
 
 ## Update below section for your environment
 ## Org is the name of the organization in which you have an account. 
@@ -12,9 +12,12 @@
 ## You can obtain a free account at http://enterprise.apigee.com/signup
 ## --------------------------------------
 
-org="Your name of your organization on the API Platform"
-username="The username for your account on the API Platform"
-env="The environment where you would like deploy API proxies ('test' or 'prod')"
+org="Your ORG on enterprise.apigee.com"
+username="Your USERNAME on enterprise.apigee.com"
+
+# Whie testing, it's not necessary to change the setting below
+
+env="test"
 url="https://api.enterprise.apigee.com"
 api_domain="apigee.net"
 

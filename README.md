@@ -53,6 +53,7 @@ Note this step also deploys all API products, developers, and apps needed for OA
 Navigate to /sample-proxies.
 
 $ cd ..
+
 $ cd ./sample-proxies
 
 List available proxies:
