@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<RaiseFault name="Fault.MissingCityName">
+    <IgnoreUnresolvedVariables>false</IgnoreUnresolvedVariables>
+    <FaultResponse>
+        <Set>
+            <Headers/>
+            <Payload contentType="application/xml">
+                <error>
+                    <httpResponseCode>409</httpResponseCode>
+                    <errorCode>error_409</errorCode>
+                    <errorMessage>Missing City Name</errorMessage>
+                    <errorMoreInfo>Provide a city parameter in the querystring e.g. city=venice</errorMoreInfo>
+                </error>
+            </Payload>
+            <StatusCode>409</StatusCode>
+            <ReasonPhrase>Conflict</ReasonPhrase>
+        </Set>
+    </FaultResponse>
+</RaiseFault>
