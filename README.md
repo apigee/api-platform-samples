@@ -1,5 +1,3 @@
-2/25/2013
-
 # Apigee API Platform Samples
 
 Apigee API Platform Samples are designed to help developers 
@@ -25,8 +23,6 @@ Fully-featured, free accounts are available at:
 
 <http://enterprise.apigee.com/signup>
 
-Learn more at <http://apigee.com/docs>
-
 # Getting started
 
 All of these samples require you to have an account on:
@@ -35,29 +31,36 @@ All of these samples require you to have an account on:
 You can sign up for a trial account at:
 <http://enterprise.apigee.com/signup>
 
-Learn more at <http://apigee.com/docs>
-
 You also require:
 
 Python, to use the deployment tool.
 
-Deploy all sample proxies at once:
+# Deploy
+
+You can deploy all of the samples to your
+organization at once.
 
 $ cd /setup
 
-Set your Apigee API Platform account settings in setenv.sh.
+Edit the file setenv.sh to include the settings for your API Platform account
 
 Run:
 
 $ sh deploy_all.sh
 
-Note this step also deploys all API products, developers, and apps needed for OAuth.)
+Note this step also deploys all API products, developers, and apps needed for OAuth.
 
 Navigate to /sample-proxies.
 
+$ cd ..
+$ cd ./sample-proxies
+
+List available proxies:
+
+$ ls
+
 Each sample API proxy directory contains a script called
-invoke.sh that issues a curl command to the API exposed 
-by the sample API proxy.
+invoke.sh that issues a curl command to the sample API proxy.
 
 $ sh invoke.sh
 
@@ -65,16 +68,21 @@ If you make changes to the sample API proxy, simply run:
 
 $ sh deploy.sh
 
-in the sample AIP proxy's directory to import the proxy and
-deploy changes.
+to deploy your changes.
 
 # What's here:
 
 /sample-proxies
 
 A set of fully-functional API proxies that you can deploy and invoke
-on the Apigee API Platform. Feel free to modify them as needed.
-(Be sure to deploy changes for them to take effect.)
+on the Apigee API Platform. 
+
+Feel free to modify them as needed--just e sure to deploy changes for 
+them to take effect.
+
+For a detailed overview of the available sample see:
+
+http://apigee.com/docs/enterprise/content/api-platform-samples
 
 /schemas
 
@@ -110,9 +118,12 @@ $ deploy_all.sh
 
 /tools
 
-Contains a Python deployment tool (deploy.py) that imports an API proxy to an
+deploy.py: Python deployment tool (deploy.py) that imports an API proxy to an
 organization on the Apigee platform and then deploys it to the environment
 specified.
+
+proxy_gen.sh: A simple script that interacts with the API Platform to
+locally generate an API proxy scaffold.
 
 # Get help and interact with other API developers
 
