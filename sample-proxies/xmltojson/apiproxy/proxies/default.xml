@@ -6,13 +6,6 @@
 	  </Step>
     </Response>
   </PreFlow>
-  <PostFlow>
-    <Response>
-	  <Step>
-	    <Name>jsontoxml</Name>
-	  </Step>
-    </Response>
-  </PostFlow> 
   <HTTPProxyConnection>
     <BasePath>/xmltojson</BasePath>    
     <VirtualHost>default</VirtualHost>
