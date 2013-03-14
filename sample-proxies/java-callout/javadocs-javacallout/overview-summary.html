@@ -102,6 +102,140 @@ function windowTitle()
 </TR>
 </TABLE>
 
+<h2>Java Callout API Overview</h2>
+<p>API developers can plugin custom code into a message flow using the JavaCallout policy.</p>
+
+<h4>The Execution Interface</h4>
+
+All executions in the message flow implement the following interface:
+
+<pre>public interface Execution {
+    ExecutionResult execute(MessageContext messageContext, ExecutionContext executionContext);
+}</pre>
+
+<code>messageContext</code>: Provides access to the Request and Response messages
+<code>executionContext</code>: Provides control over the flow and utility methods for asynchronous processing
+
+<h4>@IOIntensive </h4>
+<p>On the API pLatform, I/O and any processes that will never block the CPU run in a core thread pool that is, by default, configured to one thread per CPU. ANy process that might block a thread is dispatched to a separate thread pool, which is configured using <code>threadpool.properties</code>.</p>
+
+<p>This is controlled using an annotation called <code>@IOIntensive</code>. If you put that annotation on the policy class, then it runs in the asynchronous thread pool. Otherwise it runs in an I/O thread.</p>
+
+<p>As a best practice, all classes that implement the JavaCallout API should have <code>@IOIntensive</code> attribute unless there is a high degree of certainty that no blocking network I/O, no file I/O, no sleeps, etc. are used.</p>
+
+<h2>Patterns</h2>
+
+<h4>Simple blocking:</h4>
+<p>Use case: Message manipulation</p>
+<p>When to apply: If the execution performs non-blocking processing using the message context (for example, setting/getting HTTP headers or other transport properties). While the execution is in progress, no other processing takes place on the message context.</p>
+<p>Controlling flow processing: If the execution returns <code>ExecutionResult.SUCCESS</code>, then the flow proceeds to the next execution. If the execution throws an Exception or returns <code>ExecutionResult.FAILURE</code>, then the flow shifts to the error state and executes the error flow. Using an instance of <code>ExecutionResult</code>, you can set the custom error response and error response headers.</p>
+<p>Caveats: Blocking operations that use IO or thread synchronization can result in loss of throughput.</p>
+
+<pre>@IOIntensive
+	public class SimpleBlockingExecution implements Execution {
+
+    public ExecutionResult execute(MessageContext messageContext, ExecutionContext executionContext) {
+        // message modification, etc
+        messageContext.getMessage().setHeader("Thread", Thread.currentThread().getName()); // executes in IO thread
+        messageContext.getMessage().setHeader("SimpleBlockingExecution", "aye");
+        return ExecutionResult.SUCCESS; // flow continues to next execution
+    }
+}</pr>
+
+<h4>Simple non-blocking:</h4>
+<p>Use case: Reading a custom response from a file, cache lookups, network calls to remote services, etc.</p>
+<p>When to apply: If the execution does some blocking IO operations or even if it does some activity which does not really affect the flow, then this pattern should be applied. The execution of this instance will be carried out on a non-IO thread (on a different thread pool). The flow resumes once the execution is complete.</p>
+<p>Controlling flow processing: Same as in Simple blocking execution.</p>
+<p>Caveats: If the execution takes too long to complete, it may be terminated by the thread manager</p>
+
+<pre>@IOIntensive
+public class SimpleNonBlockingExecutionReturnError implements Execution {
+
+	@Override
+	public ExecutionResult execute(MessageContext messageContext, ExecutionContext executionContext) {
+		try {
+            // message modification, IO operations, etc
+            // do something here that might fail
+            return ExecutionResult.SUCCESS;
+        } catch (Exception ex) {
+            ExecutionResult executionResult = new ExecutionResult(false, ExecutionResult.Action.ABORT);
+            executionResult.setErrorResponse(ex.getMessage());
+            executionResult.addErrorResponseHeader("ExceptionClass", ex.getClass().getName());
+            return new ExecutionResult(false, ExecutionResult.Action.ABORT);
+        }
+	}</pre>
+}</pre>
+
+<h4>Non-blocking and external to the flow</h4>
+
+<p>Use case: Reporting metrics to an analytics server, logging to disk, etc</p>
+<p>When to apply: If the execution performs a number of activities, which do not influence the request flow. The execution context is used to submit such tasks. The flow continues without waiting for the completion of the task. If any error handling is required for the submitted task, a callback instance can be used.</p>
+<p>Controlling flow processing: Same as Simple Blocking execution.</p>
+<p>Miscellaneous: It is important that the submitted tasks do not hold any reference to the message context or to the execution context. If the task is long running, it might lead to out of memory conditions. It is also possible that while the task is running, the message flow has already completed.</p>
+
+<pre>public class SubmitTaskAndContinue implements Execution {
+    private static final Logger logger = LoggerFactory.getLogger("SubmitTaskAndContinue");
+    public ExecutionResult execute(final MessageContext messageContext, final ExecutionContext executionContext) {
+        executionContext.submitTask(new Task());
+        // here onwards, the execution can return success or failure as in Simple Blocking Execution
+        return ExecutionResult.SUCCESS;
+    }
+    private static class Task implements Runnable {
+        public void run() {
+            // report to analytics agent
+            // log to disk
+            // aggregate statistics
+            logger.debug("SubmitTaskAndContinue.Task.run()");
+        }
+    }
+}</pre>
+<p>Example: See files SubmitTaskAndContinue.java and SubmitTaskAndContinueCallbackHandling.java</p>
+
+<h4>Non-blocking and influences of the flow</h4>
+<p>Use case: Purely non-blocking activity based on notifications (callback or event driven)</p>
+<p>When to apply: Use for long-running transactions designed to receive a callback on completion .</p>
+<p>Controlling flow processing: Depending on the task results, the task can again invoke on ExecutionContext.resume() or ExecutionContext.resume(Exception ex) to resume the message flow.</p>
+<p>Miscellaneous: If the callback is not made for some time, it might lead to out of memory conditions since the message context will have to be kept alive.</p>
+
+<pre>public class SubmitTaskAndPauseForCompletion implements Execution {
+    private static final Logger logger = LoggerFactory.getLogger("SubmitTaskAndPauseForCompletion");
+	@Override
+	public ExecutionResult execute(MessageContext messageContext, ExecutionContext executionContext) {
+		Message message = messageContext.getMessage();
+		// Blocking code here
+		// ...
+		//
+		executionContext.submitTask(new AuthenticationTask(), new PostAuthenticationCallback(), executionContext);
+		// This line resumes after the submitTask is done.
+        //...
+		return ExecutionResult.PAUSE; // causes the flow to pause until resumed explicitly again
+	}
+	class AuthenticationTask implements Runnable {
+		Subject subject;
+        @Override
+		public void run() {
+			// Lookup LDAP server and invoke the server
+            // do service callout
+            logger.debug("SubmitTaskAndPauseForCompletion.AuthenticationTask.run()");
+		}		
+		public Subject getSubject() {
+			return subject;
+		}
+	}
+	class PostAuthenticationCallback implements Callback {
+        @Override
+		/**
+		 * Post this method invocation, resume of flow is invoked by the framework
+		 */
+		public void callback(Runnable task, Object handback) {
+			AuthenticationTask authTask = (AuthenticationTask) task;
+			Subject subject = authTask.getSubject();
+            logger.debug("SubmitTaskAndPauseForCompletion.PostAuthenticationCallback.callback()");
+		}
+	}
+}</pre>
+
+<p>Example: SubmitTaskAndPauseForCompletion.java</p>
 <P>
 &nbsp;<HR>
 
