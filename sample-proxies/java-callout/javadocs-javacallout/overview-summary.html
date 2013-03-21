@@ -140,7 +140,7 @@ All executions in the message flow implement the following interface:
         messageContext.getMessage().setHeader("SimpleBlockingExecution", "aye");
         return ExecutionResult.SUCCESS; // flow continues to next execution
     }
-}</pr>
+}</pre>
 
 <h4>Simple non-blocking:</h4>
 <p>Use case: Reading a custom response from a file, cache lookups, network calls to remote services, etc.</p>
@@ -150,7 +150,6 @@ All executions in the message flow implement the following interface:
 
 <pre>@IOIntensive
 public class SimpleNonBlockingExecutionReturnError implements Execution {
-
 	@Override
 	public ExecutionResult execute(MessageContext messageContext, ExecutionContext executionContext) {
 		try {
@@ -163,7 +162,7 @@ public class SimpleNonBlockingExecutionReturnError implements Execution {
             executionResult.addErrorResponseHeader("ExceptionClass", ex.getClass().getName());
             return new ExecutionResult(false, ExecutionResult.Action.ABORT);
         }
-	}</pre>
+	}
 }</pre>
 
 <h4>Non-blocking and external to the flow</h4>
