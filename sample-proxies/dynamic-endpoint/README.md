@@ -4,6 +4,10 @@ This sample demonstrates the ability of Apigee to change the target endpoint
 dynamically at runtime. In this sample, the request is either routed to 
 Facebook or Twitter based on routeTo query parameter.
 
+This approach could also be used to dynamically route requests between different 
+backend environments, such as testing and production environments, sandbox
+and production APIs, and so on.
+
 # Set up
 
 * The username and password that you use to login to enterprise.apigee.com.
