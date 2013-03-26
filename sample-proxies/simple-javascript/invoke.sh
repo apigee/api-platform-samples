@@ -1,10 +1,11 @@
 #!/bin/bash
 
-echo Using org and environment configured in /setup/setenv.sh, $org and $env
+echo Using org and environment configured in /setup/setenv.sh
 
 source ../../setup/setenv.sh
 
-curl -I "http://$org-$env.apigee.net/simple-javascript/1/statuses/user_timeline.json?screen_name=Apigee"
+echo "Invoking proxied API http://weather.yahooapis.com/forecastrss?w=12797282"
 
-echo "Note addition of a set of HTTP headers 'X-Apigee-Demo-*' showing flow values for this transaction."
+set -x
 
+curl "http://$org-$env.apigee.net/weather/forecastrss?w=12797282"

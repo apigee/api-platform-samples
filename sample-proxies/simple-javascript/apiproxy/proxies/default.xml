@@ -1,7 +1,7 @@
-<ProxyEndpoint name="proxy">
+<ProxyEndpoint name="default">
 	<PostFlow>
 		<Response>
-			<Step><Name>javascriptpolicy</Name></Step>
+			<Step><Name>transform</Name></Step>
 		</Response>
 	</PostFlow>
 	<HTTPProxyConnection>
@@ -9,6 +9,6 @@
 		<VirtualHost>default</VirtualHost>
 	</HTTPProxyConnection>
 	<RouteRule name="default">
-		<TargetEndpoint>twitter</TargetEndpoint>
+		<TargetEndpoint>default</TargetEndpoint>
 	</RouteRule>
 </ProxyEndpoint>
