@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<APIProxy name="json-patch-app-services">
+    <ConfigurationVersion minorVersion="0" majorVersion="4"/>
+    <DisplayName>json-patch-app-services</DisplayName>
+</APIProxy>

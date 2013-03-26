@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<TargetEndpoint name="default">
+    <Description>App Services JSON Patch endpoint</Description>
+    <Flows>
+        <Flow name="PATCH">
+            <Condition><![CDATA[ request.verb = "PATCH" ]]></Condition>
+            <Request>
+                <Step>
+                    <Name>get-original-json</Name>
+                </Step>
+                <!-- Load the json-patch JavaScript library to be used in the next step -->
+                <Step>
+                    <Condition><![CDATA[ json-patch.originalJSON != null ]]></Condition>
+                    <Name>lib.json-patch-duplex</Name>
+                </Step>
+                <!-- Apply the JSON patch from the request body onto the original JSON
+                     and transform the request to a full PUT with the patched JSON -->
+                <Step>
+                    <Condition><![CDATA[ json-patch.originalJSON != null ]]></Condition>
+                    <Name>patch-and-make-put</Name>
+                </Step>
+            </Request>
+        </Flow>
+    </Flows>
+    <HTTPTargetConnection>
+        <URL>http://api.usergrid.com</URL>
+    </HTTPTargetConnection>
+</TargetEndpoint>
