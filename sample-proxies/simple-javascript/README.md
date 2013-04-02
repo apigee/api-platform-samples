@@ -11,13 +11,9 @@ processing pipeline.
 
 # References
 
-Apigee API Platform JavaScript Object Model:
+[Apigee API Platform JavaScript Object Model](https://apigee.com/docs/enterprise/content/apigee-javascript-object-model)
 
-https://apigee.com/docs/enterprise/content/apigee-javascript-object-model
-
-JavaScript API Platform Developer Guide Topic:
-
-https://apigee.com/docs/enterprise/content/scripting-api-flow
+[JavaScript API Platform Developer Guide Topic](https://apigee.com/docs/enterprise/content/scripting-api-flow)
 
 # Set up
 
@@ -29,23 +25,19 @@ What you need:
 
 # Configure 
 
-Update /setup/setenv.sh with your environment details
+Update `/setup/setenv.sh` with your environment details
 
 # Import and deploy sample project
 
-Run:
+To deploy, run `/setup/deploy.sh`
 
-/setup/deploy.sh
-
-Testing
-
-$ sh invoke.sh
+To test, run `invoke.sh`
 
 # Get help
 
-For assistance, post to http://support.apigee.com
+For assistance, post to the [Apigee Developer Forum](http://support.apigee.com)
 
-Copyright 2013 Apigee Corporation
+Copyright © 2013 Apigee Corporation
 
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use
 this file except in compliance with the License. You may obtain a copy

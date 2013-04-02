@@ -30,35 +30,27 @@ specification. This WADL file can be used to generate an interactive API
 Console, designed to be sued by other developers learning to invoke 
 APIs you expose.
 
-Create an account to import and the WADL file and generate a console.
-
-http://apigee.com/togo
+[Create an Apigee Console To-Go and import and the WADL file.](http://apigee.com/togo)
 
 # References
 
-API Platform JavaScript Object Model:
+[API Platform JavaScript Object Model](http://apigee.com/docs/enterprise/content/apigee-javascript-object-model)
 
-http://apigee.com/docs/enterprise/content/apigee-javascript-object-model
+[API Platform Developer Guide topic](http://apigee.com/docs/enterprise/content/building-composite-service-2-javascript-app)
 
-API Platform Developer Guide topic:
-
-http://apigee.com/docs/enterprise/content/building-composite-service-2-javascript-app
-
-Setup and Apigee API Console:
-
-http://apigee.com/docs/enterprise/content/set-apigee-api-console
+[How To Setup an Apigee API Console](http://apigee.com/docs/enterprise/content/set-apigee-api-console)
 
 ## Example
 
 A sample request to invoke the sample:
 
-$ curl "http://{org_name}-test.apigee.net/altitude2?country=us&postalcode=08008"
+    curl "http://{org_name}-test.apigee.net/altitude2?country=us&postalcode=08008"
 
 Sample response:
 
-{"country":"us","postalcode":"08008",
- "elevation":{"meters":0.5045232,"feet":1.6552599030345978},
- "location":{"latitude":39.75007129999999,"longitude":-74.1357407}}
+    {"country":"us","postalcode":"08008",
+     "elevation":{"meters":0.5045232,"feet":1.6552599030345978},
+     "location":{"latitude":39.75007129999999,"longitude":-74.1357407}}
 
 # Set up
 
@@ -70,23 +62,19 @@ enterprise.apigee.com and check account settings.
 
 # Configure 
 
-Update /setup/setenv.sh with your environment details
+Update `/setup/setenv.sh` with your environment details
 
 # Import and deploy sample project
 
-Run:
+To deploy, run `/setup/deploy.sh`
 
-/setup/deploy.sh
-
-Testing
-
-$ sh invoke.sh
+To test, run `invoke.sh`
 
 # Get help
 
-For assistance, post to http://support.apigee.com
+For assistance, post to the [Apigee Developer Forum](http://support.apigee.com)
 
-Copyright 2013 Apigee Corporation
+Copyright © 2013 Apigee Corporation
 
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use
 this file except in compliance with the License. You may obtain a copy

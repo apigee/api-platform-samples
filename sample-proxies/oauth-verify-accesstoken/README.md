@@ -14,7 +14,7 @@ in the API product
 # Note
 
 As, this flow involves generation of access token before requesting the protected resource,
-the "invoke.sh" will guide you through the generation of access token flow.
+the `invoke.sh` script will guide you through the generation of access token flow.
 Simply follow prompts.
 
 
@@ -26,30 +26,24 @@ Simply follow prompts.
 
 # Configure 
 
-Update /setup/setenv.sh with your account settings
+1. Update `/setup/setenv.sh` with your account settings
 
-Configure API products, developers, and apps in your organization by
+2. Configure API products, developers, and apps in your organization by
 running the following script:
 
-Run:
-
-$ sh ../setup/provisioning/setup.sh
+3. Run `../setup/provisioning/setup.sh`
 
 # Import and deploy sample project
 
-Run:
+To deploy, run `/setup/deploy.sh`
 
-$ sh deploy.sh
-
-Testing
-
-$ sh invoke.sh
+To test, run `invoke.sh`
 
 # Get help
 
-For assistance, post to http://support.apigee.com
+For assistance, post to the [Apigee Developer Forum](http://support.apigee.com)
 
-Copyright 2013 Apigee Corporation
+Copyright © 2013 Apigee Corporation
 
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use
 this file except in compliance with the License. You may obtain a copy
