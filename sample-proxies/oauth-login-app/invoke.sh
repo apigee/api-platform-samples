@@ -109,7 +109,7 @@ echo -e "\nThe API Provider Login Page Redirection URL:"
 echo -e "https://$org-$env.$api_domain/oauth/samplelogingpage?client_id={request.queryparam.client_id}&response_type={request.queryparam.response_type}&scope={request.queryparam.scope}"
 
 echo -e "\nOn successful authentication, login application invokes this URL and returns the access token to the a pp"
-echo -e "https://$org-$env.$api_domain/oauth/authorizationcode?client_id=$consumerkey&response_type=token&app_enduser={userId}"
+echo -e "https://$org-$env.$api_domain/oauth/token?client_id=$consumerkey&response_type=token&app_enduser={userId}"
 
 }
 
