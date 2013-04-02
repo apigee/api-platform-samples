@@ -8,7 +8,7 @@ A demo application that performs a search and renders the results in HTML is inc
 
 ## Example
 
-    curl "http://demo-prod.apigee.net/twitter-translate/search.json?lang=es&q=bicycle"
+    curl -v "http://demo-prod.apigee.net/twitter-translate/search.json?lang=es&q=bicycle"
 
     Response excerpt:
 
@@ -48,31 +48,29 @@ A demo application that performs a search and renders the results in HTML is inc
 # Set up
 
 1. Sign up for [Microsoft Translator API](http://www.microsofttranslator.com/dev/) access,
-and replace the `clientId` and `clientSecret` in `apiproxy/resources/jsc/api-config` with your application credentials.
+and replace the `clientId` and `clientSecret` in `apiproxy/resources/jsc/api-config.js` with your application credentials.
 
 2. Create a cache in the organization and environment you will be deploying the bundle in, using the definition in `twitter-translate-cache.xml`. This is used to cache the Translator API access token across requests. Try the following command:
 
-$ curl -v -X POST -H "Content-Type: application/xml" -d @twitter-translate-cache.xml https://api.enterprise.apigee.com/v1/organizations/$ORG/environments/$ENV/caches -u myname:mypass
+    ```curl -v -X POST -H "Content-Type: application/xml" -d @twitter-translate-cache.xml https://api.enterprise.apigee.com/v1/organizations/$ORG/environments/$ENV/caches -u myname:mypass```
 
 * The username and password that you use to login to enterprise.apigee.com.
-* The name of the organization in which you have an account. Login to 
- enterprise.apigee.com and check account settings.
+* The name of the organization in which you have an account. Log in to 
+ [enterprise.apigee.com](http://enterprise.apigee.com) and check account settings.
 
 # Configure 
 
-Update /setup/setenv.sh with your environment details
+Update `/setup/setenv.sh` with your environment details
 
 # Import and deploy sample project
 
-Run:
-
-/setup/deploy.sh
+Run `/setup/deploy.sh`
 
 # Get help
 
-For assistance, post to http://support.apigee.com
+For assistance, post to the [Apigee Customer Community](http://support.apigee.com)
 
-Copyright 2013 Apigee Corporation
+Copyright © 2013 Apigee Corporation
 
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use
 this file except in compliance with the License. You may obtain a copy
