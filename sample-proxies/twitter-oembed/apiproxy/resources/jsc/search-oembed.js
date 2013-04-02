@@ -35,10 +35,10 @@ function createdAtString(created_at) {
 // Get the original JSON response as an object
 var origResponse = response.content.asJSON;
 
-// Only transform the response if it is an array of statuses
-// (it's probably an error or fault response otherwise)
-if (Array.isArray(origResponse)) {
-  var oembed,
+if (origResponse === Object(origResponse) &&
+    Array.isArray(origResponse.results)) {
+  var results = origResponse.results,
+    oembed,
     html = '',
     status;
 
@@ -54,8 +54,8 @@ if (Array.isArray(origResponse)) {
   };
 
   // Create a blockquote element for each status
-  for (var i = 0, len = origResponse.length; i < len; ++i) {
-    status = origResponse[i];
+  for (var i = 0, len = results.length; i < len; ++i) {
+    status = results[i];
 
     var statusText = status.text
       .replace(/((https?|s?ftp|ssh)\:\/\/[^"\s<\>]*[^.,;'">\:\s<\>\)\]\!])/g, linkify)
@@ -66,8 +66,8 @@ if (Array.isArray(origResponse)) {
 
     html += '<blockquote class="twitter-tweet">';
     html += '<p>'+statusText+'</p>';
-    html += '&mdash; '+status.user.name+'(@'+status.user.screen_name+')';
-    html += ' <a href="https://twitter.com/'+status.user.screen_name+'/statuses/'+status.id_str+'" data-datetime="'+datetime+'">'+datetimeStr+'</a>';
+    html += '&mdash; '+status.from_user_name+'(@'+status.from_user+')';
+    html += ' <a href="https://twitter.com/'+status.from_user+'/statuses/'+status.id_str+'" data-datetime="'+datetime+'">'+datetimeStr+'</a>';
     html += '</blockquote>';
   }
 
