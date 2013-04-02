@@ -47,7 +47,7 @@ the Apigee API Platform OAuth infrastructure and a third-party login app.
 
 3. On successful authentication, login application invokes this url and it returns the AccessToken to the App
 
-        https://$org-$env.$api_domain/oauth/authorizationcode?client_id=$consumerkey&response_type=code&app_enduser={userId}
+        https://$org-$env.$api_domain/oauth/token?client_id=$consumerkey&response_type=code&app_enduser={userId}
 
 
 
