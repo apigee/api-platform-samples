@@ -1,0 +1,63 @@
+body {
+    font: 1em/1.5em Helvetica, Arial, sans-serif;
+    color: #222;
+    padding: 2em;
+}
+
+/* clearfix */
+.clearfix:before,
+.clearfix:after {
+    content: " ";
+    display: table;
+}
+.clearfix:after { clear: both; }
+
+
+.top {
+    margin-bottom: 0.5em;
+}
+
+.top .path {
+    float: left;
+}
+
+.top .buttons {
+    float: right;
+}
+
+.spinnercontainer {
+    width: 1em;
+    height: 1em;
+    display: inline-block;
+    position: relative;
+    top: 0.2em;
+}
+
+.patches {
+    list-style-type: none;
+    padding-left: 0;
+    font: 0.8em/1.5em "Droid Sans Mono", monospace;
+    opacity: 1;
+}
+
+.patches li {
+    -moz-animation: 5s fade both;
+    -webkit-animation: 5s fade both;
+    animation: 5s fade both;
+}
+
+@-moz-keyframes fade {
+    0% { opacity: 1; }
+    50% { opacity: 1; }
+    100% { opacity: 0.5; }
+}
+@-webkit-keyframes fade {
+    0% { opacity: 1; }
+    50% { opacity: 1; }
+    100% { opacity: 0.5; }
+}
+@keyframes fade {
+    0% { opacity: 1; }
+    50% { opacity: 1; }
+    100% { opacity: 0.5; }
+}
