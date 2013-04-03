@@ -1,15 +1,10 @@
 $(function() {
-  $.ajax({
-    url:'http://demo-prod.apigee.net/twitter-oembed/1/statuses/user_timeline.json',
-    data: {
-      screen_name: 'Apigee'
+  $.getJSON('http://demo-prod.apigee.net/twitter-oembed/search.json',
+    {
+      q: 'Apigee'
     },
-    type: 'GET',
-    beforeSend: function(xhr) {
-      xhr.setRequestHeader('Accept', 'application/json');
-    },
-    success: function(oembed) {
+    function(oembed) {
       $('#container').html(oembed.html);
     }
-  });
+  );
 });
