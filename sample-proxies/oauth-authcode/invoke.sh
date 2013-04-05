@@ -59,10 +59,9 @@ refresh_token=`echo $accesstoken_response | awk -F "," '{ print $9 }' | awk -F "
 echo -e "AccessToken: $access_token"
 echo -e "RefreshToken: $refresh_token \n"
 
-
 ###### RefreshToken Begins here......
 
-echo -e "\nNow assume that the accesstoken got expired."
+echo -e "\nNow assume that the accesstoken has expired."
 echo -e "It can be refreshed by calling to the refresh token endpoint, with the help of refreshtoken provided for the accesstoken\n"
 
 refreshtoken_request="https://$org-$env.$api_domain/weatheroauthauthcode/oauth/refresh_accesstoken?grant_type=refresh_token"
