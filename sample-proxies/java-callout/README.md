@@ -12,10 +12,10 @@ The proxy uses the Yahoo Weather API for target endpoint, and maps WEOID IDs to 
 # Set up
 
 * The username and password that you use to login to enterprise.apigee.com.
-* The name of the organization in which you have an account. Login to 
+* The name of the organization in which you have an account. Login to
   enterprise.apigee.com and check account settings.
 
-# Configure 
+# Configure
 
 Update `/setup/setenv.sh` with your environment details
 
@@ -32,7 +32,7 @@ If you make modifications to the Java sample, you can recompile it as follows:
     cd ./java
     javac -d bin -sourcepath src -classpath ../lib/expressions-1.0.0.jar:../lib/message-flow-1.0.0.jar src/com/apigee/CityLookup.java
     cd bin
-    jar -cvf CityLookup.jar /com
+    jar -cvf CityLookup.jar ./com
     cp CityLookup.jar ../../apiproxy/resources/java
 
 # Get help
