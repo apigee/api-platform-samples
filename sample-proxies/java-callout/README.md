@@ -32,7 +32,7 @@ If you make modifications to the Java sample, you can recompile it as follows:
     cd ./java
     javac -d bin -sourcepath src -classpath ../lib/expressions-1.0.0.jar:../lib/message-flow-1.0.0.jar src/com/apigee/CityLookup.java
     cd bin
-    jar -cvf CityLookup.jar /com
+    jar -cvf CityLookup.jar ./com
     cp CityLookup.jar ../../apiproxy/resources/java
 
 # Get help
