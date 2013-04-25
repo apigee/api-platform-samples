@@ -1,0 +1,13 @@
+<ProxyEndpoint name="default">
+  <HTTPProxyConnection>
+    <BasePath>/conditional-routing</BasePath>
+    <VirtualHost>default</VirtualHost>
+  </HTTPProxyConnection>   
+  <RouteRule name="fbroute">
+    <Condition>request.header.routeTo = "facebook"</Condition>
+    <TargetEndpoint>default</TargetEndpoint>
+  </RouteRule>
+  <RouteRule name="default">
+    <TargetEndpoint>twitter</TargetEndpoint>
+  </RouteRule>
+</ProxyEndpoint>
