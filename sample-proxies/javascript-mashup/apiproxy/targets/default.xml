@@ -1,0 +1,5 @@
+<TargetEndpoint name="default">
+  <HTTPTargetConnection>
+    <URL>NULL</URL>
+  </HTTPTargetConnection>
+</TargetEndpoint>
