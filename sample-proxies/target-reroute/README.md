@@ -1,10 +1,18 @@
-# Python Script Sample
+# Target Re-route Sample
 
 This sample demonstrates a simple scenario of changing the target endpoint
 with the help of setting the flow variable "target.url" in a Javascript Step Policy,
 with removal of the proxy.pathsuffix. The proxy uses the Yahoo Weather API for actual
 target endpoint This reference helps in understanding the process of building,
 deploying, activating and accessing this sample.
+
+The actual target api: `http://my-dummy-old-target.com/to-be-replaced`
+New target api that overrides the actual target: `http://weather.yahooapis.com/forecastrss?w={object-in-request}`
+
+Proxy Request: `http://$org-$env.apigee.net/yahoo/objects/12797282` 
+where `/yahoo` is the base-path, `/objects/12797282` is the proxy.pathsuffix.
+
+This Proxy Request will be transformed into `http://weather.yahooapis.com/forecastrss?w=12797282`
 
 # Set up
 
