@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<TargetEndpoint name="default">
+    <Description></Description>
+    <FaultRules/>
+    <Flows/>
+    <PreFlow>
+    	<Request>
+            <Step>
+                <FaultRules/>
+                <Name>setJsHeader</Name>
+            </Step>
+    	</Request>
+    </PreFlow>
+    <HTTPTargetConnection>
+        <Properties/>
+        <URL>http://my-dummy-old-target.com/to-be-replaced</URL>
+    </HTTPTargetConnection>
+</TargetEndpoint>
