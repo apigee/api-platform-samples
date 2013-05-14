@@ -12,10 +12,10 @@ The proxy uses the Yahoo Weather API for target endpoint, and maps WEOID IDs to 
 # Set up
 
 * The username and password that you use to login to enterprise.apigee.com.
-* The name of the organization in which you have an account. Login to 
+* The name of the organization in which you have an account. Login to
   enterprise.apigee.com and check account settings.
 
-# Configure 
+# Configure
 
 Update `/setup/setenv.sh` with your environment details
 
