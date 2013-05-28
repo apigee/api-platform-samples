@@ -1,0 +1,28 @@
+<!--
+ ~ Copyright (c) 2013, Apigee Corporation.  All rights reserved.
+ ~ Apigee(TM) and the Apigee logo are trademarks or
+ ~ registered trademarks of Apigee Corp. or its subsidiaries.  All other
+ ~ trademarks are the property of their respective owners.
+ -->
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:include schemaLocation="stepDefinition.xsd"/>
+
+    <xs:element name="JSONThreatProtection">
+        <xs:complexType>
+            <xs:complexContent>
+                <xs:extension base="stepDefinitionType">
+                    <xs:sequence>
+                        <xs:element name="Source" type="xs:NCName" minOccurs="0"/>
+                        <xs:element name="ContainerDepth" type="xs:int" default="-1" minOccurs="0"/>
+                        <xs:element name="ObjectEntryCount" type="xs:int" default="-1" minOccurs="0"/>
+                        <xs:element name="ArrayElementCount" type="xs:int" default="-1" minOccurs="0"/>
+                        <xs:element name="ObjectEntryNameLength" type="xs:int" default="-1" minOccurs="0"/>
+                        <xs:element name="StringValueLength" type="xs:int" default="-1" minOccurs="0"/>
+                    </xs:sequence>
+                </xs:extension>
+            </xs:complexContent>
+        </xs:complexType>
+    </xs:element>
+
+</xs:schema>
