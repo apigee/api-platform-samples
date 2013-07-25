@@ -1,0 +1,4 @@
+<APIProxy name="AsyncCallout">
+  <!-- This is the root of the API proxy -->
+  <Description>Demonstrates a simple asynchronous callout using the JavaScript httpClient</Description>
+</APIProxy>

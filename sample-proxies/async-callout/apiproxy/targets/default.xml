@@ -1,0 +1,12 @@
+<TargetEndpoint name="default">
+	<PreFlow>
+		<Response>
+			<Step><Name>assemble_response</Name></Step>
+		</Response>
+	</PreFlow>
+    <!-- Outbound HTTP configuration -->
+    <HTTPTargetConnection>
+	    <!-- The URL for outbound requests -->
+        <URL>http://weather.yahooapis.com</URL>
+    </HTTPTargetConnection>
+</TargetEndpoint>
