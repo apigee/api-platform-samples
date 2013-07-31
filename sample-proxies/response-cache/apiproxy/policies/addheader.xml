@@ -1,0 +1,12 @@
+<AssignMessage name="addheader">
+  <AssignTo createNew="false" type="response"></AssignTo>
+  <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+  <Set>
+    <Headers>
+      <Header name="cache_hit">{responsecache.cacheforecast.cachehit}</Header>
+      <Header name="cache_name">{responsecache.cacheforecast.cachename}</Header>
+      <Header name="cache_key">{responsecache.cacheforecast.cachekey}</Header>
+      <Header name="cache_invalidentry">{responsecache.cacheforecast.invalidentry}</Header>
+    </Headers>
+  </Set>
+</AssignMessage>

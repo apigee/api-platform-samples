@@ -1,0 +1,10 @@
+<ResponseCache name="cacheforecast">
+    <CacheKey>
+        <KeyFragment ref="request.queryparam.w" />
+    </CacheKey>
+    <!-- Explicitly refresh the cached response by submitting a request message to this proxy with the HTTP header "bypass-cache:true" -->
+    <SkipCacheLookup>request.header.bypass-cache = "true"</SkipCacheLookup>
+    <ExpirySettings>
+        <TimeoutInSec>600</TimeoutInSec>
+    </ExpirySettings>
+</ResponseCache>
