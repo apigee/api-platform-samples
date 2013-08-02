@@ -38,7 +38,7 @@ Update `/setup/setenv.sh` with your environment details
 
 To deploy, run `deploy.sh`
 
-To test, run `invoke.sh`
+To test, run `$ sh invoke.sh`
 
 # Get help
 

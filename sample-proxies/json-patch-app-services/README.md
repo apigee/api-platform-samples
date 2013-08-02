@@ -36,9 +36,9 @@ deployed URL of this proxy bundle in your organization and environment.
 
 # Import and deploy sample project
 
-To deploy, run `/setup/deploy.sh`
+To deploy, run `$ sh deploy.sh`
 
-To test, run `invoke.sh`
+To test, run `$ sh invoke.sh`
 
 # Get help
 

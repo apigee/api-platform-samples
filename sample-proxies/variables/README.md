@@ -1,16 +1,10 @@
-# Content-based Routing
+# Variables
 
-This sample demonstrates dynamic request routing by implementing simple scenario 
-in which Apigee routes a request to Twitter or Facebook based on the value 
-of an HTTP header specified in the request.
+This sample demonstrates how you can use the ResponseCache policy to cache weather forecasts on the API Platform for 10 minutes.
 
-You can obtain a free account at http://enterprise.apigee.com/signup
+You can also refer to the API Platform Policy reference:
 
-# Set up
-
-* The username and password that you use to login to enterprise.apigee.com.
-* The name of the organization in which you have an account. Login to 
-  enterprise.apigee.com and check account settings.
+http://apigee.com/docs/enterprise/content/policies/reduce-latency-and-network-traffic-using-response-caching
 
 # Configure 
 
@@ -21,6 +15,8 @@ Update `/setup/setenv.sh` with your environment details
 To deploy, run `$ sh deploy.sh`
 
 To test, run `$ sh invoke.sh`
+
+To clear the cache, run 'refresh_cache.sh'.
 
 # Get help
 
