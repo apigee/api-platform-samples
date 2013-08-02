@@ -9,7 +9,7 @@
 ## On-premise deployments may have other environments.
 ## If you have a trial or cloud account, you do not need to
 ## modify the URL.
-## You can obtain a free account at http://enterprise.apigee.com/signup
+## You can obtain a free account at https://accounts.apigee.com/accounts/sign_up
 ## --------------------------------------
 
 org="Your ORG on enterprise.apigee.com"
