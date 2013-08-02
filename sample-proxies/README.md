@@ -6,7 +6,7 @@ Each directory contains a sample API proxy along with directions
 on how to configure, deploy, and test it on the Apigee API Platform.
 
 [Register for a fully-featured, free Apigee API Platform account](
-http://enterprise.apigee.com/signup)
+https://accounts.apigee.com/accounts/sign_up)
 
 ## [Platform Documentation](http://apigee.com/docs)
 
