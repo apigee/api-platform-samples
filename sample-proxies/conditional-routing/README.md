@@ -4,7 +4,7 @@ This sample demonstrates dynamic request routing by implementing simple scenario
 in which Apigee routes a request to Twitter or Facebook based on the value 
 of an HTTP header specified in the request.
 
-You can obtain a free account at http://enterprise.apigee.com/signup
+You can obtain a free account at https://accounts.apigee.com/accounts/sign_up
 
 # Set up
 
