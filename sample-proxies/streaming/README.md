@@ -2,7 +2,7 @@
 
 This sample demonstrates an API proxy configured for HTTP streaming. 
 
-The ProxyEndpoint  and TargetEndpoint are configured to stream HTTP 
+The ProxyEndpoint and TargetEndpoint are configured to stream HTTP 
 request and response messages.
 
 In the default configuration, HTTP processing on the API Platform is 
@@ -36,7 +36,7 @@ Update `/setup/setenv.sh` with your environment details
 
 # Import and deploy sample project
 
-To deploy, run `/setup/deploy.sh`
+To deploy, run `deploy.sh`
 
 To test, run `invoke.sh`
 
