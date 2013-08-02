@@ -1,7 +1,9 @@
 # HTTP Streaming
 
-This sample demonstrates HTTP streaming. In this example, the ProxyEndpoint 
-and TargetEndpoint are configured to stream HTTP request and response message.
+This sample demonstrates an API proxy configured for HTTP streaming. 
+
+The ProxyEndpoint  and TargetEndpoint are configured to stream HTTP 
+request and response messages.
 
 In the default configuration, HTTP processing on the API Platform is 
 asynchronous and non-blocking. 
@@ -25,8 +27,8 @@ See the API Platform reference:
 
 http://apigee.com/docs/enterprise/content/endpoint-properties-reference
 
-In this sample proxy, you can see these settings in /proxies/default.xml and
-/targets/default.xml.
+In this sample API proxy, you can see these settings in 
+'/proxies/default.xml' and '/targets/default.xml'.
 
 # Configure 
 
