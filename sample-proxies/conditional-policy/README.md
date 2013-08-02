@@ -24,7 +24,7 @@ http://apigee.com/docs/api/conditional-operators
 * The name of the organization in which you have an account. Login to 
   enterprise.apigee.com and check account settings.
 
-You can obtain a free account at http://enterprise.apigee.com/signup
+You can obtain a free account at https://accounts.apigee.com/accounts/sign_up
 
 # Configure 
 
