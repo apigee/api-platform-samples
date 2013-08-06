@@ -1,10 +1,19 @@
 # Variables
 
-This sample demonstrates how you can use the ResponseCache policy to cache weather forecasts on the API Platform for 10 minutes.
+This sample demonstrates how you can use the ExtractVariables policy to 
+populate variables. The sample ExtractVariables policy sets the variable values
+as HTTP headers in the response.
 
-You can also refer to the API Platform Policy reference:
+The sample policy demonstrates how to populate variable from the context, 
+API proxy configuration, request message, and m by parsing message content.
 
-http://apigee.com/docs/enterprise/content/policies/reduce-latency-and-network-traffic-using-response-caching
+The sample converts the XML response to from Yahoo! weather to demonstrate 
+how to configure the ExtractVariables policy with XPath and JSONPath
+to work with message content.
+
+You can also refer to the API Platform variables reference:
+
+http://apigee.com/docs/enterprise/content/predefined-variables
 
 # Configure 
 
@@ -15,8 +24,6 @@ Update `/setup/setenv.sh` with your environment details
 To deploy, run `$ sh deploy.sh`
 
 To test, run `$ sh invoke.sh`
-
-To clear the cache, run 'refresh_cache.sh'.
 
 # Get help
 
