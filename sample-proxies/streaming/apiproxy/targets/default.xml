@@ -1,0 +1,10 @@
+<TargetEndpoint name="default">
+  <Description/>
+  <HTTPTargetConnection>
+    <URL>http://weather.yahooapis.com</URL>
+    <Properties>
+      <Property name="request.streaming.enabled">true</Property>
+      <Property name="response.streaming.enabled">true</Property>
+    </Properties>
+  </HTTPTargetConnection>
+</TargetEndpoint>

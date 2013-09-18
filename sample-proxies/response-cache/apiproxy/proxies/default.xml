@@ -1,0 +1,18 @@
+<ProxyEndpoint name="default">
+  <PreFlow name="PreFlow">
+    <Request>
+        <Step><Name>cacheforecast</Name></Step>
+    </Request>
+    <Response>
+        <Step><Name>cacheforecast</Name></Step>
+        <Step><Name>addheader</Name></Step>
+    </Response>
+  </PreFlow>
+  <HTTPProxyConnection>
+    <BasePath>/cacheforecast</BasePath>    
+    <VirtualHost>default</VirtualHost>
+  </HTTPProxyConnection>
+  <RouteRule name="Route">
+    <TargetEndpoint>default</TargetEndpoint>
+  </RouteRule>
+</ProxyEndpoint>

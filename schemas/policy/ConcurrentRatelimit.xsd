@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="ConcurrentRatelimit">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="AllowConnections">
+                    <xs:complexType>
+                        <xs:attribute type="xs:string" name="count"/>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element type="xs:boolean" name="Distributed" default="false"/>
+                <xs:element name="TargetIdentifier">
+                    <xs:complexType>
+                        <xs:attribute type="xs:string" name="name"/>
+                        <xs:attribute type="xs:string" name="ref"/>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+            <xs:attribute type="xs:string" name="name"/>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

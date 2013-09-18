@@ -4,7 +4,7 @@ This directory provides scripts that configure your local environment and deploy
 
 # Directions
 
-1. If you do not have an account yet, [register one for free](http://enterprise.apigee.com/signup).
+1. If you do not have an account yet, [register one for free](https://accounts.apigee.com/accounts/sign_up).
 
 2. In the file `setenv.sh`, configure values for your organization, username, environment.
 

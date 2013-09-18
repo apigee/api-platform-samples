@@ -5,7 +5,7 @@ This directory provides profiles for API products, developers, and apps.
 Directions:
 
 1. If you do not have an account yet, register at: 
->http://enterprise.apigee.com/signup
+>https://accounts.apigee.com/accounts/sign_up
 
 2. In the file ../setenv.sh, configure values for your
 organization, username, environment.

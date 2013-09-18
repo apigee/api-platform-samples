@@ -2,7 +2,7 @@
 
 This sample provides a simple implementation of the JavaCallout API.
 
-Additional generic code samples are provided for reference in the `/java/src/com/apigee` directory.
+Additional generic code samples are provided for reference in the `/java/src/com/sample` directory.
 
 A JavaCallout is implemented to the JavaCallout API. Javadocs are available at:
 https://github.com/apigee/api-platform-samples/wiki/Apigee-API-Platform-Samples-Wiki
@@ -21,16 +21,16 @@ Update `/setup/setenv.sh` with your environment details
 
 # Import and deploy sample project
 
-To deploy, run `/setup/deploy.sh`
+To deploy, run `$ sh deploy.sh`
 
-To test, run `invoke.sh`
+To test, run `$ sh invoke.sh`
 
 # Compiling the source
 
 If you make modifications to the Java sample, you can recompile it as follows:
 
     cd ./java
-    javac -d bin -sourcepath src -classpath ../lib/expressions-1.0.0.jar:../lib/message-flow-1.0.0.jar src/com/apigee/CityLookup.java
+    javac -d bin -sourcepath src -classpath ../lib/expressions-1.0.0.jar:../lib/message-flow-1.0.0.jar src/com/sample/CityLookup.java
     cd bin
     jar -cvf CityLookup.jar ./com
     cp CityLookup.jar ../../apiproxy/resources/java

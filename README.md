@@ -19,7 +19,7 @@ The Apigee API Platform provides developers with:
 
 # Getting started
 
-You require an Apigee API Platform account. [Sign up for a free trial account.](http://enterprise.apigee.com/signup)
+You require an Apigee API Platform account. [Sign up for a free trial account.](https://accounts.apigee.com/accounts/sign_up)
 
 You also require [Python](http://python.org/getit/), to use the deployment tool.
 

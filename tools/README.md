@@ -24,7 +24,7 @@ Requires [Python](http://python.org/getit/) to be installed.
 This tool provides a simple command for importing and deploying an API proxy
 from your local machine to an environment on the Apigee API Platform.
 
-You require an account in an organization at enterprise.apigee.com. [Register for an account for free.](http://enterprise.apigee.com/signup)
+You require an account in an organization at enterprise.apigee.com. [Register for an account for free.](https://accounts.apigee.com/accounts/sign_up)
 
 # Usage
 
@@ -34,7 +34,7 @@ You require an account in an organization at enterprise.apigee.com. [Register fo
 The name will be the display name in the Apigee API Platform UI. If the API already exists,
 then the deploy tool will import this as a new revision of the existing API.
 
-* `-u` Your username and password for your account on enterprise.apigee.com. ([Register for an account for free.](http://enterprise.apigee.com/signup))
+* `-u` Your username and password for your account on enterprise.apigee.com. ([Register for an account for free.](https://accounts.apigee.com/accounts/sign_up))
 
 * `-o` The Apigee organization in which youhave an account. To obtain this information, login
 to enterprise.apigee.com  and view account settings.
