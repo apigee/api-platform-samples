@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<APIProxy revision="1" name="OAuth10Application">
+    <ConfigurationVersion minorVersion="0" majorVersion="4"/>
+    <ProxyEndpoints/>
+    <Resources/>
+    <StepDefinitions/>
+    <TargetServers/>
+    <TargetEndpoints/>
+</APIProxy>

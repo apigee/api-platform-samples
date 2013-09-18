@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ProxyEndpoint name="default">
+
+    <Flows>
+	<Flow name="3 Legged OAuth1.0a">
+	  <Request>
+            <Step>
+                <Condition>proxy.pathsuffix /~ &quot;/3leg/request_token&quot;</Condition>
+                <FaultRules/>
+                <Name>GenerateRequestToken</Name>
+            </Step>
+            <Step>
+                <Condition>proxy.pathsuffix /~ &quot;/3leg/verifier&quot;</Condition>
+                <FaultRules/>
+                <Name>GenerateVerifier</Name>
+            </Step>
+            <Step>
+                <Condition>proxy.pathsuffix /~ &quot;/3leg/access_token&quot;</Condition>
+                <FaultRules/>
+                <Name>GenerateAccessToken</Name>
+            </Step>
+          </Request>
+          <Condition>(proxy.pathsuffix MatchesPath &quot;/3leg/**&quot;)</Condition>
+        </Flow>
+    </Flows>
+
+    <PreFlow name="PreFlow">
+        <Request>
+            <Step>
+          	<Condition>!(proxy.pathsuffix MatchesPath &quot;/3leg/**&quot;)</Condition>
+                <FaultRules/>
+                <Name>VerifyAccessToken</Name>
+            </Step>
+        </Request>
+    </PreFlow>
+
+    <HTTPProxyConnection>
+        <BasePath>/oauth1</BasePath>
+        <Properties/>
+        <VirtualHost>secure</VirtualHost>
+    </HTTPProxyConnection>
+
+    <RouteRule name="OAuthTargetRoute">
+        <Condition>!(proxy.pathsuffix MatchesPath &quot;/3leg/**&quot;)</Condition>
+        <TargetEndpoint>default</TargetEndpoint>
+    </RouteRule>
+    <RouteRule name="NoRoute"/>
+</ProxyEndpoint>

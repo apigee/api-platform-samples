@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<OAuthV1 enabled="true" continueOnError="false" async="false" name="GenerateRequestToken">
+    <FaultRules/>
+    <Properties/>
+    <GenerateErrorResponse enabled="true">
+        <Format>XML</Format>
+    </GenerateErrorResponse>
+    <Operation>GenerateRequestToken</Operation>
+    <GenerateResponse enabled="true">
+        <Format>XML</Format>
+    </GenerateResponse>
+</OAuthV1>

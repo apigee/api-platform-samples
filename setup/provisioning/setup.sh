@@ -46,7 +46,7 @@ curl -u $username:$password \
 # Get consumer key and attach API product
 # Do this in a quick and clean way that doesn't require python or anything
 
-key=`curl -u $username:$password \
+key=`curl -u $username:$password -H "Accept: application/json" \
      $url/v1/o/$org/developers/thomas@weathersample.com/apps/thomas-app 2>/dev/null \
      | grep consumerKey | awk -F '\"' '{ print $4 }'`
 
@@ -54,7 +54,7 @@ curl -u $username:$password \
   $url/v1/o/$org/developers/thomas@weathersample.com/apps/thomas-app/keys/${key} \
   -H "Content-Type: application/xml" -X POST -T thomas-app-product.xml
 
-key=`curl -u $username:$password \
+key=`curl -u $username:$password -H "Accept: application/json" \
      $url/v1/o/$org/developers/joe@weathersample.com/apps/joe-app 2>/dev/null \
      | grep consumerKey | awk -F '\"' '{ print $4 }'`
 
@@ -62,13 +62,13 @@ curl -u $username:$password \
   $url/v1/o/$org/developers/joe@weathersample.com/apps/joe-app/keys/${key} \
   -H "Content-Type: application/xml" -X POST -T joe-app-product.xml
 
-key=`curl -u $username:$password \
+key=`curl -u $username:$password -H "Accept: application/json"\
      $url/v1/o/$org/developers/thomas@weathersample.com/apps/thomas-app 2>/dev/null \
      | grep consumerKey | awk -F '\"' '{ print $4 }'`
 
 echo "\n\nConsumer key for thomas-app is ${key}"
 
-key=`curl -u $username:$password \
+key=`curl -u $username:$password -H "Accept: application/json"\
      $url/v1/o/$org/developers/joe@weathersample.com/apps/joe-app 2>/dev/null \
      | grep consumerKey | awk -F '\"' '{ print $4 }'`
 
