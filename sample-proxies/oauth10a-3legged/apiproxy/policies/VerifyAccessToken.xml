@@ -3,7 +3,4 @@
     <FaultRules/>
     <Properties/>
     <Operation>VerifyAccessToken</Operation>
-    <GenerateResponse enabled="true">
-        <Format>XML</Format>
-    </GenerateResponse>
 </OAuthV1>
