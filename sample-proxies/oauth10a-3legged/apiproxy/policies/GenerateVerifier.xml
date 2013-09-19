@@ -1,0 +1,25 @@
+<ServiceCallout name="GenerateVerifier">
+   <Request clearPayload="true" variable="myRequest">
+      <Remove>
+	<Path/>
+      </Remove>
+      <Set>
+         <Payload contentType="application/xml" variablePrefix="%" variableSuffix="#">
+            <Verifier>
+               <Code>%request.formparam.verifier#</Code>
+               <AppUserId>%request.formparam.appenduser#</AppUserId>
+               <RequestToken>%request.formparam.token#</RequestToken>
+            </Verifier>
+         </Payload>
+         <Verb>POST</Verb>
+         <Path>/v1/oauth1/verifiers</Path>
+      </Set>
+   </Request>
+   <Response>request</Response>
+   <HTTPTargetConnection>
+      <Properties>
+	<Property name="success.codes">2xx, 4xx, 5xx</Property>
+      </Properties>
+      <URL>http://localhost:8080</URL>
+   </HTTPTargetConnection>
+</ServiceCallout>

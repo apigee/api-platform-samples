@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<OAuthV1 enabled="true" continueOnError="false" async="false" name="VerifyAccessToken">
+    <FaultRules/>
+    <Properties/>
+    <Operation>VerifyAccessToken</Operation>
+</OAuthV1>

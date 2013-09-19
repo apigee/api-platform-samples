@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<APIProxy revision="21" name="getsat">
+    <ConfigurationVersion minorVersion="0" majorVersion="4"/>
+    <CreatedAt>1367227906963</CreatedAt>
+    <CreatedBy>baskar@apigee.com</CreatedBy>
+    <DisplayName>TwitterApplication</DisplayName>
+    <LastModifiedAt>1367227906963</LastModifiedAt>
+    <LastModifiedBy>baskar@apigee.com</LastModifiedBy>
+    <Policies>
+        <Policy>AssignMessage</Policy>
+        <Policy>ExtractId</Policy>
+        <Policy>setJsHeader</Policy>
+    </Policies>
+    <ProxyEndpoints>
+        <ProxyEndpoint>default</ProxyEndpoint>
+    </ProxyEndpoints>
+    <Resources>
+        <Resource>jsc://setJsHeader</Resource>
+    </Resources>
+    <TargetServers/>
+    <TargetEndpoints>
+        <TargetEndpoint>default</TargetEndpoint>
+    </TargetEndpoints>
+</APIProxy>
