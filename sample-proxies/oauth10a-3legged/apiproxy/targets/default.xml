@@ -1,0 +1,8 @@
+<TargetEndpoint name="default">
+    <FaultRules/>
+    <Flows/>
+    <HTTPTargetConnection>
+        <Properties/>
+        <URL>http://httpbin.org</URL>
+    </HTTPTargetConnection>
+</TargetEndpoint>
