@@ -6,9 +6,9 @@
       <Set>
          <Payload contentType="application/xml" variablePrefix="%" variableSuffix="#">
             <Verifier>
-               <Code>%request.formparam.token#</Code>
+               <Code>%request.formparam.verifier#</Code>
                <AppUserId>%request.formparam.appenduser#</AppUserId>
-               <RequestToken>%request.formparam.verifier#</RequestToken>
+               <RequestToken>%request.formparam.token#</RequestToken>
             </Verifier>
          </Payload>
          <Verb>POST</Verb>
@@ -18,7 +18,7 @@
    <Response>request</Response>
    <HTTPTargetConnection>
       <Properties>
-      	<Property name="success.codes">2xx, 5xx</Property>
+	<Property name="success.codes">2xx, 4xx, 5xx</Property>
       </Properties>
       <URL>http://localhost:8080</URL>
    </HTTPTargetConnection>
