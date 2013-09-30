@@ -1,15 +1,18 @@
 # Twitter Translate
 
-This sample demostrates how to make advanced callouts from API proxies to OAuth services.
+This sample demostrates how to make advanced callouts from API 
+proxies to backend services secuted using OAuth.
 
-Specifically, the API Proxy uses JavaScript to obtain an access token using the 
-'client credentials' grant type--to obtain an access token, the API proxy presents
-an API key and secret to the Azure translator service. In exchange, teh Azure
-service returns an access token that can be used for multiple requests.
+Specifically, the API Proxy uses JavaScript to obtain an access 
+token using the 'client credentials' grant type. To obtain an access 
+token, the API proxy presents an API key and secret to the Azure 
+translator service. In exchange, the Azure service returns an access token 
+that can be used for multiple requests.
 
-The API proxy uses the API Platform Cache resource to store access tokens in memory. 
-Otherwise, the API proxy would be required to obtain an access token for each call,
-resultig in significant overhead and probable performance degradation.
+The API proxy uses the API Platform Cache resource to store access 
+tokens in memory.  Otherwise, the API proxy would be required to obtain 
+an access token for each call, resulting in significant overhead and probable 
+performance degradation.
 
 You can use this sample as template for API proxies that must present tokens (whether 
 API keys or access tokens) to access backend services.
