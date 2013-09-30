@@ -1,5 +1,13 @@
 # Twitter Translate
 
+This sample demostrates how to make advanced callouts from API proxies to OAuth services. 
+
+The API proxy uses the API Platform Cache resource to store tokens in memory. Otherwise,
+the API proxy would be required to obtain an access token for each call.
+
+You can use this sample as template for API proxies that must present tokens (whether 
+API keys or access tokens) to access backend services.
+
 This sample uses the Twitter Search API to find tweets in a given language and
 translate them to the language the query was made in using the
 [Microsoft Translator API](http://www.microsofttranslator.com/dev/).
