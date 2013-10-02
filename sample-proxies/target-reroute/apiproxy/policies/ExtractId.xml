@@ -1,0 +1,8 @@
+<ExtractVariables async="false" continueOnError="false" enabled="true" name="ExtractId">
+	<DisplayName>getObjectNumberfromPath</DisplayName>
+	<URIPath>
+		<Pattern ignoreCase="true">/objects/{uri}</Pattern>
+	</URIPath>
+	<IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+	<VariablePrefix>path</VariablePrefix>
+</ExtractVariables>

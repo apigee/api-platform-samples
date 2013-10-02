@@ -1,13 +1,18 @@
-# Java Callout Sample
+# Target Re-route Sample
 
-This sample provides a simple implementation of the JavaCallout API.
+This sample demonstrates a simple scenario of changing the target endpoint
+with the help of setting the flow variable "target.url" in a Javascript Step Policy,
+with removal of the proxy.pathsuffix. The proxy uses the Yahoo Weather API for actual
+target endpoint This reference helps in understanding the process of building,
+deploying, activating and accessing this sample.
 
-Additional generic code samples are provided for reference in the `/java/src/com/sample` directory.
+The actual target api: `http://my-dummy-old-target.com/to-be-replaced`
+New target api that overrides the actual target: `http://weather.yahooapis.com/forecastrss?w={object-in-request}`
 
-A JavaCallout is implemented to the JavaCallout API. Javadocs are available at:
-https://github.com/apigee/api-platform-samples/wiki/Apigee-API-Platform-Samples-Wiki
+Proxy Request: `http://$org-$env.apigee.net/yahoo/objects/12797282` 
+where `/yahoo` is the base-path, `/objects/12797282` is the proxy.pathsuffix.
 
-The proxy uses the Yahoo Weather API for target endpoint, and maps WEOID IDs to city names on behalf of the user.
+This Proxy Request will be transformed into `http://weather.yahooapis.com/forecastrss?w=12797282`
 
 # Set up
 
@@ -21,19 +26,9 @@ Update `/setup/setenv.sh` with your environment details
 
 # Import and deploy sample project
 
-To deploy, run `$ sh deploy.sh`
+To deploy, run `/setup/deploy.sh`
 
-To test, run `$ sh invoke.sh`
-
-# Compiling the source
-
-If you make modifications to the Java sample, you can recompile it as follows:
-
-    cd ./java
-    javac -d bin -sourcepath src -classpath ../lib/expressions-1.0.0.jar:../lib/message-flow-1.0.0.jar src/com/sample/CityLookup.java
-    cd bin
-    jar -cvf CityLookup.jar ./com
-    cp CityLookup.jar ../../apiproxy/resources/java
+To test, run `invoke.sh`
 
 # Get help
 

@@ -1,13 +1,16 @@
-# Java Callout Sample
+# Three-Legged OAuth1.0a
 
-This sample provides a simple implementation of the JavaCallout API.
+This sample shows how use the OAuth 1.0a - 3 legged flow
 
-Additional generic code samples are provided for reference in the `/java/src/com/sample` directory.
+It contains the following policies:
 
-A JavaCallout is implemented to the JavaCallout API. Javadocs are available at:
-https://github.com/apigee/api-platform-samples/wiki/Apigee-API-Platform-Samples-Wiki
-
-The proxy uses the Yahoo Weather API for target endpoint, and maps WEOID IDs to city names on behalf of the user.
+1. An OAuth 1.0 GenerateRequestToken Policy to generate the request token, called the RequestToken Endpoint.
+   This request token is required to generate verifier and the access token.
+2. An GenerateVerifier Policy (A ServiceCallout Policy) to create the externally passed verifier code, 
+   associating it to the request token generated in the above step.
+3. An OAuth 1.0 GenerateAccessToken Policy to generate an access token using the request token and its verifier, called  the AccessToken Endpoint.
+4. An OAuth 1.0 VerifyAccessToken Policy, to validate the OAuth 1.0 AccessToken and its signature, 
+   before requesting for the protected resource.
 
 # Set up
 
@@ -17,23 +20,17 @@ The proxy uses the Yahoo Weather API for target endpoint, and maps WEOID IDs to 
 
 # Configure 
 
-Update `/setup/setenv.sh` with your environment details
+1. Update `/setup/setenv.sh` with your environment details
+
+2. Configure API products, developers, and apps in your organization
+
+3. Run `/setup/provisioning/setup.sh`
 
 # Import and deploy sample project
 
 To deploy, run `$ sh deploy.sh`
 
 To test, run `$ sh invoke.sh`
-
-# Compiling the source
-
-If you make modifications to the Java sample, you can recompile it as follows:
-
-    cd ./java
-    javac -d bin -sourcepath src -classpath ../lib/expressions-1.0.0.jar:../lib/message-flow-1.0.0.jar src/com/sample/CityLookup.java
-    cd bin
-    jar -cvf CityLookup.jar ./com
-    cp CityLookup.jar ../../apiproxy/resources/java
 
 # Get help
 
