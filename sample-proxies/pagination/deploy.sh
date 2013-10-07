@@ -6,6 +6,11 @@ echo "Enter your password for the Apigee Enterprise organization $org, followed 
 
 read -s password
 
+echo Creating cache
+
+curl -X POST -H "Content-type:text/xml" -d @paginate-cache.xml https://api.enterprise.apigee.com/v1/o/$org/environments/$env/caches -u $username:$password
+
+
 echo Deploying $proxy to $env on $url using $username and $org
 
 ../../tools/deploy.py -n pagination -u $username:$password -o $org -h $url -e $env -p / -d ../pagination
