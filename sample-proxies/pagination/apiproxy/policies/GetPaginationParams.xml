@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ExtractVariables enabled="true" continueOnError="false" async="false" name="GetPaginationParams">
+    <DisplayName>GetPaginationParams</DisplayName>
+    <FaultRules/>
+    <Properties/>
+    <QueryParam name="limit">
+        <Pattern ignoreCase="true">{limit}</Pattern>
+    </QueryParam>
+    <QueryParam name="offset">
+        <Pattern ignoreCase="true">{offset}</Pattern>
+    </QueryParam>
+    <QueryParam name="dir">
+        <Pattern ignoreCase="true">{dir}</Pattern>
+    </QueryParam>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+</ExtractVariables>

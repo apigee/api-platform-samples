@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ProxyEndpoint name="default">
+    <Description></Description>
+    <FaultRules/>
+    <Flows>
+        <Flow name="content-listing">
+            <Description></Description>
+            <Request>
+                <Step>
+                    <FaultRules/>
+                    <Name>GetPaginationParams</Name>
+                </Step>
+                <Step>
+                    <FaultRules/>
+                    <Name>CacheResponse</Name>
+                </Step>
+                <Step>
+                    <Condition>request.queryparam.offset = null or request.queryparam.offset = \&quot;\&quot;</Condition>
+                    <FaultRules/>
+                    <Name>LookupOffset</Name>
+                </Step>
+                <Step>
+                    <Condition>request.queryparam.limit = null or request.queryparam.limit = \&quot;\&quot;</Condition>
+                    <FaultRules/>
+                    <Name>LookupLimit</Name>
+                </Step>
+            </Request>
+            <Response>
+                <Step>
+                    <FaultRules/>
+                    <Name>ContentListings</Name>
+                </Step>
+                <Step>
+                    <FaultRules/>
+                    <Name>CacheResponse</Name>
+                </Step>
+                <Step>
+                    <FaultRules/>
+                    <Name>Pagination</Name>
+                </Step>
+                <Step>
+                    <FaultRules/>
+                    <Name>CacheOffset</Name>
+                </Step>
+                <Step>
+                    <FaultRules/>
+                    <Name>CacheLimit</Name>
+                </Step>
+            </Response>
+            <Condition>(proxy.pathsuffix MatchesPath &quot;/content-listing&quot;) and (request.verb = &quot;GET&quot;)</Condition>
+        </Flow>
+    </Flows>
+    <PostFlow name="PostFlow">
+        <Request/>
+        <Response/>
+    </PostFlow>
+    <PreFlow name="PreFlow">
+        <Request/>
+        <Response/>
+    </PreFlow>
+    <HTTPProxyConnection>
+        <BasePath>/v1/paginate</BasePath>
+        <Properties/>
+        <VirtualHost>default</VirtualHost>
+        <VirtualHost>secure</VirtualHost>
+    </HTTPProxyConnection>
+    <RouteRule name="noroute"/>
+</ProxyEndpoint>
