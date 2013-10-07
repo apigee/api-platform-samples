@@ -1,0 +1,1 @@
+context.setVariable("target.url", "http://weather.yahooapis.com/forecastrss?w="+context.getVariable("WOEID.location"));

@@ -6,4 +6,4 @@ source ../../setup/setenv.sh
 
 set -x
 
-curl http://$org-$env.apigee.net/yahoo/objects/12797282
+curl http://$org-$env.apigee.net/WOEID/2467861

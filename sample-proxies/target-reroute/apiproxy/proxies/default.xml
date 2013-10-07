@@ -1,22 +1,16 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <ProxyEndpoint name="default">
-    <Description></Description>
-    <FaultRules/>
-    <Flows/>
     <PreFlow name="PreFlow">
-        <Request>
-            <Step>
-                <FaultRules/>
-                <Name>ExtractId</Name>
-            </Step>
-        </Request>
+	    <!-- During the request flow, extract the WEOID that was presented in the request. -->
+        <Request><Step><Name>extractId</Name></Step></Request>
     </PreFlow>
     <HTTPProxyConnection>
-        <BasePath>/yahoo</BasePath>
-        <Properties/>
+	    <!-- All requests sent to '{org-name}-test.apigee.net/WEOID' will be handled by this API proxy. -->
+        <BasePath>/WOEID</BasePath>
+        <!-- Use the default virtual host configuration to set the network address for this proxy: '{org-name}-test.apigee.net -->
         <VirtualHost>default</VirtualHost>
     </HTTPProxyConnection>
     <RouteRule name="YahooRoute">
+	    <!-- Forward requests to the TargetEndpoint configuration named 'default'. -->
         <TargetEndpoint>default</TargetEndpoint>
     </RouteRule>
 </ProxyEndpoint>

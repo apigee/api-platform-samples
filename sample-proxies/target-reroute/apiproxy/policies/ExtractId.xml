@@ -1,8 +1,15 @@
-<ExtractVariables async="false" continueOnError="false" enabled="true" name="ExtractId">
-	<DisplayName>getObjectNumberfromPath</DisplayName>
+<!-- A WOEID (Where on Earth Identifier) is a unique 32 bit reference identifier assigned by Yahoo! to identify any feature on Earth. -->
+
+<ExtractVariables name="extractId">
+	<DisplayName>getWOEIDNumberfromPath</DisplayName>
+	<!-- Pull the WEOID from the request path and populate a variable called 'location'. 
+	The prefix WOEID is defined below, to create the variable WOEID.location. 
+	-->
 	<URIPath>
-		<Pattern ignoreCase="true">/objects/{uri}</Pattern>
+		<Pattern ignoreCase="true">/{location}</Pattern>
 	</URIPath>
-	<IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
-	<VariablePrefix>path</VariablePrefix>
+	<!-- Continue processing without an error if the WOEID variable cannot be resolved (a bad request for example). -->
+	<IgnoreUnresolvedVariables>false</IgnoreUnresolvedVariables>
+	<!-- The prefix for the variable name that will be referenced by the JavaScript. -->
+	<VariablePrefix>WOEID</VariablePrefix>
 </ExtractVariables>

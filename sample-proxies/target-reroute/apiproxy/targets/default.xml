@@ -7,12 +7,12 @@
     	<Request>
             <Step>
                 <FaultRules/>
-                <Name>setJsHeader</Name>
+                <Name>rewriteTargetUrl</Name>
             </Step>
     	</Request>
     </PreFlow>
     <HTTPTargetConnection>
         <Properties/>
-        <URL>http://my-dummy-old-target.com/to-be-replaced</URL>
+        <URL>http://weather.yahooapis.com</URL>
     </HTTPTargetConnection>
 </TargetEndpoint>
