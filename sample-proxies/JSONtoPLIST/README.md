@@ -1,4 +1,4 @@
-# Java Callout Sample
+# JSON to PLIST conversion Sample
 
 This sample provides a simple implementation of the JSONtoPLIST .
 
