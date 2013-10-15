@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<LookupCache enabled="true" continueOnError="false" async="false" name="LookupLimit">
+    <DisplayName>LookupLimit</DisplayName>
+    <FaultRules/>
+    <Properties/>
+    <CacheKey>
+        <Prefix>ContentListings</Prefix>
+        <KeyFragment>Pagination</KeyFragment>
+        <KeyFragment>Limit</KeyFragment>
+        <KeyFragment ref="request.header.user_id"></KeyFragment>
+    </CacheKey>
+    <CacheResource>PaginationCache</CacheResource>
+    <Scope>Exclusive</Scope>
+    <AssignTo>limit</AssignTo>
+</LookupCache>
