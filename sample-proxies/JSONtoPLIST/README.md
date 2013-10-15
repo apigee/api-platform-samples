@@ -22,6 +22,10 @@ To test, run `$ sh invoke.sh`
 The input.json contains the json .
 It results in a Plist
 
+#3rd Part Library Information
+This uses https://code.google.com/p/j2plist/ library to convert xml to json.
+j2plist is licensed under Apache V2 License.
+
 # Get help
 
 For assistance, post to the [Apigee Developer Forum](http://support.apigee.com)
