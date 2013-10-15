@@ -12,8 +12,8 @@
 ## You can obtain a free account at https://accounts.apigee.com/accounts/sign_up
 ## --------------------------------------
 
-org="Your ORG on enterprise.apigee.com"
-username="Your USERNAME on enterprise.apigee.com"
+org="apiflix"
+username="rajeshmishra@apigee.com"
 
 # Whie testing, it's not necessary to change the setting below
 
