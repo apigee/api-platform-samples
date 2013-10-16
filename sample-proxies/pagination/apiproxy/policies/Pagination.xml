@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Javascript timeLimit="1000" enabled="true" continueOnError="false" async="false" name="Pagination">
+    <DisplayName>Pagination</DisplayName>
+    <FaultRules/>
+    <Properties/>
+    <ResourceURL>jsc://paginate.js</ResourceURL>
+</Javascript>

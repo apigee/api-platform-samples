@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Cache name="PaginationCache">
+	<ExpirySettings>
+		<TimeoutInSec>300</TimeoutInSec>
+	</ExpirySettings>
+	<Compression>
+		<MinimumSizeInKB>1024</MinimumSizeInKB>
+	</Compression>
+	<Description>A Cache resource for the test environment.</Description>
+	<DiskSizeInMB>0</DiskSizeInMB>
+	<InMemorySizeInKB>0</InMemorySizeInKB>
+	<MaxElementsInMemory>100</MaxElementsInMemory>
+	<MaxElementsOnDisk>0</MaxElementsOnDisk>
+	<OverflowToDisk>false</OverflowToDisk>
+	<Persistent>false</Persistent>
+</Cache>
