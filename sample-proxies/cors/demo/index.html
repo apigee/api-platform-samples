@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js">
+</script>
+<script>
+
+var org='apiflix' ;
+var env='test' ;
+
+// Create the XHR object.
+function createCORSRequest(method, url) {
+  var xhr = new XMLHttpRequest();
+  if ("withCredentials" in xhr) {
+    // XHR for Chrome/Firefox/Opera/Safari.
+    xhr.open(method, url, true);
+  } else if (typeof XDomainRequest != "undefined") {
+    // XDomainRequest for IE.
+    xhr = new XDomainRequest();
+    xhr.open(method, url);
+  } else {
+    // CORS not supported.
+    xhr = null;
+  }
+  return xhr;
+}
+
+// Helper method to parse the title tag from the response.
+function getTitle(text) {
+  return text.match('<title>(.*)?</title>')[1];
+}
+
+// Make the actual CORS request.
+function makeCorsRequest() {
+  
+  //Please change the org with the org you are deploying 
+  //Please change the env with the env you are deploying
+  
+  var url = 'http://' + org + '-' + env + '.apigee.net/v1/cors/content-listing';
+
+  var xhr = createCORSRequest('GET', url);
+  if (!xhr) {
+    alert('CORS not supported');
+    return;
+  }
+  
+  xhr.setRequestHeader('X-Custom-CORS', 'Valid CORS');
+
+  // Response handlers.
+  xhr.onload = function() {
+    var text = xhr.responseText;
+    //var title = getTitle(text);
+    $("#result").html(text);
+    //alert('Response from CORS request to ' + text );
+  };
+
+  xhr.onerror = function() {
+    alert('Woops, there was an error making the request.');
+  };
+
+  xhr.send();
+}
+
+
+// Make the actual CORS request.
+function makeBadCorsRequest() {
+  
+  //Please change the org with the org you are deploying 
+  //Please change the env with the env you are deploying
+  
+  var url = 'http://$org-$env.apigee.net/v1/cors/content-listing';
+
+  var xhr = createCORSRequest('GET', url);
+  if (!xhr) {
+    alert('CORS not supported');
+    return;
+  }
+  
+  xhr.setRequestHeader('X-Custom-Invalid-CORS', 'Valid CORS');
+
+  // Response handlers.
+  xhr.onload = function() {
+    var text = xhr.responseText;
+    //var title = getTitle(text);
+    $("#result").html(text);
+    //alert('Response from CORS request to ' + text );
+  };
+
+  xhr.onerror = function() {
+    alert('Woops, there was an error making the request.');
+  };
+
+  xhr.send();
+}
+
+$(document).ready(function(){
+  $("#good").click(function(){
+	makeCorsRequest();
+	
+  });
+  
+   $("#bad").click(function(){
+	makeBadCorsRequest();
+	
+  });
+});
+
+
+
+</script>
+
+
+</head>
+<body>
+
+<input id="good" type="button" value="Send request to and get the result back"  />
+<br/><br/>
+<input id="bad" type="button" value="Send request with invalid header" />
+<br/>
+<br/>
+<p>
+	<span id="result"></div>
+</p>
+</body>
+</html>
