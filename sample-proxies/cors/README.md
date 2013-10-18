@@ -1,4 +1,4 @@
-# Variables
+#CORS Implementation 
 
 This sample demonstrates how you can use the CORS policy to 
 support browsers CORS request. 
