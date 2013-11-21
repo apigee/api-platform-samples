@@ -12,7 +12,7 @@ read -s password
 
 echo Deploying $proxy to $env on $url using $username and $org
 
-../tools/deploy.py -n $proxy -u $username:$password -o $org -h $url -e $env -p / -d ../sample-proxies/$proxy
+../tools/deploy.py -n $proxy -u $username:$password -o $org -h $url -e $env -p / -d ../sample-proxies/$proxy -h $url
 
 echo "If 'State: deployed', then your API Proxy is ready to be invoked."
 
