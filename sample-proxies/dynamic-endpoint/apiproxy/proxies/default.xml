@@ -5,7 +5,7 @@
 	</HTTPProxyConnection>
 	<RouteRule name="fbroute">
 		<Condition>request.queryparam.routeTo = "fb"</Condition>
-		<TargetEndpoint>default</TargetEndpoint>
+		<TargetEndpoint>facebook</TargetEndpoint>
 	</RouteRule>
 	<RouteRule name="twroute">
 		<Condition>request.queryparam.routeTo = "tw"</Condition>
