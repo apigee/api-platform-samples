@@ -29,11 +29,13 @@ To test, run `$ sh invoke.sh`
 
 If you make modifications to the Java sample, you can recompile it as follows:
 
-    cd ./java
-    javac -d bin -sourcepath src -classpath ../lib/expressions-1.0.0.jar:../lib/message-flow-1.0.0.jar src/com/sample/CityLookup.java
-    cd bin
-    jar -cvf CityLookup.jar ./com
-    cp CityLookup.jar ../../apiproxy/resources/java
+  cd ./java
+  mkdir bin
+  javac -d bin -sourcepath src -classpath ../lib/expressions-1.0.0.jar:../lib/message-flow-1.0.0.jar src/com/apigee/CityLookup.java
+  cd bin
+  jar -cvf CityLookup.jar ./com
+  mkdir -p ../../apiproxy/resources/java
+  cp CityLookup.jar ../../apiproxy/resources/java
 
 # Get help
 
