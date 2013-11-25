@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<APIProxy revision="1" name="weatherapi">
+    <ConfigurationVersion minorVersion="0" majorVersion="4"/>
+    <CreatedAt>1382626154276</CreatedAt>
+    <CreatedBy>noreply_admin@apigee.com</CreatedBy>
+    <Description></Description>
+    <DisplayName>weatherapi</DisplayName>
+    <LastModifiedAt>1382626154276</LastModifiedAt>
+    <LastModifiedBy>noreply_admin@apigee.com</LastModifiedBy>
+    <Policies>
+        <Policy>SpikeArrest-11091419259467690</Policy>
+        <Policy>XMLToJSON-11091909534776397</Policy>
+    </Policies>
+    <ProxyEndpoints>
+        <ProxyEndpoint>default</ProxyEndpoint>
+    </ProxyEndpoints>
+    <Resources/>
+    <TargetServers/>
+    <TargetEndpoints>
+        <TargetEndpoint>default</TargetEndpoint>
+    </TargetEndpoints>
+</APIProxy>
