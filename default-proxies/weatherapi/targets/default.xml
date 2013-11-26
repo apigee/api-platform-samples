@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<TargetEndpoint name="default">
+    <Description>Apigee auto generated target endpoint</Description>
+    <FaultRules/>
+    <Flows/>
+    <HTTPTargetConnection>
+        <Properties/>
+        <URL>http://weather.yahooapis.com</URL>
+    </HTTPTargetConnection>
+</TargetEndpoint>

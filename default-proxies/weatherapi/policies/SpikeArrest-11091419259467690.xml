@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<SpikeArrest enabled="true" continueOnError="false" async="false" name="SpikeArrest-11091419259467690">
+    <FaultRules/>
+    <Properties/>
+    <Identifier ref="request.header.some-header-name"/>
+    <MessageWeight ref="request.header.weight"/>
+    <Rate>10ps</Rate>
+</SpikeArrest>

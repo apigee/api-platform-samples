@@ -1,0 +1,14 @@
+<OAuthV2 name="GenerateAccessTokenClient">
+  <!-- This policy generates an OAuth 2.0 access token using the client_credentials grant type -->
+  <Operation>GenerateAccessToken</Operation>
+  <!-- This is in millseconds, so expire in an hour -->
+  <ExpiresIn>3600000</ExpiresIn>
+  <SupportedGrantTypes>
+    <!-- This part is very important: most real OAuth 2.0 apps will want to use other
+         grant types. In this case it is important to NOT include the "client_credentials"
+         type because it allows a client to get access to a token with no user authentication -->
+    <GrantType>client_credentials</GrantType>
+  </SupportedGrantTypes>
+  <GrantType>request.queryparam.grant_type</GrantType>
+  <GenerateResponse/>
+</OAuthV2>
