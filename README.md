@@ -1,9 +1,9 @@
-# Apigee Edge Samples
+# Samples for Apigee Edge API Services
 
-This is a collection of sample proxies for the [Apigee Edge](http://apigee.com/about/enterprise), designed to help developers 
+This is a collection of sample proxies for the [Apigee Edge API Services](http://apigee.com/about/enterprise), designed to help developers 
 learn how to use the platform, and deployment tools to aid in development of proxy bundles.
 
-The Apigee Edge provides developers with:
+API Services provides developers with:
 
 * A RESTful API to enable DIY control and oversight of APIs, apps, and developers 
 
@@ -19,7 +19,7 @@ The Apigee Edge provides developers with:
 
 # Getting started
 
-You require an Apigee Edge account. [Sign up for a free trial account.](https://accounts.apigee.com/accounts/sign_up)
+You require an Apigee account. [Sign up for a free trial account.](https://accounts.apigee.com/accounts/sign_up)
 
 You also require [Python](http://python.org/getit/), to use the deployment tool.
 
@@ -27,7 +27,7 @@ You also require [Python](http://python.org/getit/), to use the deployment tool.
 
 You can deploy all of the samples to your organization at once using a simple setup script provided in this distribution.
 
-1. Update the file `/setup/setenv.sh` with settings for your Apigee Edge account.
+1. Update the file `/setup/setenv.sh` with settings for your Apigee account.
 
 2. Run `deploy_all.sh`
 
@@ -41,11 +41,11 @@ If you make changes to the sample API proxy, simply run the proxy's `deploy.sh` 
 
 ## `/sample-proxies`
 
-A set of fully-functional API proxies that you can deploy and invoke on the Apigee Edge.
+A set of fully-functional API proxies that you can deploy and invoke on the Apigee Edge platform.
 
 Feel free to modify and build upon them, and redeploy the proxies for changes to take effect. See the proxy's README for instructions on how to deploy and use it.
 
-For a detailed overview of the available sample see the [API Edge Samples documentation](http://apigee.com/docs/enterprise/content/api-platform-samples).
+For a detailed overview of the available sample see the [API Services Samples documentation](http://apigee.com/docs/enterprise/content/api-platform-samples).
 
 ## `/schemas`
 
@@ -61,7 +61,7 @@ A basic API proxy that is used in the [Apigee Documentation](http://apigee.com/d
 Simple scripts to help you deploy the sample API proxies and profiles that they 
 rely on, including API products, developers, and apps.
 
-Set you Apigee API Platform account settings in `setenv.sh` ([Register for a free Apigee Edge account](http://eneterprise.apigee.com/signup))
+Set you Apigee API Platform account settings in `setenv.sh` ([Register for a free Apigee account](http://eneterprise.apigee.com/signup))
 
 To deploy a single sample, run `deploy.sh proxyName`, where `proxyName` is the name of the directory under `/sample-proxies` that contains the proxy you want to deploy.
 
@@ -69,9 +69,9 @@ To deploy all samples and API products, run `deploy_all.sh`
 
 ## `/tools`
 
-* `deploy.py`: Uploads an API proxy to an organization on the Apigee Edge platform and then deploys it to the environment specified.
+* `deploy.py`: Uploads an API proxy to an organization on the Apigee Edge API Services platform and then deploys it to the environment specified.
 
-* `proxy_gen.sh`: A simple script that interacts with the Apigee Edge to locally generate an API proxy scaffold.
+* `proxy_gen.sh`: A simple script that interacts with the API Services platform to locally generate an API proxy scaffold.
 
 # Get help and interact with other API developers
 
