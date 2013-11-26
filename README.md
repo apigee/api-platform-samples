@@ -54,7 +54,7 @@ API products, apps, and developers.
 
 ## `/simpleProxy`
 
-A basic API proxy that is used in the [Apigee Documentation](http://apigee.com/docs)
+A basic API proxy that is used in the [Apigee Documentation](http://apigee.com/docs).
 
 ## `/setup`
 
