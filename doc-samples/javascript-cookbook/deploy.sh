@@ -8,7 +8,7 @@ read -s password
 
 echo Deploying $proxy to $env on $url using $username and $org
 
-../../tools/deploy.py -n simple-javascript -u $username:$password -o $org -h $url -e $env -p / -d ../simple-javascript
+../../tools/deploy.py -n simple-javascript -u $username:$password -o $org -h $url -e $env -p / -d ../javascript-cookbook
 
 echo "If 'State: deployed', then your API Proxy is ready to be invoked."
 
