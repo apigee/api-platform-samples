@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<APIProxy name="twitter-translate">
-    <ConfigurationVersion minorVersion="0" majorVersion="4"/>
-    <Description>Twitter Translate</Description>
-    <DisplayName>twitter-translate</DisplayName>
-</APIProxy>
