@@ -13,7 +13,7 @@ processing pipeline.
 
 [Apigee API Platform JavaScript Object Model](https://apigee.com/docs/enterprise/content/apigee-javascript-object-model)
 
-[JavaScript API Platform Developer Guide Topic](https://apigee.com/docs/enterprise/content/scripting-api-flow)
+[JavaScript Proxy Cookbook Topic](https://apigee.com/docs/enterprise/content/scripting-api-flow)
 
 # Set up
 
