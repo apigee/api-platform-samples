@@ -1,24 +1,20 @@
 <ProxyEndpoint name="default">
   <Flows>
     <Flow name="default">
-      <Request/>
       <Response>
-	<!-- Call the JavaScript that is going to do most of the work -->
-	<Step><Name>MashItUp</Name></Step>
-	<!-- Collect custom analytics variables and send them to the database -->
-	<Step><Name>CollectAnalytics</Name></Step>
+	    <!-- Call the JavaScript httpClient, which calls two remote APIs -->
+	    <Step><Name>MashItUp</Name></Step>
       </Response>
     </Flow>
   </Flows>
-
+  <!-- the inbound network configuration that this API proxy will listen on. -->
   <HTTPProxyConnection>
-    <!-- Add a base path to the proxy to distinguish from others in the environment -->
-    <BasePath>/altitude2</BasePath>
-    <!-- Listen on both HTTP and HTTPS endpoints -->
+    <!-- Define a URI that defines the address for this API proxy -->
+    <BasePath>/javascript-mashup-cookbook</BasePath>
+    <!-- Listen on both HTTP. For HTTPS change 'default' to 'secure' -->
     <VirtualHost>default</VirtualHost>
-    <VirtualHost>secure</VirtualHost>
   </HTTPProxyConnection>
   <RouteRule name="default">
-    <!-- No route. The proxy will return the request and not call a back end. -->
+    <!-- No route. This proxy does not call a backend service since it hosts a JavaScript httpClient. The httpClient calls the remote APIs to get data for the mashup. -->
   </RouteRule>
 </ProxyEndpoint>

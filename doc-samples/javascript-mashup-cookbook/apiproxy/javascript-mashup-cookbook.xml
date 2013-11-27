@@ -1,4 +1,4 @@
-<APIProxy name="MashupTwo">
+<APIProxy name="javascript-mashup-cookbook">
   <!-- This is the root of the application -->
   <Description>A sample application that does a basic mash-up</Description>
 </APIProxy>

@@ -1,7 +1,11 @@
+//This JavaScript implements the httpClient intefrace defined by Apigee's
+// JavaScript Object Model. Complete documentation is available at:
+// http://apigee.com/docs/api-platform/content/javascript-object-model
+
 // Initialize the response that might already be hanging around
 response.content = '';
 response.headers['Content-Type'] = 'application/json';
-
+//Catch errors if the necessary parameters are not on the request message
 try {
    if ((request.queryParams.postalcode == undefined) ||
        (request.queryParams.country == undefined)) {
@@ -63,5 +67,3 @@ try {
     // Handle any error that may have happened previously by generating a response
     response.content.asJSON.error = err;
 }
-
-
