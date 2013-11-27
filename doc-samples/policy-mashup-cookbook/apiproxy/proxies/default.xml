@@ -24,13 +24,13 @@
 
   <HTTPProxyConnection>
     <!-- Add a base path to the ProxyEndpoint for URI pattern matching-->
-    <BasePath>/altitude</BasePath>
+    <BasePath>/policy-mashup-cookbook</BasePath>
     <!-- Listen on both HTTP and HTTPS endpoints -->
     <VirtualHost>default</VirtualHost>
     <VirtualHost>secure</VirtualHost>
   </HTTPProxyConnection>
   <RouteRule name="default">
-    <!-- Connect ProxyEndpoint to named TargetEndpoint under /targets -->
+    <!-- Connect ProxyEndpoint to named TargetEndpoint /targets/default.xml -->
     <TargetEndpoint>default</TargetEndpoint>
   </RouteRule>
 </ProxyEndpoint>

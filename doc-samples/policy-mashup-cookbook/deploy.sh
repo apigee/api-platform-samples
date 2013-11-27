@@ -8,7 +8,7 @@ read -s password
 
 echo Deploying $proxy to $env on $url using $username and $org
 
-../../tools/deploy.py -n policy-mashup -u $username:$password -o $org -h $url -e $env -p / -d ../policy-mashup
+../../tools/deploy.py -n policy-mashup-cookbook -u $username:$password -o $org -h $url -e $env -p / -d ../policy-mashup-cookbook
 
 echo "If 'State: deployed', then your API Proxy is ready to be invoked."
 
