@@ -1,19 +1,29 @@
 # Simple JavaScript Sample
 
 This sample demonstrates how to write, attach, and execute simple JavaScript in
-an API proxy flow. The JavaScript in this sample gets a variable from the flow, 
-the target URI, and sets that variable as an HTTP header on the response message.
+an API proxy flow. 
 
-Store JavaScript under /resources in an API Proxy, and then reference 
-that JavaScript in a policy of type JavaScript. Then attach the JavaScript 
-policy to the API Proxy flow to have it execute at appropriate point in the
-processing pipeline.
+The JavaScript in this sample gets a variable from the flow and sets the variable 
+as HTTP headers on the response message.
+
+It also demonstrates how you can work with message content. A policy is used to 
+transform the weather report from XML to JSON. The resultant JSON is then parsed
+into a minimized response message that would mobile device-friendly.
+
+# Configuration
+
+Note that JavaScripts are stored under /resources/jsc in the API proxy, and then 
+referenced by policies of type Javascript. (Note capitalization of 'Javascript' in 
+policy type.)
+
+The JavaScript policies are then attached to ProxyEndpoint Flow to execute the 
+JavaScripts in the appropriate sequence.
 
 # References
 
 [Apigee API Platform JavaScript Object Model](https://apigee.com/docs/enterprise/content/apigee-javascript-object-model)
 
-[JavaScript Proxy Cookbook Topic](https://apigee.com/docs/enterprise/content/scripting-api-flow)
+[JavaScript Proxy Cookbook Topic](http://apigee.com/docs/api-platform/content/use-javascript-customize-api)
 
 # Set up
 
