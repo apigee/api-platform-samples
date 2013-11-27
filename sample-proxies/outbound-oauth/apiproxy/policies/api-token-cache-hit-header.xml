@@ -1,0 +1,9 @@
+<AssignMessage name="api-token-cache-hit-header">
+    <AssignTo createNew="false" transport="http" type="response">response</AssignTo>
+    <Set>
+        <Headers>
+            <Header name="API-Token-Cache-Hit">{lookupcache.api-token-lookup-cache.cachehit}</Header>
+        </Headers>
+    </Set>
+    <IgnoreUnresolvedVariables>false</IgnoreUnresolvedVariables>
+</AssignMessage>

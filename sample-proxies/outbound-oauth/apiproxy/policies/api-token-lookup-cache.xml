@@ -1,0 +1,8 @@
+<LookupCache name="api-token-lookup-cache">
+    <CacheResource>oauth-token-cache</CacheResource>
+    <AssignTo>twitter-translate.apiAccessToken</AssignTo>
+    <Scope>Exclusive</Scope>
+    <CacheKey>
+        <KeyFragment>apiAccessToken</KeyFragment>
+    </CacheKey>
+</LookupCache>

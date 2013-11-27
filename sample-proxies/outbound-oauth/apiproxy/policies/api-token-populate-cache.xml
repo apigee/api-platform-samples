@@ -1,0 +1,12 @@
+<PopulateCache name="api-token-populate-cache">
+    <CacheResource>oauth-token-cache</CacheResource>
+    <Source>twitter-translate.apiAccessToken</Source>
+    <Scope>Exclusive</Scope>
+    <CacheKey>
+        <KeyFragment>apiAccessToken</KeyFragment>
+    </CacheKey>
+    <ExpirySettings>
+        <!-- Access tokens expire after 10 minutes -->
+        <TimeoutInSec>600</TimeoutInSec>
+    </ExpirySettings>
+</PopulateCache>

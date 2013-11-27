@@ -1,0 +1,4 @@
+<APIProxy name="outbound-oauth">
+    <Description>Demonstrates how to cache OAuth tokens and use them for outbound calls from an API proxy to a backend service.</Description>
+    <DisplayName>Outbound OAuth</DisplayName>
+</APIProxy>

@@ -1,0 +1,15 @@
+<Cache name="oauth-token-cache">
+    <Description>OAuth token cache</Description>
+    <MaxElementsInMemory>100</MaxElementsInMemory>
+    <MaxElementsOnDisk>1000</MaxElementsOnDisk>
+    <OverflowToDisk>true</OverflowToDisk>
+    <Persistent>false</Persistent>
+    <ExpirySettings>
+        <!-- Flush the cache daily -->
+        <TimeOfDay>00:00:00</TimeOfDay>
+    </ExpirySettings>
+    <Compression>   <!-- Optional, enabled if present -->
+        <!-- All entries beyond this size will be compressed when stored on disk -->
+        <MinimumSizeInKB>1024</MinimumSizeInKB>
+    </Compression>
+</Cache>

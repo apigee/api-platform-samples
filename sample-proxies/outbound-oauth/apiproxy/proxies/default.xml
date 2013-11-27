@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ProxyEndpoint name="default">
+    <PreFlow>
+        <Request>
+            <!-- Set some common variables for the Translator API, including
+                 client ID and secret for authentication -->
+            <Step>
+                <Name>api-config</Name>
+            </Step>
+            <!-- Fetch the Translator API access token from the cache, if it's there -->
+            <Step>
+                <Name>api-token-lookup-cache</Name>
+            </Step>
+            <!-- On cache miss, fetch a new access token -->
+            <Step>
+                <Condition>lookupcache.api-token-lookup-cache.cachehit == &quot;false&quot;</Condition>
+                <Name>api-token-get</Name>
+            </Step>
+            <!-- On cache miss, put the new access token in the cache -->
+            <Step>
+                <Condition>lookupcache.api-token-lookup-cache.cachehit == &quot;false&quot;</Condition>
+                <Name>api-token-populate-cache</Name>
+            </Step>
+        </Request>
+        <Response>
+            <!-- Enable Cross Origin Resource Sharing access to this endpoint -->
+            <Step>
+                <Name>cors</Name>
+            </Step>
+            <!-- Set a response header, API-Token-Cache-Hit, reflecting the access token
+                 cache hit/miss status for this request -->
+            <Step>
+                <Name>api-token-cache-hit-header</Name>
+            </Step>
+        </Response>
+    </PreFlow>
+    <Flows>
+        <Flow name="GET-search">
+            <!-- This flow translates the query and results passed to the Search API
+                 method GET /search.json (see: https://dev.twitter.com/docs/using-search).
+                 The proxy request includes the API façade URL, so we check the path prefix
+                 that represents the path relative to the target endpoint -->
+            <Condition>(proxy.pathsuffix MatchesPath &quot;/search.json&quot;) and (request.verb = &quot;GET&quot;)</Condition>
+            <Request>
+                <!-- Detect the language the search query (`q` query param) was made in
+                     and translate it to the language we are searching for (`lang`) -->
+                <Step>
+                    <Name>translate-query</Name>
+                </Step>
+            </Request>
+            <Response>
+                <!-- Translate the search results from the language being searched
+                     for (`lang`) to the language the query was made in -->
+                <Step>
+                    <Name>translate-results</Name>
+                </Step>
+            </Response>
+        </Flow>
+    </Flows>
+    <HTTPProxyConnection>
+        <!-- API façade URL -->
+        <BasePath>/outbound-oauth</BasePath>
+        <VirtualHost>default</VirtualHost>
+    </HTTPProxyConnection>
+    <RouteRule name="default">
+        <!-- The default, and only, target is the Twitter Search API, defined in targets/default.xml -->
+        <TargetEndpoint>default</TargetEndpoint>
+    </RouteRule>
+</ProxyEndpoint>
