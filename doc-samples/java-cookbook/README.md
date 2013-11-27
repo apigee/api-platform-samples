@@ -2,9 +2,14 @@
 
 This sample provides a simple implementation of the JavaCallout API.
 
+For instructions, see the API Proxy Cookbook topic at:
+
+http://apigee.com/docs/api-platform/content/use-java-customize-api 
+
 Additional generic code samples are provided for reference in the `/java/src/com/sample` directory.
 
 A JavaCallout is implemented to the JavaCallout API. Javadocs are available at:
+
 https://github.com/apigee/api-platform-samples/wiki/Apigee-API-Platform-Samples-Wiki
 
 The proxy uses the Yahoo Weather API for target endpoint, and maps WEOID IDs to city names on behalf of the user.

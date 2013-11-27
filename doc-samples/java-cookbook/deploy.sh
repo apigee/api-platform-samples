@@ -8,7 +8,7 @@ read -s password
 
 echo Deploying $proxy to $env on $url using $username and $org
 
-../../tools/deploy.py -n java-callout -u $username:$password -o $org -h $url -e $env -p / -d ../java-callout
+../../tools/deploy.py -n java-cookbook -u $username:$password -o $org -h $url -e $env -p / -d ../java-cookbook
 
 echo "If 'State: deployed', then your API Proxy is ready to be invoked."
 

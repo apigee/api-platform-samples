@@ -1,7 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <ProxyEndpoint name="default">
-    <Description>Default Proxy to create flows on an API</Description>
-	
     <FaultRules>
     	<FaultRule name="MissingCityName">
             <Condition>fault.name = "ExecutionReturnedFailure"</Condition>
@@ -9,10 +6,7 @@
                 <Name>Fault.MissingCityName</Name>
             </Step>
         </FaultRule>
-
     </FaultRules>
-	
-	 <PreFlow/>
        
     <Flows>
         <Flow name="forecast">
@@ -28,13 +22,9 @@
 			<Response/>
         </Flow>
     </Flows>
-	
-	
-	<PostFlow/>
-	
-   
+
     <HTTPProxyConnection>
-        <BasePath>java-callout</BasePath>
+        <BasePath>java-cookbook</BasePath>
         <Properties/>
         <VirtualHost>default</VirtualHost>
     </HTTPProxyConnection>
