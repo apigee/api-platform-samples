@@ -1,0 +1,3 @@
+<APIProxy name="java-cookbook">
+	  <Description>This API proxy demonstrates simple Java programming on Apigee Edge. For instructions, see http://apigee.com/docs/api-platform/content/use-java-customize-api in the API Proxy Cookbook.</Description>
+</APIProxy>
