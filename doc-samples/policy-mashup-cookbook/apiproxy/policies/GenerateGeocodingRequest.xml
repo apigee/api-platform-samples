@@ -10,7 +10,7 @@
     </QueryParams>
     <Verb>GET</Verb>
   </Set>
-  <!-- While we're at it, save these in variables so we can use them in the response -->
+  <!-- Set variables for use in the final response -->
   <AssignVariable>
     <Name>PostalCode</Name>
     <Ref>request.queryparam.postalcode</Ref>

@@ -1,9 +1,0 @@
-<AssignMessage name="GenerateElevationRequest">
-  <!-- Generate the request to send to the elevation API. That requires us to
-       use the parameters that we extracted from the request to change the path
-       and set some query parameters -->
-  <AssignVariable>
-    <Name>target.url</Name>
-    <Value>http://maps.googleapis.com/maps/api/elevation/xml?sensor=false&amp;locations=40.714728,-73.99867</Value>
-  </AssignVariable>
-</AssignMessage>

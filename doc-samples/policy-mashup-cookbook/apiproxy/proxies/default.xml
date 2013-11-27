@@ -2,22 +2,20 @@
   <Flows>
     <Flow name="default">
       <Request>
-	    <!-- Generate request message for geocoding API -->
+	    <!-- Generate request message for the Google Geocoding API -->
 	    <Step><Name>GenerateGeocodingRequest</Name></Step>
-	    <!-- Call the geocoding API -->
+	    <!-- Call the Google Geocoding API -->
 	    <Step><Name>ExecuteGeocodingRequest</Name></Step>
-	    <!-- Parse the result and set variables -->
+	    <!-- Parse the response and set variables -->
 	    <Step><Name>ParseGeocodingResponse</Name></Step>
-	    <!-- Generate request message for elevation API -->
+	    <!-- Generate request message for the Google Elevation API -->
 	    <Step><Name>AssignElevationParameters</Name></Step>
       </Request>
       <Response>
-	    <!-- Parse the response message from elevation API -->
+	    <!-- Parse the response message from the Elevation API -->
 	    <Step><Name>ParseElevationResponse</Name></Step>
 	    <!-- Generate the final JSON-formatted response with JavaScript -->
 	    <Step><Name>GenerateResponse</Name></Step>
-	    <!-- Collect custom variables and send them to Analytics -->
-	    <Step><Name>CollectAnalytics</Name></Step>
       </Response>
     </Flow>
   </Flows>
