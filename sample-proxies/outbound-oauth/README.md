@@ -25,7 +25,7 @@ A demo application that performs a search and renders the results in HTML is inc
 
 ## Example
 
-    curl -v "http://demo-prod.apigee.net/twitter-translate/search.json?lang=es&q=bicycle"
+    curl -v "http://demo-prod.apigee.net/outbound-oauth/search.json?lang=es&q=bicycle"
 
     Response excerpt:
 
