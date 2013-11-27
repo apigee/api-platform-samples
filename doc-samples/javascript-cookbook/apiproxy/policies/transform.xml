@@ -1,3 +1,4 @@
-<Javascript name="transform">
-   <ResourceURL>jsc://transform.js</ResourceURL>
-</Javascript>
+<XMLToJSON name="transform">
+  <Options>
+  </Options>
+</XMLToJSON>

@@ -1,14 +1,24 @@
 <ProxyEndpoint name="default">
-	<PostFlow>
-		<Response>
-			<Step><Name>transform</Name></Step>
-		</Response>
-	</PostFlow>
-	<HTTPProxyConnection>
-		<BasePath>/simple-javascript</BasePath>
-		<VirtualHost>default</VirtualHost>
-	</HTTPProxyConnection>
-	<RouteRule name="default">
-		<TargetEndpoint>default</TargetEndpoint>
-	</RouteRule>
+  <PostFlow>
+    <Response>
+      <!-- Steps reference policies under /apiproxy/policies -->
+      <!-- First, set a few HTTP headers with variables for this transaction. -->
+      <Step><Name>setHeaders</Name></Step>
+      <!-- Next, transform the weather report from XML to JSON for easier parsing with JavaScript -->
+      <Step><Name>transform</Name></Step>
+      <!-- Finally, use JavaScript to create minimized, mobile-friendly weather report. -->
+      <Step><Name>minimize</Name></Step>
+    </Response>
+  </PostFlow>
+  <HTTPProxyConnection>
+	<!-- BasePath defines the network address for this API proxy. See the script 'invoke.sh' to see how the complete URL for this API proxy is constructed.-->
+    <BasePath>/javascript-cookbook</BasePath>
+     <!-- Set VirtualHost to 'secure' to have this API proxy listen on HTTPS. -->
+    <VirtualHost>default</VirtualHost>
+  </HTTPProxyConnection>
+  <RouteRule name="default">
+    <TargetEndpoint>default</TargetEndpoint>
+  </RouteRule>
 </ProxyEndpoint>
+
+<!-- Be sure to run 'deploy.sh' for changes to take effect. -->

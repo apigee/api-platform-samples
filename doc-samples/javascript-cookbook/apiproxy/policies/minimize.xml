@@ -1,0 +1,4 @@
+<Javascript name="minimize">
+	<!-- ResourceURL references JavaScript under /apiproxy/resources/jsc -->
+   <ResourceURL>jsc://minimize.js</ResourceURL>
+</Javascript>

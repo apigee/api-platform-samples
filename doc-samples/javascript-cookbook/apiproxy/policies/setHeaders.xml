@@ -1,0 +1,4 @@
+<Javascript name="setHeaders">
+	<!-- ResourceURL references JavaScript under /apiproxy/resources/jsc -->
+   <ResourceURL>jsc://setHeaders.js</ResourceURL>
+</Javascript>
