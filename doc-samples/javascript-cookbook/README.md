@@ -3,7 +3,7 @@
 This sample demonstrates how to write, attach, and execute simple JavaScript in
 an API proxy flow. 
 
-The sampple implements the cookbook topic:
+The sample implements the cookbook topic:
 
 [JavaScript Proxy Cookbook Topic](http://apigee.com/docs/api-platform/content/use-javascript-customize-api)
 
