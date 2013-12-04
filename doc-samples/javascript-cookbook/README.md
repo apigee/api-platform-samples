@@ -3,6 +3,10 @@
 This sample demonstrates how to write, attach, and execute simple JavaScript in
 an API proxy flow. 
 
+The sample implements the cookbook topic:
+
+[JavaScript Proxy Cookbook Topic](http://apigee.com/docs/api-platform/content/use-javascript-customize-api)
+
 The JavaScript in this sample gets a variable from the flow and sets the variable 
 as HTTP headers on the response message.
 
@@ -23,7 +27,7 @@ JavaScripts in the appropriate sequence.
 
 [Apigee API Platform JavaScript Object Model](https://apigee.com/docs/enterprise/content/apigee-javascript-object-model)
 
-[JavaScript Proxy Cookbook Topic](http://apigee.com/docs/api-platform/content/use-javascript-customize-api)
+
 
 # Set up
 
