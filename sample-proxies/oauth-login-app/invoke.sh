@@ -56,8 +56,8 @@ echo -e "\nOn successful authentication, login application invokes this url and 
 echo -e "https://$org-$env.$api_domain/oauth/authorizationcode?client_id=$consumerkey&response_type=code&app_enduser={userId}"
 
 sleep 5
-echo -e "\n\nNow, The app exchanges the authorization code in return for an cess token"
-echo -e "\nEnter the authorization code returned in the browser address bar for the URL above"
+echo -e "\n\nNow, The app exchanges the authorization code in return for an access token"
+echo -e "\n Enter the URL above in a web browser and load. In the address bar, note the value in the 'code=sAuEt7vk' parameter. That is an auth code. Enter the auth code on the line below and press Enter."
 read auth_code
 
 while [ -z $auth_code ]; do
@@ -96,19 +96,19 @@ sleep 5
 authorization_request="https://$org-$env.$api_domain/oauth/authorize?response_type=token&client_id=$consumerkey&redirect_uri=$callback&scope=READ&state=foobar"
 
 echo -e "This page simulates an API Provider authentication page"
-echo -e "Enter anything. No AUthN actually takes place. An API provider would implement an AuthN mechsnism to check credentials"
+echo -e "Enter anything. No AUthN actually takes place. An API provider would implement an AuthN mechanism to check credentials"
 echo -e "After entering credentials, the login app returns an AuthCode in the URL."
 echo -e "The callback URL is the redirect_uri defined in an app profile--in this case, for Joe's app"
 echo -e "\nTo simulate the app end user experience, enter the URL below in a Web browser:\n"
 echo -e "*********************************************************************************************************************"
 echo -e "$authorization_request \n"
 echo -e "*********************************************************************************************************************"
-echo -e "Note the access token returned in the browser address bar"
+echo -e "Paste the URL above in a Web browser. Note the access token returned in the browser address bar"
 
 echo -e "\nThe API Provider Login Page Redirection URL:"
 echo -e "https://$org-$env.$api_domain/oauth/samplelogingpage?client_id={request.queryparam.client_id}&response_type={request.queryparam.response_type}&scope={request.queryparam.scope}"
 
-echo -e "\nOn successful authentication, login application invokes this URL and returns the access token to the a pp"
+echo -e "\nOn successful authentication, the login application invokes this URL and returns the access token to the a pp"
 echo -e "https://$org-$env.$api_domain/oauth/token?client_id=$consumerkey&response_type=token&app_enduser={userId}"
 
 }
@@ -155,6 +155,6 @@ else
 fi
 ######################################################################################################### 
 
-echo "The access token above is used ot make request to the protected resource."
+echo "The access token above is used to make a request to the protected resource."
 
 ######################################################################################################### 
