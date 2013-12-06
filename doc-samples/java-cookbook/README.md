@@ -1,46 +1,56 @@
 # Java Callout Sample
 
-This sample provides a simple implementation of the JavaCallout API.
+This sample provides a simple implementation of a proxy that uses the JavaCallout policy and
+that implements Apigee's JavaCallout Java API.
 
-For instructions, see the API Proxy Cookbook topic at:
+For a complete description of this proxy sample, see the API Proxy Cookbook topic at:
 
 http://apigee.com/docs/api-platform/content/use-java-customize-api 
 
-Additional generic code samples are provided for reference in the `/java/src/com/sample` directory.
+Javadoc for the Apigee JavaCallout API Java classes are included in this sample download in:
 
-A JavaCallout is implemented to the JavaCallout API. Javadocs are available at:
+/api-platform-samples/doc-samples/java-cookbook/javdocs-javacallout
 
-https://github.com/apigee/api-platform-samples/wiki/Apigee-API-Platform-Samples-Wiki
+Additional code samples are provided for reference in the '/java/src/com/apigee' directory.
+These additional samples demonstrate various blocking and non-blocking patterns you can
+use with JavaCallout. They are commented.
 
-The proxy uses the Yahoo Weather API for target endpoint, and maps WEOID IDs to city names on behalf of the user.
+
+This sample proxy uses the Yahoo Weather API for a target endpoint, and maps WEOID IDs to city names on behalf of the user.
 
 # Set up
 
-* The username and password that you use to login to enterprise.apigee.com.
-* The name of the organization in which you have an account. Login to 
-  enterprise.apigee.com and check account settings.
+ - The username and password that you use to log in to enterprise.apigee.com.
+ - The name of the organization in which you have an account. 
+ - Log in to enterprise.apigee.com and check account settings.
 
 # Configure 
 
-Update `/setup/setenv.sh` with your environment details
+Update `/setup/setenv.sh` with your environment details.
 
-# Import and deploy sample project
+# Compile and package source code
+
+The Java source code in this sample download must be compiled and packaged in a JAR
+before you can deploy it. Note, the doc-samples/java-cookbook/lib directory is required.
+It was downloaded with this doc sample. If you do not have this directory, you must grab
+it from Github.
+
+ 1. cd .../api-platform-samples/java-cookbook/doc-samples/java
+ 2. mkdir bin
+ 3. javac -d bin -sourcepath src -classpath ../lib/expressions-1.0.0.jar:../lib/message-flow-1.0.0.jar src/com/apigee/CityLookup.java
+ 4. cd bin
+ 5. jar -cvf CityLookup.jar ./com
+ 6. mkdir -p ../../apiproxy/resources/java
+ 7. cp CityLookup.jar ../../apiproxy/resources/java
+
+ Note: Follow these compile/package instructions anytime you modify the Java source code. 
+
+# Deploy and invoke the sample proxy.
 
 To deploy, run `$ sh deploy.sh`
 
 To test, run `$ sh invoke.sh`
 
-# Compiling the source
-
-If you make modifications to the Java sample, you can recompile it as follows:
-
-  cd ./java
-  mkdir bin
-  javac -d bin -sourcepath src -classpath ../lib/expressions-1.0.0.jar:../lib/message-flow-1.0.0.jar src/com/apigee/CityLookup.java
-  cd bin
-  jar -cvf CityLookup.jar ./com
-  mkdir -p ../../apiproxy/resources/java
-  cp CityLookup.jar ../../apiproxy/resources/java
 
 # Get help
 
