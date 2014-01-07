@@ -1,18 +1,14 @@
 # Apigee API Platform Policy Samples
 
-This is a collection of sample API proxies for [Apigee API Platform](http://apigee.com/about/enterprise), designed to showcase the features of the Platform and demonstrate how to build your own API proxies.
+This is a collection of sample API proxies for [Apigee Edge](http://apigee.com/about/enterprise), designed to showcase the features of Edge and demonstrate how to build your own API proxies.
 
 Each directory contains a sample API proxy along with directions
-on how to configure, deploy, and test it on the Apigee API Platform.
+on how to configure, deploy, and test it on the Apigee Edge.
 
-[Register for a fully-featured, free Apigee API Platform account](
+[Register for a fully-featured, free Apigee Edge account](
 https://accounts.apigee.com/accounts/sign_up)
 
-## [Platform Documentation](http://apigee.com/docs)
-
-[API Platform Policy Reference](https://apigee.com/docs/enterprise/content/customize-apis)
-
-[API Platform Developer Guide](https://apigee.com/docs/enterprise/content/developer_guide)
+## [Apigee Edge Documentation](http://apigee.com/docs)
 
 # Deploy the samples
 
