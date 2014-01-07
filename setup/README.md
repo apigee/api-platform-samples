@@ -19,7 +19,7 @@ Follow prompts.
 
 For assistance, post to the [Apigee Developer Forum](http://support.apigee.com)
 
-Copyright © 2013 Apigee Corporation
+Copyright © 2014 Apigee Corporation
 
 Copyright 2013 Apigee Corporation
 
