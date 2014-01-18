@@ -73,6 +73,8 @@ To deploy all samples and API products, run `deploy_all.sh`
 
 * `proxy_gen.sh`: A simple script that interacts with the API Services platform to locally generate an API proxy scaffold.
 
+* `/org-snapshot`: A configurable tool that retrieves organization settings from the API Services platform by using management server API calls.
+
 # Get help and interact with other API developers
 
 For assistance, post to the [The Apigee Developer Forum](http://support.apigee.com)

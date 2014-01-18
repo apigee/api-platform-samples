@@ -1,6 +1,6 @@
-# Apigee Platform Samples Tooles
+# Apigee Platform Samples Tools
 
-This directory contains two tools:
+This directory contains three tools:
 
 ## API Proxy Generator
 
@@ -17,7 +17,7 @@ Run `proxy_gen.sh` and follow the prompts.
 
 The API proxy will be downloaded and unzipped to a directory called `/apiproxy`
 
-# API Proxy Deploy Tool
+## API Proxy Deploy Tool
 
 Requires [Python](http://python.org/getit/) to be installed. 
 
@@ -26,7 +26,7 @@ from your local machine to an environment on the Apigee API Platform.
 
 You require an account in an organization at enterprise.apigee.com. [Register for an account for free.](https://accounts.apigee.com/accounts/sign_up)
 
-# Usage
+### Usage
 
     deploy.py -n {apiName} -u {myname:mypass} -o {myorg} -e {environment} -p {basePath} -d {path to /apiproxy directory}
 
@@ -59,7 +59,13 @@ contains the directory `/apiproxy`, and not to the `/apiproxy` directory itself.
 
 * `-h` **Optional** The base URL for the Apigee API. You do not need to specify or modify this for cloud/trial accounts. Defaults to `https://api.enterprise.apigee.com`
 
-# Get help
+## Organization Snapshot Tool
+
+This tool allows retrieval of the settings of an organization. See the README in the org-snapshot directory.
+
+You require an account in an organization at enterprise.apigee.com. [Register for an account for free.](https://accounts.apigee.com/accounts/sign_up)
+
+## Get help
 
 For assistance, post to the [Apigee Developer Forum](http://support.apigee.com)
 
