@@ -45,7 +45,7 @@ Run `/setup/deploy.sh`
 
 # Get help
 
-For assistance, post to the [Apigee Developer Forum](http://support.apigee.com)
+For assistance, please use [StackOverflow](http://stackoverflow.com/tags/apigee) and add the tag "apigee".
 
 Copyright © 2014 Apigee Corporation
 

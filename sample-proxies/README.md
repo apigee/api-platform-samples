@@ -1,4 +1,4 @@
-# Apigee API Platform Policy Samples
+# Apigee API Platform Samples
 
 This is a collection of sample API proxies for [Apigee Edge](http://apigee.com/about/enterprise), designed to showcase the features of Edge and demonstrate how to build your own API proxies.
 
@@ -17,7 +17,7 @@ base directory of API Platform Samples distribution.
 
 # Get support
 
-For assistance, post to the [Apigee Developer Forum](http://support.apigee.com)
+For assistance, please use [StackOverflow](http://stackoverflow.com/tags/apigee) and add the tag "apigee".
 
 Copyright © 2014 Apigee Corporation
 
