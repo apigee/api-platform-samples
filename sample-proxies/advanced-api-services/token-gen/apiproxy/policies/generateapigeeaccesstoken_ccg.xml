@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<OAuthV2 async="false" continueOnError="false" enabled="true" name="generateapigeeaccesstoken_ccg">
+    <DisplayName>GenerateApigeeAccessToken_CCG</DisplayName>
+    <FaultRules/>
+    <Properties/>
+    <Attributes/>
+  <Operation>GenerateAccessToken</Operation>
+  <SupportedGrantTypes>
+    <GrantType>client_credentials</GrantType>
+  </SupportedGrantTypes>
+  <GrantType>credentials.grant_type</GrantType>
+  <ExpiresIn ref="expiresIn_string">3600</ExpiresIn>
+  <Attributes>
+    <Attribute name="appServicesOrgName" ref="verifyapikey.verifyapikeyfromauthheader.DATA_STORE_ORG_NAME" display="false"></Attribute>
+    <Attribute name="appServicesAppName" ref="verifyapikey.verifyapikeyfromauthheader.DATA_STORE_APP_NAME" display="false"></Attribute>
+    <Attribute name="appServicesConsumerKey" ref="verifyapikey.verifyapikeyfromauthheader.DATA_STORE_APP_CONSUMER_KEY" display="false"></Attribute>
+    <Attribute name="appServicesAccessToken" ref="appServicesTokenResponse.accessToken" display="false"></Attribute>
+    <Attribute name="appServicesExpiresIn" ref="expiresIn_string" display="false"></Attribute>
+  </Attributes>
+</OAuthV2>

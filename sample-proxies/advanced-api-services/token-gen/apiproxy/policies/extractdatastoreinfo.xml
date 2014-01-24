@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage async="false" continueOnError="false" enabled="true" name="extractdatastoreinfo">
+    <DisplayName>ExtractDataStoreInfo</DisplayName>
+    <FaultRules/>
+    <Properties/>
+    <AssignVariable>
+        <Name>dataStoreOrgName</Name>
+      <Ref>verifyapikey.verifyapikeyfromauthheader.DATA_STORE_ORG_NAME</Ref>
+    </AssignVariable>
+    <AssignVariable>
+        <Name>dataStoreAppName</Name>
+      <Ref>verifyapikey.verifyapikeyfromauthheader.DATA_STORE_APP_NAME</Ref>
+    </AssignVariable>
+    <AssignVariable>
+        <Name>dataStoreAppConsumerKey</Name>
+      <Ref>verifyapikey.verifyapikeyfromauthheader.DATA_STORE_APP_CONSUMER_KEY</Ref>
+    </AssignVariable>
+    <AssignVariable>
+        <Name>dataStoreAppConsumerSecret</Name>
+      <Ref>verifyapikey.verifyapikeyfromauthheader.DATA_STORE_APP_CONSUMER_SECRET</Ref>
+    </AssignVariable>
+    <AssignVariable>
+        <Name>authorizationString</Name>
+      <Ref>request.header.Authorization</Ref>
+    </AssignVariable>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+    <AssignTo createNew="false" transport="http" type="request"/>
+</AssignMessage>

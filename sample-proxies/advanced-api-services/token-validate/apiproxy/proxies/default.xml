@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ProxyEndpoint name="default">
+    <Description/>
+    <DefaultFaultRule name="generic_fault_handler">
+        <Step>
+            <Name>fault_genericfault</Name>
+        </Step>
+    </DefaultFaultRule>
+    <FaultRules>
+        <FaultRule name="invalid_key_rule">
+            <Step>
+                <Name>fault_invalidcredentials</Name>
+                <Condition>fault.name = "InvalidApiKey"</Condition>
+            </Step>
+        </FaultRule>
+        <FaultRule name="invalid_access_token_rule">
+            <Step>
+                <Name>fault_invalidcredentials</Name>
+                <Condition>fault.name = "invalid_access_token"</Condition>
+            </Step>
+        </FaultRule>
+        <FaultRule name="access_token_not_approved_rule">
+            <Step>
+                <Name>fault_invalidcredentials</Name>
+                <Condition>fault.name = "access_token_not_approved"</Condition>
+            </Step>
+        </FaultRule>
+    </FaultRules>
+    <PreFlow name="PreFlow">
+        <Request>
+            <Step>
+                <FaultRules/>
+                <Name>decodeauthorizationheader</Name>
+            </Step>
+            <Step>
+                <FaultRules/>
+                <Name>fault_invalidcredentials</Name>
+                <Condition>(auth_header_error == "true")</Condition>
+            </Step>
+            <Step>
+                <FaultRules/>
+                <Name>debug</Name>
+            </Step>
+        </Request>
+        <Response/>
+    </PreFlow>
+    <Flows>
+        <Flow name="collectionRequest">
+            <Description/>
+            <Condition>(proxy.pathsuffix != "/")</Condition>
+            <Request>
+                <Step>
+                    <FaultRules/>
+                    <Name>fault_invalidcredentials</Name>
+                    <Condition>auth_access_token is null</Condition>
+                </Step>
+                <Step>
+                    <FaultRules/>
+                    <Name>verifyaccesstoken</Name>
+                </Step>
+                <Step>
+                    <FaultRules/>
+                    <Name>extractdatastoreinfofromverifyaccesstoken</Name>
+                </Step>
+            </Request>
+            <Response/>
+        </Flow>
+        <Flow name="defaultFlow">
+            <Description/>
+            <Request>
+                <Step>
+                    <FaultRules/>
+                    <Name>fault_notfound</Name>
+                </Step>
+            </Request>
+            <Response/>
+        </Flow>
+    </Flows>
+    <PostFlow name="PostFlow">
+        <Request/>
+        <Response/>
+    </PostFlow>
+    <HTTPProxyConnection>
+        <BasePath>/v1/datastore</BasePath>
+        <VirtualHost>default</VirtualHost>
+    </HTTPProxyConnection>
+    <RouteRule name="default">
+        <TargetEndpoint>default</TargetEndpoint>
+    </RouteRule>
+</ProxyEndpoint>

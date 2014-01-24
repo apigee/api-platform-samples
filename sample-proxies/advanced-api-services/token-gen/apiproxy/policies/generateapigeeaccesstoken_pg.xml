@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<OAuthV2 async="false" continueOnError="false" enabled="true" name="generateapigeeaccesstoken_pg">
+    <DisplayName>GenerateApigeeAccessToken_PG</DisplayName>
+    <FaultRules/>
+    <Properties/>
+    <Attributes/>
+  <Operation>GenerateAccessToken</Operation>
+  <SupportedGrantTypes>
+    <GrantType>password</GrantType>
+  </SupportedGrantTypes>
+  <ExpiresIn ref="expiresIn_string">3600</ExpiresIn>
+  <GrantType>credentials.grant_type</GrantType> 
+  <ClientId>client_id</ClientId>    
+  <UserName>credentials.userid</UserName>
+  <PassWord>credentials.password</PassWord> 
+  <GenerateResponse />
+  <Attributes>
+    <Attribute name="appServicesOrgName" ref="verifyapikey.verifyapikeyfromauthheader.DATA_STORE_ORG_NAME" display="false"></Attribute>
+    <Attribute name="appServicesAppName" ref="verifyapikey.verifyapikeyfromauthheader.DATA_STORE_APP_NAME" display="false"></Attribute>
+    <Attribute name="appServicesConsumerKey" ref="verifyapikey.verifyapikeyfromauthheader.DATA_STORE_APP_CONSUMER_KEY" display="false"></Attribute>
+    <Attribute name="appServicesAccessToken" ref="appServicesTokenResponse.accessToken" display="false"></Attribute>
+    <Attribute name="appServicesExpiresIn" ref="expiresIn_string" display="false"></Attribute>
+  </Attributes>
+</OAuthV2>

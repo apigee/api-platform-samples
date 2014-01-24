@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<OAuthV2 async="false" continueOnError="false" enabled="true" name="invalidateaccesstoken">
+    <DisplayName>InvalidateAccessToken</DisplayName>
+    <FaultRules/>
+    <Properties/>
+<Operation>InvalidateToken</Operation>
+  <Tokens>
+    <Token type="accesstoken" cascade="true">request.queryparam.access_token</Token>
+  </Tokens>
+</OAuthV2>

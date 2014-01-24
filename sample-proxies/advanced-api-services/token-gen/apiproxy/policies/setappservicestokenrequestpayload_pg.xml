@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage async="false" continueOnError="false" enabled="true" name="setappservicestokenrequestpayload_pg">
+    <DisplayName>SetAppServicesTokenRequestPayload_PG</DisplayName>
+    <FaultRules/>
+    <Properties/>
+    <Set>
+        <Headers>
+          <Header name="Accept">application/json</Header>
+          <Header name="Content-Type">application/json</Header>
+      </Headers>
+      <Verb>POST</Verb>
+      <Payload variablePrefix="%" variableSuffix="#" contentType="application/json">{"grant_type":"password","username":"%credentials.userid#","password":"%credentials.password#"}</Payload>
+    </Set>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+  <AssignTo createNew="true" transport="http" type="request">request</AssignTo>
+</AssignMessage>

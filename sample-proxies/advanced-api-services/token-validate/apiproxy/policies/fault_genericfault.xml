@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage async="false" continueOnError="false" enabled="true" name="fault_genericfault">
+    <DisplayName>Fault_GenericFault</DisplayName>
+    <FaultRules/>
+    <Properties/>
+        <Set>
+          <Payload contentType="application/json" variablePrefix="%" variableSuffix="#">{ "errorName":"%fault.name#", "errorCode":"%error.code#", "errorState":"%error.state#, "message":"%error.message#" }</Payload>
+            <StatusCode>500</StatusCode>
+            <ReasonPhrase>Internal Server Error</ReasonPhrase>
+        </Set>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+    <AssignTo createNew="false" transport="http" type="request"/>
+</AssignMessage>

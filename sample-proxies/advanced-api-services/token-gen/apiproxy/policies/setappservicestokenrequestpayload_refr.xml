@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage async="false" continueOnError="false" enabled="true" name="setappservicestokenrequestpayload_refr">
+    <DisplayName>SetAppServicesTokenRequestPayload_REFR</DisplayName>
+    <FaultRules/>
+    <Properties/>
+    <Set>
+        <Headers>
+          <Header name="Accept">application/json</Header>
+          <Header name="Content-Type">application/json</Header>
+      </Headers>
+      <Verb>POST</Verb>
+        <Payload variablePrefix="%" variableSuffix="#" contentType="application/json">{"grant_type":"client_credentials","client_id":"%dataStoreAppConsumerKey#","client_secret":"%dataStoreAppConsumerSecret#"}</Payload>
+    </Set>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+  <AssignTo createNew="true" transport="http" type="request">request</AssignTo>
+</AssignMessage>

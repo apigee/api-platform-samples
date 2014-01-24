@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ProxyEndpoint name="default">
+    <Description/>
+    <DefaultFaultRule name="generic_fault_handler">
+        <Step>
+            <Name>fault_genericfault</Name>
+        </Step>
+    </DefaultFaultRule>
+    <FaultRules>
+        <FaultRule name="invalid_key_rule">
+            <Step>
+                <Name>fault_invalidcredentials</Name>
+                <Condition>fault.name = "InvalidApiKey"</Condition>
+            </Step>
+        </FaultRule>
+        <FaultRule name="invalid_access_token_rule">
+            <Step>
+                <Name>fault_invalidcredentials</Name>
+                <Condition>(request.verb != "DELETE") and (fault.name = "invalid_access_token")</Condition>
+            </Step>
+        </FaultRule>
+        <FaultRule name="invalid_access_token_rule">
+            <Step>
+                <FaultRules/>
+                <Name>fault_invalidrequest</Name>
+                <Condition>(request.verb == "DELETE") and (fault.name = "invalid_access_token")</Condition>
+            </Step>
+        </FaultRule>
+    </FaultRules>
+    <PreFlow name="PreFlow">
+        <Request>
+            <Step>
+                <FaultRules/>
+                <Name>decodeauthorizationheader</Name>
+            </Step>
+            <Step>
+                <FaultRules/>
+                <Name>fault_invalidcredentials</Name>
+                <Condition>(auth_header_error == "true")</Condition>
+            </Step>
+            <Step>
+                <FaultRules/>
+                <Name>extractcredentials</Name>
+                <Condition>(request.verb != "DELETE")</Condition>
+            </Step>
+            <Step>
+                <FaultRules/>
+                <Name>fault_notfound</Name>
+                <Condition>(proxy.pathsuffix is null)</Condition>
+            </Step>
+        </Request>
+        <Response/>
+    </PreFlow>
+    <Flows>
+        <Flow name="token-pg">
+            <Description/>
+            <Condition>(request.verb == "POST") and (credentials.grant_type == "password")</Condition>
+            <Request>
+                <Step>
+                    <FaultRules/>
+                    <Name>fault_invalidcredentials</Name>
+                    <Condition>(credentials.userid is null) or (credentials.password is null)</Condition>
+                </Step>
+                <Step>
+                    <FaultRules/>
+                    <Name>verifyapikeyfromauthheader</Name>
+                </Step>
+                <Step>
+                    <FaultRules/>
+                    <Name>fault_invalidcredentials</Name>
+                    <Condition>verifyapikey.verifyapikeyfromauthheader.client_secret != auth_client_secret</Condition>
+                </Step>
+                <Step>
+                    <FaultRules/>
+                    <Name>extractdatastoreinfo</Name>
+                </Step>
+                <Step>
+                    <FaultRules/>
+                    <Name>fault_invalidcredentials</Name>
+                    <Condition>(dataStoreOrgName is null) or (dataStoreAppName is null) or (dataStoreAppConsumerKey is null) or (dataStoreAppConsumerSecret is null)</Condition>
+                </Step>
+                <Step>
+                    <FaultRules/>
+                    <Name>setappservicestokenrequestpayload_pg</Name>
+                </Step>
+            </Request>
+            <Response>
+                <Step>
+                    <FaultRules/>
+                    <Name>fault_invalidcredentials</Name>
+                    <Condition>message.status.code != 200</Condition>
+                </Step>
+                <Step>
+                    <FaultRules/>
+                    <Name>extractaccesstokenfromtokenresponse</Name>
+                </Step>
+                <Step>
+                    <FaultRules/>
+                    <Name>convertexpiresintostring</Name>
+                </Step>
+                <Step>
+                    <FaultRules/>
+                    <Name>setauthorizationheader</Name>
+                </Step>
+                <Step>
+                    <FaultRules/>
+                    <Name>generateapigeeaccesstoken_pg</Name>
+                </Step>
+                <Step>
+                    <FaultRules/>
+                    <Name>setfinalresponse_pg</Name>
+                </Step>
+            </Response>
+        </Flow>
+        <Flow name="token-ccg">
+            <Condition>(request.verb == "POST") and (credentials.grant_type == "client_credentials")</Condition>
+            <Request>
+                <Step>
+                    <FaultRules/>
+                    <Name>fault_invalidcredentials</Name>
+                    <Condition>(credentials.userid != null) or (credentials.password != null)</Condition>
+                </Step>
+                <Step>
+                    <FaultRules/>
+                    <Name>verifyapikeyfromauthheader</Name>
+                </Step>
+                <Step>
+                    <FaultRules/>
+                    <Name>fault_invalidcredentials</Name>
+                    <Condition>verifyapikey.verifyapikeyfromauthheader.client_secret != auth_client_secret</Condition>
+                </Step>
+                <Step>
+                    <FaultRules/>
+                    <Name>extractdatastoreinfo</Name>
+                </Step>
+                <Step>
+                    <FaultRules/>
+                    <Name>fault_invalidcredentials</Name>
+                    <Condition>(dataStoreOrgName is null) or (dataStoreAppName is null) or (dataStoreAppConsumerKey is null) or (dataStoreAppConsumerSecret is null)</Condition>
+                </Step>
+                <Step>
+                    <FaultRules/>
+                    <Name>setappservicestokenrequestpayload_ccg</Name>
+                </Step>
+            </Request>
+            <Response>
+                <Step>
+                    <FaultRules/>
+                    <Name>fault_invalidcredentials</Name>
+                    <Condition>message.status.code != 200</Condition>
+                </Step>
+                <Step>
+                    <FaultRules/>
+                    <Name>extractaccesstokenfromtokenresponse</Name>
+                </Step>
+                <Step>
+                    <FaultRules/>
+                    <Name>convertexpiresintostring</Name>
+                </Step>
+                <Step>
+                    <FaultRules/>
+                    <Name>setauthorizationheader</Name>
+                </Step>
+                <Step>
+                    <FaultRules/>
+                    <Name>generateapigeeaccesstoken_ccg</Name>
+                </Step>
+                <Step>
+                    <FaultRules/>
+                    <Name>setfinalresponse_ccg</Name>
+                </Step>
+            </Response>
+        </Flow>
+        <Flow name="token-invalidate">
+            <Condition>(request.verb == "DELETE")</Condition>
+            <Request>
+                <Step>
+                    <FaultRules/>
+                    <Name>fault_invalidrequest</Name>
+                    <Condition>(request.queryparam.access_token is null) and (request.queryparam.refresh_token is null)</Condition>
+                </Step>
+                <Step>
+                    <FaultRules/>
+                    <Name>invalidateaccesstoken</Name>
+                    <Condition>!(request.queryparam.access_token is null)</Condition>
+                </Step>
+                <Step>
+                    <FaultRules/>
+                    <Name>invalidaterefreshtoken</Name>
+                    <Condition>!(request.queryparam.refresh_token is null)</Condition>
+                </Step>
+            </Request>
+            <Response>
+                <Step>
+                    <FaultRules/>
+                    <Name>setfinalresponse_invalidate</Name>
+                </Step>
+            </Response>
+        </Flow>
+        <Flow name="defaultFlow">
+            <Description/>
+            <Request>
+                <Step>
+                    <FaultRules/>
+                    <Name>fault_notfound</Name>
+                </Step>
+            </Request>
+            <Response/>
+        </Flow>
+    </Flows>
+    <PostFlow name="PostFlow">
+        <Request/>
+        <Response/>
+    </PostFlow>
+    <HTTPProxyConnection>
+        <BasePath>/v1/datastore/token</BasePath>
+        <VirtualHost>default</VirtualHost>
+    </HTTPProxyConnection>
+    <RouteRule name="invalidate-token">
+        <Condition>(request.verb == "DELETE")</Condition>
+    </RouteRule>
+    <RouteRule name="default">
+        <TargetEndpoint>default</TargetEndpoint>
+    </RouteRule>
+</ProxyEndpoint>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<OAuthV2 async="false" continueOnError="false" enabled="true" name="invalidaterefreshtoken">
+    <DisplayName>InvalidateRefreshToken</DisplayName>
+    <FaultRules/>
+    <Properties/>
+<Operation>InvalidateToken</Operation>
+  <Tokens>
+    <Token type="refreshtoken" cascade="true">request.queryparam.refresh_token</Token>
+  </Tokens>
+</OAuthV2>

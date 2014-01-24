@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<APIProxy revision="1" name="app_services_request_sample">
+    <ConfigurationVersion minorVersion="0" majorVersion="4"/>
+    <CreatedAt>1388533807784</CreatedAt>
+    <CreatedBy>cvonsee@apigee.com</CreatedBy>
+    <Description>A sample data store proxy that delegates app authentication to the Gateway</Description>
+    <DisplayName>datastoreproxyv1</DisplayName>
+    <LastModifiedAt>1388533807784</LastModifiedAt>
+    <LastModifiedBy>cvonsee@apigee.com</LastModifiedBy>
+    <Policies>
+        <Policy>debug</Policy>
+        <Policy>decodeauthorizationheader</Policy>
+        <Policy>extractdatastoreinfofromverifyaccesstoken</Policy>
+        <Policy>fault_genericfault</Policy>
+        <Policy>fault_invalidcredentials</Policy>
+        <Policy>fault_notfound</Policy>
+        <Policy>setcollectiontargeturl</Policy>
+        <Policy>verifyaccesstoken</Policy>
+    </Policies>
+    <ProxyEndpoints>
+        <ProxyEndpoint>default</ProxyEndpoint>
+    </ProxyEndpoints>
+    <Resources>
+        <Resource>py://ConvertExpiresInToString.py</Resource>
+        <Resource>py://DecodeAuthorizationHeader.py</Resource>
+        <Resource>py://SetCollectionTargetUrl.py</Resource>
+        <Resource>py://debug.py</Resource>
+    </Resources>
+    <TargetServers/>
+    <TargetEndpoints>
+        <TargetEndpoint>default</TargetEndpoint>
+    </TargetEndpoints>
+    <validate>false</validate>
+</APIProxy>
