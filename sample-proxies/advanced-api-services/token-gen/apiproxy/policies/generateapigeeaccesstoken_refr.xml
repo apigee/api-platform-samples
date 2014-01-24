@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<OAuthV2 async="false" continueOnError="false" enabled="true" name="generateapigeeaccesstoken_refr">
+    <DisplayName>GenerateApigeeAccessToken_REFR</DisplayName>
+    <FaultRules/>
+    <Properties/>
+    <Operation>RefreshAccessToken</Operation>
+  <ExpiresIn ref="expiresIn_string">3600</ExpiresIn>
+    <GrantType>credentials.grant_type</GrantType>
+    <RefreshToken>credentials.refreshToken</RefreshToken>
+  <GenerateResponse />
+  <Attributes>
+    <Attribute name="appServicesOrgName" ref="verifyapikey.verifyapikeyfromauthheader.DATA_STORE_ORG_NAME" display="false"></Attribute>
+    <Attribute name="appServicesAppName" ref="verifyapikey.verifyapikeyfromauthheader.DATA_STORE_APP_NAME" display="false"></Attribute>
+    <Attribute name="appServicesConsumerKey" ref="verifyapikey.verifyapikeyfromauthheader.DATA_STORE_APP_CONSUMER_KEY" display="false"></Attribute>
+    <Attribute name="appServicesAccessToken" ref="appServicesTokenResponse.accessToken" display="false"></Attribute>
+    <Attribute name="appServicesExpiresIn" ref="expiresIn_string" display="false"></Attribute>
+  </Attributes>
+</OAuthV2>

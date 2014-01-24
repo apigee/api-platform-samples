@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage async="false" continueOnError="false" enabled="true" name="extractdatastoreinfofromverifyaccesstoken">
+    <DisplayName>ExtractDataStoreInfoFromVerifyAccessToken</DisplayName>
+    <FaultRules/>
+    <Properties/>
+    <AssignVariable>
+        <Name>dataStoreOrgName</Name>
+      <Ref>accesstoken.appServicesOrgName</Ref>
+    </AssignVariable>
+    <AssignVariable>
+        <Name>dataStoreAppName</Name>
+      <Ref>accesstoken.appServicesAppName</Ref>
+    </AssignVariable>
+    <AssignVariable>
+        <Name>dataStoreAppConsumerKey</Name>
+      <Ref>accesstoken.appServicesConsumerKey</Ref>
+    </AssignVariable>
+  <AssignVariable>
+    <Name>dataStoreAccessToken</Name>
+    <Ref>accesstoken.appServicesAccessToken</Ref>
+  </AssignVariable>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+    <AssignTo createNew="false" transport="http" type="request"/>
+</AssignMessage>

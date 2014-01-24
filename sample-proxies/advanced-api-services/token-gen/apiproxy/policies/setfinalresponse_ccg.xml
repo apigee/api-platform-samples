@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage async="false" continueOnError="false" enabled="true" name="setfinalresponse_ccg">
+    <DisplayName>SetFinalResponse_CCG</DisplayName>
+    <FaultRules/>
+    <Properties/>
+    <Set>
+        <Headers>
+          <Header name="Content-Type">application/json</Header>
+      </Headers>
+        <Payload variablePrefix="%" variableSuffix="#" contentType="application/json">{"application":"%appServicesTokenResponse.application#","access_token":"%oauthv2accesstoken.generateapigeeaccesstoken_ccg.access_token#","expiresIn":%expiresIn_string#}</Payload>
+            <StatusCode>200</StatusCode>
+            <ReasonPhrase>OK</ReasonPhrase>
+    </Set>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+  <AssignTo createNew="false" transport="http" type="response" />
+</AssignMessage>

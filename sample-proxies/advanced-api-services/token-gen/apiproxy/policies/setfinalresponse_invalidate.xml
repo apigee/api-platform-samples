@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage async="false" continueOnError="false" enabled="true" name="setfinalresponse_invalidate">
+    <DisplayName>SetFinalResponse_INVALIDATE</DisplayName>
+    <FaultRules/>
+    <Properties/>
+        <Set>
+            <Headers/>
+            <Payload contentType="text/plain"> </Payload>
+            <StatusCode>200</StatusCode>
+            <ReasonPhrase>OK</ReasonPhrase>
+        </Set>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+    <AssignTo createNew="false" transport="http" type="request"/>
+</AssignMessage>

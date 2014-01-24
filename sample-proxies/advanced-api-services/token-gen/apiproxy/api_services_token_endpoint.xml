@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<APIProxy revision="1" name="api_services_token_endpoint">
+    <ConfigurationVersion minorVersion="0" majorVersion="4"/>
+    <CreatedAt>1388533674686</CreatedAt>
+    <CreatedBy>cvonsee@apigee.com</CreatedBy>
+    <Description>A sample data store proxy that delegates app authentication to the Gateway</Description>
+    <DisplayName>datastoreproxyv1</DisplayName>
+    <LastModifiedAt>1388533674686</LastModifiedAt>
+    <LastModifiedBy>cvonsee@apigee.com</LastModifiedBy>
+    <Policies>
+        <Policy>convertexpiresintostring</Policy>
+        <Policy>debug</Policy>
+        <Policy>decodeauthorizationheader</Policy>
+        <Policy>extractaccesstokenfromtokenresponse</Policy>
+        <Policy>extractcredentials</Policy>
+        <Policy>extractdatastoreinfo</Policy>
+        <Policy>fault_genericfault</Policy>
+        <Policy>fault_invalidcredentials</Policy>
+        <Policy>fault_invalidrequest</Policy>
+        <Policy>fault_notfound</Policy>
+        <Policy>generateapigeeaccesstoken_ccg</Policy>
+        <Policy>generateapigeeaccesstoken_pg</Policy>
+        <Policy>generateapigeeaccesstoken_refr</Policy>
+        <Policy>invalidateaccesstoken</Policy>
+        <Policy>invalidaterefreshtoken</Policy>
+        <Policy>setappservicestokenrequestpayload_ccg</Policy>
+        <Policy>setappservicestokenrequestpayload_pg</Policy>
+        <Policy>setappservicestokenrequestpayload_refr</Policy>
+        <Policy>setauthorizationheader</Policy>
+        <Policy>setfinalresponse_ccg</Policy>
+        <Policy>setfinalresponse_invalidate</Policy>
+        <Policy>setfinalresponse_pg</Policy>
+        <Policy>setfinalresponse_refr</Policy>
+        <Policy>settokentargeturl</Policy>
+        <Policy>verifyapikeyfromauthheader</Policy>
+    </Policies>
+    <ProxyEndpoints>
+        <ProxyEndpoint>default</ProxyEndpoint>
+    </ProxyEndpoints>
+    <Resources>
+        <Resource>py://ConvertExpiresInToString.py</Resource>
+        <Resource>py://DecodeAuthorizationHeader.py</Resource>
+        <Resource>py://SetTokenTargetUrl.py</Resource>
+        <Resource>py://debug.py</Resource>
+    </Resources>
+    <TargetServers/>
+    <TargetEndpoints>
+        <TargetEndpoint>default</TargetEndpoint>
+    </TargetEndpoints>
+    <validate>false</validate>
+</APIProxy>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ExtractVariables async="false" continueOnError="false" enabled="true" name="extractaccesstokenfromtokenresponse">
+    <DisplayName>ExtractAccessTokenFromTokenResponse</DisplayName>
+    <FaultRules/>
+    <Properties/>
+    <JSONPayload>
+        <Variable name="accessToken">
+            <JSONPath>$.access_token</JSONPath>
+        </Variable>
+        <Variable name="expiresIn_long">
+            <JSONPath>$.expires_in</JSONPath>
+        </Variable>
+        <Variable name="userObject">
+            <JSONPath>$.user</JSONPath>
+        </Variable>
+        <Variable name="application">
+            <JSONPath>$.application</JSONPath>
+        </Variable>
+    </JSONPayload>
+  <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+    <Source clearPayload="false">response.content</Source>
+    <VariablePrefix>appServicesTokenResponse</VariablePrefix>
+</ExtractVariables>
