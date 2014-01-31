@@ -7,7 +7,7 @@
 
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
     <xs:include schemaLocation="stepDefinition.xsd"/>
-    <xs:include schemaLocation="../properties.xsd"/>
+    <xs:include schemaLocation="../configuration/properties.xsd"/>
 
     <xs:element name="GetOAuthV1Info">
         <xs:complexType>
@@ -61,11 +61,22 @@
                         </xs:element>
                         <xs:element name="GenerateResponse" type="generateResponseType" minOccurs="0"/>
                         <xs:element ref="GenerateErrorResponse" minOccurs="0"/>
+                        <xs:element ref="URL" minOccurs="0"/>
                     </xs:sequence>
                 </xs:extension>
             </xs:complexContent>
         </xs:complexType>
     </xs:element>
+
+    <xs:element name="URL" type="oAuthV1URL"/>
+
+    <xs:complexType name="oAuthV1URL">
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute name="ref" type="xs:string"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
 
     <xs:element name="OAuthV2">
         <xs:complexType>
