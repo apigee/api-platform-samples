@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!--
+  ~ Copyright (c) 2013, Apigee Corporation.  All rights reserved.
+  ~ Apigee(TM) and the Apigee logo are trademarks or
+  ~ registered trademarks of Apigee Corp. or its subsidiaries.  All other
+  ~ trademarks are the property of their respective owners.
+  -->
+
+<xs:schema version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+    <xs:include schemaLocation="stepDefinition.xsd"/>
+
+    <xs:element name="AccessEntity" type="accessEntityBean"/>
+
+    <xs:complexType name="entityIdentifier">
+        <xs:sequence/>
+        <xs:attribute name="ref" type="xs:string" use="required"/>
+        <xs:attribute name="type" type="xs:string"/>
+    </xs:complexType>
+
+    <xs:complexType name="secondaryIdentifier">
+        <xs:sequence/>
+        <xs:attribute name="ref" type="xs:string" use="required"/>
+        <xs:attribute name="type" type="xs:string"/>
+    </xs:complexType>
+
+    <xs:complexType name="entityType">
+        <xs:sequence/>
+        <xs:attribute name="value" type="xs:string" use="required"/>
+    </xs:complexType>
+
+    <xs:complexType name="accessEntityBean">
+        <xs:complexContent>
+            <xs:extension base="stepDefinitionType">
+                <xs:sequence>
+                    <xs:element name="EntityIdentifier" type="entityIdentifier" minOccurs="0"/>
+                    <xs:element name="EntityType" type="entityType" minOccurs="0"/>
+                    <xs:element name="Identifiers" minOccurs="0">
+                        <xs:complexType>
+                            <xs:sequence>
+                                <xs:element name="Identifier" type="compositeIdentifier" minOccurs="0" maxOccurs="unbounded"/>
+                            </xs:sequence>
+                        </xs:complexType>
+                    </xs:element>
+                    <xs:element name="SecondaryIdentifier" type="secondaryIdentifier" minOccurs="0"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="compositeIdentifier">
+        <xs:sequence>
+            <xs:element name="EntityIdentifier" type="entityIdentifier" minOccurs="0"/>
+            <xs:element name="SecondaryIdentifier" type="secondaryIdentifier" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:simpleType name="entityTypes">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="developer"/>
+            <xs:enumeration value="app"/>
+            <xs:enumeration value="apiproduct"/>
+            <xs:enumeration value="company"/>
+            <xs:enumeration value="companydeveloper"/>
+            <xs:enumeration value="consumerkey"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+</xs:schema>
