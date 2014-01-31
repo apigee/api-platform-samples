@@ -6,6 +6,27 @@ The directory `/apiproxy` contains a sample API proxy for the following OAuth 2.
 * Implicit flow
 * Client credentials
 
+# Configure 
+
+This sample requires you to create a set of developers, apps, and API products in 
+your organization.
+
+You can do this by running the scripts under /setup in this distribution. The profiles
+for developers, apps and API products can be under /setup/provisioning.
+
+(If you run deploy_all.sh, you will be prompted to install the developers, apps, and 
+API products after all of the API proxies have been deployed by the script.)
+
+1. Update `/setup/setenv.sh` with your organization name and email address.
+
+2. Run `/setup/provisioning/setup.sh`
+
+# Import and deploy sample project
+
+To deploy, run `$ sh deploy.sh`
+
+To test, run `$ sh invoke.sh`
+
 This API proxy provides a sample login app to demonstrate the interaction between 
 the Apigee API Platform OAuth infrastructure and a third-party login app. 
 
