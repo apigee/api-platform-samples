@@ -25,10 +25,10 @@
             <Condition>(proxy.pathsuffix MatchesPath "/authorize") and (request.verb = "GET")</Condition>
             <Description />
             <Request>
-                <Step>
+                <!-- <Step>
                     <FaultRules />
                     <Name>AuthorizationRequest</Name>
-                </Step>
+                </Step> -->
                 <Step>
                     <FaultRules />
                     <Name>RedirectToLoginApp</Name>
