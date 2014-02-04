@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<APIProxy revision="1" name="employees">
+    <ConfigurationVersion minorVersion="0" majorVersion="4"/>
+    <CreatedAt>1389894139565</CreatedAt>
+    <CreatedBy>wwitman@apigee.com</CreatedBy>
+    <DisplayName>employees</DisplayName>
+    <LastModifiedAt>1389894139565</LastModifiedAt>
+    <LastModifiedBy>wwitman@apigee.com</LastModifiedBy>
+    <Policies/>
+    <ProxyEndpoints>
+        <ProxyEndpoint>default</ProxyEndpoint>
+    </ProxyEndpoints>
+    <Resources>
+        <Resource>node://README.md</Resource>
+        <Resource>node://config-template.js</Resource>
+        <Resource>node://config.js</Resource>
+        <Resource>node://node_modules.zip</Resource>
+        <Resource>node://package.json</Resource>
+        <Resource>node://server.js</Resource>
+    </Resources>
+    <TargetServers/>
+    <TargetEndpoints>
+        <TargetEndpoint>default</TargetEndpoint>
+    </TargetEndpoints>
+</APIProxy>

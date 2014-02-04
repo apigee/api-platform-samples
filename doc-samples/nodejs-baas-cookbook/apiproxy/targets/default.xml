@@ -1,0 +1,1 @@
+<TargetEndpoint name="default">      <ScriptTarget>      <ResourceURL>node://server.js</ResourceURL>      </ScriptTarget>      </TargetEndpoint>
