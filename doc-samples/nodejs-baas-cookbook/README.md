@@ -45,7 +45,7 @@ the Apigee Edge cookbook topic:
 ## Sample Configuration
 
 
-1. Edit the information in ../../tools/setenv.sh for your local environment.
+1. Edit the information in ../../setup/setenv.sh for your local environment.
 
 2. Open the file apiproxy/resources/node/config.js for editing. You need to provide values
    for the variables in this config file. The Node.js application reads this file at
