@@ -1,45 +1,105 @@
-## BaaS application with Node.js on running on Apigee
+# BaaS application with Node.js on running on Apigee Edge
 
 
-This cookbook sample illustrates how to create a simple BaaS application with Node.js 
-funtioning as the API backend. The application lets you store and retrieve employee
-profile information. Apigee App Services provides the cloud-based data storage. 
+This cookbook sample illustrates how to create a simple BaaS solution with Node.js
+running on Apigee Edge. The service is written entirely in Node.js and it functions
+as the target of the API proxy. The app stores and retrieves employee profile
+information. The backend data storage is provided by Apigee App Services through 
+the Usergrid API. 
 
 For overview information and a detailed discussion of this application, see
-the Apigee Edge cookbook topic: http://apigee.com/docs
+the Apigee Edge cookbook topic: 
+
+	http://apigee.com/docs/api-services/content/overview-nodejs-apigee-edge
 
 
-## To set up:
+## Set up
 
-1. You need an account and an organization on Apigee Edge. 
-2. Go to the App Services main page, and create a new app called "employees".
-3. Create a new user in your org in App Servivces. For the example, this user's ID is "jdoe". 
-4. Edit the information in ../../tools/setenv.sh for your local environment. 
-5. Edit the file apiproxy/resources/node/config.js. The clientId and clientSecret are 
-   listed on the main page for your environment in App Services. 
 
-   exports.organization = 'myorg'
-   exports.application = 'employees'
-   exports.clientId = 'xxxxxxxxxxxxxx'
-   exports.clientSecret = 'yyyyyyyyyyyyy'
-   exports.username = 'jdoe'
-   exports.password = 'Welcome1'
-   exports.tokenExpiration = 60000
-   exports.logging = true 
+1. Log in to your Apigee Edge account. If you don't have an account, see "Creating
+   an Apigee Edge account" here: 
+   
+      		http://apigee.com/docs/api-services/content/creating-apigee-edge-account
 
- 
-## To deploy:
+   Accounts are free and only take a minute to set up. 
+   
+2. After you log in, make sure you remember the name of your organization. You'll need
+   it when you configure the service. The org name appears on the Dashboard page when
+   you log in.
+
+3. Now, you need to set up the backend data storage (API Services data store). This is
+   the storage used by the app to store employee profile data. From the main Dashboard 
+   page, open the App Services admin console. 
+   
+4. In the App Services admin console, create a new Application called "employees". 
+   If you need help, see "Creating a New Application
+   with the Admin Console": 
+   
+       http://apigee.com/docs/app-services/content/creating-new-application-admin-console
+
+5. In the App Services admin console, select Users and create a new application user. 
+   Just remember the user ID and password -- you'll need it when you configure the app. 
+   For this example, we create a user with ID "jdoe123" and password "Welcome1".
+   
+
+## Sample Configuration
+
+
+1. Edit the information in ../../tools/setenv.sh for your local environment.
+
+2. Open the file apiproxy/resources/node/config.js for editing. You need to provide values
+   for the variables in this config file. The Node.js application reads this file at
+   runtime and uses the information in it for authentication. 
+   
+   Note: The clientId and clientSecret are listed on the App Services Dashboard page.
+         Click Org Administration to view these values.
+         The username and password must be the user ID and password of the app user you 
+         created in the Set Up instructions (e.g., jdoe123/Welcome1). 
+
+   exports.organization = 'yourOrg'  // the name of your organization
+   exports.application = 'employees' // the name of the app you created
+   exports.clientId = 'xxxxxxx'      // the client ID is listed on the organization Dashboard page in the admin console
+   exports.clientSecret = 'xxxxxxx'  // the clientSecret is listed on the organization Dashboard page in the admin console
+   exports.username = 'jdoe123'      // the ID of the user you created
+   exports.password = 'Welcome1'     // the password for the user you created
+   exports.tokenExpiration = 60000   // not necessary to change this
+   exports.logging = true            // not necessary to change this
+
+
+## Deploy the app
+
 
     ./deploy.sh
+    
 
-## To run:
+## Post a new employee profile to the data store. 
 
-    ./invoke.sh
+
+   Substitute the name of your organization and the name of the environment to which 
+   the application is deployed (the default is "test"):
+   
+   curl http://{myorg}-{myenv}.apigee.net/employees/profile \
+    -H "Content-Type: application/json" \
+    -d '{"id":"ajones", "firstName":"Alice", "lastName":"Jones", "phone": "201-555-5501" }' \
+    -X POST
+   
+   
+## Retrieve stored profiles with this API call:
+
+
+   curl "http://{myorg}-{myenv}.apigee.net/employees/profiles"
+   
+   
+## Tip: Using invoke.sh to call the service
+
+You can also run ./invoke.sh to call the API. This script makes a POST and then a 
+GET call to the API. It is configured to add a user profile for "ajones", but you
+can change the profile information as you wish. 
 
 
 For assistance, post to the [Apigee Developer Forum](http://support.apigee.com)
 
-Copyright © 2013 Apigee Corporation
+Copyright © 2014 Apigee Corporation
 
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use
 this file except in compliance with the License. You may obtain a copy

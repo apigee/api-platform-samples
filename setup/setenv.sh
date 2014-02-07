@@ -12,8 +12,8 @@
 ## You can obtain a free account at https://accounts.apigee.com/accounts/sign_up
 ## --------------------------------------
 
-org="The name of your organization on enterprise.apigee.com"
-username="The email address associated with your account on enterprise.apigee.com"
+org="wwitman"
+username="wwitman@apigee.com"
 
 # Whie testing, it's not necessary to change the setting below
 

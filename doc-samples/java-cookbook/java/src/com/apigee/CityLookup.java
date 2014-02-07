@@ -12,25 +12,23 @@ public class CityLookup implements Execution{
 		try
 		{
 
-			int w = 0;
+			int woeid = 0;
+
 			String cityName = messageContext.getMessage().getQueryParam("city").toUpperCase();
 
 			if(cityName.equals("MILAN"))
-				w=718345;
+				woeid=718345;
 			else if (cityName.equals("ROME"))
-				w=721943;
+				woeid=721943;
 			else if (cityName.equals("VENICE"))
-				w=725746;
-
-			if(w>0)
-			{ 
-				messageContext.getRequestMessage().setQueryParam("w", w);
-			}else{
-				//default to palo alto
-				messageContext.getRequestMessage().setQueryParam("w", 2467861);
+				woeid=725746;
+			else {
+				throw new Exception();
 			}
 
+			messageContext.getRequestMessage().setQueryParam("w", woeid);
 			return ExecutionResult.SUCCESS;
+
 		} catch (Exception e) {
 			return ExecutionResult.ABORT;
 		}
