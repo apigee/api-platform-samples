@@ -37,10 +37,6 @@ the Apigee Edge cookbook topic:
    
        http://apigee.com/docs/app-services/content/creating-new-application-admin-console
 
-5. In the App Services admin console, select Users and create a new application user. 
-   Just remember the user ID and password -- you'll need it when you configure the app. 
-   For this example, we create a user with ID "jdoe123" and password "Welcome1".
-   
 
 ## Sample Configuration
 
@@ -60,8 +56,6 @@ the Apigee Edge cookbook topic:
    exports.application = 'employees' // the name of the app you created
    exports.clientId = 'xxxxxxx'      // the client ID is listed on the organization Dashboard page in the admin console
    exports.clientSecret = 'xxxxxxx'  // the clientSecret is listed on the organization Dashboard page in the admin console
-   exports.username = 'jdoe123'      // the ID of the user you created
-   exports.password = 'Welcome1'     // the password for the user you created
    exports.tokenExpiration = 60000   // not necessary to change this
    exports.logging = true            // not necessary to change this
 
