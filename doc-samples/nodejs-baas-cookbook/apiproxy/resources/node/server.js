@@ -8,15 +8,15 @@ app.use(express.bodyParser());
 
 // Initialize Usergrid
 
-var ug = new usergrid.client({
+var client = new usergrid.client({
 	'orgName' : config.organization,
 	'appName' : config.application,
 	'clientId' : config.clientId,
 	'clientSecret' : config.clientSecret,
+	'authType' : usergrid.AUTH_CLIENT_ID,
 	logging : config.logging
 });
 
-var loggedIn = null;
 
 // The API starts here
 
@@ -34,16 +34,12 @@ app.get('/', function(req, resp) {
 
 // GET /profiles
 
-app.get('/profiles', function(req, res) {
-	if (loggedIn === null) {
-		logIn(req, res, getProfiles);
-	} else {
+app.get('/profiles', function(req, res) {	
 		getProfiles(req, res);
-	}
 });
 
 function getProfiles(req, res) {
-	loggedIn.createCollection({
+	client.createCollection({
 		type : 'employees'
 	}, function(err, employees) {
 		if (err) {
@@ -94,13 +90,7 @@ app.post('/profile', function(req, res) {
 		return;
 	}
 
-	if (loggedIn === null) {
-		logIn(req, res, function() {
-			createProfile(e, req, res);
-		});
-	} else {
-		createProfile(e, req, res);
-	}
+	createProfile(e, req, res);
 });
 
 function createProfile(e, req, res) {
@@ -109,7 +99,7 @@ function createProfile(e, req, res) {
 		name : e.id
 	};
 
-	loggedIn.createEntity(opts, function(err, o) {
+	client.createEntity(opts, function(err, o) {
 		if (err) {
 			res.jsonp(500, err);
 			return;
@@ -125,44 +115,8 @@ function createProfile(e, req, res) {
 	});
 }
 
-// We need this for UserGrid authentication
-
-function logIn(req, res, next) {
-	console.log('Logging in as %s', config.username);
-	ug.login(config.username, config.password, function(err) {
-		if (err) {
-			console.log('Login failed: %s', JSON.stringify(err));
-			res.jsonp(500, {
-				error : err
-			});
-			return;
-		}
-
-		loggedIn = new usergrid.client({
-			'orgName' : config.organization,
-			'appName' : config.application,
-			'authType' : usergrid.AUTH_APP_USER,
-			'token' : ug.token,
-			logging : config.logging
-		});
-
-		console.log("Got a token. Set the expiration.");
-
-		setTimeout(expireToken, config.tokenExpiration);
-
-		next(req, res);
-	});
-}
-
-function expireToken() {
-	console.log('Getting rid of user authentication token');
-	if (loggedIn !== null) {
-		loggedIn.logout();
-		loggedIn = null;
-	}
-}
 
 // Listen for requests until the server is stopped
 
 app.listen(process.env.PORT || 9000);
-console.log('Listening on port 9000');
+console.log('The server is running!');
