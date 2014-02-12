@@ -12,12 +12,12 @@
 ## You can obtain a free account at https://accounts.apigee.com/accounts/sign_up
 ## --------------------------------------
 
-org="wwitman"
-username="wwitman@apigee.com"
+org="Enter the name of your organization here"
+username="Enter your Apigee username"
 
 # Whie testing, it's not necessary to change the setting below
 
-env="test"
+env="Enter the name of your environment, e.g., test"
 url="https://api.enterprise.apigee.com"
 api_domain="apigee.net"
 

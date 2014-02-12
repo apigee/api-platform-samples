@@ -37,6 +37,9 @@ the Apigee Edge cookbook topic:
    
        http://apigee.com/docs/app-services/content/creating-new-application-admin-console
 
+5. Now, create a Collection in the Data Store. In the Admin Console, click Data and create
+   a new Collection called "employees". 
+
 
 ## Sample Configuration
 
