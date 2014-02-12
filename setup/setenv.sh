@@ -15,9 +15,9 @@
 org="Enter the name of your organization here"
 username="Enter your Apigee username"
 
-# Whie testing, it's not necessary to change the setting below
+# While testing, it's not necessary to change the setting below
 
-env="Enter the name of your environment, e.g., test"
+env="test"
 url="https://api.enterprise.apigee.com"
 api_domain="apigee.net"
 
