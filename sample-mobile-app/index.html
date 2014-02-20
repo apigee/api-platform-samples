@@ -29,11 +29,9 @@
                                               dataType: "json",
                                               async: true,
                                               success: function (result) {
-                                              console.log(result);
                                               ajax.parseJSON(result);
                                               },
                                               error: function (result,error) {
-                                              console.log(error);
                                               }
                                               });
                                        });
@@ -54,13 +52,11 @@
                         $(document).on('vclick', '#movie-list li a', function(){
                                        movieInfo.id = $(this).attr('data-id');
                                        $.mobile.changePage( "#headline", { transition: "slide", changeHash: false });
-                                       console.log("Clicked!");
                                        });
                         
                         $(document).on('vclick', '#movie-show li a', function(){
                                        movieInfo.id = $(this).attr('data-id');
                                        $.mobile.changePage( "#show", { transition: "slide", changeHash: false });
-                                       console.log("Clicked!");
                                        });
                         
                         
@@ -73,10 +69,7 @@
                             parseJSON:function(result){
                                 movieInfo.result = result.entities;
                                 $.each(result.entities, function(i, row) {
-                                       console.log("Start");
-                                       console.log(JSON.stringify(row));
                                        $('#movie-list').append('<li><a href="" data-id=" ' + row.id  + ' "> ' + row.name + ' </a></li>');
-                                       console.log("Done");
                                        });
                                 
                                 $('#movie-list').listview('refresh');

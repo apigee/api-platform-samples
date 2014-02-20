@@ -38,10 +38,6 @@ echo Building iOS project
 
 $path_to_phonegap/phonegap build ios
 
-echo Installing console plugin
-
-$path_to_phonegap/phonegap plugin add https://git-wip-us.apache.org/repos/asf/cordova-plugin-console.git
-
 echo Opening in Xcode
 
 open ../platforms/ios/$app.xcodeproj	
