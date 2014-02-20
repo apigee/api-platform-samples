@@ -39,6 +39,7 @@ security in another sample.)
 
 * An account on enterprise.apigee.com
 * curl
+* npm (Node Packaged Modules)
 * PhoneGap
 * Xcode
 
@@ -48,12 +49,19 @@ security in another sample.)
 
    $ sh bootstrap_api_backend.sh
 
-2. Open your PhoneGap app in Xcode.
+2. Create a PhoneGap to call your API backend
 
-3. Replace the default index.html file with the index.html file in this directory.
+   $ sh create_phonegap_app
 
-4. Modify the value of url in the ajax method to point to your API backend 
-   created in step 1, above.
+4. In /www/index.html, modify the value of url in the ajax method to 
+   point to your API backend created in step 1, above.
+
+  You can do this in XCode or in the source file in /www. If you modify
+  /www/index.html, make sure you run:
+  
+  $ phonegap build ios
+  
+  (The build command copies all files in /www into /platforms/ios/www.)  
 
 5. In XCode, run the app iOS simulator (select the 'Play' button)
 
