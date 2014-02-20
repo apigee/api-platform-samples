@@ -1,7 +1,5 @@
 # Sample Mobile App
 
-This directory contains tools to help you get up-and-running with Apigee Edge.
-
 The sample is intended to show how an app developer can leverage Apigee Edge.
 
 Its goal is mainly to show you how the pieces fit together, not to 
@@ -45,11 +43,11 @@ security in another sample.)
 
 # Instructions
 
-1. Create an API backend by running the bootstrap script.
+1. Create an API backend by running the bootstrap script:
 
    $ sh bootstrap_api_backend.sh
 
-2. Create a PhoneGap to call your API backend
+2. Create a PhoneGap to call your API backend:
 
    $ sh create_phonegap_app
 
@@ -64,8 +62,6 @@ security in another sample.)
   (The build command copies all files in /www into /platforms/ios/www.)  
 
 5. In XCode, run the app iOS simulator (select the 'Play' button)
-
-By following the
 
 # Troubleshooting
 
