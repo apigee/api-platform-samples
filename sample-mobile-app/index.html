@@ -1,0 +1,144 @@
+<!-- This file replaces the default index.html under {PhoneGapp_app_root}/www -->
+
+<head>
+    <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+            <title>Multi-page template</title>
+            <link rel="stylesheet" href="jquery.mobile-1.3.2.min.css" />
+            <script src="cordova.js"></script>
+            <script src="jquery-1.10.2.min.js"></script>
+            <script src="jquery.mobile-1.3.2.min.js"></script>
+</head>
+
+            <body>
+     
+                <script type="text/javascript" charset="utf-8">
+                    document.addEventListener("deviceready", onDeviceReady, false);
+                    function onDeviceReady() {
+                        console.log("Ready!");
+                    }
+                    </script>
+                
+                
+                    <script>
+                        $(document).on('pageinit', '#home', function(){
+	
+// The value of url, below, is the URL of your app backend on Apigee App Services.
+                                       
+                                       $.ajax({ url: "https://api.usergrid.com/{your_org}/{your_app}/movies",
+                                              dataType: "json",
+                                              async: true,
+                                              success: function (result) {
+                                              console.log(result);
+                                              ajax.parseJSON(result);
+                                              },
+                                              error: function (result,error) {
+                                              console.log(error);
+                                              }
+                                              });
+                                       });
+                        
+                        $(document).on('pagebeforeshow', '#headline', function(){
+                                       $('#movie-data').empty();
+                                       $.each(movieInfo.result, function(i, row) {
+                                              if(row.id == movieInfo.id) {
+                                              $('#movie-data').append('<li>Title: '+ row.name + ' </li>');
+                                              $('#movie-data').append('<li>Director: '+ row.director + ' </li>');
+                                              $('#movie-data').append('<li>Writer: '+ row.writer + ' </li>');
+                                              $('#movie-data').append('<li>Release date: '+ row.release_date + ' </li>');
+                                              $('#movie-data').listview('refresh');
+                                              }
+                                              });
+                                       });
+                        
+                        $(document).on('vclick', '#movie-list li a', function(){
+                                       movieInfo.id = $(this).attr('data-id');
+                                       $.mobile.changePage( "#headline", { transition: "slide", changeHash: false });
+                                       console.log("Clicked!");
+                                       });
+                        
+                        $(document).on('vclick', '#movie-show li a', function(){
+                                       movieInfo.id = $(this).attr('data-id');
+                                       $.mobile.changePage( "#show", { transition: "slide", changeHash: false });
+                                       console.log("Clicked!");
+                                       });
+                        
+                        
+                        var movieInfo = {
+                            id : null,
+                            result : null
+                        }
+                        
+                        var ajax = {
+                            parseJSON:function(result){
+                                movieInfo.result = result.entities;
+                                $.each(result.entities, function(i, row) {
+                                       console.log("Start");
+                                       console.log(JSON.stringify(row));
+                                       $('#movie-list').append('<li><a href="" data-id=" ' + row.id  + ' "> ' + row.name + ' </a></li>');
+                                       console.log("Done");
+                                       });
+                                
+                                $('#movie-list').listview('refresh');
+                            }
+                        }
+                        </script>
+                    
+<!-- Start of first page: #home -->
+                    
+                    <div data-role="page" id="home">
+                        
+                        <div data-role="header">
+                            <h1>Publisherz</h1>
+                        </div><!-- /header -->
+                        
+                        <div data-role="content" data-theme="a">
+                            <h2>Welcome</h2>
+                            <p>This is a simple app designed to show you how to build app-friendly APIs with Apigee Edge.</p>
+                            
+                            <p><a href="#index" data-direction="reverse" data-role="button" data-theme="b">Movies</a></p>
+                            
+                        </div><!-- /content -->
+                        
+                        <div data-role="footer">
+                            <h4>A sample from Apigee, Inc.</h4>
+                        </div><!-- /footer -->
+                    </div>
+                    
+                    <!-- /page one -->
+                    
+                    <!-- Start of second page: #two -->
+                    <div data-role="page" id="index" data-theme="a">
+                        
+                        <div data-theme="a" data-role="header">
+                            <h3>Movies</h3>
+                        </div>
+                        
+                        <div data-role="content">
+                            <p><a href="#home" data-direction="reverse" data-role="button" data-theme="b">Back</a></p>
+                            <div class="example-wrapper" data-iscroll>
+                                <ul data-role="listview"  id="movie-list" data-theme="a">
+                                </ul>
+                            </div>
+                        </div>
+                        
+                    </div>
+                    
+                    <div data-role="page" id="headline">
+                        <div data-theme="a" data-role="header">
+                            <p><a href="#index" class="ui-btn-left" data-transition="slide" data-direction="reverse">Back</a></p>
+                            <h3>Movie Info</h3>
+                        </div>
+                        
+                        <div data-role="content">
+                            <ul data-role="listview"  id="movie-data" data-theme="a">
+                            </ul>
+                        </div>
+                    </div>
+                    </div><!-- /page two -->
+
+
+                    
+        
+  </body>
+</html>
