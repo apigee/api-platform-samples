@@ -20,6 +20,19 @@ This sample provides:
 * A JQuery Mobile app, based on PhoneGap, that calls the API backend
 * Scripts that set up an API proxy the runs as a facade for your API backend
 
+NOTE: This is an extremely simplified sample that is not intended to 
+demonstrate any capabilities of APIBaaS except data storage. This
+sample does not demonstrate the usage of APIBaaS SDKs either. Instead,
+it uses raw JavaScript to make API calls.
+
+You can find the APIBaaS SDKs here:
+
+http://apigee.com/docs/app-services/content/app-services-sdks-0
+
+WARNING: For simplicity, this demo disables security. Do not use this demo
+in a production Apigee Edge environment. (We will show you how to enable
+security in another sample.)
+
 # Prerequisites
 
 <!-- Get versions, links, and stuff -->
@@ -33,7 +46,7 @@ This sample provides:
 
 1. Create an API backend by running the bootstrap script.
 
-   $ sh bootstrap_app_backend.sh
+   $ sh bootstrap_api_backend.sh
 
 2. Open your PhoneGap app in Xcode.
 
