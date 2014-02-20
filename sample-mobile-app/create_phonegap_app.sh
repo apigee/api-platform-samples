@@ -1,22 +1,20 @@
 #!/bin/bash
 
+# This is usually the path to phonegap. If your installation is different, change the path here:
+
+path_to_phonegap="/usr/local/share/npm/bin"
+
 echo "Name your app, followed by [ENTER]:"
 
 read app
 
-echo Creating $app
+echo Creating a PhoneGap app called $app
 
-/usr/local/share/npm/bin/cordova create $app com.example.$app $app
+set -x
 
-cd $app 
+$path_to_phonegap/phonegap create $app com.example.$app $app
 
-echo Adding iOS platform
-
-/usr/local/share/npm/bin/cordova platform add ios
-
-echo Installing console plugin
-
-/usr/local/share/npm/bin/cordova plugin add https://git-wip-us.apache.org/repos/asf/cordova-plugin-console.git
+cd $app
 
 echo Changing dir to new app
 
@@ -38,7 +36,11 @@ cp ../../index.html ./
 
 echo Building iOS project
 
-/usr/local/share/npm/bin/phonegap build ios
+$path_to_phonegap/phonegap build ios
+
+echo Installing console plugin
+
+$path_to_phonegap/phonegap plugin add https://git-wip-us.apache.org/repos/asf/cordova-plugin-console.git
 
 echo Opening in Xcode
 
