@@ -1,11 +1,17 @@
-Sample Mobile App
+# Sample Mobile App
 
 This directory contains tools to help you get up-and-running with Apigee Edge.
 
 The sample is intended to show how an app developer can leverage Apigee Edge.
+Its goal is mainly to show you how the pieces fit together, not to 
+demonstrate all of the bells and whistles. 
 
-The benefit of Apigee Edge is that it enables you to create mobile apps and
-APIs that support the user experience you want to deliver through your app.
+The pieces of the demo are:
+
+* An API backend
+* An API facade
+* A mobile app that calls the API facade and consumes data that you
+store in the API backend.
 
 Edge enables you to do this without writing any code except the code in your 
 mobile app.
@@ -13,10 +19,10 @@ mobile app.
 This sample provides:
 
 * Scripts that set up an API backend in your account on UserGrid
-* A JQuery Mobile app, based on PhoneGap, that calls the API backend.
+* A JQuery Mobile app, based on PhoneGap, that calls the API backend
 * Scripts that set up an API proxy the runs as a facade for your API backend
 
-Prerequisites
+# Prerequisites
 
 <!-- Get versions, links, and stuff -->
 
@@ -25,7 +31,7 @@ Prerequisites
 * PhoneGap
 * Xcode
 
-Instructions
+# Instructions
 
 1. Create an API backend by running the bootstrap script.
 
@@ -42,6 +48,24 @@ Instructions
 
 By following the
 
-Troubleshooting
+# Troubleshooting
 
 We'll put some troubleshooting steps in here.
+
+# Get help
+
+For assistance, please use [StackOverflow](http://stackoverflow.com/tags/apigee) and add the tag "apigee".
+
+Copyright © 2014 Apigee Corporation
+
+Licensed under the Apache License, Version 2.0 (the "License"); you may not use
+this file except in compliance with the License. You may obtain a copy
+of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
