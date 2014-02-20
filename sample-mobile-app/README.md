@@ -3,18 +3,16 @@
 This directory contains tools to help you get up-and-running with Apigee Edge.
 
 The sample is intended to show how an app developer can leverage Apigee Edge.
+
 Its goal is mainly to show you how the pieces fit together, not to 
-demonstrate all of the bells and whistles. 
+demonstrate all of the bells and whistles that Apigee Edge provides. 
 
 The pieces of the demo are:
 
-* An API backend
-* An API facade
-* A mobile app that calls the API facade and consumes data that you
-store in the API backend.
-
-Edge enables you to do this without writing any code except the code in your 
-mobile app.
+* An API backend (running on Apigee APIBaaS)
+* An API facade (running on Apigee API Services)
+* A mobile app that you run in XCode, that calls the API 
+facade and consumes data that you store in the API backend.
 
 This sample provides:
 
