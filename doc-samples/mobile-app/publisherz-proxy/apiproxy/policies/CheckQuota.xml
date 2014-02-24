@@ -1,0 +1,9 @@
+<Quota name="CheckQuota"> 
+  <!-- This policy tells Apigee Edge to maintain a separate quota per app, 
+       based on the apps' API key.
+       The variables are set based on the API product resolved by the VerifyAPIKey policy. -->
+  <Interval ref="verifyapikey.ValidateAPIKey.apiproduct.developer.quota.interval"/>
+  <TimeUnit ref="verifyapikey.ValidateAPIKey.apiproduct.developer.quota.timeunit"/>
+  <Allow countRef="verifyapikey.ValidateAPIKey.apiproduct.developer.quota.limit"/>
+  <Identifier ref="request.queryparam.apikey"/>
+</Quota>

@@ -1,0 +1,4 @@
+<APIProxy name="publisherz">
+  <!-- This is the root of the APi proxy configuration. It can be used as a manifest. 
+       The only required configuration is the name of the API proxy. -->
+</APIProxy>
