@@ -43,7 +43,8 @@ security in another sample.)
 
 # Instructions
 
-1. Create an API backend by running the bootstrap script:
+1. Create an API backend by running the bootstrap script. 
+   (Be sure to add your 'Organization API credentials' to the file):
 
    $ sh bootstrap_api_backend.sh
 
