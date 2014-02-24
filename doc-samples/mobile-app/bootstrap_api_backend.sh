@@ -9,6 +9,8 @@ username="Your email address here"
 client_id="Your Server API Credentials Client ID here"
 client_secret="Your Server API Credentials Client Secret here"
 
+echo "Did you update bootstrap_api_backend with your UserGrid credentials? [ENTER]:"
+
 echo "Enter a name for your app, followed by [ENTER]:"
 
 read app
