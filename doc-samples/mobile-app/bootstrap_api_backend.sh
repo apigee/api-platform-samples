@@ -1,16 +1,10 @@
 # This script will generate an API backend in UserGrid.
 # Set up an account at https://accounts.apigee.com/accounts/sign_up
-# Once you have an account, substitute the values below.
 # Do not use production accounts for this sample!!
 
-org="Your organization name here"
-username="Your email address here"
+source ./APIBaaS_credentials.sh
 
-# Don't do this for production accounts, OK?
-client_id="Your Organization API Credentials Client ID here"
-client_secret="Your Organization API Credentials Client Secret here"
-
-echo "Did you update bootstrap_api_backend with your UserGrid credentials?"
+echo "Did you update the file APIBaaS_credentials.sh with your UserGrid credentials?"
 
 echo "If so, enter a name for your app. This will be created on UserGrid"
 
