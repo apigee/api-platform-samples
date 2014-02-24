@@ -36,7 +36,6 @@ security in another sample.)
 <!-- Get versions, links, and stuff -->
 
 * An account on enterprise.apigee.com
-* wget
 * curl
 * npm (Node Packaged Modules)
 * PhoneGap
