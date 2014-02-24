@@ -24,11 +24,11 @@ echo Changing dir to www and installing JQuery Mobile
 
 cd ./www
 
-curl -o http://code.jquery.com/jquery-1.10.2.min.js
+curl -O http://code.jquery.com/jquery-1.10.2.min.js
 
-curl -o http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.js
+curl -O http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.js
 
-curl -o http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.css
+curl -O http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.css
 
 rm ./index.html
 
@@ -40,5 +40,7 @@ $path_to_phonegap/phonegap build ios
 
 echo Opening in Xcode
 
-open ../platforms/ios/$app.xcodeproj	
+echo In XCode, open the /www directory
+echo That is where you will do all of your work on this app
 
+open ../platforms/ios/$app.xcodeproj	
