@@ -1,6 +1,0 @@
-<TargetEndpoint name="default">
-  <HTTPTargetConnection>
-    <!-- Change this URL to point to your API backend running on UserGrid -->
-    <URL>https://api.usergrid.com/theramin/publisherz/</URL>
-  </HTTPTargetConnection>
-</TargetEndpoint>
