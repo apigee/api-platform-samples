@@ -12,8 +12,8 @@
 ## You can obtain a free account at https://accounts.apigee.com/accounts/sign_up
 ## --------------------------------------
 
-org="Enter the name of your organization here"
-username="Enter your Apigee username"
+org="Enter the the organization name associated with your account on enterprise.apigee.com"
+username="Enter the email address associated with your account on enterprise.apigee.com"
 
 # While testing, it's not necessary to change the setting below
 
