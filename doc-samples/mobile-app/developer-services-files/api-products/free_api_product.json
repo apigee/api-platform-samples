@@ -1,0 +1,13 @@
+{ "apiResources": [ "/movies, /books" ], 
+  "approvalType": "auto", 
+  "attributes":
+    [ {"name": "myAttribute", "value": "myValue"} ],
+  "description": "Free API Product",
+  "displayName": "Free API Product",
+  "name": "publisherz_free",
+  "scopes": [ READ ],
+  "proxies": [ "publisherz" ],
+  "environments": [ "test" ],
+  "quota": "10",
+  "quotaInterval": "1",
+  "quotaTimeUnit": "hour" }

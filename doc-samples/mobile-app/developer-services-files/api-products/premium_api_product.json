@@ -1,0 +1,13 @@
+{ "apiResources": [ "/movies, /books, /magazines" ], 
+  "approvalType": "manual", 
+  "attributes":
+    [ {"name": "myAttribute", "value": "myValue"} ],
+  "description": "Premium API Product",
+  "displayName": "Premium API Product",
+  "name": "publisherz_premium",
+  "scopes": [ READ ],
+  "proxies": [ "publisherz" ],
+  "environments": [ "test" ],
+  "quota": "10000",
+  "quotaInterval": "1",
+  "quotaTimeUnit": "month" }
