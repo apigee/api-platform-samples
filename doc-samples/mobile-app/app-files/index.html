@@ -1,5 +1,5 @@
 <!-- This file replaces the default index.html under {PhoneGapp_app_root}/www -->
-
+<!-- REPLACE THE VALUE OF URL WITH THE URL OF YOUR APP ON USERGRID! -->
 <head>
     <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -85,11 +85,11 @@
                             <h1>Publisherz</h1>
                         </div><!-- /header -->
                         
-                        <div data-role="content" data-theme="a">
+                        <div data-role="content" data-theme="d">
                             <h2>Welcome</h2>
                             <p>This is a simple app designed to show you how to build app-friendly APIs with Apigee Edge.</p>
                             
-                            <p><a href="#index" data-direction="reverse" data-role="button" data-theme="b">Movies</a></p>
+                            <p><a href="#index" data-direction="reverse" data-role="button" data-theme="d">Movies</a></p>
                             
                         </div><!-- /content -->
                         
@@ -101,21 +101,21 @@
                     <!-- /page one -->
                     
                     <!-- Start of second page: #two -->
-                    <div data-role="page" id="index" data-theme="a">
+                    <div data-role="page" id="index" data-theme="d">
                         
                         <div data-theme="a" data-role="header">
                             <h3>Movies</h3>
                         </div>
 
 <div><p>If you don't see any movies below, it probably means that you did not change the URL in <code>/www/index.html</code> to point to your UserGrid app. </p>
-<p>You can make the change in XCode. In the file index.html, look for the function <pre>$.ajax({ url: "https://api.usergrid.com/{your_org}/{your_app}/movies"</pre>.</p>
-<p>After you do so, be sure to stop and start the simulator to see you changes.</p></div>
+<p>You can make the change in XCode. In the file index.html, look for the function</p> <pre>$.ajax({ url: "https://api.usergrid.com/{your_org}/{your_app}/movies"</pre>
+<p>After you do so, be sure to <b>stop and start the simulator</b> to see your changes.</p></div>
                         
                         
                         <div data-role="content">
-                            <p><a href="#home" data-direction="reverse" data-role="button" data-theme="b">Back</a></p>
+                            <p><a href="#home" data-direction="reverse" data-role="button" data-theme="d">Back</a></p>
                             <div class="example-wrapper" data-iscroll>
-                                <ul data-role="listview"  id="movie-list" data-theme="a">
+                                <ul data-role="listview"  id="movie-list" data-theme="d">
                                 </ul>
                             </div>
                         </div>
@@ -129,7 +129,7 @@
                         </div>
                         
                         <div data-role="content">
-                            <ul data-role="listview"  id="movie-data" data-theme="a">
+                            <ul data-role="listview"  id="movie-data" data-theme="d">
                             </ul>
                         </div>
                     </div>
