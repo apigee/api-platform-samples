@@ -50,7 +50,7 @@ security in another sample.)
 
 2. Create a PhoneGap to call your API backend:
 
-   $ sh create_phonegap_app
+   $ sh create_phonegap_app.sh
 
 4. In /www/index.html, modify the value of url in the ajax method to 
    point to your API backend created in step 1, above.
