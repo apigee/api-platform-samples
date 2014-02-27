@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<PopulateCache enabled="true" continueOnError="false" async="false" name="CacheLimit">
+    <DisplayName>CacheLimit</DisplayName>
+    <FaultRules/>
+    <Properties/>
+    <CacheKey>
+        <Prefix>ContentListings</Prefix>
+        <KeyFragment>Pagination</KeyFragment>
+        <KeyFragment>Limit</KeyFragment>
+        <KeyFragment ref="request.header.user_id"></KeyFragment>
+    </CacheKey>
+    <CacheResource>PaginationCache</CacheResource>
+    <Scope>Exclusive</Scope>
+    <ExpirySettings>
+        <TimeoutInSec>1800</TimeoutInSec>
+    </ExpirySettings>
+    <Source>limit</Source>
+</PopulateCache>

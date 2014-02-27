@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<LookupCache enabled="true" continueOnError="false" async="false" name="LookupOffset">
+    <DisplayName>LookupOffset</DisplayName>
+    <FaultRules/>
+    <Properties/>
+    <CacheKey>
+        <Prefix>ContentListings</Prefix>
+        <KeyFragment>Pagination</KeyFragment>
+        <KeyFragment>Offset</KeyFragment>
+        <KeyFragment ref="request.header.user_id"></KeyFragment>
+    </CacheKey>
+    <CacheResource>PaginationCache</CacheResource>
+    <Scope>Exclusive</Scope>
+    <AssignTo>offset</AssignTo>
+</LookupCache>

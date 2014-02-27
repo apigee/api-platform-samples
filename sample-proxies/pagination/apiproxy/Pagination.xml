@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<APIProxy revision="1" name="Pagination">
+    <ConfigurationVersion minorVersion="0" majorVersion="4"/>
+    <CreatedAt>1379217095696</CreatedAt>
+    <CreatedBy>jcastillo@apigee.com</CreatedBy>
+    <Description>Content Listing</Description>
+    <DisplayName>DirectTVDemo</DisplayName>
+    <LastModifiedAt>1379217095696</LastModifiedAt>
+    <LastModifiedBy>jcastillo@apigee.com</LastModifiedBy>
+    <Policies>
+        <Policy>CacheLimit</Policy>
+        <Policy>CacheOffset</Policy>
+        <Policy>CacheResponse</Policy>
+        <Policy>ContentListings</Policy>
+        <Policy>GetPaginationParams</Policy>
+        <Policy>LookupLimit</Policy>
+        <Policy>LookupOffset</Policy>
+        <Policy>Pagination</Policy>
+    </Policies>
+    <ProxyEndpoints>
+        <ProxyEndpoint>default</ProxyEndpoint>
+    </ProxyEndpoints>
+    <Resources>
+        <Resource>jsc://paginate.js</Resource>
+        <Resource>java://DirectTVContentListings.jar</Resource>
+    </Resources>
+    <TargetServers/>
+    <TargetEndpoints/>
+</APIProxy>

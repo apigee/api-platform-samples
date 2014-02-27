@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Javascript timeLimit="1000" enabled="true" continueOnError="false" async="false" name="ContentListings">
+	<DisplayName>ContentListings</DisplayName>
+	<FaultRules/>
+	<Properties/>
+	<ResourceURL>jsc://contentlisting.js</ResourceURL>
+</Javascript>

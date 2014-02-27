@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ResponseCache enabled="true" continueOnError="false" async="false" name="CacheResponse">
+    <DisplayName>CacheResponse</DisplayName>
+    <FaultRules/>
+    <Properties/>
+    <CacheKey>
+        <Prefix>ContentListings</Prefix>
+        <KeyFragment>Response</KeyFragment>
+    </CacheKey>
+    <CacheResource>PaginationCache</CacheResource>
+    <Scope>Exclusive</Scope>
+    <ExpirySettings>
+        <ExpiryDate></ExpiryDate>
+        <TimeOfDay></TimeOfDay>
+        <TimeoutInSec ref="">1800</TimeoutInSec>
+    </ExpirySettings>
+    <SkipCacheLookup>request.header.bypass-cache = &quot;true&quot;</SkipCacheLookup>
+    <SkipCachePopulation></SkipCachePopulation>
+</ResponseCache>
