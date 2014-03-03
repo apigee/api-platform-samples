@@ -11,8 +11,8 @@
     </Flows>
     <HTTPProxyConnection>
         <BasePath>/base64encoder</BasePath>
-        <Properties/>
-        <VirtualHost>default</VirtualHost>
+        <!-- Listen only on HTTPS, since we are passing credentials over the wire. -->
+        <VirtualHost>secure</VirtualHost>
     </HTTPProxyConnection>
 	<RouteRule name="default"/>
 </ProxyEndpoint>
