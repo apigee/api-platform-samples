@@ -6,7 +6,6 @@ This sample uses the CryptoJS module to perform base64 encoding on
 the username and password presented in the request. An AssignMessage
 policy is used to echo the base64 encoded value back to the client
 as an HTTP header.
-
 # Set up
 To use the sample, you need:
 
@@ -15,17 +14,14 @@ To use the sample, you need:
   enterprise.apigee.com and check account settings.
 
 # Configure 
-
 Update `/setup/setenv.sh` with your credentials
 
 # Import and deploy sample project
-
 To deploy, run `$ sh deploy.sh`
 
 To test, run `$ sh invoke.sh`
 
 # Get help
-
 For assistance, please use [StackOverflow](http://stackoverflow.com/tags/apigee) and add the tag "apigee".
 
 Copyright © 2014 Apigee Corporation
