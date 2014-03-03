@@ -1,5 +1,4 @@
 # Base64Encoder
-
 This sample shows you how to use third-party libraries as includes for
 JavaScript policies.
 
@@ -9,14 +8,15 @@ policy is used to echo the base64 encoded value back to the client
 as an HTTP header.
 
 # Set up
+To use the sample, you need:
 
-* The username and password that you use to login to enterprise.apigee.com.
+* The email address and password that you use to login to enterprise.apigee.com.
 * The name of the organization in which you have an account. Login to 
   enterprise.apigee.com and check account settings.
 
 # Configure 
 
-Update `/setup/setenv.sh` with your environment details
+Update `/setup/setenv.sh` with your credentials
 
 # Import and deploy sample project
 
