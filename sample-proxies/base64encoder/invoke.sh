@@ -6,4 +6,4 @@ source ../../setup/setenv.sh
 
 set -x
 
-curl "http://$org-$env.apigee.net/base64encoder?username=MyUserName&password=MyPasswordgrant_type=password" -v
+curl "http://$org-$env.apigee.net/base64encoder?username=MyUserName&password=MyPassword" -v
