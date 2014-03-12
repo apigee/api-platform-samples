@@ -10,7 +10,7 @@ echo Deploying $proxy to $env on $url using $username and $org
 
 set -x
 
-../../tools/deploy.py -n publisherz -u $username:$password -o $org -h $url -e $env -p / -d publisherz-proxy
+../../tools/deploy.py -n publisherz -u $username:$password -o $org -h $url -e $env -p / -d api-services-files
 
 echo "If 'State: deployed', then your API Proxy is ready to be invoked."
 
