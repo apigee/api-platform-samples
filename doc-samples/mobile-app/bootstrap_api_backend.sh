@@ -32,13 +32,13 @@ set -x
 
 curl -X POST "https://api.usergrid.com/management/orgs/$org/apps?access_token=$access_token" -d '{"name":"'$app'"}'
 
-echo Making $app into a sandbox app by relaxing RBAC--remeber this is INSECURE and only for demonstration!
+echo Making $app into a sandbox app by relaxing RBAC--remember this is INSECURE and only for demonstration!
 
 curl -X POST "https://api.usergrid.com/$org/$app/roles/guest/permissions?access_token=$access_token" -d '{"permission":"get,put,post,delete:/**" }'
 
 echo $app is now totally insecure. Use it only for demo purposes.
 
-echo Adding movies
+echo Adding a movie
 
 curl -X POST https://api.usergrid.com/$org/$app/movies -d '{ "id": 1, "name" : "Breathless", "director" : "Jean-Luc Godard", "writer" : "Francois Truffaut", "release_date" : 1960}'
 
@@ -49,7 +49,4 @@ set -x
 curl -X POST https://api.usergrid.com/$org/$app/movies
 
 echo You now have an API backend called $app that your mobile app can call at this URL: https://api.usergrid.com/$org/$app/movies
-
-
-
 
