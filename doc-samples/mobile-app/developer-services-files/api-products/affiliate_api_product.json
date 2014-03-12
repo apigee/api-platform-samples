@@ -1,0 +1,13 @@
+{ "apiResources": [ "/movies, /books, /magazines" ], 
+  "approvalType": "manual", 
+  "attributes":
+    [ {"name": "ProgramId", "value": "AffiliateCorp"} ],
+  "description": "Affiliate API Product",
+  "displayName": "Affiliate API Product",
+  "name": "publisherz_affiliate",
+  "scopes": [ READ, WRITE ],
+  "proxies": [ "publisherz" ],
+  "environments": [ "test" ],
+  "quota": "100000",
+  "quotaInterval": "1",
+  "quotaTimeUnit": "month" }
