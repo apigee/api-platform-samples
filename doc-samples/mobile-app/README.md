@@ -41,6 +41,14 @@ security in another sample.)
 * PhoneGap
 * Xcode
 
+# Set up
+
+1. Modify the file api-platform-samples/setup/setenv.sh to include
+   your email address and organization on Apigee Edge.
+
+2. Modify the file APIBaaS_credentials.sh to include the
+   credentials associated with your account on Apigee App Services.
+
 # Instructions
 
 1. Create an API backend by running the bootstrap script. 
