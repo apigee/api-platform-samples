@@ -32,7 +32,7 @@ curl -O http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.css
 
 rm ./index.html
 
-cp ../../app-files/index.html ./
+cp ../../mobile-app-files/index.html ./
 
 echo Building iOS project
 
