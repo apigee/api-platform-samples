@@ -1,0 +1,10 @@
+<AssignMessage name="Remove-Query-Param">
+    <DisplayName>Strip API key from outbound request</DisplayName>
+    <Remove>
+        <QueryParams>
+            <QueryParam name="apikey"/>
+        </QueryParams>
+    </Remove>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+    <AssignTo createNew="false" transport="http" type="request"></AssignTo>
+</AssignMessage>
