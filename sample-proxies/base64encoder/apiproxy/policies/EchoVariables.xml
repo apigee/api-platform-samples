@@ -1,0 +1,12 @@
+<AssignMessage name="EchoVariables">
+  <AssignTo createNew="false" type="response"></AssignTo>
+  <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+  <Set>
+    <Headers>
+	<Header name="organization.name">{organization.name}</Header>
+    <Header name="request.queryparam.username">{request.queryparam.username}</Header>
+    <Header name="request.queryparam.password">{request.queryparam.password}</Header>
+    <Header name="encodedAuthHeader">{encodedAuthHeader}</Header>
+    </Headers>
+  </Set>
+</AssignMessage>

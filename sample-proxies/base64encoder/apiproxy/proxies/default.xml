@@ -1,0 +1,18 @@
+<ProxyEndpoint name="default">
+    <Flows>
+        <Flow name="UsernamePasswordAuthentication">
+           <Request>
+             <Step><Name>EncodeAuthHeader</Name></Step>
+           </Request>
+           <Response>
+             <Step><Name>EchoVariables</Name></Step>
+           </Response>
+        </Flow>
+    </Flows>
+    <HTTPProxyConnection>
+        <BasePath>/base64encoder</BasePath>
+        <!-- Listen only on HTTPS, since we are passing credentials over the wire. -->
+        <VirtualHost>secure</VirtualHost>
+    </HTTPProxyConnection>
+	<RouteRule name="default"/>
+</ProxyEndpoint>
