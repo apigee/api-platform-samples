@@ -1,0 +1,7 @@
+<Javascript timeLimit="200" name="EncodeAuthHeader">
+    <DisplayName>EncodeAuthHeader</DisplayName>
+    <IncludeURL>jsc://core-min.js</IncludeURL>
+    <IncludeURL>jsc://enc-utf16-min.js</IncludeURL>
+    <IncludeURL>jsc://enc-base64-min.js</IncludeURL>
+    <ResourceURL>jsc://encodeAuthHeader.js</ResourceURL>
+</Javascript>
