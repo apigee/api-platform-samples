@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<APIProxy revision="2" name="cache_and_paginate_bars">
+    <ConfigurationVersion minorVersion="0" majorVersion="4"/>
+    <CreatedAt>1380858331634</CreatedAt>
+    <CreatedBy>rdave@apigee.com</CreatedBy>
+    <Description>Cache and Paginate XML</Description>
+    <DisplayName>cache_and_paginate_bars</DisplayName>
+    <LastModifiedAt>1380858331634</LastModifiedAt>
+    <LastModifiedBy>rdave@apigee.com</LastModifiedBy>
+    <Policies>
+        <Policy>AssignMessage-1</Policy>
+        <Policy>ExtractVariables-1</Policy>
+        <Policy>ResponseCache-1</Policy>
+        <Policy>XSLT-Paginate</Policy>
+        <Policy>verifyapikey-1</Policy>
+    </Policies>
+    <ProxyEndpoints>
+        <ProxyEndpoint>default</ProxyEndpoint>
+    </ProxyEndpoints>
+    <Resources>
+        <Resource>xsl://Paginate</Resource>
+    </Resources>
+    <TargetServers/>
+    <TargetEndpoints>
+        <TargetEndpoint>default</TargetEndpoint>
+    </TargetEndpoints>
+    <validate>false</validate>
+</APIProxy>

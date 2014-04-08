@@ -1,0 +1,37 @@
+<ProxyEndpoint name="default">
+    <PreFlow name="PreFlow">
+        <Request>
+            <Step>
+                <FaultRules/>
+                <Name>ExtractVariables-1</Name>
+            </Step>
+            <Step>
+                <FaultRules/>
+                <Name>ResponseCache-1</Name>
+            </Step>
+        </Request>
+        <Response>
+            <Step>
+                <FaultRules/>
+                <Name>ResponseCache-1</Name>
+            </Step>
+            <Step>
+                <FaultRules/>
+                <Name>XSLT-Paginate</Name>
+            </Step>
+            <Step>
+                <FaultRules/>
+                <Name>AssignMessage-1</Name>
+            </Step>
+        </Response>
+    </PreFlow>
+    <HTTPProxyConnection>
+        <BasePath>/pagination</BasePath>
+        <Properties/>
+        <VirtualHost>default</VirtualHost>
+        <VirtualHost>secure</VirtualHost>
+    </HTTPProxyConnection>
+    <RouteRule name="default">
+        <TargetEndpoint>default</TargetEndpoint>
+    </RouteRule>
+</ProxyEndpoint>
