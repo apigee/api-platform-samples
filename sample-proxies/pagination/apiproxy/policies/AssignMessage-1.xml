@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<AssignMessage async="false" continueOnError="false" enabled="true" name="AssignMessage-1">
+<AssignMessage name="AssignMessage-1">
     <DisplayName>Assign Message 1</DisplayName>
-    <FaultRules/>
-    <Properties/>
     <Remove>
         <Headers>
           <Header name='Content-Type'></Header>

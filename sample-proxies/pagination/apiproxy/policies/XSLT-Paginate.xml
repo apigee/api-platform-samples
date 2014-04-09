@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<XSL async="false" continueOnError="false" enabled="true" name="XSLT-Paginate">
+<XSL name="XSLT-Paginate">
     <DisplayName>XSLT-Paginate</DisplayName>
      <Parameters ignoreUnresolvedVariables="false">
        <Parameter name="offset" ref="offset"/>

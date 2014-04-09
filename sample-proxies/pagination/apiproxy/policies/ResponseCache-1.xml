@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ResponseCache enabled="true" continueOnError="false" async="false" name="ResponseCache-1">
+<ResponseCache name="ResponseCache-1">
     <DisplayName>Response Cache 1</DisplayName>
     <FaultRules/>
     <Properties/>

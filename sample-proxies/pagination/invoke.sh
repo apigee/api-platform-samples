@@ -6,4 +6,4 @@ source ../../setup/setenv.sh
 
 # For fun, you can change the values of offset and limit to see how they affect the result set.
 
-curl http://$org-$env.apigee.net/pagination?"session_id=1&offset=1&limit=20"
+curl http://$org-$env.apigee.net/pagination?"session_id=1&offset=1&limit=1"
