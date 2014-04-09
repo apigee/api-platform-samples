@@ -1,3 +1,0 @@
-<OAuthV2 name="ValidateOAuth"> 
-  <Operation>VerifyAccessToken</Operation> 
-</OAuthV2>

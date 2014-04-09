@@ -1,6 +1,0 @@
-<XSL name="TransformWSDL">
-  <ResourceURL>xsl://rewriteEndpoint.xsl</ResourceURL>
-  <Parameters ignoreUnresolvedVariables="false">
-    <Parameter name="SOAPAddress" ref="SOAPAddress"/>
-  </Parameters>
-</XSL>

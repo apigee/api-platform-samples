@@ -1,3 +1,0 @@
-<GetOAuthV1Info name="ValidateAPIKey">
-  <AppKey ref="request.queryparam.apikey"/>
-</GetOAuthV1Info>
