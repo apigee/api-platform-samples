@@ -13,6 +13,11 @@ This sample uses XSLT to transform a cached XML response to return
 a result set based on two parameters presented by the app: 
 'limit' and 'offset'.
 
+* 'limit' defines how many results will be returned
+* 'offset' defines the starting point for returned results (for example, an offset of '5'
+indicates that the results should begin with the 5th result) 
+
+
 # Configure 
 
 Update `/setup/setenv.sh` in this distribution with your environment details.
