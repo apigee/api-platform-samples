@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ExtractVariables async="false" continueOnError="false" enabled="true" name="ExtractVariables-1">
+    <DisplayName>Extract Variables 1</DisplayName>
+    <FaultRules/>
+    <Properties/>
+    <QueryParam name="offset">
+        <Pattern ignoreCase="true">{offset}</Pattern>
+    </QueryParam>
+    <QueryParam name="limit">
+        <Pattern ignoreCase="true">{limit}</Pattern>
+    </QueryParam>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+  <JSONPayload/>
+    <Source clearPayload="false">request</Source>
+    <VariablePrefix></VariablePrefix>
+</ExtractVariables>

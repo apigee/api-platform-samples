@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage name="AssignMessage-1">
+    <DisplayName>Assign Message 1</DisplayName>
+    <Remove>
+        <Headers>
+          <Header name='Content-Type'></Header>
+          <Header name='Content-Length'></Header>
+      </Headers>
+  </Remove>
+    <Set>
+        <Headers>
+          <Header name='content-type'>text/xml</Header>
+      </Headers>
+        <QueryParams/>
+        <FormParams/>
+        <Verb/>
+        <Path/>
+      <Payload contentType='text/xml'>{paginatedResponse}</Payload>
+    </Set>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+    <AssignTo createNew="false" transport="http" type="response"/>
+</AssignMessage>

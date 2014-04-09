@@ -1,0 +1,18 @@
+<ResponseCache name="ResponseCache-1">
+    <DisplayName>Response Cache 1</DisplayName>
+    <FaultRules/>
+    <Properties/>
+      <CacheResource>paginationCache</CacheResource>
+    <CacheKey>
+        <Prefix></Prefix>
+        <KeyFragment type="string" ref="request.queryparam.session_id"></KeyFragment>
+    </CacheKey>
+    <Scope>Global</Scope>
+    <ExpirySettings>
+        <ExpiryDate></ExpiryDate>
+        <TimeOfDay></TimeOfDay>
+        <TimeoutInSec ref="">300</TimeoutInSec>
+    </ExpirySettings>
+    <SkipCacheLookup></SkipCacheLookup>
+    <SkipCachePopulation></SkipCachePopulation>
+</ResponseCache>
