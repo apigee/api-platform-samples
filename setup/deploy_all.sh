@@ -14,6 +14,12 @@ read -s password
 
 echo Deploying all samples to $env using $username and $org
 
+echo Creating caches
+
+curl -X POST -H "Content-type:text/xml" -d @../sample-proxies/outbound-oauth/oauth-token-cache.xml https://api.enterprise.apigee.com/v1/o/$org/environments/$env/caches -u $username:$password
+
+curl -X POST -H "Content-type:text/xml" -d @../sample-proxies/pagination/paginationCache.xml https://api.enterprise.apigee.com/v1/o/$org/environments/$env/caches -u $username:$password
+
 cd ../doc-samples/
 
 for proxydir in *; do
