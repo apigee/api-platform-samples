@@ -28,29 +28,39 @@ This sample proxy uses the Yahoo Weather API for a target endpoint, and maps WEO
 
 Update `/setup/setenv.sh` with your environment details.
 
-# Compile and package source code
-
-The Java source code in this sample download must be compiled and packaged in a JAR
-before you can deploy it. Note, the doc-samples/java-cookbook/lib directory is required.
-It was downloaded with this doc sample. If you do not have this directory, you must grab
-it from Github.
-
- 1. cd .../api-platform-samples/java-cookbook/doc-samples/java
- 2. mkdir bin
- 3. javac -d bin -sourcepath src -classpath ../lib/expressions-1.0.0.jar:../lib/message-flow-1.0.0.jar src/com/apigee/CityLookup.java
- 4. cd bin
- 5. jar -cvf CityLookup.jar ./com
- 6. mkdir -p ../../apiproxy/resources/java
- 7. cp CityLookup.jar ../../apiproxy/resources/java
-
- Note: Follow these compile/package instructions anytime you modify the Java source code. 
-
 # Deploy and invoke the sample proxy.
 
 To deploy, run `$ sh deploy.sh`
 
 To test, run `$ sh invoke.sh`
 
+# Compiling and repackaging the source code
+
+This sample includes Java source code and two dependent packages. If you want to modify
+any of the source code, you need to follow the instructions here for compiling, packaging,
+and re-deploying. Then, you can invoke the proxy to see the effect of your changes.  
+
+----------------------------------------------------------------------------------------
+NOTE: The source code for this sample is located in:
+
+      api-platform-samples/java-cookbook/doc-samples/java/src/com/apigee
+
+The dependent libraries are located in:
+
+    api-platform-samples/java-cookbook/lib. 
+----------------------------------------------------------------------------------------
+
+If you make any changes to the Java source code for this cookbook sample, follow these
+steps to compile, package, and redeploy:
+
+ 1. cd .../api-platform-samples/java-cookbook/doc-samples/java
+ 2. mkdir bin
+ 3. javac -d bin -sourcepath src -classpath ../lib/expressions-1.0.0.jar:../lib/message-flow-1.0.0.jar src/com/apigee/CityLookup.java
+ 4. cd bin
+ 5. jar -cvf CityLookup.jar ./com
+ 6. cp CityLookup.jar ../../apiproxy/resources/java
+ 7. Redeploy the proxy by running the deploy.sh script.
+ 8. Test the redeployed proxy by running the invoke.sh script.
 
 # Get help
 
