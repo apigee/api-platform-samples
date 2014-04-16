@@ -1,4 +1,4 @@
-# API Key Validation
+# Access Entity
 
 This sample shows how to retrieve profiles for entities from the Apigee Edge
 datastore. Using this policy, you can retrieve profiles for things like
