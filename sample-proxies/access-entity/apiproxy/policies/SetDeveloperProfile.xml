@@ -1,0 +1,13 @@
+<ExtractVariables name="SetDeveloperProfile">
+  <!-- The source element points to the variable populated by AccessEntity policy. 
+  The format is <policy-type>.<policy-name>.
+  In this case, the variable contains the whole developer profile. -->
+  <Source>AccessEntity.GetDeveloperProfile</Source> 
+  <VariablePrefix>developer</VariablePrefix>
+  <XMLPayload>
+    <Variable name="email" type="string"> 
+	<!-- You parse elements from the developer profile using XPath. -->
+      <XPath>/Developer/Email</XPath>
+    </Variable>
+  </XMLPayload>
+</ExtractVariables>

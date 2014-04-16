@@ -1,0 +1,6 @@
+<AccessEntity name="GetDeveloperProfile">
+  <!-- This is the type entity whose profile we need to pull from the Edge datastore. -->
+  <EntityType  value="developer"/>
+  <!-- We tell the policy to use the API key (presented as query parameter) to identify the developer. -->
+  <EntityIdentifier ref="request.queryparam.apikey" type="consumerkey"/> 
+</AccessEntity>

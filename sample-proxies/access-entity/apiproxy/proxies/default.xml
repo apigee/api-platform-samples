@@ -1,0 +1,20 @@
+<ProxyEndpoint name="default">
+  <Flows>
+    <Flow name="default">
+    <Request>
+	    <Step><Name>GetDeveloperProfile</Name></Step>
+		<Step><Name>SetDeveloperProfile</Name></Step>
+		<Step><Name>EchoVariables</Name></Step>
+    </Request>
+  </Flow>
+</Flows>
+  <HTTPProxyConnection>
+    <!-- Define a URI to create the path to this proxy. -->	
+    <BasePath>/access-entity</BasePath>  
+    <!-- Listen on HTTP URL defined in the VirtualHost named 'default'. -->	
+    <VirtualHost>default</VirtualHost>
+  </HTTPProxyConnection>
+  <RouteRule name="Route">
+    <!-- No route. This API proxy is an echo service. -->
+  </RouteRule>
+</ProxyEndpoint>

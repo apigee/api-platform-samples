@@ -1,0 +1,11 @@
+<!-- We'll use this policy to return the variables set in the developer profile, 
+just so that we can easily see them in the response. -->
+<AssignMessage name="EchoVariables">
+  <AssignTo createNew="false" type="response"></AssignTo>
+  <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+  <Set>
+    <Headers>
+      <Header name="X-Developer-email">{developer.email}</Header>
+    </Headers>
+  </Set>
+</AssignMessage>
