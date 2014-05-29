@@ -8,4 +8,4 @@ echo "Invoking proxied API http://weather.yahooapis.com/forecastrss?w=12797282"
 
 set -x
 
-curl "http://$org-$env.apigee.net/javascript-cookbook/forecastrss?w=12797282" -v
+curl "http://$org-$env.$api_domain/javascript-cookbook/forecastrss?w=12797282" -v

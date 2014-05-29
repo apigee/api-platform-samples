@@ -10,4 +10,4 @@ read -s token
 
 echo Making a request to retrieve the contents of the "/users" collection
 
-curl -v -X GET -H "Authorization: Bearer $token" "http://$org-$env.apigee.net/v1/datastore/users"
+curl -v -X GET -H "Authorization: Bearer $token" "http://$org-$env.$api_domain/v1/datastore/users"

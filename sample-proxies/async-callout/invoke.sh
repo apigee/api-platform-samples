@@ -6,4 +6,4 @@ source ../../setup/setenv.sh
 
 set -x
 
-curl "http://$org-$env.apigee.net/async-callout"
+curl "http://$org-$env.$api_domain/async-callout"

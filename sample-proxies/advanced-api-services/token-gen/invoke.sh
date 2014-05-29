@@ -15,7 +15,7 @@ read -s appsecret
 echo Generate a token using the client credentials grant type
 
 curl -v -X POST -H "Content-Type: application/json" -d '{ "grant_type":"client_credentials" }' \
-     -u $appkey:$appsecret "http://$org-$env.apigee.net/v1/datastore/token"
+     -u $appkey:$appsecret "http://$org-$env.$api_domain/v1/datastore/token"
 
 echo Generate a token using the password grant type
 
@@ -37,4 +37,4 @@ echo $payload
 
 curl -v -X POST -H "Content-Type: application/json" \
      -d "$payload" \
-     -u $appkey:$appsecret "http://$org-$env.apigee.net/v1/datastore/token"
+     -u $appkey:$appsecret "http://$org-$env.$api_domain/v1/datastore/token"

@@ -6,6 +6,6 @@ source ../../setup/setenv.sh
 
 set -x
 
-curl "http://$org-$env.apigee.net/dynamic-endpoint?routeTo=fb"
+curl "http://$org-$env.$api_domain/dynamic-endpoint?routeTo=fb"
 
-curl "http://$org-$env.apigee.net/dynamic-endpoint?routeTo=tw"
+curl "http://$org-$env.$api_domain/dynamic-endpoint?routeTo=tw"

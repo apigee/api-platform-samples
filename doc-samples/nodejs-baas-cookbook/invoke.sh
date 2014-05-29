@@ -12,4 +12,4 @@ curl http://$org-$env.apigee.net/employees/profile \
 -d '{"id":"ajones", "firstName":"Alice", "lastName":"Jones", "phone": "201-555-5555" }' \
 -X POST
 
-curl "http://$org-$env.apigee.net/employees/profiles"
+curl "http://$org-$env.$api_domain/employees/profiles"

@@ -6,4 +6,4 @@ source ../../setup/setenv.sh
 
 set -x
 
-curl -i -H "responsetime:true" "http://$org-$env.apigee.net/timer/forecastrss?w=12797282"
+curl -i -H "responsetime:true" "http://$org-$env.$api_domain/timer/forecastrss?w=12797282"

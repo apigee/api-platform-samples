@@ -6,4 +6,4 @@ source ../../setup/setenv.sh
 
 set -x
 
-curl "http://$org-$env.apigee.net/javascript-mashup-cookbook?country=us&postalcode=08008"
+curl "http://$org-$env.$api_domain/javascript-mashup-cookbook?country=us&postalcode=08008"

@@ -21,9 +21,9 @@ echo "Consumer key for thomas-app is $key"
 
 set -x
 
-curl "http://$org-$env.apigee.net/weatherapikey/forecastrss?w=12797282&apikey=$key"
+curl "http://$org-$env.$api_domain/weatherapikey/forecastrss?w=12797282&apikey=$key"
 
 echo Now use an invalid key
 
-curl "http://$org-$env.apigee.net/weatherapikey/forecastrss?w=12797282&apikey=ZZZZZZZZZZZZZZZZZZZZ"
+curl "http://$org-$env.$api_domain/weatherapikey/forecastrss?w=12797282&apikey=ZZZZZZZZZZZZZZZZZZZZ"
 

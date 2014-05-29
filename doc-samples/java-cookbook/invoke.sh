@@ -4,5 +4,5 @@ echo Using org and environment configured in /setup/setenv.sh
 
 source ../../setup/setenv.sh
 
-curl http://$org-$env.apigee.net/java-cookbook/forecastrss?"city=venice" 
+curl http://$org-$env.$api_domain/java-cookbook/forecastrss?"city=venice" 
 

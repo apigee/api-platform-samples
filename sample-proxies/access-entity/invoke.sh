@@ -7,5 +7,5 @@ echo This call requires a valid API key. You can use any API key for any app in 
 echo "############################################################################################"
 
 
-curl http://$org-$env.apigee.net/access-entity?"apikey=EiED85iHG4ChduZh8qzDAlWcJUF3wqi2" -i
+curl http://$org-$env.$api_domain/access-entity?"apikey=EiED85iHG4ChduZh8qzDAlWcJUF3wqi2" -i
 
