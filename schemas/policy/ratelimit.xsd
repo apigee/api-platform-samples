@@ -7,7 +7,7 @@
 
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
     <xs:include schemaLocation="stepDefinition.xsd"/>
-    <xs:include schemaLocation="../destinations.xsd"/>
+    <xs:include schemaLocation="../configuration/destinations.xsd"/>
 
     <xs:element name="Quota">
         <xs:complexType>

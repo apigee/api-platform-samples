@@ -7,7 +7,7 @@
 
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
     <xs:include schemaLocation="stepDefinition.xsd"/>
-    <xs:include schemaLocation="../target_endpoint.xsd"/>
+    <xs:include schemaLocation="../configuration/target_endpoint.xsd"/>
 
     <xs:element name="ServiceCallout">
         <xs:complexType>
