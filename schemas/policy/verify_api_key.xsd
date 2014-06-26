@@ -5,30 +5,24 @@
   ~ registered trademarks of Apigee Corp. or its subsidiaries.  All other
   ~ trademarks are the property of their respective owners.
   -->
-        
-<xs:schema version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-
-    <xs:include schemaLocation="stepDefinition.xsd"/>
-
-    <xs:element name="VerifyAPIKey" type="verifyAPIKeyBean"/>
-
-    <xs:complexType name="verifyAPIKeyBean">
-        <xs:complexContent>
-            <xs:extension base="stepDefinitionType">
-                <xs:sequence>
-                    <xs:element name="APIKey" type="propertyBean" minOccurs="0"/>
-                </xs:sequence>
-            </xs:extension>
-        </xs:complexContent>
-    </xs:complexType>
-
-    <xs:complexType name="propertyBean">
-        <xs:simpleContent>
-            <xs:extension base="xs:string">
-                <xs:attribute name="ref" type="xs:string"/>
-                <xs:attribute name="type" type="xs:string"/>
-            </xs:extension>
-        </xs:simpleContent>
-    </xs:complexType>
-
+<xs:schema xmlns="http://www.apigee.com/policy/verify_api_key" xmlns:step="http://www.apigee.com/policy/step" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.apigee.com/policy/verify_api_key" version="1.0">
+	<xs:import namespace="http://www.apigee.com/policy/step" schemaLocation="stepDefinition.xsd"/>
+	<xs:element name="VerifyAPIKey" type="verifyAPIKeyBean"/>
+	<xs:complexType name="verifyAPIKeyBean">
+		<xs:complexContent>
+			<xs:extension base="step:stepDefinitionType">
+				<xs:sequence>
+					<xs:element name="APIKey" type="propertyBean" minOccurs="0"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="propertyBean">
+		<xs:simpleContent>
+			<xs:extension base="xs:string">
+				<xs:attribute name="ref" type="xs:string"/>
+				<xs:attribute name="type" type="xs:string"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
 </xs:schema>

@@ -4,31 +4,28 @@
   ~ registered trademarks of Apigee Corp. or its subsidiaries.  All other
   ~ trademarks are the property of their respective owners.
   -->
-
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
-    <xs:include schemaLocation="stepDefinition.xsd"/>
-    <xs:include schemaLocation="../configuration/target_endpoint.xsd"/>
-
-    <xs:element name="ServiceCallout">
-        <xs:complexType>
-            <xs:complexContent>
-                <xs:extension base="stepDefinitionType">
-                    <xs:sequence>
-                        <xs:element name="Request" minOccurs="0">
-                            <xs:complexType>
-                                <xs:simpleContent>
-                                    <xs:extension base="xs:NCName">
-                                        <xs:attribute name="clearPayload" type="xs:boolean" default="false"/>
-                                    </xs:extension>
-                                </xs:simpleContent>
-                            </xs:complexType>
-                        </xs:element>
-                        <xs:element name="Response" minOccurs="0" type="xs:NCName"/>
-                        <xs:element ref="HTTPTargetConnection"/>
-                    </xs:sequence>
-                </xs:extension>
-            </xs:complexContent>
-        </xs:complexType>
-    </xs:element>
-
+<xs:schema xmlns="http://www.apigee.com/policy/service_callout" xmlns:step="http://www.apigee.com/policy/step" xmlns:target="http://www.apigee.com/configuration/target_endpoint" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.apigee.com/policy/service_callout">
+	<xs:import namespace="http://www.apigee.com/policy/step" schemaLocation="stepDefinition.xsd"/>
+	<xs:import namespace="http://www.apigee.com/configuration/target_endpoint" schemaLocation="../configuration/target_endpoint.xsd"/>
+	<xs:element name="ServiceCallout">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="step:stepDefinitionType">
+					<xs:sequence>
+						<xs:element name="Request" minOccurs="0">
+							<xs:complexType>
+								<xs:simpleContent>
+									<xs:extension base="xs:NCName">
+										<xs:attribute name="clearPayload" type="xs:boolean" default="false"/>
+									</xs:extension>
+								</xs:simpleContent>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="Response" type="xs:NCName" minOccurs="0"/>
+						<xs:element ref="target:HTTPTargetConnection"/>
+					</xs:sequence>
+				</xs:extension>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
 </xs:schema>

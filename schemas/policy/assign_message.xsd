@@ -5,18 +5,18 @@
   ~ trademarks are the property of their respective owners.
   -->
 
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
-    <xs:include schemaLocation="stepDefinition.xsd"/>
+<xs:schema targetNamespace="http://www.apigee.com/policy/assign_message" xmlns="http://www.apigee.com/policy/assign_message" xmlns:step="http://www.apigee.com/policy/step" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:import namespace="http://www.apigee.com/policy/step" schemaLocation="stepDefinition.xsd"/>
 
     <xs:element name="AssignMessage">
         <xs:complexType>
             <xs:complexContent>
-                <xs:extension base="stepDefinitionType">
+                <xs:extension base="step:stepDefinitionType">
                     <xs:sequence>
                         <xs:element name="AssignTo" minOccurs="0">
                             <xs:complexType>
                                 <xs:simpleContent>
-                                    <xs:extension base="variable">
+                                    <xs:extension base="step:variable">
                                         <xs:attribute name="createNew" type="xs:boolean"/>
                                         <xs:attribute name="type" default="request">
                                             <xs:simpleType>
@@ -54,7 +54,7 @@
                     <xs:element name="StatusCode" minOccurs="0" type="xs:boolean"/>
                     <xs:element name="ReasonPhrase" minOccurs="0" type="xs:boolean"/>
                 </xs:sequence>
-                <xs:attribute name="source" type="variable" use="required"/>
+                <xs:attribute name="source" type="step:variable" use="required"/>
             </xs:extension>
         </xs:complexContent>
     </xs:complexType>
@@ -68,14 +68,14 @@
                             <xs:sequence>
                                 <xs:any minOccurs="0" maxOccurs="unbounded"/>
                             </xs:sequence>
-                            <xs:attribute name="contentType" type="template" use="optional"/>
+                            <xs:attribute name="contentType" type="step:template" use="optional"/>
                         </xs:complexType>
                     </xs:element>
-                    <xs:element name="Verb" minOccurs="0" type="template"/>
-                    <xs:element name="Version" minOccurs="0" type="template"/>
-                    <xs:element name="Path" minOccurs="0" type="template"/>
-                    <xs:element name="StatusCode" minOccurs="0" type="template"/>
-                    <xs:element name="ReasonPhrase" minOccurs="0" type="template"/>
+                    <xs:element name="Verb" minOccurs="0" type="step:template"/>
+                    <xs:element name="Version" minOccurs="0" type="step:template"/>
+                    <xs:element name="Path" minOccurs="0" type="step:template"/>
+                    <xs:element name="StatusCode" minOccurs="0" type="step:template"/>
+                    <xs:element name="ReasonPhrase" minOccurs="0" type="step:template"/>
                 </xs:sequence>
             </xs:extension>
         </xs:complexContent>
@@ -136,7 +136,7 @@
 
     <xs:complexType name="nameValueType">
         <xs:simpleContent>
-            <xs:extension base="template">
+            <xs:extension base="step:template">
                 <xs:attribute name="name" type="xs:string" use="required"/>
             </xs:extension>
         </xs:simpleContent>

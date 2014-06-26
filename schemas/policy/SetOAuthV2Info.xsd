@@ -1,39 +1,39 @@
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
-    <xs:include schemaLocation="stepDefinition.xsd"/>
-    <xs:element name="SetOAuthV2Info">
-        <xs:complexType>
-            <xs:complexContent>
-                <xs:extension base="stepDefinitionType">
-                    <xs:sequence>
-                        <xs:element name="AccessToken">
-                          <xs:complexType>
-                            <xs:simpleContent>
-                              <xs:extension base="xs:string">
-                                <xs:attribute type="xs:string" name="ref"/>
-                              </xs:extension>
-                            </xs:simpleContent>
-                          </xs:complexType>
-                        </xs:element>
-                        <xs:element name="Attributes">
-                          <xs:complexType>
-                            <xs:sequence>
-                              <xs:element name="Attribute" maxOccurs="unbounded" minOccurs="1">
-                                <xs:complexType>
-                                  <xs:simpleContent>
-                                    <xs:extension base="xs:string">
-                                    <!-- reference takes priority when both value and reference are present-->
-                                      <xs:attribute type="xs:string" name="name" use="optional"/>
-                                      <xs:attribute type="xs:string" name="ref" use="optional"/>
-                                    </xs:extension>
-                                  </xs:simpleContent>
-                                </xs:complexType>
-                              </xs:element>
-                            </xs:sequence>
-                          </xs:complexType>
-                        </xs:element>                         
-                    </xs:sequence>
-                </xs:extension>
-            </xs:complexContent>
-        </xs:complexType>
-    </xs:element>
+<xs:schema xmlns="http://www.apigee.com/policy/oauth_v2" xmlns:step="http://www.apigee.com/policy/step" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.apigee.com/policy/oauth_v2">
+	<xs:import namespace="http://www.apigee.com/policy/step" schemaLocation="stepDefinition.xsd"/>
+	<xs:element name="SetOAuthV2Info">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="step:stepDefinitionType">
+					<xs:sequence>
+						<xs:element name="AccessToken">
+							<xs:complexType>
+								<xs:simpleContent>
+									<xs:extension base="xs:string">
+										<xs:attribute name="ref" type="xs:string"/>
+									</xs:extension>
+								</xs:simpleContent>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="Attributes">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="Attribute" minOccurs="1" maxOccurs="unbounded">
+										<xs:complexType>
+											<xs:simpleContent>
+												<xs:extension base="xs:string">
+													<xs:attribute name="name" type="xs:string" use="optional"/>
+													<xs:attribute name="ref" type="xs:string" use="optional"/>
+												</xs:extension>
+												<!-- reference takes priority when both value and reference are present-->
+											</xs:simpleContent>
+										</xs:complexType>
+									</xs:element>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:extension>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
 </xs:schema>

@@ -4,49 +4,45 @@
   ~ registered trademarks of Apigee Corp. or its subsidiaries.  All other
   ~ trademarks are the property of their respective owners.
   -->
-
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
-    <xs:include schemaLocation="stepDefinition.xsd"/>
-
-    <xs:element name="AccessControl">
-        <xs:complexType>
-            <xs:complexContent>
-                <xs:extension base="stepDefinitionType">
-                    <xs:sequence>
-                        <xs:element name="IPRules" minOccurs="1">
-                            <xs:complexType>
-                                <xs:sequence>
-                                    <xs:element name="MatchRule" minOccurs="0" maxOccurs="unbounded">
-                                        <xs:complexType>
-                                            <xs:sequence>
-                                                <xs:element name="SourceAddress" minOccurs="0" maxOccurs="unbounded">
-                                                    <xs:complexType>
-                                                        <xs:simpleContent>
-                                                            <xs:extension base="xs:string">
-                                                                <xs:attribute name="mask" type="xs:int" default="32"/>
-                                                            </xs:extension>
-                                                        </xs:simpleContent>
-                                                    </xs:complexType>
-                                                </xs:element>
-                                            </xs:sequence>
-                                            <xs:attribute name="action" type="actionType" default="ALLOW"/>
-                                        </xs:complexType>
-                                    </xs:element>
-                                </xs:sequence>
-                                <xs:attribute name="noRuleMatchAction" type="actionType" default="ALLOW"/>
-                            </xs:complexType>
-                        </xs:element>
-                    </xs:sequence>
-                </xs:extension>
-            </xs:complexContent>
-        </xs:complexType>
-    </xs:element>
-
-    <xs:simpleType name="actionType">
-        <xs:restriction base="xs:string">
-            <xs:enumeration value="ALLOW"/>
-            <xs:enumeration value="DENY"/>
-        </xs:restriction>
-    </xs:simpleType>
-
+<xs:schema xmlns="http://www.apigee.com/policy/access_control" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:step="http://www.apigee.com/policy/step" targetNamespace="http://www.apigee.com/policy/access_control">
+	<xs:import namespace="http://www.apigee.com/policy/step" schemaLocation="stepDefinition.xsd"/>
+	<xs:element name="AccessControl">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="step:stepDefinitionType">
+					<xs:sequence>
+						<xs:element name="IPRules" minOccurs="1">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="MatchRule" minOccurs="0" maxOccurs="unbounded">
+										<xs:complexType>
+											<xs:sequence>
+												<xs:element name="SourceAddress" minOccurs="0" maxOccurs="unbounded">
+													<xs:complexType>
+														<xs:simpleContent>
+															<xs:extension base="xs:string">
+																<xs:attribute name="mask" type="xs:int" default="32"/>
+															</xs:extension>
+														</xs:simpleContent>
+													</xs:complexType>
+												</xs:element>
+											</xs:sequence>
+											<xs:attribute name="action" type="actionType" default="ALLOW"/>
+										</xs:complexType>
+									</xs:element>
+								</xs:sequence>
+								<xs:attribute name="noRuleMatchAction" type="actionType" default="ALLOW"/>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:extension>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:simpleType name="actionType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="ALLOW"/>
+			<xs:enumeration value="DENY"/>
+		</xs:restriction>
+	</xs:simpleType>
 </xs:schema>

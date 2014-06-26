@@ -1,49 +1,47 @@
+<!-- edited with XMLSpy v2014 rel. 2 sp1 (x64) (http://www.altova.com) by Ben Madore (private) -->
 <!--
   ~ Copyright (c) 2013, Apigee Corporation.  All rights reserved.
   ~ Apigee(TM) and the Apigee logo are trademarks or
   ~ registered trademarks of Apigee Corp. or its subsidiaries.  All other
   ~ trademarks are the property of their respective owners.
   -->
-
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
-    <xs:include schemaLocation="endpoint.xsd"/>
-    <xs:include schemaLocation="properties.xsd"/>
-    <xs:include schemaLocation="target_endpoint.xsd"/>
-
-    <xs:element name="ProxyEndpoint">
-        <xs:complexType>
-            <xs:complexContent>
-                <xs:extension base="endpointType">
-                    <xs:sequence>
-                        <xs:element name="HTTPProxyConnection">
-                            <xs:complexType>
-                                <xs:sequence>
-                                    <xs:element name="BasePath" type="xs:string"/>
-                                    <xs:element name="VirtualHost" type="xs:string" minOccurs="0"/>
-                                    <xs:element ref="Properties" minOccurs="0"/>
-                                </xs:sequence>
-                            </xs:complexType>
-                        </xs:element>
-                        <xs:element ref="RouteRule" minOccurs="0" maxOccurs="unbounded"/>
-                    </xs:sequence>
-                </xs:extension>
-            </xs:complexContent>
-        </xs:complexType>
-    </xs:element>
-
-    <xs:element name="RouteRule">
-        <xs:complexType>
-            <xs:sequence>
-                <xs:element name="Condition" type="xs:string" minOccurs="0"/>
-                <xs:choice>
-                    <xs:element name="TargetEndpoint" type="xs:NCName"/>
-                    <xs:sequence>
-                        <xs:element name="URL"/>
-                        <xs:element ref="HTTPTargetConnection"/>
-                    </xs:sequence>
-                </xs:choice>
-            </xs:sequence>
-            <xs:attribute name="name" type="xs:NCName" use="required"/>
-        </xs:complexType>
-    </xs:element>
-</xs:schema>    
+<xs:schema xmlns="http://www.apigee.com/policy/target_endpoint" xmlns:endpoint="http://www.apigee.com/configuration/endpoint" xmlns:target_endpoint="http://www.apigee.com/configuration/target_endpoint" xmlns:prop="http://www.apigee.com/configuration/properties" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.apigee.com/policy/target_endpoint">
+	<xs:import namespace="http://www.apigee.com/configuration/endpoint" schemaLocation="endpoint.xsd"/>
+	<xs:import namespace="http://www.apigee.com/configuration/properties" schemaLocation="../configuration/properties.xsd"/>
+	<xs:import namespace="http://www.apigee.com/configuration/target_endpoint" schemaLocation="target_endpoint.xsd"/>
+	<xs:element name="ProxyEndpoint">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="endpoint:endpointType">
+					<xs:sequence>
+						<xs:element name="HTTPProxyConnection">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="BasePath" type="xs:string"/>
+									<xs:element name="VirtualHost" type="xs:string" minOccurs="0"/>
+									<xs:element ref="prop:Properties" minOccurs="0"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+						<xs:element ref="RouteRule" minOccurs="0" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:extension>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="RouteRule">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="Condition" type="xs:string" minOccurs="0"/>
+				<xs:choice>
+					<xs:element name="TargetEndpoint" type="xs:NCName"/>
+					<xs:sequence>
+						<xs:element name="URL"/>
+						<xs:element ref="target_endpoint:HTTPTargetConnection"/>
+					</xs:sequence>
+				</xs:choice>
+			</xs:sequence>
+			<xs:attribute name="name" type="xs:NCName" use="required"/>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

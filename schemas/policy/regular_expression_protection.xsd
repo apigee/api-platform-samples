@@ -5,13 +5,13 @@
   ~ trademarks are the property of their respective owners.
   -->
 
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
-    <xs:include schemaLocation="stepDefinition.xsd"/>
+<xs:schema targetNamespace="http://www.apigee.com/policy/regex_protection" xmlns="http://www.apigee.com/policy/regex_protection" xmlns:step="http://www.apigee.com/policy/step" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:import namespace="http://www.apigee.com/policy/step" schemaLocation="stepDefinition.xsd"/>
 
     <xs:element name="RegularExpressionProtection">
         <xs:complexType>
             <xs:complexContent>
-                <xs:extension base="stepDefinitionType">
+                <xs:extension base="step:stepDefinitionType">
                     <xs:sequence>
                         <xs:element name="Source" minOccurs="0" type="xs:string"/>
                         <xs:element name="IgnoreUnresolvedVariables" minOccurs="0" type="xs:boolean" default="false"/>
@@ -20,7 +20,7 @@
                             <xs:element name="QueryParam" type="namedPatternsType"/>
                             <xs:element name="Header" type="namedPatternsType"/>
                             <xs:element name="FormParam" type="namedPatternsType"/>
-                            <xs:element name="Variable" type="namedPatternsType"/>
+                            <xs:element name="variable" type="namedPatternsType"/>
                         </xs:choice>
                         <xs:element name="XMLPayload" minOccurs="0">
                             <xs:complexType>

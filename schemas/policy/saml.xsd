@@ -6,9 +6,8 @@
   ~ trademarks are the property of their respective owners.
   -->
         
-<xs:schema version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-
-    <xs:include schemaLocation="stepDefinition.xsd"/>
+<xs:schema targetNamespace="http://www.apigee.com/policy/saml"  xmlns="http://www.apigee.com/policy/saml" xmlns:step="http://www.apigee.com/policy/step" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:import namespace="http://www.apigee.com/policy/step" schemaLocation="stepDefinition.xsd"/>
 
     <xs:element name="GenerateSAMLAssertion" type="generateSAMLAssertionBean"/>
 
@@ -38,7 +37,7 @@
 
     <xs:complexType name="abstractSAMLAssertionBean">
         <xs:complexContent>
-            <xs:extension base="stepDefinitionType">
+            <xs:extension base="step:stepDefinitionType">
                 <xs:sequence/>
                 <xs:attribute name="ignoreContentType" type="xs:boolean" use="required"/>
             </xs:extension>
@@ -84,7 +83,7 @@
                     <xs:element name="OutputVariable" type="outputVariable" minOccurs="0"/>
                     <xs:element name="SignatureAlgorithm" type="propertyBean" minOccurs="0"/>
                     <xs:element name="Subject" type="propertyBean" minOccurs="0"/>
-                    <xs:element name="Template" type="template" minOccurs="0"/>
+                    <xs:element name="Template" type="step:template" minOccurs="0"/>
                 </xs:sequence>
             </xs:extension>
         </xs:complexContent>
@@ -102,4 +101,3 @@
         </xs:complexContent>
     </xs:complexType>
 </xs:schema>
-

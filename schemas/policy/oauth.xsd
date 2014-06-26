@@ -5,20 +5,20 @@
   ~ trademarks are the property of their respective owners.
   -->
 
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
-    <xs:include schemaLocation="stepDefinition.xsd"/>
-    <xs:include schemaLocation="../configuration/properties.xsd"/>
+<xs:schema targetNamespace="http://www.apigee.com/policy/oauth" xmlns="http://www.apigee.com/policy/oauth" xmlns:step="http://www.apigee.com/policy/step" xmlns:prop="http://www.apigee.com/configuration/properties" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:import namespace="http://www.apigee.com/policy/step" schemaLocation="stepDefinition.xsd"/>
+    <xs:import namespace="http://www.apigee.com/configuration/properties" schemaLocation="../configuration/properties.xsd"/>
 
     <xs:element name="GetOAuthV1Info">
         <xs:complexType>
             <xs:complexContent>
-                <xs:extension base="stepDefinitionType">
+                <xs:extension base="step:stepDefinitionType">
                     <xs:sequence>
                         <xs:element name="OAuthConfig" type="xs:NCName" minOccurs="0"/>
                         <xs:choice>
-                            <xs:element name="RequestToken" type="propertyType"/>
-                            <xs:element name="AccessToken" type="propertyType"/>
-                            <xs:element name="ConsumerKey" type="propertyType"/>
+                            <xs:element name="RequestToken" type="prop:propertyType"/>
+                            <xs:element name="AccessToken" type="prop:propertyType"/>
+                            <xs:element name="ConsumerKey" type="prop:propertyType"/>
                         </xs:choice>
                     </xs:sequence>
                 </xs:extension>
@@ -29,14 +29,14 @@
     <xs:element name="GetOAuthV2Info">
         <xs:complexType>
             <xs:complexContent>
-                <xs:extension base="stepDefinitionType">
+                <xs:extension base="step:stepDefinitionType">
                     <xs:sequence>
                         <xs:element name="OAuthConfig" type="xs:NCName" minOccurs="0"/>
                         <xs:choice>
-                            <xs:element name="RequestToken" type="propertyType"/>
-                            <xs:element name="AccessToken" type="propertyType"/>
-                            <xs:element name="ClientId" type="propertyType"/>
-                            <xs:element name="AuthorizationCode" type="propertyType"/>
+                            <xs:element name="RequestToken" type="prop:propertyType"/>
+                            <xs:element name="AccessToken" type="prop:propertyType"/>
+                            <xs:element name="ClientId" type="prop:propertyType"/>
+                            <xs:element name="AuthorizationCode" type="prop:propertyType"/>
                         </xs:choice>
                     </xs:sequence>
                 </xs:extension>
@@ -47,7 +47,7 @@
     <xs:element name="OAuthV1">
         <xs:complexType>
             <xs:complexContent>
-                <xs:extension base="stepDefinitionType">
+                <xs:extension base="step:stepDefinitionType">
                     <xs:sequence>
                         <xs:element name="OAuthConfig" type="xs:NCName" minOccurs="0"/>
                         <xs:element name="Operation">
@@ -81,7 +81,7 @@
     <xs:element name="OAuthV2">
         <xs:complexType>
             <xs:complexContent>
-                <xs:extension base="stepDefinitionType">
+                <xs:extension base="step:stepDefinitionType">
                     <xs:sequence>
                         <xs:element name="OAuthConfig" type="xs:NCName" minOccurs="0"/>
                         <xs:element name="Operation">

@@ -5,7 +5,7 @@
   ~ trademarks are the property of their respective owners.
   -->
 
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:schema xmlns="http://www.apigee.com/policy/all" xmlns:xs="http://www.w3.org/2001/XMLSchema">
     <xs:include schemaLocation="access_control.xsd"/>
     <xs:include schemaLocation="assign_message.xsd"/>
     <xs:include schemaLocation="cache.xsd"/>
