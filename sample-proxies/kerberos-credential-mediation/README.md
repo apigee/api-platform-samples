@@ -1,34 +1,68 @@
-# Access Entity
+# Kerberos Credential Mediation
 
-This sample shows how to retrieve profiles for entities from the Apigee Edge
-datastore. Using this policy, you can retrieve profiles for things like
-apps, developers, and API products. Sometimes you need this information 
-to enable dynamic behavior in policies or code running on Apigee Edge.
+This sample shows how to perform Kerberos Credential Mediation on Apigee Edge.
+ 
+It uses Java GSS API to perform
+1. Verify incoming Kerberos token in Authorization Header
+2. Generate a new Authorization Header for the backend server
 
-This example shows you how to get a developer's email address based on 
-the API key that is presented by the app (that is, the 'invoke.sh' script).
+Both of these steps can be performed independently to support credential mediation b/w other auth schemes such as Oauth
 
-Complete documentation for this policy can found here:
-
-http://apigee.com/docs/api-services/content/retrieve-entity-profiles-using-accessentity
+Note: This sample is applicable only for on-premise installation.
 
 # Set up
 
-* The username and password that you use to login to enterprise.apigee.com.
-* The name of the organization in which you have an account. Login to 
-  enterprise.apigee.com and check account settings.
-* A valid API key for any app in your organization on Apigee Edge.
+Edit the properties in ```apiporxy/policies/credentialdelegation.xml``` 
 
-# Configure 
+```
+<Properties>
+      <Property name="krb5Conf">krb5.conf</Property>
+      <Property name="loginConf">login.conf</Property>
+      <Property name="loginModule">ServicePrincipalLoginContext</Property>
+      <Property name="serverPrincipal">http@server-backend</Property>
+</Properties>  
+```
+krb5.conf, login.conf and the necessary keytab files need to be present in the ```APIGEE_INSTALL_ROOT```
 
-Update `/setup/setenv.sh` with your environment details
-Update 'invoke.sh' with a valid API key for an app in your organization.
+```loginModule``` is the module name to choose from the login.conf
 
-# Import and deploy sample project
+# Sample configuration
 
-To deploy, run `$ sh deploy.sh`
+login.conf
 
-To test, run `$ sh invoke.sh`
+```
+ServicePrincipalLoginContext
+{
+      com.sun.security.auth.module.Krb5LoginModule required 
+      principal="http/service-principal-account@APIGEE.LOCAL" 
+      doNotPrompt=true
+      useTicketCache=true   
+      keyTab="spn.keytab"
+      useKeyTab=true
+      storeKey=true
+      debug=true;      
+}
+```
+
+krb5.conf
+
+```
+[libdefaults]
+    default_realm=APIGEE.LOCAL
+    default_tkt_enctypes = aes128-cts rc4-hmac des3-cbc-sha1 des-cbc-md5 des-cbc-crc
+    default_tgs_enctypes = aes128-cts rc4-hmac des3-cbc-sha1 des-cbc-md5 des-cbc-crc
+    permitted_enctypes   = aes128-cts rc4-hmac des3-cbc-sha1 des-cbc-md5 des-cbc-crc
+
+[realms]
+    APIGEE.LOCAL  = {
+        kdc = kdc.youdomain.com 
+        default_domain = APIGEE.LOCAL
+}
+
+[domain_realm]
+    .APIGEE.LOCAL = APIGEE.LOCAL 
+ ```
+    
 
 # Get help
 
