@@ -3,6 +3,7 @@
 This sample shows how to perform Kerberos Credential Mediation on Apigee Edge.
  
 It uses Java GSS API to perform
+
 1. Verify incoming Kerberos token in Authorization Header
 2. Generate a new Authorization Header for the backend server
 
@@ -22,9 +23,14 @@ Edit the properties in ```apiporxy/policies/credentialdelegation.xml```
       <Property name="serverPrincipal">http@server-backend</Property>
 </Properties>  
 ```
-krb5.conf, login.conf and the necessary keytab files need to be present in the ```APIGEE_INSTALL_ROOT```
+```krb5.conf```, ```login.conf``` and the necessary keytab files need to be present in the ```APIGEE_INSTALL_ROOT```
 
-```loginModule``` is the module name to choose from the login.conf
+```loginModule``` is the module name to choose from the ```login.conf```
+
+# Import and deploy sample project
+
+To deploy, run `$ sh deploy.sh`
+
 
 # Sample configuration
 
