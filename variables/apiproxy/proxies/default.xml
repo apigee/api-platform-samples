@@ -1,0 +1,19 @@
+<ProxyEndpoint name="default">
+<Flows>
+    <Flow name="default">
+    <Response>
+	    <Step><Name>parseforecast</Name></Step>
+		<Step><Name>xmltojson</Name></Step>
+		<Step><Name>parsejsonforecast</Name></Step>
+        <Step><Name>variables</Name></Step>
+    </Response>
+  </Flow>
+</Flows>
+  <HTTPProxyConnection>
+    <BasePath>/variables</BasePath>    
+    <VirtualHost>default</VirtualHost>
+  </HTTPProxyConnection>
+  <RouteRule name="Route">
+    <TargetEndpoint>default</TargetEndpoint>
+  </RouteRule>
+</ProxyEndpoint>
