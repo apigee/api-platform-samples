@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<APIProxy name="jirareleasenotes">
+    <Description>Getting release notes from Jira using /search?jql=</Description>
+    <DisplayName>jirareleasenotes</DisplayName>
+    <Policies>
+        <Policy>JSON-to-XML</Policy>
+        <Policy>XSL-Transform</Policy>
+    </Policies>
+    <ProxyEndpoints>
+        <ProxyEndpoint>default</ProxyEndpoint>
+    </ProxyEndpoints>
+    <Resources>
+        <Resource>xsl://releasenotes_api.xsl</Resource>
+    </Resources>
+    <TargetServers/>
+    <TargetEndpoints>
+        <TargetEndpoint>default</TargetEndpoint>
+    </TargetEndpoints>
+    <validate>false</validate>
+</APIProxy>

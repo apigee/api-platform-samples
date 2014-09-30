@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<XSL async="false" continueOnError="false" enabled="true" name="XSL-Transform">
+    <DisplayName>XSL transformation</DisplayName>
+    <FaultRules/>
+    <Properties/>
+    <Source>response</Source>
+    <ResourceURL>xsl://releasenotes_api.xsl</ResourceURL>
+    <Parameters ignoreUnresolvedVariables="true" />
+ <!-- Make sure the OutputVariable element is *gone*. Otherwise, response stays as XML. -->
+</XSL>
