@@ -1,6 +1,6 @@
 # Jira release notes generator 
 
-This sample leverages a [Jira API](https://docs.atlassian.com/jira/REST/6.2.7/) to return issues that are tagged in Jira with a 'release_notes' label. The proxy converts Jira's JSON response to XML, then applies an XSL stylesheet that generates a base set of HTML-formatted release notes. The stylesheet gets text from a 'Release Notes Summary' field.
+This sample leverages a [Jira API](https://docs.atlassian.com/jira/REST/6.2.7/) to return issues that are tagged in Jira with a 'release_notes' label. The proxy converts Jira's JSON response to XML, then applies an XSL stylesheet that generates HTML-formatted release notes. The stylesheet grabs text from a 'Release Notes Summary' field in Jira.
 
 If your Jira environment uses different fields, modify the URI query parameters accordingly (in invoke.sh as well, if you want to use that script), and modify the .xsl resource file accordingly.
 
@@ -12,16 +12,17 @@ If your Jira environment uses different fields, modify the URI query parameters 
 * XSL Transform policy
 * XSL stylesheet
 
-# Set up
+# Configure 
+
+Update `/setup/setenv.sh` with your environment details
+
+What gets set:
 
 * The username and password that you use to login to enterprise.apigee.com.
 * The name of the organization in which you have an account. Login to 
   enterprise.apigee.com and check account settings.
-* When you invoke the proxy, you'll also need your Jira username and password.  
 
-# Configure 
-
-Update `/setup/setenv.sh` with your environment details
+**Note:** When you invoke the proxy, you'll use your Jira username and password for basic auth.
 
 # Import and deploy sample project
 
