@@ -52,9 +52,6 @@ For a detailed overview of the available sample see the [API Services Samples do
 XML schemas that you can  use as a reference when working with policies, API proxy configuration,
 API products, apps, and developers.
 
-## `/simpleProxy`
-
-A basic API proxy that is used in the [Apigee Documentation](http://apigee.com/docs).
 
 ## `/setup`
 
