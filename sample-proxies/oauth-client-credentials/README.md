@@ -8,14 +8,13 @@ Most typically, this grant type is used when the app is also the resource owner.
 
 ## How it works
 
-With the client credentials grant type flow, the client app requests an access token directly by providing its client ID and client secret keys. These keys are generated when the app is registered with Apigee Edge. 
-
-## How is it designed? 
-
-The client credentials sample uses one policy: An OAuthV2 policy to generate the access token. The policy is attached to the `/accesstoken` endpoint (a custom flow on Apigee Edge). 
+With the client credentials grant type flow, the client app requests an access token directly by providing its client ID and client secret keys. These keys are generated when the app is registered with Apigee Edge. Edge validates the credentials and returns an access token to the client. The client can then make secure calls to the resource server.
 
 ![alt text](../images/oauth-client-cred-flow-3.png)
 
+## Implementation on Apigee Edge 
+
+The client credentials sample uses one policy that executes on Apigee Edge: An OAuthV2 policy to generate the access token. The policy is attached to the `/accesstoken` endpoint (a custom flow on Apigee Edge). 
 
 ## Prerequisites
 
