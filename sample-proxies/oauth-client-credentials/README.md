@@ -14,6 +14,9 @@ With the client credentials grant type flow, the client app requests an access t
 
 The client credentials sample uses one policy: An OAuthV2 policy to generate the access token. The policy is attached to the `/accesstoken` endpoint (a custom flow on Apigee Edge). 
 
+![alt text](../images/oauth-client-cred-flow-3.png)
+
+
 ## Prerequisites
 
 To run this sample, you'll need:
