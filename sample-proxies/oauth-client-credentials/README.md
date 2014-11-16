@@ -44,7 +44,7 @@ To test, run `$ sh invoke.sh`
 The `invoke.sh` script builds and executes the curl command shown below. The command calls the access token endpoint on Apigee Edge with the URL encoded client ID and client secret keys sent in the Authorization header. 
 
 ````sh
-curl -k -u "kWocGgKENrdWRT0jq4l0FU0ACnPAQsD3:6WADDsZNIGDcZOaX" https://wwitman-test.apigee.net/weatheroauth/accesstoken?grant_type=client_credentials 
+curl -k -u "kWocGgKENrdWRT0jq4l0F0ACnPAQsD3:6WADDsNIGDcZOaX" https://example-test.apigee.net/weatheroauth/accesstoken?grant_type=client_credentials 
 
 AccessToken Response: 
  {
@@ -57,9 +57,9 @@ AccessToken Response:
   "developer.email" : "testdev@example.com",
   "organization_id" : "0",
   "token_type" : "BearerToken",
-  "client_id" : "kWocGgKENrdWRT0jq4l0FU0ACnPAQsD3",
-  "access_token" : "WNSnwquKualbgnG2eAK0EXGqzO3A",
-  "organization_name" : "wwitman",
+  "client_id" : "kWocGgKENrdWRT0jq4l0F0ACnPAQsD3",
+  "access_token" : "WNSnwquKualbgnGeAK0EXGqzO3A",
+  "organization_name" : "example",
   "refresh_token_expires_in" : "0",
   "refresh_count" : "0"
 }
