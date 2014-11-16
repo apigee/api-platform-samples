@@ -27,13 +27,13 @@ To run this sample, you'll need:
 
 ## Configure 
 
-Edit and run these scripts to provision required entities on Apigee Edge:
+1. Edit this script with your environment details:
 
-1. Update `/setup/setenv.sh` with your environment details.
+    `../../setup/setenv.sh`
+    
+2. Execute this script to set up required API products, developers, and apps in your organization:
 
-2. Configure API products, developers, and apps in your organization.
-
-3. Run `/setup/provisioning/setup.sh`
+    `../../setup/provisioning/setup.sh`
 
 ## Deploy and run the sample project
 
