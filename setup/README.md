@@ -8,9 +8,7 @@ Make sure you have the following installed and added as environment variables (r
 
 * cURL
 * Python
-
-## Windows with Cygwin
-If you're running Cygwin on Windows, you'll also need the **doc2unix** utility. You can install this with the Cygwin installer.
+* **Cygwin on Windows**: If you're running Cygwin on Windows, you'll also need the **doc2unix** utility. You can install this with the Cygwin installer.
 
 
 # Directions
@@ -40,7 +38,7 @@ To run dos2unix recursively on the samples:
 
 2. Run the following command:
 
-    find . -name *.sh |xargs dos2unix
+    <code>find . -name *.sh |xargs dos2unix</code>
 
 3. If the command runs successfully, you can re-run the deploy script from the previous section.
 
