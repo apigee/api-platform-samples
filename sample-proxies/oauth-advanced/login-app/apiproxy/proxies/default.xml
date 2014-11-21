@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ProxyEndpoint name="default">
+	<PreFlow name="PreFlow">
+		<Request>
+			<Step>
+				<Name>SetXForwardedProto</Name>
+				<Condition>(request.header.x-forwarded-proto == null) and (virtualhost.ssl.enabled == true)</Condition>
+			</Step>
+		</Request>
+	</PreFlow>
+	<Flows/>
+	<PostFlow/>
+	<HTTPProxyConnection>
+		<BasePath>/oauth2/app</BasePath>
+		<VirtualHost>default</VirtualHost>
+		<VirtualHost>secure</VirtualHost>
+	</HTTPProxyConnection>
+	<RouteRule name="node">
+		<TargetEndpoint>node</TargetEndpoint>
+	</RouteRule>
+</ProxyEndpoint>

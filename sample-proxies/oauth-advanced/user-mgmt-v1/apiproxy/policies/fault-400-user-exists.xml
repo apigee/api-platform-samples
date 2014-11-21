@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<RaiseFault async="false" continueOnError="false" enabled="true" name="fault-400-user-exists">
+    <DisplayName>fault-400-user-exists</DisplayName>
+    <FaultRules/>
+    <Properties/>
+    <FaultResponse>
+		<Set>
+		  <Payload contentType="application/json" variablePrefix="%" variableSuffix="#">{"status":"failure", "message":"User %username# already exists."}</Payload>
+		  <StatusCode>400</StatusCode>
+		  <ReasonPhrase>Bad Request</ReasonPhrase>
+		</Set>
+  	</FaultResponse>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+</RaiseFault>

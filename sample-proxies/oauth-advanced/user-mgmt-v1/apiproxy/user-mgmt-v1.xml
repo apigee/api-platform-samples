@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<APIProxy revision="1" name="user-mgmt-v1">
+    <ConfigurationVersion minorVersion="0" majorVersion="4"/>
+    <CreatedAt>1396651314277</CreatedAt>
+    <CreatedBy>mrusso+oauth@apigee.com</CreatedBy>
+    <DisplayName>user-mgmt-v1</DisplayName>
+    <LastModifiedAt>1401845837255</LastModifiedAt>
+    <LastModifiedBy>mrusso+oauth@apigee.com</LastModifiedBy>
+    <Policies>
+        <Policy>SetProfileResponse</Policy>
+        <Policy>VerifyAccessToken</Policy>
+        <Policy>extract-user-json</Policy>
+        <Policy>extract-user-path</Policy>
+        <Policy>fault-400-user-exists</Policy>
+        <Policy>kvm-get-password</Policy>
+        <Policy>kvm-put-password</Policy>
+        <Policy>pw-hashing</Policy>
+        <Policy>response-200-auth-success</Policy>
+        <Policy>response-200-changepw-success</Policy>
+        <Policy>response-201</Policy>
+        <Policy>response-403-auth-fail</Policy>
+        <Policy>response-404</Policy>
+        <Policy>response-500-changepw-fail</Policy>
+        <Policy>username-to-lower</Policy>
+    </Policies>
+    <ProxyEndpoints>
+        <ProxyEndpoint>default</ProxyEndpoint>
+    </ProxyEndpoints>
+    <Resources>
+        <Resource>jsc://hmac-sha1.js</Resource>
+        <Resource>jsc://pw-hashing.js</Resource>
+        <Resource>jsc://usernameToLower.js</Resource>
+    </Resources>
+    <TargetServers/>
+    <TargetEndpoints/>
+    <validate>false</validate>
+</APIProxy>

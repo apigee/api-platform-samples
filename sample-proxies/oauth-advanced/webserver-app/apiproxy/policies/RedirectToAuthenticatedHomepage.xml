@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage async="false" continueOnError="false" enabled="true" name="RedirectToAuthenticatedHomepage">
+    <Set>
+        <Headers>
+          <Header name="Location">http://wwitman-prod.apigee.net/web?access_token={access_token}</Header>
+      </Headers>
+      <StatusCode>302</StatusCode>
+      <ReasonPhrase>Redirect</ReasonPhrase>
+    </Set>
+    <AssignVariable>
+        <Name>name</Name>
+        <Value/>
+        <Ref/>
+    </AssignVariable>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+    <AssignTo createNew="true" transport="http" type="response"/>
+</AssignMessage>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage async="false" continueOnError="false" enabled="true" name="SetConfigurationVariables">
+    <AssignVariable>
+        <Name>appKey</Name>
+      <Value>sUNd6WpfpbyHNbfxIaLCCo3kcD2y5hTk</Value>
+    </AssignVariable>
+  <AssignVariable>
+        <Name>appSecret</Name>
+      <Value>WlqW2ukrMbnnmory</Value>
+    </AssignVariable>
+</AssignMessage>

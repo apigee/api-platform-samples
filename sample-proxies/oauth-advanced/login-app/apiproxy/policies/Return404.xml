@@ -1,0 +1,12 @@
+<RaiseFault name="Return404">
+	<IgnoreUnresolvedVariables>false</IgnoreUnresolvedVariables>
+	<FaultResponse>
+		<Set>
+			<QueryParams/>
+            <Headers/>
+            <Payload/>
+			<StatusCode>404</StatusCode>
+			<ReasonPhrase>Not Found</ReasonPhrase>
+		</Set>
+	</FaultResponse>
+</RaiseFault>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage async="false" continueOnError="false" enabled="true" name="response-403-auth-fail">
+    <DisplayName>response-403-auth-fail</DisplayName>
+    <FaultRules/>
+    <Properties/>
+    <Set>
+      <Payload contentType="application/json" variablePrefix="%" variableSuffix="#">{"status":"failure", "message":"Authentication failed for user %username#."}</Payload>
+      <StatusCode>403</StatusCode>
+      <ReasonPhrase>Forbidden</ReasonPhrase>
+  </Set>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+    <AssignTo createNew="true" transport="http" type="response"/>
+</AssignMessage>
