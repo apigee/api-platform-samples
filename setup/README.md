@@ -4,7 +4,7 @@ This directory provides scripts that configure your local environment and deploy
 
 # Prerequisites
 
-Make sure you have the following installed and added as environment variables (recognizable when you run, for example, <code>which curl</code>)
+Make sure you have the following installed and available on your PATH (recognizable when you run, for example, <code>which curl</code>).
 
 * cURL
 * Python
