@@ -17,7 +17,7 @@ Follow prompts.
 
 # Get help
 
-For assistance, please use [StackOverflow](http://stackoverflow.com/tags/apigee) and add the tag "apigee".
+For assistance, please use the [Apigee Community](http://community.apigee.com/).
 
 Copyright © 2014 Apigee Corporation
 

@@ -74,7 +74,7 @@ To deploy all samples and API products, run `deploy_all.sh`
 
 # Get help and interact with other API developers
 
-For assistance, please use [StackOverflow](http://stackoverflow.com/tags/apigee) and add the tag "apigee".
+For assistance, please use the [Apigee Community](http://community.apigee.com/).
 
 Copyright © 2014 Apigee Corporation
 
