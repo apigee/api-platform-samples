@@ -2,6 +2,17 @@
 
 This directory provides scripts that configure your local environment and deploy sample API proxies to your organization on the Apigee API Platform.
 
+# Prerequisites
+
+Make sure you have the following installed and added as environment variables (recognizable when you run, for example, <code>which curl</code>)
+
+* cURL
+* Python
+
+## Windows with Cygwin
+If you're running Cygwin on Windows, you'll also need the doc2unix utility. You can install this with the Cygwin installer.
+
+
 # Directions
 
 1. If you do not have an account yet, [register one for free](https://accounts.apigee.com/accounts/sign_up).
@@ -16,6 +27,19 @@ Follow prompts.
 Follow prompts.
 
 4. Navigate to the sample-proxies directory. Each sample API proxy directory contains an invoke.sh file. Run invoke.sh to submit a request to that sample API proxy.
+
+## Windows/Cygwin Troubleshooting
+
+If you get an error saying <code>'\r': command not found</code>, you'll need to run the dos2unix utility to convert line breaks in the shell (.sh) files. You may need to install the utility if the <code>which dos2unix</code> can't find it. The Cygwin installer should let you install it.
+
+To run dos2unix:
+
+1. cd to the api-platform-samples directory.
+
+2. Run the following command:
+    find . -name *.sh |xargs dos2unix
+
+3. If the command runs successfully, you can re-run ./deploy_all.sh.
 
 # Get help
 
