@@ -8,6 +8,8 @@ This directory provides scripts that configure your local environment and deploy
 
 2. In the file `setenv.sh`, configure values for your organization, username, environment.
 
+3. Deploy the samples.
+
     * To deploy individual samples, run `deploy.sh` from the `./setup` directory.
 Follow prompts.
 	* To deploy all samples, run `deploy_all.sh` from the `./setup` directory. 
