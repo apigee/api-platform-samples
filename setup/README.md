@@ -8,7 +8,7 @@ Make sure you have the following installed and added as environment variables (r
 
 * cURL
 * Python
-* **Cygwin on Windows**: If you're running Cygwin on Windows, you'll also need the **doc2unix** utility. You can install this with the Cygwin installer.
+* **Cygwin on Windows**: If you're running Cygwin on Windows, you'll also need the **doc2unix** utility. (The Cygwin installer lets you install the utility.) See the [Windows/Cygwin Troubleshooting] (#windowscygwin-troubleshooting) section for more information.
 
 
 # Directions
@@ -26,7 +26,7 @@ Follow prompts.
 
 You can now go to the Apigee management UI and see the deployed proxies.
 
-Alternatively, you can invoke the proxies from the command line. To do so, cd to the /sample-proxies directory. Each sample API proxy directory contains an invoke.sh file. Run invoke.sh to submit a request to that sample API proxy.
+Alternatively, you can invoke the proxies from the command line. To do so, cd to the `/sample-proxies` directory. Each sample API proxy directory contains an invoke.sh file. Run invoke.sh to submit a request to that sample API proxy.
 
 ## Windows/Cygwin Troubleshooting
 
@@ -34,7 +34,7 @@ In Cygwin on Windows, if you get an error saying <code>'\r': command not found</
 
 To run dos2unix recursively on the samples:
 
-1. cd to the /api-platform-samples directory (the samples root directory).
+1. cd to the `/api-platform-samples` directory (the samples root directory).
 
 2. Run the following command:
 
