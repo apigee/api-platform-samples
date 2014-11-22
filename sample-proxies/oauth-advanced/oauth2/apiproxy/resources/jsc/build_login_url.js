@@ -1,9 +1,9 @@
 
 //*** Configure with your org, env, and domain ***//
 
-var organization = "wwitman";
-var environment = "prod";
-var domain = "apigee.net";
+var organization = "***Enter your organization name***";
+var environment = "***Enter your environment name***";
+var domain = "apigee.net"; // On prem customers might have to change this domain value. Cloud users can leave it unchanged.
 
 //***
 

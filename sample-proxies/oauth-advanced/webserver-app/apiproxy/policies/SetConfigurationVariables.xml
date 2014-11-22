@@ -5,20 +5,21 @@
     <Properties/>
     <AssignVariable>
         <Name>appKey</Name>
-        <Value>ZYzA46H8xecJKvrwoQolMGGWnZzMqIr8</Value>
+        <Value>***The consumer ID for your developer app***</Value>
     </AssignVariable>
     <AssignVariable>
         <Name>appSecret</Name>
-        <Value>h9tA9kWaTFMWywpM</Value>
+        <Value>***The consumer secret for your developer app***</Value>
     </AssignVariable>
     <AssignVariable>
         <Name>config.environment</Name>
-        <Value>prod</Value>
+        <Value>***Your environment***</Value>
     </AssignVariable>
     <AssignVariable>
         <Name>config.organization</Name>
-        <Value>wwitman</Value>
+        <Value>***Your organization***</Value>
     </AssignVariable>
+   <!-- On prem customers may need to change the domain. Cloud users can leave the domain as is. -->
     <AssignVariable>
         <Name>config.domain</Name>
         <Value>apigee.net</Value>

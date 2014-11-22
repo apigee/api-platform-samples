@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <AssignMessage async="false" continueOnError="false" enabled="true" name="HTMLIndex">
     <Properties/>
+    <!-- On prem customers might have to change the domain apigee.net to their custom domain. -->
     <Set>
       <Payload contentType="text/html" variablePrefix="^" variableSuffix="~">
       &lt;!DOCTYPE html&gt;
 &lt;html&gt;
    &lt;head&gt;
       &lt;script&gt;
-         var BASEURL=&quot;https://wwitman-prod.apigee.net&quot;;
-         var REDIRECT=&quot;https://wwitman-prod.apigee.net/web/callback&quot;;
-         var CLIENT_ID=&quot;ZYzA46H8xecJKvrwoQolMGGWnZzMqIr8&quot;;
+         var BASEURL=&quot;https://myorg-myenv.apigee.net&quot;;
+         var REDIRECT=&quot;https://myorg-myenv.apigee.net/web/callback&quot;;
+         var CLIENT_ID=&quot;***Your developer app Consumer ID***&quot;;
          
          
          function login()
