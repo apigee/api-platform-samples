@@ -90,37 +90,36 @@ This is an advanced example that includes four separate API proxies that include
     b. Enter your environment information. You'll need to grab the Consumer ID and Consumer Secret from your developer app that is registered on Apigee Edge. Substitute those values in for the `appKey` and `appSecret`. For example:
 
         ```xml
-        <AssignMessage async="false" continueOnError="false" enabled="true" name="SetConfigurationVariables">
-            <DisplayName>SetConfigurationVariables</DisplayName>
-            <FaultRules/>
-            <Properties/>
-            <AssignVariable>
-                <Name>appKey</Name>
-                <Value>ZYzA46H8xecJKvrwoQolMGGWnZzMqIr8</Value>
-            </AssignVariable>
-            <AssignVariable>
-                <Name>appSecret</Name>
-                <Value>h9tA9kWaTFMWywpM</Value>
-            </AssignVariable>
-            <AssignVariable>
-                <Name>config.environment</Name>
-                <Value>prod</Value>
-            </AssignVariable>
-            <AssignVariable>
-                <Name>config.organization</Name>
-                <Value>wwitman</Value>
-            </AssignVariable>
-            <AssignVariable>
-                <Name>config.domain</Name>
-                <Value>apigee.net</Value>
-            </AssignVariable>
-            <AssignVariable>
-                <Name>config.protocol</Name>
-                <Value>https</Value>
-            </AssignVariable>
-            <IgnoreUnresolvedVariables>false</IgnoreUnresolvedVariables>
-        </AssignMessage>
-
+          <AssignMessage async="false" continueOnError="false" enabled="true" name="SetConfigurationVariables">
+              <DisplayName>SetConfigurationVariables</DisplayName>
+              <FaultRules/>
+              <Properties/>
+              <AssignVariable>
+                  <Name>appKey</Name>
+                  <Value>ZYzA46H8xecJKvrwoQolMGGWnZzMqIr8</Value>
+              </AssignVariable>
+              <AssignVariable>
+                  <Name>appSecret</Name>
+                  <Value>h9tA9kWaTFMWywpM</Value>
+              </AssignVariable>
+              <AssignVariable>
+                  <Name>config.environment</Name>
+                  <Value>prod</Value>
+              </AssignVariable>
+              <AssignVariable>
+                  <Name>config.organization</Name>
+                  <Value>wwitman</Value>
+              </AssignVariable>
+              <AssignVariable>
+                  <Name>config.domain</Name>
+                  <Value>apigee.net</Value>
+              </AssignVariable>
+              <AssignVariable>
+                  <Name>config.protocol</Name>
+                  <Value>https</Value>
+              </AssignVariable>
+              <IgnoreUnresolvedVariables>false</IgnoreUnresolvedVariables>
+          </AssignMessage>
         ```
    
    c. Configure the client HTML file:
@@ -145,11 +144,11 @@ This is an advanced example that includes four separate API proxies that include
 
 #### 2. Open a browser and go to this URL:
 
-    `http://myorg-myenv-apigee.net/web`
+        `http://myorg-myenv-apigee.net/web`
 
 For example:
 
-    `http://jdoe-prod-apigee.net/web`
+        `http://jdoe-prod-apigee.net/web`
 
 #### 3. Initiate the flow
 
@@ -167,11 +166,11 @@ The consent page gives you (the end user) a chance to limit the type of access t
 
 After you give consent, these things happen behind the scenes:
 
-    a. The login app communicates to the authorization server that the login was successful.
-    b. The authorization server generates an authorization code and returns it to the app. 
-    c. The app puts the code into a request to the authorization server for an access token. The app also supplies the client ID and client secret keys.
-    d. The authorization server validates the auth code and other credentials, and if everything is okay, it returns an access token back to the client.
-    e. Now, with an access token, the client can request resources from the protected API. 
+  a. The login app communicates to the authorization server that the login was successful.
+  b. The authorization server generates an authorization code and returns it to the app. 
+  c. The app puts the code into a request to the authorization server for an access token. The app also supplies the client ID and client secret keys.
+  d. The authorization server validates the auth code and other credentials, and if everything is okay, it returns an access token back to the client.
+  e. Now, with an access token, the client can request resources from the protected API. 
 
 It's important to see that the app never saw the user's username and password entered in the login page. 
 
