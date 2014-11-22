@@ -11,17 +11,17 @@
 ## You can obtain a free account at https://accounts.apigee.com/accounts/sign_up
 ## On-premise deployments may have other environments.
 ## --------------------------------------
-## Cloud users: Leave the default values for $url, $env, and $api_domain.
+## Cloud users: Leave the default values for $url and $api_domain.
 ## On-prem customers: 
 ## - Change the $url to your Apigee management server.
 ## - Change $api_domain to the base domain for your own Apigee API calls.
 ##   $api_domain gets used in conjunction with $org and $env to construct
 ##   the base URL to your APIs: https://$org-$env.$api_domain/<api_resource>
 
-org="Enter the the organization name associated with your account on enterprise.apigee.com"
-username="Enter the email address associated with your account on enterprise.apigee.com"
+org="your-org-name"
+username="your-user-email-address"
 url="https://api.enterprise.apigee.com"
-env="test"
+env="your-environment"
 api_domain="apigee.net"
 
 ## Do not change the settings below

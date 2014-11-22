@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage async="false" continueOnError="false" enabled="true" name="RedirectToLoginPage">
+    <Set>
+        <Headers>
+			<Header name="Location">{login_url}</Header>
+	    </Headers>
+        <StatusCode>302</StatusCode>
+        <ReasonPhrase>Redirect</ReasonPhrase>
+    </Set>
+    <AssignTo createNew="true" type="response"/>
+</AssignMessage>

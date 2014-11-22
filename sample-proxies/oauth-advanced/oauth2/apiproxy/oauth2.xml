@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<APIProxy revision="10" name="oauth2">
+    <ConfigurationVersion majorVersion="4" minorVersion="0"/>
+    <CreatedAt>1416263189873</CreatedAt>
+    <CreatedBy>mrusso+oauth@apigee.com</CreatedBy>
+    <DisplayName>oauth2</DisplayName>
+    <LastModifiedAt>1416263882893</LastModifiedAt>
+    <LastModifiedBy>mrusso+oauth@apigee.com</LastModifiedBy>
+    <Policies>
+        <Policy>AccessTokenRefresh</Policy>
+        <Policy>AccessTokenRequest</Policy>
+        <Policy>AccessTokenResponse</Policy>
+        <Policy>AccessTokenResponseCC</Policy>
+        <Policy>AccessTokenResponseRT</Policy>
+        <Policy>BuildLoginPageUrl</Policy>
+        <Policy>GenerateAuthorizationCode</Policy>
+        <Policy>JsonToXml</Policy>
+        <Policy>RedirectToLoginPage</Policy>
+        <Policy>Send404NotFoundResponse</Policy>
+        <Policy>SetAuthCodeParameters</Policy>
+        <Policy>SetValidTokenResponse</Policy>
+        <Policy>ValidateClientId</Policy>
+        <Policy>VerifyAccessToken</Policy>
+    </Policies>
+    <ProxyEndpoints>
+        <ProxyEndpoint>default</ProxyEndpoint>
+    </ProxyEndpoints>
+    <Resources>
+        <Resource>jsc://SetAuthCodeParameters.js</Resource>
+        <Resource>jsc://build_login_url.js</Resource>
+    </Resources>
+    <TargetServers/>
+    <TargetEndpoints/>
+    <validate>false</validate>
+</APIProxy>

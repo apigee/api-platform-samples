@@ -1,0 +1,34 @@
+<% layout('layout') -%>
+<h1><img src="<%= basePath %>/images/apigee_logo_md.png" alt="Apigee" /></h1>
+<form method="post" action="<%= consentLink %>">
+	<div class="wrapper">
+		<p><b><%= appname %></b> is requesting access to the following services:</p>
+		<% 
+			if (scope !== "" && typeof scope !== 'undefined'){
+		 		var scopes = scope.split(" "); 
+			}else{ 
+		 		var scopes = []; scopes.push("all services"); 
+			} 
+		%>
+		<ul>
+		<% for(var i=0; i<scopes.length; i++) {%>
+		<li><%= scopes[i] %></li>
+		<% } %>
+		<ul>
+		<br/>
+		<input type="hidden" id="decision" name="decision" />
+		<div class="control-group">
+			<div class="controls">
+				<input id="allow" type="submit" value="Allow" tabindex="2" onclick="return submitDecision('yes');" class="btn btn-success">
+				<input id="deny" type="submit" value="Deny" tabindex="1" autofocus="true"  onclick="return submitDecision('no');" class="btn btn-danger">
+			</div>
+		</div>
+	</div>
+</form>
+<script type="text/javascript">
+	function submitDecision(decision) {
+	    document.getElementById("decision").value = decision;
+	    document.getElementById(decision).parentNode.submit();
+	    return false;
+	}
+</script>

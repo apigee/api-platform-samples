@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage async="false" continueOnError="false" enabled="true" name="SetAuthenticatedHomePageResponse">
+    <Set>
+      <StatusCode>200</StatusCode>
+      <ReasonPhrase>OK</ReasonPhrase>
+      <Payload contentType="text/html" variablePrefix="^" variableSuffix="~">
+          &lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;body&gt;
+
+
+&lt;p&gt;Accesstoken: ^request.queryparam.access_token~&lt;/p&gt;
+&lt;p&gt;User: ^user~&lt;/p&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+
+      </Payload>
+    </Set>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+    <AssignTo createNew="true" transport="http" type="response"/>
+</AssignMessage>

@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ProxyEndpoint name="default">
+    <Description/>
+    <Flows>
+        <Flow name="authenticate">
+            <Description/>
+            <Request>
+                <Step>
+                    <FaultRules/>
+                    <Name>extract-user-json</Name>
+                </Step>
+                <Step>
+                    <FaultRules/>
+                    <Name>username-to-lower</Name>
+                </Step>
+                <Step>
+                    <FaultRules/>
+                    <Name>kvm-get-password</Name>
+                </Step>
+                <Step>
+                    <FaultRules/>
+                    <Name>pw-hashing</Name>
+                </Step>
+            </Request>
+            <Response>
+                <Step>
+                    <FaultRules/>
+                    <Name>response-200-auth-success</Name>
+                    <Condition>auth_result == "true"</Condition>
+                </Step>
+                <Step>
+                    <FaultRules/>
+                    <Name>response-403-auth-fail</Name>
+                    <Condition>auth_result != "true"</Condition>
+                </Step>
+            </Response>
+            <Condition>(proxy.pathsuffix MatchesPath "/authenticate") and (request.verb == "POST")</Condition>
+        </Flow>
+        <Flow name="create">
+            <Description/>
+            <Request>
+                <Step>
+                    <FaultRules/>
+                    <Name>extract-user-json</Name>
+                </Step>
+                <Step>
+                    <FaultRules/>
+                    <Name>username-to-lower</Name>
+                </Step>
+                <Step>
+                    <FaultRules/>
+                    <Name>kvm-get-password</Name>
+                </Step>
+                <Step>
+                    <FaultRules/>
+                    <Name>fault-400-user-exists</Name>
+                    <Condition>kvm_data != null</Condition>
+                </Step>
+                <Step>
+                    <FaultRules/>
+                    <Name>pw-hashing</Name>
+                </Step>
+                <Step>
+                    <FaultRules/>
+                    <Name>kvm-put-password</Name>
+                </Step>
+            </Request>
+            <Response>
+                <Step>
+                    <FaultRules/>
+                    <Name>response-201</Name>
+                </Step>
+            </Response>
+            <Condition>(proxy.pathsuffix MatchesPath "/") and (request.verb == "POST")</Condition>
+        </Flow>
+        <Flow name="get">
+            <Description/>
+            <Request/>
+            <Response/>
+            <Condition>(proxy.pathsuffix MatchesPath "/") and (request.verb == "GET")</Condition>
+        </Flow>
+        <Flow name="changepw">
+            <Description/>
+            <Request>
+                <Step>
+                    <FaultRules/>
+                    <Name>extract-user-json</Name>
+                </Step>
+                <Step>
+                    <FaultRules/>
+                    <Name>username-to-lower</Name>
+                </Step>
+                <Step>
+                    <FaultRules/>
+                    <Name>kvm-get-password</Name>
+                </Step>
+                <Step>
+                    <FaultRules/>
+                    <Name>pw-hashing</Name>
+                </Step>
+                <Step>
+                    <FaultRules/>
+                    <Name>kvm-put-password</Name>
+                </Step>
+            </Request>
+            <Response>
+                <Step>
+                    <FaultRules/>
+                    <Name>response-200-changepw-success</Name>
+                    <Condition>auth_result == "true"</Condition>
+                </Step>
+                <Step>
+                    <FaultRules/>
+                    <Name>response-500-changepw-fail</Name>
+                    <Condition>auth_result != "true"</Condition>
+                </Step>
+            </Response>
+            <Condition>(proxy.pathsuffix MatchesPath "/password") and (request.verb == "PUT")</Condition>
+        </Flow>
+        <Flow name="default">
+            <Description/>
+            <Request/>
+            <Response>
+                <Step>
+                    <FaultRules/>
+                    <Name>response-404</Name>
+                </Step>
+            </Response>
+        </Flow>
+    </Flows>
+    <PreFlow name="PreFlow">
+        <Request/>
+        <Response/>
+    </PreFlow>
+    <HTTPProxyConnection>
+        <BasePath>/v1/users</BasePath>
+        <VirtualHost>default</VirtualHost>
+        <VirtualHost>secure</VirtualHost>
+    </HTTPProxyConnection>
+    <RouteRule name="noroute"/>
+    <PostFlow name="PostFlow">
+        <Request/>
+        <Response/>
+    </PostFlow>
+</ProxyEndpoint>

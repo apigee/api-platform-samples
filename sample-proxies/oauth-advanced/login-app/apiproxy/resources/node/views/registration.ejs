@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Register</title>
+		<link rel="stylesheet" type="text/css" href="<%= basePath %>/stylesheets/global.css" >
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	</head>
+	<body>
+		<form id="registration" name="register" method="post">
+			<h1><img src="<%= basePath %>/images/apigee_logo_md.png" alt="Apigee" /></h1>
+			<%        
+				if (typeof firstname == 'undefined') { firstname = '' }
+				if (typeof lastname == 'undefined') { lastname = '' }
+				if (typeof email == 'undefined') { email = '' }
+			%>
+			<% if (typeof result !== 'undefined' && result == "validation_failed") { %>
+			<div id="val_fail" class="fail">
+				<ul>
+					<% for (var i = 0; i < errors.length; i++) { %>
+					<li class="fail"><%= errors[i] %></li>
+					<% } %>
+				</ul>
+			</div>
+			<% } %>
+			<% if (typeof result !== 'undefined' && result == "reg_failed") { %>
+			<div id="reg_fail" class="fail">
+				<p class="fail">Registration failed. <%= message %></p>
+			</div>
+			<% } %>
+			<h2>Contact Information</h2>
+			<p>Fields marked with an asterisk (*) are required.</p>
+			<div class="wrapper">
+			<label for="title">Title </label>
+			<div class="filler">
+				&nbsp;
+				<select name="title">
+					<option value="Mr">Mr</option>
+					<option value="Mrs">Mrs</option>
+					<option value="Miss">Miss</option>
+					<option value="Ms">Ms</option>
+				</select>
+			</div>
+			<label for="forename">First Name </label>
+			<input name="forename" id="forename" type="text" value="<%- firstname %>" placeholder="First name" />
+			<label for="surname">Last Name </label>
+			<input name="surname" id="surname" type="text" value="<%- lastname %>" placeholder="Last name" />
+			<label for="email">Email *</label>
+			<input name="email" id="email" type="email" placeholder="name@example.com" value="<%- email %>"/>
+			<h2>Choose a password</h2>
+			<p>Passwords must be at least 6 characters in length, including at least 1 number and 1 letter.</p>
+			<label for="password">Password *</label>
+			<input name="password" value id="password" type="password" placeholder="Enter password" />
+			<label for="verify">Verify *</label>
+			<input name="verify" value id="verify" type="password" placeholder="Verify password" />
+			<input name="submit" type="submit" value="Register" />
+			</div>
+		</form>
+	</body>
+</html>

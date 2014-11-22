@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage enabled="true" continueOnError="false" async="false" name="AccessTokenResponseRT">
+    <AssignTo createNew="true" transport="http" type="response"/> 
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+    <Set>
+    	<Payload contentType="application/json" variablePrefix="%" variableSuffix="#">{"access_token":"%oauthv2accesstoken.AccessTokenRefresh.access_token#","refresh_token":"%oauthv2accesstoken.AccessTokenRefresh.refresh_token#","expires_in":"%oauthv2accesstoken.AccessTokenRefresh.expires_in#","scope":"%oauthv2accesstoken.AccessTokenRefresh.scope#"}</Payload>
+    </Set>
+</AssignMessage>
+

@@ -19,8 +19,13 @@ secret=`echo $ks | awk -F '\"' '{ print $8 }'`
 
 echo -e "\nRequesting access token \n"
 
-echo -e "curl -k -u \"$key:$secret\" https://$org-$env.$api_domain/weatheroauth/accesstoken?grant_type=client_credentials \n"
+#aFRZRzZmY1FHcHNPOVp2eGpSa2UxdThtTWlRWjRHQUord2UyWWlNbUM5a1ZaMXZqQw==
 
-accesstoken_response=`curl -k -u "$key:$secret" "https://$org-$env.$api_domain/weatheroauth/accesstoken?grant_type=client_credentials" 2>/dev/null`
+accesstoken_response=`curl -k -H "Authorization: Basic aFRZRzZmY1FHcHNPOVp2eGpSa2UxdThtTWlRWjRHQUo6d2UyWWlNbUM5a1ZaMXZqQw==" "https://$org-$env.$api_domain/weatheroauth/accesstoken?grant_type=client_credentials" 2>/dev/null`
+
+echo -e "curl -k -H \"Authorization: Basic aFRZRzZmY1FHcHNPOVp2eGpSa2UxdThtTWlRWjRHQUord2UyWWlNbUM5a1ZaMXZqQw==\" \"https://$org-$env.$api_domain/weatheroauth/accesstoken?grant_type=client_credentials\" \n"
+#echo -e "curl -k -u \"$key:$secret\" https://$org-$env.$api_domain/weatheroauth/accesstoken?grant_type=client_credentials \n"
+
+#accesstoken_response=`curl -k -u "$key:$secret" "https://$org-$env.$api_domain/weatheroauth/accesstoken?grant_type=client_credentials" 2>/dev/null`
 
 echo -e "AccessToken Response: \n $accesstoken_response"

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage async="false" continueOnError="false" enabled="true" name="response-201">
+    <DisplayName>response-201</DisplayName>
+    <Set>
+      <Payload contentType="application/json" variablePrefix="%" variableSuffix="#">{"username":"%username#"}</Payload>
+      <StatusCode>201</StatusCode>
+      <ReasonPhrase>Created</ReasonPhrase>
+    </Set>
+  <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+    <AssignTo createNew="true" transport="http" type="response"/>
+</AssignMessage>
