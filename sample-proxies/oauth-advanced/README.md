@@ -149,11 +149,11 @@ This is an advanced example that includes four separate API proxies that include
 
     b. Enter your environment information at the top of the file. For example:
 
-        ```
+      ```
            var organization = "wwitman";
            var environment = "prod";
            var domain = "apigee.net";
-        ```
+      ```
 
     c. Save the file.
 
@@ -201,7 +201,7 @@ It's important to see that the app never saw the user's username and password en
 
 If everything worked okay, you'll see the access code and some extra information (the user's name) displayed in the user's browser:
 
-![alt text](../images/oauth-advanced-successpng)
+![alt text](../images/oauth-advanced-success.png)
 
 ## <a name="session">About login and consent session management
 
