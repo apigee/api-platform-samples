@@ -151,6 +151,8 @@ This is an advanced example that includes four separate API proxies that include
 2. Open `../../setup/setup.sh` and add your Apigee Edge account information. The example will be deployed to the organization specified in this file. 
 2. Execute `$ sh deploy.sh`. The script imports the example into Apigee Edge. 
 
+**TIP:** Log in to Apigee Edge to see the deployed proxies. Use the Trace tool to view details about the proxies at runtime. 
+
 #### 2. Open a browser and go to this URL:
 
         `http://myorg-myenv-apigee.net/web`
