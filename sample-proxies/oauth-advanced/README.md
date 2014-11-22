@@ -73,13 +73,13 @@ This is an advanced example that includes four separate API proxies that include
 
     b. Enter your environment information. For example:
 
-        ```json
+      ```json
           exports.envInfo = {
              org: 'wwitman',
              env: 'prod',
              domain: 'apigee.net'
           };
-        ```
+      ```
 
     c. Save the file. 
 
@@ -89,7 +89,7 @@ This is an advanced example that includes four separate API proxies that include
 
     b. Enter your environment information. You'll need to grab the Consumer ID and Consumer Secret from your developer app that is registered on Apigee Edge. Substitute those values in for the `appKey` and `appSecret`. For example:
 
-        ```xml
+    ```xml
           <AssignMessage async="false" continueOnError="false" enabled="true" name="SetConfigurationVariables">
               <DisplayName>SetConfigurationVariables</DisplayName>
               <FaultRules/>
@@ -120,7 +120,7 @@ This is an advanced example that includes four separate API proxies that include
               </AssignVariable>
               <IgnoreUnresolvedVariables>false</IgnoreUnresolvedVariables>
           </AssignMessage>
-        ```
+    ```
    
    c. Configure the client HTML file:
       
