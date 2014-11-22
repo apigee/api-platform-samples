@@ -70,6 +70,7 @@ This is an advanced example that includes four separate API proxies that include
 2. Configure the **login app**:
 
     a. Open `login-app/apiproxy/resources/node/config/config.js`
+
     b. Enter your environment information. For example:
 
         ```json
@@ -83,7 +84,9 @@ This is an advanced example that includes four separate API proxies that include
     c. Save the file. 
 
 3. Configure the **webserver app**: 
+
     a. Open `webserver-app/apiproxy/policies/SetConfigurationVariables.xml`
+
     b. Enter your environment information. You'll need to grab the Consumer ID and Consumer Secret from your developer app that is registered on Apigee Edge. Substitute those values in for the `appKey` and `appSecret`. For example:
 
         ```xml
@@ -119,12 +122,17 @@ This is an advanced example that includes four separate API proxies that include
         </AssignMessage>
 
         ```
+   
    c. Configure the client HTML file:
+      
       1. Open `webserver-app/apiproxy/policies/HTMLIndex.xml`
+      
       2. Edit the `BASEURL`, `REDIRECT`, and `CLIENT_ID` variables as follows:
+        
         * BASEURL - The base URL for your environment. For example: https://myorg-myenv.apigee.net. 
         * CLIENT_ID - The "Consumer Key" obtained from a developer app that is registered on Apigee Edge. 
         * REDIRECT - This is the Redirect URI. It must *exactly match* the Callback URI that is associated with the registered developer app.  
+    
     d. Save the file.
 
 ## <a name="deploy">Deploy and run the example
