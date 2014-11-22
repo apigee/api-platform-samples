@@ -7,14 +7,15 @@
 &lt;html&gt;
    &lt;head&gt;
       &lt;script&gt;
-        var REDIRECT=&quot;http://wwitman-prod.apigee.net/web/callback&quot;;
+         var BASEURL=&quot;https://wwitman-prod.apigee.net&quot;;
+         var REDIRECT=&quot;https://wwitman-prod.apigee.net/web/callback&quot;;
          var CLIENT_ID=&quot;ZYzA46H8xecJKvrwoQolMGGWnZzMqIr8&quot;;
          
          
          function login()
          {
          
-         window.location.href=&#39;https://wwitman-prod.apigee.net/oauth2/authorize?client_id=&#39;+CLIENT_ID+&#39;&amp;redirect_uri=&#39;+REDIRECT+&#39;&amp;response_type=code&amp;scope=order&amp;state=123&#39;;
+         window.location.href=BASEURL+&#39;/oauth2/authorize?client_id=&#39;+CLIENT_ID+&#39;&amp;redirect_uri=&#39;+REDIRECT+&#39;&amp;response_type=code&amp;scope=order&amp;state=123&#39;;
          }
       &lt;/script&gt;
    &lt;/head&gt;

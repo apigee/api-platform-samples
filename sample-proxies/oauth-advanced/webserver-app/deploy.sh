@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source ../../setup/setenv.sh
+source ../../../setup/setenv.sh
 
 hash apigeetool &> /dev/null
 if [ $? -eq 1 ]; then
@@ -14,5 +14,5 @@ printf "\nEnter your password for the Apigee Enterprise organization $org, follo
 read -s password
 
 printf "\nDeploying webserver-app to:\n Env: $env \n Org: $org \n Url: $url \n For: $username\n"
-apigeetool deployproxy -u $username -p $password -o $org -e $env -n webserver-app -d ./webserver-app
+apigeetool deployproxy -u $username -p $password -o $org -e $env -n webserver-app -d .
 

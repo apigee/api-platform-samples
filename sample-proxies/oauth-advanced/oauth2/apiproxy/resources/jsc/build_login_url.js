@@ -1,3 +1,17 @@
+
+//*** Configure with your org, env, and domain ***//
+
+var organization = "wwitman";
+var environment = "prod";
+var domain = "apigee.net";
+
+//***
+
+//set the url for login page here
+var login_url = "https://" + organization + "-" + environment + "." + domain + "/oauth2/app/login";
+
+
+
 var client_id = context.getVariable("client_id");
 var scope = context.getVariable("request.queryparam.scope");
 var state = context.getVariable("request.queryparam.state");
@@ -23,9 +37,6 @@ if (client_redirect_uri != null){
 	//if redirect_uri is not provided, default to the registered uri since it's optional for the request
 	redirect_uri=reg_redirect_uri;
 }
-
-//set the url for login page here
-var login_url = "https://wwitman-prod.apigee.net/oauth2/app/login";
 
 try {
 	

@@ -1,6 +1,7 @@
 var validator = require('validator').Validator;
 var https = require('https');
 var utils = require('../lib/utils.js');
+var config = require('../config/config.js');
 
 exports.get = function(req, res){
 
@@ -32,7 +33,9 @@ exports.post = function(req, res){
 	var password = req.body.password;
 
 	// Set the user authentication endpoint information here
-	var authUrl = 'wwitman-prod.apigee.net';
+	//var authUrl = 'wwitman-prod.apigee.net';
+        var authUrl = config.envInfo.org + "-" + config.envInfo.env + "." + config.envInfo.domain;
+console.log("authUrl: " + authUrl);
 	var authPath = '/v1/users/authenticate';
 	var authPort = 443;
 	var authMethod = 'POST';

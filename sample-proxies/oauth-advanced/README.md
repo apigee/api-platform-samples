@@ -39,9 +39,8 @@ This example has the following parts:
   $ git clone https://github.com/apigee/api-platform-samples
 ```
 
-## How do I use it
 
-#### Prerequisites
+## Prerequisites
 
 To run this sample, you'll need:
 
@@ -49,6 +48,77 @@ To run this sample, you'll need:
 
 * The name of the organization in which you have an account. Login to 
   `enterprise.apigee.com` and check account settings.
+
+* A registered developer app on  Apigee Edge. The developer app **must** include this callback URI: `https://myorg-myenv.apigee.net/web/callback`. For example:
+
+    `https://wwitman-prod.apigee.net/web/callback`
+
+## Required configuration steps
+
+This is an advanced example that includes four separate API proxies that include a web app (the client app), an OAuth proxy (OAuth endpoints), a login/consent app (where a user logs in to grant the app access to protected resources), and a user management app (stores user login information). 
+
+1. CD to the root directory of the example.
+
+2. Configure the **login app**:
+    a. Open `login-app/apiproxy/resources/node/config/config.js`
+    b. Enter your environment information. For example:
+
+        ```json
+          exports.envInfo = {
+             org: 'wwitman',
+             env: 'prod',
+             domain: 'apigee.net'
+          };
+        ```
+
+    c. Save the file. 
+
+3. Configure the **webserver app**: 
+    a. Open `webserver-app/apiproxy/policies/SetConfigurationVariables.xml`
+    b. Enter your environment information. You'll need to grab the Consumer ID and Consumer Secret from your developer app that is registered on Apigee Edge. Substitute those values in for the `appKey` and `appSecret`. For example:
+
+        ```xml
+        <AssignMessage async="false" continueOnError="false" enabled="true" name="SetConfigurationVariables">
+            <DisplayName>SetConfigurationVariables</DisplayName>
+            <FaultRules/>
+            <Properties/>
+            <AssignVariable>
+                <Name>appKey</Name>
+                <Value>ZYzA46H8xecJKvrwoQolMGGWnZzMqIr8</Value>
+            </AssignVariable>
+            <AssignVariable>
+                <Name>appSecret</Name>
+                <Value>h9tA9kWaTFMWywpM</Value>
+            </AssignVariable>
+            <AssignVariable>
+                <Name>config.environment</Name>
+                <Value>prod</Value>
+            </AssignVariable>
+            <AssignVariable>
+                <Name>config.organization</Name>
+                <Value>wwitman</Value>
+            </AssignVariable>
+            <AssignVariable>
+                <Name>config.domain</Name>
+                <Value>apigee.net</Value>
+            </AssignVariable>
+            <AssignVariable>
+                <Name>config.protocol</Name>
+                <Value>https</Value>
+            </AssignVariable>
+            <IgnoreUnresolvedVariables>false</IgnoreUnresolvedVariables>
+        </AssignMessage>
+
+        ```
+   c. Configure the client HTML file:
+      1. Open `webserver-app/apiproxy/policies/HTMLIndex.xml`
+      2. Edit the `BASEURL`, `REDIRECT`, and `CLIENT_ID` variables as follows:
+        * BASEURL - The base URL for your environment. For example: https://myorg-myenv.apigee.net. 
+        * CLIENT_ID - The "Consumer Key" obtained from a developer app that is registered on Apigee Edge. 
+        * REDIRECT - This is the Redirect URI. It must *exactly match* the Callback URI that is associated with the registered developer app.  
+    d. Save the file.
+
+## Deploy and run the example
 
 #### 1. Run the deploy script. 
 

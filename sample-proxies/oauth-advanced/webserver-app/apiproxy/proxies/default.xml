@@ -9,6 +9,7 @@
             </Step>
         </Request>
         <Response/>
+        <Response/>
     </PreFlow>
     <Flows>
         <Flow name="callback">

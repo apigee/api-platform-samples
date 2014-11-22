@@ -1,11 +1,32 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <AssignMessage async="false" continueOnError="false" enabled="true" name="SetConfigurationVariables">
+    <DisplayName>SetConfigurationVariables</DisplayName>
+    <FaultRules/>
+    <Properties/>
     <AssignVariable>
         <Name>appKey</Name>
-      <Value>sUNd6WpfpbyHNbfxIaLCCo3kcD2y5hTk</Value>
+        <Value>ZYzA46H8xecJKvrwoQolMGGWnZzMqIr8</Value>
     </AssignVariable>
-  <AssignVariable>
+    <AssignVariable>
         <Name>appSecret</Name>
-      <Value>WlqW2ukrMbnnmory</Value>
+        <Value>h9tA9kWaTFMWywpM</Value>
     </AssignVariable>
+    <AssignVariable>
+        <Name>config.environment</Name>
+        <Value>prod</Value>
+    </AssignVariable>
+    <AssignVariable>
+        <Name>config.organization</Name>
+        <Value>wwitman</Value>
+    </AssignVariable>
+    <AssignVariable>
+        <Name>config.domain</Name>
+        <Value>apigee.net</Value>
+    </AssignVariable>
+    <AssignVariable>
+        <Name>config.protocol</Name>
+        <Value>https</Value>
+    </AssignVariable>
+    <IgnoreUnresolvedVariables>false</IgnoreUnresolvedVariables>
 </AssignMessage>
+

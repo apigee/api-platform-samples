@@ -1,5 +1,6 @@
 var https = require('https');
 var utils = require('../lib/utils.js');
+var config = require('../config/config.js');
 
 exports.get = function(req, res){
 
@@ -50,7 +51,8 @@ exports.post = function(req, res){
 	});
 
 	var options = {
-		host: 'wwitman-prod.apigee.net',
+		//host: 'wwitman-prod.apigee.net',
+                host: config.envInfo.org + "-" + config.envInfo.env + "." + config.envInfo.domain,
 		port: 443,
 		path: '/oauth2/userAuthorize',
 		method: 'POST',

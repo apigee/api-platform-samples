@@ -1,6 +1,7 @@
 var validator = require('validator').Validator;
 var https = require('https');
 var utils = require('../lib/utils.js');
+var config = require('../config/config.js');
 
 exports.get = function(req, res){
 
@@ -44,7 +45,8 @@ exports.post = function(req, res){
 	console.log('Registration request: {hidden due to password}');
 
 	// Set the user authentication endpoint information here
-	var authUrl = 'wwitman-prod.apigee.net';
+	//var authUrl = 'witman-prod.apigee.net';
+        var authUrl = config.envInfo.org + "-" + config.envInfo.env + "." + config.envInfo.domain;
 	var authPath = '/v1/users';
 	var authPort = 443;
 	var authMethod = 'POST';

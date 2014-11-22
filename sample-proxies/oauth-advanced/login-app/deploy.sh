@@ -16,4 +16,4 @@ printf "\nEnter your password for the Apigee Enterprise organization $org, follo
 read -s password
 
 printf "\nDeploying login-app to:\n Env: $env \n Org: $org \n Url: $url \n For: $username\n"
-apigeetool deployproxy -u $username -p $password -o $org -e $env -n login-app -d ./login-app -R
+apigeetool deployproxy -u $username -p $password -o $org -e $env -n login-app -d . -R
