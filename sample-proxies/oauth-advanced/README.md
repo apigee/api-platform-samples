@@ -68,6 +68,7 @@ This is an advanced example that includes four separate API proxies that include
 1. CD to the root directory of the example.
 
 2. Configure the **login app**:
+
     a. Open `login-app/apiproxy/resources/node/config/config.js`
     b. Enter your environment information. For example:
 
