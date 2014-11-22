@@ -25,4 +25,4 @@ apigeetool deployproxy -u $username -p $password -o $org -e $env -n user-mgmt-v1
 printf "\nDeploying oauth2 to:\n Env: $env \n Org: $org \n Url: $url \n For: $username\n"
 apigeetool deployproxy -u $username -p $password -o $org -e $env -n oauth2 -d ./oauth2 
 
-printf "\nOpen a browser and go to: https://$org-$env-apigee.net/web\n"
+printf "\nOpen a browser and go to: https://$org-$env.apigee.net/web\n"

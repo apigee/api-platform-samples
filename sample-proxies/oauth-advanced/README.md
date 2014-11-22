@@ -133,7 +133,7 @@ This is an advanced example that includes four separate API proxies that include
    
    c. Configure the client HTML file:
       
-      1. Open `webserver-app/apiproxy/policies/HTMLIndex.xml`
+      1. Open `webserver-app/apiproxy/policies/HTMLIndex.xml`.
       
       2. Edit the `BASEURL`, `REDIRECT`, and `CLIENT_ID` variables as follows:
         
@@ -142,6 +142,20 @@ This is an advanced example that includes four separate API proxies that include
         * REDIRECT - This is the Redirect URI. **Important!** This URI must *exactly match* the Callback URI that is associated with the registered developer app.  
     
     d. Save the file.
+
+4. Configure the **oauth2 proxy**: 
+    
+    a. Open  `oauth2/apiproxy/resources/jsc/build_login_url.js`.
+
+    b. Enter your environment information at the top of the file. For example:
+
+        ```
+           var organization = "wwitman";
+           var environment = "prod";
+           var domain = "apigee.net";
+        ```
+
+    c. Save the file.
 
 ## <a name="deploy">Deploy and run the example
 
@@ -184,6 +198,10 @@ After you give consent, these things happen behind the scenes (refer to the flow
 5. Now, with an access token, the client can request resources from the protected API. 
 
 It's important to see that the app never saw the user's username and password entered in the login page. 
+
+If everything worked okay, you'll see the access code and some extra information (the user's name) displayed in the user's browser:
+
+![alt text](../images/oauth-advanced-successpng)
 
 ## <a name="session">About login and consent session management
 
