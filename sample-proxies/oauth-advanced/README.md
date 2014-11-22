@@ -1,10 +1,18 @@
-# Authorization code grant type examnple
+# Authorization code grant type example
 
 This is a complete, working example that demonstrates an approach to implementing the OAuth 2.0 authorization code grant type with Apigee Edge as the authorization server.
 
 > If you are not familiar with OAuth 2.0 and terms like grant type and authorization server, there are many resources available on the web. We recommend you start with the [IETF specification](https://tools.ietf.org/html/draft-ietf-oauth-v2-31). It includes a good, general introduction to the OAuth 2.0 framework and its use cases.
 
-## What you need to know about this example
+* [What you need to know about this example](#needtoknow)
+* [What are the parts of this example](#parts)
+* [How do I get it?](#howdo)
+* [Prerequisites](#prerequisites)
+* [Required configuration steps](#configuration)
+* [Deploy and run the example](#deploy)
+* [About login and consent session management](#session)
+
+## <a name="needtoknow">What you need to know about this example
 
 The authorization code grant type requires a step where the end user logs in to the resource server and then gives explicit consent for the app to user her protected resources.
 
@@ -19,7 +27,7 @@ The flow of this example goes like this:
 
 
 
-## What are the parts of this example
+## <a name="parts">What are the parts of this example
 
 This example has the following parts:
 
@@ -40,7 +48,7 @@ This example has the following parts:
 ```
 
 
-## Prerequisites
+## <a name="prerequisites">Prerequisites
 
 To run this sample, you'll need:
 
@@ -53,7 +61,7 @@ To run this sample, you'll need:
 
     `https://wwitman-prod.apigee.net/web/callback`
 
-## Required configuration steps
+## <a name="configuration">Required configuration steps
 
 This is an advanced example that includes four separate API proxies that include a web app (the client app), an OAuth proxy (OAuth endpoints), a login/consent app (where a user logs in to grant the app access to protected resources), and a user management app (stores user login information). 
 
@@ -118,7 +126,7 @@ This is an advanced example that includes four separate API proxies that include
         * REDIRECT - This is the Redirect URI. It must *exactly match* the Callback URI that is associated with the registered developer app.  
     d. Save the file.
 
-## Deploy and run the example
+## <a name="deploy">Deploy and run the example
 
 #### 1. Run the deploy script. 
 
@@ -158,11 +166,11 @@ After you give consent, these things happen behind the scenes:
 
 It's important to see that the app never saw the user's username and password entered in the login page. 
 
-## About login and consent session management
+## <a name="session">About login and consent session management
 
 The login app includes session management to guarantee that only the logged-in user can access the consent page. Once a successful login has occurred, a user attribute is set in the server side session data.  This attribute is checked when clients access the consent page.  A valid logged-in session can only be used one time for consent to an authorization.  The session is destroyed upon a successful consent in which an authorization code is generated for the client application. 
 
-# Get help
+## Get help
 
 Help or comments? See [Apigee Support](https://community.apigee.com/content/apigee-customer-support). 
 
