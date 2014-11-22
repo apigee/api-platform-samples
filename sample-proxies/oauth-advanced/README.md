@@ -18,6 +18,8 @@ The authorization code grant type requires a step where the end user logs in to 
 
 Here's a flow diagram outlining the steps of this flow. Note that in this flow Apigee Edge serves as the authorization server (generates access tokens, etc) and the resource server (proxies APIs that are protected by OAuth security). 
 
+**TIP:** Save the graphic to your system and open it locally to see the full size image. 
+
 ![alt text](../images/oauth-auth-code-flow.png)
 
 1. User initiates the flow by clicking a button in a web page. 
