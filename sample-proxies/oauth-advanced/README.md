@@ -5,7 +5,7 @@ This is a complete, working example that demonstrates an approach to implementin
 > If you are not familiar with OAuth 2.0 and terms like grant type and authorization server, there are many resources available on the web. We recommend you start with the [IETF specification](https://tools.ietf.org/html/draft-ietf-oauth-v2-31). It includes a good, general introduction to the OAuth 2.0 framework and its use cases.
 
 * [What you need to know about this example](#needtoknow)
-* [What are the parts of this example](#parts)
+* [What are the parts of this example?](#parts)
 * [How do I get it?](#howdo)
 * [Prerequisites](#prerequisites)
 * [Required configuration steps](#configuration)
@@ -29,7 +29,7 @@ Here's a flow diagram outlining the steps of this flow. Note that in this flow A
 5. The client app now has an authorization code and uses it to ask the authorization server for an access token. 
 6. Upon receiving an access token, the client app is able to access the protected APIs on the resource server by including the access token with each call. 
 
-## <a name="parts">What are the parts of this example
+## <a name="parts">What are the parts of this example?
 
 This example has the following parts:
 
