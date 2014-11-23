@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<APIProxy revision="2" name="webserver-app">
+    <ConfigurationVersion minorVersion="0" majorVersion="4"/>
+    <CreatedAt>1401848913940</CreatedAt>
+    <CreatedBy>mrusso+oauth@apigee.com</CreatedBy>
+    <Description></Description>
+    <DisplayName>webserver-app</DisplayName>
+    <LastModifiedAt>1401852981846</LastModifiedAt>
+    <LastModifiedBy>mrusso+oauth@apigee.com</LastModifiedBy>
+    <Policies>
+        <Policy>BuildAccessTokenRequest</Policy>
+        <Policy>BuildValidateTokenRequest</Policy>
+        <Policy>EncodeAppCredentials</Policy>
+        <Policy>ExtractAccessToken</Policy>
+        <Policy>ExtractUser</Policy>
+        <Policy>HTMLIndex</Policy>
+        <Policy>RedirectToAuthenticatedHomepage</Policy>
+        <Policy>RequestAccessToken</Policy>
+        <Policy>SetAuthenticatedHomePageResponse</Policy>
+        <Policy>SetConfigurationVariables</Policy>
+        <Policy>ValidateTokenCallout</Policy>
+    </Policies>
+    <ProxyEndpoints>
+        <ProxyEndpoint>default</ProxyEndpoint>
+    </ProxyEndpoints>
+    <Resources/>
+    <TargetServers/>
+    <TargetEndpoints/>
+    <validate>false</validate>
+</APIProxy>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage async="false" continueOnError="false" enabled="true" name="response-200-auth-success">
+    <DisplayName>response-200-auth-success</DisplayName>
+    <FaultRules/>
+    <Properties/>
+    <Set>
+      <Payload contentType="application/json" variablePrefix="%" variableSuffix="#">{"status":"success", "message":"Authentication succeeded for user %username#."}</Payload>
+      <StatusCode>200</StatusCode>
+      <ReasonPhrase>OK</ReasonPhrase>
+  </Set>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+    <AssignTo createNew="true" transport="http" type="response"/>
+</AssignMessage>

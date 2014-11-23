@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Login</title>
+		<link rel="stylesheet" type="text/css" href="<%= basePath %>/stylesheets/global.css" >
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	</head>
+	<body>
+		<form id="login" name="login" method="post">
+			<h1><img src="<%= basePath %>/images/apigee_logo_md.png" alt="Apigee" /></h1>
+			<% if (typeof result !== 'undefined' && result == "validation_failed") { %>
+			<div id="val_fail" class="fail">
+				<ul>
+					<% for (var i = 0; i < errors.length; i++) { %>
+					<li><%= errors[i] %></li>
+					<% } %>
+				</ul>
+			</div>
+			<% } %>
+			<% if (typeof result !== 'undefined' && result == "auth_failed") { %>
+			<div id="auth_fail" class="fail">
+				<p class="fail">Authentication failed.</p>
+			</div>
+			<% } %>   
+			<label for="username" class="noshow">Username</label>
+			<input id="username" name="username" type="text" placeholder="Email address" required />
+			<label for="password" class="noshow">Password</label>
+			<input id="password" name="password" type="password" placeholder="Password" required />
+			<input name="submit" type="submit" value="Login" />
+			<p class="intro">or <a href="<%= regLink %>">register</a>.</p>
+		</form>
+	</body>
+</html>

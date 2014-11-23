@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ServiceCallout async="false" continueOnError="true" enabled="true" name="ValidateTokenCallout">
+    <DisplayName>ValidateTokenCallout</DisplayName>
+    <FaultRules/>
+    <Properties/>
+    <Request clearPayload="true" variable="calloutRequest">
+        <IgnoreUnresolvedVariables>false</IgnoreUnresolvedVariables>
+    </Request>
+    <Response>calloutResponse</Response>
+    <HTTPTargetConnection>
+        <Properties/>
+        <URL>https://{config.organization}-{config.environment}.{config.domain}</URL>
+    </HTTPTargetConnection>
+</ServiceCallout>
+

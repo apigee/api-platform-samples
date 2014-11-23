@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage async="false" continueOnError="false" enabled="true" name="Send404NotFoundResponse">
+    <Set>
+        <StatusCode>404</StatusCode>
+        <ReasonPhrase>Not Found</ReasonPhrase>
+    </Set>
+    <AssignTo createNew="true" type="response"/>
+</AssignMessage>

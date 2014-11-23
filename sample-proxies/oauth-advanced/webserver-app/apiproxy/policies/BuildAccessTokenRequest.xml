@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage async="false" continueOnError="false" enabled="true" name="BuildAccessTokenRequest">
+    <DisplayName>BuildAccessTokenRequest</DisplayName>
+    <FaultRules/>
+    <Properties/>
+    <Set>
+        <Headers>
+            <Header name="Authorization">{appCredentials}</Header>
+            <Header name="Accept">application/json</Header>
+        </Headers>
+        <FormParams>
+            <FormParam name="grant_type">authorization_code</FormParam>
+            <FormParam name="code">{request.queryparam.code}</FormParam>
+            <FormParam name="redirect_uri">https://{config.organization}-{config.environment}.{config.domain}/web/callback</FormParam>
+        </FormParams>
+        <Verb>POST</Verb>
+    </Set>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+    <AssignTo type="request" transport="http" createNew="true">calloutRequest</AssignTo>
+</AssignMessage>
+

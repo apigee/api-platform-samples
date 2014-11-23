@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Javascript async="false" continueOnError="false" enabled="true" timeLimit="200" name="pw-hashing">
+    <DisplayName>pw-hashing</DisplayName>
+    <FaultRules/>
+    <Properties/>
+    <ResourceURL>jsc://pw-hashing.js</ResourceURL>
+  <IncludeURL>jsc://hmac-sha1.js</IncludeURL>
+</Javascript>

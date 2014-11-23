@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<APIProxy revision="1" name="login-app-v1">
+    <ConfigurationVersion minorVersion="0" majorVersion="4"/>
+    <DisplayName>login-app-v1</DisplayName>
+</APIProxy>
