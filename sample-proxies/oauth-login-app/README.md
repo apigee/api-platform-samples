@@ -8,14 +8,9 @@ The directory `/apiproxy` contains a sample API proxy for the following OAuth 2.
 
 # Configure 
 
-This sample requires you to create a set of developers, apps, and API products in 
-your organization.
+This sample requires you to create a set of developers, apps, and API products in your organization. To create these entities, run the scripts under `../setup`. Follow the instructions in `../setup/README`. 
 
-You can do this by running the scripts under /setup in this distribution. The profiles
-for developers, apps and API products can be under /setup/provisioning.
-
-(If you run deploy_all.sh, you will be prompted to install the developers, apps, and 
-API products after all of the API proxies have been deployed by the script.)
+Alternatively, if you run `../setup/deploy_all.sh`, you will be prompted to create the developers, apps, and API products. 
 
 1. Update `/setup/setenv.sh` with your organization name and email address.
 
@@ -27,10 +22,11 @@ To deploy, run `$ sh deploy.sh`
 
 To test, run `$ sh invoke.sh`
 
-This API proxy provides a sample login app to demonstrate the interaction between 
-the Apigee API Platform OAuth infrastructure and a third-party login app. 
+This API proxy provides a sample login app to demonstrate the interaction between the Apigee API Platform OAuth infrastructure and a third-party login app. 
 
-### Web-Server flow:
+### Authorization code grant type (web server) flow:
+
+>**Important:** This example is for demonstration only and primarily shows how to call token endpoints for this grant type. It does not represent a best practice with respect to the implementation/integration of a login app into this flow and should not be used as a model for production purposes. For a full, working sample that does represent best practices, see the [./sample-proxies/oauth-advanced](https://github.com/apigee/api-platform-samples/tree/master/sample-proxies/oauth-advanced) sample. 
 
 1. Authorization Request:	
 `https://$org-$env.$api_domain/oauth/authorize?response_type=code&client_id=$consumerkey&redirect_uri=$callback&scope=READ&state=foobar`
@@ -86,7 +82,7 @@ To test, run `sh invoke.sh`
 
 ### Get help
 
-For assistance, please use [StackOverflow](http://stackoverflow.com/tags/apigee) and add the tag "apigee".
+For assistance, please refer to the [Apigee Customer Support](https://community.apigee.com/content/apigee-customer-support) page.
 
 Copyright © 2014 Apigee Corporation
 
