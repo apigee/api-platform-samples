@@ -1,8 +1,8 @@
 # About
 
-This Apigee API proxy is a complete login and conset application for OAuth 2.0 authorization code flows.  It is built using Node.js, leveraging `express`, `express-sessions`, and `apigee-access` modules.  
+This Apigee API proxy is a complete login and conset application for OAuth 2.0 authorization code flows.  It is built using Node.js, leveraging `express`, `express-session`, and `apigee-access` modules.  
 
-When deployed locally, sessions are stored using local MemoryStore.  When deployed to Apigee Edge, sessions are stored in Apigee's distributed caching system. A custom session store implementation (ApigeeStore) was built to bridge `express-sessions` and Apigee's distributed caching.
+When deployed locally, sessions are stored using local MemoryStore.  When deployed to Apigee Edge, sessions are stored in Apigee's distributed caching system. A custom session store implementation (ApigeeStore) was built to bridge `express-session` and Apigee's distributed caching.
 
 # How-To
 
