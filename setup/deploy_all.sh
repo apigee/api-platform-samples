@@ -12,6 +12,24 @@ echo "Enter your password for the Apigee Enterprise organization $org, followed 
 
 read -s password
 
+echo Verifying credentials...
+
+response=`curl -s -o /dev/null -I -w "%{http_code}" https://api.enterprise.apigee.com/v1/organizations/$org -u $username:$password`
+
+if [ $response -eq 401 ]
+then
+  echo "Authentication failed!"
+  echo "Please re-run the script using the right username/password."
+  exit
+elif [ $response -eq 403 ]
+then
+  echo Organization $org is invalid!
+  echo Please re-run the script using the right org.
+  exit
+else
+  echo "Verfied! Proceeding with deployment."
+fi;
+
 echo Deploying all samples to $env using $username and $org
 
 echo Creating caches
