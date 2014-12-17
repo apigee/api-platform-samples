@@ -2,6 +2,8 @@
 
 This sample leverages a [Jira API](https://docs.atlassian.com/jira/REST/6.2.7/) to return issues that are tagged in Jira with a 'release_notes' label. The proxy converts Jira's JSON response to XML, then applies an XSL stylesheet that generates HTML-formatted release notes. The stylesheet grabs text from a 'Release Notes Summary' field in Jira.
 
+You can also add 'new_feature' and 'known_issue' labels in Jira. Issues with those tags are automatically added to the respective sections of the generated HTML.
+
 If your Jira environment uses different fields, modify the URI query parameters accordingly (in invoke.sh as well, if you want to use that script), and modify the .xsl resource file accordingly.
 
 **Hint**: The XSL stylesheet relies on a specific XML hierarchy for grabbing content. To see what the correct XML hierarchy is for your Jira environment, temporarily detach the XSL policy from the API proxy flow to get back pure XML.
