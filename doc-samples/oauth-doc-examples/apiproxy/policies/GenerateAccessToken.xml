@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<OAuthV2 async="false" continueOnError="false" enabled="true" name="GenerateAccessToken">
+    <DisplayName>GenerateAccessToken</DisplayName>
+    <ExternalAuthorization>false</ExternalAuthorization>
+    <Operation>GenerateAccessToken</Operation>
+
+    <SupportedGrantTypes>
+      <GrantType>password</GrantType>
+    </SupportedGrantTypes>
+
+    <GenerateResponse enabled="true"/>
+</OAuthV2>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<APIProxy revision="2" name="OAuth-Doc">
+    <ConfigurationVersion majorVersion="4" minorVersion="0"/>
+    <CreatedAt>1420318054970</CreatedAt>
+    <CreatedBy>wwitman@apigee.com</CreatedBy>
+    <Description></Description>
+    <DisplayName>OAuth-Doc</DisplayName>
+    <LastModifiedAt>1420318054970</LastModifiedAt>
+    <LastModifiedBy>wwitman@apigee.com</LastModifiedBy>
+    <Policies>
+        <Policy>GenerateAccessToken</Policy>
+        <Policy>GenerateAccessTokenImplicit</Policy>
+        <Policy>GenerateAuthorizationCode</Policy>
+        <Policy>RefreshAccessToken</Policy>
+    </Policies>
+    <ProxyEndpoints>
+        <ProxyEndpoint>default</ProxyEndpoint>
+    </ProxyEndpoints>
+    <Resources/>
+    <TargetServers/>
+    <TargetEndpoints/>
+</APIProxy>
