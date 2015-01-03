@@ -20,7 +20,7 @@ curl -i -H 'ContentType: x-www-form-urlencoded' -X POST 'https://docs-test.apige
 
 Can be modeled in Postman, where the "-d" body parameters are set to x-www.form-urlencoded parameters in Postman and the content type and auth headers are specified in the Headers fields. For example:
 
-![Alt text](https://raw.githubusercontent.com/apigee/api-platform-samples/doc-samples/images/postman-oauth.png)
+![Alt text](https://github.com/apigee/api-platform-samples/blob/master/doc-samples/images/postman-oauth.png)
 
 # Set up
 
