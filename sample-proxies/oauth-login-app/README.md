@@ -82,9 +82,9 @@ To test, run `sh invoke.sh`
 
 ### Get help
 
-For assistance, please refer to the [Apigee Customer Support](https://community.apigee.com/content/apigee-customer-support) page.
+For assistance, please use [Apigee Support](https://community.apigee.com/content/apigee-customer-support).
 
-Copyright © 2014 Apigee Corporation
+Copyright © 2014, 2015 Apigee Corporation
 
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use
 this file except in compliance with the License. You may obtain a copy
