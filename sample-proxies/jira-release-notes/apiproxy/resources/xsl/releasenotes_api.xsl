@@ -35,7 +35,7 @@
 	</thead>
 	<tbody>
 <xsl:for-each select="Root/issues">
-  <xsl:if test="not(fields/labels='new_feature' or fields/labels='known_issues')">
+  <xsl:if test="not(fields/labels='new_feature' or fields/labels='known_issue')">
 <tr>
 <td>
   <xsl:value-of select="fields/summary"/><br/>
