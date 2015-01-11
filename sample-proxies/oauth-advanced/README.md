@@ -169,11 +169,11 @@ This is an advanced example that includes four separate API proxies that include
 
 #### 2. Open a browser and go to this URL:
 
-`http://myorg-myenv-apigee.net/web`
+`http://myorg-myenv.apigee.net/web`
 
 For example:
 
-`http://jdoe-prod-apigee.net/web`
+`http://jdoe-prod.apigee.net/web`
 
 #### 3. Initiate the flow
 
