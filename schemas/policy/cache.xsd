@@ -7,7 +7,7 @@
 
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
     <xs:include schemaLocation="stepDefinition.xsd"/>
-    <xs:include schemaLocation="../properties.xsd"/>
+    <xs:include schemaLocation="../configuration/properties.xsd"/>
 
     <xs:element name="LookupCache">
         <xs:complexType>

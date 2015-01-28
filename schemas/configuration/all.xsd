@@ -9,7 +9,9 @@
     <xs:include schemaLocation="entities.xsd"/>
     <xs:include schemaLocation="proxy_endpoint.xsd"/>
     <xs:include schemaLocation="target_endpoint.xsd"/>
-    <xs:include schemaLocation="steps/all.xsd"/>
+    
+    <!-- This does not appear to exist -->
+    <!--<xs:include schemaLocation="steps/all.xsd"/>-->
 
     <xs:simpleType name="deployAction">
         <xs:restriction base="xs:string">
