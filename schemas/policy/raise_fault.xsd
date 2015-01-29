@@ -4,34 +4,29 @@
   ~ registered trademarks of Apigee Corp. or its subsidiaries.  All other
   ~ trademarks are the property of their respective owners.
   -->
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
-           elementFormDefault="qualified">
-
-    <xs:include schemaLocation="stepDefinition.xsd"/>
-    <xs:include schemaLocation="assign_message.xsd"/>
-
-    <xs:complexType name="raiseFaultType">
-        <xs:complexContent>
-            <xs:extension base="stepDefinitionType">
-                <xs:sequence>
-                    <xs:element name="IgnoreUnresolvedVariables" type="xs:boolean" minOccurs="0" default="true"/>
-                    <xs:element ref="FaultResponse" minOccurs="0"/>
-                </xs:sequence>
-            </xs:extension>
-        </xs:complexContent>
-    </xs:complexType>
-
-    <xs:complexType name="faultResponseType">
-        <xs:sequence>
-            <xs:choice minOccurs="0" maxOccurs="unbounded">
-                <xs:element name="Copy" type="copyType"/>
-                <xs:element name="Remove" type="nameActionType"/>
-                <xs:element name="Add" type="nameValueActionType"/>
-                <xs:element name="Set" type="setType"/>
-            </xs:choice>
-        </xs:sequence>
-    </xs:complexType>
-
-    <xs:element name="FaultResponse" type="faultResponseType"/>
-    <xs:element name="RaiseFault" type="raiseFaultType" substitutionGroup="StepDefinition"/>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.apigee.com/policy/raise_fault" xmlns:step="http://www.apigee.com/policy/step" xmlns:assign="http://www.apigee.com/policy/assign_message" targetNamespace="http://www.apigee.com/policy/raise_fault" elementFormDefault="qualified">
+	<xs:import namespace="http://www.apigee.com/policy/step" schemaLocation="stepDefinition.xsd"/>
+	<xs:import namespace="http://www.apigee.com/policy/assign_message" schemaLocation="assign_message.xsd"/>
+	<xs:complexType name="raiseFaultType">
+		<xs:complexContent>
+			<xs:extension base="step:stepDefinitionType">
+				<xs:sequence>
+					<xs:element name="IgnoreUnresolvedVariables" type="xs:boolean" default="true" minOccurs="0"/>
+					<xs:element ref="FaultResponse" minOccurs="0"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="faultResponseType">
+		<xs:sequence>
+			<xs:choice minOccurs="0" maxOccurs="unbounded">
+				<xs:element name="Copy" type="assign:copyType"/>
+				<xs:element name="Remove" type="assign:nameActionType"/>
+				<xs:element name="Add" type="assign:nameValueActionType"/>
+				<xs:element name="Set" type="assign:setType"/>
+			</xs:choice>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="FaultResponse" type="faultResponseType"/>
+	<xs:element name="RaiseFault" type="raiseFaultType" substitutionGroup="step:StepDefinition"/>
 </xs:schema>

@@ -5,23 +5,18 @@
 ~ registered trademarks of Apigee Corp. or its subsidiaries.  All other
 ~ trademarks are the property of their respective owners.
 -->
-
-<xs:schema version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-
-    <xs:include schemaLocation="stepDefinition.xsd"/>
-
-    <xs:element name="Javascript" type="javascriptBean"/>
-
-    <xs:complexType name="javascriptBean">
-        <xs:complexContent>
-            <xs:extension base="stepDefinitionType">
-                <xs:sequence>
-                    <xs:element name="IncludeURL" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
-                    <xs:element name="ResourceURL" type="xs:string"/>
-                </xs:sequence>
-                <xs:attribute name="timeLimit" type="xs:long" use="required"/>
-            </xs:extension>
-        </xs:complexContent>
-    </xs:complexType>
-
+<xs:schema xmlns="http://www.apigee.com/policy/javascript" xmlns:xs="http://www.w3.org/2001/XMLSchema"  xmlns:step="http://www.apigee.com/policy/step" targetNamespace="http://www.apigee.com/policy/javascript" version="1.0">
+	<xs:import namespace="http://www.apigee.com/policy/step" schemaLocation="stepDefinition.xsd"/>
+	<xs:element name="Javascript" type="javascriptBean"/>
+	<xs:complexType name="javascriptBean">
+		<xs:complexContent>
+			<xs:extension base="step:stepDefinitionType">
+				<xs:sequence>
+					<xs:element name="IncludeURL" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element name="ResourceURL" type="xs:string"/>
+				</xs:sequence>
+				<xs:attribute name="timeLimit" type="xs:long" use="required"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
 </xs:schema>

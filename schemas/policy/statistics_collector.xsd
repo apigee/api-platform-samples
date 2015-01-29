@@ -5,47 +5,37 @@
   ~ registered trademarks of Apigee Corp. or its subsidiaries.  All other
   ~ trademarks are the property of their respective owners.
   -->
-        
-<xs:schema version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-
-    <xs:include schemaLocation="stepDefinition.xsd"/>
-
-
-
-    <xs:element name="StatisticsCollector" type="statisticsCollectionBean"/>
-
-    <xs:complexType name="statisticBean">
-        <xs:simpleContent>
-            <xs:extension base="propertyBean">
-                <xs:attribute name="name" type="xs:string" use="required"/>
-            </xs:extension>
-        </xs:simpleContent>
-    </xs:complexType>
-
-    <xs:complexType name="propertyBean">
-        <xs:simpleContent>
-            <xs:extension base="xs:string">
-                <xs:attribute name="ref" type="xs:string"/>
-                <xs:attribute name="type" type="xs:string"/>
-            </xs:extension>
-        </xs:simpleContent>
-    </xs:complexType>
-
-    <xs:complexType name="statisticsCollectionBean">
-        <xs:complexContent>
-            <xs:extension base="stepDefinitionType">
-                <xs:sequence>
-                    <xs:element name="Statistics" minOccurs="0">
-                        <xs:complexType>
-                            <xs:sequence>
-                                <xs:element name="Statistic" type="statisticBean" minOccurs="0" maxOccurs="unbounded"/>
-                            </xs:sequence>
-                        </xs:complexType>
-                    </xs:element>
-                </xs:sequence>
-            </xs:extension>
-        </xs:complexContent>
-    </xs:complexType>
-
+<xs:schema xmlns="http://www.apigee.com/policy/stats_collector" xmlns:step="http://www.apigee.com/policy/step" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.apigee.com/policy/stats_collector" version="1.0">
+	<xs:import namespace="http://www.apigee.com/policy/step" schemaLocation="stepDefinition.xsd"/>
+	<xs:element name="StatisticsCollector" type="statisticsCollectionBean"/>
+	<xs:complexType name="statisticBean">
+		<xs:simpleContent>
+			<xs:extension base="propertyBean">
+				<xs:attribute name="name" type="xs:string" use="required"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="propertyBean">
+		<xs:simpleContent>
+			<xs:extension base="xs:string">
+				<xs:attribute name="ref" type="xs:string"/>
+				<xs:attribute name="type" type="xs:string"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="statisticsCollectionBean">
+		<xs:complexContent>
+			<xs:extension base="step:stepDefinitionType">
+				<xs:sequence>
+					<xs:element name="Statistics" minOccurs="0">
+						<xs:complexType>
+							<xs:sequence>
+								<xs:element name="Statistic" type="statisticBean" minOccurs="0" maxOccurs="unbounded"/>
+							</xs:sequence>
+						</xs:complexType>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
 </xs:schema>
-

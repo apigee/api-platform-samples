@@ -4,51 +4,42 @@
   ~ registered trademarks of Apigee Corp. or its subsidiaries.  All other
   ~ trademarks are the property of their respective owners.
   -->
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
-           elementFormDefault="qualified">
-
-    <xs:include schemaLocation="stepDefinition.xsd"/>
-
-    <xs:complexType name="assignTo">
-        <xs:simpleContent>
-            <xs:extension base="xs:string">
-                <xs:attribute name="createNew" type="xs:boolean"/>
-            </xs:extension>
-        </xs:simpleContent>
-    </xs:complexType>
-
-    <xs:element name="BasicAuthentication" type="basicAuthStepDefinitionBean"/>
-
-    <xs:complexType name="BasicAuthenticationUser">
-        <xs:sequence/>
-        <xs:attribute name="ref" type="xs:string" use="required"/>
-    </xs:complexType>
-
-    <xs:complexType name="BasicAuthenticationPassword">
-        <xs:sequence/>
-        <xs:attribute name="ref" type="xs:string" use="required"/>
-    </xs:complexType>
-
-    <xs:complexType name="basicAuthStepDefinitionBean">
-        <xs:complexContent>
-            <xs:extension base="stepDefinitionType">
-                <xs:sequence>
-                    <xs:element name="AssignTo" type="assignTo" minOccurs="0"/>
-                    <xs:element name="IgnoreUnresolvedVariables" type="xs:boolean"/>
-                    <xs:element name="Operation" type="Operation"/>
-                    <xs:element name="Password" type="BasicAuthenticationPassword"/>
-                    <xs:element name="User" type="BasicAuthenticationUser"/>
-                    <xs:element name="Source" type="xs:string" minOccurs="0"/>
-                </xs:sequence>
-            </xs:extension>
-        </xs:complexContent>
-    </xs:complexType>
-
-    <xs:simpleType name="Operation">
-        <xs:restriction base="xs:string">
-            <xs:enumeration value="Encode"/>
-            <xs:enumeration value="Decode"/>
-        </xs:restriction>
-    </xs:simpleType>
-
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.apigee.com/policy/basic_auth" xmlns:step="http://www.apigee.com/policy/step" targetNamespace="http://www.apigee.com/policy/basic_auth" elementFormDefault="qualified">
+	<xs:import namespace="http://www.apigee.com/policy/step" schemaLocation="stepDefinition.xsd"/>
+	<xs:complexType name="assignTo">
+		<xs:simpleContent>
+			<xs:extension base="xs:string">
+				<xs:attribute name="createNew" type="xs:boolean"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:element name="BasicAuthentication" type="basicAuthStepDefinitionBean"/>
+	<xs:complexType name="BasicAuthenticationUser">
+		<xs:sequence/>
+		<xs:attribute name="ref" type="xs:string" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="BasicAuthenticationPassword">
+		<xs:sequence/>
+		<xs:attribute name="ref" type="xs:string" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="basicAuthStepDefinitionBean">
+		<xs:complexContent>
+			<xs:extension base="step:stepDefinitionType">
+				<xs:sequence>
+					<xs:element name="AssignTo" type="assignTo" minOccurs="0"/>
+					<xs:element name="IgnoreUnresolvedVariables" type="xs:boolean"/>
+					<xs:element name="Operation" type="Operation"/>
+					<xs:element name="Password" type="BasicAuthenticationPassword"/>
+					<xs:element name="User" type="BasicAuthenticationUser"/>
+					<xs:element name="Source" type="xs:string" minOccurs="0"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:simpleType name="Operation">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Encode"/>
+			<xs:enumeration value="Decode"/>
+		</xs:restriction>
+	</xs:simpleType>
 </xs:schema>

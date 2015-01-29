@@ -5,13 +5,12 @@
   ~ trademarks are the property of their respective owners.
   -->
 
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
-    <xs:include schemaLocation="stepDefinition.xsd"/>
-
+<xs:schema targetNamespace="http://www.apigee.com/policy/extract_variables"  xmlns="http://www.apigee.com/policy/extract_variables"  xmlns:step="http://www.apigee.com/policy/step" xmlns:xs="http://www.w3.org/2001/XMLSchema" >
+    <xs:import namespace="http://www.apigee.com/policy/step" schemaLocation="stepDefinition.xsd"/>
     <xs:element name="ExtractVariables">
         <xs:complexType>
             <xs:complexContent>
-                <xs:extension base="stepDefinitionType">
+                <xs:extension base="step:stepDefinitionType">
                     <xs:sequence>
                         <xs:element name="Source" minOccurs="0" type="xs:string"/>
                         <xs:element name="VariablePrefix" type="xs:string" minOccurs="0"/>
@@ -29,7 +28,7 @@
                             <xs:element name="QueryParam" type="extractNamedPatternsType"/>
                             <xs:element name="Header" type="extractNamedPatternsType"/>
                             <xs:element name="FormParam" type="extractNamedPatternsType"/>
-                            <xs:element name="Variable" type="extractNamedPatternsType"/>
+                            <xs:element name="variable" type="extractNamedPatternsType"/>
                         </xs:choice>
                         <xs:element name="XMLPayload" minOccurs="0">
                             <xs:complexType>
@@ -50,7 +49,7 @@
                                             </xs:sequence>
                                         </xs:complexType>
                                     </xs:element>
-                                    <xs:element name="Variable" minOccurs="0" maxOccurs="unbounded">
+                                    <xs:element name="variable" minOccurs="0" maxOccurs="unbounded">
                                         <xs:complexType>
                                             <xs:sequence>
                                                 <xs:element name="XPath" type="xs:string" maxOccurs="unbounded"/>
@@ -78,7 +77,7 @@
                         <xs:element name="JSONPayload" minOccurs="0">
                             <xs:complexType>
                                 <xs:sequence>
-                                    <xs:element name="Variable" minOccurs="0" maxOccurs="unbounded">
+                                    <xs:element name="variable" minOccurs="0" maxOccurs="unbounded">
                                         <xs:complexType>
                                             <xs:sequence>
                                                 <xs:element name="JSONPath" type="xs:string" maxOccurs="unbounded"/>
