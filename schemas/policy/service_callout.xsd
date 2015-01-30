@@ -181,6 +181,7 @@
           
           
         </xs:sequence>
+        <xs:attribute name="name" type="xs:string"/>
         <xs:attribute name="async" type="xs:string"/>
         <xs:attribute name="continueOnError" type="xs:string"/>
         <xs:attribute name="enabled" type="xs:string"/>
@@ -189,9 +190,7 @@
     </xs:complexContent>
   </xs:complexType>
 
-  <xs:complexType name="leafBean" abstract="true">
-    
-  </xs:complexType>
+  
 
   
 
