@@ -1,51 +1,93 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<!--
-  ~ Copyright (c) 2013, Apigee Corporation.  All rights reserved.
-  ~ Apigee(TM) and the Apigee logo are trademarks or
-  ~ registered trademarks of Apigee Corp. or its subsidiaries.  All other
-  ~ trademarks are the property of their respective owners.
-  -->
+<?xml version="1.0"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0">
+
+  
+
+  
+
+  
+
+  <xs:element name="Property" type="propertyBean"/>
+
+  <xs:element name="Statistic" type="statisticBean"/>
+
+  <xs:element name="StatisticsCollector" type="statisticsCollectionBean"/>
+
+  
+
+  
+
+  
+
+  
+
+  <xs:element name="stepDefinitionBean" type="stepDefinitionBean"/>
+
+  <xs:complexType name="statisticBean">
+    <xs:simpleContent>
+      <xs:extension base="propertyBean">
+        <xs:attribute name="name" type="xs:string" use="required"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+
+  <xs:complexType name="propertyBean">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute name="ref" type="xs:string"/>
+        <xs:attribute name="type" type="xs:string"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+
+  <xs:complexType name="statisticsCollectionBean">
+    <xs:complexContent>
+      <xs:extension base="stepDefinitionBean">
+        <xs:sequence>
+          <xs:element name="Statistics" minOccurs="0">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element ref="Statistic" minOccurs="0" maxOccurs="unbounded"/>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="stepDefinitionBean" abstract="true">
+    <xs:complexContent>
+      <xs:extension base="leafBean">
+        <xs:sequence>
+          
+          <xs:element name="DisplayName" type="xs:string" minOccurs="0"/>
+          
+          
+        </xs:sequence>
+        <xs:attribute name="async" type="xs:string"/>
+        <xs:attribute name="continueOnError" type="xs:string"/>
+        <xs:attribute name="enabled" type="xs:string"/>
         
-<xs:schema version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
 
-    <xs:include schemaLocation="stepDefinition.xsd"/>
+  <xs:complexType name="leafBean" abstract="true">
+    
+  </xs:complexType>
 
+  
 
+  
 
-    <xs:element name="StatisticsCollector" type="statisticsCollectionBean"/>
+  
 
-    <xs:complexType name="statisticBean">
-        <xs:simpleContent>
-            <xs:extension base="propertyBean">
-                <xs:attribute name="name" type="xs:string" use="required"/>
-            </xs:extension>
-        </xs:simpleContent>
-    </xs:complexType>
+  
 
-    <xs:complexType name="propertyBean">
-        <xs:simpleContent>
-            <xs:extension base="xs:string">
-                <xs:attribute name="ref" type="xs:string"/>
-                <xs:attribute name="type" type="xs:string"/>
-            </xs:extension>
-        </xs:simpleContent>
-    </xs:complexType>
+  
 
-    <xs:complexType name="statisticsCollectionBean">
-        <xs:complexContent>
-            <xs:extension base="stepDefinitionType">
-                <xs:sequence>
-                    <xs:element name="Statistics" minOccurs="0">
-                        <xs:complexType>
-                            <xs:sequence>
-                                <xs:element name="Statistic" type="statisticBean" minOccurs="0" maxOccurs="unbounded"/>
-                            </xs:sequence>
-                        </xs:complexType>
-                    </xs:element>
-                </xs:sequence>
-            </xs:extension>
-        </xs:complexContent>
-    </xs:complexType>
+  
 
+  
 </xs:schema>
-

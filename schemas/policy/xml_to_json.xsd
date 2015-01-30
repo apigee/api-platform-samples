@@ -1,65 +1,87 @@
-<!--
-  ~ Copyright (c) 2013, Apigee Corporation.  All rights reserved.
-  ~ Apigee(TM) and the Apigee logo are trademarks or
-  ~ registered trademarks of Apigee Corp. or its subsidiaries.  All other
-  ~ trademarks are the property of their respective owners.
-  -->
+<?xml version="1.0"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0">
 
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
-    <xs:include schemaLocation="stepDefinition.xsd"/>
+  
 
-    <xs:element name="XMLToJSON">
-        <xs:complexType>
-            <xs:complexContent>
-                <xs:extension base="stepDefinitionType">
-                    <xs:sequence>
-                        <xs:element name="Source" type="xs:NCName" minOccurs="0" default="message"/>
-                        <xs:choice>
-                            <xs:element name="Options" type="xml2jsonOptionsType"/>
-                            <xs:element name="Format" type="xs:NCName"/>
-                        </xs:choice>
-                    </xs:sequence>
-                </xs:extension>
-            </xs:complexContent>
-        </xs:complexType>
-    </xs:element>
+  
 
-    <xs:element name="XMLToJSONFormats">
-        <xs:complexType>
-            <xs:sequence>
-                <xs:element name="Format" minOccurs="0" maxOccurs="unbounded">
-                    <xs:complexType>
-                        <xs:complexContent>
-                            <xs:extension base="xml2jsonOptionsType">
-                                <xs:attribute name="name" type="xs:NCName" use="required"/>
-                            </xs:extension>
-                        </xs:complexContent>
-                    </xs:complexType>
-                </xs:element>
-            </xs:sequence>
-        </xs:complexType>
-    </xs:element>
+  
 
-    <xs:complexType name="xml2jsonOptionsType">
+  
+
+  <xs:element name="XMLToJSON" type="xml2JSONBean"/>
+
+  
+
+  
+
+  
+
+  <xs:element name="stepDefinitionBean" type="stepDefinitionBean"/>
+
+  <xs:complexType name="xml2JSONBean">
+    <xs:complexContent>
+      <xs:extension base="stepDefinitionBean">
         <xs:sequence>
-            <xs:element name="RecognizeBoolean" type="xs:boolean" default="false" minOccurs="0"/>
-            <xs:element name="RecognizeNumber" type="xs:boolean" default="false" minOccurs="0"/>
-
-            <xs:element name="RecognizeNull" type="xs:boolean" default="false" minOccurs="0"/>
-            <xs:element name="NullValue" type="xs:string" minOccurs="0"/>
-
-            <xs:element name="NamespaceBlockName" type="xs:string" minOccurs="0"/>
-            <xs:element name="DefaultNamespaceNodeName" type="xs:string" minOccurs="0"/>
-            <xs:element name="NamespaceSeparator" type="xs:string" minOccurs="0"/>
-
-            <xs:element name="TextAlwaysAsProperty" type="xs:boolean" default="false" minOccurs="0"/>
-            <xs:element name="TextNodeName" type="xs:string" minOccurs="0"/>
-
-            <xs:element name="AttributeBlockName" type="xs:string" minOccurs="0"/>
-            <xs:element name="AttributePrefix" type="xs:string" minOccurs="0"/>
-
-            <xs:element name="OutputPrefix" type="xs:string" minOccurs="0"/>
-            <xs:element name="OutputSuffix" type="xs:string" minOccurs="0"/>
+          <xs:element name="Format" type="xs:string" minOccurs="0"/>
+          <xs:element name="Options" type="xml2JSONOptions" minOccurs="0"/>
+          <xs:element name="OutputVariable" type="xs:string" minOccurs="0"/>
+          <xs:element name="Source" type="xs:string" minOccurs="0"/>
         </xs:sequence>
-    </xs:complexType>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="stepDefinitionBean" abstract="true">
+    <xs:complexContent>
+      <xs:extension base="leafBean">
+        <xs:sequence>
+          
+          <xs:element name="DisplayName" type="xs:string" minOccurs="0"/>
+          
+          
+        </xs:sequence>
+        <xs:attribute name="async" type="xs:string"/>
+        <xs:attribute name="continueOnError" type="xs:string"/>
+        <xs:attribute name="enabled" type="xs:string"/>
+        
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="leafBean" abstract="true">
+    
+  </xs:complexType>
+
+  
+
+  <xs:complexType name="xml2JSONOptions">
+    <xs:sequence>
+      <xs:element name="OutputSuffix" type="xs:string" minOccurs="0"/>
+      <xs:element name="OutputPrefix" type="xs:string" minOccurs="0"/>
+      <xs:element name="AttributePrefix" type="xs:string" minOccurs="0"/>
+      <xs:element name="AttributeBlockName" type="xs:string" minOccurs="0"/>
+      <xs:element name="TextNodeName" type="xs:string" minOccurs="0"/>
+      <xs:element name="TextAlwaysAsProperty" type="xs:boolean"/>
+      <xs:element name="NamespaceSeparator" type="xs:string" minOccurs="0"/>
+      <xs:element name="DefaultNamespaceNodeName" type="xs:string" minOccurs="0"/>
+      <xs:element name="NamespaceBlockName" type="xs:string" minOccurs="0"/>
+      <xs:element name="NullValue" type="xs:string" minOccurs="0"/>
+      <xs:element name="RecognizeNull" type="xs:boolean"/>
+      <xs:element name="RecognizeNumber" type="xs:boolean"/>
+      <xs:element name="RecognizeBoolean" type="xs:boolean"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
 </xs:schema>

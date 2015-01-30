@@ -1,27 +1,89 @@
-<!--
-  ~ Copyright (c) 2013, Apigee Corporation.  All rights reserved.
-  ~ Apigee(TM) and the Apigee logo are trademarks or
-  ~ registered trademarks of Apigee Corp. or its subsidiaries.  All other
-  ~ trademarks are the property of their respective owners.
-  -->
+<?xml version="1.0"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0">
 
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
-    <xs:include schemaLocation="stepDefinition.xsd"/>
-    <xs:include schemaLocation="../destinations.xsd"/>
+  
 
-    <xs:element name="MessageLogging">
-        <xs:complexType>
-            <xs:complexContent>
-                <xs:extension base="stepDefinitionType">
-                    <xs:sequence>
-                        <xs:element ref="Destination" maxOccurs="unbounded"/>
-                        <xs:element name="NotificationIntervalInSec" type="xs:int" minOccurs="0" default="0"/>
-                        <xs:element name="IgnoreUnresolvedVariables" type="xs:boolean" minOccurs="0" default="true"/>
-                        <xs:element name="BufferMessage" type="xs:boolean" minOccurs="0" default="false"/>
-                    </xs:sequence>
-                </xs:extension>
-            </xs:complexContent>
-        </xs:complexType>
-    </xs:element>
+  <xs:element name="MessageLogging" type="messageLoggingBean"/>
 
+  
+
+  
+
+  <xs:element name="RaiseAlert" type="raiseAlertBean"/>
+
+  
+
+  
+
+  
+
+  
+
+  <xs:element name="stepDefinitionBean" type="stepDefinitionBean"/>
+
+  <xs:complexType name="raiseAlertBean">
+    <xs:complexContent>
+      <xs:extension base="messageLoggingBean">
+        <xs:sequence/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="messageLoggingBean">
+    <xs:complexContent>
+      <xs:extension base="stepDefinitionBean">
+        <xs:sequence>
+          <xs:element name="BufferMessage" type="xs:boolean"/>
+          <xs:any processContents="lax" namespace="##other" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element name="IgnoreUnresolvedVariables" type="xs:boolean"/>
+          <xs:element name="logLevel" type="logLevel" minOccurs="0"/>
+          <xs:element name="NotificationIntervalInSec" type="xs:int"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="stepDefinitionBean" abstract="true">
+    <xs:complexContent>
+      <xs:extension base="leafBean">
+        <xs:sequence>
+          
+          <xs:element name="DisplayName" type="xs:string" minOccurs="0"/>
+          
+          
+        </xs:sequence>
+        <xs:attribute name="async" type="xs:string"/>
+        <xs:attribute name="continueOnError" type="xs:string"/>
+        <xs:attribute name="enabled" type="xs:string"/>
+        
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="leafBean" abstract="true">
+    
+  </xs:complexType>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  <xs:simpleType name="logLevel">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="INFO"/>
+      <xs:enumeration value="WARN"/>
+      <xs:enumeration value="ERROR"/>
+      <xs:enumeration value="ALERT"/>
+    </xs:restriction>
+  </xs:simpleType>
 </xs:schema>

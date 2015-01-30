@@ -1,24 +1,67 @@
-<!--
-  ~ Copyright (c) 2013, Apigee Corporation.  All rights reserved.
-  ~ Apigee(TM) and the Apigee logo are trademarks or
-  ~ registered trademarks of Apigee Corp. or its subsidiaries.  All other
-  ~ trademarks are the property of their respective owners.
-  -->
+<?xml version="1.0"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0">
 
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
-    <xs:include schemaLocation="stepDefinition.xsd"/>
+  
 
-    <xs:element name="Script">
-        <xs:complexType>
-            <xs:complexContent>
-                <xs:extension base="stepDefinitionType">
-                    <xs:sequence>
-                        <xs:element name="ResourceURL" type="xs:string"/>
-                        <xs:element name="IncludeURL" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
-                    </xs:sequence>
-                </xs:extension>
-            </xs:complexContent>
-        </xs:complexType>
-    </xs:element>
+  
 
+  
+
+  <xs:element name="Script" type="scriptBean"/>
+
+  
+
+  
+
+  
+
+  
+
+  <xs:element name="stepDefinitionBean" type="stepDefinitionBean"/>
+
+  <xs:complexType name="scriptBean">
+    <xs:complexContent>
+      <xs:extension base="stepDefinitionBean">
+        <xs:sequence>
+          <xs:element name="IncludeURL" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element name="ResourceURL" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="stepDefinitionBean" abstract="true">
+    <xs:complexContent>
+      <xs:extension base="leafBean">
+        <xs:sequence>
+          
+          <xs:element name="DisplayName" type="xs:string" minOccurs="0"/>
+          
+          
+        </xs:sequence>
+        <xs:attribute name="async" type="xs:string"/>
+        <xs:attribute name="continueOnError" type="xs:string"/>
+        <xs:attribute name="enabled" type="xs:string"/>
+        
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="leafBean" abstract="true">
+    
+  </xs:complexType>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
 </xs:schema>

@@ -1,37 +1,202 @@
-<!--
-  ~ Copyright (c) 2013, Apigee Corporation.  All rights reserved.
-  ~ Apigee(TM) and the Apigee logo are trademarks or
-  ~ registered trademarks of Apigee Corp. or its subsidiaries.  All other
-  ~ trademarks are the property of their respective owners.
-  -->
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
-           elementFormDefault="qualified">
+<?xml version="1.0"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0">
 
-    <xs:include schemaLocation="stepDefinition.xsd"/>
-    <xs:include schemaLocation="assign_message.xsd"/>
+  
 
-    <xs:complexType name="raiseFaultType">
-        <xs:complexContent>
-            <xs:extension base="stepDefinitionType">
-                <xs:sequence>
-                    <xs:element name="IgnoreUnresolvedVariables" type="xs:boolean" minOccurs="0" default="true"/>
-                    <xs:element ref="FaultResponse" minOccurs="0"/>
-                </xs:sequence>
-            </xs:extension>
-        </xs:complexContent>
-    </xs:complexType>
+  
 
-    <xs:complexType name="faultResponseType">
+  
+
+  <xs:element name="RaiseFault" type="raiseFaultBean"/>
+
+  
+
+  
+
+  
+
+  
+
+  <xs:element name="stepDefinitionBean" type="stepDefinitionBean"/>
+
+  <xs:complexType name="faultResponse">
+    <xs:sequence>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Copy" type="copyAction"/>
+        <xs:element name="Remove" type="removeAction"/>
+        <xs:element name="Add" type="addAction"/>
+        <xs:element name="Set" type="setAction"/>
+      </xs:choice>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="copyAction">
+    <xs:complexContent>
+      <xs:extension base="nameAction">
         <xs:sequence>
-            <xs:choice minOccurs="0" maxOccurs="unbounded">
-                <xs:element name="Copy" type="copyType"/>
-                <xs:element name="Remove" type="nameActionType"/>
-                <xs:element name="Add" type="nameValueActionType"/>
-                <xs:element name="Set" type="setType"/>
-            </xs:choice>
+          <xs:element name="ReasonPhrase" type="xs:boolean" minOccurs="0"/>
+          <xs:element name="StatusCode" type="xs:boolean" minOccurs="0"/>
+          <xs:element name="Path" type="xs:boolean" minOccurs="0"/>
+          <xs:element name="Version" type="xs:boolean" minOccurs="0"/>
+          <xs:element name="Verb" type="xs:boolean" minOccurs="0"/>
         </xs:sequence>
-    </xs:complexType>
+        <xs:attribute name="source" type="xs:string"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
 
-    <xs:element name="FaultResponse" type="faultResponseType"/>
-    <xs:element name="RaiseFault" type="raiseFaultType" substitutionGroup="StepDefinition"/>
+  <xs:complexType name="nameAction" abstract="true">
+    <xs:complexContent>
+      <xs:extension base="action">
+        <xs:sequence>
+          <xs:element name="Payload" type="xs:boolean" minOccurs="0"/>
+          <xs:element name="FormParams" minOccurs="0">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="FormParam" type="nameEntry" minOccurs="0" maxOccurs="unbounded"/>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="QueryParams" minOccurs="0">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="QueryParam" type="nameEntry" minOccurs="0" maxOccurs="unbounded"/>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="Headers" minOccurs="0">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="Header" type="nameEntry" minOccurs="0" maxOccurs="unbounded"/>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="action" abstract="true">
+    <xs:sequence/>
+  </xs:complexType>
+
+  <xs:complexType name="nameEntry">
+    <xs:sequence/>
+    <xs:attribute name="name" type="xs:string" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="removeAction">
+    <xs:complexContent>
+      <xs:extension base="nameAction">
+        <xs:sequence/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="addAction">
+    <xs:complexContent>
+      <xs:extension base="nameValueAction">
+        <xs:sequence/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="nameValueAction" abstract="true">
+    <xs:complexContent>
+      <xs:extension base="action">
+        <xs:sequence>
+          <xs:element name="FormParams" minOccurs="0">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="FormParam" type="nameValueEntry" minOccurs="0" maxOccurs="unbounded"/>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="QueryParams" minOccurs="0">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="QueryParam" type="nameValueEntry" minOccurs="0" maxOccurs="unbounded"/>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="Headers" minOccurs="0">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="Header" type="nameValueEntry" minOccurs="0" maxOccurs="unbounded"/>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="nameValueEntry">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute name="name" type="xs:string" use="required"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+
+  <xs:complexType name="setAction">
+    <xs:complexContent>
+      <xs:extension base="nameValueAction">
+        <xs:sequence>
+          <xs:element name="ReasonPhrase" type="xs:string" minOccurs="0"/>
+          <xs:element name="StatusCode" type="xs:string" minOccurs="0"/>
+          <xs:element name="Path" type="xs:string" minOccurs="0"/>
+          <xs:element name="Version" type="xs:string" minOccurs="0"/>
+          <xs:element name="Verb" type="xs:string" minOccurs="0"/>
+          <xs:element name="Payload" type="xs:anyType" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="raiseFaultBean">
+    <xs:complexContent>
+      <xs:extension base="stepDefinitionBean">
+        <xs:sequence>
+          <xs:element name="FaultResponse" type="faultResponse" minOccurs="0"/>
+          <xs:element name="IgnoreUnresolvedVariables" type="xs:boolean"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="stepDefinitionBean" abstract="true">
+    <xs:complexContent>
+      <xs:extension base="leafBean">
+        <xs:sequence>
+          
+          <xs:element name="DisplayName" type="xs:string" minOccurs="0"/>
+          
+          
+        </xs:sequence>
+        <xs:attribute name="async" type="xs:string"/>
+        <xs:attribute name="continueOnError" type="xs:string"/>
+        <xs:attribute name="enabled" type="xs:string"/>
+        
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="leafBean" abstract="true">
+    
+  </xs:complexType>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
 </xs:schema>

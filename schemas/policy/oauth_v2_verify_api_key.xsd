@@ -1,0 +1,259 @@
+<?xml version="1.0"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0">
+
+  
+
+  <xs:element name="GenerateErrorResponse" type="generateErrorResponse"/>
+
+  <xs:element name="GenerateResponse" type="generateResponse"/>
+
+  <xs:element name="GetAPIProduct" type="getAPIProductBean"/>
+
+  <xs:element name="GetOAuthV2Info" type="getOAuthV2InfoBean"/>
+
+  <xs:element name="OAuthV2" type="oAuthV2Bean"/>
+
+  
+
+  
+
+  <xs:element name="Property" nillable="true" type="xs:anyType"/>
+
+  <xs:element name="SetOAuthV2Info" type="setOAuthV2InfoBean"/>
+
+  
+
+  <xs:element name="VerifyAPIKey" type="verifyAPIKeyBean"/>
+
+  
+
+  
+
+  
+
+  <xs:element name="stepDefinitionBean" type="stepDefinitionBean"/>
+
+  <xs:complexType name="setOAuthV2InfoBean">
+    <xs:complexContent>
+      <xs:extension base="stepDefinitionBean">
+        <xs:sequence>
+          <xs:element name="AccessToken" type="propertyBean" minOccurs="0"/>
+          <xs:element name="Attributes" minOccurs="0">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="Attribute" type="customAttribute" minOccurs="0" maxOccurs="unbounded"/>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="stepDefinitionBean" abstract="true">
+    <xs:complexContent>
+      <xs:extension base="leafBean">
+        <xs:sequence>
+          
+          <xs:element name="DisplayName" type="xs:string" minOccurs="0"/>
+          
+          
+        </xs:sequence>
+        <xs:attribute name="async" type="xs:string"/>
+        <xs:attribute name="continueOnError" type="xs:string"/>
+        <xs:attribute name="enabled" type="xs:string"/>
+        
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="leafBean" abstract="true">
+    
+  </xs:complexType>
+
+  
+
+  <xs:complexType name="propertyBean">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute name="ref" type="xs:string"/>
+        <xs:attribute name="type" type="xs:string"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+
+  <xs:complexType name="customAttribute">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute name="display" type="xs:boolean" use="required"/>
+        <xs:attribute name="name" type="xs:string" use="required"/>
+        <xs:attribute name="ref" type="xs:string"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  <xs:complexType name="oAuthV2Bean">
+    <xs:complexContent>
+      <xs:extension base="stepDefinitionBean">
+        <xs:sequence>
+          <xs:element name="AccessToken" type="xs:string" minOccurs="0"/>
+          <xs:element name="AppEndUser" type="xs:string" minOccurs="0"/>
+          <xs:element name="ClientId" type="xs:string" minOccurs="0"/>
+          <xs:element name="Code" type="xs:string" minOccurs="0"/>
+          <xs:element name="OAuthConfig" type="xs:string" minOccurs="0"/>
+          <xs:element name="Attributes" minOccurs="0">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="Attribute" type="customAttribute" minOccurs="0" maxOccurs="unbounded"/>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element ref="GenerateErrorResponse" minOccurs="0"/>
+          <xs:element name="ExpiresIn" type="propertyExpiryBean" minOccurs="0"/>
+          <xs:element name="ExternalAccessToken" type="xs:string" minOccurs="0"/>
+          <xs:element name="ExternalAuthorization" type="xs:boolean" minOccurs="0"/>
+          <xs:element name="ExternalAuthorizationCode" type="xs:string" minOccurs="0"/>
+          <xs:element name="ExternalRefreshToken" type="xs:string" minOccurs="0"/>
+          <xs:element name="GrantType" type="xs:string" minOccurs="0"/>
+          <xs:element name="Operation" type="xs:string" nillable="true" minOccurs="0"/>
+          <xs:element name="PassWord" type="xs:string" minOccurs="0"/>
+          <xs:element name="RedirectUri" type="xs:string" minOccurs="0"/>
+          <xs:element name="RefreshToken" type="xs:string" minOccurs="0"/>
+          <xs:element name="RefreshTokenExpiresIn" type="propertyExpiryBean" minOccurs="0"/>
+          <xs:element ref="GenerateResponse" minOccurs="0"/>
+          <xs:element name="ResponseType" type="xs:string" minOccurs="0"/>
+          <xs:element name="ReuseRefreshToken" type="xs:boolean" minOccurs="0"/>
+          <xs:element name="Scope" type="xs:string" minOccurs="0"/>
+          <xs:element name="State" type="xs:string" minOccurs="0"/>
+          <xs:element name="StoreToken" type="xs:string" minOccurs="0"/>
+          <xs:element name="SupportedGrantTypes" minOccurs="0">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="GrantType" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="Tokens" minOccurs="0">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="Token" type="token" minOccurs="0" maxOccurs="unbounded"/>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="UserName" type="xs:string" minOccurs="0"/>
+          <xs:element name="AccessTokenPrefix" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="generateErrorResponse">
+    <xs:complexContent>
+      <xs:extension base="generateResponse">
+        <xs:sequence>
+          <xs:element name="Realm" type="propertyBean" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="generateResponse">
+    <xs:sequence>
+      <xs:element name="Format" type="format" minOccurs="0"/>
+    </xs:sequence>
+    <xs:attribute name="enabled" type="xs:string"/>
+  </xs:complexType>
+
+  <xs:complexType name="propertyExpiryBean">
+    <xs:simpleContent>
+      <xs:extension base="xs:long">
+        <xs:attribute name="ref" type="xs:string"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+
+  <xs:complexType name="token">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute name="cascade" type="xs:boolean" use="required"/>
+        <xs:attribute name="type" type="xs:string"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+
+  <xs:complexType name="getAPIProductBean">
+    <xs:complexContent>
+      <xs:extension base="stepDefinitionBean">
+        <xs:sequence>
+          <xs:element name="APIProduct" type="propertyBean" minOccurs="0"/>
+          <xs:element name="OAuthConfig" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="verifyAPIKeyBean">
+    <xs:complexContent>
+      <xs:extension base="stepDefinitionBean">
+        <xs:sequence>
+          <xs:element name="APIKey" type="propertyBean" minOccurs="0"/>
+          <xs:element name="OAuthConfig" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="getOAuthV2InfoBean">
+    <xs:complexContent>
+      <xs:extension base="stepDefinitionBean">
+        <xs:sequence>
+          <xs:element name="AccessToken" type="propertyBean" minOccurs="0"/>
+          <xs:element name="AuthorizationCode" type="propertyBean" minOccurs="0"/>
+          <xs:element name="ClientId" type="propertyBean" minOccurs="0"/>
+          <xs:element name="OAuthConfig" type="xs:string" minOccurs="0"/>
+          <xs:element name="RefreshToken" type="propertyBean" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:simpleType name="operation">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="GenerateAuthorizationCode"/>
+      <xs:enumeration value="GenerateAccessToken"/>
+      <xs:enumeration value="GenerateAccessTokenImplicitGrant"/>
+      <xs:enumeration value="RefreshAccessToken"/>
+      <xs:enumeration value="VerifyAccessToken"/>
+      <xs:enumeration value="ValidateToken"/>
+      <xs:enumeration value="InvalidateToken"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="grantType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="password"/>
+      <xs:enumeration value="client_credentials"/>
+      <xs:enumeration value="authorization_code"/>
+      <xs:enumeration value="implicit"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="format">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="XML"/>
+      <xs:enumeration value="FORM_PARAM"/>
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>
