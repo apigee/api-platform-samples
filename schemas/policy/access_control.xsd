@@ -17,7 +17,7 @@
   <xs:complexType name="stepDefinitionBean" abstract="true">
     <xs:complexContent>
       <xs:extension base="leafBean"><xs:sequence><xs:element name="DisplayName" type="xs:string" minOccurs="0"/></xs:sequence>
-<xs:attribute name="name" type="xs:string"/><xs:attribute name="async" type="xs:string"/><xs:attribute name="continueOnError" type="xs:string"/><xs:attribute name="enabled" type="xs:string"/></xs:extension>
+<xs:attribute name="name" type="xs:string" use="required"/><xs:attribute name="async" type="xs:string"/><xs:attribute name="continueOnError" type="xs:string"/><xs:attribute name="enabled" type="xs:string"/></xs:extension>
     </xs:complexContent>
   </xs:complexType>
   <xs:complexType name="leafBean" abstract="true"/>
