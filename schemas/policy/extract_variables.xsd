@@ -1,48 +1,19 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0">
-
   <xs:element name="ExtractVariables" type="extractVariablesBean"/>
-
   <xs:element name="ExtractVariablesSource" type="extractVariablesSource"/>
-
-  
-
   <xs:element name="FormParam" type="formParamExtraction"/>
-
   <xs:element name="Header" type="headerExtraction"/>
-
   <xs:element name="Namespace" type="namespace"/>
-
   <xs:element name="Path" type="pathExtraction"/>
-
   <xs:element name="Pattern" type="pattern"/>
-
-  
-
-  
-
   <xs:element name="QueryParam" type="queryParamExtraction"/>
-
-  
-
   <xs:element name="Variable" nillable="true" type="xs:anyType"/>
-
   <xs:element name="XMLPayload" type="xmlPayload"/>
-
   <xs:element name="XPath" type="xPath"/>
-
-  
-
   <xs:element name="extraction" type="extraction"/>
-
-  
-
-  
-
   <xs:element name="namedExtraction" type="namedExtraction"/>
-
   <xs:element name="stepDefinitionBean" type="stepDefinitionBean"/>
-
   <xs:complexType name="extractVariablesSource">
     <xs:simpleContent>
       <xs:extension base="xs:string">
@@ -50,7 +21,6 @@
       </xs:extension>
     </xs:simpleContent>
   </xs:complexType>
-
   <xs:complexType name="pattern">
     <xs:simpleContent>
       <xs:extension base="xs:string">
@@ -58,13 +28,11 @@
       </xs:extension>
     </xs:simpleContent>
   </xs:complexType>
-
   <xs:complexType name="extraction">
     <xs:sequence>
       <xs:element ref="Pattern" minOccurs="0" maxOccurs="unbounded"/>
     </xs:sequence>
   </xs:complexType>
-
   <xs:complexType name="pathExtraction">
     <xs:complexContent>
       <xs:extension base="extraction">
@@ -72,7 +40,6 @@
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
-
   <xs:complexType name="namedExtraction" abstract="true">
     <xs:complexContent>
       <xs:extension base="extraction">
@@ -81,7 +48,6 @@
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
-
   <xs:complexType name="queryParamExtraction">
     <xs:complexContent>
       <xs:extension base="namedExtraction">
@@ -89,7 +55,6 @@
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
-
   <xs:complexType name="headerExtraction">
     <xs:complexContent>
       <xs:extension base="namedExtraction">
@@ -97,7 +62,6 @@
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
-
   <xs:complexType name="formParamExtraction">
     <xs:complexContent>
       <xs:extension base="namedExtraction">
@@ -105,7 +69,6 @@
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
-
   <xs:complexType name="variableExtraction">
     <xs:complexContent>
       <xs:extension base="namedExtraction">
@@ -113,7 +76,6 @@
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
-
   <xs:complexType name="variable">
     <xs:sequence>
       <xs:element ref="XPath" minOccurs="0" maxOccurs="unbounded"/>
@@ -121,11 +83,9 @@
     <xs:attribute name="name" type="xs:string" use="required"/>
     <xs:attribute name="type" type="type"/>
   </xs:complexType>
-
   <xs:simpleType name="xPath">
     <xs:restriction base="xs:string"/>
   </xs:simpleType>
-
   <xs:complexType name="xmlPayload">
     <xs:sequence>
       <xs:element name="Namespaces" minOccurs="0">
@@ -139,7 +99,6 @@
     </xs:sequence>
     <xs:attribute name="stopPayloadProcessing" type="xs:string"/>
   </xs:complexType>
-
   <xs:complexType name="namespace">
     <xs:simpleContent>
       <xs:extension base="xs:string">
@@ -147,7 +106,6 @@
       </xs:extension>
     </xs:simpleContent>
   </xs:complexType>
-
   <xs:complexType name="jsonVariable">
     <xs:sequence>
       <xs:element name="JSONPath" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
@@ -155,13 +113,11 @@
     <xs:attribute name="name" type="xs:string" use="required"/>
     <xs:attribute name="type" type="type"/>
   </xs:complexType>
-
   <xs:complexType name="jsonPayload">
     <xs:sequence>
       <xs:element name="Variable" type="jsonVariable" minOccurs="0" maxOccurs="unbounded"/>
     </xs:sequence>
   </xs:complexType>
-
   <xs:complexType name="extractVariablesBean">
     <xs:complexContent>
       <xs:extension base="stepDefinitionBean">
@@ -183,48 +139,19 @@
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
-
   <xs:complexType name="stepDefinitionBean" abstract="true">
     <xs:complexContent>
-      <xs:extension base="leafBean">
-        <xs:sequence>
-          
-          <xs:element name="DisplayName" type="xs:string" minOccurs="0"/>
-          
-          
-        </xs:sequence>
-        <xs:attribute name="name" type="xs:string"/>
-        <xs:attribute name="async" type="xs:string"/>
-        <xs:attribute name="continueOnError" type="xs:string"/>
-        <xs:attribute name="enabled" type="xs:string"/>
-        
-      </xs:extension>
+      <xs:extension base="leafBean"><xs:sequence><xs:element name="DisplayName" type="xs:string" minOccurs="0"/></xs:sequence>
+<xs:attribute name="name" type="xs:string"/><xs:attribute name="async" type="xs:string"/><xs:attribute name="continueOnError" type="xs:string"/><xs:attribute name="enabled" type="xs:string"/></xs:extension>
     </xs:complexContent>
   </xs:complexType>
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
+  <xs:complexType name="leafBean" abstract="true"/>
   <xs:simpleType name="match">
     <xs:restriction base="xs:string">
       <xs:enumeration value="all"/>
       <xs:enumeration value="first"/>
     </xs:restriction>
   </xs:simpleType>
-
   <xs:simpleType name="type">
     <xs:restriction base="xs:string">
       <xs:enumeration value="string"/>

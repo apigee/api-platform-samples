@@ -1,44 +1,17 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0">
-
   <xs:element name="Alert" type="quotaAlertLimit"/>
-
   <xs:element name="Allow" type="quotaAllowedLimit"/>
-
   <xs:element name="AllowConnections" type="connectionsAllowedLimit"/>
-
   <xs:element name="ConcurrentRatelimit" type="concurrentRatelimitBean"/>
-
-  
-
-  
-
-  
-
   <xs:element name="Property" type="propertyBean"/>
-
   <xs:element name="Quota" type="quotaBean"/>
-
   <xs:element name="ResetQuota" type="resetQuotaBean"/>
-
   <xs:element name="ResetQuotaClassIdentifier" type="classIdentifier"/>
-
   <xs:element name="ResetQuotaIdentifier" type="identifier"/>
-
   <xs:element name="ResetQuotaStepDefinition" type="quota"/>
-
   <xs:element name="SpikeArrest" type="spikeArrestBean"/>
-
-  
-
-  
-
-  
-
-  
-
   <xs:element name="stepDefinitionBean" type="stepDefinitionBean"/>
-
   <xs:complexType name="peakMessageRate">
     <xs:simpleContent>
       <xs:extension base="xs:string">
@@ -46,7 +19,6 @@
       </xs:extension>
     </xs:simpleContent>
   </xs:complexType>
-
   <xs:complexType name="spikeArrestBean">
     <xs:complexContent>
       <xs:extension base="rateLimitBean">
@@ -56,7 +28,6 @@
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
-
   <xs:complexType name="rateLimitBean" abstract="true">
     <xs:complexContent>
       <xs:extension base="stepDefinitionBean">
@@ -67,57 +38,26 @@
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
-
   <xs:complexType name="stepDefinitionBean" abstract="true">
     <xs:complexContent>
-      <xs:extension base="leafBean">
-        <xs:sequence>
-          
-          <xs:element name="DisplayName" type="xs:string" minOccurs="0"/>
-          
-          
-        </xs:sequence>
-        <xs:attribute name="name" type="xs:string"/>
-        <xs:attribute name="async" type="xs:string"/>
-        <xs:attribute name="continueOnError" type="xs:string"/>
-        <xs:attribute name="enabled" type="xs:string"/>
-        
-      </xs:extension>
+      <xs:extension base="leafBean"><xs:sequence><xs:element name="DisplayName" type="xs:string" minOccurs="0"/></xs:sequence>
+<xs:attribute name="name" type="xs:string"/><xs:attribute name="async" type="xs:string"/><xs:attribute name="continueOnError" type="xs:string"/><xs:attribute name="enabled" type="xs:string"/></xs:extension>
     </xs:complexContent>
   </xs:complexType>
-
-  
-
-  
-
+  <xs:complexType name="leafBean" abstract="true"/>
   <xs:complexType name="clientIdentifier">
     <xs:sequence/>
     <xs:attribute name="ref" type="xs:string" use="required"/>
   </xs:complexType>
-
   <xs:complexType name="messageWeight">
     <xs:sequence/>
     <xs:attribute name="ref" type="xs:string" use="required"/>
   </xs:complexType>
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
   <xs:complexType name="targetIdentifier">
     <xs:sequence/>
     <xs:attribute name="name" type="xs:string"/>
     <xs:attribute name="ref" type="xs:string"/>
   </xs:complexType>
-
   <xs:complexType name="concurrentRatelimitBean">
     <xs:complexContent>
       <xs:extension base="stepDefinitionBean">
@@ -130,13 +70,11 @@
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
-
   <xs:complexType name="connectionsAllowedLimit">
     <xs:sequence/>
     <xs:attribute name="count" type="xs:long" use="required"/>
     <xs:attribute name="ttl" type="xs:int" use="required"/>
   </xs:complexType>
-
   <xs:complexType name="quotaBean">
     <xs:complexContent>
       <xs:extension base="rateLimitBean">
@@ -156,7 +94,6 @@
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
-
   <xs:complexType name="quotaAllowedLimit">
     <xs:sequence>
       <xs:element name="Class" type="quotaClassBean" minOccurs="0"/>
@@ -164,14 +101,12 @@
     <xs:attribute name="count" type="xs:long" use="required"/>
     <xs:attribute name="countRef" type="xs:string"/>
   </xs:complexType>
-
   <xs:complexType name="quotaClassBean">
     <xs:sequence>
       <xs:element name="Allow" type="allowedClassQuota" minOccurs="0" maxOccurs="unbounded"/>
     </xs:sequence>
     <xs:attribute name="ref" type="xs:string" use="required"/>
   </xs:complexType>
-
   <xs:complexType name="allowedClassQuota">
     <xs:complexContent>
       <xs:extension base="quotaAllowedLimit">
@@ -180,14 +115,12 @@
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
-
   <xs:complexType name="asynchronousConfiguration">
     <xs:sequence>
       <xs:element name="SyncIntervalInSeconds" type="xs:long" minOccurs="0"/>
       <xs:element name="SyncMessageCount" type="xs:long" minOccurs="0"/>
     </xs:sequence>
   </xs:complexType>
-
   <xs:complexType name="propertyBean">
     <xs:simpleContent>
       <xs:extension base="xs:string">
@@ -196,7 +129,6 @@
       </xs:extension>
     </xs:simpleContent>
   </xs:complexType>
-
   <xs:complexType name="quotaAlertLimit">
     <xs:sequence>
       <xs:any processContents="lax" namespace="##other" minOccurs="0" maxOccurs="unbounded"/>
@@ -204,7 +136,6 @@
     </xs:sequence>
     <xs:attribute name="count" type="xs:long" use="required"/>
   </xs:complexType>
-
   <xs:complexType name="quota">
     <xs:sequence>
       <xs:element name="Identifier" type="identifier" minOccurs="0" maxOccurs="unbounded"/>
@@ -212,7 +143,6 @@
     <xs:attribute name="name" type="xs:string"/>
     <xs:attribute name="ref" type="xs:string"/>
   </xs:complexType>
-
   <xs:complexType name="identifier">
     <xs:sequence>
       <xs:element name="Allow" type="propertyBean" minOccurs="0"/>
@@ -221,7 +151,6 @@
     <xs:attribute name="name" type="xs:string"/>
     <xs:attribute name="ref" type="xs:string"/>
   </xs:complexType>
-
   <xs:complexType name="classIdentifier">
     <xs:sequence>
       <xs:element name="Allow" type="propertyBean" minOccurs="0"/>
@@ -229,7 +158,6 @@
     <xs:attribute name="name" type="xs:string"/>
     <xs:attribute name="ref" type="xs:string"/>
   </xs:complexType>
-
   <xs:complexType name="resetQuotaBean">
     <xs:complexContent>
       <xs:extension base="stepDefinitionBean">

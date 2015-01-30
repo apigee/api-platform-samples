@@ -1,24 +1,7 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0">
-
-  
-
-  
-
-  
-
   <xs:element name="RegularExpressionProtection" type="regularExpressionProtectionBean"/>
-
-  
-
-  
-
-  
-
-  
-
   <xs:element name="stepDefinitionBean" type="stepDefinitionBean"/>
-
   <xs:complexType name="regexPattern">
     <xs:simpleContent>
       <xs:extension base="xs:string">
@@ -26,13 +9,11 @@
       </xs:extension>
     </xs:simpleContent>
   </xs:complexType>
-
   <xs:complexType name="regexMatch">
     <xs:sequence>
       <xs:element name="Pattern" type="regexPattern" minOccurs="0" maxOccurs="unbounded"/>
     </xs:sequence>
   </xs:complexType>
-
   <xs:complexType name="pathMatch">
     <xs:complexContent>
       <xs:extension base="regexMatch">
@@ -40,7 +21,6 @@
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
-
   <xs:complexType name="namedMatch" abstract="true">
     <xs:complexContent>
       <xs:extension base="regexMatch">
@@ -49,7 +29,6 @@
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
-
   <xs:complexType name="queryParamMatch">
     <xs:complexContent>
       <xs:extension base="namedMatch">
@@ -57,7 +36,6 @@
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
-
   <xs:complexType name="headerMatch">
     <xs:complexContent>
       <xs:extension base="namedMatch">
@@ -65,7 +43,6 @@
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
-
   <xs:complexType name="formParamMatch">
     <xs:complexContent>
       <xs:extension base="namedMatch">
@@ -73,7 +50,6 @@
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
-
   <xs:complexType name="variableMatch">
     <xs:complexContent>
       <xs:extension base="namedMatch">
@@ -81,7 +57,6 @@
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
-
   <xs:complexType name="xmlNamespace">
     <xs:simpleContent>
       <xs:extension base="xs:string">
@@ -89,7 +64,6 @@
       </xs:extension>
     </xs:simpleContent>
   </xs:complexType>
-
   <xs:complexType name="xPathMatch">
     <xs:complexContent>
       <xs:extension base="regexMatch">
@@ -100,7 +74,6 @@
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
-
   <xs:complexType name="xmlBody">
     <xs:sequence>
       <xs:element name="Namespaces" minOccurs="0">
@@ -113,7 +86,6 @@
       <xs:element name="XPath" type="xPathMatch" minOccurs="0" maxOccurs="unbounded"/>
     </xs:sequence>
   </xs:complexType>
-
   <xs:complexType name="jsonMatch">
     <xs:complexContent>
       <xs:extension base="regexMatch">
@@ -123,14 +95,12 @@
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
-
   <xs:complexType name="jsonBody">
     <xs:sequence>
       <xs:element name="JSONPath" type="jsonMatch" minOccurs="0" maxOccurs="unbounded"/>
     </xs:sequence>
     <xs:attribute name="escapeSlashCharacter" type="xs:boolean" use="required"/>
   </xs:complexType>
-
   <xs:complexType name="regularExpressionProtectionBean">
     <xs:complexContent>
       <xs:extension base="stepDefinitionBean">
@@ -150,41 +120,13 @@
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
-
   <xs:complexType name="stepDefinitionBean" abstract="true">
     <xs:complexContent>
-      <xs:extension base="leafBean">
-        <xs:sequence>
-          
-          <xs:element name="DisplayName" type="xs:string" minOccurs="0"/>
-          
-          
-        </xs:sequence>
-        <xs:attribute name="name" type="xs:string"/>
-        <xs:attribute name="async" type="xs:string"/>
-        <xs:attribute name="continueOnError" type="xs:string"/>
-        <xs:attribute name="enabled" type="xs:string"/>
-        
-      </xs:extension>
+      <xs:extension base="leafBean"><xs:sequence><xs:element name="DisplayName" type="xs:string" minOccurs="0"/></xs:sequence>
+<xs:attribute name="name" type="xs:string"/><xs:attribute name="async" type="xs:string"/><xs:attribute name="continueOnError" type="xs:string"/><xs:attribute name="enabled" type="xs:string"/></xs:extension>
     </xs:complexContent>
   </xs:complexType>
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
+  <xs:complexType name="leafBean" abstract="true"/>
   <xs:simpleType name="type">
     <xs:restriction base="xs:string">
       <xs:enumeration value="string"/>

@@ -1,26 +1,8 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0">
-
   <xs:element name="CalloutRequest" type="calloutRequest"/>
-
-  
-
-  
-
-  
-
   <xs:element name="ServiceCallout" type="serviceCalloutBean"/>
-
-  
-
-  
-
-  
-
-  
-
   <xs:element name="stepDefinitionBean" type="stepDefinitionBean"/>
-
   <xs:complexType name="calloutRequest">
     <xs:sequence>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
@@ -34,7 +16,6 @@
     <xs:attribute name="clearPayload" type="xs:string"/>
     <xs:attribute name="variable" type="xs:string"/>
   </xs:complexType>
-
   <xs:complexType name="copyAction">
     <xs:complexContent>
       <xs:extension base="nameAction">
@@ -49,7 +30,6 @@
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
-
   <xs:complexType name="nameAction" abstract="true">
     <xs:complexContent>
       <xs:extension base="action">
@@ -80,16 +60,13 @@
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
-
   <xs:complexType name="action" abstract="true">
     <xs:sequence/>
   </xs:complexType>
-
   <xs:complexType name="nameEntry">
     <xs:sequence/>
     <xs:attribute name="name" type="xs:string" use="required"/>
   </xs:complexType>
-
   <xs:complexType name="removeAction">
     <xs:complexContent>
       <xs:extension base="nameAction">
@@ -97,7 +74,6 @@
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
-
   <xs:complexType name="addAction">
     <xs:complexContent>
       <xs:extension base="nameValueAction">
@@ -105,7 +81,6 @@
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
-
   <xs:complexType name="nameValueAction" abstract="true">
     <xs:complexContent>
       <xs:extension base="action">
@@ -135,7 +110,6 @@
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
-
   <xs:complexType name="nameValueEntry">
     <xs:simpleContent>
       <xs:extension base="xs:string">
@@ -143,7 +117,6 @@
       </xs:extension>
     </xs:simpleContent>
   </xs:complexType>
-
   <xs:complexType name="setAction">
     <xs:complexContent>
       <xs:extension base="nameValueAction">
@@ -158,7 +131,6 @@
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
-
   <xs:complexType name="serviceCalloutBean">
     <xs:complexContent>
       <xs:extension base="stepDefinitionBean">
@@ -171,38 +143,11 @@
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
-
   <xs:complexType name="stepDefinitionBean" abstract="true">
     <xs:complexContent>
-      <xs:extension base="leafBean">
-        <xs:sequence>
-          
-          <xs:element name="DisplayName" type="xs:string" minOccurs="0"/>
-          
-          
-        </xs:sequence>
-        <xs:attribute name="name" type="xs:string"/>
-        <xs:attribute name="async" type="xs:string"/>
-        <xs:attribute name="continueOnError" type="xs:string"/>
-        <xs:attribute name="enabled" type="xs:string"/>
-        
-      </xs:extension>
+      <xs:extension base="leafBean"><xs:sequence><xs:element name="DisplayName" type="xs:string" minOccurs="0"/></xs:sequence>
+<xs:attribute name="name" type="xs:string"/><xs:attribute name="async" type="xs:string"/><xs:attribute name="continueOnError" type="xs:string"/><xs:attribute name="enabled" type="xs:string"/></xs:extension>
     </xs:complexContent>
   </xs:complexType>
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
+  <xs:complexType name="leafBean" abstract="true"/>
 </xs:schema>

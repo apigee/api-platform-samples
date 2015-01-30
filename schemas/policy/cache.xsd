@@ -1,38 +1,14 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0">
-
   <xs:element name="CacheContext" type="cacheContextBean"/>
-
   <xs:element name="CacheExpiry" type="cacheExpiryBean"/>
-
   <xs:element name="CacheKey" type="cacheKeyBean"/>
-
-  
-
   <xs:element name="InvalidateCache" type="invalidateCacheBean"/>
-
   <xs:element name="LookupCache" type="lookupCacheBean"/>
-
-  
-
   <xs:element name="PopulateCache" type="populateCacheBean"/>
-
-  
-
   <xs:element name="Property" type="propertyBean"/>
-
   <xs:element name="ResponseCache" type="responseCacheBean"/>
-
-  
-
-  
-
-  
-
-  
-
   <xs:element name="stepDefinitionBean" type="stepDefinitionBean"/>
-
   <xs:complexType name="cacheContextBean">
     <xs:sequence>
       <xs:element name="APIProxyName" type="propertyBean" minOccurs="0"/>
@@ -40,7 +16,6 @@
       <xs:element name="TargetName" type="propertyBean" minOccurs="0"/>
     </xs:sequence>
   </xs:complexType>
-
   <xs:complexType name="propertyBean">
     <xs:simpleContent>
       <xs:extension base="xs:string">
@@ -49,7 +24,6 @@
       </xs:extension>
     </xs:simpleContent>
   </xs:complexType>
-
   <xs:complexType name="invalidateCacheBean">
     <xs:complexContent>
       <xs:extension base="abstractCacheStepDefinitionBean">
@@ -60,7 +34,6 @@
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
-
   <xs:complexType name="abstractCacheStepDefinitionBean">
     <xs:complexContent>
       <xs:extension base="stepDefinitionBean">
@@ -72,48 +45,19 @@
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
-
   <xs:complexType name="stepDefinitionBean" abstract="true">
     <xs:complexContent>
-      <xs:extension base="leafBean">
-        <xs:sequence>
-          
-          <xs:element name="DisplayName" type="xs:string" minOccurs="0"/>
-          
-          
-        </xs:sequence>
-        <xs:attribute name="name" type="xs:string"/>
-        <xs:attribute name="async" type="xs:string"/>
-        <xs:attribute name="continueOnError" type="xs:string"/>
-        <xs:attribute name="enabled" type="xs:string"/>
-        
-      </xs:extension>
+      <xs:extension base="leafBean"><xs:sequence><xs:element name="DisplayName" type="xs:string" minOccurs="0"/></xs:sequence>
+<xs:attribute name="name" type="xs:string"/><xs:attribute name="async" type="xs:string"/><xs:attribute name="continueOnError" type="xs:string"/><xs:attribute name="enabled" type="xs:string"/></xs:extension>
     </xs:complexContent>
   </xs:complexType>
-
-  
-
-  
-
+  <xs:complexType name="leafBean" abstract="true"/>
   <xs:complexType name="cacheKeyBean">
     <xs:sequence>
       <xs:element name="Prefix" type="xs:string" minOccurs="0"/>
       <xs:element name="KeyFragment" type="propertyBean" minOccurs="0" maxOccurs="unbounded"/>
     </xs:sequence>
   </xs:complexType>
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
   <xs:complexType name="lookupCacheBean">
     <xs:complexContent>
       <xs:extension base="abstractCacheStepDefinitionBean">
@@ -124,7 +68,6 @@
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
-
   <xs:complexType name="responseCacheBean">
     <xs:complexContent>
       <xs:extension base="abstractCacheStepDefinitionBean">
@@ -140,7 +83,6 @@
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
-
   <xs:complexType name="cacheExpiryBean">
     <xs:sequence>
       <xs:element name="ExpiryDate" type="propertyBean" minOccurs="0"/>
@@ -148,7 +90,6 @@
       <xs:element name="TimeoutInSec" type="propertyBean" minOccurs="0"/>
     </xs:sequence>
   </xs:complexType>
-
   <xs:complexType name="populateCacheBean">
     <xs:complexContent>
       <xs:extension base="abstractCacheStepDefinitionBean">
@@ -159,7 +100,6 @@
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
-
   <xs:simpleType name="cacheScope">
     <xs:restriction base="xs:string">
       <xs:enumeration value="Global"/>

@@ -1,30 +1,10 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0">
-
-  
-
   <xs:element name="GenerateSAMLAssertion" type="generateSAMLAssertionBean"/>
-
   <xs:element name="Namespace" type="namespace"/>
-
-  
-
-  
-
   <xs:element name="Property" type="propertyBean"/>
-
-  
-
   <xs:element name="ValidateSAMLAssertion" type="validateSAMLAssertionBean"/>
-
-  
-
-  
-
-  
-
   <xs:element name="stepDefinitionBean" type="stepDefinitionBean"/>
-
   <xs:complexType name="message" final="extension restriction">
     <xs:sequence>
       <xs:element name="Namespaces" minOccurs="0">
@@ -38,7 +18,6 @@
     </xs:sequence>
     <xs:attribute name="name" type="xs:string"/>
   </xs:complexType>
-
   <xs:complexType name="namespace">
     <xs:simpleContent>
       <xs:extension base="xs:string">
@@ -46,7 +25,6 @@
       </xs:extension>
     </xs:simpleContent>
   </xs:complexType>
-
   <xs:complexType name="abstractSAMLAssertionBean">
     <xs:complexContent>
       <xs:extension base="stepDefinitionBean">
@@ -55,41 +33,13 @@
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
-
   <xs:complexType name="stepDefinitionBean" abstract="true">
     <xs:complexContent>
-      <xs:extension base="leafBean">
-        <xs:sequence>
-          
-          <xs:element name="DisplayName" type="xs:string" minOccurs="0"/>
-          
-          
-        </xs:sequence>
-        <xs:attribute name="name" type="xs:string"/>
-        <xs:attribute name="async" type="xs:string"/>
-        <xs:attribute name="continueOnError" type="xs:string"/>
-        <xs:attribute name="enabled" type="xs:string"/>
-        
-      </xs:extension>
+      <xs:extension base="leafBean"><xs:sequence><xs:element name="DisplayName" type="xs:string" minOccurs="0"/></xs:sequence>
+<xs:attribute name="name" type="xs:string"/><xs:attribute name="async" type="xs:string"/><xs:attribute name="continueOnError" type="xs:string"/><xs:attribute name="enabled" type="xs:string"/></xs:extension>
     </xs:complexContent>
   </xs:complexType>
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
+  <xs:complexType name="leafBean" abstract="true"/>
   <xs:complexType name="template" final="extension restriction">
     <xs:simpleContent>
       <xs:extension base="xs:string">
@@ -97,14 +47,12 @@
       </xs:extension>
     </xs:simpleContent>
   </xs:complexType>
-
   <xs:complexType name="keyStoreEntry">
     <xs:sequence>
       <xs:element name="Alias" type="propertyBean"/>
       <xs:element name="Name" type="propertyBean"/>
     </xs:sequence>
   </xs:complexType>
-
   <xs:complexType name="propertyBean">
     <xs:simpleContent>
       <xs:extension base="xs:string">
@@ -113,19 +61,16 @@
       </xs:extension>
     </xs:simpleContent>
   </xs:complexType>
-
   <xs:complexType name="flowVariable">
     <xs:sequence/>
     <xs:attribute name="name" type="xs:string"/>
   </xs:complexType>
-
   <xs:complexType name="outputVariable">
     <xs:sequence>
       <xs:element name="FlowVariable" type="flowVariable" minOccurs="0"/>
       <xs:element name="Message" type="message" minOccurs="0"/>
     </xs:sequence>
   </xs:complexType>
-
   <xs:complexType name="generateSAMLAssertionBean">
     <xs:complexContent>
       <xs:extension base="abstractSAMLAssertionBean">
@@ -141,7 +86,6 @@
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
-
   <xs:complexType name="validateSAMLAssertionBean">
     <xs:complexContent>
       <xs:extension base="abstractSAMLAssertionBean">
