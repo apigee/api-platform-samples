@@ -181,6 +181,8 @@ Just click the "Login with Apigee Example Auth" button. This action sends a requ
 
 #### 4. Register and log in
 
+>**NOTE:** There's a bug (#42) where certain passwords cause the registration to fail (throw a stacktrace error). For example, a password like 566559aa throws an error, while apigee123 does not. Until further notice, when trying out this sample, try using apigee123 as your password if see an error like this when you click the "Register" button.
+
 In the login page, you need to register if you haven't already (click register). Then, you can log in. The browser then redirects to the consent page. 
 
 #### 5. Give consent
