@@ -12,26 +12,13 @@
 
 <h2>New features and enhancements</h2>
 <p>Following are the new features and enhancements in this release.</p>
-<table class="table">
- <thead>
-		<tr>
-			<th width="200">Feature</th>
-			<th width="100" style="text-align: center">Issue ID</th>
-			<th>Description</th>
-		</tr>
-	</thead>
-	<tbody>
+
 <xsl:for-each select="Root/issues">
 <xsl:if test="fields/labels='new_feature'">
-<tr>
-    <td><strong><xsl:value-of select="fields/summary"/></strong></td>
-	<td style="text-align: center"><xsl:value-of select="key"/></td>
-	<td><xsl:value-of select="fields/customfield_13000"/></td>
-</tr>
+    <h3><xsl:value-of select="fields/summary"/></h3>
+	<p><xsl:value-of select="fields/customfield_13000"/></p>
 </xsl:if>
 </xsl:for-each>
-</tbody>
-</table>
 
 
 <h2>Bugs fixed</h2>
