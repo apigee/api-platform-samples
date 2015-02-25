@@ -1,6 +1,6 @@
 #!/bin/sh
 
-source ../setenv.sh
+source ../../../setup/setenv.sh
 
 echo "Enter your password for the Apigee Enterprise organization, followed by [ENTER]:"
 
