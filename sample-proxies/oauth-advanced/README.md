@@ -202,6 +202,7 @@ Tip: You can log in to the Apigee Edge UI and see that the developer, product, a
     `http://jdoe-prod.apigee.net/web`
 
 2. Initiate the flow
+
     Just click the "Login with Apigee Example Auth" button. This action sends a request to the authorization server (Apigee Edge), which redirects the browser to a login page. 
 
 3. If you haven't registered, do so. Otherwise, log in.
