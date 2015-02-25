@@ -194,16 +194,17 @@ Tip: You can log in to the Apigee Edge UI and see that the developer, product, a
 ## <a name="deploy">Test the sample
 
 1. Open a browser and go to this URL:
+
 `http://myorg-myenv.apigee.net/web`
 For example:
 `http://jdoe-prod.apigee.net/web`
+
 2. Initiate the flow
 Just click the "Login with Apigee Example Auth" button. This action sends a request to the authorization server (Apigee Edge), which redirects the browser to a login page. 
-3. Register and log in
+
+3. If you haven't registered, do so. Otherwise, log in.
 
 >**NOTE:** There's a bug (#42) where certain passwords cause the registration to fail (throw a stacktrace error). For example, a password like 566559aa throws an error, while apigee123 does not. Until further notice, when trying out this sample, try using apigee123 as your password if see an error like this when you click the "Register" button.
-
-In the login page, you need to register if you haven't already (click register). Then, you can log in. The browser then redirects to the consent page. 
 
 4. Give consent
 The consent page gives you (the end user) a chance to limit the type of access the app will have to your resources. In this example, only one scope is offered, called "order". Click **Allow** to give the app access to your resources.
