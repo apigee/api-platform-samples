@@ -9,9 +9,9 @@
 */
 
 exports.envInfo = {
-  org: 'wwitman',
-  env: 'prod',
+  org: 'Enter your org name',
+  env: 'Enter your environment',
   domain: 'apigee.net',
-  appKey: '4GTOH4HTlBksAjQ5u2VuZIuiAGRtRflP',
-  appSecret: 'yPhG8lEhuaC3OzJ7'
+  appKey: 'Enter the client ID from login-app',
+  appSecret: 'Enter the client secret from login-app'
 };
