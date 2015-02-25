@@ -1,5 +1,6 @@
 *~
 *.tmproj
+./setup/setenv.sh
 ./sample-proxies/oauth-advanced/oauth2/apiproxy/resources/jsc/build_login_url.js
 ./sample-proxies/oauth-advanced/webserver-app/apiproxy/policies/SetConfigurationVariables.xml
 ./sample-proxies/oauth-advanced/webserver-app/apiproxy/policies/HTMLIndex.xml
