@@ -210,7 +210,9 @@ Tip: You can log in to the Apigee Edge UI and see that the developer, product, a
     >**NOTE:** There's a bug (#42) where certain passwords cause the registration to fail (throw a stacktrace error). For example, a password like 566559aa throws an error, while apigee123 does not. Until further notice, when trying out this sample, try using apigee123 as your password if see an error like this when you click the "Register" button.
 
 4. Give consent
-The consent page gives you (the end user) a chance to limit the type of access the app will have to your resources. In this example, only one scope is offered, called "order". Click **Allow** to give the app access to your resources.
+
+    The consent page gives you (the end user) a chance to limit the type of access the app will have to your resources. In this example, only one scope is offered, called "order". Click **Allow** to give the app access to your resources.
+
 5. Retrieve the access token
 
 After you give consent, these things happen behind the scenes (refer to the flow diagram above for more a graphical view): 
@@ -221,7 +223,7 @@ After you give consent, these things happen behind the scenes (refer to the flow
 * The authorization server validates the auth code and other credentials, and if everything is okay, it returns an access token back to the client.
 * Now, with an access token, the client can request resources from the protected API. 
 
-It's important to see that the app never saw the user's username and password entered in the login page. 
+>>It's important to see that the app never saw the user's username and password entered in the login page. 
 
 If everything worked okay, you'll see the access code and some extra information (the user's name) displayed in the user's browser:
 
