@@ -9,7 +9,7 @@ This is a complete, working example that demonstrates an approach to implementin
 * [How do I get it?](#howdo)
 * [Prerequisites](#prerequisites)
 * [Required configuration steps](#configuration)
-* [Deploy and run the example](#deploy)
+* [Test the sample](#deploy)
 * [About login and consent session management](#session)
 
 ## <a name="needtoknow">What you need to know about this example
@@ -37,7 +37,6 @@ This example has the following parts:
 * **user-mgmt-v1** -- A key/value store implementation for storing the user's login information. Implemented as an API proxy and deployed on Apigee Edge. An interface to any user management system could be plugged in here, such as LDAP. 
 * **webserver-app** -- A very simple web page implemented as an API proxy (runs on Apigee Edge to simplify this example). This is the client app -- the target of the redirect URL to which tokens and other information are sent from the authorization server. Note that this client app never sees the user's login credentials for the resource server.
 * **oauth2** -- An API proxy deployed on Apigee Edge that implements the OAuth 2.0 token endpoints. This is the Apigee Edge authorization server interface. Think of this as a service for requesting and managing OAuth tokens. 
-* **deploy.sh** -- There's a `deploy.sh` in the example's root directory -- you can use this script to deploy all of the example apps at once. There's also a `deploy.sh` in each example app (e.g., in `./login-app`, etc) that you can use to deploy individual apps to Apigee Edge. 
 
 >Note that all the parts of this example run on Apigee Edge. For the most part, this is just to simplify things. The login app, for example, could be designed to run on any platform, as long as it can communicate with Apigee Edge (the authorization server). Such details are obviously going to vary depending on the specific project. 
 
@@ -90,7 +89,7 @@ This project requires a small configuration, and it also requires that these ent
 
 Here are the steps:
 
-** Configure the oauth2 project
+** Configure the oauth2 project:**
 
 1. Open  `./api-platform-samples/sample-proxies/oauth-advanced/oauth2/apiproxy/resources/jsc/build_login_url.js`.
 
@@ -105,29 +104,29 @@ Here are the steps:
 3. Save the file.
 
 
-**Deploy the oauth2 project
+**Deploy the oauth2 project:**
 
 1. CD to `./api-platform-samples/sample-proxies/oauth-advanced/oauth2`
 2. Execute: `./deploy.sh`
 
 
-**Provision the required entities to Apigee Edge**
+**Provision the required entities to Apigee Edge:**
 
-The provisioning script creates the required entities on Apigee Edge and returns two keys: Consumer key and Consumer secret in your terminal window. You'll need these values when you configure the webserver app. 
+You must perform this step after you deploy the oauth2 project.  
 
 1. CD to `oauth2/provisioning`
 2. Execute: `./provision-oauth2.sh`
 
-Tip: You can log in to the Apigee Edge UI and see that these entities were created. 
+The provisioning script creates the required entities on Apigee Edge and returns two keys: **Consumer key** and **Consumer secret** in your terminal window. You'll need these values when you configure the webserver app.
+
+Tip: You can log in to the Apigee Edge UI and see that the developer, product, and app entities were created. 
 
 ###Configure and deploy the webserver-app project
 
-1. Configure the **webserver app**: 
 
-    a. Open `webserver-app/apiproxy/policies/SetConfigurationVariables.xml`
+1. Open `webserver-app/apiproxy/policies/SetConfigurationVariables.xml`
 
-    b. Enter your values for appKey, appSecret, environment, and organization, as shown below:
-
+2. Enter your values for `appKey`, `appSecret`, `environment`, and `organization`, as shown below:
     **Important!** You'll need to grab the Consumer ID and Consumer Secret that were returned when you provisioned the `oauth2-*` entities in the previous step. Substitute those values in for the `appKey` and `appSecret`. For example:
 
     ```xml
@@ -163,12 +162,14 @@ Tip: You can log in to the Apigee Edge UI and see that these entities were creat
           </AssignMessage>
     ```
 
-1. Open `webserver-app/apiproxy/policies/HTMLIndex.xml`.
-2. Edit the `BASEURL`, `REDIRECT`, and `CLIENT_ID` variables as follows:
-        * BASEURL - The base URL for your environment. For example: https://myorg-myenv.apigee.net. 
-        * CLIENT_ID - The "Consumer Key" obtained from a developer app that is registered on Apigee Edge. **Important!** This key  must match the one you configured in the webserver app. 
-        * REDIRECT - This is the Redirect URI. **Important!** This URI must *exactly match* the Callback URI that is associated with the registered developer app.  
 3. Save the file.
+3. Open `webserver-app/apiproxy/policies/HTMLIndex.xml`
+4. Edit the `BASEURL`, `REDIRECT`, and `CLIENT_ID` variables as follows:
+
+  * `BASEURL` - The base URL for your environment. For example: https://myorg-myenv.apigee.net. 
+  * `CLIENT_ID` - The "Consumer Key" obtained from a developer app that is registered on Apigee Edge. **Important!** This key  must match the one you configured in the webserver app. 
+  * `REDIRECT` - This is the Redirect URI. **Important!** This URI must *exactly match* the Callback URI that is associated with the registered developer app.  
+5. Save the file.
 
 ## Configure and deploy the login-app project
 
@@ -190,23 +191,14 @@ Tip: You can log in to the Apigee Edge UI and see that these entities were creat
 
 3. Save the file. 
 
-
-4. 
-
 ## <a name="deploy">Test the sample
 
 1. Open a browser and go to this URL:
-
 `http://myorg-myenv.apigee.net/web`
-
 For example:
-
 `http://jdoe-prod.apigee.net/web`
-
 2. Initiate the flow
-
 Just click the "Login with Apigee Example Auth" button. This action sends a request to the authorization server (Apigee Edge), which redirects the browser to a login page. 
-
 3. Register and log in
 
 >**NOTE:** There's a bug (#42) where certain passwords cause the registration to fail (throw a stacktrace error). For example, a password like 566559aa throws an error, while apigee123 does not. Until further notice, when trying out this sample, try using apigee123 as your password if see an error like this when you click the "Register" button.
