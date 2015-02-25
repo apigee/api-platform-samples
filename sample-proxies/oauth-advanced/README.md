@@ -20,7 +20,7 @@ Here's a flow diagram outlining the steps of this flow. Note that in this flow A
 
 **TIP:** Save the graphic to your system and open it locally to see the full size image. 
 
-![alt text](../images/oauth-auth-code-flow.png)
+![alt text](../images/oauth-advanced-sequence-diagram.png)
 
 1. User initiates the flow by clicking a button in a web page. 
 2. The user's browser is redirected to a login page. This login page is not under the control of the client app. The client app does not participate in the login interaction, and the client app never sees the user's username or password.

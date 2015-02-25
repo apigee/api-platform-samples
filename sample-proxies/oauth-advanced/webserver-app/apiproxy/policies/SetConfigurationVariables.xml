@@ -5,19 +5,19 @@
     <Properties/>
     <AssignVariable>
         <Name>appKey</Name>
-        <Value>***The consumer ID for your developer app***</Value>
+        <Value>6z40rbtOpONA6dfLwqOFR4Ex5McesiCh</Value>
     </AssignVariable>
     <AssignVariable>
         <Name>appSecret</Name>
-        <Value>***The consumer secret for your developer app***</Value>
+        <Value>hkh8N3VdH4QtCiWs</Value>
     </AssignVariable>
     <AssignVariable>
         <Name>config.environment</Name>
-        <Value>***Your environment***</Value>
+        <Value>prod</Value>
     </AssignVariable>
     <AssignVariable>
         <Name>config.organization</Name>
-        <Value>***Your organization***</Value>
+        <Value>wwitman</Value>
     </AssignVariable>
    <!-- On prem customers may need to change the domain. Cloud users can leave the domain as is. -->
     <AssignVariable>

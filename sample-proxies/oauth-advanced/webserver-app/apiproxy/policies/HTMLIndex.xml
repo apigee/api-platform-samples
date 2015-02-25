@@ -8,9 +8,9 @@
 &lt;html&gt;
    &lt;head&gt;
       &lt;script&gt;
-         var BASEURL=&quot;https://myorg-myenv.apigee.net&quot;;
-         var REDIRECT=&quot;https://myorg-myenv.apigee.net/web/callback&quot;;
-         var CLIENT_ID=&quot;***Your developer app Consumer ID***&quot;;
+         var BASEURL=&quot;https://wwitman-prod.apigee.net&quot;;
+         var REDIRECT=&quot;https://wwitman-prod.apigee.net/web/callback&quot;;
+         var CLIENT_ID=&quot;6z40rbtOpONA6dfLwqOFR4Ex5McesiCh&quot;;
          
          
          function login()
