@@ -1,8 +1,8 @@
 
 //*** Configure with your org, env, and domain ***//
 
-var organization = "wwitman";
-var environment = "prod";
+var organization = "Enter your organization name on Edge";
+var environment = "Enter the environment to deploy to on Edge (prod or test)";
 var domain = "apigee.net"; // On prem customers might have to change this domain value. Cloud users can leave it unchanged.
 
 //***
