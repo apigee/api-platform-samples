@@ -10,6 +10,7 @@ This is a complete, working example that demonstrates an approach to implementin
 * [Prerequisites](#prerequisites)
 * [Required configuration steps](#configuration)
 * [Test the sample](#deploy)
+* [Clean up](#clean)
 * [About login and consent session management](#session)
 
 ## <a name="needtoknow">What you need to know about this example
@@ -228,6 +229,14 @@ After you give consent, these things happen behind the scenes (refer to the flow
 If everything worked okay, you'll see the access code and some extra information (the user's name) displayed in the user's browser:
 
 ![alt text](../images/oauth-advanced-success.png)
+
+## <a name="clean">Clean up
+
+You can use the cleanup scripts to remove the entities (developers, apps, products) that were installed with this sample. 
+
+1. CD to `oauth-advanced/provisioning`
+2. Execute `cleanup-login-app.sh`
+3. Execute `cleanup-oauth2.sh`
 
 ## <a name="session">About login and consent session management
 
