@@ -206,18 +206,16 @@ Just click the "Login with Apigee Example Auth" button. This action sends a requ
 In the login page, you need to register if you haven't already (click register). Then, you can log in. The browser then redirects to the consent page. 
 
 4. Give consent
-
 The consent page gives you (the end user) a chance to limit the type of access the app will have to your resources. In this example, only one scope is offered, called "order". Click **Allow** to give the app access to your resources.
-
 5. Retrieve the access token
 
 After you give consent, these things happen behind the scenes (refer to the flow diagram above for more a graphical view): 
 
-    1. The login app communicates to the authorization server that the login was successful.
-    2. The authorization server generates an authorization code and returns it to the app. 
-    3. The app puts the code into a request to the authorization server for an access token. The app also supplies the client ID and client secret keys.
-    4. The authorization server validates the auth code and other credentials, and if everything is okay, it returns an access token back to the client.
-    5. Now, with an access token, the client can request resources from the protected API. 
+* The login app communicates to the authorization server that the login was successful.
+* The authorization server generates an authorization code and returns it to the app. 
+* The app puts the code into a request to the authorization server for an access token. The app also supplies the client ID and client secret keys.
+* The authorization server validates the auth code and other credentials, and if everything is okay, it returns an access token back to the client.
+* Now, with an access token, the client can request resources from the protected API. 
 
 It's important to see that the app never saw the user's username and password entered in the login page. 
 
