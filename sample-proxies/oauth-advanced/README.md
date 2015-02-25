@@ -90,7 +90,7 @@ This project requires a small configuration, and it also requires that these ent
 
 Here are the steps:
 
-** Configure the oauth2 project:**
+**Configure the oauth2 project:**
 
 1. Open  `./api-platform-samples/sample-proxies/oauth-advanced/oauth2/apiproxy/resources/jsc/build_login_url.js`.
 
@@ -115,7 +115,7 @@ Here are the steps:
 
 You must perform this step after you deploy the oauth2 project.  
 
-1. CD to `oauth2/provisioning`
+1. CD to `oauth-advanced/provisioning`
 2. Execute: `./provision-oauth2.sh`
 
 The provisioning script creates the required entities on Apigee Edge and returns two keys: **Consumer key** and **Consumer secret** in your terminal window. You'll need these values when you configure the webserver app.
@@ -169,10 +169,26 @@ Tip: You can log in to the Apigee Edge UI and see that the developer, product, a
 
   * `BASEURL` - The base URL for your environment. For example: https://myorg-myenv.apigee.net. 
   * `CLIENT_ID` - The "Consumer Key" obtained from a developer app that is registered on Apigee Edge. **Important!** This key  must match the one you configured in the webserver app. 
-  * `REDIRECT` - This is the Redirect URI. **Important!** This URI must *exactly match* the Callback URI that is associated with the registered developer app.  
+  * `REDIRECT` - This is the Redirect URI. **Important!** This URI must *exactly match* the Callback URI that is associated with the registered developer app. For example: `https://myorg-myenv.apigee.net/web/callback`
 5. Save the file.
 
+**Deploy the webserver-app project:**
+
+1. CD to `./api-platform-samples/sample-proxies/oauth-advanced/webserver-app`
+2. Execute: `./deploy.sh`
+
 ## Configure and deploy the login-app project
+
+**Provision the required entities to Apigee Edge:**
+
+You must perform this step after you deploy the login-app project.  
+
+1. CD to `oauth-advanced/provisioning`
+2. Execute: `./provision-login-app.sh`
+
+The provisioning script creates the required entities on Apigee Edge and returns two keys: **Consumer key** and **Consumer secret** in your terminal window. You'll need these values when you configure the login-app below. 
+
+Tip: You can log in to the Apigee Edge UI and see that the developer, product, and app entities were created. 
 
 **Configure the project:**
 
@@ -191,6 +207,11 @@ Tip: You can log in to the Apigee Edge UI and see that the developer, product, a
       ```
 
 3. Save the file. 
+
+**Deploy the login-app project:**
+
+1. CD to `./api-platform-samples/sample-proxies/oauth-advanced/login-app`
+2. Execute: `./deploy.sh`
 
 ## <a name="deploy">Test the sample
 
