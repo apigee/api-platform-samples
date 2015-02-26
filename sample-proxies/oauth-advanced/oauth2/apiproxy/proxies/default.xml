@@ -29,14 +29,25 @@
         <Flow name="AuthorizationCodeRequest">
             <Request>
                 <Step>
+                    <FaultRules/>
+                    <Name>VerifyLoginAppKey</Name>
+                </Step>
+                <Step>
+                    <FaultRules/>
+                    <Condition>(verifyapikey.VerifyLoginAppKey.client_secret!=request.header.appSecret)</Condition>
+                    <Name>RaiseFaultBadApp</Name>
+                </Step>
+                <Step>
+                    <FaultRules/>
                     <Name>SetAuthCodeParameters</Name>
                 </Step>
                 <Step>
+                    <FaultRules/>
                     <Name>GenerateAuthorizationCode</Name>
                 </Step>
             </Request>
             <Response/>
-            <Condition>(proxy.pathsuffix MatchesPath "/userAuthorize")</Condition>
+            <Condition>(proxy.pathsuffix MatchesPath &quot;/userAuthorize&quot;)</Condition>
         </Flow>
         <Flow name="AccessTokenRequest">
             <Request>
