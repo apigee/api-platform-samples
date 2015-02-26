@@ -1,5 +1,5 @@
 {
-  "apiResources" : ["/userAuthorize/**"],
+  "apiResources" : ["/userAuthorize**"],
   "approvalType" : "auto",
   "attributes" : [ ],
   "description" : "",
