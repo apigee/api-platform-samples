@@ -7,8 +7,8 @@
         <Set>
             <Headers/>
             <Payload contentType="text/plain"> </Payload>
-            <StatusCode>500</StatusCode>
-            <ReasonPhrase>Bad App</ReasonPhrase>
+            <StatusCode>401</StatusCode>
+            <ReasonPhrase>Unauthorized: The login app is unauthorized.</ReasonPhrase>
         </Set>
     </FaultResponse>
     <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
