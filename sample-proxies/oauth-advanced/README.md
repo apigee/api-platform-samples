@@ -167,9 +167,9 @@ Tip: You can log in to the Apigee Edge UI and see that the developer, product, a
 3. Open `webserver-app/apiproxy/policies/HTMLIndex.xml`
 4. Edit the `BASEURL`, `REDIRECT`, and `CLIENT_ID` variables as follows:
 
-  * `BASEURL` - The base URL for your environment. For example: https://myorg-myenv.apigee.net. 
-  * `CLIENT_ID` - The "Consumer Key" obtained from a developer app that is registered on Apigee Edge. **Important!** This key  must match the one you configured in the webserver app. 
-  * `REDIRECT` - This is the Redirect URI. **Important!** This URI must *exactly match* the Callback URI that is associated with the registered developer app. For example: `https://myorg-myenv.apigee.net/web/callback`
+  * `BASEURL` - The base URL for your environment -- use your organization and environment names on Edge. For example: https://myorg-prod.apigee.net. 
+  * `REDIRECT` - This is the Redirect URI. **Note** This URI *exactly matches* the Callback URI that is associated with the registered developer app (oauth-app). For example: `https://myorg-prod.apigee.net/web/callback`
+  * `CLIENT_ID` - The "Consumer Key" obtained from a developer app that is registered on Apigee Edge. **Important!** This key  must match the one you configured previously in the webserver app. 
 5. Save the file.
 
 **Deploy the webserver-app project:**
