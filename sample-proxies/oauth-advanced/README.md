@@ -181,7 +181,7 @@ Tip: You can log in to the Apigee Edge UI and see that the developer, product, a
 
 **Provision the required entities to Apigee Edge:**
 
-You must perform this step after you deploy the login-app project.  
+You must perform this step before you configure the login-app project.  
 
 1. CD to `oauth-advanced/provisioning`
 2. Execute: `./provision-login-app.sh`
