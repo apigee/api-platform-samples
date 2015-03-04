@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<App name="login-app">
+    <CallbackUrl></CallbackUrl>
+    <AccessType>read</AccessType>
+    <Attributes>
+      <Attribute>
+          <Name>DisplayName</Name>
+          <Value>login-app</Value>
+      </Attribute>
+    </Attributes>
+</App>

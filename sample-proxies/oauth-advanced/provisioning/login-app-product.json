@@ -1,0 +1,14 @@
+{
+  "apiResources" : ["/userAuthorize**"],
+  "approvalType" : "auto",
+  "attributes" : [ ],
+  "description" : "",
+  "displayName" : "login-app-product",
+  "environments" : [ "test", "prod" ],
+  "name" : "login-app-product",
+  "proxies" : [ "oauth2" ],
+  "quota" : "",
+  "quotaInterval" : "",
+  "quotaTimeUnit" : "",
+  "scopes" : [ ]
+}

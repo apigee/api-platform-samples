@@ -9,7 +9,9 @@
 */
 
 exports.envInfo = {
-  org: 'your-org-name',
-  env: 'your-environment',
-  domain: 'apigee.net'
+  org: 'Enter your org name',
+  env: 'Enter your environment',
+  domain: 'apigee.net',
+  appKey: 'Enter the client ID from login-app',
+  appSecret: 'Enter the client secret from login-app'
 };
