@@ -82,7 +82,7 @@
                                         </xs:sequence>
                                     </xs:complexType>
                                 </xs:element>
-                                <xs:element name="Response" type="responseType"/>
+                                <xs:element name="SuccessResponse" type="responseType"/>
                             </xs:sequence>
                         </xs:complexType>
                     </xs:element>
