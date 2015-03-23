@@ -5,9 +5,12 @@
 <p>[toc]</p>
 <p>On {DAY_OF_WEEK}, {MONTH} {DAY_NUMBER}, 2015, we released a new cloud version of Apigee Edge.</p>
 <div class="note">
-	<p><a href="http://community.apigee.com/content/apigee-customer-support">Get help here</a> if you have questions, .</p>
-	<p><a href="https://pages.apigee.com/release-notifications-submit.html">Sign up here</a> if you'd like to be notified about Apigee releases.</p>
-	<p>For a list of all Apigee Edge release notes, see [node:8408].</p>
+	<p><a href="http://community.apigee.com/content/apigee-customer-support">Get help here</a> if you have questions or issues.</p>
+	<p>Sign up for release notifications:</p>
+	<ul>
+		<li><strong>Cloud</strong>: Go to <a href="http://status.apigee.com">http://status.apigee.com</a> and click <strong>Subscribe to Updates</strong>.</li>
+		<li><strong>On-premises</strong>: Fill out the form at <a href="https://pages.apigee.com/release-notifications-submit.html">https://pages.apigee.com/release-notifications-submit.html</a>.</li>
+	</ul>
 </div>
 
 
