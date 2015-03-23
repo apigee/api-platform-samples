@@ -5,7 +5,8 @@
 <p>[toc]</p>
 <p>On {DAY_OF_WEEK}, {MONTH} {DAY_NUMBER}, 2015, we released a new cloud version of Apigee Edge.</p>
 <div class="note">
-	<p>If you have questions, go to <a href="http://community.apigee.com/content/apigee-customer-support">Apigee Customer Support</a>.</p>
+	<p><a href="http://community.apigee.com/content/apigee-customer-support">Get help here</a> if you have questions, .</p>
+	<p><a href="https://pages.apigee.com/release-notifications-submit.html">Sign up here</a> if you'd like to be notified about Apigee releases.</p>
 	<p>For a list of all Apigee Edge release notes, see [node:8408].</p>
 </div>
 
