@@ -12,7 +12,8 @@
 		<li><strong>On-premises</strong>: Fill out the form at <a href="https://pages.apigee.com/release-notifications-submit.html">https://pages.apigee.com/release-notifications-submit.html</a>.</li>
 	</ul>
 </div>
-
+<p>If you have questions, go to <a href="http://community.apigee.com/content/apigee-customer-support">Apigee Customer Support</a>.</p>
+<p>For a list of all Apigee Edge release notes, see [node:8408].</p>
 
 <h2>New features and enhancements</h2>
 <p>Following are the new features and enhancements in this release.</p>
