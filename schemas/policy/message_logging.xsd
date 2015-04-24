@@ -3,13 +3,6 @@
   <xs:element name="MessageLogging" type="messageLoggingBean"/>
   <xs:element name="RaiseAlert" type="raiseAlertBean"/>
   <xs:element name="stepDefinitionBean" type="stepDefinitionBean"/>
-  <xs:complexType name="raiseAlertBean">
-    <xs:complexContent>
-      <xs:extension base="messageLoggingBean">
-        <xs:sequence/>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
   <xs:complexType name="messageLoggingBean">
     <xs:complexContent>
       <xs:extension base="stepDefinitionBean">
@@ -37,6 +30,13 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:complexType name="leafBean" abstract="true"/>
+  <xs:complexType name="raiseAlertBean">
+    <xs:complexContent>
+      <xs:extension base="messageLoggingBean">
+        <xs:sequence/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
   <xs:simpleType name="logLevel">
     <xs:restriction base="xs:string">
       <xs:enumeration value="INFO"/>

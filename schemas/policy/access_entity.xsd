@@ -57,12 +57,16 @@
   </xs:complexType>
   <xs:simpleType name="entityTypes">
     <xs:restriction base="xs:string">
-      <xs:enumeration value="developer"/>
-      <xs:enumeration value="app"/>
-      <xs:enumeration value="apiproduct"/>
-      <xs:enumeration value="company"/>
-      <xs:enumeration value="companydeveloper"/>
-      <xs:enumeration value="consumerkey"/>
+      <xs:enumeration value="DEVELOPER"/>
+      <xs:enumeration value="APP"/>
+      <xs:enumeration value="APIPRODUCT"/>
+      <xs:enumeration value="COMPANY"/>
+      <xs:enumeration value="COMPANYDEVELOPER"/>
+      <xs:enumeration value="CONSUMERKEY"/>
+      <xs:enumeration value="CONSUMERKEY_SCOPE"/>
+      <xs:enumeration value="AUTHORIZATIONCODE"/>
+      <xs:enumeration value="REQUESTTOKEN"/>
+      <xs:enumeration value="VERIFIER"/>
     </xs:restriction>
   </xs:simpleType>
 </xs:schema>

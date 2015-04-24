@@ -10,6 +10,7 @@
       <xs:extension base="stepDefinitionBean">
         <xs:sequence>
           <xs:element ref="IPRules" minOccurs="0"/>
+          <xs:element name="ValidateBasedOn" type="xs:string" minOccurs="0"/>
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
@@ -47,4 +48,11 @@
       </xs:extension>
     </xs:simpleContent>
   </xs:complexType>
+  <xs:simpleType name="validateBasedOn">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="X_FORWARDED_FOR_FIRST_IP"/>
+      <xs:enumeration value="X_FORWARDED_FOR_LAST_IP"/>
+      <xs:enumeration value="X_FORWARDED_FOR_ALL_IP"/>
+    </xs:restriction>
+  </xs:simpleType>
 </xs:schema>
