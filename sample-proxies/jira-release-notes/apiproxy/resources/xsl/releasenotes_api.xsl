@@ -9,7 +9,7 @@
 	<p>Sign up for release notifications:</p>
 	<ul>
 		<li><strong>Cloud</strong>: Go to <a href="http://status.apigee.com">http://status.apigee.com</a> and click <strong>Subscribe to Updates</strong>.</li>
-		<li><strong>On-premises</strong>: Fill out the form at <a href="https://pages.apigee.com/release-notifications-submit.html">https://pages.apigee.com/release-notifications-submit.html</a>.</li>
+		<li><strong>Private Cloud</strong>: Fill out the form at <a href="https://pages.apigee.com/release-notifications-submit.html">https://pages.apigee.com/release-notifications-submit.html</a>.</li>
 	</ul>
 </div>
 <p>If you have questions, go to <a href="http://community.apigee.com/content/apigee-customer-support">Apigee Customer Support</a>.</p>
