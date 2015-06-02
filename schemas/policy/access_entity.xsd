@@ -3,20 +3,6 @@
   <xs:element name="AccessEntity" type="accessEntityBean"/>
   <xs:element name="Identifier" type="compositeIdentifier"/>
   <xs:element name="stepDefinitionBean" type="stepDefinitionBean"/>
-  <xs:complexType name="entityIdentifier">
-    <xs:sequence/>
-    <xs:attribute name="ref" type="xs:string" use="required"/>
-    <xs:attribute name="type" type="xs:string"/>
-  </xs:complexType>
-  <xs:complexType name="secondaryIdentifier">
-    <xs:sequence/>
-    <xs:attribute name="ref" type="xs:string" use="required"/>
-    <xs:attribute name="type" type="xs:string"/>
-  </xs:complexType>
-  <xs:complexType name="entityType">
-    <xs:sequence/>
-    <xs:attribute name="value" type="xs:string" use="required"/>
-  </xs:complexType>
   <xs:complexType name="accessEntityBean">
     <xs:complexContent>
       <xs:extension base="stepDefinitionBean">
@@ -49,20 +35,24 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:complexType name="leafBean" abstract="true"/>
+  <xs:complexType name="entityIdentifier">
+    <xs:sequence/>
+    <xs:attribute name="ref" type="xs:string" use="required"/>
+    <xs:attribute name="type" type="xs:string"/>
+  </xs:complexType>
+  <xs:complexType name="entityType">
+    <xs:sequence/>
+    <xs:attribute name="value" type="xs:string" use="required"/>
+  </xs:complexType>
   <xs:complexType name="compositeIdentifier">
     <xs:sequence>
       <xs:element name="EntityIdentifier" type="entityIdentifier" minOccurs="0"/>
       <xs:element name="SecondaryIdentifier" type="secondaryIdentifier" minOccurs="0"/>
     </xs:sequence>
   </xs:complexType>
-  <xs:simpleType name="entityTypes">
-    <xs:restriction base="xs:string">
-      <xs:enumeration value="developer"/>
-      <xs:enumeration value="app"/>
-      <xs:enumeration value="apiproduct"/>
-      <xs:enumeration value="company"/>
-      <xs:enumeration value="companydeveloper"/>
-      <xs:enumeration value="consumerkey"/>
-    </xs:restriction>
-  </xs:simpleType>
+  <xs:complexType name="secondaryIdentifier">
+    <xs:sequence/>
+    <xs:attribute name="ref" type="xs:string" use="required"/>
+    <xs:attribute name="type" type="xs:string"/>
+  </xs:complexType>
 </xs:schema>

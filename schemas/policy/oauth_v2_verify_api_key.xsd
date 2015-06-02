@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0">
+  <xs:element name="DeleteOAuthV2Info" type="deleteOAuthV2InfoBean"/>
   <xs:element name="GenerateErrorResponse" type="generateErrorResponse"/>
   <xs:element name="GenerateResponse" type="generateResponse"/>
   <xs:element name="GetAPIProduct" type="getAPIProductBean"/>
@@ -160,6 +161,17 @@
       </xs:extension>
     </xs:simpleContent>
   </xs:complexType>
+  <xs:complexType name="deleteOAuthV2InfoBean">
+    <xs:complexContent>
+      <xs:extension base="stepDefinitionBean">
+        <xs:sequence>
+          <xs:element name="AccessToken" type="propertyBean" minOccurs="0"/>
+          <xs:element name="AuthorizationCode" type="propertyBean" minOccurs="0"/>
+          <xs:element name="OAuthConfig" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
   <xs:complexType name="getOAuthV2InfoBean">
     <xs:complexContent>
       <xs:extension base="stepDefinitionBean">
@@ -168,30 +180,12 @@
           <xs:element name="AuthorizationCode" type="propertyBean" minOccurs="0"/>
           <xs:element name="ClientId" type="propertyBean" minOccurs="0"/>
           <xs:element name="OAuthConfig" type="xs:string" minOccurs="0"/>
+          <xs:element name="IgnoreAccessTokenStatus" type="xs:boolean" minOccurs="0"/>
           <xs:element name="RefreshToken" type="propertyBean" minOccurs="0"/>
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
-  <xs:simpleType name="operation">
-    <xs:restriction base="xs:string">
-      <xs:enumeration value="GenerateAuthorizationCode"/>
-      <xs:enumeration value="GenerateAccessToken"/>
-      <xs:enumeration value="GenerateAccessTokenImplicitGrant"/>
-      <xs:enumeration value="RefreshAccessToken"/>
-      <xs:enumeration value="VerifyAccessToken"/>
-      <xs:enumeration value="ValidateToken"/>
-      <xs:enumeration value="InvalidateToken"/>
-    </xs:restriction>
-  </xs:simpleType>
-  <xs:simpleType name="grantType">
-    <xs:restriction base="xs:string">
-      <xs:enumeration value="password"/>
-      <xs:enumeration value="client_credentials"/>
-      <xs:enumeration value="authorization_code"/>
-      <xs:enumeration value="implicit"/>
-    </xs:restriction>
-  </xs:simpleType>
   <xs:simpleType name="format">
     <xs:restriction base="xs:string">
       <xs:enumeration value="XML"/>
