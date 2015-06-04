@@ -19,6 +19,8 @@ The API proxy will be downloaded and unzipped to a directory called `/apiproxy`
 
 ## API Proxy Deploy Tool
 
+>Note: Most of the samples in `api-platform-samples` use the Python-based deploy tool described below, and you can use this tool for deploying proxies to Edge. However, be aware that another deployment tool option exists: [apigeetool](https://www.npmjs.com/package/apigeetool), a Node.js module for deploying proxies and Node.js apps to Apigee Edge. For now, most of the examples in `api-platform-samples` use the Python deploy tool. In the future, the samples may be revised to use `apigeetool`. 
+
 Requires [Python](http://python.org/getit/) to be installed. 
 
 This tool provides a simple command for importing and deploying an API proxy
