@@ -116,7 +116,18 @@ Here are the steps:
 You must perform this step after you deploy the oauth2 project.  
 
 1. CD to `oauth-advanced/provisioning`
-2. Execute: `./provision-oauth2.sh`
+2. Open the file `oauth2-app.xml` in an editor.
+3. Edit the <CallbackUrl> element as follows, substituting your Edge organization and environment names:
+    
+    <CallbackUrl>https://org-env.apigee.net/web/callback<CallbackUrl>
+
+    for example:
+
+    <CallbackUrl>https://myorg-test.apigee.net/web/callback<CallbackUrl>
+
+    **Important:** Make a note of this exact callback URL. You will need to add it to another configuration file later. 
+
+4. Execute: `./provision-oauth2.sh`
 
 The provisioning script creates the required entities on Apigee Edge and returns two keys: **Consumer key** and **Consumer secret** in your terminal window. You'll need these values when you configure the webserver app.
 
@@ -168,7 +179,10 @@ Tip: You can log in to the Apigee Edge UI and see that the developer, product, a
 4. Edit the `BASEURL`, `REDIRECT`, and `CLIENT_ID` variables as follows:
 
   * `BASEURL` - The base URL for your environment -- use your organization and environment names on Edge. For example: https://myorg-prod.apigee.net. 
-  * `REDIRECT` - This is the Redirect URI. **Note** This URI *exactly matches* the Callback URI that is associated with the registered developer app (oauth-app). For example: `https://myorg-prod.apigee.net/web/callback`
+  * `REDIRECT` - This is the Redirect URI. 
+
+      **Note** This URI must *exactly match* the CallbackUrl element that you added to the `oauth2-app.xml` configuration previously. For example: `https://myorg-test.apigee.net/web/callback`
+
   * `CLIENT_ID` - The "Consumer Key" obtained from a developer app that is registered on Apigee Edge. **Important!** This key  must match the one you configured previously in the webserver app. 
 5. Save the file.
 
