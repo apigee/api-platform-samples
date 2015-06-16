@@ -192,9 +192,11 @@ Tip: You can log in to the Apigee Edge UI and see that the developer, product, a
 
 **Configure the project:**
 
-1. Open `login-app/apiproxy/resources/node/config/config.js`
+1. CD to the `oauth-advanced/login-app/apiproxy/resources/node` directory.
+2. Execute `npm install` to install dependencies.
+3. Open `login-app/apiproxy/resources/node/config/config.js`
 
-2. Enter your environment information. The domain will typically be `apigee.net`. Some on-premise installations of Apigee Edge may use a different domain. For example:
+4. Enter your environment information. The domain will typically be `apigee.net`. Some on-premise installations of Apigee Edge may use a different domain. For example:
 
       ```
           exports.envInfo = {
@@ -206,7 +208,7 @@ Tip: You can log in to the Apigee Edge UI and see that the developer, product, a
           };
       ```
 
-3. Save the file. 
+5. Save the file. 
 
 **Deploy the login-app project:**
 
