@@ -2,9 +2,9 @@
 
 In Apigee Edge, API proxies, policies, and other entities are configured in XML. Use these schemas to help construct your XML configurations, either as reference material or imported into an XML editing environment.
 
-'/configuration' - Contains the schemas for other-than-policy entities in Edge, such as API proxies, proxy endpoints, target endpoints, HTTP target connections, and so on.
+`/configuration` - Contains the schemas for other-than-policy entities in Edge, such as API proxies, proxy endpoints, target endpoints, HTTP target connections, and so on.
 
-'/policy' - Contains the schemas for Edge policies.
+`/policy` - Contains the schemas for Edge policies.
 
 Importing 'all.xsd' into an XML editing environment lets you construct all entities and policies in a single view; or you can import individual policy schemas to build single policies.
 
