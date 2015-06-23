@@ -6,9 +6,9 @@ In Apigee Edge, API proxies, policies, and other entities are configured in XML.
 
 `/policy` - Contains the schemas for Edge policies.
 
-Importing 'all.xsd' into an XML editing environment lets you construct all entities and policies in a single view; or you can import individual policy schemas to build single policies.
+Importing `all.xsd` into an XML editing environment lets you construct all entities and policies in a single view; or you can import individual policy schemas to build single policies.
 
-**Note:** Some policies, such as Message Logging and LDAP, have elements in the '/configuration/configuration_schemas.xsd' schema as well. This is a known issue that Apigee will address in the future. In the meantime, consult the [policy reference docs](http://apigee.com/docs/api-services/reference/reference-overview-policy) for guidance.
+**Note:** Some policies, such as Message Logging and LDAP, have elements in the `/configuration/configuration_schemas.xsd` schema as well. This is a known issue that Apigee will address in the future. In the meantime, consult the [policy reference docs](http://apigee.com/docs/api-services/reference/reference-overview-policy) for guidance.
 
 # Get help and interact with other API developers
 
