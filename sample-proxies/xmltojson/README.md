@@ -1,6 +1,6 @@
 # XML to JSON Transformation
 
-![alt text](../../images/icon-xml-to-json.png)
+![alt text](https://github.com/apigee/api-platform-samples/blob/master/images/icon-xml-to-json.jpg)
 
 ### Sample use case
 
