@@ -10,6 +10,10 @@ Convert an XML-formatted response to JSON.
 
 See the [README](../../README.md) file for information about setting up, deploying, and invoking sample proxies. 
 
+### About
+
+The sample API proxy calls a backend weather service that returns weather data in JSON format by default. We use the XML to JSON policy to transform the response to XML. 
+
 ### More information
 
 * [XML to JSON policy](http://apigee.com/docs/api-services/reference/xml-json-policy)
