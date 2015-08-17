@@ -12,7 +12,7 @@ The sample API proxy calls a backend weather service that returns weather data i
 
 ### Set up, deploy, invoke
 
-See the [README](../../README.md) file for information about setting up, deploying, and invoking sample proxies. 
+See the main project [README](../../README.md) file for information about setting up, deploying, and invoking sample proxies. 
 
 ### More information
 
