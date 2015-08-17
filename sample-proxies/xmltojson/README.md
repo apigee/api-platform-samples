@@ -6,13 +6,13 @@
 
 Convert an XML-formatted response to JSON. 
 
-### Set up, deploy, invoke
-
-See the [README](../../README.md) file for information about setting up, deploying, and invoking sample proxies. 
-
 ### About
 
 The sample API proxy calls a backend weather service that returns weather data in JSON format by default. We use the XML to JSON policy to transform the response to XML. 
+
+### Set up, deploy, invoke
+
+See the [README](../../README.md) file for information about setting up, deploying, and invoking sample proxies. 
 
 ### More information
 
