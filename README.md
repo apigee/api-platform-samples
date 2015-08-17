@@ -159,7 +159,7 @@ To deploy all samples and API products, run `deploy_all.sh`
 
 ## <a name="ask"></a>Ask questions on the Apigee Community
 
-[Apigee Community](http://community.apigee.com/) is a great place to ask questions and find answers about developing API proxies. 
+[![alt text](./images/apigee-community.png "Apigee Community is a great place to ask questions and find answers about developing API proxies. ")](https://community.apigee.com?via=github)
 
 ## <a name="docs"></a>Apigee Edge documentation
 
