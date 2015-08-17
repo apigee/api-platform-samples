@@ -1,18 +1,18 @@
 # Apigee Edge sample API proxies
 
-* Intro
-* Before you begin
-* Initial setup
-* Using the sample proxies
-* Deploying a sample proxy
-* Invoking a sample proxy
-* Bulk deployment
-* What's here
-* Ask questions on the Apigee Community
-* Apigee Edge documentation
+* [Intro](#intro)
+* [Before you begin](#before)
+* [Initial setup](#initial)
+* [Using the sample proxies](#using)
+* [Deploying a sample proxy](#deploying)
+* [Invoking a sample proxy](#invoking)
+* [Bulk deployment](#bulk)
+* [What's here](#what)
+* [Ask questions on the Apigee Community](#ask)
+* [Apigee Edge documentation](#docs)
 
 
-## Intro
+## <a name="intro"></a>Intro
 
 This repository contains a collection of sample API proxies that you can deploy and run on [Apigee Edge](http://apigee.com/about/products/api-management). 
 
@@ -27,7 +27,7 @@ In addition, you'll find:
 * Cookbook samples, which illustrate specific use cases
 
 
-## Before you begin
+## <a name="before"></a>Before you begin
 
 1. If you don't have one, you'll need to obtain an Apigee account. [Sign up for a free trial account.](https://accounts.apigee.com/accounts/sign_up)
 
@@ -35,7 +35,7 @@ In addition, you'll find:
 
 3. Download this project from GitHub to your system.
 
-## Initial setup
+## <a name="initial"></a>Initial setup
 
 Set up your deployment environment. 
 
@@ -52,14 +52,14 @@ Set up your deployment environment.
     ```
 
 
-## Using the sample proxies
+## <a name="using"></a>Using the sample proxies
 
 Most developers begin by identifying an interesting sample based on a specific use case or need. The Apigee doc site has a handy [samples overview page](http://apigee.com/docs/api-services/samples/samples-reference). The samples are listed in the `sample-proxies` folder.
 
 
 For example, if you're interested in doing XML to JSON transformations, check out `api-platform-samples/sample-proxies/xmltojson`. 
 
-## Deploying a sample proxy
+## <a name="deploying"></a>Deploying a sample proxy
 
 We make it easy:
 
@@ -89,7 +89,7 @@ Output like this means a successful deployment:
     Run 'invoke.sh'
 ```
 
-## Invoking a sample proxy
+## <a name="invoking"></a>Invoking a sample proxy
 
 We make this easy too! Deploy the proxy and follow these steps:
 
@@ -110,7 +110,7 @@ We make this easy too! Deploy the proxy and follow these steps:
     `./invoke.sh`
 
 
-## Bulk deployment
+## <a name="bulk"></a>Bulk deployment
 
 You can deploy all of the samples to your organization at once using a simple setup script provided in this distribution.
 
@@ -124,7 +124,9 @@ Each sample API proxy directory contains a script, `invoke.sh`, that issues a sa
 
 If you make changes to the sample API proxy, simply run the proxy's `deploy.sh` script to redeploy it.
 
-## What's here:
+## <a name="what"></a>What else is here?
+
+In addition to the sample proxies, this project includes the following:
 
 ### `/sample-proxies`
 
@@ -159,11 +161,11 @@ To deploy all samples and API products, run `deploy_all.sh`
 
 * `/org-snapshot`: A configurable tool that retrieves organization settings from the API Services platform by using management server API calls.
 
-## Ask questions on the Apigee Community
+## <a name="ask"></a>Ask questions on the Apigee Community
 
 [Apigee Community](http://community.apigee.com/) is a great place to ask questions and find answers about developing API proxies. 
 
-### Apigee Edge documentation
+### <a name="docs"></a>Apigee Edge documentation
 
 The Apigee Edge docs are [here](http://apigee.com/docs). 
 
