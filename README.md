@@ -165,6 +165,8 @@ To deploy all samples and API products, run `deploy_all.sh`
 
 The Apigee Edge docs are [here](http://apigee.com/docs). 
 
+---
+
 Copyright © 2015 Apigee Corporation
 
 Licensed under the Apache License, Version 2.0 (the "License"); you may 
