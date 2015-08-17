@@ -91,7 +91,7 @@ Output like this means a successful deployment:
 
 ## <a name="invoking"></a>Invoking a sample proxy
 
-We make this easy too! Deploy the proxy and follow these steps:
+We make this easy too! Each sample API proxy directory contains a script, `invoke.sh`, that issues a sample HTTP request to the API. Deploy the proxy and follow these steps:
 
 1. Be sure you've updated `./api-platform-samples/setup/setenv.sh` as explained previously.
 
@@ -103,7 +103,7 @@ We make this easy too! Deploy the proxy and follow these steps:
 
 4. Open the `invoke.sh` file and take a look at the code. Basically, the invoke scripts make `curl` requests to Apigee Edge. In some cases, `invoke.sh` performs other setup tasks, such as creating products, developer apps, and other entities on Edge.
 
->Tip: Always open `invoke.sh` and look through it before executing it -- this will give you valuable insight into how the API proxy is called, and any setup steps that are required. 
+    **Tip:** Always open `invoke.sh` and look through it before executing it -- this will give you valuable insight into how the API proxy is called, and any setup steps that are required. 
 
 4. Execute the `invoke.sh` script. 
 
@@ -119,10 +119,6 @@ You can deploy all of the samples to your organization at once using a simple se
 2. Run `deploy_all.sh`
 
     **Note**: This step deploys all API products, developers, and apps needed for samples that use OAuth.
-
-Each sample API proxy directory contains a script, `invoke.sh`, that issues a sample HTTP request to the API.
-
-If you make changes to the sample API proxy, simply run the proxy's `deploy.sh` script to redeploy it.
 
 ## <a name="what"></a>What else is here?
 
