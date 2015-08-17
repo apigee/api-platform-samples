@@ -16,7 +16,7 @@ See the [README](../../README.md) file for information about setting up, deployi
 * [JSON to XML policy](http://apigee.com/docs/api-services/reference/json-xml-policy)
 * [XSL transform policy](http://apigee.com/docs/api-services/reference/xsl-transform-policy)
 
-# Ask the community
+## Ask the community
 
 [![alt text](../../images/apigee-community.png "Apigee Community is a great place to ask questions and find answers about developing API proxies. ")](https://community.apigee.com?via=github)
 
