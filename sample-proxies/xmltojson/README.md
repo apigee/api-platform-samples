@@ -1,31 +1,28 @@
 # XML to JSON Transformation
 
-This sample demonstrates how you can use an XMLtoJSON policy to convert an XML-formatted 
-weather report into JSON.
+![alt text](./images/icon-xml-to-json.png)
 
-You can also refer to the Developer Guide topic:
+### Sample use case
 
-http://apigee.com/docs/enterprise/content/customizing-responses-mobile-devices
+Convert an XML-formatted response to JSON. 
 
-And the API Platform Policy reference:
+### Set up, deploy, invoke
 
-http://apigee.com/docs/enterprise/content/policies/convert-json-xml-format
+See the [README](../../README.md) file for information about setting up, deploying, and invoking sample proxies. 
 
-# Configure 
+### More information
 
-Update `/setup/setenv.sh` with your environment details
+* [XML to JSON policy](http://apigee.com/docs/api-services/reference/xml-json-policy)
+* [JSON to XML policy](http://apigee.com/docs/api-services/reference/json-xml-policy)
+* [XSL transform policy](http://apigee.com/docs/api-services/reference/xsl-transform-policy)
 
-# Import and deploy sample project
+# Ask the community
 
-To deploy, run `$ sh deploy.sh`
+[![alt text](../../images/apigee-community.png "Apigee Community is a great place to ask questions and find answers about developing API proxies. ")](https://community.apigee.com?via=github)
 
-To test, run `$ sh invoke.sh`
+---
 
-# Get help
-
-For assistance, please use [Apigee Support](https://community.apigee.com/content/apigee-customer-support).
-
-Copyright © 2014, 2015 Apigee Corporation
+Copyright © 2015 Apigee Corporation
 
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use
 this file except in compliance with the License. You may obtain a copy
