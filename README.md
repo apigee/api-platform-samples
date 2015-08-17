@@ -7,7 +7,7 @@
 * [Deploying a sample proxy](#deploying)
 * [Invoking a sample proxy](#invoking)
 * [Bulk deployment](#bulk)
-* [What's here](#what)
+* [What else is here?](#what)
 * [Ask questions on the Apigee Community](#ask)
 * [Apigee Edge documentation](#docs)
 
@@ -165,7 +165,7 @@ To deploy all samples and API products, run `deploy_all.sh`
 
 [Apigee Community](http://community.apigee.com/) is a great place to ask questions and find answers about developing API proxies. 
 
-### <a name="docs"></a>Apigee Edge documentation
+## <a name="docs"></a>Apigee Edge documentation
 
 The Apigee Edge docs are [here](http://apigee.com/docs). 
 
