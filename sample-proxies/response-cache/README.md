@@ -1,28 +1,32 @@
 # Response Caching
 
-This sample demonstrates how you can use the ResponseCache policy to cache weather forecasts on the API Platform for 10 minutes.
+![alt text](https://github.com/apigee/api-platform-samples/blob/master/images/icon_policy_traffic-management.jpg)
 
-You can also refer to the API Platform Policy reference:
+### Sample use case
 
-http://apigee.com/docs/enterprise/content/policies/reduce-latency-and-network-traffic-using-response-caching
+Cache data retrieved from a backend resource in order to reduce calls to that resource.
 
-# Configure 
+### About
 
-Update `/setup/setenv.sh` with your environment details
+Cache (for 10 minutes) weather forecasts from a backend weather service.
 
-# Import and deploy sample project
+### Set up, deploy, invoke
 
-To deploy, run `$ sh deploy.sh`
+See the main project [README](../../README.md) file for information about setting up, deploying, and invoking sample proxies. 
 
-To test, run `$ sh invoke.sh`
+### More information
 
-To clear the cache, run 'refresh_cache.sh'.
+* [Response Cache policy](http://apigee.com/docs/api-services/reference/response-cache-policy)
+* [Caching in Edge](http://apigee.com/docs/api-services/content/caching-edge)
+* [Support for HTTP response headers](http://apigee.com/docs/api-services/content/http-response-caching)
 
-# Get help
+### Ask the community
 
-For assistance, please use [Apigee Support](https://community.apigee.com/content/apigee-customer-support).
+[![alt text](../../images/apigee-community.png "Apigee Community is a great place to ask questions and find answers about developing API proxies. ")](https://community.apigee.com?via=github)
 
-Copyright © 2014, 2015 Apigee Corporation
+---
+
+Copyright © 2015 Apigee Corporation
 
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use
 this file except in compliance with the License. You may obtain a copy
