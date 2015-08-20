@@ -16,7 +16,10 @@ See the main project [README](../../README.md) file for information about settin
 
 ### More information
 
+**Policy used in this sample**
 * [XML to JSON policy](http://apigee.com/docs/api-services/reference/xml-json-policy)
+
+**Related policies**
 * [JSON to XML policy](http://apigee.com/docs/api-services/reference/json-xml-policy)
 * [XSL transform policy](http://apigee.com/docs/api-services/reference/xsl-transform-policy)
 
