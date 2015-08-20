@@ -9,7 +9,7 @@ Extract data into flow variables from the response message. Assign extracted var
 
 ### Trace
 
-This [trace](http://apigee.com/docs/api-services/content/using-trace-tool-0) shows the placement of the policies used in this sample. 
+This screen shot from the [Apigee Edge trace tool](http://apigee.com/docs/api-services/content/using-trace-tool-0) shows the placement of the policies used in this sample. 
 
 ![alt text](../../images/variables-trace.png)
 
