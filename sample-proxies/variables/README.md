@@ -1,19 +1,60 @@
-# Variables
 
-This sample demonstrates how you can use the ExtractVariables policy to 
-populate variables. The sample ExtractVariables policy sets the variable values
-as HTTP headers in the response.
+# Extract and assign variables
 
-The sample policy demonstrates how to populate variable from the context, 
-API proxy configuration, request message, and m by parsing message content.
+![alt text](https://github.com/apigee/api-platform-samples/blob/master/images/icon_policy_extract-variable.jpg) ![alt text](https://github.com/apigee/api-platform-samples/blob/master/images/icon-assign-message.jpg) ![alt text](https://github.com/apigee/api-platform-samples/blob/master/images/icon-xml-to-json.jpg)
 
-The sample converts the XML response to from Yahoo! weather to demonstrate 
-how to configure the ExtractVariables policy with XPath and JSONPath
-to work with message content.
+### Sample use case
 
-You can also refer to the API Platform variables reference:
+Extract data into flow variables from the response message. Assign extracted variables to HTTP response headers. 
 
-http://apigee.com/docs/enterprise/content/predefined-variables
+### Trace
+
+This [trace](http://apigee.com/docs/api-services/content/using-trace-tool-0) shows the placement of the policies used in this sample. 
+
+![alt text](https://github.com/apigee/api-platform-samples/blob/master/images/variables-trace.png)
+
+### About
+
+The target API is a service that returns weather data. We attach policies to the response flow to demonstrate how to extract and assign variables:
+
+1. Extract variables from the XML response sent from the target. We use XPath syntax to identify the data to extract. The extracted data includes weather location, condition, today's forecast, and tomorrow's forecast. 
+2. Convert the response payload from XML to JSON.
+3. Extract more variables from the converted JSON payload. We use JSONPath syntax to identify the data to extract. The extracted data includes the weather description and humidity. 
+4. Assign the extracted variables to HTTP response headers. 
+
+### Set up, deploy, invoke
+
+See the main project [README](../../README.md) file for information about setting up, deploying, and invoking sample proxies. 
+
+### More information
+
+**Policy used in this sample**
+
+* [Extract Variables policy](http://apigee.com/docs/api-services/reference/extract-variables-policy)
+* [Assign Message policy](http://apigee.com/docs/api-services/reference/assign-message-policy)
+* [XML to JSON policy](http://apigee.com/docs/api-services/reference/xml-json-policy)
+
+**Related policies**
+
+* [JSON to XML policy](http://apigee.com/docs/api-services/reference/json-xml-policy)
+* [XSL transform policy](http://apigee.com/docs/api-services/reference/xsl-transform-policy)
+
+**Related topics**
+
+* [Variables reference](http://apigee.com/docs/api-services/reference/variables-reference)
+
+### Ask the community
+
+[![alt text](../../images/apigee-community.png "Apigee Community is a great place to ask questions and find answers about developing API proxies. ")](https://community.apigee.com?via=github)
+
+---
+
+
+
+
+
+
+
 
 # Configure 
 
