@@ -1,7 +1,7 @@
 
 # Extract and assign variables
 
-![alt text](https://github.com/apigee/api-platform-samples/blob/master/images/icon_policy_extract-variable.jpg) ![alt text](https://github.com/apigee/api-platform-samples/blob/master/images/icon-assign-message.jpg) ![alt text](https://github.com/apigee/api-platform-samples/blob/master/images/icon-xml-to-json.jpg)
+![alt text](../../images/icon_policy_extract-variable.jpg) ![alt text](../../images/icon-assign-message.jpg) ![alt text](../../images/icon-xml-to-json.jpg)
 
 ### Sample use case
 
@@ -11,7 +11,7 @@ Extract data into flow variables from the response message. Assign extracted var
 
 This [trace](http://apigee.com/docs/api-services/content/using-trace-tool-0) shows the placement of the policies used in this sample. 
 
-![alt text](https://github.com/apigee/api-platform-samples/blob/master/images/variables-trace.png)
+![alt text](../../images/variables-trace.png)
 
 ### About
 
