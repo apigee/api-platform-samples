@@ -42,6 +42,7 @@ See the main project [README](../../README.md) file for information about settin
 **Related topics**
 
 * [Variables reference](http://apigee.com/docs/api-services/reference/variables-reference)
+* [Introduction to flow variables](http://apigee.com/docs/api-services/content/introduction-flow-variables)
 
 ### Ask the community
 
