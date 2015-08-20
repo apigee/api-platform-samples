@@ -1,6 +1,6 @@
 # XML to JSON Transformation
 
-![alt text](https://github.com/apigee/api-platform-samples/blob/master/images/icon-xml-to-json.jpg)
+![alt text](../../images/icon-xml-to-json.jpg)
 
 ### Sample use case
 
@@ -10,7 +10,7 @@ Convert an XML-formatted response to JSON.
 
 This [trace](http://apigee.com/docs/api-services/content/using-trace-tool-0) shows the placement of the policies used in this sample. 
 
-![alt text](https://github.com/apigee/api-platform-samples/blob/master/images/xmltojson-trace.png)
+![alt text](../../images/xmltojson-trace.png)
 
 ### About
 
