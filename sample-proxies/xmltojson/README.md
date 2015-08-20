@@ -6,9 +6,15 @@
 
 Convert an XML-formatted response to JSON. 
 
+### Trace
+
+This [trace](http://apigee.com/docs/api-services/content/using-trace-tool-0) shows the placement of the policies used in this sample. 
+
+![alt text](https://github.com/apigee/api-platform-samples/blob/master/images/xmltojson-trace.png)
+
 ### About
 
-The sample API proxy calls a backend weather service that returns weather data in JSON format by default. We use the XML to JSON policy to transform the response to XML. 
+The sample API proxy calls a backend weather service that returns weather data in JSON format by default. We use the XML to JSON policy on the response flow to transform the response to XML. 
 
 ### Set up, deploy, invoke
 
