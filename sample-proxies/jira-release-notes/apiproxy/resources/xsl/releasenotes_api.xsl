@@ -6,18 +6,10 @@
                 <p>[toc]</p>
                 <p>On {DAY_OF_WEEK}, {MONTH} {DAY_NUMBER}, 2015, we released a new cloud version of Apigee Edge.</p>
                 <div class="note">
-                    <p><a href="http://community.apigee.com/content/apigee-customer-support">Get help here</a> if you have questions or issues.</p>
-                    <p>Sign up for release notifications:</p>
-                    <ul>
-                        <li>
-                            <strong>Cloud</strong>: Go to <a href="http://status.apigee.com">http://status.apigee.com</a> and click <strong>Subscribe to Updates</strong>.
-                        </li>
-                        <li>
-                            <strong>Private Cloud</strong>: Fill out the form at <a href="https://pages.apigee.com/release-notifications-submit.html">https://pages.apigee.com/release-notifications-submit.html</a>.
-                        </li>
-                    </ul>
+                <p><a href="http://community.apigee.com/content/apigee-customer-support">Get help here</a> if you have questions or issues.</p>
+                <p>To get release notifications, see [node:18386].</p>
+                <p>See a list of all [node:8408].</p>
                 </div>
-                <p>For a list of all Apigee Edge release notes, see [node:8408].</p>
                 <h2>New features and enhancements</h2>
                 <p>Following are the new features and enhancements in this release.</p>
                 <xsl:for-each select="Root/issues">
@@ -28,7 +20,6 @@
                         <p>
                             <xsl:value-of select="fields/customfield_13000"/> (
                             <xsl:value-of select="key"/>)
-                        
                         </p>
                     </xsl:if>
                 </xsl:for-each>
