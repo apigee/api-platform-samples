@@ -28,7 +28,7 @@ verifyapikey.VerifyKey.apiproduct.developer.quota.interval = 1
 verifyapikey.VerifyKey.apiproduct.developer.quota.timeunit = second
 ```
 
-You can then set the Quota policy like this (with a default count of 2 calls per minute specified):
+You can then set the Quota policy like this:
 
 ```
 <Quota name="CheckQuota"> 
@@ -39,11 +39,11 @@ You can then set the Quota policy like this (with a default count of 2 calls per
 </Quota>
 ```
 
-This policy also adds the <Identifier> element, which tells the policy to only apply the quota against calls made with the validated API key. Otherwise, all API calls will count against the quota. 
+This policy also has the <Identifier> element, which tells the policy to only apply the quota against calls made with the validated API key. Otherwise, all API calls will count against the quota. 
 
 The flow of the sample goes like this:
 
-1. A request comes in to Apigee Edge. Something like this:
+1. A request comes in to Apigee Edge - something like this:
 
     `curl "http://myorg-test.apigee.net/weatherapikey/forecastrss?w=12797282&apikey=abc123"``
 
@@ -58,14 +58,14 @@ See the main project [README](../../README.md) file for information about settin
 When you invoke this proxy, it returns weather information from the back-end target. The quota set in the product associated with this API key is set to allow only 1 call per minute! So, if you call it a couple of times in succession, you'll get this error:
 
 ```
-{"fault":{"faultstring":"Rate limit quota violation. Quota limit  exceeded. Identifier : G8M6k6zISnAERwvMSMUvzXs4s60GS2oN","detail":{"errorcode":"policies.ratelimit.QuotaViolation"}}}
+{"fault":{"faultstring":"Rate limit quota violation. Quota limit  exceeded. Identifier : G8M6kx6zSnAERwvMSmmUvzXs460G7k2oN","detail":{"errorcode":"policies.ratelimit.QuotaViolation"}}}
 ```
 
 ### Troubleshooting
 
 If `invoke.sh` fails, it could be because it couldn't retrieve an API key from Apigee Edge. Here's how to fix it.
 
-This sample has an `invoke.sh` script that you can use to conveniently call the sample API. To work correctly, this script assumes that these entities exist in your Edge organization:
+To work correctly, the `invoke.sh` script assumes that these entities exist in your Edge organization:
 
 1. A developer with the email address `thomas@weathersample.com`. 
 2. A developer app called `thomas-app`. 
@@ -77,7 +77,7 @@ If you don't have these entities in your Edge organization, here are some sugges
 
 * If needed, you can provision the required entities manually with the script `api-platform-samples/setup/provisioning/setup.sh`. 
 
-* You can edit `invoke.sh` and replace the references to `thomas@weathersample.com` and `thomas-app` with a developer and app that you created. Be sure the developer app includes a product to ensure that a valid API key is created.
+* You can edit `invoke.sh` and replace the references to `thomas@weathersample.com` and `thomas-app` with a developer and app that does exist in your org. Be sure the developer app includes a product to ensure that a valid API key is created.
 
 ### More information
 
