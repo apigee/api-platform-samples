@@ -10,23 +10,7 @@ Validate an API key and enforce a quota based on values set in an API product.
 
 This screen shot from the [Apigee Edge trace tool](http://apigee.com/docs/api-services/content/using-trace-tool-0) shows the placement of the policies used in this sample. 
 
-![alt text](../../images/xmltojson-trace.png)
-
-### Quick note about the required setup
-
-This sample has an `invoke.sh` script that you can use to conveniently call the sample API. To work correctly, this script assumes that these entities exist in your Edge organization:
-
-1. A developer with the email address `thomas@weathersample.com`. 
-2. A developer app called `thomas-app`. 
-3. A product called `FreeProduct`. 
-
-These entities, and several others, were added for you when your Apigee Edge org was first created. If for some reason they are missing, the `invoke.sh` script will fail. 
-
-If you don't have these entities in your Edge organization, here are some suggestions: 
-
-* If needed, you can provision the required entities manually with the script `api-platfor-samples/setup/provisioning/setup.sh`. 
-
-* You can edit `invoke.sh` and replace the references to `thomas@weathersample.com` and `thomas-app` with a developer and app that you created. Be sure the developer app includes a product to ensure that a valid API key is created. 
+![alt text](../../images/xmltojson-trace.png) 
 
 ### About
 
@@ -71,13 +55,34 @@ The flow of the sample goes like this:
 
 See the main project [README](../../README.md) file for information about setting up, deploying, and invoking sample proxies. 
 
+### Troubleshooting
+
+If `invoke.sh` fails, it could be because it couldn't retrieve an API key from Apigee Edge. Here's how to fix it.
+
+This sample has an `invoke.sh` script that you can use to conveniently call the sample API. To work correctly, this script assumes that these entities exist in your Edge organization:
+
+1. A developer with the email address `thomas@weathersample.com`. 
+2. A developer app called `thomas-app`. 
+3. A product called `FreeProduct`. 
+
+These entities, and several others, were added for you when your Apigee Edge org was first created. If for some reason they are missing, the `invoke.sh` script will fail. 
+
+If you don't have these entities in your Edge organization, here are some suggestions: 
+
+* If needed, you can provision the required entities manually with the script `api-platform-samples/setup/provisioning/setup.sh`. 
+
+* You can edit `invoke.sh` and replace the references to `thomas@weathersample.com` and `thomas-app` with a developer and app that you created. Be sure the developer app includes a product to ensure that a valid API key is created.
+
 ### More information
 
 **Policy used in this sample**
+
+* [Verify API Key policy](http://apigee.com/docs/api-services/reference/verify-api-key-policy)
+* [Quota policy](http://apigee.com/docs/api-services/reference/quota-policy)
 * [Assign Message policy](http://apigee.com/docs/api-services/reference/xml-json-policy)
 
 **Related policies**
-* [JSON to XML policy](http://apigee.com/docs/api-services/reference/json-xml-policy)
+* [Spike Arrest policy](http://apigee.com/docs/api-services/reference/spike-arrest-policy)
 
 ### Ask the community
 
