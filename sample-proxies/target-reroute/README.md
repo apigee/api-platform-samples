@@ -15,7 +15,7 @@ This screen shot from the [Apigee Edge trace tool](http://apigee.com/docs/api-se
 
 ### About
 
-This sample API proxy illustrates how to change the target endpoint URL using a JavaScript policy to set the `target.url` flow variable. This variable holds the complete URL for the backend target endpoint, including any query parameters.  
+This sample API proxy illustrates how to change the target endpoint URL using a JavaScript policy to set the `target.url` flow variable. This variable holds the complete URL for the back-end target endpoint, including any query parameters.  
 
 1. Deploy the proxy. 
 1. Send this request to Apigee Edge. 
@@ -24,7 +24,7 @@ This sample API proxy illustrates how to change the target endpoint URL using a 
 
     `curl http://myorg-test.apigee.net/WOEID/2467861`
 
-2. An Extract Variables policy extracts the part of the path that comes after the `/WOEID` base path. 
+2. An [Extract Variables policy](http://apigee.com/docs/api-services/reference/extract-variables-policy) extracts the part of the path that comes after the `/WOEID` base path. 
 
 3. The policy stores the value `2467861` in a flow variable called `WOEID.location`. Here is the policy XML:
 
@@ -40,7 +40,7 @@ This sample API proxy illustrates how to change the target endpoint URL using a 
     ```
 
 
-4. A JavaScript policy rewrites the target URL by setting the `target.url` flow variable. This expression also appends the `WOEID.location` value to the query parameter `w`.
+4. A [JavaScript policy](http://apigee.com/docs/api-services/reference/javascript-policy) rewrites the target URL by setting the `target.url` flow variable. This expression also appends the `WOEID.location` value to the query parameter `w`.
 
     `context.setVariable("target.url", "http://weather.yahooapis.com/forecastrss?w="+context.getVariable("WOEID.location"));`
 
