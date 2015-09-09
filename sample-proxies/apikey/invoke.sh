@@ -1,4 +1,4 @@
- v#!/bin/bash
+#!/bin/bash
 
 echo Using org and environment configured in /setup/setenv.sh
 
@@ -26,4 +26,3 @@ curl "http://$org-$env.$api_domain/weatherapikey/forecastrss?w=12797282&apikey=$
 echo Now use an invalid key
 
 curl "http://$org-$env.$api_domain/weatherapikey/forecastrss?w=12797282&apikey=ZZZZZZZZZZZZZZZZZZZZ"
-
