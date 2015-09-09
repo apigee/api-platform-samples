@@ -1,40 +1,70 @@
-# Target Re-route Sample
+# Rerouting a target URL
 
-This sample demonstrates a simple scenario of changing the target endpoint
-with the help of setting the flow variable "target.url" in a Javascript Step Policy,
-with removal of the proxy.pathsuffix. The proxy uses the Yahoo Weather API for actual
-target endpoint This reference helps in understanding the process of building,
-deploying, activating and accessing this sample.
+![alt text](../../images/icon-policy-javascript.jpg) ![alt text](../../images/icon_policy_extract-variable.jpg)
 
-The actual target api: `http://my-dummy-old-target.com/to-be-replaced`
-New target api that overrides the actual target: `http://weather.yahooapis.com/forecastrss?w={object-in-request}`
 
-Proxy Request: `http://$org-$env.apigee.net/yahoo/objects/12797282` 
-where `/yahoo` is the base-path, `/objects/12797282` is the proxy.pathsuffix.
+### Sample use case
 
-This Proxy Request will be transformed into `http://weather.yahooapis.com/forecastrss?w=12797282`
+Rewrite a target URL dynamically on Apigee Edge.
 
-# Set up
+### Trace
 
-* The username and password that you use to login to enterprise.apigee.com.
-* The name of the organization in which you have an account. Login to 
-  enterprise.apigee.com and check account settings.
+This screen shot from the [Apigee Edge trace tool](http://apigee.com/docs/api-services/content/using-trace-tool-0) shows the placement of the policies used in this sample. 
 
-# Configure 
+![alt text](../../images/target-reroute-trace.png)
 
-Update `/setup/setenv.sh` with your environment details
+### About
 
-# Import and deploy sample project
+This sample API proxy illustrates how to change the target endpoint URL using a JavaScript policy to set the `target.url` flow variable. This variable holds the complete URL for the backend target endpoint, including any query parameters.  
 
-To deploy, run `/setup/deploy.sh`
+1. Send this request to Apigee Edge. 
 
-To test, run `invoke.sh`
+    **Note:** The proxy is configured with a base path of `/WOEID`. The incoming request must contain that base path or the request will not be processed. Tip: Take a look at the `apiproxy/proxies/default.xml` to see where this base path is configured.
 
-# Get help
+    `curl http://myorg-test.apigee.net/WOEID/2467861`
 
-For assistance, please use [Apigee Support](https://community.apigee.com/content/apigee-customer-support).
+2. An Extract Variables policy extracts the part of the path that comes after the `/WOEID` base path. 
 
-Copyright © 2014, 2015 Apigee Corporation
+3. The policy stores the value `2467861` in a flow variable called `WOEID.location`. Here is the policy XML:
+
+    ```xml
+    <ExtractVariables name="extractId">
+        <DisplayName>getWOEIDNumberfromPath</DisplayName>
+        <URIPath>
+            <Pattern ignoreCase="true">/{location}</Pattern>
+        </URIPath>
+        <IgnoreUnresolvedVariables>false</IgnoreUnresolvedVariables>
+        <VariablePrefix>WOEID</VariablePrefix>
+    </ExtractVariables>
+    ```
+
+
+4. A JavaScript policy rewrites the target URL by setting the `target.url` flow variable. This expression also appends the `WOEID.location` value to the query parameter `w`.
+
+    `context.setVariable("target.url", "http://weather.yahooapis.com/forecastrss?w="+context.getVariable("WOEID.location"));`
+
+5. Finally, the newly formed target request is sent to the backend target, the Yahoo weather API, and the weather forecast for the specified locale is returned. 
+
+### Set up, deploy, invoke
+
+See the main project [README](../../README.md) file for information about setting up, deploying, and invoking sample proxies. 
+
+**Policies used in this sample**
+
+* [Extract Variables policy](http://apigee.com/docs/api-services/reference/extract-variables-policy)
+
+* [JavaScript policy](http://apigee.com/docs/api-services/reference/javascript-policy)
+
+**Related information**
+* [Apigee JavaScript Object Model](http://apigee.com/docs/api-services/reference/javascript-object-model)
+
+### Ask the community
+
+[![alt text](../../images/apigee-community.png "Apigee Community is a great place to ask questions and find answers about developing API proxies. ")](https://community.apigee.com?via=github)
+
+---
+
+Copyright © 2015 Apigee Corporation
 
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use
 this file except in compliance with the License. You may obtain a copy
@@ -47,3 +77,4 @@ distributed under the License is distributed on an "AS IS" BASIS,
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
+
