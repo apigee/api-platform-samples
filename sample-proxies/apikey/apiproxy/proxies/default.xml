@@ -2,8 +2,9 @@
   <PreFlow>
     <Request>
       <Step><Name>ValidateAPIKey</Name></Step>
-      <!-- <Step><Name>CheckQuota</Name></Step> -->
+      <Step><Name>CheckQuota</Name></Step>
       <Step><Name>Remove-Query-Param</Name></Step>
+      
     </Request>
   </PreFlow>
 
