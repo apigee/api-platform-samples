@@ -55,6 +55,12 @@ The flow of the sample goes like this:
 
 See the main project [README](../../README.md) file for information about setting up, deploying, and invoking sample proxies. 
 
+When you invoke this proxy, it returns weather information from the back-end target. The quota set in the product associated with this API key is set to allow only 1 call per minute! So, if you call it a couple of times in succession, you'll get this error:
+
+```
+{"fault":{"faultstring":"Rate limit quota violation. Quota limit  exceeded. Identifier : G8M6k6zISnAERwvMSMUvzXs4s60GS2oN","detail":{"errorcode":"policies.ratelimit.QuotaViolation"}}}
+```
+
 ### Troubleshooting
 
 If `invoke.sh` fails, it could be because it couldn't retrieve an API key from Apigee Edge. Here's how to fix it.
