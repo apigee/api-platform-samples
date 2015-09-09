@@ -1,36 +1,91 @@
-# API Key Validation
+# Validate API keys and enforce quotas
 
-This sample shows how to perform a simple "API key" style of API security using Apigee. It uses
-three policies:
+![alt text](../../images/icon-xml-to-json.jpg)
 
-1. An AssignMessage policy to set the "flow.resource.name" variable, which is essential
-to API Product processing.
-2. A policy to validate the API key, return an error if it is invalid, and, for valid keys, look up
-attributes from the relevant API Product.
-3. A policy to enforce a quota on the number of API calls based on the values set
-in the API Product.
+### Sample use case
 
-# Set up
+Validate an API key and enforce a quota based on values set in an API product.
 
-* The username and password that you use to login to enterprise.apigee.com.
-* The name of the organization in which you have an account. Login to 
-  enterprise.apigee.com and check account settings.
+### Trace
 
-# Configure 
+This screen shot from the [Apigee Edge trace tool](http://apigee.com/docs/api-services/content/using-trace-tool-0) shows the placement of the policies used in this sample. 
 
-Update `/setup/setenv.sh` with your environment details
+![alt text](../../images/xmltojson-trace.png)
 
-# Import and deploy sample project
+### Quick note about the required setup
 
-To deploy, run `$ sh deploy.sh`
+This sample has an `invoke.sh` script that you can use to conveniently call the sample API. To work correctly, this script assumes that these entities exist in your Edge organization:
 
-To test, run `$ sh invoke.sh`
+1. A developer with the email address `thomas@weathersample.com`. 
+2. A developer app called `thomas-app`. 
+3. A product called `FreeProduct`. 
 
-# Get help
+These entities, and several others, were added for you when your Apigee Edge org was first created. If for some reason they are missing, the `invoke.sh` script will fail. 
 
-For assistance, please use [Apigee Support](https://community.apigee.com/content/apigee-customer-support).
+If you don't have these entities in your Edge organization, here are some suggestions: 
 
-Copyright © 2014, 2015 Apigee Corporation
+* If needed, you can provision the required entities manually with the script `api-platfor-samples/setup/provisioning/setup.sh`. 
+
+* You can edit `invoke.sh` and replace the references to `thomas@weathersample.com` and `thomas-app` with a developer and app that you created. Be sure the developer app includes a product to ensure that a valid API key is created. 
+
+### About
+
+This sample demonstrates a commonly used, and often misunderstood, behavior of Apigee Edge. When you create an Edge product, you can set quota values that specify how many API calls can be made in a time period (like 10 requests per second). However, you may be surprised to find out configuring these settings do NOT actually enforce a quota!
+
+Quotas are only enforced when a Quota policy is added to a proxy. If you specify quota values in a product, those values are used to populate flow variables that are accessible in your proxy flow, and you can then use these variables in a Quota policy.
+
+The key to remember is that these variables are only populated under specific circumstances, and one of them is when an API key is validated. 
+
+For example, if you have a VerifyAPIKey policy named VerifyKey, the following variables will be populated upon verification of a key with the Quota fields set as 10 requests per 1 second:
+
+```
+verifyapikey.VerifyKey.apiproduct.developer.quota.limit = 10
+verifyapikey.VerifyKey.apiproduct.developer.quota.interval = 1
+verifyapikey.VerifyKey.apiproduct.developer.quota.timeunit = second
+```
+
+You can then set the Quota policy like this (with a default count of 2 calls per minute specified):
+
+```
+<Quota name="CheckQuota"> 
+  <Interval ref="verifyapikey.ValidateAPIKey.apiproduct.developer.quota.interval"/>
+  <TimeUnit ref="verifyapikey.ValidateAPIKey.apiproduct.developer.quota.timeunit"/>
+  <Allow countRef="verifyapikey.ValidateAPIKey.apiproduct.developer.quota.limit"/>
+  <Identifier ref="request.queryparam.apikey"/>
+</Quota>
+```
+
+This policy also adds the <Identifier> element, which tells the policy to only apply the quota against calls made with the validated API key. Otherwise, all API calls will count against the quota. 
+
+The flow of the sample goes like this:
+
+1. A request comes in to Apigee Edge. Something like this:
+
+    `curl "http://myorg-test.apigee.net/weatherapikey/forecastrss?w=12797282&apikey=abc123"``
+
+2. A VerifyApiKey policy checks the `apikey` parameter. If it's valid, product-related flow variables are set and the call proceeds, or else an error is returned. 
+3. A Quota policy executes, with quota values set based on the API key flow variables. 
+4. An Assign Message policy executes to remove the `apikey` parameter from the request. Otherwise, it would be passed on to the back-end target. This step is considered a best practice. 
+
+### Set up, deploy, invoke
+
+See the main project [README](../../README.md) file for information about setting up, deploying, and invoking sample proxies. 
+
+### More information
+
+**Policy used in this sample**
+* [Assign Message policy](http://apigee.com/docs/api-services/reference/xml-json-policy)
+
+**Related policies**
+* [JSON to XML policy](http://apigee.com/docs/api-services/reference/json-xml-policy)
+
+### Ask the community
+
+[![alt text](../../images/apigee-community.png "Apigee Community is a great place to ask questions and find answers about developing API proxies. ")](https://community.apigee.com?via=github)
+
+---
+
+Copyright © 2015 Apigee Corporation
 
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use
 this file except in compliance with the License. You may obtain a copy
