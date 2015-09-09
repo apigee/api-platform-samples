@@ -26,7 +26,7 @@ This sample API proxy illustrates how to change the target endpoint URL using a 
 
 2. An [Extract Variables policy](http://apigee.com/docs/api-services/reference/extract-variables-policy) extracts the part of the path that comes after the `/WOEID` base path. 
 
-3. The policy stores the value `2467861` in a flow variable called `WOEID.location`. Here is the policy XML:
+3. The policy stores the value `2467861` in a flow variable called `WOEID.location`. This value is specific to the back-end API. It identifies the locale for which to return weather data. Here is the policy XML:
 
     ```xml
     <ExtractVariables name="extractId">
@@ -49,6 +49,9 @@ This sample API proxy illustrates how to change the target endpoint URL using a 
 ### Set up, deploy, invoke
 
 See the main project [README](../../README.md) file for information about setting up, deploying, and invoking sample proxies. 
+
+### More information
+
 
 **Policies used in this sample**
 
