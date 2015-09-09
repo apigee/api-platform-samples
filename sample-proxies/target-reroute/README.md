@@ -17,6 +17,7 @@ This screen shot from the [Apigee Edge trace tool](http://apigee.com/docs/api-se
 
 This sample API proxy illustrates how to change the target endpoint URL using a JavaScript policy to set the `target.url` flow variable. This variable holds the complete URL for the backend target endpoint, including any query parameters.  
 
+1. Deploy the proxy. 
 1. Send this request to Apigee Edge. 
 
     **Note:** The proxy is configured with a base path of `/WOEID`. The incoming request must contain that base path or the request will not be processed. Tip: Take a look at the `apiproxy/proxies/default.xml` to see where this base path is configured.
