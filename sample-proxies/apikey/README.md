@@ -1,6 +1,6 @@
 # Validate API keys and enforce quotas
 
-![alt text](../../images/icon-xml-to-json.jpg)
+![alt text](../../images/icon-policy-security.jpg) ![alt text](../../images/icon-policy-quota.jpg) ![alt text](../../images/icon-assign-message.jpg) 
 
 ### Sample use case
 
@@ -10,7 +10,7 @@ Validate an API key and enforce a quota based on values set in an API product.
 
 This screen shot from the [Apigee Edge trace tool](http://apigee.com/docs/api-services/content/using-trace-tool-0) shows the placement of the policies used in this sample. 
 
-![alt text](../../images/xmltojson-trace.png) 
+![alt text](../../images/apikey-quota-trace.png) 
 
 ### About
 
