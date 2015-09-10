@@ -94,9 +94,13 @@ GET call to the API. It is configured to add a user profile for "ajones", but yo
 can change the profile information as you wish. 
 
 
-For assistance, please use [Apigee Support](https://community.apigee.com/content/apigee-customer-support).
+### Ask the community
 
-Copyright © 2014, 2015 Apigee Corporation
+[![alt text](../images/apigee-community.png "Apigee Community is a great place to ask questions and find answers about developing API proxies. ")](https://community.apigee.com?via=github)
+
+---
+
+Copyright © 2015 Apigee Corporation
 
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use
 this file except in compliance with the License. You may obtain a copy
