@@ -1,21 +1,20 @@
-# Apigee API Platform Samples
+# Apigee API sample proxies
 
-This is a collection of sample API proxies for [Apigee Edge](http://apigee.com/about/enterprise), designed to showcase the features of Edge and demonstrate how to build your own API proxies.
+Welcome to the API sample proxies folder. 
 
-Each directory contains a sample API proxy along with directions
-on how to configure, deploy, and test it on the Apigee Edge.
+### About 
 
-[Register for a fully-featured, free Apigee Edge account](
-https://accounts.apigee.com/accounts/sign_up)
+This `sample-proxies` folder contains samples that illustrate lots of different techniques and patterns for developing API proxies on [Apigee Edge](http://apigee.com/about/products/api-management). Each sample illustrates some feature or commonly performed task, such as doing transformations, validating API keys, rewriting target URLs, and many others. 
 
-## [Apigee Edge Documentation](http://apigee.com/docs)
+Each sample is self-contained, and comes with scripts for deploying and invoking the sample. For more information about deploying and invoking the samples, see the [top-level README](../README.md) in this repo.  
 
-# Deploy the samples
+### Register for an Apigee account
 
-For instructions and deploy scripts, refer to /setup directory in the 
-base directory of API Platform Samples distribution.
+You need to [register for an Apigee account](https://accounts.apigee.com/accounts/sign_up) if you want to deploy and run any of the samples. It's free. 
 
-# Get support
+### More information
+
+* For a list and complete description of the samples, see [Cookbook and samples list](http://apigee.com/docs/api-services/samples/samples-reference) in the [Apigee Edge documentation](http://apigee.com/docs). 
 
 ### Ask the community
 
