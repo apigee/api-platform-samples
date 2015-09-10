@@ -1,22 +1,27 @@
 # Documentation Samples
 
-This directory contains API proxies that have dedicated cookbook topics
-in the Apigee API proxy cookbook.
+Welcome to the doc cookbook samples folder.
 
-For an overview, see:
+### About
 
-[The API proxy cookbook] (http://apigee.com/docs/content/api-proxy-cookbook-patterns)
+This folder contains code for the [Cookbook samples](http://apigee.com/docs/api-services/samples/samples-reference), as described in the [Apigee Edge documentation](http://apigee.com/docs). Cookbook samples tend to be longer in scope and serve to illustrate a specific API proxy use case on Apigee Edge. 
 
 
-# Get help and interact with other API developers
+### More information
 
-For assistance, please use [Apigee Support](https://community.apigee.com/content/apigee-customer-support).
+* For a list and complete description of the samples, see [Cookbook and samples list](http://apigee.com/docs/api-services/samples/samples-reference) in the [Apigee Edge documentation](http://apigee.com/docs). 
+
+### Ask the community
+
+[![alt text](../images/apigee-community.png "Apigee Community is a great place to ask questions and find answers about developing API proxies. ")](https://community.apigee.com?via=github)
+
+---
 
 Copyright © 2015 Apigee Corporation
 
-Licensed under the Apache License, Version 2.0 (the "License"); you may 
-not use this file except in compliance with the License. You may obtain 
-a copy of the License at
+Licensed under the Apache License, Version 2.0 (the "License"); you may not use
+this file except in compliance with the License. You may obtain a copy
+of the License at
 
 http://www.apache.org/licenses/LICENSE-2.0
 
