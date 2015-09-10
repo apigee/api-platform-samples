@@ -39,9 +39,7 @@ You need to grab a valid API key from your Apigee Edge org and add it to the `in
 
 7. Save the file. 
 
-### Set up, deploy, invoke
 
-See the main project [README](../../README.md) file for information about setting up, deploying, and invoking sample proxies. 
 
 ### Result
 
