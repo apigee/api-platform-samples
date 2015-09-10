@@ -6,4 +6,4 @@ source ../../setup/setenv.sh
 
 set -x
 
-curl "https://$org-$env.$api_domain/base64encoder?username=MyUserName&password=MyPassword" -v
+curl -i "https://$org-$env.$api_domain/base64encoder?username=MyUserName&password=MyPassword"
