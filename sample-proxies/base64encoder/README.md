@@ -6,12 +6,6 @@
 
 How to use include third-party libraries in JavaScript policies.
 
-### Trace
-
-This screen shot from the [Apigee Edge trace tool](http://apigee.com/docs/api-services/content/using-trace-tool-0) shows the placement of the policies used in this sample. 
-
-![alt text](../../images/javascript-include-trace.png) 
-
 ### About
 
 In a JavaScript policy, you can load JavaScript files as dependencies to the main JavaScript file. Here's how the JavaScript policy looks in this sample, where `encodeAuthHeader.js` is the main JavaScript file. 
@@ -28,17 +22,7 @@ In a JavaScript policy, you can load JavaScript files as dependencies to the mai
 
 The included scripts are evaluated in the order in which they are listed in the policy. Any of the dependent code can use the objects, methods, and properties of the Apigee Edge [JavaScript object model](http://apigee.com/docs/api-services/reference/javascript-object-model).
 
-This demo uses code from the third-party CryptoJS module to do base64 encoding on the user name and password presented in the request. An Assign Message policy echoes the encoded value back to the client as a custom HTTP header. 
-
-```
-    HTTP/1.1 200 OK
-    User-Agent: curl/7.37.1
-    Host: docs-test.apigee.net
-    Accept: */*
-    X-Encoded-Credentials: Basic TXlVc2VyTmFtZTpNeVBhc3N3b3Jk
-    Content-Length: 0
-    Connection: keep-alive
-```
+This demo uses code from the third-party CryptoJS module to do base64 encoding on the user name and password presented in the request. 
 
 ### Set up, deploy, invoke
 
@@ -50,6 +34,25 @@ See the main project [README](../../README.md) file for information about settin
 >
 >It just passes arbitrary username and password strings. You can change them if you want, but they aren't actually validated by this sample. The JavaScript policy grabs whatever values are presented and base64 encodes them. 
 
+### Result
+
+An Assign Message policy echoes the encoded value back to the client as a custom HTTP header. 
+
+```
+    HTTP/1.1 200 OK
+    User-Agent: curl/7.37.1
+    Host: docs-test.apigee.net
+    Accept: */*
+    X-Encoded-Credentials: Basic TXlVc2VyTmFtZTpNeVBhc3N3b3Jk
+    Content-Length: 0
+    Connection: keep-alive
+```
+
+### Trace
+
+This screen shot from the [Apigee Edge trace tool](http://apigee.com/docs/api-services/content/using-trace-tool-0) shows the placement of the policies used in this sample. 
+
+![alt text](../../images/javascript-include-trace.png) 
 
 ### More information
 
