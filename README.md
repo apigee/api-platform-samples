@@ -3,8 +3,8 @@
 * [Audience](#who)
 * [Intro](#intro)
 * [Before you begin](#before)
-* [Initial setup](#initial)
 * [Using the sample proxies](#using)
+* [Setting up](#initial)
 * [Deploying a sample proxy](#deploying)
 * [Invoking a sample proxy](#invoking)
 * [Modifying a sample proxy](#modifying)
@@ -40,7 +40,14 @@ In addition, you'll find:
 
 3. Download this project from GitHub to your system.
 
-## <a name="initial"></a>Initial setup
+## <a name="using"></a>Using the sample proxies
+
+Most developers begin by identifying an interesting sample based on a specific use case or need. You'll find the samples in the `./api-platform-samples/sample-proxies` folder. The Apigee doc site also has a handy [samples overview page](http://apigee.com/docs/api-services/samples/samples-reference). 
+
+
+For example, if you're interested in doing XML to JSON transformations, check out `api-platform-samples/sample-proxies/xmltojson`. 
+
+## <a name="initial"></a>Setting up
 
 Set up your deployment environment. 
 
@@ -56,13 +63,6 @@ Set up your deployment environment.
     api_domain="apigee.net"
     ```
 
-
-## <a name="using"></a>Using the sample proxies
-
-Most developers begin by identifying an interesting sample based on a specific use case or need. You'll find the samples in the `./api-platform-samples/sample-proxies` folder. The Apigee doc site also has a handy [samples overview page](http://apigee.com/docs/api-services/samples/samples-reference). 
-
-
-For example, if you're interested in doing XML to JSON transformations, check out `api-platform-samples/sample-proxies/xmltojson`. 
 
 ## <a name="deploying"></a>Deploying a sample proxy
 
