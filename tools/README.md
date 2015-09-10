@@ -2,7 +2,7 @@
 
 This directory contains three tools:
 
-## API Proxy Generator
+### API Proxy Generator
 
 Requires [curl](http://curl.haxx.se/) to be installed.
 
@@ -17,7 +17,7 @@ Run `proxy_gen.sh` and follow the prompts.
 
 The API proxy will be downloaded and unzipped to a directory called `/apiproxy`
 
-## API Proxy Deploy Tool
+### API Proxy Deploy Tool
 
 >Note: Most of the samples in `api-platform-samples` use the Python-based deploy tool described below, and you can use this tool for deploying proxies to Edge. However, be aware that another deployment tool option exists: [apigeetool](https://www.npmjs.com/package/apigeetool), a Node.js module for deploying proxies and Node.js apps to Apigee Edge. For now, most of the examples in `api-platform-samples` use the Python deploy tool. In the future, the samples may be revised to use `apigeetool`. 
 
@@ -28,7 +28,7 @@ from your local machine to an environment on the Apigee API Platform.
 
 You require an account in an organization at enterprise.apigee.com. [Register for an account for free.](https://accounts.apigee.com/accounts/sign_up)
 
-### Usage
+#### Usage
 
     deploy.py -n {apiName} -u {myname:mypass} -o {myorg} -e {environment} -p {basePath} -d {path to /apiproxy directory}
 
@@ -61,21 +61,23 @@ contains the directory `/apiproxy`, and not to the `/apiproxy` directory itself.
 
 * `-h` **Optional** The base URL for the Apigee API. You do not need to specify or modify this for cloud/trial accounts. Defaults to `https://api.enterprise.apigee.com`
 
-## Organization Snapshot Tool
+### Organization Snapshot Tool
 
 This tool allows retrieval of the settings of an organization. See the README in the org-snapshot directory.
 
 You require an account in an organization at enterprise.apigee.com. [Register for an account for free.](https://accounts.apigee.com/accounts/sign_up)
 
-## Get help
+### Ask the community
 
-For assistance, please use [StackOverflow](http://stackoverflow.com/tags/apigee) and add the tag "apigee".
+[![alt text](../../images/apigee-community.png "Apigee Community is a great place to ask questions and find answers about developing API proxies. ")](https://community.apigee.com?via=github)
 
-Copyright © 2014 Apigee Corporation
+---
 
-Licensed under the Apache License, Version 2.0 (the "License"); you may 
-not use this file except in compliance with the License. You may obtain 
-a copy of the License at
+Copyright © 2015 Apigee Corporation
+
+Licensed under the Apache License, Version 2.0 (the "License"); you may not use
+this file except in compliance with the License. You may obtain a copy
+of the License at
 
 http://www.apache.org/licenses/LICENSE-2.0
 
@@ -84,4 +86,3 @@ distributed under the License is distributed on an "AS IS" BASIS,
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
-
