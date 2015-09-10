@@ -10,7 +10,7 @@ Importing `all.xsd` into an XML editing environment lets you construct all entit
 
 **Note:** Some policies, such as Message Logging and LDAP, have elements in the `/configuration/configuration_schemas.xsd` schema as well. This is a known issue that Apigee will address in the future. In the meantime, consult the [policy reference docs](http://apigee.com/docs/api-services/reference/reference-overview-policy) for guidance.
 
-### Ask the community
+# Ask the community
 
 [![alt text](../images/apigee-community.png "Apigee Community is a great place to ask questions and find answers about developing API proxies. ")](https://community.apigee.com?via=github)
 
