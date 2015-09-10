@@ -1,6 +1,6 @@
 # Using third-party JavaScript libraries
 
-![JavaScript policy](../../images/icon-policy-javascript.jpg) ![alt text](../../images/icon-assign-message.jpg) 
+![alt text](../../images/icon-policy-javascript.jpg JavaScript policy) ![alt text](../../images/icon-assign-message.jpg Assign Message policy) 
 
 ### Sample use case
 
