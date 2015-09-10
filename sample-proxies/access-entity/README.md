@@ -1,6 +1,6 @@
 # Access Entity
 
-![alt text](../../images/icon_policy_extract-variable.jpg) ![alt text](../../images/icon-message.jpg) ![alt text](../../images/icon-access-entity.jpg)
+![alt text](../../images/icon_policy_extract-variable.jpg) ![alt text](../../images/icon-assign-message.jpg) ![alt text](../../images/icon-access-entity.jpg)
 
 ### Sample use case
 
