@@ -1,40 +1,77 @@
 # Access Entity
 
+![alt text](../../images/icon-assign-message.jpg) ![alt text](../../images/icon-assign-message.jpg) ![alt text](../../images/icon-access-entity.jpg)
+
+### Sample use case
+
+Retrieve profiles for Apigee Edge entities. Entities include such things as developers, developer apps, products, and more. 
+
+### Trace
+
+This screen shot from the [Apigee Edge trace tool](http://apigee.com/docs/api-services/content/using-trace-tool-0) shows the placement of the policies used in this sample. 
+
+![alt text](../../images/access-entity-trace.png) 
+
+### About
+
 This sample shows how to retrieve profiles for entities from the Apigee Edge
 datastore. Using this policy, you can retrieve profiles for things like
 apps, developers, and API products. Sometimes you need this information 
 to enable dynamic behavior in policies or code running on Apigee Edge.
 
 This example shows you how to get a developer's email address based on 
-the API key that is presented by the app (that is, the 'invoke.sh' script).
+an API key. This works because an API key can be used to uniquely identify a developer associated with a developer app. 
 
-Complete documentation for this policy can found here:
+In this sample, we use the `invoke.sh` to call the API with a valid API key. 
 
-http://apigee.com/docs/api-services/content/retrieve-entity-profiles-using-accessentity
+### Quick task before you run the sample
 
-# Set up
+You need to grab a valid API key from your Apigee Edge org and add it to the `invoke.sh` file. 
 
-* The username and password that you use to login to enterprise.apigee.com.
-* The name of the organization in which you have an account. Login to 
-  enterprise.apigee.com and check account settings.
-* A valid API key for any app in your organization on Apigee Edge.
+1. Log in to the Edge UI.
+2. Select Developer Apps from the Publish menu. 
+3. Select any developer app -- it doesn't matter which one, as long as it has a Consumer Key that you can copy. 
+4. Click Show next to the Consumer Key for a product. 
+5. Copy the Consumer Key. 
+6. Open `invoke.sh` and insert the key you copied into the `KEY` variable:
 
-# Configure 
+    `KEY="t3AyRHIfbNJwJ6ZbBAxGmNj5YWljAeB"`
 
-Update `/setup/setenv.sh` with your environment details
-Update 'invoke.sh' with a valid API key for an app in your organization.
+7. Save the file. 
 
-# Import and deploy sample project
+### Set up, deploy, invoke
 
-To deploy, run `$ sh deploy.sh`
+See the main project [README](../../README.md) file for information about setting up, deploying, and invoking sample proxies. 
 
-To test, run `$ sh invoke.sh`
+### Result
 
-# Get help
+When you invoke this proxy, it returns an HTTP response to your terminal, shown below. Note that the response includes a custom header `X-Developer-email`. The value of this header was extracted and set dynamically on Edge. The actual email address depends on the API key you used to call the API. 
 
-For assistance, please use [Apigee Support](https://community.apigee.com/content/apigee-customer-support).
+    ```
+    HTTP/1.1 200 OK
+    User-Agent: curl/7.37.1
+    Host: docs-test.apigee.net
+    Accept: */*
+    X-Developer-email: tesla@weathersample.com
+    Content-Length: 0
+    Connection: keep-alive
+    ```
 
-Copyright © 2014, 2015 Apigee Corporation
+### More information
+
+**Policy used in this sample**
+
+* [Access Entity policy](http://apigee.com/docs/api-services/reference/access-entity-policy)
+* [Extract Variables policy](http://apigee.com/docs/api-services/reference/extract-variables-policy)
+* [Assign Message policy](http://apigee.com/docs/api-services/reference/xml-json-policy)
+
+### Ask the community
+
+[![alt text](../../images/apigee-community.png "Apigee Community is a great place to ask questions and find answers about developing API proxies. ")](https://community.apigee.com?via=github)
+
+---
+
+Copyright © 2015 Apigee Corporation
 
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use
 this file except in compliance with the License. You may obtain a copy
