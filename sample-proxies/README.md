@@ -17,13 +17,17 @@ base directory of API Platform Samples distribution.
 
 # Get support
 
-For assistance, please use [StackOverflow](http://stackoverflow.com/tags/apigee) and add the tag "apigee".
+### Ask the community
 
-Copyright © 2014 Apigee Corporation
+[![alt text](../../images/apigee-community.png "Apigee Community is a great place to ask questions and find answers about developing API proxies. ")](https://community.apigee.com?via=github)
 
-Licensed under the Apache License, Version 2.0 (the "License"); you may 
-not use this file except in compliance with the License. You may obtain 
-a copy of the License at
+---
+
+Copyright © 2015 Apigee Corporation
+
+Licensed under the Apache License, Version 2.0 (the "License"); you may not use
+this file except in compliance with the License. You may obtain a copy
+of the License at
 
 http://www.apache.org/licenses/LICENSE-2.0
 
