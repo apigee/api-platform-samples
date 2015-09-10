@@ -6,19 +6,48 @@
 
 Convert an XML-formatted response to JSON. 
 
-### Trace
-
-This screen shot from the [Apigee Edge trace tool](http://apigee.com/docs/api-services/content/using-trace-tool-0) shows the placement of the policies used in this sample. 
-
-![alt text](../../images/xmltojson-trace.png)
-
 ### About
 
-The sample API proxy calls a backend weather service that returns weather data in JSON format by default. We use the XML to JSON policy on the response flow to transform the response to XML. 
+The sample API proxy calls a backend weather service that returns weather data in XML format by default. We use the XML to JSON policy on the response flow to transform the response to JSON. 
 
 ### Set up, deploy, invoke
 
 See the main project [README](../../README.md) file for information about setting up, deploying, and invoking sample proxies. 
+
+### Result
+
+Weather information for Palo Alto, CA in JSON format. Tip: To get nicely formatted JSON like below, you can try piping the command to a formatting utility. For example: `curl <command> | python -mjson.tool`
+
+```
+{
+    "rss": {
+        "channel": {
+            "astronomy": {
+                "sunrise": "6:46 am",
+                "sunset": "7:23 pm"
+            },
+            "atmosphere": {
+                "humidity": "69",
+                "pressure": "29.89",
+                "rising": "1",
+                "visibility": ""
+            },
+            "description": "Yahoo! Weather for Palo Alto, CA",
+            "image": {
+                "height": "18",
+                "link": "http://weather.yahoo.com",
+                "title": "Yahoo! Weather",
+                "url": "http://l.yimg.com/a/i/brand/purplelogo//uh/us/news-wea.gif",
+                "width": "142"
+            }
+...
+```
+
+### Trace
+
+This screen shot from the [Apigee Edge trace tool](http://apigee.com/docs/api-services/content/using-trace-tool-0) shows the placement of the policies used in this sample. 
+
+![alt text](../../images/xmltojson-trace-2.png)
 
 ### More information
 
