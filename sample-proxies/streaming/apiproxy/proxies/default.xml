@@ -2,8 +2,10 @@
   <HTTPProxyConnection>
     <BasePath>/streaming</BasePath>    
     <VirtualHost>default</VirtualHost>
-    <Property name="request.streaming.enabled">true</Property>
-    <Property name="response.streaming.enabled">true</Property>
+    <Properties>
+       <Property name="request.streaming.enabled">true</Property>
+       <Property name="response.streaming.enabled">true</Property>
+    </Properties>
   </HTTPProxyConnection>
   <RouteRule name="Route">
     <TargetEndpoint>default</TargetEndpoint>
