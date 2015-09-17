@@ -1,9 +1,15 @@
 # HTTP Streaming
 
-This sample demonstrates an API proxy configured for HTTP streaming. 
 
-The ProxyEndpoint and TargetEndpoint are configured to stream HTTP 
-request and response messages.
+### Sample use case
+
+Configure an API proxy for HTTP streaming. 
+
+### About
+
+By default, HTTP request and response payloads that pass through Apigee Edge are stored in a buffer. 
+
+By default (false), HTTP request payloads are read into a buffer, and policies that can operate on the payload work as expected. In cases where the payloads are larger than the buffer size (10 MB in Apigee Cloud, 3 MB in Edge for Private Cloud), you can set this attribute to true. When true, HTTP request payloads are not read into a buffer; they are streamed as-is to the target endpoint. In this case, any policies that operate on the payload in the TargetEndpoint request flow are bypassed.
 
 In the default configuration, HTTP processing on the API Platform is 
 asynchronous and non-blocking. 
@@ -20,31 +26,32 @@ However, when developing apps that rely on architectures like Comet,
 you need to explicitly configure HTTP streaming, as is demonstrated by 
 this sample API proxy. 
 
-This is accomplished by configuring the Endpoints using pre-defined 
-properties.
+### Set up, deploy, invoke
 
-See the API Platform reference:
+See the main project [README](../../README.md) file for information about setting up, deploying, and invoking sample proxies. 
 
-http://apigee.com/docs/enterprise/content/endpoint-properties-reference
+### Trace
 
-In this sample API proxy, you can see these settings in 
-'/proxies/default.xml' and '/targets/default.xml'.
+This screen shot from the [Apigee Edge trace tool](http://apigee.com/docs/api-services/content/using-trace-tool-0) shows the placement of the policies used in this sample. 
 
-# Configure 
+![alt text](../../images/xmltojson-trace-2.png)
 
-Update `/setup/setenv.sh` with your environment details
+### More information
 
-# Import and deploy sample project
+**Policy used in this sample**
+* [XML to JSON policy](http://apigee.com/docs/api-services/reference/xml-json-policy)
 
-To deploy, run `deploy.sh`
+**Related information**
+* [Streaming requests and responses](http://apigee.com/docs/api-services/content/enabling-streaming)
+* [Endpoint properties reference](http://apigee.com/docs/enterprise/content/endpoint-properties-reference)
 
-To test, run `$ sh invoke.sh`
+### Ask the community
 
-# Get help
+[![alt text](../../images/apigee-community.png "Apigee Community is a great place to ask questions and find answers about developing API proxies. ")](https://community.apigee.com?via=github)
 
-For assistance, please use [Apigee Support](https://community.apigee.com/content/apigee-customer-support).
+---
 
-Copyright © 2014, 2015 Apigee Corporation
+Copyright © 2015 Apigee Corporation
 
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use
 this file except in compliance with the License. You may obtain a copy
