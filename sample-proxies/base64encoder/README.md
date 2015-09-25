@@ -28,7 +28,9 @@ This demo uses code from the third-party CryptoJS module to do base64 encoding o
 
 ### Set up, deploy, invoke
 
-See the main project [README](../../README.md) file for information about setting up, deploying, and invoking sample proxies.
+To deploy, run `$ sh deploy.sh`
+
+To test, run `$ sh invoke.sh`
 
 >If you open `invoke.sh` take a look at the cURL call:
 >
