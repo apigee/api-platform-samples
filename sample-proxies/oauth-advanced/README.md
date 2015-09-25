@@ -15,37 +15,37 @@ This is a complete, working example that demonstrates an approach to implementin
 
 ## <a name="needtoknow">What you need to know about this example
 
-The authorization code grant type requires a step where the end user logs in to the resource server (where protected resources owned by the user are stored) and then gives explicit consent for the app to access those resources. The key to this flow is that the client app never gets to see the user's login credentials for the protected resources, as the authorization on the resource server is handled between the user, the resource server, and the OAuth authorization server.  
+The authorization code grant type requires a step where the end user logs in to the resource server (where protected resources owned by the user are stored) and then gives explicit consent for the app to access those resources. The key to this flow is that the client app never gets to see the user's login credentials for the protected resources, as the authorization on the resource server is handled between the user, the resource server, and the OAuth authorization server.
 
-Here's a flow diagram outlining the steps of this flow: 
+Here's a flow diagram outlining the steps of this flow:
 
-**TIP:** Save the graphic to your system and open it locally to see the full size image. 
+**TIP:** Save the graphic to your system and open it locally to see the full size image.
 
 ![alt text](../images/oauth-advanced-sequence-diagram.png)
 
-1. User initiates the flow by clicking a button in a web page. 
+1. User initiates the flow by clicking a button in a web page.
 2. The user's browser is redirected to a login page. This login page is not under the control of the client app. The client app does not participate in the login interaction, and the client app never sees the user's username or password.
-3. If login is successful, the user is directed to a consent page. The consent page allows the user to specify scopes (what the client app is authorized to do with on behalf of the user). 
-4. After consent is given, the login app communicates with the authorization server. If everything is okay, the authorization server generates an authorization code and sends it back to the client app (via a previously specified redirect URI). 
-5. The client app now has an authorization code and uses it to ask the authorization server for an access token. 
-6. Upon receiving an access token, the client app is able to access the protected APIs on the resource server by including the access token with each call. 
+3. If login is successful, the user is directed to a consent page. The consent page allows the user to specify scopes (what the client app is authorized to do with on behalf of the user).
+4. After consent is given, the login app communicates with the authorization server. If everything is okay, the authorization server generates an authorization code and sends it back to the client app (via a previously specified redirect URI).
+5. The client app now has an authorization code and uses it to ask the authorization server for an access token.
+6. Upon receiving an access token, the client app is able to access the protected APIs on the resource server by including the access token with each call.
 
 ## <a name="parts">What are the parts of this example?
 
 This example has the following parts:
 
-* **login-app** -- A complete implementation that includes a login page and a consent page. Implements session management for extra security. Essentially, this is an API proxy deployed on Apigee Edge. Most of the implementation is in Node.js. For information on the session management feature, see `login-app/README`. 
-* **user-mgmt-v1** -- A key/value store implementation for storing the user's login information. Implemented as an API proxy and deployed on Apigee Edge. An interface to any user management system could be plugged in here, such as LDAP. 
+* **login-app** -- A complete implementation that includes a login page and a consent page. Implements session management for extra security. Essentially, this is an API proxy deployed on Apigee Edge. Most of the implementation is in Node.js. For information on the session management feature, see `login-app/README`.
+* **user-mgmt-v1** -- A key/value store implementation for storing the user's login information. Implemented as an API proxy and deployed on Apigee Edge. An interface to any user management system could be plugged in here, such as LDAP.
 * **webserver-app** -- A very simple web page implemented as an API proxy (runs on Apigee Edge to simplify this example). This is the client app -- the target of the redirect URL to which tokens and other information are sent from the authorization server. Note that this client app never sees the user's login credentials for the resource server.
-* **oauth2** -- An API proxy deployed on Apigee Edge that implements the OAuth 2.0 token endpoints. This is the Apigee Edge authorization server interface. Think of this as a service for requesting and managing OAuth tokens. 
+* **oauth2** -- An API proxy deployed on Apigee Edge that implements the OAuth 2.0 token endpoints. This is the Apigee Edge authorization server interface. Think of this as a service for requesting and managing OAuth tokens.
 
->Note that all the parts of this example run on Apigee Edge. For the most part, this is just to simplify things. The login app, for example, could be designed to run on any platform, as long as it can communicate with Apigee Edge (the authorization server). Such details are obviously going to vary depending on the specific project. 
+>Note that all the parts of this example run on Apigee Edge. For the most part, this is just to simplify things. The login app, for example, could be designed to run on any platform, as long as it can communicate with Apigee Edge (the authorization server). Such details are obviously going to vary depending on the specific project.
 
 
 ## <a name="howdo"></a>How do I get it?
 
 #### 1) Clone this repository from Git
-```bash 
+```bash
   $ git clone https://github.com/apigee/api-platform-samples
 ```
 
@@ -57,17 +57,17 @@ To run this sample, you'll need:
 
 * The username and password that you use to login to `enterprise.apigee.com`.
 
-* The name of the organization in which you have an account. Login to 
+* The name of the organization in which you have an account. Login to
   `enterprise.apigee.com` and check account settings.
 
 ## <a name="configuration">Required configuration steps
 
-The following sections step through configuration of each example component. 
+The following sections step through configuration of each example component.
 
 ### Before you start
 
 1. CD to the root directory of the `oauth-advanced` sample: `./api-platform-samples/sample-proxies/oauth-advanced`.
-2. Open `../../setup/setenv.sh` and add your Apigee Edge account information. The sample components will be deployed to the organization specified in this file. 
+2. Open `../../setup/setenv.sh` and add your Apigee Edge account information. The sample components will be deployed to the organization specified in this file.
 
 ```sh
     org="The name of your organization on Apigee Edge"
@@ -86,7 +86,7 @@ This project does not require any configuration. Just deploy it:
 
 ### Configure and deploy the oauth2 project
 
-This project requires a small configuration, and it also requires that these entities be created on Apigee Edge: a developer, a product, and a developer app. We have a script that will create these automatically for you. These must be in place before you deploy the project. 
+This project requires a small configuration, and it also requires that these entities be created on Apigee Edge: a developer, a product, and a developer app. We have a script that will create these automatically for you. These must be in place before you deploy the project.
 
 Here are the steps:
 
@@ -113,25 +113,25 @@ Here are the steps:
 
 **Provision the required entities to Apigee Edge:**
 
-You must perform this step after you deploy the oauth2 project.  
+You must perform this step after you deploy the oauth2 project.
 
 1. CD to `oauth-advanced/provisioning`
 2. Open the file `oauth2-app.xml` in an editor.
 3. Edit the <CallbackUrl> element as follows, substituting your Edge organization and environment names:
-    
+
     <CallbackUrl>https://org-env.apigee.net/web/callback<CallbackUrl>
 
     for example:
 
     <CallbackUrl>https://myorg-test.apigee.net/web/callback<CallbackUrl>
 
-    **Important:** Make a note of this exact callback URL. You will need to add it to another configuration file later. 
+    **Important:** Make a note of this exact callback URL. You will need to add it to another configuration file later.
 
 4. Execute: `./provision-oauth2.sh`
 
 The provisioning script creates the required entities on Apigee Edge and returns two keys: **Consumer key** and **Consumer secret** in your terminal window. You'll need these values when you configure the webserver app.
 
-Tip: You can log in to the Apigee Edge UI and see that the developer, product, and app entities were created. 
+Tip: You can log in to the Apigee Edge UI and see that the developer, product, and app entities were created.
 
 ###Configure and deploy the webserver-app project
 
@@ -178,12 +178,12 @@ Tip: You can log in to the Apigee Edge UI and see that the developer, product, a
 3. Open `webserver-app/apiproxy/policies/HTMLIndex.xml`
 4. Edit the `BASEURL`, `REDIRECT`, and `CLIENT_ID` variables as follows:
 
-  * `BASEURL` - The base URL for your environment -- use your organization and environment names on Edge. For example: https://myorg-prod.apigee.net. 
-  * `REDIRECT` - This is the Redirect URI. 
+  * `BASEURL` - The base URL for your environment -- use your organization and environment names on Edge. For example: https://myorg-prod.apigee.net.
+  * `REDIRECT` - This is the Redirect URI.
 
       **Note** This URI must *exactly match* the CallbackUrl element that you added to the `oauth2-app.xml` configuration previously. For example: `https://myorg-test.apigee.net/web/callback`
 
-  * `CLIENT_ID` - The "Consumer Key" obtained from a developer app that is registered on Apigee Edge. **Important!** This key  must match the one you configured previously in the webserver app. 
+  * `CLIENT_ID` - The "Consumer Key" obtained from a developer app that is registered on Apigee Edge. **Important!** This key  must match the one you configured previously in the webserver app.
 5. Save the file.
 
 **Deploy the webserver-app project:**
@@ -195,14 +195,14 @@ Tip: You can log in to the Apigee Edge UI and see that the developer, product, a
 
 **Provision the required entities to Apigee Edge:**
 
-You must perform this step before you configure the login-app project.  
+You must perform this step before you configure the login-app project.
 
 1. CD to `oauth-advanced/provisioning`
 2. Execute: `./provision-login-app.sh`
 
-The provisioning script creates the required entities on Apigee Edge and returns two keys: **Consumer key** and **Consumer secret** in your terminal window. You'll need these values when you configure the login-app below. 
+The provisioning script creates the required entities on Apigee Edge and returns two keys: **Consumer key** and **Consumer secret** in your terminal window. You'll need these values when you configure the login-app below.
 
-Tip: You can log in to the Apigee Edge UI and see that the developer, product, and app entities were created. 
+Tip: You can log in to the Apigee Edge UI and see that the developer, product, and app entities were created.
 
 **Configure the project:**
 
@@ -222,7 +222,7 @@ Tip: You can log in to the Apigee Edge UI and see that the developer, product, a
           };
       ```
 
-5. Save the file. 
+5. Save the file.
 
 **Deploy the login-app project:**
 
@@ -241,7 +241,7 @@ Tip: You can log in to the Apigee Edge UI and see that the developer, product, a
 
 2. Initiate the flow
 
-    Just click the "Login with Apigee Example Auth" button. This action sends a request to the authorization server (Apigee Edge), which redirects the browser to a login page. 
+    Just click the "Login with Apigee Example Auth" button. This action sends a request to the authorization server (Apigee Edge), which redirects the browser to a login page.
 
 3. If you haven't registered, do so. Otherwise, log in.
 
@@ -253,15 +253,15 @@ Tip: You can log in to the Apigee Edge UI and see that the developer, product, a
 
 5. Retrieve the access token
 
-After you give consent, these things happen behind the scenes (refer to the flow diagram above for more a graphical view): 
+After you give consent, these things happen behind the scenes (refer to the flow diagram above for more a graphical view):
 
 * The login app communicates to the authorization server that the login was successful.
-* The authorization server generates an authorization code and returns it to the app. 
+* The authorization server generates an authorization code and returns it to the app.
 * The app puts the code into a request to the authorization server for an access token. The app also supplies the client ID and client secret keys.
 * The authorization server validates the auth code and other credentials, and if everything is okay, it returns an access token back to the client.
-* Now, with an access token, the client can request resources from the protected API. 
+* Now, with an access token, the client can request resources from the protected API.
 
->>It's important to see that the app never saw the user's username and password entered in the login page. 
+>It's important to see that the app never saw the user's username and password entered in the login page.
 
 If everything worked okay, you'll see the access code and some extra information (the user's name) displayed in the user's browser:
 
@@ -269,7 +269,7 @@ If everything worked okay, you'll see the access code and some extra information
 
 ## <a name="clean">Clean up
 
-You can use the cleanup scripts to remove the entities (developers, apps, products) that were installed with this sample. 
+You can use the cleanup scripts to remove the entities (developers, apps, products) that were installed with this sample.
 
 1. CD to `oauth-advanced/provisioning`
 2. Execute `cleanup-login-app.sh`
@@ -277,7 +277,7 @@ You can use the cleanup scripts to remove the entities (developers, apps, produc
 
 ## <a name="session">About login and consent session management
 
-The login app includes session management to guarantee that only the logged-in user can access the consent page. Once a successful login has occurred, a user attribute is set in the server side session data.  This attribute is checked when clients access the consent page.  A valid logged-in session can only be used one time for consent to an authorization.  The session is destroyed upon a successful consent in which an authorization code is generated for the client application. For more information, see `./login-app/README`. 
+The login app includes session management to guarantee that only the logged-in user can access the consent page. Once a successful login has occurred, a user attribute is set in the server side session data.  This attribute is checked when clients access the consent page.  A valid logged-in session can only be used one time for consent to an authorization.  The session is destroyed upon a successful consent in which an authorization code is generated for the client application. For more information, see `./login-app/README`.
 
 ## Get help
 
