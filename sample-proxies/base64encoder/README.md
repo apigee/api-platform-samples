@@ -24,7 +24,7 @@ The included scripts are evaluated in the order in which they are listed in the 
 
 This demo uses code from the third-party CryptoJS module to do base64 encoding on the user name and password presented in the request.
 
->Note that Apigee has a [Basic Authentication policy](http://apigee.com/docs/api-services/reference/basic-authentication-policy) that also performs base64 encryption.  This sample proxy is for third-party library Javascript demonstration purposes.
+>Note that Apigee has a [Basic Authentication policy](http://apigee.com/docs/api-services/reference/basic-authentication-policy) that also performs base64 encoding. This sample proxy is for third-party library Javascript demonstration purposes.
 
 ### Set up, deploy, invoke
 
