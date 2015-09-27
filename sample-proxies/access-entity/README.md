@@ -4,7 +4,7 @@ This sample uses these policies:
 
 * ![alt text](../../images/icon-access-entity.jpg "Access Entity policy") Access Entity 
 * ![alt text](../../images/icon_policy_extract-variable.jpg "Extract Variables policy") Extract Variables
-* Assign Message ![alt text](../../images/icon-assign-message.jpg "Assign Message policy")
+* ![alt text](../../images/icon-assign-message.jpg "Assign Message policy") Assign Message 
 
 ### Sample use case
 
