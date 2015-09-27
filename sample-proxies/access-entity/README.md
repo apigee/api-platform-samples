@@ -52,7 +52,7 @@ When you invoke this proxy, it returns an HTTP response to your terminal, shown 
 
 This screen shot from the [Apigee Edge trace tool](http://apigee.com/docs/api-services/content/using-trace-tool-0) shows the placement of the policies used in this sample. 
 
-
+![alt text](../../images/access-entity-trace.png)
 
 ### More information
 
