@@ -1,5 +1,5 @@
 <TargetEndpoint name="facebook">
   <HTTPTargetConnection>
-    <URL>http://api.facebook.com</URL>
+    <URL>https://api.facebook.com</URL>
   </HTTPTargetConnection>
 </TargetEndpoint>

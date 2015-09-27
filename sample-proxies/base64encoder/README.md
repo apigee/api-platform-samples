@@ -1,6 +1,6 @@
 # Using third-party JavaScript libraries
 
-![alt text](../../images/icon-policy-javascript.jpg "JavaScript policy") ![alt text](../../images/icon-assign-message.jpg "Assign Message policy") 
+![alt text](../../images/icon-policy-javascript.jpg "JavaScript policy") ![alt text](../../images/icon-assign-message.jpg "Assign Message policy")
 
 ### Sample use case
 
@@ -8,7 +8,7 @@ How to use include third-party libraries in JavaScript policies.
 
 ### About
 
-In a JavaScript policy, you can load JavaScript files as dependencies to the main JavaScript file. Here's how the JavaScript policy looks in this sample, where `encodeAuthHeader.js` is the main JavaScript file. 
+In a JavaScript policy, you can load JavaScript files as dependencies to the main JavaScript file. Here's how the JavaScript policy looks in this sample, where `encodeAuthHeader.js` is the main JavaScript file.
 
 ```
     <Javascript timeLimit="200" name="EncodeAuthHeader">
@@ -22,21 +22,25 @@ In a JavaScript policy, you can load JavaScript files as dependencies to the mai
 
 The included scripts are evaluated in the order in which they are listed in the policy. Any of the dependent code can use the objects, methods, and properties of the Apigee Edge [JavaScript object model](http://apigee.com/docs/api-services/reference/javascript-object-model).
 
-This demo uses code from the third-party CryptoJS module to do base64 encoding on the user name and password presented in the request. 
+This demo uses code from the third-party CryptoJS module to do base64 encoding on the user name and password presented in the request.
+
+>Note that Apigee has a [Basic Authentication policy](http://apigee.com/docs/api-services/reference/basic-authentication-policy) that also performs base64 encoding. This sample proxy is for third-party library Javascript demonstration purposes.
 
 ### Set up, deploy, invoke
 
-See the main project [README](../../README.md) file for information about setting up, deploying, and invoking sample proxies. 
+To deploy, run `$ sh deploy.sh`
+
+To test, run `$ sh invoke.sh`
 
 >If you open `invoke.sh` take a look at the cURL call:
 >
 >`curl -i "https://$org-$env.$api_domain/base64encoder?username=MyUserName&password=MyPassword"`
 >
->It just passes arbitrary username and password strings. You can change them if you want, but they aren't actually validated by this sample. The JavaScript policy grabs whatever values are presented and base64 encodes them. 
+>It just passes arbitrary username and password strings. You can change them if you want, but they aren't actually validated by this sample. The JavaScript policy grabs whatever values are presented and base64 encodes them.
 
 ### Result
 
-An Assign Message policy echoes the encoded value back to the client as a custom HTTP header. 
+An Assign Message policy echoes the encoded value back to the client as a custom HTTP header.
 
 ```
     HTTP/1.1 200 OK
@@ -50,9 +54,9 @@ An Assign Message policy echoes the encoded value back to the client as a custom
 
 ### Trace
 
-This screen shot from the [Apigee Edge trace tool](http://apigee.com/docs/api-services/content/using-trace-tool-0) shows the placement of the policies used in this sample. 
+This screen shot from the [Apigee Edge trace tool](http://apigee.com/docs/api-services/content/using-trace-tool-0) shows the placement of the policies used in this sample.
 
-![alt text](../../images/javascript-include-trace.png) 
+![alt text](../../images/javascript-include-trace.png)
 
 ### More information
 

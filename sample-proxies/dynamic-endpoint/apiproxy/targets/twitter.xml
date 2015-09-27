@@ -1,5 +1,5 @@
 <TargetEndpoint name="twitter">
   <HTTPTargetConnection>
-    <URL>http://api.twitter.com</URL>
+    <URL>https://api.twitter.com</URL>
   </HTTPTargetConnection>
 </TargetEndpoint>
