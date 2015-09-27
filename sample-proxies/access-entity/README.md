@@ -1,6 +1,8 @@
 # Access Entity
 
-![alt text](../../images/icon_policy_extract-variable.jpg "Extract Variables policy") ![alt text](../../images/icon-assign-message.jpg "Assign Message policy") ![alt text](../../images/icon-access-entity.jpg "Access Entity policy")
+![alt text](../../images/icon-access-entity.jpg "Access Entity policy") ![alt text](../../images/icon_policy_extract-variable.jpg "Extract Variables policy") ![alt text](../../images/icon-assign-message.jpg "Assign Message policy")
+
+This sample uses these policies: Access Entity, Extract Variables, and Assign Message. 
 
 ### Sample use case
 
