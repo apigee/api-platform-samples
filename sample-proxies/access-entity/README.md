@@ -6,12 +6,6 @@
 
 Retrieve profiles for Apigee Edge entities. Entities include such things as developers, developer apps, products, and more. 
 
-### Trace
-
-This screen shot from the [Apigee Edge trace tool](http://apigee.com/docs/api-services/content/using-trace-tool-0) shows the placement of the policies used in this sample. 
-
-![alt text](../../images/access-entity-trace.png) 
-
 ### About
 
 This sample shows how to retrieve profiles for entities from the Apigee Edge
@@ -40,7 +34,6 @@ You need to grab a valid API key from your Apigee Edge org and add it to the `in
 7. Save the file. 
 
 
-
 ### Result
 
 When you invoke this proxy, it returns an HTTP response to your terminal, shown below. Note that the response includes a custom header `X-Developer-email`. The value of this header was extracted and set dynamically on Edge. The actual email address depends on the API key you used to call the API. 
@@ -54,6 +47,12 @@ When you invoke this proxy, it returns an HTTP response to your terminal, shown 
     Content-Length: 0
     Connection: keep-alive
     ```
+
+### Trace
+
+This screen shot from the [Apigee Edge trace tool](http://apigee.com/docs/api-services/content/using-trace-tool-0) shows the placement of the policies used in this sample. 
+
+![alt text](../../images/access-entity-trace.png) 
 
 ### More information
 
