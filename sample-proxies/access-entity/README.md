@@ -1,14 +1,16 @@
 # Access Entity
 
+### Sample use case
+
+Retrieve profiles for Apigee Edge entities. Entities include such things as developers, developer apps, products, and more. 
+
+### Policies 
+
 This sample uses these policies: 
 
 * ![alt text](../../images/icon-access-entity.jpg "Access Entity policy") Access Entity 
 * ![alt text](../../images/icon_policy_extract-variable.jpg "Extract Variables policy") Extract Variables
 * ![alt text](../../images/icon-assign-message.jpg "Assign Message policy") Assign Message 
-
-### Sample use case
-
-Retrieve profiles for Apigee Edge entities. Entities include such things as developers, developer apps, products, and more. 
 
 ### About
 
