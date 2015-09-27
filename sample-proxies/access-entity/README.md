@@ -8,9 +8,9 @@ Retrieve profiles for Apigee Edge entities. Entities include such things as deve
 
 This sample uses these policies: 
 
-* ![alt text](../../images/icon-access-entity.jpg "Access Entity policy") Access Entity 
-* ![alt text](../../images/icon_policy_extract-variable.jpg "Extract Variables policy") Extract Variables
-* ![alt text](../../images/icon-assign-message.jpg "Assign Message policy") Assign Message 
+* ![alt text](../../images/icon-access-entity.jpg "Access Entity policy") Access Entity: To retrieve information about a developer entity. 
+* ![alt text](../../images/icon_policy_extract-variable.jpg "Extract Variables policy") Extract Variables: To extract the developer's email address.
+* ![alt text](../../images/icon-assign-message.jpg "Assign Message policy") Assign Message: To put the email address in a response header.
 
 ### About
 
