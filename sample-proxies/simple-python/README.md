@@ -13,7 +13,7 @@ This sample uses these policies:
 
 ### About
 
->Note: This policy is not available with the Apigee Developer unlimited free trial. See [Apigee Edge Pricing Features](http://apigee.com/about/pricing/apigee-edge-pricing-features). To enable this policy in your environment, contact [Apigee Support](https://community.apigee.com/content/apigee-customer-support).
+>Note: This policy is not available with Apigee Edge Free (free, non-expiring license). See [Apigee Edge Pricing Features](http://apigee.com/about/pricing/apigee-edge-pricing-features). To enable this policy in your environment, contact [Apigee Support](https://community.apigee.com/content/apigee-customer-support).
 
 This very simple example executes a Python script that adds a response header to the API. The proxy calls an API to get the weather for Palo Alto, CA.
 
