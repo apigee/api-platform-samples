@@ -8,7 +8,7 @@ Execute a Python script in an API flow.
 
 This sample uses these policies: 
 
-* ![alt text](../../images/icon_policy_python.jpg "Python Script policy") Python Script: To set response headers. 
+* ![alt text](../../images/icon_policy_python.jpg "Python Script policy") Python Script: To set response headers. The policy is set on the target response flow.
  
 
 ### About
@@ -20,8 +20,8 @@ This very simple example executes a Python script that adds a response header to
 The Python script just sets a response header to the value of a flow variable:
 
 ```
-    response.setVariable("header.X-Apigee-Demo-target", flow.getVariable("target.url"));
-    print 'Reached the script & assigned header variable' 
+response.setVariable("header.X-Apigee-Demo-target", flow.getVariable("target.url"));
+print 'Reached the script & assigned header variable' 
 ```
 
 After invoking the proxy, you'll see that special response header was added:
