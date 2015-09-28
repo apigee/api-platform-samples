@@ -1,38 +1,82 @@
-# Pagination sample
-
-This sample demonstrates how you can add pagination to the 
-response returned by a backend service.
-
-This is beneficial because it means that you don't need to do 
-pagination of the results in the app running on a mobile device.
-
-It also means that you don't need to implement pagination in your
-backend service.
-
-This sample uses XSLT to transform a cached XML response to return 
-a result set based on two parameters presented by the app: 
-'limit' and 'offset'.
-
-* 'limit' defines how many results will be returned
-* 'offset' defines the starting point for returned results (for example, an offset of '5'
-indicates that the results should begin with the 5th result) 
 
 
-# Configure 
+# Pagination and caching sample
 
-Update `/setup/setenv.sh` in this distribution with your environment details.
 
-# Import and deploy sample project
+### Sample use case
 
-To deploy, run `$ sh deploy.sh`
+Paginate a cached response.
 
-To test, run `$ sh invoke.sh`
+### Policies 
 
-# Get help
+This sample uses these policies: 
 
-For assistance, please use [Apigee Support](https://community.apigee.com/content/apigee-customer-support).
+* ![alt text](../../images/icon-assign-message.jpg "XSLT policy") XSL Transform: To apply an XSLT stylesheet to the response body. The stylesheet extracts specified elements and applies `offset` and `limit` parameters. 
+* ![alt text](../../images/icon-policy-extract-variables.jpg "Extract Variables policy") Extract Variables: To extract query parameters from the request.  
+* ![alt text](../../images/icon_policy_traffic-management.jpg "Response Cache policy") Response Cache: To cache the response from the backend service.
+* ![alt text](../../images/icon-assign-message.jpg "Assign Message policy") Assign Message: To set the paginated payload in the response.
 
-Copyright © 2014, 2015 Apigee Corporation
+
+### About
+
+This sample uses XSLT to transform a cached XML response to return a result set based on two parameters presented by the app: `limit` and `offset`.
+
+* `limit` - Defines how many results to return. 
+* `offset` - Defines the starting point for returned results. For example, an offset of `5` indicates that the results should begin with the 5th result.
+
+Use of the Response Cache policy illustrates a common pattern in API proxy design for improving API performance.
+
+Some benefits of this technique include:
+
+* You don't need to do pagination of the results in the app running on a mobile device.
+* You don't need to implement pagination in your backend service.
+* Response caching improves performance. 
+ 
+
+## XSLT Stylesheet
+
+This is the XSL stylesheet used in this example:
+
+```
+    <xsl:stylesheet
+        xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
+        <xsl:output method="xml" version="1.0" encoding="UTF-8" />
+        <xsl:param name="offset" select="offset"/>
+        <xsl:param name="limit" select="limit"/>
+        <xsl:template match="/">
+            <bars>
+                <xsl:for-each select="/bar-locator/bar">
+                    <xsl:if test="position() &lt; number($limit+$offset) and position() &gt; number($offset)-1">
+                        <xsl:copy-of select="."/>
+                    </xsl:if>
+                </xsl:for-each>
+            </bars>
+        </xsl:template>
+    </xsl:stylesheet>
+```
+
+
+### Set up, deploy, invoke
+
+See the main project [README](../../README.md) file for information about setting up, deploying, and invoking sample proxies.
+
+### More information
+
+**Policy used in this sample**
+
+* [XSL Transform policy](http://apigee.com/docs/api-services/reference/xsl-transform-policy)
+* [Assign Message policy](http://apigee.com/docs/api-services/reference/xml-json-policy)
+* [Response Cache policy](http://apigee.com/docs/api-services/reference/response-cache-policy)
+* [Extract Variables policy](http://apigee.com/docs/api-services/reference/extract-variables-policy)
+
+
+### Ask the community
+
+[![alt text](../../images/apigee-community.png "Apigee Community is a great place to ask questions and find answers about developing API proxies. ")](https://community.apigee.com?via=github)
+
+---
+
+Copyright © 2015 Apigee Corporation
 
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use
 this file except in compliance with the License. You may obtain a copy
