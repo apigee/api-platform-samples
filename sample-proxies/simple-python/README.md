@@ -8,7 +8,7 @@ Execute a Python script in an API flow.
 
 This sample uses these policies: 
 
-* ![alt text](../../images/icon_policy_extract-variable.jpg "Python Script policy") Python Script: To set response headers. 
+* ![alt text](../../images/icon_policy_python.jpg "Python Script policy") Python Script: To set response headers. 
  
 
 ### About
