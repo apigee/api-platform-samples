@@ -7,9 +7,7 @@ Configure an API proxy for HTTP streaming.
 
 ### About
 
-By default, HTTP request and response payloads that pass through Apigee Edge are stored in a buffer. 
-
-By default (false), HTTP request payloads are read into a buffer, and policies that can operate on the payload work as expected. In cases where the payloads are larger than the buffer size (10 MB in Apigee Cloud, 3 MB in Edge for Private Cloud), you can set this attribute to true. When true, HTTP request payloads are not read into a buffer; they are streamed as-is to the target endpoint. In this case, any policies that operate on the payload in the TargetEndpoint request flow are bypassed.
+By default, HTTP request and response payloads that pass through Apigee Edge are stored in a buffer, and policies that can operate on the payload work as expected. In cases where the payloads are larger than the buffer size (10 MB in Apigee Cloud, 3 MB in Edge for Private Cloud), you can set this attribute to true. When true, HTTP request payloads are not read into a buffer; they are streamed as-is to the target endpoint. In this case, any policies that operate on the payload in the TargetEndpoint request flow are bypassed.
 
 In the default configuration, HTTP processing on the API Platform is 
 asynchronous and non-blocking. 
