@@ -6,6 +6,12 @@
 
 Convert an XML-formatted response to JSON. 
 
+### Policies 
+
+This sample uses this policy: 
+
+* ![alt text](../../images/icon-xml-to-json.jpg "XML to JSON policy") XML to JSON: to transform the response from XML to JSON format. 
+
 ### About
 
 The sample API proxy calls a backend weather service that returns weather data in XML format by default. We use the XML to JSON policy on the response flow to transform the response to JSON. 
