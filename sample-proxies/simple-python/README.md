@@ -1,31 +1,52 @@
 # Python Script Sample
 
-This sample demonstrates a simple scenario of attaching a python script in the
-response that adds a header value to it. The proxy uses the Facebook API for
-target endpoint This reference helps in understanding the process of building,
-deploying, activating and accessing this sample.
+### Sample use case
 
-# Set up
+Execute a Python script in an API flow. 
 
-* The username and password that you use to login to enterprise.apigee.com.
-* The name of the organization in which you have an account. Login to 
-  enterprise.apigee.com and check account settings.
+### Policies 
 
-# Configure 
+This sample uses these policies: 
 
-Update `/setup/setenv.sh` with your environment details
+* ![alt text](../../images/icon_policy_extract-variable.jpg "Python Script policy") Python Script: To set response headers. 
+ 
 
-# Import and deploy sample project
+### About
 
-To deploy, run `$ sh deploy.sh`
+>Note: This policy is not available with the Apigee Developer unlimited free trial. See [Apigee Edge Pricing Features](http://apigee.com/about/pricing/apigee-edge-pricing-features). To enable this policy in your environment, contact [Apigee Support](https://community.apigee.com/content/apigee-customer-support).
 
-To test, run `$ sh invoke.sh`
+This very simple example executes a Python script that adds a response header to the API. The proxy calls an API to get the weather for Palo Alto, CA.
 
-# Get help
+The Python script just sets a response header to the value of a flow variable:
 
-For assistance, please use [Apigee Support](https://community.apigee.com/content/apigee-customer-support).
+```
+    response.setVariable("header.X-Apigee-Demo-target", flow.getVariable("target.url"));
+    print 'Reached the script & assigned header variable' 
+```
 
-Copyright © 2014, 2015 Apigee Corporation
+After invoking the proxy, you'll see that special response header was added:
+
+`X-Apigee-Demo-target: http://weather.yahooapis.com/forecastrss?w=12797282`
+
+
+### Set up, deploy, invoke
+
+See the main project [README](../../README.md) file for information about setting up, deploying, and invoking sample proxies. 
+
+
+### More information
+
+**Policies used in this sample**
+
+* [Python Script policy](http://apigee.com/docs/api-services/reference/python-script-policy)
+
+### Ask the community
+
+[![alt text](../../images/apigee-community.png "Apigee Community is a great place to ask questions and find answers about developing API proxies. ")](https://community.apigee.com?via=github)
+
+---
+
+Copyright © 2015 Apigee Corporation
 
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use
 this file except in compliance with the License. You may obtain a copy
