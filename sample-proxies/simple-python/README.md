@@ -6,7 +6,7 @@ Execute a Python script in an API flow.
 
 ### Policies 
 
-This sample uses these policies: 
+This sample uses this policy: 
 
 * ![alt text](../../images/icon_policy_python.jpg "Python Script policy") Python Script: To set response headers. The policy is set on the target response flow.
  
