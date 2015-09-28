@@ -1,17 +1,20 @@
 
 # Extract and assign variables
 
-![alt text](../../images/icon_policy_extract-variable.jpg) ![alt text](../../images/icon-assign-message.jpg) ![alt text](../../images/icon-xml-to-json.jpg)
+) ![alt text](../../images/icon-assign-message.jpg) ![alt text](../../images/icon-xml-to-json.jpg)
 
 ### Sample use case
 
 Extract data into flow variables from the response message. Assign extracted variables to HTTP response headers. 
 
-### Trace
+### Policies 
 
-This screen shot from the [Apigee Edge trace tool](http://apigee.com/docs/api-services/content/using-trace-tool-0) shows the placement of the policies used in this sample. 
+This sample uses these policies: 
 
-![alt text](../../images/variables-trace.png)
+* ![alt text](../../images/icon_policy_extract-variable.jpg "Extract Variables policy") Extract Variables: To pull subsets of data from the response body.  
+* ![alt text](../../images/icon-xml-to-json.jpg "XML to JSON policy") XML to JSON: To convert the response from XML to JSON.
+* ![alt text](../../images/icon-assign-message.jpg "Assign Message policy") Assign Message: To assign extracted data to response headers. 
+
 
 ### About
 
@@ -25,6 +28,12 @@ The target API is a service that returns weather data. We attach policies to the
 ### Set up, deploy, invoke
 
 See the main project [README](../../README.md) file for information about setting up, deploying, and invoking sample proxies. 
+
+### Trace
+
+This screen shot from the [Apigee Edge trace tool](http://apigee.com/docs/api-services/content/using-trace-tool-0) shows the placement of the policies used in this sample. 
+
+![alt text](../../images/variables-trace.png)
 
 ### More information
 
