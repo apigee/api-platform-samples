@@ -10,7 +10,7 @@ How to use include third-party libraries in JavaScript policies.
 This sample uses these policies: 
 
 * ![alt text](../../images/icon-policy-javascript.jpg "JavaScript policy") JavaScript: Includes a main script and several dependencies.
-* ![alt text](../../images/icon-assign-message.jpg "Assign Message policy")Assign Message: Sets the encoded credentials into a response header. 
+* ![alt text](../../images/icon-assign-message.jpg "Assign Message policy") Assign Message: Sets the encoded credentials into a response header. 
 
 ### About
 
