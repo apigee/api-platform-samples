@@ -1,17 +1,15 @@
 # Rerouting a target URL
 
-![alt text](../../images/icon-policy-javascript.jpg) ![alt text](../../images/icon_policy_extract-variable.jpg)
-
-
 ### Sample use case
 
 Rewrite a target URL dynamically on Apigee Edge.
 
-### Trace
+### Policies 
 
-This screen shot from the [Apigee Edge trace tool](http://apigee.com/docs/api-services/content/using-trace-tool-0) shows the placement of the policies used in this sample. 
+This sample uses these policies: 
 
-![alt text](../../images/target-reroute-trace.png)
+* ![alt text](../../images/icon-policy-javascript.jpg "JavaScript policy") JavaScript: To validate an API key in the request, and populate a set of flow variables used by the Quota policy. 
+* ![alt text](../../images/icon_policy_extract-variable.jpg "Extract Variables policy") Extract Variables: To enforce quota on incoming requests. 
 
 ### About
 
@@ -50,8 +48,13 @@ This sample API proxy illustrates how to change the target endpoint URL using a 
 
 See the main project [README](../../README.md) file for information about setting up, deploying, and invoking sample proxies. 
 
-### More information
+### Trace
 
+This screen shot from the [Apigee Edge trace tool](http://apigee.com/docs/api-services/content/using-trace-tool-0) shows the placement of the policies used in this sample. 
+
+![alt text](../../images/target-reroute-trace.png)
+
+### More information
 
 **Policies used in this sample**
 
