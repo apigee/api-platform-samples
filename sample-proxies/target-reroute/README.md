@@ -8,8 +8,9 @@ Rewrite a target URL dynamically on Apigee Edge.
 
 This sample uses these policies: 
 
-* ![alt text](../../images/icon-policy-javascript.jpg "JavaScript policy") JavaScript: To validate an API key in the request, and populate a set of flow variables used by the Quota policy. 
-* ![alt text](../../images/icon_policy_extract-variable.jpg "Extract Variables policy") Extract Variables: To enforce quota on incoming requests. 
+* ![alt text](../../images/icon_policy_extract-variable.jpg "Extract Variables policy") Extract Variables: To extract part of the request path into a variable. 
+* ![alt text](../../images/icon-policy-javascript.jpg "JavaScript policy") JavaScript: Rewrites the target URL. 
+ 
 
 ### About
 
