@@ -1,8 +1,6 @@
 
 # Extract and assign variables
 
-) ![alt text](../../images/icon-assign-message.jpg) ![alt text](../../images/icon-xml-to-json.jpg)
-
 ### Sample use case
 
 Extract data into flow variables from the response message. Assign extracted variables to HTTP response headers. 
