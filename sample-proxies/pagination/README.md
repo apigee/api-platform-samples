@@ -60,6 +60,12 @@ This is the XSL stylesheet used in this example:
 
 See the main project [README](../../README.md) file for information about setting up, deploying, and invoking sample proxies.
 
+### Trace
+
+This screen shot from the [Apigee Edge trace tool](http://apigee.com/docs/api-services/content/using-trace-tool-0) shows the placement of the policies used in this sample. 
+
+![alt text](../../images/pagination-trace.png) 
+
 ### More information
 
 **Policy used in this sample**
