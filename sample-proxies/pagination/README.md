@@ -12,7 +12,7 @@ Paginate a cached response.
 This sample uses these policies: 
 
 * ![alt text](../../images/icon-assign-message.jpg "XSLT policy") XSL Transform: To apply an XSLT stylesheet to the response body. The stylesheet extracts specified elements and applies `offset` and `limit` parameters. 
-* ![alt text](../../images/icon-policy-extract-variables.jpg "Extract Variables policy") Extract Variables: To extract query parameters from the request.  
+* ![alt text](../../images/icon_policy_extract-variable.jpg "Extract Variables policy") Extract Variables: To extract query parameters from the request.  
 * ![alt text](../../images/icon_policy_traffic-management.jpg "Response Cache policy") Response Cache: To cache the response from the backend service.
 * ![alt text](../../images/icon-assign-message.jpg "Assign Message policy") Assign Message: To set the paginated payload in the response.
 
