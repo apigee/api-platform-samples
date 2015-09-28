@@ -1,7 +1,5 @@
 # XML to JSON Transformation
 
-![alt text](../../images/icon-xml-to-json.jpg)
-
 ### Sample use case
 
 Convert an XML-formatted response to JSON. 
