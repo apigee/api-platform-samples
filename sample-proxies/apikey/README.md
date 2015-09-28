@@ -1,16 +1,16 @@
 # Validate API keys and enforce quotas
 
-![alt text](../../images/icon-policy-security.jpg) ![alt text](../../images/icon-policy-quota.jpg) ![alt text](../../images/icon-assign-message.jpg) 
-
 ### Sample use case
 
 Validate an API key and enforce a quota based on values set in an API product.
 
-### Trace
+### Policies 
 
-This screen shot from the [Apigee Edge trace tool](http://apigee.com/docs/api-services/content/using-trace-tool-0) shows the placement of the policies used in this sample. 
+This sample uses these policies: 
 
-![alt text](../../images/apikey-quota-trace.png) 
+* ![alt text](../../images/icon-policy-security.jpg "API Key policy") API Key: To validate an API key in the request, and populate a set of flow variables used by the Quota policy. 
+* ![alt text](../../images/icon-policy-quota.jpg "Quota policy") Quota: To enforce quota on incoming requests. 
+* ![alt text](../../images/icon-assign-message.jpg "Assign Message policy") Assign Message: To remove the API key parameter from the request flow. 
 
 ### About
 
@@ -78,6 +78,12 @@ If you don't have these entities in your Edge organization, here are some sugges
 * If needed, you can provision the required entities manually with the script `api-platform-samples/setup/provisioning/setup.sh`. 
 
 * You can edit `invoke.sh` and replace the references to `thomas@weathersample.com` and `thomas-app` with a developer and app that does exist in your org. Be sure the developer app includes a product to ensure that a valid API key is created.
+
+### Trace
+
+This screen shot from the [Apigee Edge trace tool](http://apigee.com/docs/api-services/content/using-trace-tool-0) shows the placement of the policies used in this sample. 
+
+![alt text](../../images/apikey-quota-trace.png) 
 
 ### More information
 
