@@ -6,8 +6,8 @@
                 <p>[toc]</p>
                 <p>On {DAY_OF_WEEK}, {MONTH} {DAY_NUMBER}, 2015, we released a new cloud version of Apigee Edge.</p>
                 <div class="note">
-                <p><a href="http://community.apigee.com/content/apigee-customer-support">Get help here</a> if you have questions or issues.</p>
-                <p>To get release notifications, see [node:18386].</p>
+                <p><strong>Questions or issues?</strong> <a href="https://community.apigee.com/page/apigee-customer-support">Get help here</a>.</p>
+                <p><strong>Release notifications</strong>: Go to <a href="http://status.apigee.com">http://status.apigee.com</a> and click <strong>Subscribe to Updates</strong>.</p>
                 <p>See a list of all [node:8408].</p>
                 </div>
                 <h2>New features and enhancements</h2>
@@ -18,8 +18,9 @@
                             <xsl:value-of select="fields/summary"/>
                         </h3>
                         <p>
-                            <xsl:value-of select="fields/customfield_13000"/> (
-                            <xsl:value-of select="key"/>)
+                <xsl:value-of select="fields/customfield_13000"/> (<xsl:value-of select="key"/>)
+                        
+                        
                         </p>
                     </xsl:if>
                 </xsl:for-each>
