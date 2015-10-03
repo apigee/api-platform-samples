@@ -7,25 +7,6 @@
         <Response/>
     </PreFlow>
     <Flows>
-        <Flow name="RedirectToLoginPage">
-            <Request>
-                <Step>
-                    <FaultRules/>
-                    <Name>ValidateClientId</Name>
-                </Step>
-                <Step>
-                    <FaultRules/>
-                    <Name>BuildLoginPageUrl</Name>
-                </Step>
-            </Request>
-            <Response>
-                <Step>
-                    <FaultRules/>
-                    <Name>RedirectToLoginPage</Name>
-                </Step>
-            </Response>
-            <Condition>(proxy.pathsuffix MatchesPath "/authorize")</Condition>
-        </Flow>
         <Flow name="AuthorizationCodeRequest">
             <Request>
                 <Step>

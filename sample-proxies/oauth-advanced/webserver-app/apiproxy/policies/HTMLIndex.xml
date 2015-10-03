@@ -11,12 +11,11 @@
          var BASEURL=&quot;https://myorg-myenv.apigee.net&quot;;
          var REDIRECT=&quot;https://myorg-myprod.apigee.net/web/callback&quot;;
          var CLIENT_ID=&quot;Enter the Consumer Key from the oauth2-app&quot;;
-         
-         
+
+
          function login()
          {
-         
-         window.location.href=BASEURL+&#39;/oauth2/authorize?client_id=&#39;+CLIENT_ID+&#39;&amp;redirect_uri=&#39;+REDIRECT+&#39;&amp;response_type=code&amp;scope=order&amp;state=123&#39;;
+         window.location.href=BASEURL+&#39;/loginapp/login?apikey=&#39;+CLIENT_ID+&#39;&amp;redirect_uri=&#39;+REDIRECT+&#39;&amp;scope=order&amp;state=123&#39;;
          }
       &lt;/script&gt;
    &lt;/head&gt;

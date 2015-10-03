@@ -10,11 +10,9 @@ participant "Resource Server" as R
 
 u->UA:initiate
 UA->AWS:initiate
-AWS->GW: /oauth/authorize(redirect_uri,client_id,scope,response_type)
-GW->GW: validate client id
-GW->AWS: http_redirect(login_page as hard-coded in Apigee Edge)
-AWS-> UA: http_redirect(login_page as hard-coded in Apigee Edge)
-UA->LA: execute redirect: http_redirect(login_page as hard-coded in Apigee Edge)
+AWS->UA: 200 OK, return Page with button to Login Page
+u->UA: user click on Login button
+UA->LA: send to Login Page
 LA->UA: return login page
 UA->UA: show login page
 u->UA: provide credentials
