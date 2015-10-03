@@ -2,9 +2,9 @@ title 3-Legged OAuth via Apigee
 
 participant "User" as u
 participant "User Agent" as UA
-participant "App Web Server" as AWS
-participant "Apigee Gateway" as GW
-participant "Login App" as LA
+participant "Webserver App (webserver-app bundle)" as AWS
+participant "Authorization Server(oauth2 bundle)" as GW
+participant "Login App (login-app bundle)" as LA
 participant "User Store" as US
 participant "Resource Server" as R
 
@@ -24,8 +24,8 @@ US->US: validate credentials
 US->LA: credential response
 
 alt Valid credentials
-LA->UA: return permission form
-UA-> UA: show permission form
+LA->UA: return consent form
+UA-> UA: show consent form
 u->UA: provide consent
 UA->LA: submit consent
 LA->GW: /oauth/UserAuthorize(client_id,redirect_uri,scope, user-specific info)

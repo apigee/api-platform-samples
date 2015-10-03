@@ -4,7 +4,7 @@ var getHost = function(req) {
 
 // support running the webapp locally vs. in Apigee cloud
 var getBasePath = function(req) {
-	return (req.hostname.indexOf('localhost') != -1) ? '' : '/oauth2/app';
+	return (req.hostname.indexOf('localhost') != -1) ? '' : '/loginapp';
 };
 
 // support running the webapp locally vs. in Apigee cloud

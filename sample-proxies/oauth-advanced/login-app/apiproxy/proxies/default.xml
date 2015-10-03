@@ -11,7 +11,7 @@
 	<Flows/>
 	<PostFlow/>
 	<HTTPProxyConnection>
-		<BasePath>/oauth2/app</BasePath>
+		<BasePath>/loginapp</BasePath>
 		<VirtualHost>default</VirtualHost>
 		<VirtualHost>secure</VirtualHost>
 	</HTTPProxyConnection>

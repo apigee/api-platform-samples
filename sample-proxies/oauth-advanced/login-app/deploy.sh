@@ -2,8 +2,6 @@
 
 source ../../../setup/setenv.sh
 
-source ../../setup/setenv.sh
-
 hash apigeetool &> /dev/null
 if [ $? -eq 1 ]; then
     echo >&2 "You need to install apigeetool."

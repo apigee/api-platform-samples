@@ -19,7 +19,7 @@ The authorization code grant type requires a step where the end user logs in to 
 
 Here's a flow diagram outlining the steps of this flow:
 
-**TIP:** Save the graphic to your system and open it locally to see the full size image.  You can also use the text provided in misc/webSequenceDiagram.txt and plug into `https://www.websequencediagrams.com`.
+**TIP**: Save the graphic to your system and open it locally to see the full size image.  You can also use the text provided in ./api-platform-samples/sample-proxies/oauth-advanced/misc/webSequenceDiagram.txt and plug into `https://www.websequencediagrams.com`.
 
 ![alt text](../images/oauth-advanced-sequence-diagram.png)
 
@@ -66,8 +66,7 @@ The following sections step through configuration of each example component.
 
 ### Before you start
 
-1. CD to the root directory of the `oauth-advanced` sample: `./api-platform-samples/sample-proxies/oauth-advanced`.
-2. Open `../../setup/setenv.sh` and add your Apigee Edge account information. The sample components will be deployed to the organization specified in this file.
+1. Open `./api-platform-samples/setup/setenv.sh` and add your Apigee Edge account information. The sample components will be deployed to the organization specified in this file.
 
 ```sh
     org="The name of your organization on Apigee Edge"
@@ -81,7 +80,7 @@ The following sections step through configuration of each example component.
 
 This project does not require any configuration. Just deploy it:
 
-1. CD to the root directory of the `user-mgmt-v1` project: `./api-platform-samples/sample-proxies/oauth-advanced/user-mgmt-v1`.
+1. CD to the root directory of the `user-mgmt-v1` project: `user-mgmt-v1`.
 2. Execute: `./deploy.sh`
 
 ### Configure and deploy the oauth2 project
@@ -92,7 +91,7 @@ Here are the steps:
 
 **Configure the oauth2 project:**
 
-1. Open  `./api-platform-samples/sample-proxies/oauth-advanced/oauth2/apiproxy/resources/jsc/build_login_url.js`.
+1. Open  `oauth2/apiproxy/resources/jsc/build_login_url.js`.
 
 2. Enter your environment information at the top of the file. For example:
 
@@ -105,19 +104,19 @@ Here are the steps:
 3. Save the file.
 
 
-**Deploy the oauth2 project:**
+**Deploy the oauth2 API bundle:**
 
-1. CD to `./api-platform-samples/sample-proxies/oauth-advanced/oauth2`
+1. CD to `oauth2`
 2. Execute: `./deploy.sh`
 
 
 **Provision the required entities to Apigee Edge:**
 
-You must perform this step after you deploy the oauth2 project.
+You must perform this step after you deploy the oauth2 API bundle.
 
 1. CD to `oauth-advanced/provisioning`
 2. Open the file `oauth2-app.xml` in an editor.
-3. Edit the <CallbackUrl> element as follows, substituting your Edge organization and environment names:
+3. Edit the ```<CallbackUrl>``` element as follows, substituting your Edge organization and environment names:
 
     <CallbackUrl>https://org-env.apigee.net/web/callback<CallbackUrl>
 
@@ -131,15 +130,18 @@ You must perform this step after you deploy the oauth2 project.
 
 The provisioning script creates the required entities on Apigee Edge and returns two keys: **Consumer key** and **Consumer secret** in your terminal window. You'll need these values when you configure the webserver app.
 
-Tip: You can log in to the Apigee Edge UI and see that the developer, product, and app entities were created.
+**TIP**: You can log in to the Apigee Edge UI and see that the developer, product, and app entities were created.
 
 ###Configure and deploy the webserver-app project
 
 
 1. Open `webserver-app/apiproxy/policies/SetConfigurationVariables.xml`
 
-2. Enter your values for `appKey`, `appSecret`, `environment`, and `organization`, as shown below:
-    **Important!** You'll need to grab the Consumer ID and Consumer Secret that were returned when you provisioned the `oauth2-*` entities in the previous step. Substitute those values in for the `appKey` and `appSecret`. For example:
+2. Enter your values for `appKey`, `appSecret`, `environment`, and `organization`, as shown below.
+
+>**Important! You'll need to grab the Consumer ID and Consumer Secret that were returned when you provisioned the `oauth2-*` entities in the previous step. Substitute those values in for the `appKey` and `appSecret`.**
+
+For example:
 
     ```xml
           <AssignMessage async="false" continueOnError="false" enabled="true" name="SetConfigurationVariables">
@@ -175,20 +177,20 @@ Tip: You can log in to the Apigee Edge UI and see that the developer, product, a
     ```
 
 3. Save the file.
-3. Open `webserver-app/apiproxy/policies/HTMLIndex.xml`
-4. Edit the `BASEURL`, `REDIRECT`, and `CLIENT_ID` variables as follows:
+4. Open `webserver-app/apiproxy/policies/HTMLIndex.xml`
+5. Edit the `BASEURL`, `REDIRECT`, and `CLIENT_ID` variables as follows:
 
   * `BASEURL` - The base URL for your environment -- use your organization and environment names on Edge. For example: https://myorg-prod.apigee.net.
   * `REDIRECT` - This is the Redirect URI.
 
       **Note** This URI must *exactly match* the CallbackUrl element that you added to the `oauth2-app.xml` configuration previously. For example: `https://myorg-test.apigee.net/web/callback`
 
-  * `CLIENT_ID` - The "Consumer Key" obtained from a developer app that is registered on Apigee Edge. **Important!** This key  must match the one you configured previously in the webserver app.
-5. Save the file.
+  * `CLIENT_ID` - The "Consumer Key" obtained from a developer app that is registered on Apigee Edge. **Note!** This key  must match the one you configured previously in the webserver app.
+6. Save the file.
 
 **Deploy the webserver-app project:**
 
-1. CD to `./api-platform-samples/sample-proxies/oauth-advanced/webserver-app`
+1. CD to `webserver-app`
 2. Execute: `./deploy.sh`
 
 ## Configure and deploy the login-app project
@@ -200,14 +202,13 @@ You must perform this step before you configure the login-app project.
 1. CD to `oauth-advanced/provisioning`
 2. Execute: `./provision-login-app.sh`
 
-Tip: You can log in to the Apigee Edge UI and see that the developer, product, and app entities were created.
+**TIP**: You can log in to the Apigee Edge UI and see that the developer, product, and app entities were created.
 
 **Configure the project:**
 
 1. CD to the `oauth-advanced/login-app/apiproxy/resources/node` directory.
 2. Execute `npm install` to install dependencies.
 3. Open `login-app/apiproxy/resources/node/config/config.js`
-
 4. Enter your environment information. The domain will typically be `apigee.net`. Some on-premise installations of Apigee Edge may use a different domain. For example:
 
       ```
@@ -222,7 +223,7 @@ Tip: You can log in to the Apigee Edge UI and see that the developer, product, a
 
 **Deploy the login-app project:**
 
-1. CD to `./api-platform-samples/sample-proxies/oauth-advanced/login-app`
+1. CD to `login-app`
 2. Execute: `./deploy.sh`
 
 ## <a name="deploy">Test the sample
@@ -235,21 +236,15 @@ Tip: You can log in to the Apigee Edge UI and see that the developer, product, a
 
     `http://jdoe-prod.apigee.net/web`
 
-2. Initiate the flow
-
-    Just click the "Login with Apigee Example Auth" button. This action sends a request to the authorization server (Apigee Edge), which redirects the browser to a login page.
+2. Initiate the flow.  Just click the "Login with Apigee Example Auth" button. This action sends a request to the authorization server (Apigee Edge), which redirects the browser to a login page.
 
 3. If you haven't registered, do so. Otherwise, log in.
 
     >**NOTE:** There's a bug (#42) where certain passwords cause the registration to fail (throw a stacktrace error). For example, a password like 566559aa throws an error, while apigee123 does not. Until further notice, when trying out this sample, try using apigee123 as your password if see an error like this when you click the "Register" button.
 
-4. Give consent
+4. Give consent.  The consent page gives you (the end user) a chance to limit the type of access the app will have to your resources. In this example, only one scope is offered, called "order". Click **Allow** to give the app access to your resources.
 
-    The consent page gives you (the end user) a chance to limit the type of access the app will have to your resources. In this example, only one scope is offered, called "order". Click **Allow** to give the app access to your resources.
-
-5. Retrieve the access token
-
-After you give consent, these things happen behind the scenes (refer to the flow diagram above for more a graphical view):
+5. Retrieve the access token.  After you give consent, these things happen behind the scenes (refer to the flow diagram above for more a graphical view):
 
 * The login app communicates to the authorization server that the login was successful.
 * The authorization server generates an authorization code and returns it to the app.

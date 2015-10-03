@@ -8,7 +8,7 @@ var domain = "apigee.net"; // On prem customers might have to change this domain
 //***
 
 //set the url for login page here
-var login_url = "https://" + organization + "-" + environment + "." + domain + "/oauth2/app/login";
+var login_url = "https://" + organization + "-" + environment + "." + domain + "/loginapp/login";
 
 
 
@@ -26,7 +26,7 @@ var redirect_uri ="";
 
 //redirect_uri is optional for the request
 if (client_redirect_uri != null){
-	
+
 	//if redirect_uri from request does not match what is registered for the app, throw a fault
 	if (encodeURIComponent(client_redirect_uri).indexOf(encodeURIComponent(reg_redirect_uri)) != 0){
 		throw 'Invalid Request: Invalid Redirect URI.';
@@ -39,15 +39,15 @@ if (client_redirect_uri != null){
 }
 
 try {
-	
+
 	if (response_type != "code"){
 		throw 'Invalid Request: Response type must be equal to code.';
 	}
-	
+
 	//start querystring
 	login_url += '?';
-	
-	
+
+
 	if (client_id != null){
 	 login_url = login_url + 'apikey=' + client_id;
 	 }
@@ -61,22 +61,22 @@ try {
 	 login_url = login_url + '&app=' + app;
 	 }
 	if (state != null){
-	 login_url = login_url + '&state=' + state; 
+	 login_url = login_url + '&state=' + state;
 	 }
-	 
+
 	context.setVariable("login_url", login_url);
-	
-	
+
+
 } catch (e) {
-   
+  
  	throw e;
- 	
+
 }
 
 
 
 
 
-	
+
 
 

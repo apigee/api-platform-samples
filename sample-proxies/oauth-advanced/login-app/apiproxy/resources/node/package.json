@@ -3,6 +3,7 @@
   "version": "1.0.1",
   "description": "Lightweight web app to support OAuth2 authorization_code grant login/consent flow.",
   "main": "app.js",
+  "repository": "https://github.com/apigee/api-platform-samples.git",
   "dependencies": {
     "apigee-access": "^1.3.0",
     "body-parser": "^1.9.2",
