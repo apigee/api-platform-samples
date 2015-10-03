@@ -1,0 +1,51 @@
+title 3-Legged OAuth via Apigee
+
+participant "User" as u
+participant "User Agent" as UA
+participant "App Web Server" as AWS
+participant "Apigee Gateway" as GW
+participant "Login App" as LA
+participant "User Store" as US
+participant "Resource Server" as R
+
+u->UA:initiate
+UA->AWS:initiate
+AWS->GW: /oauth/authorize(redirect_uri,client_id,scope,response_type)
+GW->GW: validate client id
+GW->AWS: http_redirect(login_page as hard-coded in Apigee Edge)
+AWS-> UA: http_redirect(login_page as hard-coded in Apigee Edge)
+UA->LA: execute redirect: http_redirect(login_page as hard-coded in Apigee Edge)
+LA->UA: return login page
+UA->UA: show login page
+u->UA: provide credentials
+UA->LA: submit login
+LA-> US: send credentials
+US->US: validate credentials
+US->LA: credential response
+
+alt Valid credentials
+LA->UA: return permission form
+UA-> UA: show permission form
+u->UA: provide consent
+UA->LA: submit consent
+LA->GW: /oauth/UserAuthorize(client_id,redirect_uri,scope, user-specific info)
+GW->GW: Validate request redirect_uri against registered redirect_uri for client_id
+GW->GW: Create authorization code w/ user-specific info
+GW->LA: 302 location redirect_uri?code={auth_code}&scope={scope}
+LA->UA: 302 location redirect_uri?code={auth_code}&scope={scope}
+UA->AWS:execute redirect: redirect_uri?code={auth_code}&scope={scope}
+AWS->AWS: extract auth code and scope
+AWS->AWS: close user agent
+AWS->GW: /oauth/token(client_id, client_secret, code, grant type, scope)
+GW->AWS: return access_token, scope, expiry_time, refresh_token
+AWS->GW: get_protected_resource(access_token)
+GW->GW: validate token
+GW->R: get resource
+R->GW: return resource
+GW->AWS: return resource
+end Valid credentials
+
+alt Invalid credentials
+LA->UA: return access denied
+UA->u: show access denied
+end Invalid credentials

@@ -19,14 +19,14 @@ The authorization code grant type requires a step where the end user logs in to 
 
 Here's a flow diagram outlining the steps of this flow:
 
-**TIP:** Save the graphic to your system and open it locally to see the full size image.
+**TIP:** Save the graphic to your system and open it locally to see the full size image.  You can also use the text provided in misc/webSequenceDiagram.txt and plug into `https://www.websequencediagrams.com`.
 
 ![alt text](../images/oauth-advanced-sequence-diagram.png)
 
 1. User initiates the flow by clicking a button in a web page.
 2. The user's browser is redirected to a login page. This login page is not under the control of the client app. The client app does not participate in the login interaction, and the client app never sees the user's username or password.
 3. If login is successful, the user is directed to a consent page. The consent page allows the user to specify scopes (what the client app is authorized to do with on behalf of the user).
-4. After consent is given, the login app communicates with the authorization server. If everything is okay, the authorization server generates an authorization code and sends it back to the client app (via a previously specified redirect URI).
+4. After consent is given, the login app communicates with the authorization server. If redirect_URI matches the redirect_URI in Apigee Edge for that client_id, the authorization server generates an authorization code and sends it back to the client app (via a previously specified redirect URI).
 5. The client app now has an authorization code and uses it to ask the authorization server for an access token.
 6. Upon receiving an access token, the client app is able to access the protected APIs on the resource server by including the access token with each call.
 
@@ -200,8 +200,6 @@ You must perform this step before you configure the login-app project.
 1. CD to `oauth-advanced/provisioning`
 2. Execute: `./provision-login-app.sh`
 
-The provisioning script creates the required entities on Apigee Edge and returns two keys: **Consumer key** and **Consumer secret** in your terminal window. You'll need these values when you configure the login-app below.
-
 Tip: You can log in to the Apigee Edge UI and see that the developer, product, and app entities were created.
 
 **Configure the project:**
@@ -216,9 +214,7 @@ Tip: You can log in to the Apigee Edge UI and see that the developer, product, a
           exports.envInfo = {
              org: 'Your org name on Edge',
              env: 'Your environment on Edge (test or prod)',
-             domain: 'apigee.net',
-             appKey: 'The app key returned when you provisioned the login-app',
-             appSecret: 'The app secret returned when you provisioned the login-app'
+             domain: 'apigee.net'
           };
       ```
 

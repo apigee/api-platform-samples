@@ -43,6 +43,3 @@ secret=`curl -u $username:$password -H "Accept: application/json" \
 curl -u $username:$password \
   $url/v1/o/$org/developers/loginappdev@example.com/apps/login-app/keys/${key} \
   -H "Content-Type: application/xml" -X POST -T login-app-product.xml
-
-echo "\n\nConsumer key for login-app is ${key}"
-echo "\n\nConsumer secret for login-app is ${secret}"
