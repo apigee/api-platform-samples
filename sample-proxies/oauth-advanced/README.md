@@ -89,21 +89,6 @@ This bundle requires a small configuration, and it also requires that these enti
 
 Here are the steps:
 
-**Configure the oauth2 bundle:**
-
-1. Open  `oauth2/apiproxy/resources/jsc/build_login_url.js`.
-
-2. Enter your environment information at the top of the file. For example:
-
-      ```
-           var organization = "myorg";
-           var environment = "prod";
-           var domain = "apigee.net";
-      ```
-
-3. Save the file.
-
-
 **Deploy the oauth2 API bundle:**
 
 1. CD to `oauth2`
