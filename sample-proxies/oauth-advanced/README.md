@@ -39,7 +39,7 @@ This example has the following parts:
 * **webserver-app** -- A very simple web page implemented as an API proxy (runs on Apigee Edge to simplify this example). This is the client app -- the target of the redirect URL to which tokens and other information are sent from the authorization server. Note that this client app never sees the user's login credentials for the resource server.
 * **oauth2** -- An API proxy deployed on Apigee Edge that implements the OAuth 2.0 token endpoints. This is the Apigee Edge authorization server interface. Think of this as a service for requesting and managing OAuth tokens.
 
->Note that all the parts of this example run on Apigee Edge. For the most part, this is just to simplify things. The login app, for example, could be designed to run on any platform, as long as it can communicate with Apigee Edge (the authorization server). Such details are obviously going to vary depending on the specific project.
+>Note that all the parts of this example run on Apigee Edge. For the most part, this is just to simplify things. The login app, for example, could be designed to run on any platform, as long as it can communicate with Apigee Edge (the authorization server). Such details are obviously going to vary depending on the specific bundle.
 
 
 ## <a name="howdo"></a>How do I get it?
@@ -76,20 +76,20 @@ The following sections step through configuration of each example component.
     api_domain="apigee.net"
 ```
 
-### Deploy the user-mgmt-v1 project
+### Deploy the user-mgmt-v1 bundle
 
-This project does not require any configuration. Just deploy it:
+This bundle does not require any configuration. Just deploy it:
 
-1. CD to the root directory of the `user-mgmt-v1` project: `user-mgmt-v1`.
+1. CD to the root directory of the `user-mgmt-v1` bundle: `user-mgmt-v1`.
 2. Execute: `./deploy.sh`
 
-### Configure and deploy the oauth2 project
+### Configure and deploy the oauth2 bundle
 
-This project requires a small configuration, and it also requires that these entities be created on Apigee Edge: a developer, a product, and a developer app. We have a script that will create these automatically for you. These must be in place before you deploy the project.
+This bundle requires a small configuration, and it also requires that these entities be created on Apigee Edge: a developer, a product, and a developer app. We have a script that will create these automatically for you. These must be in place before you deploy the bundle.
 
 Here are the steps:
 
-**Configure the oauth2 project:**
+**Configure the oauth2 bundle:**
 
 1. Open  `oauth2/apiproxy/resources/jsc/build_login_url.js`.
 
@@ -132,7 +132,7 @@ The provisioning script creates the required entities on Apigee Edge and returns
 
 **TIP**: You can log in to the Apigee Edge UI and see that the developer, product, and app entities were created.
 
-###Configure and deploy the webserver-app project
+###Configure and deploy the webserver-app bundle
 
 
 1. Open `webserver-app/apiproxy/policies/SetConfigurationVariables.xml`
@@ -188,23 +188,23 @@ For example:
   * `CLIENT_ID` - The "Consumer Key" obtained from a developer app that is registered on Apigee Edge. **Note!** This key  must match the one you configured previously in the webserver app.
 6. Save the file.
 
-**Deploy the webserver-app project:**
+**Deploy the webserver-app bundle:**
 
 1. CD to `webserver-app`
 2. Execute: `./deploy.sh`
 
-## Configure and deploy the login-app project
+## Configure and deploy the login-app bundle
 
 **Provision the required entities to Apigee Edge:**
 
-You must perform this step before you configure the login-app project.
+You must perform this step before you configure the login-app bundle.
 
 1. CD to `oauth-advanced/provisioning`
 2. Execute: `./provision-login-app.sh`
 
 **TIP**: You can log in to the Apigee Edge UI and see that the developer, product, and app entities were created.
 
-**Configure the project:**
+**Configure the bundle:**
 
 1. CD to the `oauth-advanced/login-app/apiproxy/resources/node` directory.
 2. Execute `npm install` to install dependencies.
@@ -221,7 +221,7 @@ You must perform this step before you configure the login-app project.
 
 5. Save the file.
 
-**Deploy the login-app project:**
+**Deploy the login-app bundle:**
 
 1. CD to `login-app`
 2. Execute: `./deploy.sh`

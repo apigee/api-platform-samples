@@ -6,8 +6,6 @@ echo "Enter your password for the Apigee Enterprise organization, followed by [E
 
 read -s password
 
-echo using $username and $org
-
 echo Install API Products
 
 curl -u $username:$password $url/v1/o/$org/apiproducts \
