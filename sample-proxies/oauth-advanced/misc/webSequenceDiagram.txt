@@ -2,10 +2,10 @@ title 3-Legged OAuth via Apigee
 
 participant "User" as u
 participant "User Agent" as UA
-participant "Webserver App (webserver-app bundle)" as AWS
-participant "Authorization Server(oauth2 bundle)" as GW
-participant "Login App (login-app bundle)" as LA
-participant "User Store" as US
+participant "Webserver App \n(webserver-app bundle)" as AWS
+participant "Authorization Server \n(oauth2 bundle)" as GW
+participant "Login App \n(login-app bundle)" as LA
+participant "User Store \n(user-mgmt-v1 bundle)" as US
 participant "Resource Server" as R
 
 u->UA:initiate
