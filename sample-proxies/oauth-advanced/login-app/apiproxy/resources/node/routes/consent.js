@@ -57,7 +57,7 @@ exports.post = function(req, res){
 		path: '/oauth2/userAuthorize',
 		method: 'POST',
 		rejectUnauthorized: false,
-		headers: {'Content-Length': body.length, 'Content-Type': 'application/json', 'appKey': config.envInfo.appKey, 'appSecret': config.envInfo.appSecret}
+		headers: {'Content-Length': body.length, 'Content-Type': 'application/json'}
 	};
 
 	if (decision == 'yes') {

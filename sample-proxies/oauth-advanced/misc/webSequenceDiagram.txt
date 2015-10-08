@@ -1,0 +1,49 @@
+title 3-Legged OAuth via Apigee
+
+participant "User" as u
+participant "User Agent" as UA
+participant "Webserver App \n(webserver-app bundle)" as AWS
+participant "Authorization Server \n(oauth2 bundle)" as GW
+participant "Login App \n(login-app bundle)" as LA
+participant "User Store \n(user-mgmt-v1 bundle)" as US
+participant "Resource Server" as R
+
+u->UA:initiate
+UA->AWS:initiate
+AWS->UA: 200 OK, return Page with button to Login Page
+u->UA: user click on Login button
+UA->LA: send to Login Page
+LA->UA: return login page
+UA->UA: show login page
+u->UA: provide credentials
+UA->LA: submit login
+LA-> US: send credentials
+US->US: validate credentials
+US->LA: credential response
+
+alt Valid credentials
+LA->UA: return consent form
+UA-> UA: show consent form
+u->UA: provide consent
+UA->LA: submit consent
+LA->GW: /oauth/UserAuthorize(client_id,redirect_uri,scope, user-specific info)
+GW->GW: Validate request redirect_uri against registered redirect_uri for client_id
+GW->GW: Create authorization code w/ user-specific info
+GW->LA: 302 location redirect_uri?code={auth_code}&scope={scope}
+LA->UA: 302 location redirect_uri?code={auth_code}&scope={scope}
+UA->AWS:execute redirect: redirect_uri?code={auth_code}&scope={scope}
+AWS->AWS: extract auth code and scope
+AWS->AWS: close user agent
+AWS->GW: /oauth/token(client_id, client_secret, code, grant type, scope)
+GW->AWS: return access_token, scope, expiry_time, refresh_token
+AWS->GW: get_protected_resource(access_token)
+GW->GW: validate token
+GW->R: get resource
+R->GW: return resource
+GW->AWS: return resource
+end Valid credentials
+
+alt Invalid credentials
+LA->UA: return access denied
+UA->u: show access denied
+end Invalid credentials

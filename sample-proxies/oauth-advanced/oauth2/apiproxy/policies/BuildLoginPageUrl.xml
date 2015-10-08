@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<Javascript enabled="true" continueOnError="false" async="false" name="BuildLoginPageUrl">
-    <DisplayName>Build Login Page URL</DisplayName>
-    <FaultRules/>
-    <Properties/>
-    <ResourceURL>jsc://build_login_url.js</ResourceURL>
-</Javascript>
