@@ -18,10 +18,10 @@
 ##   $api_domain gets used in conjunction with $org and $env to construct
 ##   the base URL to your APIs: https://$org-$env.$api_domain/<api_resource>
 
-org="Enter your Apigee Edge organization name"
-username="Enter your Apigee Edge email address"
+org="nutreco"
+username="rob.swartjes@nutreco.com"
 url="https://api.enterprise.apigee.com"
-env="Enter the environment to deploy to (test or prod)"
+env="test"
 api_domain="apigee.net"
 
 ## Do not change the settings below
