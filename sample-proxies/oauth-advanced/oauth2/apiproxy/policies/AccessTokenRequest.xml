@@ -5,7 +5,6 @@
     <SupportedGrantTypes>
         <GrantType>authorization_code</GrantType>
         <GrantType>client_credentials</GrantType>
-        <GrantType>client_credentials</GrantType>
     </SupportedGrantTypes>
     <GenerateResponse enabled="false"/>
 </OAuthV2>
