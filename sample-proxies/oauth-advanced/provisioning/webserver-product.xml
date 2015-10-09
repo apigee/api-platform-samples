@@ -1,5 +1,5 @@
 <CredentialRequest>
   <ApiProducts>
-    <ApiProduct>oauth2-product</ApiProduct>
+    <ApiProduct>webserver-product</ApiProduct>
   </ApiProducts>
 </CredentialRequest>
