@@ -35,7 +35,7 @@ UA->AWS:execute redirect: redirect_uri?code={auth_code}&scope={scope}
 AWS->AWS: extract auth code and scope
 AWS->AWS: close user agent
 AWS->GW: /oauth/token(client_id, client_secret, code, grant type, scope)
-GW->GW: validate client_id against secret
+GW->GW: validate client_id, secret, and redirect_uri
 GW->AWS: return access_token, scope, expiry_time, refresh_token
 AWS->GW: get_protected_resource(access_token)
 GW->GW: validate token
