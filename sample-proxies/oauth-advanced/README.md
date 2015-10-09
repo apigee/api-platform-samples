@@ -126,7 +126,7 @@ You must perform this step before you configure the login-app bundle.
 
 ### Provision the webserver app
 
-You must perform this step after you deploy the oauth2 API bundle.
+You must perform this step after you deploy the login-app bundle.
 
 1. CD to `oauth-advanced/provisioning`
 2. Open the file `webserver-app.xml` in an editor.
