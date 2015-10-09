@@ -6,9 +6,20 @@
 				<Name>SetXForwardedProto</Name>
 				<Condition>(request.header.x-forwarded-proto == null) and (virtualhost.ssl.enabled == true)</Condition>
 			</Step>
+			<!-- validate the APIKey so we can get the app name -->
 		</Request>
 	</PreFlow>
-	<Flows/>
+	<Flows>
+		<Flow name="login">
+        	<Condition>(proxy.pathsuffix MatchesPath "/login")</Condition>
+        	<Request>
+	        	<Step>
+					<Name>VerifyAPIKey</Name>
+				</Step>
+			</Request>
+			<Response/>
+        </Flow>
+	</Flows>
 	<PostFlow/>
 	<HTTPProxyConnection>
 		<BasePath>/loginapp</BasePath>
