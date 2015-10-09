@@ -124,7 +124,7 @@ You must perform this step before you configure the login-app bundle.
 1. CD to `login-app`
 2. Execute: `./deploy.sh`
 
-### Provision the webserver bundle
+### Provision the webserver app
 
 You must perform this step after you deploy the oauth2 API bundle.
 
