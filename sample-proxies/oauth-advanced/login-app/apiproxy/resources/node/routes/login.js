@@ -111,10 +111,7 @@ console.log("authUrl: " + authUrl);
 
   	  				// Store the username in the session for later use
   	  				req.session.user = username;
-
-					// Store the username in the session for later use
-					    req.session.user = username;
-					    res.statusCode = 302;
+					res.statusCode = 302;
 					res.header('Location', url);
 
 
