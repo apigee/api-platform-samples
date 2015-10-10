@@ -80,56 +80,27 @@ The following sections step through configuration of each example component.
 
 This bundle does not require any configuration. Just deploy it:
 
-1. CD to `user-mgmt-v1`.
+1. CD to the root directory of the `user-mgmt-v1` bundle: `user-mgmt-v1`.
 2. Execute: `./deploy.sh`
 
-### Deploy the oauth2 bundle
+### Configure and deploy the oauth2 bundle
 
-This bundle does not require any configuration. Just deploy it:
+This bundle requires a small configuration, and it also requires that these entities be created on Apigee Edge: a developer, a product, and a developer app. We have a script that will create these automatically for you. These must be in place before you deploy the bundle.
+
+Here are the steps:
+
+**Deploy the oauth2 API bundle:**
 
 1. CD to `oauth2`
 2. Execute: `./deploy.sh`
 
 
-## Configure and deploy the login-app bundle
-
 **Provision the required entities to Apigee Edge:**
 
-You must perform this step before you configure the login-app bundle.
+You must perform this step after you deploy the oauth2 API bundle.
 
 1. CD to `oauth-advanced/provisioning`
-2. Execute: `./provision-login-app.sh`
-
-**TIP**: You can log in to the Apigee Edge UI and see that the developer, product, and app entities were created.
-
-**Configure the bundle:**
-
-1. CD to the `oauth-advanced/login-app/apiproxy/resources/node` directory.
-2. Execute `npm install` to install dependencies.
-3. Open `login-app/apiproxy/resources/node/config/config.js`
-4. Enter your environment information. The domain will typically be `apigee.net`. Some on-premise installations of Apigee Edge may use a different domain. For example:
-
-      ```
-          exports.envInfo = {
-             org: 'Your org name on Edge',
-             env: 'Your environment on Edge (test or prod)',
-             domain: 'apigee.net'
-          };
-      ```
-
-5. Save the file.
-
-**Deploy the login-app bundle:**
-
-1. CD to `login-app`
-2. Execute: `./deploy.sh`
-
-### Provision the webserver entities
-
-You must perform this step after you deploy the login-app bundle.
-
-1. CD to `oauth-advanced/provisioning`
-2. Open the file `webserver-app.xml` in an editor.
+2. Open the file `oauth2-app.xml` in an editor.
 3. Edit the ```<CallbackUrl>``` element as follows, substituting your Edge organization and environment names:
 
     <CallbackUrl>https://org-env.apigee.net/web/callback<CallbackUrl>
@@ -140,7 +111,7 @@ You must perform this step after you deploy the login-app bundle.
 
     **Important:** Make a note of this exact callback URL. You will need to add it to another configuration file later.
 
-4. Execute: `./provision-webserver.sh`
+4. Execute: `./provision-oauth2.sh`
 
 The provisioning script creates the required entities on Apigee Edge and returns two keys: **Consumer key** and **Consumer secret** in your terminal window. You'll need these values when you configure the webserver app.
 
@@ -153,7 +124,7 @@ The provisioning script creates the required entities on Apigee Edge and returns
 
 2. Enter your values for `appKey`, `appSecret`, `environment`, and `organization`, as shown below.
 
->**Important! You'll need to grab the Consumer ID and Consumer Secret that were returned when you provisioned the `webserver-*` entities in the previous step. Substitute those values in for the `appKey` and `appSecret`.**
+>**Important! You'll need to grab the Consumer ID and Consumer Secret that were returned when you provisioned the `oauth2-*` entities in the previous step. Substitute those values in for the `appKey` and `appSecret`.**
 
 For example:
 
@@ -197,7 +168,7 @@ For example:
   * `BASEURL` - The base URL for your environment -- use your organization and environment names on Edge. For example: https://myorg-prod.apigee.net.
   * `REDIRECT` - This is the Redirect URI.
 
-      **Note** This URI must *exactly match* the CallbackUrl element that you added to the `webserver-app.xml` configuration previously. For example: `https://myorg-test.apigee.net/web/callback`
+      **Note** This URI must *exactly match* the CallbackUrl element that you added to the `oauth2-app.xml` configuration previously. For example: `https://myorg-test.apigee.net/web/callback`
 
   * `CLIENT_ID` - The "Consumer Key" obtained from a developer app that is registered on Apigee Edge. **Note!** This key  must match the one you configured previously in the webserver app.
 6. Save the file.
@@ -205,6 +176,39 @@ For example:
 **Deploy the webserver-app bundle:**
 
 1. CD to `webserver-app`
+2. Execute: `./deploy.sh`
+
+## Configure and deploy the login-app bundle
+
+**Provision the required entities to Apigee Edge:**
+
+You must perform this step before you configure the login-app bundle.
+
+1. CD to `oauth-advanced/provisioning`
+2. Execute: `./provision-login-app.sh`
+
+**TIP**: You can log in to the Apigee Edge UI and see that the developer, product, and app entities were created.
+
+**Configure the bundle:**
+
+1. CD to the `oauth-advanced/login-app/apiproxy/resources/node` directory.
+2. Execute `npm install` to install dependencies.
+3. Open `login-app/apiproxy/resources/node/config/config.js`
+4. Enter your environment information. The domain will typically be `apigee.net`. Some on-premise installations of Apigee Edge may use a different domain. For example:
+
+      ```
+          exports.envInfo = {
+             org: 'Your org name on Edge',
+             env: 'Your environment on Edge (test or prod)',
+             domain: 'apigee.net'
+          };
+      ```
+
+5. Save the file.
+
+**Deploy the login-app bundle:**
+
+1. CD to `login-app`
 2. Execute: `./deploy.sh`
 
 ## <a name="deploy">Test the sample
@@ -215,7 +219,7 @@ For example:
 
     For example:
 
-    `http://myorg-test.apigee.net/web`
+    `http://jdoe-prod.apigee.net/web`
 
 2. Initiate the flow.  Just click the "Login with Apigee Example Auth" button. This action sends a request to the authorization server (Apigee Edge), which redirects the browser to a login page.
 
@@ -245,7 +249,7 @@ You can use the cleanup scripts to remove the entities (developers, apps, produc
 
 1. CD to `oauth-advanced/provisioning`
 2. Execute `cleanup-login-app.sh`
-3. Execute `cleanup-webserver-app.sh`
+3. Execute `cleanup-oauth2.sh`
 
 ## <a name="session">About login and consent session management
 

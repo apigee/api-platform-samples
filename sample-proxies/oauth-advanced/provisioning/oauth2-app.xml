@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<App name="webserver-app">
-    <CallbackUrl>REPLACEME</CallbackUrl>
+<App name="oauth2-app">
+    <CallbackUrl></CallbackUrl>
     <AccessType>read</AccessType>
     <Attributes>
       <Attribute>
           <Name>DisplayName</Name>
-          <Value>webserver-app</Value>
+          <Value>oauth2-app</Value>
       </Attribute>
     </Attributes>
 </App>
