@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Developer>
-    <Email>oauth2dev@example.com</Email>
-    <FirstName>OAuth2</FirstName>
+    <Email>webdev@example.com</Email>
+    <FirstName>Webserver</FirstName>
     <LastName>Dev</LastName>
-    <UserName>oauth2dev</UserName>
+    <UserName>Webserver</UserName>
     <Status>active</Status>
 </Developer>
