@@ -85,8 +85,7 @@ console.log("authUrl: " + authUrl);
 			var redirect_uri = req.query.redirect_uri;
 			var basePath = utils.getBasePath(req);
 
-	  	  	if (auth_res.statusCode == 200){ // successful login returns 200
-
+	  	  	if (auth_res.statusCode == 200){ //successful login returns 200
 				//dynamically obtain the host and path for redirection to consent page
 				var host = utils.getHost(req);
 				var scheme = utils.getUrlScheme(req);
@@ -111,15 +110,27 @@ console.log("authUrl: " + authUrl);
 
   	  				// Store the username in the session for later use
   	  				req.session.user = username;
-					res.statusCode = 302;
-					res.header('Location', url);
+/*					res.statusCode = 302;
+					res.header('Location', url);*/
 
+					/* with redirection
+					res.statusCode = 302;
+					res.header('Location', url);*/
+
+					//with no redirection
+		  	  		res.render('consent', {
+						basePath: basePath,
+						consentLink: url,
+						appname: appName,
+						scope: scope
+	  	  		 	});
+
+					console.log ('Redirecting to: ' + url);
 
   	  			}
-
 	  	  		res.end();
 
-	  	  	} else {
+	  	  	} else { //unsuccessful login returns 403 status code
 	  	  		console.log('Auth Response: ' + auth_res.statusCode + ' ' + data);
 	  	  		var regLink  = basePath + '/register?';
 
