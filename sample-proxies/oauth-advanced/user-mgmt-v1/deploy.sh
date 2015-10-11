@@ -1,4 +1,5 @@
 #!/bin/bash
+# enter password as first argument or script will prompt you for it
 
 source ../../../setup/setenv.sh
 
@@ -9,9 +10,12 @@ if [ $? -eq 1 ]; then
     exit
 fi
 
-printf "\nEnter your password for the Apigee Enterprise organization $org, followed by [ENTER]:\n"
+if [ -z "$1" ]; then
 
-read -s password
+    printf "\nEnter your password for the Apigee Enterprise organization $org, followed by [ENTER]:\n"
+
+    read -s password
+fi
 
 printf "\nDeploying user-mgmt-v1 to:\n Env: $env \n Org: $org \n Url: $url \n For: $username\n"
 apigeetool deployproxy -u $username -p $password -o $org -e $env -n user-mgmt-v1 -d .

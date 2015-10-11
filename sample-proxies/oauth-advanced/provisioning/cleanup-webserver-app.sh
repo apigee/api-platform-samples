@@ -1,10 +1,14 @@
 #!/bin/bash
+# enter password as first argument or script will prompt you for it
 
 source ../../../setup/setenv.sh
 
-echo "Enter your password for the Apigee Enterprise organization, followed by [ENTER]:"
+if [ -z "$1" ]; then
 
-read -s password
+    printf "\nEnter your password for the Apigee Enterprise organization $org, followed by [ENTER]:\n"
+
+    read -s password
+fi
 
 echo using $username and $org
 

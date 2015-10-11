@@ -76,6 +76,8 @@ The following sections step through configuration of each example component.
     api_domain="apigee.net"
 ```
 
+2.  For convenience, you can enter your password once that you use to login to `enterprise.apigee.com` by running ```source provisioning/enter-pwd.sh```.  This will populate your shell environment with a $password variable.  Then for all subsequent deploy.sh and provision scripts, you can supply $password as the first argument.  If you do not, the script will prompt you for a password.
+
 ### Deploy the user-mgmt-v1 bundle
 
 This bundle does not require any configuration. Just deploy it:
