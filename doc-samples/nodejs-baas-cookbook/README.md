@@ -6,14 +6,12 @@ Deploy a Node.js target app on Apigee Edge that performs CRUD operations in an A
 
 ### About
 
-This sample illustrates how to create a simple BaaS solution with Node.js running on Apigee Edge. The mediation layer is written entirely in Node.js, and it functions as the target of the API proxy. The sample app stores and retrieves employee profile information. 
-
-This is a pattern that you can use to mediate between Edge and any other back-end data store -- it doesn't have to be specific to BaaS. 
+This sample illustrates how to use a Node.js target app deployed to Edge that communicates with a back-end data store. This is a pattern that you can use to mediate between Edge and any other back-end data store -- it doesn't have to be specific to BaaS. 
 
 For overview information and a detailed discussion of this application, see
 the Apigee Edge cookbook topic: 
 
-	http://apigee.com/docs/api-services/content/overview-nodejs-apigee-edge
+[http://apigee.com/docs/api-services/content/overview-nodejs-apigee-edge](http://apigee.com/docs/api-services/content/overview-nodejs-apigee-edge)
 
 
 ### Set up, deploy, invoke
@@ -30,7 +28,7 @@ You need to do a few simple configs to get things set up on API BaaS:
 
 * In the API BaaS admin portal, [create a new data store](http://apigee.com/docs/app-services/content/creating-collections) called employees. 
 
-Edit the API BaaS credentials in the `./apiproxy/resources/node/config.js` file. You can find your clientSecret and clientId values on the **Org Administration** page of the API BaaS Admin Portal. For example: 
+* Edit the API BaaS credentials in the `./apiproxy/resources/node/config.js` file. You can find your clientSecret and clientId values on the **Org Administration** page of the API BaaS Admin Portal. For example: 
 
   ```
   exports.organization = 'myorg'
