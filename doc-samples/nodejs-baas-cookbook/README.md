@@ -1,11 +1,14 @@
-# BaaS application with Node.js on running on Apigee Edge
+# Mediate between Edge and API BaaS with Node.js
 
+### Sample use case
 
-This cookbook sample illustrates how to create a simple BaaS solution with Node.js
-running on Apigee Edge. The service is written entirely in Node.js and it functions
-as the target of the API proxy. The app stores and retrieves employee profile
-information. The backend data storage is provided by Apigee App Services through 
-the Usergrid API. 
+Deploy a Node.js target app on Apigee Edge that performs CRUD operations in an API BaaS data store. 
+
+### About
+
+This sample illustrates how to create a simple BaaS solution with Node.js running on Apigee Edge. The mediation layer is written entirely in Node.js, and it functions as the target of the API proxy. The sample app stores and retrieves employee profile information. 
+
+This is a pattern that you can use to mediate between Edge and any other back-end data store -- it doesn't have to be specific to BaaS. 
 
 For overview information and a detailed discussion of this application, see
 the Apigee Edge cookbook topic: 
@@ -13,85 +16,33 @@ the Apigee Edge cookbook topic:
 	http://apigee.com/docs/api-services/content/overview-nodejs-apigee-edge
 
 
-## Set up
+### Set up, deploy, invoke
 
+See the main project [README](../../README.md) file for information about setting up, deploying, and invoking sample proxies. The README walks you through what you need to do to deploy and run any of the samples. 
 
-1. Log in to your Apigee Edge account. If you don't have an account, see "Creating
-   an Apigee Edge account" here: 
-   
-      		http://apigee.com/docs/api-services/content/creating-apigee-edge-account
+#### Additional configurations
 
-   Accounts are free and only take a minute to set up. 
-   
-2. After you log in, make sure you remember the name of your organization. You'll need
-   it when you configure the service. The org name appears on the Dashboard page when
-   you log in.
+You need to do a few simple configs to get things set up on API BaaS:
 
-3. Now, you need to set up the backend data storage (API Services data store). This is
-   the storage used by the app to store employee profile data. From the main Dashboard 
-   page, open the App Services admin console. 
-   
-4. In the App Services admin console, create a new Application called "employees". 
-   If you need help, see "Creating a New Application
-   with the Admin Console": 
-   
-       http://apigee.com/docs/app-services/content/creating-new-application-admin-console
+* After logging in to Apigee, select API BaaS from the menu in the upper-right corner of the main Apigee Edge screen. 
 
-5. Now, create a Collection in the Data Store. In the Admin Console, click Data and create
-   a new Collection called "employees". 
+* In the API BaaS admin portal, [create a new application](http://apigee.com/docs/api-services/cookbook/building-baas-service-nodejs) called employees. 
 
+* In the API BaaS admin portal, [create a new data store](http://apigee.com/docs/app-services/content/creating-collections) called employees. 
 
-## Sample Configuration
+Edit the API BaaS credentials in the `./apiproxy/resources/node/config.js` file. You can find your clientSecret and clientId values on the **Org Administration** page of the API BaaS Admin Portal. For example: 
 
-
-1. Edit the information in ../../setup/setenv.sh for your local environment.
-
-2. Open the file apiproxy/resources/node/config.js for editing. You need to provide values
-   for the variables in this config file. The Node.js application reads this file at
-   runtime and uses the information in it for authentication. 
-   
-   Note: The clientId and clientSecret are listed on the App Services Dashboard page.
-         Click Org Administration to view these values.
-         The username and password must be the user ID and password of the app user you 
-         created in the Set Up instructions (e.g., jdoe123/Welcome1). 
-
-   exports.organization = 'yourOrg'  // the name of your organization
-   exports.application = 'employees' // the name of the app you created
-   exports.clientId = 'xxxxxxx'      // the client ID is listed on the organization Dashboard page in the admin console
-   exports.clientSecret = 'xxxxxxx'  // the clientSecret is listed on the organization Dashboard page in the admin console
-   exports.tokenExpiration = 60000   // not necessary to change this
-   exports.logging = true            // not necessary to change this
-
-
-## Deploy the app
-
-
-    ./deploy.sh
-    
-
-## Post a new employee profile to the data store. 
-
-
-   Substitute the name of your organization and the name of the environment to which 
-   the application is deployed (the default is "test"):
-   
-   curl http://{myorg}-{myenv}.apigee.net/employees/profile \
-    -H "Content-Type: application/json" \
-    -d '{"id":"ajones", "firstName":"Alice", "lastName":"Jones", "phone": "201-555-5501" }' \
-    -X POST
+  ```
+  exports.organization = 'myorg'
+  exports.application = 'employees'
+  exports.clientId = 'b3U6gjxoiwin4gEeOaDDwafXLGg'
+  exports.clientSecret = 'b3U6JAorOoLMn0bE02uuJrls2x40p78'
+  exports.tokenExpiration = 60000
+  exports.logging = true
+  ```
    
    
-## Retrieve stored profiles with this API call:
-
-
-   curl "http://{myorg}-{myenv}.apigee.net/employees/profiles"
-   
-   
-## Tip: Using invoke.sh to call the service
-
-You can also run ./invoke.sh to call the API. This script makes a POST and then a 
-GET call to the API. It is configured to add a user profile for "ajones", but you
-can change the profile information as you wish. 
+After you deploy, you can run `./invoke.sh` to call the APIs for posting and fetching data from the back-end store. 
 
 
 ### Ask the community
