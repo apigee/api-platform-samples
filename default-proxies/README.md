@@ -5,8 +5,12 @@ organization on Apigee Edge. If you create an account on Apigee Edge, and
 then you log in to the Edge management UI, you will see these two API 
 proxies in your organization.
 
-We provide them here for convenience. If you need to reset to 'factory settings'
-you can simply deploy the API proxies provided here.
+They are:
+
+* **weatherapi** -- A sample weather API that hits Yahoo Weather. 
+* **oauth** -- An OAuth endpoint for generating access tokens with the client credentials grant type. 
+
+We provide them here for convenience. If you need to reset to 'factory settings' you can simply deploy the API proxies provided here.
 
 ### Ask the community
 
