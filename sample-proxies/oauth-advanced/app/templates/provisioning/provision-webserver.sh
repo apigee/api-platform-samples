@@ -1,14 +1,10 @@
 #!/bin/bash
-# enter password as first argument or script will prompt you for it
-
-source ../../../setup/setenv.sh
-
-if [ -z "$1" ]; then
-
-    printf "\nEnter your password for the Apigee Enterprise organization $org, followed by [ENTER]:\n"
-
-    read -s password
-fi
+#usage: provision-webserver.sh $username $password $org $env $url
+username=$1
+password=$2
+org=$3
+env=$4
+url=$5
 
 echo using $username and $org
 
@@ -48,5 +44,4 @@ curl -u $username:$password \
   $url/v1/o/$org/developers/webdev@example.com/apps/webserver-app/keys/${key} \
   -H "Content-Type: application/xml" -X POST -T webserver-product.xml
 
-echo "\n\nConsumer key for webserver-app is ${key}"
-echo "\n\nConsumer secret for webserver-app is ${secret}"
+

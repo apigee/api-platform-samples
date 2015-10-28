@@ -8,9 +8,9 @@
 &lt;html&gt;
    &lt;head&gt;
       &lt;script&gt;
-         var BASEURL=&quot;https://myorg-myenv.apigee.net&quot;;
-         var REDIRECT=&quot;https://myorg-myprod.apigee.net/web/callback&quot;;
-         var CLIENT_ID=&quot;Enter the Consumer Key from the webserver-app&quot;;
+         var BASEURL=&quot;https://ORGNAME-ENVNAME.apigee.net&quot;;
+         var REDIRECT=&quot;CALLBACKURL&quot;;
+         var CLIENT_ID=&quot;WEBSERVERAPPKEY&quot;;
 
 
          function login()

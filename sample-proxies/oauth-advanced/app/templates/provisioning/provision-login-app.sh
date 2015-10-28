@@ -1,14 +1,12 @@
 #!/bin/bash
-# enter password as first argument or script will prompt you for it
+#usage: provision-login-app.sh $username $password $org $env $url
+username=$1
+password=$2
+org=$3
+env=$4
+url=$5
 
-source ../../../setup/setenv.sh
-
-if [ -z "$1" ]; then
-
-    printf "\nEnter your password for the Apigee Enterprise organization $org, followed by [ENTER]:\n"
-
-    read -s password
-fi
+echo using $username and $org
 
 echo Install API Products
 

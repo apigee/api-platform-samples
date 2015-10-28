@@ -5,19 +5,19 @@
     <Properties/>
     <AssignVariable>
         <Name>appKey</Name>
-        <Value>Enter the app key returned returned from the oauth2-app</Value>
+        <Value>WEBSERVERAPPKEY</Value>
     </AssignVariable>
     <AssignVariable>
         <Name>appSecret</Name>
-        <Value>Enter the app secret returned from the oauth2-app</Value>
+        <Value>WEBSERVERAPPSECRET</Value>
     </AssignVariable>
     <AssignVariable>
         <Name>config.environment</Name>
-        <Value>Enter the environment to deploy to (test or prod)</Value>
+        <Value>ENVNAME</Value>
     </AssignVariable>
     <AssignVariable>
         <Name>config.organization</Name>
-        <Value>Enter your organization name on Edge</Value>
+        <Value>ORGNAME</Value>
     </AssignVariable>
    <!-- On prem customers may need to change the domain. Cloud users can leave the domain as is. -->
     <AssignVariable>

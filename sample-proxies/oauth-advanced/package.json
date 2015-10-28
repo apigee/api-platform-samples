@@ -1,0 +1,36 @@
+{
+  "name": "generator-oauth-auth-code-grant-sample",
+  "version": "0.1.6",
+  "description": "Generator for OAuth authorization code grant type using Apigee",
+  "files": [
+    "app",
+    "router"
+  ],
+  "keywords": [
+    "yeoman-generator"
+  ],
+  "dependencies": {
+    "apigee-sdk-mgmt-api": "^1.2.1",
+    "apigeetool": "^0.5.4",
+    "chalk": "^1.1.1",
+    "lodash": "^3.10.1",
+    "shelljs": "^0.5.3",
+    "underscore": "^1.8.3",
+    "yeoman-generator": "^0.18.9",
+    "yosay": "^1.0.5"
+  },
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dzuluaga/oauth-auth-code-grant-sample.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dzuluaga/oauth-auth-code-grant-sample/issues"
+  },
+  "homepage": "https://github.com/dzuluaga/oauth-auth-code-grant-sample#readme"
+}

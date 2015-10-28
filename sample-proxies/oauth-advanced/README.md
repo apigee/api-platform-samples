@@ -4,14 +4,49 @@ This is a complete, working example that demonstrates an approach to implementin
 
 > If you are not familiar with OAuth 2.0 and terms like "grant type" and "authorization server", there are many resources available on the web. We recommend you start with the [IETF specification](https://tools.ietf.org/html/draft-ietf-oauth-v2-31). It includes a good, general introduction to the OAuth 2.0 framework and its use cases.
 
+![alt text](images/oauth-authcode.gif "Animated GIF running through installation.")
+
+* [Prerequisites](#prerequisites)
+* [tl;dr: Deploy](#deploy)
 * [What you need to know about this example](#needtoknow)
 * [What are the parts of this example?](#parts)
-* [How do I get it?](#howdo)
-* [Prerequisites](#prerequisites)
-* [Required configuration steps](#configuration)
-* [Test the sample](#deploy)
 * [Clean up](#clean)
 * [About login and consent session management](#session)
+* [Further configuration](#conf)
+
+## <a name="prerequisites">Prerequisites
+
+To run this sample, you'll need:
+
+* The username and password that you use to login to `enterprise.apigee.com`.
+
+* The name of the organization in which you have an account. Login to
+  `enterprise.apigee.com` and check account settings.
+
+* node.js and npm [installed](https://nodejs.org/)
+
+* Apigeetool [installed](https://www.npmjs.com/package/apigeetool)
+
+* Yeoman [installed](http://yeoman.io/)
+
+* Install oauth-auth-code-grant-sample generator:
+    `npm install generator-oauth-auth-code-grant-sample -g`
+
+## <a name="deploy">tl;dr: Deploy
+
+1. Call Yeoman:
+    `yo oauth-auth-code-grant-sample`
+
+2. Follow the prompts:
+
+```
+Sample Generator of OAuth Authorization Code Grant Type Proxies.
+? Your user name:
+? Password:
+? Management API URL Endpoint: https://api.enterprise.apigee.com
+? Organization Name:
+? Environment Name:
+```
 
 ## <a name="needtoknow">What you need to know about this example
 
@@ -19,9 +54,7 @@ The authorization code grant type requires a step where the end user logs in to 
 
 Here's a flow diagram outlining the steps of this flow:
 
-**TIP**: Save the graphic to your system and open it locally to see the full size image.  You can also use the text provided in api-platform-samples/sample-proxies/oauth-advanced/misc/webSequenceDiagram.txt and plug into https://www.websequencediagrams.com.
-
-![alt text](../images/oauth-advanced-sequence-diagram.png)
+![alt text](images/oauth-advanced-sequence-diagram.png)
 
 1. User initiates the flow by clicking a button in a web page.
 2. The user's browser is redirected to a login page. This login page is not under the control of the client app. The client app does not participate in the login interaction, and the client app never sees the user's username or password.
@@ -41,75 +74,59 @@ This example has the following parts:
 
 >Note that all the parts of this example run on Apigee Edge. For the most part, this is just to simplify things. The login app, for example, could be designed to run on any platform, as long as it can communicate with Apigee Edge (the authorization server). Such details are obviously going to vary depending on the specific bundle.
 
+## <a name="deploy">Test the sample
 
-## <a name="howdo"></a>How do I get it?
+1. Open a browser and go to this URL:
 
-#### 1) Clone this repository from Git
-```bash
-  $ git clone https://github.com/apigee/api-platform-samples
-```
+    `http://myorg-myenv.apigee.net/web`
 
-When you have the samples repository on your system, CD to `./api-platform-samples/sample-proxies/oauth-advanced`. This puts you in the root directory of this example.
+    For example:
 
-## <a name="prerequisites">Prerequisites
+    `http://myorg-test.apigee.net/web`
 
-To run this sample, you'll need:
+2. Initiate the flow.  Just click the "Login with Apigee Example Auth" button. This action sends a request to the authorization server (Apigee Edge), which redirects the browser to a login page.
 
-* The username and password that you use to login to `enterprise.apigee.com`.
+3. If you haven't registered, do so. Otherwise, log in.
 
-* The name of the organization in which you have an account. Login to
-  `enterprise.apigee.com` and check account settings.
+    >Note that there's a bug (#42) where certain passwords cause the registration to fail (throw a stacktrace error). For example, a password like 566559aa throws an error, while apigee123 does not. Until further notice, when trying out this sample, try using apigee123 as your password if see an error like this when you click the "Register" button.
 
-## <a name="configuration">Required configuration steps
+4. Give consent.  The consent page gives you (the end user) a chance to limit the type of access the app will have to your resources. In this example, only one scope is offered, called "order". Click **Allow** to give the app access to your resources.
 
-The following sections step through configuration of each example component.
+5. Retrieve the access token.  After you give consent, these things happen behind the scenes (refer to the flow diagram above for more a graphical view):
 
-### Before you start
+* The login app communicates to the authorization server that the login was successful.
+* The authorization server generates an authorization code and returns it to the app.
+* The app puts the code into a request to the authorization server for an access token. The app also supplies the client ID and client secret keys.
+* The authorization server validates the auth code and other credentials, and if successful, returns an access token back to the client.
+* Now, with an access token, the client can request resources from the protected API.
 
-1. Open `api-platform-samples/setup/setenv.sh` and add your Apigee Edge account information. The sample components will be deployed to the organization specified in this file.
+>**Important! The app never saw the user's username and password entered in the login page.**
 
-```sh
-    org="The name of your organization on Apigee Edge"
-    username="The email address of your Apigee Edge account"
-    url="https://api.enterprise.apigee.com"
-    env="The environment on Edge to deploy to (prod or test)"
-    api_domain="apigee.net"
-```
-
-2.  For convenience, you can enter your password once that you use to login to `enterprise.apigee.com` by running ```source provisioning/enter-pwd.sh```.  This will populate your shell environment with a $password variable.  Then for all subsequent deploy.sh and provision scripts, you can supply $password as the first argument.  If you do not, the script will prompt you for a password.
-
-### Deploy the user-mgmt-v1 bundle
-
-This bundle does not require any configuration. Just deploy it:
-
-1. CD to `user-mgmt-v1`.
-2. Execute: `./deploy.sh`
-
-### Deploy the oauth2 bundle
-
-This bundle does not require any configuration. Just deploy it:
-
-1. CD to `oauth2`
-2. Execute: `./deploy.sh`
+If everything worked successfully, you'll see the access code and some extra information (the user's name) displayed in the user's browser.
 
 
-## Configure and deploy the login-app bundle
+## <a name="clean">Clean up
 
-**Provision the required entities to Apigee Edge:**
+You can use the clean up scripts to remove the entities (developers, apps, products) that were installed with this sample.
 
-You must perform this step before you configure the login-app bundle.
+1. CD to `provisioning`
+2. Execute `./cleanup.sh <OrgName> <Environment> <Username> <Password> <MSURL>`
 
-1. CD to `oauth-advanced/provisioning`
-2. Execute: `./provision-login-app.sh`
+    For example:
 
-**TIP**: You can log in to the Apigee Edge UI and see that the developer, product, and app entities were created.
+    `./cleanup.sh myorg prod test@example.com apigee123 https://api.enterprise.apigee.com`
 
-**Configure the bundle:**
+## <a name="session">About login and consent session management
 
-1. CD to `oauth-advanced/login-app/apiproxy/resources/node`
-2. Execute `npm install` to install dependencies.
-3. Open `login-app/apiproxy/resources/node/config/config.js`
-4. Enter your environment information. The domain will typically be `apigee.net`. Some on-premise installations of Apigee Edge may use a different domain. For example:
+The login app includes session management to guarantee that only the logged-in user can access the consent page. Once a successful login has occurred, a user attribute is set in the server side session data.  This attribute is checked when clients access the consent page.  A valid logged-in session can only be used one time for consent to an authorization.  The session is destroyed upon a successful consent in which an authorization code is generated for the client application. For more information, see `./login-app/README`.
+
+## <a name="conf">Further configuration
+
+The following sections describe configuration steps that are separate from deployment.  Depending on your setup, you may need to modify these configuration files.
+
+Configure Loginapp
+1. Open `login-app/apiproxy/resources/node/config/config.js`
+2. Enter your environment information. The domain will typically be `apigee.net`. Some on-premise installations of Apigee Edge may use a different domain. For example:
 
       ```
           exports.envInfo = {
@@ -118,19 +135,10 @@ You must perform this step before you configure the login-app bundle.
              domain: 'apigee.net'
           };
       ```
+3. Deploy the login-app bundle.
 
-5. Save the file.
-
-**Deploy the login-app bundle:**
-
-1. CD to `login-app`
-2. Execute: `./deploy.sh`
-
-### Provision the webserver entities
-
-You must perform this step after you deploy the login-app bundle.
-
-1. CD to `oauth-advanced/provisioning`
+**Provision the webserver-app**
+1. CD to `provisioning`
 2. Open the file `webserver-app.xml` in an editor.
 3. Edit the ```<CallbackUrl>``` element as follows, substituting your Edge organization and environment names:
 
@@ -146,14 +154,13 @@ You must perform this step after you deploy the login-app bundle.
 
 >**Important! Make a note of this exact callback URL. You will need to add it to another configuration file later.**
 
-4. Execute: `./provision-webserver.sh`
+4. Execute: `./provision-webserver.sh username password orgName environment https://your-ms-url.com`
 
 The provisioning script creates the required entities on Apigee Edge and returns two keys: **consumer key** and **consumer secret** in your terminal window. You'll need these values when you configure the webserver app.
 
 **TIP**: You can log in to the Apigee Edge UI and see that the developer, product, and app entities were created.
 
-###Configure and deploy the webserver-app bundle
-
+**Configure the webserver-app bundle**
 
 1. Open `webserver-app/apiproxy/policies/SetConfigurationVariables.xml`
 
@@ -208,61 +215,15 @@ For example:
   * `CLIENT_ID` - The "Consumer Key" obtained from a developer app that is registered on Apigee Edge.
       >Note that this key must match the one you configured previously in the webserver app.
 6. Save the file.
+7. Deploy webserver-app API proxy.
 
-**Deploy the webserver-app bundle:**
+### Ask the community
 
-1. CD to `webserver-app`
-2. Execute: `./deploy.sh`
+[![alt text](images/apigee-community.png "Apigee Community is a great place to ask questions and find answers about developing API proxies. ")](https://community.apigee.com?via=github)
 
-## <a name="deploy">Test the sample
+---
 
-1. Open a browser and go to this URL:
-
-    `http://myorg-myenv.apigee.net/web`
-
-    For example:
-
-    `http://myorg-test.apigee.net/web`
-
-2. Initiate the flow.  Just click the "Login with Apigee Example Auth" button. This action sends a request to the authorization server (Apigee Edge), which redirects the browser to a login page.
-
-3. If you haven't registered, do so. Otherwise, log in.
-
-    >Note that there's a bug (#42) where certain passwords cause the registration to fail (throw a stacktrace error). For example, a password like 566559aa throws an error, while apigee123 does not. Until further notice, when trying out this sample, try using apigee123 as your password if see an error like this when you click the "Register" button.
-
-4. Give consent.  The consent page gives you (the end user) a chance to limit the type of access the app will have to your resources. In this example, only one scope is offered, called "order". Click **Allow** to give the app access to your resources.
-
-5. Retrieve the access token.  After you give consent, these things happen behind the scenes (refer to the flow diagram above for more a graphical view):
-
-* The login app communicates to the authorization server that the login was successful.
-* The authorization server generates an authorization code and returns it to the app.
-* The app puts the code into a request to the authorization server for an access token. The app also supplies the client ID and client secret keys.
-* The authorization server validates the auth code and other credentials, and if successful, returns an access token back to the client.
-* Now, with an access token, the client can request resources from the protected API.
-
->**Important! The app never saw the user's username and password entered in the login page.**
-
-If everything worked successfully, you'll see the access code and some extra information (the user's name) displayed in the user's browser:
-
-![alt text](../images/oauth-advanced-success.png)
-
-## <a name="clean">Clean up
-
-You can use the cleanup scripts to remove the entities (developers, apps, products) that were installed with this sample.
-
-1. CD to `oauth-advanced/provisioning`
-2. Execute `cleanup-login-app.sh`
-3. Execute `cleanup-webserver-app.sh`
-
-## <a name="session">About login and consent session management
-
-The login app includes session management to guarantee that only the logged-in user can access the consent page. Once a successful login has occurred, a user attribute is set in the server side session data.  This attribute is checked when clients access the consent page.  A valid logged-in session can only be used one time for consent to an authorization.  The session is destroyed upon a successful consent in which an authorization code is generated for the client application. For more information, see `./login-app/README`.
-
-## Get help
-
-For assistance, please use [Apigee Support](https://community.apigee.com/content/apigee-customer-support).
-
-Copyright © 2014, 2015 Apigee Corporation
+Copyright © 2015 Apigee Corporation
 
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use
 this file except in compliance with the License. You may obtain a copy

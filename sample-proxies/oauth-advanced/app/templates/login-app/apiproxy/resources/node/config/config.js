@@ -9,7 +9,7 @@
 */
 
 exports.envInfo = {
-  org: 'Enter your org name',
-  env: 'Enter your environment',
+  org: 'ORGNAME',
+  env: 'ENVNAME',
   domain: 'apigee.net'
 };
