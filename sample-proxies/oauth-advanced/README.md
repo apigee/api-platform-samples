@@ -8,6 +8,7 @@ This is a complete, working example that demonstrates an approach to implementin
 
 * [Prerequisites](#prerequisites)
 * [tl;dr: Deploy](#deploy)
+* [Testing](#testit)
 * [What you need to know about this example](#needtoknow)
 * [What are the parts of this example?](#parts)
 * [Clean up](#clean)
@@ -48,33 +49,7 @@ Sample Generator of OAuth Authorization Code Grant Type Proxies.
 ? Environment Name:
 ```
 
-## <a name="needtoknow">What you need to know about this example
-
-The authorization code grant type requires a step where the end user logs in to the resource server (where protected resources owned by the user are stored) and then gives explicit consent for the app to access those resources. The key to this flow is that the client app never gets to see the user's login credentials for the protected resources, as the authorization on the resource server is handled between the user, the resource server, and the OAuth authorization server.
-
-Here's a flow diagram outlining the steps of this flow:
-
-![alt text](images/oauth-advanced-sequence-diagram.png)
-
-1. User initiates the flow by clicking a button in a web page.
-2. The user's browser is redirected to a login page. This login page is not under the control of the client app. The client app does not participate in the login interaction, and the client app never sees the user's username or password.
-3. If login is successful, the user is directed to a consent page. The consent page allows the user to specify scopes (what the client app is authorized to do with on behalf of the user).
-4. After consent is given, the login app communicates with the authorization server. If redirect_URI matches the redirect_URI in Apigee Edge for that client_id, the authorization server generates an authorization code and sends it back to the client app (via a previously specified redirect URI).
-5. The client app now has an authorization code and uses it to ask the authorization server for an access token.
-6. Upon receiving an access token, the client app is able to access the protected APIs on the resource server by including the access token with each call.
-
-## <a name="parts">What are the parts of this example?
-
-This example has the following parts:
-
-* **login-app** -- A complete implementation that includes a login page and a consent page. Implements session management for extra security. Essentially, this is an API proxy deployed on Apigee Edge. Most of the implementation is in Node.js. For information on the session management feature, see `login-app/README`.
-* **user-mgmt-v1** -- A key/value store implementation for storing the user's login information. Implemented as an API proxy and deployed on Apigee Edge. An interface to any user management system could be plugged in here, such as LDAP.
-* **webserver-app** -- A very simple web page implemented as an API proxy (runs on Apigee Edge to simplify this example). This is the client app -- the target of the redirect URL to which tokens and other information are sent from the authorization server. This client app never sees the user's login credentials for the resource server.
-* **oauth2** -- An API proxy deployed on Apigee Edge that implements the OAuth 2.0 token endpoints. This is the Apigee Edge authorization server interface. Think of this as a service for requesting and managing OAuth tokens.
-
->Note that all the parts of this example run on Apigee Edge. For the most part, this is just to simplify things. The login app, for example, could be designed to run on any platform, as long as it can communicate with Apigee Edge (the authorization server). Such details are obviously going to vary depending on the specific bundle.
-
-## <a name="deploy">Test the sample
+## <a name="testit">Test the sample
 
 1. Open a browser and go to this URL:
 
@@ -104,6 +79,31 @@ This example has the following parts:
 
 If everything worked successfully, you'll see the access code and some extra information (the user's name) displayed in the user's browser.
 
+## <a name="needtoknow">What you need to know about this example
+
+The authorization code grant type requires a step where the end user logs in to the resource server (where protected resources owned by the user are stored) and then gives explicit consent for the app to access those resources. The key to this flow is that the client app never gets to see the user's login credentials for the protected resources, as the authorization on the resource server is handled between the user, the resource server, and the OAuth authorization server.
+
+Here's a flow diagram outlining the steps of this flow:
+
+![alt text](images/oauth-advanced-sequence-diagram.png)
+
+1. User initiates the flow by clicking a button in a web page.
+2. The user's browser is redirected to a login page. This login page is not under the control of the client app. The client app does not participate in the login interaction, and the client app never sees the user's username or password.
+3. If login is successful, the user is directed to a consent page. The consent page allows the user to specify scopes (what the client app is authorized to do with on behalf of the user).
+4. After consent is given, the login app communicates with the authorization server. If redirect_URI matches the redirect_URI in Apigee Edge for that client_id, the authorization server generates an authorization code and sends it back to the client app (via a previously specified redirect URI).
+5. The client app now has an authorization code and uses it to ask the authorization server for an access token.
+6. Upon receiving an access token, the client app is able to access the protected APIs on the resource server by including the access token with each call.
+
+## <a name="parts">What are the parts of this example?
+
+This example has the following parts:
+
+* **login-app** -- A complete implementation that includes a login page and a consent page. Implements session management for extra security. Essentially, this is an API proxy deployed on Apigee Edge. Most of the implementation is in Node.js. For information on the session management feature, see `login-app/README`.
+* **user-mgmt-v1** -- A key/value store implementation for storing the user's login information. Implemented as an API proxy and deployed on Apigee Edge. An interface to any user management system could be plugged in here, such as LDAP.
+* **webserver-app** -- A very simple web page implemented as an API proxy (runs on Apigee Edge to simplify this example). This is the client app -- the target of the redirect URL to which tokens and other information are sent from the authorization server. This client app never sees the user's login credentials for the resource server.
+* **oauth2** -- An API proxy deployed on Apigee Edge that implements the OAuth 2.0 token endpoints. This is the Apigee Edge authorization server interface. Think of this as a service for requesting and managing OAuth tokens.
+
+>Note that all the parts of this example run on Apigee Edge. For the most part, this is just to simplify things. The login app, for example, could be designed to run on any platform, as long as it can communicate with Apigee Edge (the authorization server). Such details are obviously going to vary depending on the specific bundle.
 
 ## <a name="clean">Clean up
 
