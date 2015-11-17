@@ -11,12 +11,13 @@ Javadoc for the Apigee JavaCallout API Java classes are included in this sample 
 
 /api-platform-samples/doc-samples/java-cookbook/javdocs-javacallout
 
-Additional code samples are provided for reference in the '/java/src/com/apigee' directory.
+Additional code samples are provided for reference in the '/java/src/com/apigeesample' directory.
 These additional samples demonstrate various blocking and non-blocking patterns you can
 use with JavaCallout. They are commented.
 
-
 This sample proxy uses the Yahoo Weather API for a target endpoint, and maps WEOID IDs to city names on behalf of the user.
+
+**Reserved package names**: The package name prefixes `com.apigee.*` and `io.apigee.*` are reserved. To avoid collisions and errors, don't use these in your Java Callout package names.
 
 # Set up
 
@@ -43,7 +44,7 @@ and re-deploying. Then, you can invoke the proxy to see the effect of your chang
 ----------------------------------------------------------------------------------------
 NOTE: The source code for this sample is located in:
 
-      api-platform-samples/java-cookbook/doc-samples/java/src/com/apigee
+      api-platform-samples/java-cookbook/doc-samples/java/src/com/apigeesample
 
 The dependent libraries are located in:
 
@@ -53,9 +54,9 @@ The dependent libraries are located in:
 If you make any changes to the Java source code for this cookbook sample, follow these
 steps to compile, package, and redeploy:
 
- 1. cd .../api-platform-samples/java-cookbook/doc-samples/java
+ 1. cd .../api-platform-samples/doc-samples/java-cookbook/java
  2. mkdir bin
- 3. javac -d bin -sourcepath src -classpath ../lib/expressions-1.0.0.jar:../lib/message-flow-1.0.0.jar src/com/apigee/CityLookup.java
+ 3. javac -d bin -sourcepath src -classpath ../lib/expressions-1.0.0.jar:../lib/message-flow-1.0.0.jar src/com/apigeesample/CityLookup.java
  4. cd bin
  5. jar -cvf CityLookup.jar ./com
  6. cp CityLookup.jar ../../apiproxy/resources/java

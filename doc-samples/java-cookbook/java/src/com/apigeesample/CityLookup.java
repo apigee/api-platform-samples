@@ -1,4 +1,4 @@
-package com.apigee;
+package com.apigeesample;
 
 import com.apigee.flow.execution.ExecutionContext;
 import com.apigee.flow.execution.ExecutionResult;

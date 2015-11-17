@@ -5,7 +5,7 @@
  * trademarks are the property of their respective owners.
  */
 
-package com.apigee.callout;
+package com.apigeesample;
 
 import com.apigee.flow.execution.ExecutionContext;
 import com.apigee.flow.execution.ExecutionResult;
