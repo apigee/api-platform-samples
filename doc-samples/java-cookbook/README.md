@@ -52,16 +52,17 @@ The dependent libraries are located in:
 ----------------------------------------------------------------------------------------
 
 If you make any changes to the Java source code for this cookbook sample, follow these
-steps to compile, package, and redeploy:
+steps to compile, package, and redeploy. Be sure to compile with the [supported version of Java](http://apigee.com/docs/api-services/reference/supported-software).
 
- 1. cd .../api-platform-samples/doc-samples/java-cookbook/java
- 2. mkdir bin
- 3. javac -d bin -sourcepath src -classpath ../lib/expressions-1.0.0.jar:../lib/message-flow-1.0.0.jar src/com/apigeesample/CityLookup.java
- 4. cd bin
- 5. jar -cvf CityLookup.jar ./com
- 6. cp CityLookup.jar ../../apiproxy/resources/java
- 7. Redeploy the proxy by running the deploy.sh script.
- 8. Test the redeployed proxy by running the invoke.sh script.
+ 1. In /apiproxy/policies/cityLookUp.xml, make sure the `<ClassName>` is correct.
+ 2. cd ../api-platform-samples/doc-samples/java-cookbook/java
+ 3. mkdir bin
+ 4. javac -d bin -sourcepath src -classpath ../lib/expressions-1.0.0.jar:../lib/message-flow-1.0.0.jar src/com/apigeesample/CityLookup.java
+ 5. cd bin
+ 6. jar -cvf CityLookup.jar ./com
+ 7. cp CityLookup.jar ../../apiproxy/resources/java
+ 8. Redeploy the proxy by running the deploy.sh script.
+ 9. Test the redeployed proxy by running the invoke.sh script.
 
 # Ask the community
 
