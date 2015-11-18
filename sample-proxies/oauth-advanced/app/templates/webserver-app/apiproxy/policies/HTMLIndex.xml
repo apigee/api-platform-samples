@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage async="false" continueOnError="false" enabled="true" name="HTMLIndex">
+    <Properties/>
+    <!-- On prem customers might have to change the domain apigee.net to their custom domain. -->
+    <Set>
+      <Payload contentType="text/html" variablePrefix="^" variableSuffix="~">
+      &lt;!DOCTYPE html&gt;
+&lt;html&gt;
+   &lt;head&gt;
+      &lt;script&gt;
+         var BASEURL=&quot;https://ORGNAME-ENVNAME.apigee.net&quot;;
+         var REDIRECT=&quot;CALLBACKURL&quot;;
+         var CLIENT_ID=&quot;WEBSERVERAPPKEY&quot;;
+
+
+         function login()
+         {
+         window.location.href=BASEURL+&#39;/loginapp/login?apikey=&#39;+CLIENT_ID+&#39;&amp;redirect_uri=&#39;+REDIRECT+&#39;&amp;scope=order&amp;state=123&#39;;
+         }
+      &lt;/script&gt;
+   &lt;/head&gt;
+   &lt;body&gt;
+      &lt;input type=&quot;button&quot; value=&quot;Login with Apigee Example Auth&quot; onclick=&quot;login()&quot; /&gt;
+   &lt;/body&gt;
+&lt;/html&gt;
+      </Payload>
+      <StatusCode>200</StatusCode>
+      <ReasonPhrase>OK</ReasonPhrase>
+    </Set>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+    <AssignTo createNew="true" transport="http" type="request"/>
+</AssignMessage>

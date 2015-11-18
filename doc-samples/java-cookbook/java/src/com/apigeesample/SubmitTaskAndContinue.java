@@ -1,0 +1,52 @@
+/*
+ * Copyright (c) 2010, Apigee Corporation.  All rights reserved.
+ * Apigee(TM) and the Apigee logo are trademarks or
+ * registered trademarks of Apigee Corp. or its subsidiaries.  All other
+ * trademarks are the property of their respective owners.
+ */
+
+package com.apigeesample;
+
+import com.apigee.flow.execution.ExecutionContext;
+import com.apigee.flow.execution.ExecutionResult;
+import com.apigee.flow.execution.spi.Execution;
+import com.apigee.flow.message.MessageContext;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+/**
+ *
+ * Use case:                Reporting metrics to an analytics server, logging to disk, etc
+ * When to apply:           If the execution does a lot of activities, some of whose result
+ *                          do not influence the flow of the request in any way. The execution
+ *                          context is used to submit such tasks. The flow continues without
+ *                          waiting for the completion of the task. If any error handling is
+ *                          required for the submitted task, a callback instance can be used.
+ * Influence message flow:  Same as in Simple Blocking execution.
+ * Miscellaneous:           It is important that the submitted tasks do not hold any reference
+ *                          to the message context or to the execution context. If the task is
+ *                          a long running task, it might lead to out of memory conditions and
+ *                          it is also possible that while the task is running, the message flow
+ *                          has already completed.
+ */
+
+public class SubmitTaskAndContinue implements Execution {
+
+    private static final Logger logger = LoggerFactory.getLogger("SubmitTaskAndContinue");
+
+    public ExecutionResult execute(final MessageContext messageContext, final ExecutionContext executionContext) {
+        executionContext.submitTask(new Task());
+        // here onwards, the execution can return success or failure as in Simple Blocking Execution
+        return ExecutionResult.SUCCESS;
+    }
+
+    private static class Task implements Runnable {
+
+        public void run() {
+            // report to analytics agent
+            // log to disk
+            // aggregate statistics
+            logger.debug("SubmitTaskAndContinue.Task.run()");
+        }
+    }
+}

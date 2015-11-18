@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage async="false" continueOnError="false" enabled="true" name="SetConfigurationVariables">
+    <DisplayName>SetConfigurationVariables</DisplayName>
+    <FaultRules/>
+    <Properties/>
+    <AssignVariable>
+        <Name>appKey</Name>
+        <Value>WEBSERVERAPPKEY</Value>
+    </AssignVariable>
+    <AssignVariable>
+        <Name>appSecret</Name>
+        <Value>WEBSERVERAPPSECRET</Value>
+    </AssignVariable>
+    <AssignVariable>
+        <Name>config.environment</Name>
+        <Value>ENVNAME</Value>
+    </AssignVariable>
+    <AssignVariable>
+        <Name>config.organization</Name>
+        <Value>ORGNAME</Value>
+    </AssignVariable>
+   <!-- On prem customers may need to change the domain. Cloud users can leave the domain as is. -->
+    <AssignVariable>
+        <Name>config.domain</Name>
+        <Value>apigee.net</Value>
+    </AssignVariable>
+    <AssignVariable>
+        <Name>config.protocol</Name>
+        <Value>https</Value>
+    </AssignVariable>
+    <IgnoreUnresolvedVariables>false</IgnoreUnresolvedVariables>
+</AssignMessage>
+
