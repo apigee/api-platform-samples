@@ -1,6 +1,20 @@
 # Apigee Platform Samples Tools
 
-This directory contains three tools:
+
+### Postman collection
+
+The file `api-platform-samples.json.postman_collection` is a collection that you can import into your [Postman app](https://www.getpostman.com/). Postman is a Google Chrome plugin app for testing REST APIs. Please refer to Postman docs for details about using the tool. 
+
+The collection is set up in such a way that variables are used to plug certain values into the APIs. You need to set up an environment in Postman that defines these variables. They include:
+
+* ORG -- The Apigee organization where you deployed the sample proxies.
+* ENV -- The environment where the samples are deployed.
+* BASICAUTH -- The base64-encoded value of your **colon-separated** Apigee email address and your password. You can also use the Basic Auth feature built-in to Postman to set this value on any request where it is required. 
+* DOMAIN -- Your Apigee domain name. Typically this is `apigee.net` for Edge Cloud. 
+* CLIENT-KEY -- A Consumer Key for a developer app in your organization. We recommend using the key from one of the apps that are provisioned when you run the utility in `api-platform-samples/setup/provisioning`. 
+* MGMTSRVR -- For Cloud-based Edge, this value is `https://api.enterprise.apigee.com`. 
+* DEV-EMAIL -- The email of any developer in your organization.
+* DEV-APP -- A developer app associated with the DEV-EMAIL developer. 
 
 ### API Proxy Generator
 
