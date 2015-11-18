@@ -3,7 +3,11 @@
 
 ### Postman collection
 
-The file `api-platform-samples.json.postman_collection` is a collection that you can import into your [Postman app](https://www.getpostman.com/). Postman is a Google Chrome plugin app for testing REST APIs. Please refer to Postman docs for details about using the tool. 
+The file `api-platform-samples.json.postman_collection` is a Postman collection that you can import into your [Postman app](https://www.getpostman.com/). This Postman collection provides a convenient way to call the sample apps. 
+
+>Note: The Postman collection is a work in progress. Currently, not all of the sample APIs are included in the Postman collection. 
+
+>Note: Postman is a Google Chrome plugin app for testing REST APIs. Please refer to Postman docs for details about using the tool. 
 
 The collection is set up in such a way that variables are used to plug certain values into the APIs. You need to set up an environment in Postman that defines these variables. They include:
 
