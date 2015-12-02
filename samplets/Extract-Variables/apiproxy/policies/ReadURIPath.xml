@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Javascript async="false" continueOnError="false" enabled="true" timeLimit="200" name="ReadURIPath">
+    <DisplayName>ReadURIPath</DisplayName>
+    <Properties/>
+    <ResourceURL>jsc://ReadURIPath.js</ResourceURL>
+</Javascript>

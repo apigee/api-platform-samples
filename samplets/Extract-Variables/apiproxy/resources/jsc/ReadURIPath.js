@@ -1,4 +1,4 @@
-//-- Get the data for the {id} pattern specified in the Extract Variables policy.
+ //-- Get the data for the {id} pattern specified in the Extract Variables policy.
 //-- Note that urirequest is the VariablePrefix specified in the policy.
 var data = context.getVariable('urirequest.id');
 
