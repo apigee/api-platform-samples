@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<APIProxy revision="2" name="Parse-Request-URL">
+    <ConfigurationVersion majorVersion="4" minorVersion="0"/>
+    <CreatedAt>1449071769694</CreatedAt>
+    <CreatedBy>wwitman@apigee.com</CreatedBy>
+    <Description>Demonstrates how to use the Extract Variables proxy to parse a request URL.</Description>
+    <DisplayName>Parse-Request-URL</DisplayName>
+    <LastModifiedAt>1449074778669</LastModifiedAt>
+    <LastModifiedBy>wwitman@apigee.com</LastModifiedBy>
+    <Policies>
+        <Policy>Extract-Path-Component</Policy>
+        <Policy>ReadVariables</Policy>
+    </Policies>
+    <ProxyEndpoints>
+        <ProxyEndpoint>default</ProxyEndpoint>
+    </ProxyEndpoints>
+    <Resources>
+        <Resource>jsc://ReadVariables.js</Resource>
+    </Resources>
+    <TargetServers/>
+    <TargetEndpoints/>
+    <validate>false</validate>
+</APIProxy>
