@@ -3,7 +3,7 @@
     <DisplayName>Extract Path Component</DisplayName>
     <Source>request</Source>
     <URIPath>
-        <Pattern ignoreCase="true">/extract-variables/resource1/{id}</Pattern>
+        <Pattern ignoreCase="true">/resource1/{id}</Pattern>
     </URIPath>
     <VariablePrefix>urirequest</VariablePrefix>
     <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>

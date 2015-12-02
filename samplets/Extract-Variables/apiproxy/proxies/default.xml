@@ -17,7 +17,7 @@
                 </Step>
             </Request>
             <Response/>
-            <Condition>(proxy.pathsuffix MatchesPath "/extract-variables/resource1/{id}") and (request.verb = "GET")</Condition>
+            <Condition>(proxy.pathsuffix MatchesPath "/resource1/{id}") and (request.verb = "GET")</Condition>
         </Flow>
         <Flow name="Extract Query Param">
             <Description>Use the Extract Variables policy to parse the request URL</Description>
@@ -38,7 +38,7 @@
         <Response/>
     </PostFlow>
     <HTTPProxyConnection>
-        <BasePath>/parse-request-url</BasePath>
+        <BasePath>/extract-variables</BasePath>
         <VirtualHost>default</VirtualHost>
         <VirtualHost>secure</VirtualHost>
     </HTTPProxyConnection>
