@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ProxyEndpoint name="default">
+    <Description/>
+    <PreFlow name="PreFlow">
+        <Request/>
+        <Response/>
+    </PreFlow>
+    <Flows>
+        <Flow name="Extract Variables">
+            <Description>Use the Extract Variables policy to parse the request URL</Description>
+            <Request>
+                <Step>
+                    <Name>Extract-Path-Component</Name>
+                </Step>
+            </Request>
+            <Response/>
+            <Condition>(proxy.pathsuffix MatchesPath "/extract-variables/resource1/{id}") and (request.verb = "GET")</Condition>
+        </Flow>
+    </Flows>
+    <PostFlow name="PostFlow">
+        <Request>
+            <Step>
+                <Name>ReadVariables</Name>
+            </Step>
+        </Request>
+        <Response/>
+    </PostFlow>
+    <HTTPProxyConnection>
+        <BasePath>/parse-request-url</BasePath>
+        <VirtualHost>default</VirtualHost>
+        <VirtualHost>secure</VirtualHost>
+    </HTTPProxyConnection>
+    <RouteRule name="noroute"/>
+</ProxyEndpoint>
