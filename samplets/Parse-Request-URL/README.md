@@ -1,29 +1,46 @@
-# Extract value from a request URL
+# Save part of the request URL in a flow variable
 
-#### Date: 
+#### Date 
 12/2/15
-
-#### Name: 
-Extract a value from the incoming request URL
 
 #### Proxy name:
 parse-request-url
 
+#### Goal 
+
+* Use the Extract Variables policy to parse the incoming request URL and save part of the URL in a flow variable. 
+* Return the extracted value in the response
+
 #### Policies used
 
 * Extract Variables -- Parses the request URL, extracts a value from the URL, and stores it in a variable. 
-* JavaScript -- Reads the extracted value from the variable and returns it in the response. 
+* JavaScript -- Reads the extracted value from the flow variable and returns it in the response. 
 
-#### Notes
+##### Story
 
-We use the <URIPath> element in Extract Variables to specify the pattern to match in the request URL. The policy looks at the `proxy.pathsuffix` part of the URL when it performs the pattern match. 
+Let's say the request URL looks like this:
 
-#### Goal:
-1. Parse the incoming request URL
-2. Extract a specific value from the URL
-3. Store the value in a flow variable
-4. Read the value from the variable
-5. Return the value in the response
+`http://myorg-test.apigee.net/parse-request-url/extract-variables/resource1/123456`
+
+We want to extract the value `123456` into a flow variable called `urirequest.id`. This is a common use case, where the extracted value can be used in another policy elsewhere in the proxy flow.
+
+We use the Extract Variables policy shown below. The policy says: If the incoming request URI path (technically, the `proxy.pathsuffix`) matches the specified pattern, parse out the value of the {id} part of the path, and store that value in a variable called `urirequest.id`. 
+
+```xml
+        <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+        <ExtractVariables name="Extract-Path-Component">
+            <DisplayName>Extract Path Component</DisplayName>
+            <Source>request</Source>
+            <URIPath>
+                <Pattern ignoreCase="true">/extract-variables/resource1/{id}</Pattern>
+            </URIPath>
+            <VariablePrefix>urirequest</VariablePrefix>
+            <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+        </ExtractVariables>
+```
+
+In our samplet, the value of {id} is `123456`, and that's what gets saved. You can call the API and replace `123456` with any value you wish, and it will save that value. 
+
 
 #### Sample input:
 
