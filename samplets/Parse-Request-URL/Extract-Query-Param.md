@@ -51,7 +51,7 @@ In our samplet, the value of {dbncode} is `abc123`, and that's what gets saved. 
     {
       "Feature demonstrated": "Extract value of {dbncode} parsed from the code query parameter: ?code=DBN{dbncode}",
       "Data extracted": "abc123",
-      "Policy demonstrated": "Extract Vßariables"
+      "Policy demonstrated": "Extract Variables"
     }
 ```
 
