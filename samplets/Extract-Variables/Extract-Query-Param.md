@@ -4,7 +4,7 @@
 12/2/15
 
 #### Proxy name:
-parse-request-url
+extract-variables
 
 #### Goal 
 
@@ -20,7 +20,7 @@ parse-request-url
 
 Let's say the request URL looks like this, with a query param that has a fixed part `DBN` and a variable part, such as `abc123`, as follows:
 
-`http://myorg-test.apigee.net/parse-request-url/extract-variables?code=DBNabc123`
+`http://myorg-test.apigee.net/extract-variables?code=DBNabc123`
 
 We want to extract the variable value `abc123` into a flow variable called `queryinfo.id`. This is a common use case, where the extracted value can be used in another policy elsewhere in the proxy flow.
 

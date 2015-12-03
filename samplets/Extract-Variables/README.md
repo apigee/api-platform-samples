@@ -1,29 +1,35 @@
 # Extract Variables Samplets
 
-* [Extract Query Parameter](./Extract-Query-Param.md)
-* [Extract URI Part](./Extract-URI-Part.md)
+Click on one of the links below to view details about each samplet. 
 
-## Clone
+* [Extract Query Parameter from Request](./Extract-Query-Param.md)
+* [Extract Part of Request Path](./Extract-URI-Part.md)
 
-Clone this repository to your system.
+## Get going!
 
-## Configure
+Do these steps to deploy and run any of the samplets:
 
-Add your Apigee org info to this file: `../../setup/setenv.sh`
+#### 1. Clone 
 
-## Deploy
+Clone this repository to your system. This is a one-time step. 
 
-Execute the `./deploy.sh` script. 
+#### 2. Configure (one-time step)
 
-## Invoke
+Add your Apigee org info to this file: `../../setup/setenv.sh`. This is a one-time step. 
 
-Execute the `./invoke.sh` script
+#### 3. Deploy
+
+Execute the `./deploy.sh` script. Do this one time, or if you make any local changes to the proxy. 
+
+#### 4. Invoke
+
+Execute the `./invoke.sh` script. Do this as many times as you want!
 
 or
 
 Use a tool like Postman to call the API. 
 
-## Explore
+#### 5. Explore
 
 * Examine the deployed proxy in the Edge UI
 * Use the Edge Trace Tool to see your proxy in action
