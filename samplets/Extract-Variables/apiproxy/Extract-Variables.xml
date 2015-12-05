@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<APIProxy revision="4" name="Extract-Variables">
+<APIProxy revision="4" name="Samplet-Extract-Variables">
     <ConfigurationVersion majorVersion="4" minorVersion="0"/>
     <CreatedAt>1449096663022</CreatedAt>
     <CreatedBy>wwitman@apigee.com</CreatedBy>
