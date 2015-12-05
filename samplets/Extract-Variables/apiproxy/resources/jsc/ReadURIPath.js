@@ -12,7 +12,7 @@ var policyUsed = "Extract Variables";
 var flowVar = 'urirequest.id';
 
 //-- Form the JSON response
-var jsonData = { 'Feature demonstrated': demoSummary, 'Data extracted': data, 'Policy demonstrated': policyUsed, 'Value read from flow variable': flowVar };
+var jsonData = { 'Feature demonstrated': demoSummary, 'Data extracted': data, 'Policy demonstrated': policyUsed, 'Flow variable written/read': flowVar };
 
 //-- Set the response. Note that message.content is read/write and always in scope. 
 context.setVariable('message.header.Content-Type', "application/json");
