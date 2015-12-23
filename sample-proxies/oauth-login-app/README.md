@@ -1,10 +1,10 @@
 # OAuth 2.0 Sample API Proxy and Login App
 
-The directory `/apiproxy` contains a sample API proxy for the following OAuth 2.0 flows:
+The directory `/apiproxy` contains a sample API proxy for the following OAuth 2.0 grant types:
 
-* Web-Server flow
-* Implicit flow
-* Client credentials
+* Authorization 
+* Implicit 
+* Client credentials 
 
 # Configure 
 
