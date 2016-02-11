@@ -30,19 +30,19 @@
   <xs:complexType name="leafBean" abstract="true"/>
   <xs:complexType name="xml2JSONOptions">
     <xs:sequence>
-      <xs:element name="OutputSuffix" type="xs:string" minOccurs="0"/>
-      <xs:element name="OutputPrefix" type="xs:string" minOccurs="0"/>
-      <xs:element name="AttributePrefix" type="xs:string" minOccurs="0"/>
-      <xs:element name="AttributeBlockName" type="xs:string" minOccurs="0"/>
-      <xs:element name="TextNodeName" type="xs:string" minOccurs="0"/>
-      <xs:element name="TextAlwaysAsProperty" type="xs:boolean"/>
-      <xs:element name="NamespaceSeparator" type="xs:string" minOccurs="0"/>
-      <xs:element name="DefaultNamespaceNodeName" type="xs:string" minOccurs="0"/>
-      <xs:element name="NamespaceBlockName" type="xs:string" minOccurs="0"/>
-      <xs:element name="NullValue" type="xs:string" minOccurs="0"/>
-      <xs:element name="RecognizeNull" type="xs:boolean"/>
-      <xs:element name="RecognizeNumber" type="xs:boolean"/>
       <xs:element name="RecognizeBoolean" type="xs:boolean"/>
+      <xs:element name="RecognizeNumber" type="xs:boolean"/>
+      <xs:element name="RecognizeNull" type="xs:boolean"/>
+      <xs:element name="NullValue" type="xs:string" minOccurs="0"/>
+      <xs:element name="NamespaceBlockName" type="xs:string" minOccurs="0"/>
+      <xs:element name="DefaultNamespaceNodeName" type="xs:string" minOccurs="0"/>
+      <xs:element name="NamespaceSeparator" type="xs:string" minOccurs="0"/>
+      <xs:element name="TextAlwaysAsProperty" type="xs:boolean"/>
+      <xs:element name="TextNodeName" type="xs:string" minOccurs="0"/>
+      <xs:element name="AttributeBlockName" type="xs:string" minOccurs="0"/>
+      <xs:element name="AttributePrefix" type="xs:string" minOccurs="0"/>
+      <xs:element name="OutputPrefix" type="xs:string" minOccurs="0"/>
+      <xs:element name="OutputSuffix" type="xs:string" minOccurs="0"/>
     </xs:sequence>
   </xs:complexType>
 </xs:schema>

@@ -4,18 +4,6 @@
   <xs:element name="Parameters" type="parameters"/>
   <xs:element name="XSL" type="xslBean"/>
   <xs:element name="stepDefinitionBean" type="stepDefinitionBean"/>
-  <xs:complexType name="parameter">
-    <xs:sequence/>
-    <xs:attribute name="name" type="xs:string" use="required"/>
-    <xs:attribute name="ref" type="xs:string"/>
-    <xs:attribute name="value" type="xs:string"/>
-  </xs:complexType>
-  <xs:complexType name="parameters">
-    <xs:sequence>
-      <xs:element ref="Parameter" minOccurs="0" maxOccurs="unbounded"/>
-    </xs:sequence>
-    <xs:attribute name="ignoreUnresolvedVariables" type="xs:string"/>
-  </xs:complexType>
   <xs:complexType name="xslBean">
     <xs:complexContent>
       <xs:extension base="stepDefinitionBean">
@@ -42,4 +30,16 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:complexType name="leafBean" abstract="true"/>
+  <xs:complexType name="parameters">
+    <xs:sequence>
+      <xs:element ref="Parameter" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+    <xs:attribute name="ignoreUnresolvedVariables" type="xs:string"/>
+  </xs:complexType>
+  <xs:complexType name="parameter">
+    <xs:sequence/>
+    <xs:attribute name="name" type="xs:string" use="required"/>
+    <xs:attribute name="ref" type="xs:string"/>
+    <xs:attribute name="value" type="xs:string"/>
+  </xs:complexType>
 </xs:schema>

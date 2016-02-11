@@ -2,41 +2,6 @@
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0">
   <xs:element name="XMLThreatProtection" type="xmlThreatProtectionBean"/>
   <xs:element name="stepDefinitionBean" type="stepDefinitionBean"/>
-  <xs:complexType name="childCount">
-    <xs:simpleContent>
-      <xs:extension base="xs:int">
-        <xs:attribute name="includeText" type="xs:boolean" use="required"/>
-        <xs:attribute name="includeComment" type="xs:boolean" use="required"/>
-        <xs:attribute name="includeProcessingInstruction" type="xs:boolean" use="required"/>
-        <xs:attribute name="includeElement" type="xs:boolean" use="required"/>
-      </xs:extension>
-    </xs:simpleContent>
-  </xs:complexType>
-  <xs:complexType name="structureLimits">
-    <xs:sequence>
-      <xs:element name="NodeDepth" type="xs:int"/>
-      <xs:element name="AttributeCountPerElement" type="xs:int"/>
-      <xs:element name="NamespaceCountPerElement" type="xs:int"/>
-      <xs:element name="ChildCount" type="childCount" minOccurs="0"/>
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="valueLimits">
-    <xs:sequence>
-      <xs:element name="Text" type="xs:long"/>
-      <xs:element name="Attribute" type="xs:int"/>
-      <xs:element name="NamespaceURI" type="xs:int"/>
-      <xs:element name="Comment" type="xs:int"/>
-      <xs:element name="ProcessingInstructionData" type="xs:int"/>
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="nameLimits">
-    <xs:sequence>
-      <xs:element name="Element" type="xs:int"/>
-      <xs:element name="Attribute" type="xs:int"/>
-      <xs:element name="NamespacePrefix" type="xs:int"/>
-      <xs:element name="ProcessingInstructionTarget" type="xs:int"/>
-    </xs:sequence>
-  </xs:complexType>
   <xs:complexType name="xmlThreatProtectionBean">
     <xs:complexContent>
       <xs:extension base="stepDefinitionBean">
@@ -64,4 +29,39 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:complexType name="leafBean" abstract="true"/>
+  <xs:complexType name="nameLimits">
+    <xs:sequence>
+      <xs:element name="Element" type="xs:int"/>
+      <xs:element name="Attribute" type="xs:int"/>
+      <xs:element name="NamespacePrefix" type="xs:int"/>
+      <xs:element name="ProcessingInstructionTarget" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="structureLimits">
+    <xs:sequence>
+      <xs:element name="NodeDepth" type="xs:int"/>
+      <xs:element name="AttributeCountPerElement" type="xs:int"/>
+      <xs:element name="NamespaceCountPerElement" type="xs:int"/>
+      <xs:element name="ChildCount" type="childCount" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="childCount">
+    <xs:simpleContent>
+      <xs:extension base="xs:int">
+        <xs:attribute name="includeText" type="xs:boolean" use="required"/>
+        <xs:attribute name="includeComment" type="xs:boolean" use="required"/>
+        <xs:attribute name="includeProcessingInstruction" type="xs:boolean" use="required"/>
+        <xs:attribute name="includeElement" type="xs:boolean" use="required"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="valueLimits">
+    <xs:sequence>
+      <xs:element name="Text" type="xs:long"/>
+      <xs:element name="Attribute" type="xs:int"/>
+      <xs:element name="NamespaceURI" type="xs:int"/>
+      <xs:element name="Comment" type="xs:int"/>
+      <xs:element name="ProcessingInstructionData" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
 </xs:schema>

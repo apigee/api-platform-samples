@@ -58,13 +58,6 @@
       </xs:extension>
     </xs:simpleContent>
   </xs:complexType>
-  <xs:complexType name="cacheContextBean">
-    <xs:sequence>
-      <xs:element name="APIProxyName" type="propertyBean" minOccurs="0"/>
-      <xs:element name="ProxyName" type="propertyBean" minOccurs="0"/>
-      <xs:element name="TargetName" type="propertyBean" minOccurs="0"/>
-    </xs:sequence>
-  </xs:complexType>
   <xs:complexType name="invalidateCacheBean">
     <xs:complexContent>
       <xs:extension base="abstractCacheStepDefinitionBean">
@@ -74,6 +67,13 @@
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="cacheContextBean">
+    <xs:sequence>
+      <xs:element name="APIProxyName" type="propertyBean" minOccurs="0"/>
+      <xs:element name="ProxyName" type="propertyBean" minOccurs="0"/>
+      <xs:element name="TargetName" type="propertyBean" minOccurs="0"/>
+    </xs:sequence>
   </xs:complexType>
   <xs:complexType name="populateCacheBean">
     <xs:complexContent>
@@ -107,13 +107,4 @@
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
-  <xs:simpleType name="cacheScope">
-    <xs:restriction base="xs:string">
-      <xs:enumeration value="Global"/>
-      <xs:enumeration value="Application"/>
-      <xs:enumeration value="Proxy"/>
-      <xs:enumeration value="Target"/>
-      <xs:enumeration value="Exclusive"/>
-    </xs:restriction>
-  </xs:simpleType>
 </xs:schema>

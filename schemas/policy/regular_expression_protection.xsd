@@ -2,105 +2,6 @@
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0">
   <xs:element name="RegularExpressionProtection" type="regularExpressionProtectionBean"/>
   <xs:element name="stepDefinitionBean" type="stepDefinitionBean"/>
-  <xs:complexType name="regexPattern">
-    <xs:simpleContent>
-      <xs:extension base="xs:string">
-        <xs:attribute name="ignoreCase" type="xs:string"/>
-      </xs:extension>
-    </xs:simpleContent>
-  </xs:complexType>
-  <xs:complexType name="regexMatch">
-    <xs:sequence>
-      <xs:element name="Pattern" type="regexPattern" minOccurs="0" maxOccurs="unbounded"/>
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="pathMatch">
-    <xs:complexContent>
-      <xs:extension base="regexMatch">
-        <xs:sequence/>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:complexType name="namedMatch" abstract="true">
-    <xs:complexContent>
-      <xs:extension base="regexMatch">
-        <xs:sequence/>
-        <xs:attribute name="name" type="xs:string" use="required"/>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:complexType name="queryParamMatch">
-    <xs:complexContent>
-      <xs:extension base="namedMatch">
-        <xs:sequence/>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:complexType name="headerMatch">
-    <xs:complexContent>
-      <xs:extension base="namedMatch">
-        <xs:sequence/>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:complexType name="formParamMatch">
-    <xs:complexContent>
-      <xs:extension base="namedMatch">
-        <xs:sequence/>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:complexType name="variableMatch">
-    <xs:complexContent>
-      <xs:extension base="namedMatch">
-        <xs:sequence/>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:complexType name="xmlNamespace">
-    <xs:simpleContent>
-      <xs:extension base="xs:string">
-        <xs:attribute name="prefix" type="xs:string" use="required"/>
-      </xs:extension>
-    </xs:simpleContent>
-  </xs:complexType>
-  <xs:complexType name="xPathMatch">
-    <xs:complexContent>
-      <xs:extension base="regexMatch">
-        <xs:sequence>
-          <xs:element name="Expression" type="xs:string" minOccurs="0"/>
-          <xs:element name="Type" type="type" minOccurs="0"/>
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:complexType name="xmlBody">
-    <xs:sequence>
-      <xs:element name="Namespaces" minOccurs="0">
-        <xs:complexType>
-          <xs:sequence>
-            <xs:element name="Namespace" type="xmlNamespace" minOccurs="0" maxOccurs="unbounded"/>
-          </xs:sequence>
-        </xs:complexType>
-      </xs:element>
-      <xs:element name="XPath" type="xPathMatch" minOccurs="0" maxOccurs="unbounded"/>
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="jsonMatch">
-    <xs:complexContent>
-      <xs:extension base="regexMatch">
-        <xs:sequence>
-          <xs:element name="Expression" type="xs:string" minOccurs="0"/>
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:complexType name="jsonBody">
-    <xs:sequence>
-      <xs:element name="JSONPath" type="jsonMatch" minOccurs="0" maxOccurs="unbounded"/>
-    </xs:sequence>
-    <xs:attribute name="escapeSlashCharacter" type="xs:boolean" use="required"/>
-  </xs:complexType>
   <xs:complexType name="regularExpressionProtectionBean">
     <xs:complexContent>
       <xs:extension base="stepDefinitionBean">
@@ -134,15 +35,114 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:complexType name="leafBean" abstract="true"/>
+  <xs:complexType name="jsonBody">
+    <xs:sequence>
+      <xs:element name="JSONPath" type="jsonMatch" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+    <xs:attribute name="escapeSlashCharacter" type="xs:boolean" use="required"/>
+  </xs:complexType>
+  <xs:complexType name="jsonMatch">
+    <xs:complexContent>
+      <xs:extension base="regexMatch">
+        <xs:sequence>
+          <xs:element name="Expression" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="regexMatch">
+    <xs:sequence>
+      <xs:element name="Pattern" type="regexPattern" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="regexPattern">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute name="ignoreCase" type="xs:string"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="pathMatch">
+    <xs:complexContent>
+      <xs:extension base="regexMatch">
+        <xs:sequence/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="queryParamMatch">
+    <xs:complexContent>
+      <xs:extension base="namedMatch">
+        <xs:sequence/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="namedMatch" abstract="true">
+    <xs:complexContent>
+      <xs:extension base="regexMatch">
+        <xs:sequence/>
+        <xs:attribute name="name" type="xs:string" use="required"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="headerMatch">
+    <xs:complexContent>
+      <xs:extension base="namedMatch">
+        <xs:sequence/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="formParamMatch">
+    <xs:complexContent>
+      <xs:extension base="namedMatch">
+        <xs:sequence/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="variableMatch">
+    <xs:complexContent>
+      <xs:extension base="namedMatch">
+        <xs:sequence/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="xmlBody">
+    <xs:sequence>
+      <xs:element name="Namespaces" minOccurs="0">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Namespace" type="xmlNamespace" minOccurs="0" maxOccurs="unbounded"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="XPath" type="xPathMatch" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="xmlNamespace">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute name="prefix" type="xs:string" use="required"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="xPathMatch">
+    <xs:complexContent>
+      <xs:extension base="regexMatch">
+        <xs:sequence>
+          <xs:element name="Expression" type="xs:string" minOccurs="0"/>
+          <xs:element name="Type" type="type" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
   <xs:simpleType name="type">
     <xs:restriction base="xs:string">
-      <xs:enumeration value="string"/>
       <xs:enumeration value="integer"/>
-      <xs:enumeration value="long"/>
       <xs:enumeration value="float"/>
-      <xs:enumeration value="double"/>
-      <xs:enumeration value="boolean"/>
       <xs:enumeration value="nodeset"/>
+      <xs:enumeration value="string"/>
+      <xs:enumeration value="boolean"/>
+      <xs:enumeration value="long"/>
+      <xs:enumeration value="double"/>
     </xs:restriction>
   </xs:simpleType>
 </xs:schema>

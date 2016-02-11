@@ -4,63 +4,6 @@
   <xs:element name="KeyValueMapOperations" type="keyValueMapOperationsBean"/>
   <xs:element name="Property" type="propertyBean"/>
   <xs:element name="stepDefinitionBean" type="stepDefinitionBean"/>
-  <xs:complexType name="entry">
-    <xs:sequence>
-      <xs:element name="Key" minOccurs="0">
-        <xs:complexType>
-          <xs:sequence>
-            <xs:element name="Parameter" type="xs:string" maxOccurs="unbounded"/>
-          </xs:sequence>
-        </xs:complexType>
-      </xs:element>
-      <xs:element name="Value" type="xs:string" maxOccurs="unbounded"/>
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="keyValueMapOperation">
-    <xs:sequence>
-      <xs:element name="Key" minOccurs="0">
-        <xs:complexType>
-          <xs:sequence>
-            <xs:element name="Parameter" type="propertyBean" maxOccurs="unbounded"/>
-          </xs:sequence>
-        </xs:complexType>
-      </xs:element>
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="propertyBean">
-    <xs:simpleContent>
-      <xs:extension base="xs:string">
-        <xs:attribute name="ref" type="xs:string"/>
-        <xs:attribute name="type" type="xs:string"/>
-      </xs:extension>
-    </xs:simpleContent>
-  </xs:complexType>
-  <xs:complexType name="put">
-    <xs:complexContent>
-      <xs:extension base="keyValueMapOperation">
-        <xs:sequence>
-          <xs:element name="Value" type="propertyBean" maxOccurs="unbounded"/>
-        </xs:sequence>
-        <xs:attribute name="override" type="xs:string"/>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:complexType name="delete">
-    <xs:complexContent>
-      <xs:extension base="keyValueMapOperation">
-        <xs:sequence/>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:complexType name="get">
-    <xs:complexContent>
-      <xs:extension base="keyValueMapOperation">
-        <xs:sequence/>
-        <xs:attribute name="assignTo" type="xs:string" use="required"/>
-        <xs:attribute name="index" type="xs:int"/>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
   <xs:complexType name="keyValueMapOperationsBean">
     <xs:complexContent>
       <xs:extension base="stepDefinitionBean">
@@ -99,4 +42,61 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:complexType name="leafBean" abstract="true"/>
+  <xs:complexType name="entry">
+    <xs:sequence>
+      <xs:element name="Key" minOccurs="0">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Parameter" type="xs:string" maxOccurs="unbounded"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="Value" type="xs:string" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="put">
+    <xs:complexContent>
+      <xs:extension base="keyValueMapOperation">
+        <xs:sequence>
+          <xs:element name="Value" type="propertyBean" maxOccurs="unbounded"/>
+        </xs:sequence>
+        <xs:attribute name="override" type="xs:string"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="keyValueMapOperation">
+    <xs:sequence>
+      <xs:element name="Key" minOccurs="0">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Parameter" type="propertyBean" maxOccurs="unbounded"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="propertyBean">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute name="ref" type="xs:string"/>
+        <xs:attribute name="type" type="xs:string"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="get">
+    <xs:complexContent>
+      <xs:extension base="keyValueMapOperation">
+        <xs:sequence/>
+        <xs:attribute name="assignTo" type="xs:string" use="required"/>
+        <xs:attribute name="index" type="xs:int"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="delete">
+    <xs:complexContent>
+      <xs:extension base="keyValueMapOperation">
+        <xs:sequence/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
 </xs:schema>

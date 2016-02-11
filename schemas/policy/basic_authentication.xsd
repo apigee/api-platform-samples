@@ -5,21 +5,6 @@
   <xs:element name="Password" type="BasicAuthenticationPassword"/>
   <xs:element name="User" type="BasicAuthenticationUser"/>
   <xs:element name="stepDefinitionBean" type="stepDefinitionBean"/>
-  <xs:complexType name="assignTo">
-    <xs:simpleContent>
-      <xs:extension base="xs:string">
-        <xs:attribute name="createNew" type="xs:boolean"/>
-      </xs:extension>
-    </xs:simpleContent>
-  </xs:complexType>
-  <xs:complexType name="BasicAuthenticationUser">
-    <xs:sequence/>
-    <xs:attribute name="ref" type="xs:string" use="required"/>
-  </xs:complexType>
-  <xs:complexType name="BasicAuthenticationPassword">
-    <xs:sequence/>
-    <xs:attribute name="ref" type="xs:string" use="required"/>
-  </xs:complexType>
   <xs:complexType name="basicAuthStepDefinitionBean">
     <xs:complexContent>
       <xs:extension base="stepDefinitionBean">
@@ -48,10 +33,25 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:complexType name="leafBean" abstract="true"/>
+  <xs:complexType name="assignTo">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute name="createNew" type="xs:boolean"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="BasicAuthenticationPassword">
+    <xs:sequence/>
+    <xs:attribute name="ref" type="xs:string" use="required"/>
+  </xs:complexType>
+  <xs:complexType name="BasicAuthenticationUser">
+    <xs:sequence/>
+    <xs:attribute name="ref" type="xs:string" use="required"/>
+  </xs:complexType>
   <xs:simpleType name="Operation">
     <xs:restriction base="xs:string">
-      <xs:enumeration value="Encode"/>
       <xs:enumeration value="Decode"/>
+      <xs:enumeration value="Encode"/>
     </xs:restriction>
   </xs:simpleType>
 </xs:schema>

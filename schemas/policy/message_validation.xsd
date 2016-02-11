@@ -4,17 +4,6 @@
   <xs:element name="RootElement" type="element"/>
   <xs:element name="SOAPMessage" type="soapMessage"/>
   <xs:element name="stepDefinitionBean" type="stepDefinitionBean"/>
-  <xs:complexType name="soapMessage">
-    <xs:sequence/>
-    <xs:attribute name="version" type="soapVersion"/>
-  </xs:complexType>
-  <xs:complexType name="element">
-    <xs:simpleContent>
-      <xs:extension base="xs:string">
-        <xs:attribute name="namespace" type="xs:string"/>
-      </xs:extension>
-    </xs:simpleContent>
-  </xs:complexType>
   <xs:complexType name="messageValidationBean">
     <xs:complexContent>
       <xs:extension base="stepDefinitionBean">
@@ -41,10 +30,21 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:complexType name="leafBean" abstract="true"/>
+  <xs:complexType name="element">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute name="namespace" type="xs:string"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="soapMessage">
+    <xs:sequence/>
+    <xs:attribute name="version" type="soapVersion"/>
+  </xs:complexType>
   <xs:simpleType name="soapVersion">
     <xs:restriction base="xs:string">
-      <xs:enumeration value="1.1"/>
       <xs:enumeration value="1.2"/>
+      <xs:enumeration value="1.1"/>
     </xs:restriction>
   </xs:simpleType>
 </xs:schema>

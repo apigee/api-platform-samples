@@ -52,30 +52,16 @@
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
-  <xs:complexType name="setOAuthV2InfoBean">
+  <xs:complexType name="deleteOAuthV2InfoBean">
     <xs:complexContent>
       <xs:extension base="stepDefinitionBean">
         <xs:sequence>
           <xs:element name="AccessToken" type="propertyBean" minOccurs="0"/>
-          <xs:element name="Attributes" minOccurs="0">
-            <xs:complexType>
-              <xs:sequence>
-                <xs:element name="Attribute" type="customAttribute" minOccurs="0" maxOccurs="unbounded"/>
-              </xs:sequence>
-            </xs:complexType>
-          </xs:element>
+          <xs:element name="AuthorizationCode" type="propertyBean" minOccurs="0"/>
+          <xs:element name="OAuthConfig" type="xs:string" minOccurs="0"/>
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
-  </xs:complexType>
-  <xs:complexType name="customAttribute">
-    <xs:simpleContent>
-      <xs:extension base="xs:string">
-        <xs:attribute name="display" type="xs:boolean" use="required"/>
-        <xs:attribute name="name" type="xs:string" use="required"/>
-        <xs:attribute name="ref" type="xs:string"/>
-      </xs:extension>
-    </xs:simpleContent>
   </xs:complexType>
   <xs:complexType name="oAuthV2Bean">
     <xs:complexContent>
@@ -131,6 +117,15 @@
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
+  <xs:complexType name="customAttribute">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute name="display" type="xs:string"/>
+        <xs:attribute name="name" type="xs:string" use="required"/>
+        <xs:attribute name="ref" type="xs:string"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
   <xs:complexType name="generateErrorResponse">
     <xs:complexContent>
       <xs:extension base="generateResponse">
@@ -161,13 +156,18 @@
       </xs:extension>
     </xs:simpleContent>
   </xs:complexType>
-  <xs:complexType name="deleteOAuthV2InfoBean">
+  <xs:complexType name="setOAuthV2InfoBean">
     <xs:complexContent>
       <xs:extension base="stepDefinitionBean">
         <xs:sequence>
           <xs:element name="AccessToken" type="propertyBean" minOccurs="0"/>
-          <xs:element name="AuthorizationCode" type="propertyBean" minOccurs="0"/>
-          <xs:element name="OAuthConfig" type="xs:string" minOccurs="0"/>
+          <xs:element name="Attributes" minOccurs="0">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="Attribute" type="customAttribute" minOccurs="0" maxOccurs="unbounded"/>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>

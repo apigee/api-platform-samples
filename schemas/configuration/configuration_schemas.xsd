@@ -101,6 +101,8 @@
 
   <xs:element name="LoadBalancer" type="httpTargetLoadBalancerBean"/>
 
+  <xs:element name="LocalTargetConnection" type="localTargetConnection"/>
+
   <xs:element name="Message" type="messageTemplateBean"/>
 
   <xs:element name="MetaData" type="entityMetaData"/>
@@ -171,6 +173,36 @@
 
   <xs:element name="serviceConfigBean" type="serviceConfigBean"/>
 
+  <xs:complexType name="httpProxyConnection">
+    <xs:complexContent>
+      <xs:extension base="httpEndpointConnection">
+        <xs:sequence>
+          <xs:element name="BasePath" type="xs:string" minOccurs="0"/>
+          <xs:element ref="Properties" minOccurs="0"/>
+          <xs:element name="VirtualHost" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="httpEndpointConnection" abstract="true">
+    <xs:sequence/>
+  </xs:complexType>
+
+  <xs:complexType name="jaxbProperties">
+    <xs:sequence>
+      <xs:element name="Property" type="jaxbPropertyEntry" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="jaxbPropertyEntry">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute name="name" type="xs:string"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+
   <xs:complexType name="policy">
     <xs:complexContent>
       <xs:extension base="step">
@@ -223,36 +255,6 @@
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
-  </xs:complexType>
-
-  <xs:complexType name="httpProxyConnection">
-    <xs:complexContent>
-      <xs:extension base="httpEndpointConnection">
-        <xs:sequence>
-          <xs:element name="BasePath" type="xs:string" minOccurs="0"/>
-          <xs:element ref="Properties" minOccurs="0"/>
-          <xs:element name="VirtualHost" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-
-  <xs:complexType name="httpEndpointConnection" abstract="true">
-    <xs:sequence/>
-  </xs:complexType>
-
-  <xs:complexType name="jaxbProperties">
-    <xs:sequence>
-      <xs:element name="Property" type="jaxbPropertyEntry" minOccurs="0" maxOccurs="unbounded"/>
-    </xs:sequence>
-  </xs:complexType>
-
-  <xs:complexType name="jaxbPropertyEntry">
-    <xs:simpleContent>
-      <xs:extension base="xs:string">
-        <xs:attribute name="name" type="xs:string"/>
-      </xs:extension>
-    </xs:simpleContent>
   </xs:complexType>
 
   <xs:complexType name="jmsHostBean">
@@ -381,9 +383,9 @@
           </xs:sequence>
         </xs:complexType>
       </xs:element>
-      <xs:element name="ClientAuthEnabled" type="xs:boolean"/>
+      <xs:element name="ClientAuthEnabled" type="xs:string" minOccurs="0"/>
       <xs:element ref="CommonName" minOccurs="0"/>
-      <xs:element name="Enabled" type="xs:boolean"/>
+      <xs:element name="Enabled" type="xs:string" minOccurs="0"/>
       <xs:element name="IgnoreValidationErrors" type="xs:boolean"/>
       <xs:element name="KeyAlias" type="xs:string" minOccurs="0"/>
       <xs:element name="KeyStore" type="xs:string" minOccurs="0"/>
@@ -587,7 +589,9 @@
   <xs:complexType name="gatewayEnvironmentBean">
     <xs:complexContent>
       <xs:extension base="branchBean">
-        <xs:sequence/>
+        <xs:sequence>
+          <xs:element ref="Properties" minOccurs="0"/>
+        </xs:sequence>
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
@@ -687,8 +691,11 @@
 
   <xs:complexType name="certInfo">
     <xs:sequence>
+      <xs:element name="BasicConstraints" type="xs:string" minOccurs="0"/>
       <xs:element name="ExpiryDate" type="xs:string" minOccurs="0"/>
       <xs:element name="Issuer" type="xs:string" minOccurs="0"/>
+      <xs:element name="PublicKey" type="xs:string" minOccurs="0"/>
+      <xs:element name="SerialNumber" type="xs:string" minOccurs="0"/>
       <xs:element name="SigAlgName" type="xs:string" minOccurs="0"/>
       <xs:element name="Subject" type="xs:string" minOccurs="0"/>
       <xs:element name="SubjectAlternativeNames" minOccurs="0">
@@ -1305,6 +1312,16 @@
     </xs:sequence>
   </xs:complexType>
 
+  <xs:complexType name="localTargetConnection">
+    <xs:sequence>
+      <xs:element name="APIProxy" type="xs:string" minOccurs="0"/>
+      <xs:element name="Path" type="xs:string" minOccurs="0"/>
+      <xs:element name="ProxyEndpoint" type="xs:string" minOccurs="0"/>
+      <xs:element ref="Properties" minOccurs="0"/>
+      <xs:element name="VirtualHost" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
   <xs:complexType name="smtpDestinationBean">
     <xs:complexContent>
       <xs:extension base="destinationBean">
@@ -1383,30 +1400,6 @@
     </xs:complexContent>
   </xs:complexType>
 
-  <xs:complexType name="proxyBean">
-    <xs:complexContent>
-      <xs:extension base="endpointBean">
-        <xs:sequence>
-          <xs:any processContents="lax" namespace="##other"/>
-          <xs:element ref="RouteRule" minOccurs="0" maxOccurs="unbounded"/>
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-
-  <xs:complexType name="routeRuleBean">
-    <xs:complexContent>
-      <xs:extension base="inlineBean">
-        <xs:sequence>
-          <xs:element name="Condition" type="xs:string" minOccurs="0"/>
-          <xs:any processContents="lax" namespace="##other"/>
-          <xs:element name="TargetEndpoint" type="xs:string" minOccurs="0"/>
-          <xs:element name="URL" type="xs:string" minOccurs="0"/>
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-
   <xs:complexType name="appFilter">
     <xs:sequence>
       <xs:element name="appFamily" type="xs:string" minOccurs="0"/>
@@ -1444,16 +1437,40 @@
     </xs:complexContent>
   </xs:complexType>
 
+  <xs:complexType name="proxyBean">
+    <xs:complexContent>
+      <xs:extension base="endpointBean">
+        <xs:sequence>
+          <xs:any processContents="lax" namespace="##other"/>
+          <xs:element ref="RouteRule" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="routeRuleBean">
+    <xs:complexContent>
+      <xs:extension base="inlineBean">
+        <xs:sequence>
+          <xs:element name="Condition" type="xs:string" minOccurs="0"/>
+          <xs:any processContents="lax" namespace="##other"/>
+          <xs:element name="TargetEndpoint" type="xs:string" minOccurs="0"/>
+          <xs:element name="URL" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
   <xs:complexType name="regexUrlConstants" abstract="true">
     <xs:sequence/>
   </xs:complexType>
 
   <xs:complexType name="webSocketProxyConnectionBean">
-    <xs:sequence>
-      <xs:element name="BasePath" type="xs:string" minOccurs="0"/>
-      <xs:element ref="Properties" minOccurs="0"/>
-      <xs:element name="VirtualHost" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
-    </xs:sequence>
+    <xs:complexContent>
+      <xs:extension base="httpProxyConnection">
+        <xs:sequence/>
+      </xs:extension>
+    </xs:complexContent>
   </xs:complexType>
 
   <xs:complexType name="apiProducts">
