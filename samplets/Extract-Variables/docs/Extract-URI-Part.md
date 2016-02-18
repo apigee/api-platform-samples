@@ -20,7 +20,7 @@ extract-variables
 
 Let's say the request URL looks like this:
 
-`http://myorg-test.apigee.net/extract-variables/resource1/123456`
+`http://myorg-test.apigee.net/samplet-extract-variables/resource1/123456`
 
 We want to extract the value `123456` into a flow variable called `urirequest.id`. This is a common use case, where the extracted value can be used in another policy elsewhere in the proxy flow.
 
@@ -44,7 +44,7 @@ In our samplet, the value of {id} is `123456`, and that's what gets saved. You c
 
 #### Sample input:
 
-`http://myorg-test.apigee.net/parse-request-url/extract-variables/resource1/123456`
+`http://myorg-test.apigee.net/parse-request-url/samplet-extract-variables/resource1/123456`
 
 #### Sample output:
 
