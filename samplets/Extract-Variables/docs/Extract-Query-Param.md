@@ -7,15 +7,15 @@
 
 Extract Variables
 
-#### Goal 
+##### Goal 
 
 * Parse in incoming request URL and save part of a query parameter in a flow variable.  
 
-#### Sample input:
+##### Sample input:
 
 `http://myorg-test.apigee.net/parse-request-url/samplet-extract-variables?DNCabc123`
 
-#### Sample result:
+##### Sample result:
 
 The value `abc123` is extracted and stored in a flow variable. 
 
