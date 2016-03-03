@@ -4,12 +4,13 @@
         <html>
             <body>
                 <p>[toc]</p>
-                <p>On {DAY_OF_WEEK}, {MONTH} {DAY_NUMBER}, 2015, we released a new cloud version of Apigee Edge.</p>
+                <p>On {DAY_OF_WEEK}, {MONTH} {DAY_NUMBER}, 2016, we released a new version of Apigee Edge for Public Cloud.</p>
                 <div class="note">
-                <p><strong>Questions or issues?</strong> <a href="https://community.apigee.com/page/apigee-customer-support">Get help here</a>.</p>
-                <p><strong>Release notifications</strong>: Go to <a href="http://status.apigee.com">http://status.apigee.com</a> and click <strong>Subscribe to Updates</strong>.</p>
-                <p>See a list of all [node:8408].</p>
-                </div>
+    <p><strong>Private Cloud customers</strong>: See your version's release notes to see which cloud releases it contains.</p>
+    <p><strong>Questions or issues?</strong> <a href="https://community.apigee.com/page/apigee-customer-support">Get help here</a>.</p>
+    <p><strong>Release notifications</strong>: Go to <a href="http://status.apigee.com">http://status.apigee.com</a> and click <strong>Subscribe to Updates</strong>.</p>
+    <p><a href="/release-notes/content/apigee-release-notes">Release notes home page</a></p>
+</div>
                 <h2>New features and enhancements</h2>
                 <p>Following are the new features and enhancements in this release.</p>
                 <xsl:for-each select="Root/issues">
@@ -18,9 +19,7 @@
                             <xsl:value-of select="fields/summary"/>
                         </h3>
                         <p>
-                <xsl:value-of select="fields/customfield_13000"/> (<xsl:value-of select="key"/>)
-                        
-                        
+                            <xsl:value-of select="fields/customfield_13000"/> (<xsl:value-of select="key"/>)
                         </p>
                     </xsl:if>
                 </xsl:for-each>
