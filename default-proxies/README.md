@@ -7,7 +7,7 @@ proxies in your organization.
 
 They are:
 
-* **helloworld** -- A simple target that returns `hello, world` in the response; as well as <h2>I love APIs!</h2> when you call the `/iloveapis` resource. The API proxy includes a Quota policy and an Assign Message policy that provides CORS support.
+* **helloworld** -- A simple target that returns `hello, world` in the response; as well as &lt;h2&gt;I love APIs!&lt;/h2&gt; when you call the `/iloveapis` resource. The API proxy includes a Quota policy and an Assign Message policy that provides CORS support.
 * **oauth** -- An OAuth endpoint for generating access tokens with the client credentials grant type. 
 
 We provide them here for convenience. If you need to reset to 'factory settings' you can simply deploy the API proxies provided here.
