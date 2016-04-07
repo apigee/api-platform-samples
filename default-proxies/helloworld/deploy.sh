@@ -8,7 +8,7 @@ read -s password
 
 echo Deploying $proxy to $env on $url using $username and $org
 
-../../tools/deploy.py -n weatherapi -u $username:$password -o $org -h $url -e $env -p / -d ../weatherapi
+../../tools/deploy.py -n helloworld -u $username:$password -o $org -h $url -e $env -p / -d ../helloworld
 
 echo "If 'State: deployed', then your API Proxy is ready to be invoked."
 

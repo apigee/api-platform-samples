@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<APIProxy revision="1" name="helloworld">
+    <ConfigurationVersion majorVersion="4" minorVersion="0"/>
+    <CreatedAt>1459996798985</CreatedAt>
+    <CreatedBy>adas@apigee.com</CreatedBy>
+    <Description></Description>
+    <DisplayName>helloworld</DisplayName>
+    <LastModifiedAt>1460000219331</LastModifiedAt>
+    <LastModifiedBy>adas@apigee.com</LastModifiedBy>
+    <Policies>
+        <Policy>add-cors</Policy>
+        <Policy>check-quota</Policy>
+    </Policies>
+    <ProxyEndpoints>
+        <ProxyEndpoint>default</ProxyEndpoint>
+    </ProxyEndpoints>
+    <Resources/>
+    <TargetServers/>
+    <TargetEndpoints>
+        <TargetEndpoint>default</TargetEndpoint>
+    </TargetEndpoints>
+    <validate>false</validate>
+</APIProxy>

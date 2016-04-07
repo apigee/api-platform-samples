@@ -7,7 +7,7 @@ proxies in your organization.
 
 They are:
 
-* **weatherapi** -- A sample weather API that hits Yahoo Weather. 
+* **helloworld** -- A simple target that returns `hello, world` in the response; as well as <h2>I love APIs!</h2> when you call the `/iloveapis` resource. The API proxy includes a Quota policy and an Assign Message policy that provides CORS support.
 * **oauth** -- An OAuth endpoint for generating access tokens with the client credentials grant type. 
 
 We provide them here for convenience. If you need to reset to 'factory settings' you can simply deploy the API proxies provided here.
@@ -18,7 +18,7 @@ We provide them here for convenience. If you need to reset to 'factory settings'
 
 ---
 
-Copyright © 2015 Apigee Corporation
+Copyright © 2016 Apigee Corporation
 
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use
 this file except in compliance with the License. You may obtain a copy
