@@ -1,4 +1,4 @@
-* Deploying the sample
+# Deploying the sample
 
 The API proxy source code is in the `/apiproxy` directory. Running `deploy.sh` deploys the API proxy from that directory to your Edge environment.
 
