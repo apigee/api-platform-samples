@@ -2,10 +2,10 @@
 
 The `helloworld` proxy returns simple text and HTML responses by routing API calls to this target:
 
-`http://mocktarget.apigee.net'
+http://mocktarget.apigee.net
 
-* By calling the base target URL (/v0/hello in the API proxy), the response is `hello, world`.
-* By calling the `/iloveapis` resource (/v0/hello/iloveapis in the API proxy), the response is `<h2>I love APIs!</h2>`.
+* When calling the base target URL above (`/v0/hello` in the API proxy), the response is `hello, world`.
+* When calling the `/iloveapis` resource (`/v0/hello/iloveapis` in the API proxy), the response is `<h2>I love APIs!</h2>`.
 
 ## Deploying the sample
 
