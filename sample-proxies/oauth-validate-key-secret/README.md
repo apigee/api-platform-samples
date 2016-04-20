@@ -18,7 +18,7 @@ This sample uses several policies in concert. The flow goes like this:
 3. [Assign Message](http://docs.apigee.com/api-services/reference/assign-message-policy) -- Builds a request message to call the external Identity Provider. 
 4. [Service Callout](http://docs.apigee.com/api-services/reference/service-callout-policy) -- Calls the Identity Provider to validate user credentials. The sample uses API BaaS to validate the credentials. 
 5. [Raise Fault](http://docs.apigee.com/api-services/reference/raise-fault-policy) -- Returns a "401" message to the client if user validation fails.
-6. [OAuthV2](http://docs.apigee.com/api-services/content/oauthv2-policy) -- Generate the access token using the "unstored" token (which is stored in a flow variable) as an externally-generated token. The policy supports this flow with the <ExternalAccessToken> element. It takes an externally generated token, stores the token, and returns it. 
+6. [OAuthV2](http://docs.apigee.com/api-services/content/oauthv2-policy) -- Generate the access token using the access token generated previously. Although the token was not stored in Edge's token store, it was stored in a flow variable, which we can now access as an externally-generated token. The policy supports this flow with the <ExternalAccessToken> element. It takes an externally generated token, stores the token, and returns it. 
 
 ```
     <OAuthV2 async="false" continueOnError="false" enabled="true" name="OA-GenerateAccessToken-Password">
