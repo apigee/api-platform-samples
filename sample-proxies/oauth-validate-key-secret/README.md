@@ -53,8 +53,9 @@ You can use this pattern when you have a requirement to validate both the client
 
 For example:
 
-```echo -n hXLaG8ZLfv7mNdTHscCIrAlqmKgvmKUo:nxgdJHMGj06stt8T | base64
-aFhMYUc4WkxmdjdtTmRUSHNjQ0lyQWxxbUtndm1LVW86bnhnZEpITUdqMDZzdHQ4VA==
+```
+    echo -n hXLaG8ZLfv7mNdTHscCIrAlqmKgvmKUo:nxgdJHMGj06stt8T | base64
+    aFhMYUc4WkxmdjdtTmRUSHNjQ0lyQWxxbUtndm1LVW86bnhnZEpITUdqMDZzdHQ4VA==
 ```
 
 
@@ -63,24 +64,24 @@ aFhMYUc4WkxmdjdtTmRUSHNjQ0lyQWxxbUtndm1LVW86bnhnZEpITUdqMDZzdHQ4VA==
 An access token and refresh token are returned to the client. 
 
 ```
-{
-  "issued_at": "1461170770924",
-  "scope": "",
-  "application_name": "a021996f-36fe-4cdf-b14e-9d9262db640e",
-  "refresh_token_issued_at": "1461170770924",
-  "status": "approved",
-  "refresh_token_status": "approved",
-  "api_product_list": "[sample-product]",
-  "expires_in": "35999",
-  "developer.email": "tesla@weathersample.com",
-  "token_type": "BearerToken",
-  "refresh_token": "AE4Yzr2JVwh1WCWz7HX65BBulR7yBOV",
-  "client_id": "hXLaG8ZLv7mNdTHscCIrAlqmKgvmKUo",
-  "access_token": "FOmCPxsonxvLQCGEoP3K9whrlPy0",
-  "organization_name": "artomatic",
-  "refresh_token_expires_in": "0",
-  "refresh_count": "0"
-}
+    {
+      "issued_at": "1461170770924",
+      "scope": "",
+      "application_name": "a021996f-36fe-4cdf-b14e-9d9262db640e",
+      "refresh_token_issued_at": "1461170770924",
+      "status": "approved",
+      "refresh_token_status": "approved",
+      "api_product_list": "[sample-product]",
+      "expires_in": "35999",
+      "developer.email": "tesla@weathersample.com",
+      "token_type": "BearerToken",
+      "refresh_token": "AE4Yzr2JVwh1WCWz7HX65BBulR7yBOV",
+      "client_id": "hXLaG8ZLv7mNdTHscCIrAlqmKgvmKUo",
+      "access_token": "FOmCPxsonxvLQCGEoP3K9whrlPy0",
+      "organization_name": "artomatic",
+      "refresh_token_expires_in": "0",
+      "refresh_count": "0"
+    }
 ```
 
 ### Trace
