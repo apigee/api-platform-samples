@@ -1,0 +1,115 @@
+# Validate both client secret and key
+
+### Sample use case
+
+You are implementing the OAuth Password grant type flow. You need to validate both the application client key and secret on Edge before calling an outside Identity Provider to validate the user's credentials.   
+
+**Note:** This example was inspired by [this thread](https://community.apigee.com/questions/20774/validating-both-client-id-and-secret.html) on the Apigee Community. 
+
+### Policies 
+
+This sample uses several policies in concert. The flow goes like this:
+
+1. [OAuthV2](http://docs.apigee.com/api-services/content/oauthv2-policy) -- Validates the incoming key and secret. The policy is configured to do the validation without storing the generated access token. If the key/secret are invalid, the policy returns an error to the client. 
+
+    `<StoreToken>false</StoreToken>`
+
+2. [Extract Variables](http://docs.apigee.com/api-services/reference/extract-variables-policy) -- Extracts form parameters from the request (username, password, and grant type) and stores them in variables for later use.
+3. [Assign Message](http://docs.apigee.com/api-services/reference/assign-message-policy) -- Builds a request message to call the external Identity Provider. 
+4. [Service Callout](http://docs.apigee.com/api-services/reference/service-callout-policy) -- Calls the Identity Provider to validate user credentials. The sample uses API BaaS to validate the credentials. 
+5. [Raise Fault](http://docs.apigee.com/api-services/reference/raise-fault-policy) -- Returns a "401" message to the client if user validation fails.
+6. [OAuthV2](http://docs.apigee.com/api-services/content/oauthv2-policy) -- Generate the access token using the "unstored" token (which is stored in a flow variable) as an externally-generated token. The policy supports this flow with the <ExternalAccessToken> element. It takes an externally generated token, stores the token, and returns it. 
+
+```
+    <OAuthV2 async="false" continueOnError="false" enabled="true" name="OA-GenerateAccessToken-Password">
+        <DisplayName>OA-GenerateAccessToken Password</DisplayName>
+        <Operation>GenerateAccessToken</Operation>
+        <ExternalAccessToken>apigee.access_token</ExternalAccessToken>
+        <!-- This is in millseconds, so expire in an hour -->
+        <ExpiresIn>36000000</ExpiresIn>
+        <SupportedGrantTypes>
+            <GrantType>password</GrantType>
+        </SupportedGrantTypes>
+        <GrantType>request.formparam.grant_type</GrantType>
+        <UserName>request.formparam.username</UserName>
+        <PassWord>request.formparam.password</PassWord>
+        <GenerateResponse enabled="true"/>
+        <GenerateErrorResponse enabled="true"/>
+    </OAuthV2>
+```
+ 
+
+### About
+
+You can use this pattern when you have a requirement to validate both the client ID and secret before performing other functions in the proxy flow. In this case, you want to prevent unauthorized clients from calling the Identity Provider service. If the key/secret are not valid, processing stops and an error is returned to the client.  
+
+### Set up, deploy, invoke
+
+1. Deploy the API proxy. You can use the deploy.sh script, or simply import the ZIP file through the Edge UI.
+2. Create a Product and a Developer App in Edge to generate a valid key and secret. You must add the API proxy to the Product, then create the Developer App. 
+3. Call the API. You can use the `invoke.sh` script. You'll need to provide the Base64-encoded Developer App key:secret. You can get this value like this:
+
+`echo -n <key>:<secret> | base64`
+
+For example:
+
+```echo -n hXLaG8ZLfv7mNdTHscCIrAlqmKgvmKUo:nxgdJHMGj06stt8T | base64
+aFhMYUc4WkxmdjdtTmRUSHNjQ0lyQWxxbUtndm1LVW86bnhnZEpITUdqMDZzdHQ4VA==
+```
+
+
+### Result
+
+An access token and refresh token are returned to the client. 
+
+```
+{
+  "issued_at": "1461170770924",
+  "scope": "",
+  "application_name": "a021996f-36fe-4cdf-b14e-9d9262db640e",
+  "refresh_token_issued_at": "1461170770924",
+  "status": "approved",
+  "refresh_token_status": "approved",
+  "api_product_list": "[sample-product]",
+  "expires_in": "35999",
+  "developer.email": "tesla@weathersample.com",
+  "token_type": "BearerToken",
+  "refresh_token": "AE4Yzr2JVwh1WCWz7HX65BBulR7yBOV",
+  "client_id": "hXLaG8ZLv7mNdTHscCIrAlqmKgvmKUo",
+  "access_token": "FOmCPxsonxvLQCGEoP3K9whrlPy0",
+  "organization_name": "artomatic",
+  "refresh_token_expires_in": "0",
+  "refresh_count": "0"
+}
+```
+
+### Trace
+
+This screen shot from the [Apigee Edge trace tool](http://apigee.com/docs/api-services/content/using-trace-tool-0) shows the placement of the policies used in this sample. 
+
+![alt text](../../images/oauth-validate-key-secret.png)
+
+### More information
+
+* [Using third-party OAuth tokens](http://docs.apigee.com/api-services/content/use-third-party-oauth-system)
+
+
+### Ask the community
+
+[![alt text](../../images/apigee-community.png "Apigee Community is a great place to ask questions and find answers about developing API proxies. ")](https://community.apigee.com?via=github)
+
+---
+
+Copyright © 2016 Apigee Corporation
+
+Licensed under the Apache License, Version 2.0 (the "License"); you may not use
+this file except in compliance with the License. You may obtain a copy
+of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.

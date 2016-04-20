@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ProxyEndpoint name="default">
+    <Description/>
+    <FaultRules/>
+    <Flows>
+        <Flow name="Token - Password">
+            <Description/>
+            <Request>
+                <Step>
+                    <Name>OA-VerifyAPIKey-and-Secret</Name>
+                </Step>
+                <Step>
+                    <Name>EV-UsernamePassword</Name>
+                </Step>
+                <Step>
+                    <Name>AM-CreateAuthenticateRequest</Name>
+                </Step>
+                <Step>
+                    <Name>SC-AuthenticateUser</Name>
+                </Step>
+                <Step>
+                    <!--
+                    <Condition>servicecallout.SC-AuthenticateUser.failed</Condition>
+                    -->
+                    <Condition>authenticate.response.status.code != 200</Condition>
+                    <Name>RF-AutenticateFailed</Name>
+                </Step>
+                <Step>
+                    <Name>OA-GenerateAccessToken-Password</Name>
+                </Step>
+            </Request>
+            <Response/>
+            <Condition>(request.verb = "POST") and (proxy.pathsuffix MatchesPath "/token") and (request.formparam.grant_type = "password")</Condition>
+        </Flow>
+    </Flows>
+    <HTTPProxyConnection>
+        <BasePath>/oauth-validate-key-secret</BasePath>
+        <Properties/>
+        <VirtualHost>secure</VirtualHost>
+    </HTTPProxyConnection>
+    <RouteRule name="NoRoute"/>
+</ProxyEndpoint>
