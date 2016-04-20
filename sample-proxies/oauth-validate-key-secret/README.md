@@ -88,7 +88,7 @@ An access token and refresh token are returned to the client.
 
 This screen shot from the [Apigee Edge trace tool](http://apigee.com/docs/api-services/content/using-trace-tool-0) shows the placement of the policies used in this sample. 
 
-![alt text](../../images/oauth-validate-key-secret.png)
+![alt text](../images/oauth-validate-key-secret.png)
 
 ### More information
 
