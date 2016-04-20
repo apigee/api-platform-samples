@@ -4,8 +4,6 @@
 
 You are implementing the OAuth Password grant type flow. You need to validate both the application client key and secret on Edge before calling an outside Identity Provider to validate the user's credentials.   
 
-**Note:** This example was inspired by [this thread](https://community.apigee.com/questions/20774/validating-both-client-id-and-secret.html) on the Apigee Community. 
-
 ### Policies 
 
 This sample uses several policies in concert. The flow goes like this:
@@ -42,6 +40,8 @@ This sample uses several policies in concert. The flow goes like this:
 ### About
 
 You can use this pattern when you have a requirement to validate both the client ID and secret before performing other functions in the proxy flow. In this case, you want to prevent unauthorized clients from calling the Identity Provider service. If the key/secret are not valid, processing stops and an error is returned to the client.  
+
+This sample illustrates one possible technique for validating both client and secret. This sample was inspired by [this thread](https://community.apigee.com/questions/20774/validating-both-client-id-and-secret.html) on the Apigee Community. And here is [another related community thread](https://community.apigee.com/questions/19248/can-you-validate-client-key-and-secret-without-gen.html). Both of these threads discuss alternative techniques for accomplishing this sample's use case. 
 
 ### Set up, deploy, invoke
 
