@@ -13,7 +13,7 @@ With the client credentials grant type flow, the client app requests an access t
 The API is called like this, where the client ID and secret are Base64-encoded and used in the Basic Auth header:
 
 ```
-curl "kWocGgKENrdWRT0jq4l0F0ACnPAQsD3:6WADDsNIGDcZOaX" https://example-test.apigee.net/weatheroauth/accesstoken?grant_type=client_credentials -u <username> -p <password>
+curl -H "Authorization: Basic <base64-encoded key:secret>" https://example-test.apigee.net/oauth/accesstoken?grant_type=client_credentials
 ```
 
 The flow of this grant type looks like this:
@@ -58,7 +58,7 @@ To test, run `$ sh invoke.sh`
 The `invoke.sh` script builds and executes the curl command shown below. The command calls the access token endpoint on Apigee Edge with the URL encoded client ID and client secret keys sent in the Authorization header. 
 
 ````sh
-curl -k -u "kWocGgKENrdWRT0jq4l0F0ACnPAQsD3:6WADDsNIGDcZOaX" https://example-test.apigee.net/weatheroauth/accesstoken?grant_type=client_credentials 
+curl -H "Authorization: Basic <base64-encoded key:secret>" https://example-test.apigee.net/oauth/accesstoken?grant_type=client_credentials 
 
 AccessToken Response: 
  {
