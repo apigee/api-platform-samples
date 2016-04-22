@@ -12,7 +12,8 @@ With the client credentials grant type flow, the client app requests an access t
 
 The API is called like this, where the client ID and secret are Base64-encoded and used in the Basic Auth header:
 
-```curl "kWocGgKENrdWRT0jq4l0F0ACnPAQsD3:6WADDsNIGDcZOaX" https://example-test.apigee.net/weatheroauth/accesstoken?grant_type=client_credentials -u <username> -p <password>
+```
+curl "kWocGgKENrdWRT0jq4l0F0ACnPAQsD3:6WADDsNIGDcZOaX" https://example-test.apigee.net/weatheroauth/accesstoken?grant_type=client_credentials -u <username> -p <password>
 ```
 
 ![alt text](../images/oauth-client-cred-flow-3.png)
