@@ -11,7 +11,8 @@
 		"a9699d68-414b-bb88-d666-376b4cf664f3",
 		"bb3937e3-490c-ba88-6a88-29c1d43debb2",
 		"57ffbb69-5553-8f39-37f7-bd89f64356ee",
-		"771379b6-30f6-6f30-f418-90e669fb53b7"
+		"771379b6-30f6-6f30-f418-90e669fb53b7",
+		"ac1a0a36-50b0-e0ec-277a-5aa207bcaae6"
 	],
 	"folders": [
 		{
@@ -148,8 +149,7 @@
 			"currentHelper": "normal",
 			"helperAttributes": {},
 			"folder": "7287612e-7546-a2d0-f5a3-4ad462ac827e",
-			"isFromCollection": true,
-			"collectionRequestId": "781168b3-0ff2-22ca-332f-e1c4a84c56c4"
+			"isFromCollection": true
 		},
 		{
 			"folder": null,
@@ -189,8 +189,7 @@
 			"collectionId": "6fb2eb78-1c4a-a494-3760-3887433ee831",
 			"responses": [],
 			"folder": "7287612e-7546-a2d0-f5a3-4ad462ac827e",
-			"isFromCollection": true,
-			"collectionRequestId": "8dcba669-5e20-5f88-5655-70cee444cc40"
+			"isFromCollection": true
 		},
 		{
 			"folder": null,
@@ -231,6 +230,24 @@
 			"collectionId": "6fb2eb78-1c4a-a494-3760-3887433ee831"
 		},
 		{
+			"id": "ac1a0a36-50b0-e0ec-277a-5aa207bcaae6",
+			"headers": "Authorization: Basic\n",
+			"url": "https://{{ORG}}-{{ENV}}.{{DOMAIN}}/oauth/accesstoken?grant_type=client_credentials",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "GET",
+			"data": [],
+			"dataMode": "params",
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1461340399445,
+			"name": "oauth-client-credentials",
+			"description": "",
+			"collectionId": "6fb2eb78-1c4a-a494-3760-3887433ee831",
+			"responses": []
+		},
+		{
 			"id": "b7e8a576-8f4c-882d-f8c2-14d2a2acf3a2",
 			"headers": "Authorization: Basic {{BASICAUTH}}\nContent-Type: application/json\n",
 			"url": "{{MGMTSRVR}}/v1/o/{{ORG}}/developers",
@@ -251,7 +268,6 @@
 			"descriptionFormat": "html",
 			"folder": "7287612e-7546-a2d0-f5a3-4ad462ac827e",
 			"isFromCollection": true,
-			"collectionRequestId": "b7e8a576-8f4c-882d-f8c2-14d2a2acf3a2",
 			"rawModeData": "{\n \"email\" : \"thomas@weathersample.com\",\n \"firstName\" : \"Thomas\",\n \"lastName\" : \"Edison\",\n \"userName\" : \"tom_edison\"\n}"
 		},
 		{
@@ -294,8 +310,7 @@
 			"rawModeData": "",
 			"descriptionFormat": "html",
 			"folder": "7287612e-7546-a2d0-f5a3-4ad462ac827e",
-			"isFromCollection": true,
-			"collectionRequestId": "d72cb120-16f2-38b7-6ef2-e796a4f938b4"
+			"isFromCollection": true
 		}
 	]
 }
