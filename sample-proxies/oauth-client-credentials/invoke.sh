@@ -1,31 +1,54 @@
 #!/bin/bash
 
-echo Using org and environment configured in /setup/setenv.sh
+printf "\nDid you enter your Edge configuration information in ../../setup/setenv.sh? [y/n]: "
+read setenv
 
-echo Be sure to run scripts under ./setup/provisioning
+if [ -z $setenv ] || [ "$setenv" = "y" ]; then
+  printf ""
+else  
+  printf "\nYou must configure this file before continuing. See the README for details. Press Return to exit."
+  read
+  exit
+fi
+
+
+printf "\nDid you run the provisioning script ../../setup/provisioning/setup.sh? [y/n]: "
+read setup
+
+if [ -z $setup ] || [ "$setup" = "y" ]; then
+  printf ""
+else  
+  printf "\nYou must run this script before continuing. See the README for details. Press Return to exit."
+  read
+  exit
+fi
 
 source ../../setup/setenv.sh
 
-echo Get app profile
-
-echo "Enter your password for the Apigee Enterprise organization $org, followed by [ENTER]:"
+printf "\nEnter your password for the Apigee Enterprise organization $org, followed by [ENTER]: " 
 
 read -s password
 
-echo -e "\nFetching consumer key and secret for joe-app"
+printf  "\n\nFetching consumer key and secret for Josiah's Weather App from Apigee Edge..."
 ks=`curl -u "$username:$password" "$url/v1/o/$org/developers/joe@weathersample.com/apps/joe-app" 2>/dev/null | egrep "consumer(Key|Secret)"`
 key=`echo $ks | awk -F '\"' '{ print $4 }'`
 secret=`echo $ks | awk -F '\"' '{ print $8 }'`
 
-echo -e "\nRequesting access token \n"
 
-#aFRZRzZmY1FHcHNPOVp2eGpSa2UxdThtTWlRWjRHQUord2UyWWlNbUM5a1ZaMXZqQw==
+printf "\nRetrieved key: $key"
+printf "\nRetrieved secret: $secret\n"
 
-accesstoken_response=`curl -k -H "Authorization: Basic aFRZRzZmY1FHcHNPOVp2eGpSa2UxdThtTWlRWjRHQUo6d2UyWWlNbUM5a1ZaMXZqQw==" "https://$org-$env.$api_domain/weatheroauth/accesstoken?grant_type=client_credentials" 2>/dev/null`
+printf "\n\nBase64 encrypt the key:secret values for the Basic Auth header: "
 
-echo -e "curl -k -H \"Authorization: Basic aFRZRzZmY1FHcHNPOVp2eGpSa2UxdThtTWlRWjRHQUord2UyWWlNbUM5a1ZaMXZqQw==\" \"https://$org-$env.$api_domain/weatheroauth/accesstoken?grant_type=client_credentials\" \n"
-#echo -e "curl -k -u \"$key:$secret\" https://$org-$env.$api_domain/weatheroauth/accesstoken?grant_type=client_credentials \n"
+auth=`echo -n $key:$secret | base64`
 
-#accesstoken_response=`curl -k -u "$key:$secret" "https://$org-$env.$api_domain/weatheroauth/accesstoken?grant_type=client_credentials" 2>/dev/null`
+printf "\nBasic: $auth"
 
-echo -e "AccessToken Response: \n $accesstoken_response"
+printf  "\n\nRequest the access token using the retrieved keys... \n"
+
+
+accesstoken_response=`curl -k -H "Authorization: Basic $auth" "https://$org-$env.$api_domain/oauth/accesstoken?grant_type=client_credentials" 2>/dev/null`
+
+printf  "curl -k -H \"Authorization: Basic $auth\" \"https://$org-$env.$api_domain/oauth/accesstoken?grant_type=client_credentials\" \n"
+
+printf  "\nAccessToken Response: \n\n $accesstoken_response \n"

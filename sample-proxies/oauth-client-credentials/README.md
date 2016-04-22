@@ -1,6 +1,6 @@
 # Client credentials grant type
 
-This sample demonstrates the client credentials grant type where Apigee Edge is the OAuth 2.0 authorization server. 
+This sample lets you request an OAuth token from Edge using the OAuth 2.0 client credentials grant type flow. 
 
 ## About client credentials
 
@@ -8,7 +8,7 @@ Most typically, this grant type is used when the app is also the resource owner.
 
 ## How it works
 
-With the client credentials grant type flow, the client app requests an access token directly by providing its client ID and client secret keys. These keys are generated when the app is registered with Apigee Edge. Edge validates the credentials and returns an access token to the client. The client can then make secure calls to the resource server.
+With the client credentials grant type flow, the client app requests an access token directly by providing its client ID and client secret keys. These keys are generated when you create a Developer App in Apigee Edge. Edge validates the credentials and returns an access token to the client. The client can then make secure calls to the resource server.
 
 ![alt text](../images/oauth-client-cred-flow-3.png)
 
@@ -29,11 +29,15 @@ To run this sample, you'll need:
 
 1. Edit this script with your environment details:
 
-    `../../setup/setenv.sh`
+    `api-platform-samples/setup/setenv.sh`
     
-2. Execute this script to set up required API products, developers, and apps in your organization:
+2. cd to `api-platform-samples/setup/provisioning`
+3. Execute this script to set up required API products, developers, and apps in your organization:
 
-    `../../setup/provisioning/setup.sh`
+    `./setup.sh`
+
+4. Enter your Edge password when prompted.
+5. Enter the name of this sample proxy when prompted. It is `oauth-client-credentials`.
 
 ## Deploy and run the sample project
 
