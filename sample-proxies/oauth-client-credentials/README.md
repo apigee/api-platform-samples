@@ -10,6 +10,11 @@ Most typically, this grant type is used when the app is also the resource owner.
 
 With the client credentials grant type flow, the client app requests an access token directly by providing its client ID and client secret keys. These keys are generated when you create a Developer App in Apigee Edge. Edge validates the credentials and returns an access token to the client. The client can then make secure calls to the resource server.
 
+The API is called like this, where the client ID and secret are Base64-encoded and used in the Basic Auth header:
+
+```curl "kWocGgKENrdWRT0jq4l0F0ACnPAQsD3:6WADDsNIGDcZOaX" https://example-test.apigee.net/weatheroauth/accesstoken?grant_type=client_credentials -u <username> -p <password>
+```
+
 ![alt text](../images/oauth-client-cred-flow-3.png)
 
 ## Implementation on Apigee Edge 
