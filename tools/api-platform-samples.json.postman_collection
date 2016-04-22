@@ -12,7 +12,8 @@
 		"bb3937e3-490c-ba88-6a88-29c1d43debb2",
 		"57ffbb69-5553-8f39-37f7-bd89f64356ee",
 		"771379b6-30f6-6f30-f418-90e669fb53b7",
-		"ac1a0a36-50b0-e0ec-277a-5aa207bcaae6"
+		"ac1a0a36-50b0-e0ec-277a-5aa207bcaae6",
+		"986c6aae-5e31-bd30-487d-291d9068bbbd"
 	],
 	"folders": [
 		{
@@ -190,6 +191,44 @@
 			"responses": [],
 			"folder": "7287612e-7546-a2d0-f5a3-4ad462ac827e",
 			"isFromCollection": true
+		},
+		{
+			"id": "986c6aae-5e31-bd30-487d-291d9068bbbd",
+			"headers": "Authorization: Basic\n",
+			"url": "https://{{ORG}}-{{ENV}.{{DOMAIN}}/oauth-validate-key-secret/token",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "POST",
+			"data": [
+				{
+					"key": "grant_type",
+					"value": "password",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "username",
+					"value": "apigeeuser",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "password",
+					"value": "Apigee123",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "urlencoded",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1461343731258,
+			"name": "oauth-validate-key-secret",
+			"description": "",
+			"collectionId": "6fb2eb78-1c4a-a494-3760-3887433ee831",
+			"responses": []
 		},
 		{
 			"folder": null,
