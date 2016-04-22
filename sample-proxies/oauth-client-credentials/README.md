@@ -16,6 +16,8 @@ The API is called like this, where the client ID and secret are Base64-encoded a
 curl "kWocGgKENrdWRT0jq4l0F0ACnPAQsD3:6WADDsNIGDcZOaX" https://example-test.apigee.net/weatheroauth/accesstoken?grant_type=client_credentials -u <username> -p <password>
 ```
 
+The flow of this grant type looks like this:
+
 ![alt text](../images/oauth-client-cred-flow-3.png)
 
 ## Implementation on Apigee Edge 
