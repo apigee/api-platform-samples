@@ -48,14 +48,6 @@ printf "\nBasic: $auth"
 
 printf  "\n\nRequest the access token using the retrieved keys... \n"
  
-#curl https://$org-$env.$api_domain/oauth-validate-key-secret/token -H "Authorization: Basic $auth" -d 'grant_type=password&username=apigeeuser&password=Apigee123' -H 'Content-Type: application/x-www-form-urlencoded'
-
-
-
-
-
-
-
 
 accesstoken_response=`curl -X POST -H 'Content-Type: application/x-www-form-urlencoded' -H "Authorization: Basic $auth" "https://$org-$env.$api_domain/oauth-validate-key-secret/token" -d 'grant_type=password&username=apigeeuser&password=Apigee123'`
 
