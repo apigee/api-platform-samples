@@ -8,7 +8,7 @@ read -s password
 
 echo Deploying $proxy to $env on $url using $username and $org
 
-../../tools/deploy.py -n validate-key-secret -u $username:$password -o $org -h $url -e $env -p / -d ../validate-key-secret
+../../tools/deploy.py -n oauth-validate-key-secret -u $username:$password -o $org -h $url -e $env -p / -d ../oauth-validate-key-secret
 
 echo "If 'State: deployed', then your API Proxy is ready to be invoked."
 
