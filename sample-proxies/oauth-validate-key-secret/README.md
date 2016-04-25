@@ -45,19 +45,10 @@ This sample illustrates one possible technique for validating both client and se
 
 ### Set up, deploy, invoke
 
-1. Deploy the API proxy. You can use the deploy.sh script, or simply import the ZIP file through the Edge UI.
-2. Create a Product and a Developer App in Edge to generate a valid key and secret. You must add the API proxy to the Product, then create the Developer App. 
-3. Call the API. You can use the `invoke.sh` script. You'll need to provide the Base64-encoded Developer App key:secret. You can get this value like this:
-
-`echo -n <key>:<secret> | base64`
-
-For example:
-
-```
-    echo -n hXLaG8ZLfv7mNdTHscCIrAlqmKgvmKUo:nxgdJHMGj06stt8T | base64
-    aFhMYUc4WkxmdjdtTmRUSHNjQ0lyQWxxbUtndm1LVW86bnhnZEpITUdqMDZzdHQ4VA==
-```
-
+1. Edit the `api-platform-samples/setup/setenv.sh` file to reflect your Apigee Edge organization and environment. 
+1. Deploy the API proxy. You can use the `deploy.sh` script, or simply import the ZIP file through the Edge UI.
+2. Execute the `api-platform-samples/setup/provisioning/setup.sh` script. It deploys products and developer apps to Edge. These entities are required for this sample to run. Be sure to enter the name of the proxy when prompted: `oauth-validate-key-secret`.
+3. Call the API. You can use the `invoke.sh` script. 
 
 ### Result
 
