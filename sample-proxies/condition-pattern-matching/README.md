@@ -33,13 +33,32 @@ To get started, try out some of the pattern matching examples in the Apigee doc 
 ### Set up, deploy, invoke
 
 1. Edit the `api-platform-samples/setup/setenv.sh` file to reflect your Apigee Edge organization and environment. 
-1. Deploy the API proxy. You can use the `deploy.sh` script, or simply import the ZIP file through the Edge UI.
-2. Execute the `api-platform-samples/setup/provisioning/setup.sh` script. It deploys products and developer apps to Edge. These entities are required for this sample to run. Be sure to enter the name of the proxy when prompted: `oauth-validate-key-secret`.
+2. Deploy the API proxy. You can use the `deploy.sh` script, or simply import the ZIP file through the Edge UI.
 3. Call the API. You can use the `invoke.sh` script, by using cURL directly, or with a REST client like Postman. There's no authentication required -- you can hit this API directly.  
+
+### Example
+
+The condition is set by default to work if the proxy path suffix is `/cat`. Call the API like this (or use the `invoke.sh` script):
+
+`curl -s http://<org>-<env>.apigee.net/matchtest/cat`
+
+The proxy will return this response:
+
+`Condition Succeeded for proxy.pathsuffix: /cat`
+
+Now, in the Edge UI, change the condition to this:
+
+`<Condition>(proxy.pathsuffix JavaRegex "/c*t")</Condition>`
+
+Save the proxy and try calling the API:
+
+`curl -s http://<org>-<env>.apigee.net/matchtest/cat`
+
+This call fails. Do you know why? For the answer, and lots of other patterns to try, see the Apigee doc topic [Pattern matching in conditional statements](http://docs.apigee.com/api-services/content/pattern-matching-conditional-statements).
 
 ### Result
 
-If the condition succeeds, you'll get a response like this:
+Whenever the condition succeeds, you'll get a response like this:
 
 ```
   Condition Succeeded for proxy.pathsuffix: /animals/cats/wild/african/spotted
