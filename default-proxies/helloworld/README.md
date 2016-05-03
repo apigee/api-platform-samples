@@ -1,11 +1,20 @@
 # About this sample
 
-The `helloworld` proxy returns simple text and HTML responses by routing API calls to this target:
+The `helloworld` proxy returns a variety of sample responses by routing API calls to this target:
 
-http://mocktarget.apigee.net
+`http://mocktarget.apigee.net` (which you can also view in a web browser)
 
-* When calling the base target URL above (`/v0/hello` in the API proxy), the response is `hello, world`.
-* When calling the `/iloveapis` resource (`/v0/hello/iloveapis` in the API proxy), the response is `<h2>I love APIs!</h2>`.
+Following are the resources you can call:
+
+* The API proxy base path (`/v0/hello`) returns a help page of available resources in HTML.
+* `/user?user=your_name` - Returns a customized greeting.
+* `/iloveapis` - Returns '<h2>I love APIs!</h2>`
+* `/ip` - Returns the client IP address as JSON.
+* `/xml` - Returns a sample XML response.
+* `/json` - Returns a sample JSON response.
+* `/echo` - Returns request headers and the request body as JSON.
+
+The API proxy includes a Quota policy and an Assign Message policy that provides CORS support.
 
 ## Deploying the sample
 
