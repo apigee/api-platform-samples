@@ -8,7 +8,7 @@ Following are the resources you can call:
 
 * The API proxy base path (`/v0/hello`) returns a help page of available resources in HTML.
 * `/user?user=your_name` - Returns a customized greeting.
-* `/iloveapis` - Returns `<h2>I love APIs!</h2>`
+* `/iloveapis` - Returns `<h2>I <3 APIs</h2>`
 * `/ip` - Returns the client IP address as JSON.
 * `/xml` - Returns a sample XML response.
 * `/json` - Returns a sample JSON response.
