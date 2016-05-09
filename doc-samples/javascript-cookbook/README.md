@@ -1,59 +1,56 @@
-# Simple JavaScript Sample
+# Implement custom proxy behavior with JavaScript
 
-This sample demonstrates how to write, attach, and execute simple JavaScript in
-an API proxy flow. 
+### Sample use case
 
-The sample implements the cookbook topic:
+Use JavaScript policies to dynamically read and set flow variables and perform custom logic in a proxy. 
 
-[JavaScript Proxy Cookbook Topic](http://apigee.com/docs/api-platform/content/use-javascript-customize-api)
+### Policies used in this sample
 
-The JavaScript in this sample gets a variable from the flow and sets the variable 
-as HTTP headers on the response message.
+* [XMLtoJSON](http://docs.apigee.com/api-services/reference/xml-json-policy)
+* [JavaScript](http://docs.apigee.com/api-services/reference/javascript-policy)
 
-It also demonstrates how you can work with message content. A policy is used to 
-transform the weather report from XML to JSON. The resultant JSON is then parsed
-into a minimized response message that would mobile device-friendly.
+### Read more about this sample
 
-# Configuration
+* [JavaScript Proxy Cookbook Topic](http://apigee.com/docs/api-platform/content/use-javascript-customize-api)
 
-Note that JavaScripts are stored under /resources/jsc in the API proxy, and then 
-referenced by policies of type Javascript. (Note capitalization of 'Javascript' in 
-policy type.)
+### Set up, deploy, invoke
 
-The JavaScript policies are then attached to ProxyEndpoint Flow to execute the 
-JavaScripts in the appropriate sequence.
+The basic steps are:
 
-# References
+1. Edit `../../setup/setenv.sh` with your Edge information.
+2. `./deploy.sh`
+3. `./invoke.sh`
+
+See the main project [README](../../README.md) file for information about setting up, deploying, and invoking sample proxies. 
+
+### Output 
+
+The API returns a set of X-Apigee-Demo-* custom headers and JSON with city and state information. 
+
+```
+< X-Apigee-Demo-Target: default
+< X-Apigee-Demo-ApiProxyName: simple-javascript
+< X-Apigee-Demo-ProxyName: default
+< X-Apigee-Demo-ProxyBasePath: /javascript-cookbook
+< X-Apigee-Demo-ProxyPathSuffix: /xml
+< X-Apigee-Demo-ProxyUrl: http://rrt330ea.us-ea.4.apigee.com/javascript-cookbook/xml
+< Server: Apigee Router
+<
+* Connection #0 to host artomatic-test.apigee.net left intact
+{"city":"San Jose","state":"CA"} 
+```
+
+### See also
 
 [Apigee API Platform JavaScript Object Model](https://apigee.com/docs/enterprise/content/apigee-javascript-object-model)
 
-
-
-# Set up
-
-What you need:
-
-* The username and password that you use to login to enterprise.apigee.com.
-* The name of the organization in which you have an account. Login to 
-  enterprise.apigee.com and check account settings.
-
-# Configure 
-
-Update `/setup/setenv.sh` with your environment details
-
-# Import and deploy sample project
-
-To deploy, run `$ sh deploy.sh`
-
-To test, run `$ sh invoke.sh`
-
-# Ask the community
+### Ask the community
 
 [![alt text](../../images/apigee-community.png "Apigee Community is a great place to ask questions and find answers about developing API proxies. ")](https://community.apigee.com?via=github)
 
 ---
 
-Copyright © 2015 Apigee Corporation
+Copyright © 2016 Apigee Corporation
 
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use
 this file except in compliance with the License. You may obtain a copy
