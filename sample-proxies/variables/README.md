@@ -60,27 +60,7 @@ This screen shot from the [Apigee Edge trace tool](http://apigee.com/docs/api-se
 ---
 
 
-
-
-
-
-
-
-# Configure 
-
-Update `/setup/setenv.sh` with your environment details
-
-# Import and deploy sample project
-
-To deploy, run `$ sh deploy.sh`
-
-To test, run `$ sh invoke.sh`
-
-# Get help
-
-For assistance, please use [Apigee Support](https://community.apigee.com/content/apigee-customer-support).
-
-Copyright © 2014, 2015 Apigee Corporation
+Copyright © 2016 Apigee Corporation
 
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use
 this file except in compliance with the License. You may obtain a copy
