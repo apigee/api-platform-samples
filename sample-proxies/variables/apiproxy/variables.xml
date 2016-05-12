@@ -1,2 +1,27 @@
-<APIProxy name="variables">
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<APIProxy revision="1" name="variables">
+    <ConfigurationVersion majorVersion="4" minorVersion="0"/>
+    <CreatedAt>1462938270155</CreatedAt>
+    <CreatedBy>wwitman@apigee.com</CreatedBy>
+    <DisplayName>variables</DisplayName>
+    <LastModifiedAt>1462938323904</LastModifiedAt>
+    <LastModifiedBy>wwitman@apigee.com</LastModifiedBy>
+    <Policies>
+        <Policy>parse-json-response</Policy>
+        <Policy>parse-xml-response</Policy>
+        <Policy>read-variables</Policy>
+        <Policy>variables</Policy>
+        <Policy>xmltojson</Policy>
+    </Policies>
+    <ProxyEndpoints>
+        <ProxyEndpoint>default</ProxyEndpoint>
+    </ProxyEndpoints>
+    <Resources>
+        <Resource>jsc://read-variables.js</Resource>
+    </Resources>
+    <TargetServers/>
+    <TargetEndpoints>
+        <TargetEndpoint>default</TargetEndpoint>
+    </TargetEndpoints>
+    <validate>false</validate>
 </APIProxy>

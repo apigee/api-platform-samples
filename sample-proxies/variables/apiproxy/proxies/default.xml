@@ -1,19 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <ProxyEndpoint name="default">
-<Flows>
-    <Flow name="default">
-    <Response>
-	    <Step><Name>parseforecast</Name></Step>
-		<Step><Name>xmltojson</Name></Step>
-		<Step><Name>parsejsonforecast</Name></Step>
-        <Step><Name>variables</Name></Step>
-    </Response>
-  </Flow>
-</Flows>
-  <HTTPProxyConnection>
-    <BasePath>/variables</BasePath>    
-    <VirtualHost>default</VirtualHost>
-  </HTTPProxyConnection>
-  <RouteRule name="Route">
-    <TargetEndpoint>default</TargetEndpoint>
-  </RouteRule>
+    <Flows>
+        <Flow name="default">
+            <Response>
+                <Step>
+                    <Name>parse-xml-response</Name>
+                </Step>
+                <Step>
+                    <Name>read-variables</Name>
+                </Step>
+                <Step>
+                    <Name>xmltojson</Name>
+                </Step>
+                <Step>
+                    <Name>parse-json-response</Name>
+                </Step>
+                <Step>
+                    <Name>read-variables</Name>
+                </Step>
+                <Step>
+                    <Name>variables</Name>
+                </Step>
+            </Response>
+            <Request>
+            </Request>
+        </Flow>
+    </Flows>
+    <HTTPProxyConnection>
+        <BasePath>/variables</BasePath>
+        <VirtualHost>default</VirtualHost>
+    </HTTPProxyConnection>
+    <RouteRule name="Route">
+        <TargetEndpoint>default</TargetEndpoint>
+    </RouteRule>
 </ProxyEndpoint>

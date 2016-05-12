@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ExtractVariables name="parse-xml-response">
+    <!-- Parse the XML response using XPath. -->
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+    <VariablePrefix>mock</VariablePrefix>
+    <XMLPayload stopPayloadProcessing="false">
+        <Namespaces/>
+        <Variable name="city" type="string">
+            <XPath>//city</XPath>
+        </Variable>
+        <Variable name="state" type="string">
+            <XPath>//state</XPath>
+        </Variable>
+    </XMLPayload>
+</ExtractVariables>
