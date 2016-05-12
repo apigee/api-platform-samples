@@ -3,7 +3,7 @@
 
 ### Sample use case
 
-Extract data into flow variables from the response message. Assign extracted variables to HTTP response headers. 
+Extract variables from an XML and JSON response messages. Assign variables to HTTP response headers.
 
 ### Policies 
 
@@ -12,20 +12,27 @@ This sample uses these policies:
 * ![alt text](../../images/icon_policy_extract-variable.jpg "Extract Variables policy") Extract Variables: To pull subsets of data from the response body.  
 * ![alt text](../../images/icon-xml-to-json.jpg "XML to JSON policy") XML to JSON: To convert the response from XML to JSON.
 * ![alt text](../../images/icon-assign-message.jpg "Assign Message policy") Assign Message: To assign extracted data to response headers. 
+* ![alt text](../../images/icon-policy-javascript.jpg "JavaScript policy") Reads extracted variables so they are visible in the Trace tool. 
 
 
 ### About
 
-The target API is a service that returns weather data. We attach policies to the response flow to demonstrate how to extract and assign variables:
-
-1. Extract variables from the XML response sent from the target. We use XPath syntax to identify the data to extract. The extracted data includes weather location, condition, today's forecast, and tomorrow's forecast. 
+1. Extract variables from the XML response sent from the target. Use XPath syntax to identify the data to extract. 
+2. Use JavaScript policy to read the variables. This allows them to show up in the Trace tool. 
 2. Convert the response payload from XML to JSON.
-3. Extract more variables from the converted JSON payload. We use JSONPath syntax to identify the data to extract. The extracted data includes the weather description and humidity. 
+3. Extract more variables from the converted JSON payload. Use JSONPath syntax to identify the data to extract. 
+4.  Use JavaScript policy to read the variables. This allows them to show up in the Trace tool. 
 4. Assign the extracted variables to HTTP response headers. 
 
 ### Set up, deploy, invoke
 
-See the main project [README](../../README.md) file for information about setting up, deploying, and invoking sample proxies. 
+1. Edit this script with your environment details: `api-platform-samples/setup/setenv.sh`
+
+2. `./deploy.sh`
+
+3. `invoke.sh`
+
+See the main project [README](../../README.md) file for more detailed information about setting up, deploying, and invoking sample proxies. 
 
 ### Trace
 
@@ -34,12 +41,6 @@ This screen shot from the [Apigee Edge trace tool](http://apigee.com/docs/api-se
 ![alt text](../../images/variables-trace.png)
 
 ### More information
-
-**Policy used in this sample**
-
-* [Extract Variables policy](http://apigee.com/docs/api-services/reference/extract-variables-policy)
-* [Assign Message policy](http://apigee.com/docs/api-services/reference/assign-message-policy)
-* [XML to JSON policy](http://apigee.com/docs/api-services/reference/xml-json-policy)
 
 **Related policies**
 
@@ -50,6 +51,7 @@ This screen shot from the [Apigee Edge trace tool](http://apigee.com/docs/api-se
 
 * [Variables reference](http://apigee.com/docs/api-services/reference/variables-reference)
 * [Introduction to flow variables](http://apigee.com/docs/api-services/content/introduction-flow-variables)
+* [Using Extract Variables policy video](https://www.youtube.com/watch?v=arVPRaL4qQk)
 
 ### Ask the community
 
