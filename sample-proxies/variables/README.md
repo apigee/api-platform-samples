@@ -51,7 +51,8 @@ This screen shot from the [Apigee Edge trace tool](http://apigee.com/docs/api-se
 
 * [Variables reference](http://apigee.com/docs/api-services/reference/variables-reference)
 * [Introduction to flow variables](http://apigee.com/docs/api-services/content/introduction-flow-variables)
-* [Using Extract Variables policy video](https://www.youtube.com/watch?v=arVPRaL4qQk)
+* [Video: Using Extract Variables policy](https://www.youtube.com/watch?v=arVPRaL4qQk)
+* [Video: Extracting variables from XML and JSON messages](https://www.youtube.com/watch?v=G0XnHRELeBA)
 
 ### Ask the community
 
