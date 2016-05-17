@@ -10,7 +10,7 @@
 
   <HTTPProxyConnection>
     <!-- Add a base path to the proxy to distinguish from others in the environment -->
-    <BasePath>/weatherapikey</BasePath>
+    <BasePath>/mocktarget_key</BasePath>
     <!-- Listen on both HTTP and HTTPS endpoints -->
     <VirtualHost>default</VirtualHost>
     <VirtualHost>secure</VirtualHost>

@@ -45,7 +45,7 @@ The flow of the sample goes like this:
 
 1. A request comes in to Apigee Edge - something like this:
 
-    `curl "http://myorg-test.apigee.net/weatherapikey/forecastrss?w=12797282&apikey=abc123"``
+    `curl "http://myorg-test.apigee.net/mocktarget_key/json?apikey=abc123"``
 
 2. A VerifyApiKey policy checks the `apikey` parameter. If it's valid, product-related flow variables are set and the call proceeds, or else an error is returned. 
 3. A Quota policy executes, with quota values set based on the API key flow variables. 
@@ -102,7 +102,7 @@ This screen shot from the [Apigee Edge trace tool](http://apigee.com/docs/api-se
 
 ---
 
-Copyright © 2015 Apigee Corporation
+Copyright © 2016 Apigee Corporation
 
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use
 this file except in compliance with the License. You may obtain a copy
