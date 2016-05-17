@@ -1,4 +1,4 @@
-# Three-Legged OAuth
+# Verify an OAuth2 token
 
 This sample API proxy shows how an OAuth 2.0 access token is used to access a resource
 protected by OAuth policies. The API Proxy validates incoming requests using the access token, 
@@ -43,7 +43,7 @@ To test, run `$ sh invoke.sh`
 
 For assistance, please use [Apigee Support](https://community.apigee.com/content/apigee-customer-support).
 
-Copyright © 2014, 2015 Apigee Corporation
+Copyright © 2016 Apigee Corporation
 
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use
 this file except in compliance with the License. You may obtain a copy
