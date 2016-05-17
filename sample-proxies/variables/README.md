@@ -32,6 +32,14 @@ This sample uses these policies:
 
 3. `invoke.sh`
 
+    The proxy returns these custom headers to the client:
+    ```
+    mock.city: San Jose
+    mock.state: CA
+    mock.firstName: John
+    mock.lastName: Doe
+    ```
+
 See the main project [README](../../README.md) file for more detailed information about setting up, deploying, and invoking sample proxies. 
 
 ### Trace
