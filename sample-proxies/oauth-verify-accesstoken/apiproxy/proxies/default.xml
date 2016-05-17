@@ -11,7 +11,7 @@
 
   <HTTPProxyConnection>
     <!-- Add a base path to the proxy to distinguish from others in the environment -->
-    <BasePath>/weather</BasePath>
+    <BasePath>/mocktarget</BasePath>
     <!-- Listen only on the HTTPS endpoint since OAuth 2.0 requires that -->
     <VirtualHost>secure</VirtualHost>
   </HTTPProxyConnection>
