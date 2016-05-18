@@ -6,7 +6,7 @@ The `helloworld` proxy returns a variety of sample responses by routing API call
 
 Following are the resources you can call:
 
-* The API proxy BasePath (`/v0/hello`), which maps directly to 'http://mocktarget.apigee.net', returns a help page of available resources in HTML.
+* The API proxy BasePath (`/v0/hello`), which maps directly to http://mocktarget.apigee.net, returns a help page of available resources in HTML.
 * `/user` - Returns `Hello, Guest!`
 * `/user?user=your_name` - Returns a customized greeting.
 * `/iloveapis` - Returns `<H2>I <3 APIs</H2>`
