@@ -1,0 +1,110 @@
+swagger: '2.0'
+info:
+  description: 'A simple "hello world" API proxy. The API proxy demonstrates the use of a Quota policy and an Assign Message policy that provides CORS support.'
+  version: 1.0.0
+  title: Hello World Proxy Sample
+host: mocktarget.apigee.net
+schemes:
+  - http
+  - https
+paths:
+  /:
+    get:
+      summary: Get help
+      operationId: Get help
+      description: View help information about available resources in HTML format.
+      produces:
+        - text/html
+      responses:
+        '200':
+          description: Success
+  /user:
+    get:
+      summary: View personalized greeting
+      operationId: View personalized greeting
+      description: View a personalized greeting for the specified or guest user.
+      produces:
+        - text/plain
+      parameters:
+        - name: user
+          in: query
+          description: Your user name.
+          required: false
+          type: string
+      responses:
+        '200':
+          description: Success
+  /iloveapis:
+    get:
+      summary: View API affirmation
+      operationId: View API affirmation
+      description: View API affirmation in HTML format.
+      produces:
+        - text/html
+      responses:
+        '200':
+          description: Success
+  /ip:
+    get:
+      summary: View IP address
+      operationId: View IP address
+      description: View the IP address of the client in JSON format.
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: Success
+  /xml:
+    get:
+      summary: View XML response
+      operationId: View XML response
+      description: View a sample response in XML format.
+      produces:
+        - application/xml
+      responses:
+        '200':
+          description: Success
+  /json:
+    get:
+      summary: View JSON response
+      operationId: View JSON response
+      description: View a sample response in JSON format.
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: Success
+  /echo:
+    get:
+      summary: View request headers and body
+      operationId: View request headers and body
+      description: View the request headers and body in JSON format.
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: Success
+    post:
+      summary: Send request and view request headers and body
+      produces:
+        - application/json
+        - application/xml
+        - application/x-www-form-urlencoded
+      operationId: Send request and view request headers and body
+      description: 'Send a request and view the resulting request headers and body in JSON format.<p>The request payload can be specified using one of the following formats: application/json, application/x-www-form-urlencoded, or application/xml.'
+      parameters:
+        - name: body
+          in: body
+          description: Request payload in application/json, application/x-www-form-urlencoded, or application/xml format.
+          required: true
+          schema:
+            $ref: '#/definitions/request-body'
+      responses:
+        '200':
+          description: Success
+definitions:
+  request-body:
+    properties:
+      replace-me:
+        type: object
+        description: 'Replace with request payload in application/json, application/x-www-form-urlencoded, or application/xml format.'      
