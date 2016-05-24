@@ -1,8 +1,8 @@
 swagger: '2.0'
 info:
-  description: 'A simple "hello world" API proxy. The API proxy demonstrates the use of a Quota policy and an Assign Message policy that provides CORS support.'
+  description: 'OpenAPI specification for a mock RESTful target service endpoint. This OpenAPI specification was used to build SmartDocs at: http://docs.apigee.com/api-services/content/mock-target-api'
   version: 1.0.0
-  title: Hello World Proxy Sample
+  title: Mock Target API
 host: mocktarget.apigee.net
 schemes:
   - http
@@ -95,7 +95,7 @@ paths:
       parameters:
         - name: body
           in: body
-          description: Request payload in application/json, application/x-www-form-urlencoded, or application/xml format.
+          description: 'Request payload in application/json, application/x-www-form-urlencoded, or application/xml format.'
           required: true
           schema:
             $ref: '#/definitions/request-body'
@@ -107,4 +107,4 @@ definitions:
     properties:
       replace-me:
         type: object
-        description: 'Replace with request payload in application/json, application/x-www-form-urlencoded, or application/xml format.'      
+        description: 'Replace with request payload in application/json, application/x-www-form-urlencoded, or application/xml format.'
