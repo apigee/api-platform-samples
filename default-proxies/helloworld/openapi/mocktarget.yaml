@@ -1,6 +1,6 @@
 swagger: '2.0'
 info:
-  description: 'OpenAPI specification for a mock RESTful target service endpoint.'
+  description: 'OpenAPI Specification for a Apigee mock target service endpoint.'
   version: 1.0.0
   title: Mock Target API
 host: mocktarget.apigee.net
