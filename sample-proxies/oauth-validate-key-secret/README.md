@@ -8,15 +8,15 @@ You are implementing the OAuth Password grant type flow. You need to validate bo
 
 This sample uses several policies in concert. The flow goes like this:
 
-1. [OAuthV2](http://docs.apigee.com/api-services/content/oauthv2-policy) -- Validates the incoming key and secret. The policy is configured to do the validation without storing the generated access token. If the key/secret are invalid, the policy returns an error to the client. 
+1. [OAuthV2](http://docs.apigee.com/api-services/content/oauthv2-policy) -- Validates the incoming key and secret. The policy is configured to do the validation without storing the generated access token in the token store. Instead, it is saved in a flow variable called apigee.access_token. If the key/secret are invalid, the policy returns an error to the client. 
 
     `<StoreToken>false</StoreToken>`
 
 2. [Extract Variables](http://docs.apigee.com/api-services/reference/extract-variables-policy) -- Extracts form parameters from the request (username, password, and grant type) and stores them in variables for later use.
-3. [Assign Message](http://docs.apigee.com/api-services/reference/assign-message-policy) -- Builds a request message to call the external Identity Provider. 
+3. [Assign Message](http://docs.apigee.com/api-services/reference/assign-message-policy) -- Builds a request message to call the external Identity Provider. Uses saved variables.
 4. [Service Callout](http://docs.apigee.com/api-services/reference/service-callout-policy) -- Calls the Identity Provider to validate user credentials. The sample uses API BaaS to validate the credentials. 
 5. [Raise Fault](http://docs.apigee.com/api-services/reference/raise-fault-policy) -- Returns a "401" message to the client if user validation fails.
-6. [OAuthV2](http://docs.apigee.com/api-services/content/oauthv2-policy) -- Generate the access token using the access token generated previously. Although the token was not stored in Edge's token store, it was stored in a flow variable, which we can now access as an externally-generated token. The policy supports this flow with the <ExternalAccessToken> element. It takes an externally generated token, stores the token, and returns it. 
+6. [OAuthV2](http://docs.apigee.com/api-services/content/oauthv2-policy) -- Generates the access token using the access token generated previously as an "external token". Although the token was not stored in Edge's token store, it was stored in a flow variable, which we can now access as an externally-generated token in the <ExternalAccessToken> element. This pattern takes the "externally generated" token, stores it in the token store, and returns it to the client. The client can now make API calls with the token. 
 
 ```
     <OAuthV2 async="false" continueOnError="false" enabled="true" name="OA-GenerateAccessToken-Password">
@@ -37,7 +37,7 @@ This sample uses several policies in concert. The flow goes like this:
 ```
  
 
-### About
+### When to use this pattern
 
 You can use this pattern when you have a requirement to validate both the client ID and secret before performing other functions in the proxy flow. In this case, you want to prevent unauthorized clients from calling the Identity Provider service. If the key/secret are not valid, processing stops and an error is returned to the client.  
 

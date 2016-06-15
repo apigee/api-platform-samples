@@ -24,7 +24,7 @@
                     </xsl:if>
                 </xsl:for-each>
                 <h2>Bugs fixed</h2>
-                <p>The following bugs are fixed in this release.</p>
+                <p>The following bugs are fixed in this release. This list is primarily for users checking to see if their support tickets have been fixed. It's not designed to provide detailed information for all users.</p>
                 <table class="table" summary="Bugs fixed in this release">
                     <thead>
                         <tr>
