@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<APIProxy revision="2" name="regex-protection">
+    <ConfigurationVersion majorVersion="4" minorVersion="0"/>
+    <CreatedAt>1466006375155</CreatedAt>
+    <CreatedBy>wwitman@apigee.com</CreatedBy>
+    <Description></Description>
+    <DisplayName>regex-protection</DisplayName>
+    <LastModifiedAt>1466006518790</LastModifiedAt>
+    <LastModifiedBy>wwitman@apigee.com</LastModifiedBy>
+    <Policies>
+        <Policy>DetectRegexError</Policy>
+        <Policy>RegexProtection</Policy>
+    </Policies>
+    <ProxyEndpoints>
+        <ProxyEndpoint>default</ProxyEndpoint>
+    </ProxyEndpoints>
+    <Resources/>
+    <TargetServers/>
+    <TargetEndpoints>
+        <TargetEndpoint>default</TargetEndpoint>
+    </TargetEndpoints>
+    <validate>false</validate>
+</APIProxy>
