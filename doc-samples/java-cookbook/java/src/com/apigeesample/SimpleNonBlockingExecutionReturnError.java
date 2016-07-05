@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2010, Apigee Corporation.  All rights reserved.
+ * Copyright (c) 2010,2016 Apigee Corporation.  All rights reserved.
  * Apigee(TM) and the Apigee logo are trademarks or
  * registered trademarks of Apigee Corp. or its subsidiaries.  All other
  * trademarks are the property of their respective owners.
@@ -30,9 +30,9 @@ import com.apigee.flow.message.MessageContext;
 @IOIntensive
 public class SimpleNonBlockingExecutionReturnError implements Execution {
 
-	@Override
-	public ExecutionResult execute(MessageContext messageContext, ExecutionContext executionContext) {
-		try {
+    @Override
+    public ExecutionResult execute(MessageContext messageContext, ExecutionContext executionContext) {
+        try {
             // message modification, IO operations, etc
             // do something here that might fail
             return ExecutionResult.SUCCESS;
@@ -40,7 +40,7 @@ public class SimpleNonBlockingExecutionReturnError implements Execution {
             ExecutionResult executionResult = new ExecutionResult(false, ExecutionResult.Action.ABORT);
             executionResult.setErrorResponse(ex.getMessage());
             executionResult.addErrorResponseHeader("ExceptionClass", ex.getClass().getName());
-            return new ExecutionResult(false, ExecutionResult.Action.ABORT);
+            return executionResult;
         }
-	}
+    }
 }
