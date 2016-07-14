@@ -1,0 +1,14 @@
+{
+  "apiResources" : [ "/json" ],
+  "approvalType" : "auto",
+  "attributes" : [ ],
+  "description" : "You get what you pay for!",
+  "displayName" : "Learn Edge Bundle",
+  "environments" : [ "test", "prod" ],
+  "name" : "LearnEdgeProduct",
+  "proxies" : [ "learn-edge" ],
+  "quota" : "3",
+  "quotaInterval" : "1",
+  "quotaTimeUnit" : "minute",
+  "scopes" : [ "READ" ]
+}
