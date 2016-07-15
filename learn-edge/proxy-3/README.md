@@ -8,9 +8,9 @@ Run this script to provision an API Product, Developer, and Developer App to Edg
 
 1. `cd api-platform-samples/learn-edge/provisioning`
 
-    **Note:** It's optional, but feel free to examine the script. It uses Apigee Edge Management APIs to upload the entities to Edge. That's why you're required to enter your Apigee password -- it is required whenever you use the management APIs. 
+    **Note:** It's optional, but feel free to examine the script. It uses Apigee Edge Management APIs to upload the entities to Edge. That's why you're required to enter your Apigee password -- it is required whenever you use the management APIs.
 
-2. Run `./setup.sh.
+2. Run `./setup.sh`.
 
 3. Go to the Edge UI and look at these uploaded entities under the Publish menu: Publish=>Products, Publish=>Developers, and Publish=>Developer Apps.
 
