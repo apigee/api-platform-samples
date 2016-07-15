@@ -1,6 +1,6 @@
 # Secure the proxy with an API key
 
-**Important concepts**: This proxy illustrates perhaps **the** central concept you need to know about in Apigee Edge: how API Proxies, API Products, Developer Apps are **related** and how this relationship allows proxies to be secured with keys (and, as we'll see later, managed in other ways).  
+**Important concepts**: This proxy illustrates perhaps **the** central concept you need to know about in Apigee Edge: how API Proxies, API Products, and Developer Apps are **related** and how this relationship allows proxies to be secured with keys (and, as we'll see later, managed in other ways).  
 
 ### Provision these entities
 
@@ -13,9 +13,9 @@ Run this script to provision an API Product, Developer, and Developer App to Edg
 
 3. Go to the Edge UI and look at these uploaded entities under the Publish menu: Publish=>Products, Publish=>Developers, and Publish=>Developer Apps.
 
-4. Look at the Developer App. Notice that *has* a Product and a Developer. It also *has* two keys, a Consumer Key and a Consumer Secret. 
+4. Look at the Developer App (Learn Edge App). Notice that it *has* both a Developer and a Product (Learn Edge Product). It also *has* two keys, a Consumer Key and a Consumer Secret. 
 
-5. Click the Product link in the app page. Notice that the product *has* an API proxy. Also, notice that it *has* a resource (`/json`). The Product, Developer, and Developer App form a relationship that enables you to secure and manage proxies. 
+5. Click the Product link in the app page. Notice that the product *has* an API proxy (`learn-edge`). Also, notice that it *has* a resource (`/json`). The Product, Developer, and Developer App form a relationship that enables you to secure and manage proxies. 
 
 Enough with the concepts. Let's do something.
 

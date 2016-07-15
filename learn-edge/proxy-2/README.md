@@ -1,5 +1,7 @@
 # Proxy to a target service
 
+We'll modify the first proxy so that it calls an actual backend target service. 
+
 ### Try it
 
 Deploy and invoke the proxy. These are the basic steps:
@@ -13,7 +15,9 @@ Deploy and invoke the proxy. These are the basic steps:
 
 To get our proxy to call a target service, we made a few changes to the simple do-nothing proxy we deployed before. 
 
-* In the `apiproxy/proxies/default.xml` file, we change the RouteRule from "noroute" to point to the TargetEndpoint called "default". 
+* In the `apiproxy/proxies/default.xml` file, we changed the RouteRule from "noroute" to point to the TargetEndpoint called "default". 
+
+  **Tip:** It might help if you open these files and look at them in their entirety.
 
    ```xml
    <RouteRule name="default">
@@ -22,7 +26,7 @@ To get our proxy to call a target service, we made a few changes to the simple d
    </RouteRule>
    ```
 
-* We add a `default.xml` file in the `apiproxy/targets` directory. In that file, we add this XML block, which specifies the target of the proxy, an HTTP URL:
+* We added a `default.xml` file in the `apiproxy/targets` directory. In that file, we added this XML block, which specifies the target of the proxy, an HTTP URL:
 
    ```xml
    <TargetEndpoint name="default">
@@ -38,19 +42,19 @@ It points the proxy to a mock service called `http://mocktarget.apigee.net` that
 ### Important words and concepts
 
 * The name of the target endpoint can be anything, but it has to match the name of a file in the `targets` directory. ?? Is this true ?? What if the file was called foo.xml ??
-* Target service -- A backend service that the proxy calls on behalf of the requesting app. Here, we're going to return data from a service called `mocktarget.apigee.net`. 
-* RouteRule -- Specifies which target endpoint definition file to call. Route rules can have logic to route calls conditionally to different targets. 
-* TargetEndpoint -- The name of a target definition in the apiproxy/targets directory. 
-* HTTPTargetConnection -- Defines the target to which to send the request. Usually a URL. 
+* **Target service** -- A backend service that the proxy calls on behalf of the requesting app. Here, we're going to return data from a service called `mocktarget.apigee.net`. 
+* **RouteRule** -- Specifies which target endpoint definition file to call. Route rules can have logic to route calls conditionally to different targets. 
+* **TargetEndpoint** -- The name of a target definition in the apiproxy/targets directory. 
+* **HTTPTargetConnection** -- Defines the target to which to send the request. Usually a URL. 
 
 ### Things to try
 
 * In a browser, hit http://mocktarget.apigee.net/help to see what else the service can do. 
 * Modify the `invoke.sh` script to hit one of the other resources. For example: `curl http://<your org>-test.apigee.net/json`. 
 
-**Notable Concept**: By default, whatever you add to the base path of the API proxy gets passed on unchanged to the target. 
+  **Notable Concept**: By default, whatever you add to the base path of the API proxy gets passed on unchanged to the target. 
 
-* Change the proxy so it calls a different endpoint, maybe a service you are familiar with and test the change (redeploy and invoke). Hint: Edit 
+* Change the proxy so it calls a different endpoint, maybe a service you are familiar with and test the change (redeploy and invoke). Hint: Edit `apiproxy/targets/default.xml`.
 
 
 ### Ask the community

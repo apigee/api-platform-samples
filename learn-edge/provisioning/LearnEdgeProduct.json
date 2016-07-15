@@ -3,7 +3,7 @@
   "approvalType" : "auto",
   "attributes" : [ ],
   "description" : "You get what you pay for!",
-  "displayName" : "Learn Edge Bundle",
+  "displayName" : "Learn Edge Product",
   "environments" : [ "test", "prod" ],
   "name" : "LearnEdgeProduct",
   "proxies" : [ "learn-edge" ],

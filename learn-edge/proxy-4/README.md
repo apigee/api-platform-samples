@@ -34,9 +34,10 @@ Deploy and invoke the proxy. These are the basic steps:
             <Condition>(fault.name Matches "InvalidApiKey") </Condition>
         </FaultRule>
       </FaultRules>
+      ...
     ```
 
-A fault rule is a kind of conditional flow that executes whenever a policy throws an error. The VerifyApiKey policy can throw errors upon several conditions, like an invalid API key for example. That's exactly what our fault rule is looking for! When the fault rule's condition is true, a policy called InvalidApiKey executes. 
+A fault rule is a special kind of flow that executes whenever a policy throws an error. The VerifyApiKey policy can throw errors upon several conditions, like an invalid API key for example. That's exactly what our fault rule is looking for! When the fault rule's condition is true, a policy called InvalidApiKey executes. 
 
 * We added our second **policy** to the proxy. Hint: it is in the `apiproxy/policies` folder and it is called `InvalidApiKey.xml`:
 
@@ -55,7 +56,7 @@ A fault rule is a kind of conditional flow that executes whenever a policy throw
     ```
 
 
-This policy is a little more complicated looking, but it's simple to understand. When called, it sets the response body (payload) to a string value, which is a custom error message. It also sets a status code and reason phrase. This information is what the client app will receive if it sends an invalid API key to Edge.
+This policy is a little more complicated looking, but it's simple to understand. When called, it sets the response body (payload) to a string value, which is a custom error message. It also sets a status code and reason phrase. This information is what the client app will receive if it sends an invalid API key to Edge, as you saw when you invoked this example.
  
 
 ### Important words and concepts
@@ -65,8 +66,12 @@ This policy is a little more complicated looking, but it's simple to understand.
 
 ### Things to try
 
-* In a browser, hit http://mocktarget.apigee.net/help to see what else the service can do.
+* Configure the proxy to return a custom error message when this default error response is thrown:
+   ```{"fault":{"faultstring":"Invalid ApiKey for given resource","detail":{"errorcode":"oauth.v2.InvalidApiKeyForGivenResource"}}}
+   ```
 
+   Hint: Trap the fault name InvalidApiKeyForGivenResource in another fault rule.
+   
 ### Ask the community
 
 [![alt text](../../images/apigee-community.png "Apigee Community is a great place to ask questions and find answers about developing API proxies. ")](https://community.apigee.com?via=github)

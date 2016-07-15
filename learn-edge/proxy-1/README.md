@@ -4,16 +4,16 @@ You're going to deploy a simple API proxy on Apigee Edge. Actually, this is the 
 
 ### Try it
 
-All the examples in `learn-edge` work like this. We'll remind you in the other READMEs of the basic steps, but we'll omit the extra explanation provided here:
+All the examples in `learn-edge` work as follows:
 
-1. `cd api-platform-samples/tutorials/learn-edge`.
+1. `cd api-platform-samples/tutorials/proxy-1`.
 2. `./deploy.sh` 
     
     It's not important to deconstruct `deploy.sh` now. It just uses a command-line tool to deploy the proxy. 
 
-4. Look at the Edge UI (the API Proxies page) -- you'll see **learn-edge**. 
+4. Look at the Edge UI (go to the API Proxies page under the **APIs=>API Proxies** menu) -- you'll see **learn-edge**. 
 5. Click **learn-edge**. 
-6. Do you see the Overview, Develop, and Trace tabs? Good. Notice in the Overview the Proxy Basepath is `http://<your org>-test.apigee.net/learn-edge`. This is the URL you will use to call the proxy. 
+6. Do you see the Overview, Develop, and Trace tabs? Good. Notice in the Overview the Proxy URL is `http://<your org>-test.apigee.net/learn-edge`. This is the URL you will use to call the proxy. 
 7. `./invoke.sh`
 
     This script executes a curl command:

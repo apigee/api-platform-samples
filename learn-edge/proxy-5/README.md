@@ -25,7 +25,7 @@ Deploy and invoke the proxy. These are the basic steps:
 * We added a **ResponseCache policy** to the proxy. It is in the `apiproxy/policies` folder and it is called `ResponseCache.xml`:
 
     ```xml
-        <ResponseCache async="false" continueOnError="false" enabled="true" name="Response-Cache-1">
+        <ResponseCache async="false" continueOnError="false" enabled="true" name="ResponseCache">
             <DisplayName>ResponseCache</DisplayName>
             <CacheKey>
                 <KeyFragment ref="request.uri" type="string"/>
@@ -36,7 +36,7 @@ Deploy and invoke the proxy. These are the basic steps:
         </ResponseCache>
     ```
 
-    Note two things of interest: First, the KeyFragment is a string that's concatenated onto the cache key. It allows you to keep caches for different requests separated. Second, the "ref" part of the KeyFragment, `request.uri`, is a **flow variable**. Flow variables are **extremely** important in Edge development -- they allow you to access all kinds data within the context of proxy flows. The `request.uri` variable is a "built-in" variable that's populated automatically on each request. It's basically the entire request URI including query parameters. Anyway, that string value will become part of the cache key.
+    Note two things of interest: **First**, the KeyFragment is a string that's concatenated onto the cache key. It allows you to keep caches for different requests separated. **Second**, the "ref" part of the KeyFragment, `request.uri`, is a **flow variable**. Flow variables are **extremely** important in Edge development -- they allow you to access all kinds data within the context of proxy flows. The `request.uri` variable is a "built-in" variable that's populated automatically on each request. It's basically the entire request URI including query parameters. Anyway, that string value will become part of the cache key.
 
 * In the `apiproxy/proxies/default.xml` file, we **attach the policy** to the ProxyEndpoint's Preflow. VerifyAPIKey is still there. We don't have to touch it. 
 
@@ -50,11 +50,11 @@ Deploy and invoke the proxy. These are the basic steps:
                 <Name>ResponseCache</Name>
               </Step>
             </Request>
-          </PreFlow>
-          ...
+        </PreFlow>
+        ...
     ```
 
- * The ResponseCache policy is a little unique in that it has to be attached in **two places**. The second attachment point is the TargetEndpoint's PostFlow Response flow. You can find it in the `apiproxy/targets/default.xml` file. This flow executes after the response comes back from the target, just before the response is sent back to the client app. 
+* The ResponseCache policy is a little unique in that it has to be attached in **two places**. The second attachment point is the TargetEndpoint's PostFlow Response flow. You can find it in the `apiproxy/targets/default.xml` file. This flow executes after the response comes back from the target, just before the response is sent back to the client app. 
 
     ```xml
         <TargetEndpoint name="default">
