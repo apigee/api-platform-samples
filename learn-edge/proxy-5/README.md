@@ -1,6 +1,6 @@
 # Enance performance with response caching
 
-**Response caching** is a popular feature that **speeds up your proxy performance** by caching responses from the backend target. When Edge can pull a response from the cache, it circumvents the target entirely, greatly speeding up the overall response time. Naturally, Edge has a Response Cache policy that makes adding this feature easy to do. 
+**Response caching** is a popular feature in Edge that **speeds up your proxy performance** by caching responses from the backend target. When Edge can pull a response from the cache, it circumvents the target entirely, greatly speeding up the overall response time. Naturally, Edge has a Response Cache policy that makes adding this feature easy to employ. 
 
 
 ### Provision the required entities

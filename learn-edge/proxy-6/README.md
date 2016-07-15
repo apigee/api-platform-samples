@@ -30,10 +30,10 @@ Deploy and invoke the proxy. These are the basic steps:
             <VariablePrefix>mock</VariablePrefix>
             <JSONPayload>
                 <Variable name="firstName">
-                    <JSONPath>$.root.firstName</JSONPath>
+                    <JSONPath>$.firstName</JSONPath>
                 </Variable>
                 <Variable name="lastName">
-                    <JSONPath>$.root.lastName</JSONPath>
+                    <JSONPath>$.lastName</JSONPath>
                 </Variable>
             </JSONPayload>
         </ExtractVariables>
