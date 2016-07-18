@@ -1,34 +1,49 @@
 # The simplest proxy
 
-You're going to deploy a simple API proxy on Apigee Edge. Actually, this is the simplest proxy you can make. All it does is return a 200 response to let you know it's working. 
+You're going to deploy a simple API proxy on Apigee Edge. Actually, this is the simplest proxy you can make -- it doesn't actually do anything! All it does is return a 200 response to let you know it's working. 
 
 ### Try it
 
-All the examples in `learn-edge` work as follows:
+Follow these steps to deploy and call the API proxy:
+
+1. Edit this file with your Apigee account information (org name, etc). You only have to do this once. 
+
+    `api-platform-samples/tools/setup/setenv.sh`
 
 1. `cd api-platform-samples/tutorials/proxy-1`.
 2. `./deploy.sh` 
     
     It's not important to deconstruct `deploy.sh` now. It just uses a command-line tool to deploy the proxy. 
 
-4. Look at the Edge UI (go to the API Proxies page under the **APIs=>API Proxies** menu) -- you'll see **learn-edge**. 
+3. `./invoke.sh`
+
+    This script executes this curl command, where "your org" is the name of your Apigee Edge organization. 
+
+    `curl http://<your org name>-test.apigee.net`
+
+4. Look at the output.
+
+    Did you get back a Status 200. Great! It worked. In proxy-2 we'll make a few simple changes so the proxy calls an actual backend service.
+
+### View it in the Edge UI
+
+1. Log in to your Apigee account. 
+2. Go to APIs->API Proxies and click the **learn-edge** proxy. 
 5. Click **learn-edge**. 
-6. Do you see the Overview, Develop, and Trace tabs? Good. Notice in the Overview the Proxy URL is `http://<your org>-test.apigee.net/learn-edge`. This is the URL you will use to call the proxy. 
-7. `./invoke.sh`
+6. You're in the **Overview** tab. Notice that the Proxy URL is `http://<your org name>-test.apigee.net/learn-edge`. This is the URL you will use to call the proxy. 
+7. Click the **Develop** tab. This is the "visual representation" of the proxy you deployed. It's also the UI-based development environment. 
+8. Click the **Trace** tab. Click **Start Trace** and send a request. 
 
-    This script executes a curl command:
-
-    `curl http://<your org>-test.apigee.net`
-
-Did you get back a Status 200. Great! 
+**Hint:** Trace is a valuable tool for debugging proxies. It shows you what's happening while requests and responses pass through the Edge pipeline.
 
 ### What you did
 
-You deployed a basic proxy to Edge, called it, and got a 200 response.
+You deployed a basic proxy to Edge, called it, and got a 200 response. This may seem trivial, but you accomplished several important tasks. You deployed an Edge proxy from your work computer to Edge, you called the API proxy, and got back meaningful output. You also poked around the Edge UI and ran a Trace. 
 
-### Important words and concepts
+### Extra reading: Important words and concepts
 
-* This is the basic file structure for all Edge API proxies. As we'll see in starting with proxy-2, these directories will contain XML files that define how the proxy works. 
+* A **proxy** is an API that fronts for another API. Client apps call the proxy API and Edge then handles tasks like security and calling the backend target services. Edge also provides a rich analytics service so you can monitor and track your APIs. 
+* This is the basic file structure for all Edge API proxies. If you like, explore the XML files in the proxy. For example, the XML file in the `/proxies` folder defines behavior for the client-proxy interface -- what happens to requests that come in to Edge and what happens before a response is sent back. 
 
 ```
 /apiproxy
@@ -39,11 +54,11 @@ You deployed a basic proxy to Edge, called it, and got a 200 response.
    proxyname.xml
 ```
 
-* This structure is mapped into the Edge UI, although the UI uses slightly different names for the components. 
+* This file structure is mapped into the Edge UI, although the UI uses slightly different names for the components. 
 
 [add a picture of the navigator]
 
-* Many developers develop proxies locally and deploy them using a command line tool (like the one used in the `./invoke.sh` file) or tools like Maven and Grunt. It's all about properly packaging and uploading the local files to Edge.
+* Many developers develop proxies locally and deploy them using a command line tool (like the one used in the `./invoke.sh` file) or tools like Maven and Grunt. It's all about properly packaging and uploading the local files to Edge. You can even package a proxy in a ZIP file and upload it through the Edge UI. 
 
 ### Ask the community
 
