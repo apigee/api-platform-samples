@@ -10,7 +10,7 @@ Follow these steps to deploy and call the API proxy:
 
     `api-platform-samples/tools/setup/setenv.sh`
 
-1. `cd api-platform-samples/learn-edge/proxy-1`.
+1. `cd api-platform-samples/learn-edge/simplest-proxy`.
 2. `./deploy.sh` 
     
     It's not important to deconstruct `deploy.sh` now. It just uses a command-line tool to deploy the proxy. 
@@ -23,7 +23,7 @@ Follow these steps to deploy and call the API proxy:
 
 4. Look at the output.
 
-    Did you get back a Status 200. Great! It worked. In proxy-2 we'll make a few simple changes so the proxy calls an actual backend service.
+    Did you get back a Status 200. Great! It worked. In [proxy-to-a-target](./proxy-to-a-target), we'll make a few simple changes so the proxy calls an actual backend service.
 
 ### View it in the Edge UI
 

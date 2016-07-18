@@ -5,7 +5,7 @@ Now we will add **error handling** to the proxy. If an invalid API key comes in,
 
 ### Provision the required entities
 
-We assume you've provisioned the Product, Developer App, and Developer as explained in `proxy-3`. If you want to redo it, here's how:
+We assume you've provisioned the Product, Developer App, and Developer as explained in `apikey-security`. If you want to redo it, here's how:
 
 1. `cd api-platform-samples/learn-edge/provisioning`.
 2. `./cleanup.sh`.
@@ -15,14 +15,14 @@ We assume you've provisioned the Product, Developer App, and Developer as explai
 
 Deploy and invoke the proxy. These are the basic steps:
 
-1. `cd api-platform-samples/learn-edge/proxy-4`.
+1. `cd api-platform-samples/learn-edge/fault-handling-intro`.
 2. `./deploy.sh`
 3. `./invoke.sh`
-4. Compare the output to the `proxy-4` output. 
+4. Compare the output to the `apikey-security` output. 
 
 ### View it in the Edge UI
 
-Go to the Edge UI and run a Trace on this API. How does it differ from the Trace you saw in `proxy-3`? You can see where the fault occurs and where control shifts to the error flow. 
+Go to the Edge UI and run a Trace on this API. How does it differ from the Trace you saw in `apikey-security`? You can see where the fault occurs and where control shifts to the error flow. 
 
 ### About what changed
 

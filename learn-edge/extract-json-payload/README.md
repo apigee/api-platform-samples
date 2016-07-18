@@ -5,7 +5,7 @@ In this proxy example, we'll extract data from the target response and set the e
 
 ### Provision the required entities
 
-We assume you've provisioned the Product, Developer App, and Developer as explained in proxy-3. If you want to redo it, here's how:
+We assume you've provisioned the Product, Developer App, and Developer as explained in `apikey-security`. If you want to redo it, here's how:
 
 1. `cd api-platform-samples/learn-edge/provisioning`.
 2. `./cleanup.sh`.
@@ -15,10 +15,10 @@ We assume you've provisioned the Product, Developer App, and Developer as explai
 
 Deploy and invoke the proxy. These are the basic steps:
 
-1. `cd api-platform-samples/learn-edge/proxy-6`.
+1. `cd api-platform-samples/learn-edge/extract-json-payload`.
 2. `./deploy.sh`
 3. `./invoke.sh`
-4. Compare the output to the `proxy-5` output. 
+4. Compare the output to the `response-cache` output. 
 
 ### View it in the Edge UI
 
@@ -86,7 +86,7 @@ Of interest: It's a good idea to use a VariablePrefix in this policy -- it gets 
 
 ### Extra reading: important words and concepts
 
-* **Custom flows:** Something new in our Learn Edge series. You can create any number of custom flows. If you're confused, go to the Edge UI and observe how the custom flow looks in the Develop tab, and watch what happens in the Trace tool -- it's graphical view helps put these flows into perspective! One thing to note: the Preflow and PostFlow always execute. But custom flows can be conditional (like our FaultRule flow as conditional back in `proxy-4`). In this example, there are no conditions, so the HandleHeaders flow will always execute.
+* **Custom flows:** Something new in our Learn Edge series. You can create any number of custom flows. If you're confused, go to the Edge UI and observe how the custom flow looks in the Develop tab, and watch what happens in the Trace tool -- it's graphical view helps put these flows into perspective! One thing to note: the Preflow and PostFlow always execute. But custom flows can be conditional (like our FaultRule flow as conditional back in `fault-handling-intro`). In this example, there are no conditions, so the HandleHeaders flow will always execute.
 * **Extracting variables:** The ExtractVariables policy is handy for extracting data from requests and response into flow variables. After the data is extracted, it can be used downstream by any policy capable of reading flow variables. Such variables are commonly used in conditions that further affect flow processing. 
 
 ### Things to try

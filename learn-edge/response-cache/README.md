@@ -5,7 +5,7 @@
 
 ### Provision the required entities
 
-We assume you've provisioned the Product, Developer App, and Developer as explained in proxy-3. If you want to redo it, here's how:
+We assume you've provisioned the Product, Developer App, and Developer as explained in `apikey-security`. If you want to redo it, here's how:
 
 1. `cd api-platform-samples/learn-edge/provisioning`.
 2. `./cleanup.sh`.
@@ -15,14 +15,14 @@ We assume you've provisioned the Product, Developer App, and Developer as explai
 
 Deploy and invoke the proxy. These are the basic steps:
 
-1. `cd api-platform-samples/learn-edge/proxy-5`.
+1. `cd api-platform-samples/learn-edge/response-cache`.
 2. `./deploy.sh`
 3. `./invoke.sh`
-4. Compare the output to the `proxy-4` output. 
+4. Compare the output to the `fault-handling-intro` output. 
 
 ### View it in the Edge UI
 
-Go to the Edge UI and run a Trace on this API. How does it differ from the Trace you saw in `proxy-4`? It's interesting to trace the flow when caching is enabled. You can see where a response is pulled from the cache, in which case no call is made to the backend target. 
+Go to the Edge UI and run a Trace on this API. How does it differ from the Trace you saw in `fault-handling-intro`? It's interesting to trace the flow when caching is enabled. You can see where a response is pulled from the cache, in which case no call is made to the backend target. 
 
 ### About what changed
 

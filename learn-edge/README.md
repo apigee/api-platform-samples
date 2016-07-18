@@ -25,7 +25,7 @@ This is the recommended path through the examples. But you can do them in any or
 
 6. Log in to your Apigee account and go to the API Management section. It'll be good to keep this open as you work, because while you'll mostly be working locally, it's helpful to see how each proxy looks in the UI after you deploy it. 
 
-That's it! To get started, go to the README for the first example proxy, in the folder `api-platform-samples/learn-edge/proxy-1`, and follow the instructions.
+That's it! To get started, go to the README for the first example proxy, [simplest-proxy](./simplest-proxy). On your filesystem, it is in the folder `api-platform-samples/learn-edge/simplest-proxy`, and follow the instructions.
 
 ### What you'll learn
 

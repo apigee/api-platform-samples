@@ -26,7 +26,7 @@ fi;
 
 echo Deploying $proxy to $env on $url using $username and $org
 
-../../tools/deploy.py -n learn-edge -u $username:$password -o $org -h $url -e $env -p / -d ../proxy-2
+../../tools/deploy.py -n learn-edge -u $username:$password -o $org -h $url -e $env -p / -d ../proxy-to-a-target
 
 echo "If 'State: deployed', then your API Proxy is ready to be invoked."
 
