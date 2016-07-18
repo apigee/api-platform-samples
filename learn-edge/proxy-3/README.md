@@ -1,8 +1,8 @@
 # Secure the proxy with an API key
 
-**Important concepts**: This proxy illustrates perhaps **the** central concept you need to know about in Apigee Edge: how API Proxies, API Products, and Developer Apps are **related** and how this relationship allows proxies to be secured with keys (and, as we'll see later, managed in other ways).  
+This proxy illustrates perhaps **the** central concept you need to know about in Apigee Edge: how API Proxies, API Products, and Developer Apps are **related** and how this relationship allows proxies to be secured with keys. After you deploy and execute this proxy, you'll have a basic understanding of these important concepts. 
 
-### Provision these entities
+### Do this quick, one-time setup
 
 Run this script to provision an API Product, Developer, and Developer App to Edge. Don't worry about what these things are just yet -- after playing with this proxy, you will begin to understand them:
 
@@ -12,11 +12,11 @@ Run this script to provision an API Product, Developer, and Developer App to Edg
 
 2. Run `./setup.sh`.
 
-3. Go to the Edge UI and look at these uploaded entities under the Publish menu: Publish=>Products, Publish=>Developers, and Publish=>Developer Apps.
+3. Go to the Edge UI and look at these uploaded entities under the Publish menu: **Publish->Products**, **Publish->Developers**, and **Publish->Developer Apps**.
 
-4. Look at the Developer App (Learn Edge App). Notice that it *has* both a Developer and a Product (Learn Edge Product). It also *has* two keys, a Consumer Key and a Consumer Secret. 
+4. Look at the Developer App (called "Learn Edge App"). Notice that it *has* both a Developer **and** a Product (Learn Edge Product). It also *has* two keys, a Consumer Key and a Consumer Secret. 
 
-5. Click the Product link in the app page. Notice that the product *has* an API proxy (`learn-edge`). Also, notice that it *has* a resource (`/json`). The Product, Developer, and Developer App form a relationship that enables you to secure and manage proxies. 
+5. Click the **Product** link in the app page. Notice that the product *has* an API proxy (`learn-edge`). Also, notice that it *has* a resource (`/json`). The Product, Developer, and Developer App form a relationship that enables you to secure and manage proxies or collections of proxies that Apigee calls "bundles".
 
 Enough with the concepts. Let's do something.
 
@@ -29,6 +29,10 @@ Deploy and invoke the proxy. These are the basic steps:
 3. `./invoke.sh`
 4. Compare the output to the `proxy-2` output. 
 
+### View it in the Edge UI
+
+Go to the Edge UI and run a Trace on this API. How does it differ from the Trace you saw in `proxy-2`? Do you see where the VerifyAPIKey policy exectued? Notice that when it runs, a whole bunch of variables are created -- they have names like `verifyapikey.VerifyAPIKey.status` and `verifyapikey.VerifyAPIKey.expires_in`. For now, just note that these variables are created. 
+
 ### About what changed
 
 * We added our first **policy** to the proxy. Hint: it is in the `apiproxy/policies` folder and it is called `VerifyApiKey.xml`:
@@ -39,6 +43,8 @@ Deploy and invoke the proxy. These are the basic steps:
             <APIKey ref="request.queryparam.apikey"/>
         </VerifyAPIKey>
     ```
+
+  Can you see that this policy looks for an API key in a query parameter called `apikey`?
 
 * In the `apiproxy/proxies/default.xml` file, we **attach the policy** to the ProxyEndpoint's Preflow. Just remember that the Preflow is the first flow that is executed when a new request comes in to Apigee Edge. So, the first thing that happens on Edge is that it checks to see if the API key is valid.
 
@@ -56,7 +62,7 @@ Deploy and invoke the proxy. These are the basic steps:
 
  
 
-### Important words and concepts
+### Extra reading: important words and concepts
 
 * **Policies** are a big deal in Apigee Edge. They let you specifiy any actions that you want to perform while the API call is flowing through Edge. In this case, we are implementing a **security action**: verifying the API key. If it's valid the request moves on. If invalid, an error is returned to the calling client.
 * **Flows** are very important. Basically, when a request comes in to Edge, it's processed through a sort of pipeline. The pipeline has multiple stages called flows, and at each stage you can attach policies that do all sorts of things like enforce security, check for threats, enforce quotas, do transformations, read and write state variables, and so on. 
@@ -66,6 +72,7 @@ Deploy and invoke the proxy. These are the basic steps:
 ### Things to try
 
 * In a browser, hit http://mocktarget.apigee.net/help to see what else the service can do.
+* Change the VerifyAPIKey policy so that it looks for the API key in a different query parameter. Change it so it looks for the key in a header. **Hint:** Go to the Edge documentation for this policy to see how to use headers instead of query parameters for the key. It's a very simple change.
 
 ### Ask the community
 

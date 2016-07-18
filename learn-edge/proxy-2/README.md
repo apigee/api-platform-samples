@@ -49,7 +49,6 @@ You deployed a modified proxy that calls a backend target -- a web service used 
 
 ### Extra reading: important words and concepts
 
-* The name of the target endpoint can be anything, but it has to match the name of a file in the `targets` directory. ?? Is this true ?? What if the file was called foo.xml ??
 * **Target service** -- A backend service that the proxy calls on behalf of the requesting app. Here, we're going to return data from a service called `mocktarget.apigee.net`. 
 * **RouteRule** -- Specifies which target endpoint definition file to call. Route rules can have logic to route calls conditionally to different targets. 
 * **TargetEndpoint** -- The name of a target definition in the apiproxy/targets directory. 
