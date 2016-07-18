@@ -7,11 +7,11 @@ The Learn Edge series is a hands-on, minimalistic learning exprience for beginni
 This is the recommended path through the examples. But you can do them in any order you wish:
 
 1. [simplest-proxy](./simplest-proxy/README.md)
-2. proxy-to-a-target
-3. apikey-security
-4. fault-handling-intro
-5. response-cache
-6. extract-json-payload
+2. [proxy-to-a-target](./proxy-to-a-target/README.md)
+3. [apikey-security](./apikey-security/README.md)
+4. [fault-handling-intro](./fault-handling-intro/README.md)
+5. [response-cache](./response-cache/README.md)
+6. [extract-json-payload](./extract-json-payload/README.md)
 
 ### Prerequisites
 
