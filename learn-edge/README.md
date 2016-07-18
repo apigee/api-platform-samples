@@ -2,6 +2,17 @@
 
 The Learn Edge series is a hands-on, minimalistic learning exprience for beginning Edge developers. Each step is designed to be quick and easy to try and teaches a core concept that all Edge developers must master to be successful with the platform. 
 
+### Recommended order of examples
+
+This is the recommended path through the examples. But you can do them in any order you wish:
+
+1. [simplest-proxy](./simplest-proxy/README.md)
+2. proxy-to-a-target
+3. apikey-security
+4. fault-handling-intro
+5. response-cache
+6. extract-json-payload
+
 ### Prerequisites
 
 1. You need an **Apigee account**. If you don't have an Apigee account, sign up for one now.

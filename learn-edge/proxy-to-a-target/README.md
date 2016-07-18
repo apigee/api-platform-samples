@@ -15,6 +15,8 @@ Deploy and invoke the proxy. These are the basic steps:
 
 Go to the Edge UI and run a Trace on this API. How does it differ from the Trace you saw in `proxy-1`?
 
+**What's a revision?** You might notice that when you deployed `proxy-2` you created a new revision of the proxy called `learn-edge`. In all of the `deploy.sh` files, the proxy name is always `learn-edge`. The deploy script just creates a new revision each time it deploys. If you want to go back to a previous revision, you can go to the Edge UI and select it from the **Revision** menu. Or, you can just redeploy whichever proxy you want to use from the command-line -- and it will become the current revision.
+
 ### About what changed
 
 To get our proxy to call a target service, we made a few changes to the simple do-nothing proxy we deployed before. 
