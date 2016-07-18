@@ -73,7 +73,7 @@ This policy is a little more complicated looking, but it's simple to understand.
 
 * Configure the proxy to return a custom error message when this default error response is thrown:
 
-   ```{"fault":{"faultstring":"Failed to resolve API Key variable request.queryparam.apikey","detail":{"errorcode":"steps.oauth.v2.FailedToResolveAPIKey"}}}
+   ```{"fault":{"faultstring":"Failed to resolve API Key variable request.queryparam.apikey","detail":{"errorcode":"steps.oauth.v2.FailedToResolveAPIKey"}}
    ```
 
    Hint: Trap the fault name FailedToResolveAPIKey in another fault rule. How do you cause that error? Try calling the API without the `apikey` query parameter. Like this:  `curl http://<your-org>-test.apigee.net/learn-edge/json`. The error means that variable where Edge is looking to find the API key does not exist (it can't be resolved).
