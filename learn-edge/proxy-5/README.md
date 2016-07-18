@@ -1,6 +1,6 @@
 # Enance performance with response caching
 
-**Response caching** is a popular feature in Edge that **speeds up your proxy performance** by caching responses from the backend target. When Edge can pull a response from the cache, it circumvents the target entirely, greatly speeding up the overall response time. Naturally, Edge has a Response Cache policy that makes adding this feature easy to employ. 
+**Response caching** is a popular feature in Edge that **speeds up your proxy performance**. The Response Cache policy caches responses from the backend target. When Edge can pull a response from the cache, it circumvents the target entirely, greatly speeding up the overall response time. Naturally, Edge has a Response Cache policy that makes adding this feature easy to employ. 
 
 
 ### Provision the required entities
@@ -20,6 +20,10 @@ Deploy and invoke the proxy. These are the basic steps:
 3. `./invoke.sh`
 4. Compare the output to the `proxy-4` output. 
 
+### View it in the Edge UI
+
+Go to the Edge UI and run a Trace on this API. How does it differ from the Trace you saw in `proxy-4`? It's interesting to trace the flow when caching is enabled. You can see where a response is pulled from the cache, in which case no call is made to the backend target. 
+
 ### About what changed
 
 * We added a **ResponseCache policy** to the proxy. It is in the `apiproxy/policies` folder and it is called `ResponseCache.xml`:
@@ -36,9 +40,9 @@ Deploy and invoke the proxy. These are the basic steps:
         </ResponseCache>
     ```
 
-    Note two things of interest: **First**, the KeyFragment is a string that's concatenated onto the cache key. It allows you to keep caches for different requests separated. **Second**, the "ref" part of the KeyFragment, `request.uri`, is a **flow variable**. Flow variables are **extremely** important in Edge development -- they allow you to access all kinds data within the context of proxy flows. The `request.uri` variable is a "built-in" variable that's populated automatically on each request. It's basically the entire request URI including query parameters. Anyway, that string value will become part of the cache key.
+    **Important to note**: The KeyFragment is a string that's concatenated onto the cache key. It allows you to keep caches for different requests separated. The "ref" part of the KeyFragment, `request.uri`, is a **flow variable**. Flow variables are **extremely** important in Edge development -- they allow you to access all kinds data within the context of proxy flows. The `request.uri` variable is a "built-in" variable that's populated automatically on each request. It's basically the entire request URI including query parameters. Anyway, that string value will become part of the cache key.
 
-* In the `apiproxy/proxies/default.xml` file, we **attach the policy** to the ProxyEndpoint's Preflow. VerifyAPIKey is still there. We don't have to touch it. 
+* We **attach the policy** to the ProxyEndpoint's Preflow. You can see where in the file `apiproxy/proxies/default.xml`. VerifyAPIKey is still there (it executes first). We don't have to touch it. 
 
     ```xml
         <PreFlow>
@@ -54,7 +58,7 @@ Deploy and invoke the proxy. These are the basic steps:
         ...
     ```
 
-* The ResponseCache policy is a little unique in that it has to be attached in **two places**. The second attachment point is the TargetEndpoint's PostFlow Response flow. You can find it in the `apiproxy/targets/default.xml` file. This flow executes after the response comes back from the target, just before the response is sent back to the client app. 
+* The ResponseCache policy is somewhat unique in that it has to be attached in **two places**. The second attachment point is the TargetEndpoint's PostFlow Response flow. You can find it in the `apiproxy/targets/default.xml` file. This flow executes after the response comes back from the target, just before the response is sent back to the client app. You can really see this behavior in action when you use the Trace tool. 
 
     ```xml
         <TargetEndpoint name="default">
@@ -69,11 +73,12 @@ Deploy and invoke the proxy. These are the basic steps:
           ...
     ```
 
-### Important words and concepts
+### Extra reading: Important words and concepts
 
 * **Response caching:** Caching response data to greatly speed up proxy performance. 
 * **Flow variables:** A huge concept in Edge and important to begin to understand now. Flow variables give you access to the runtime context while proxy requests and responses flow through the Edge pipeline. 
-* **TargetEndpoint PostFlow:** All of the flows have pre and post segments. For now, just remember that the post segment is executed last. For later, remember that flow variables have scope, and some variables are only available in certain flow segments. The variable we used, `request.uri`, happens to be available in all scopes. 
+* **TargetEndpoint PostFlow:** All of the flows have pre and post segments. For now, just remember that the post segment is executed last. 
+* **Variable scope:** All flow variables have scope, and some variables are only available in certain flow segments. The variable we used, `request.uri`, happens to be available in all scopes. The Variables reference in the Edge docs tells you the scope of each built-in flow variable. 
 
 ### Things to try
 

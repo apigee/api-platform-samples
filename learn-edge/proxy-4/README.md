@@ -1,11 +1,11 @@
 # Catch an error and return a custom error response
 
-This proxy adds **error handling**. If an invalid API key comes in, we'll check for that and return a custom error message. This pattern is one of the most common in Edge proxy development. 
+Now we will add **error handling** to the proxy. If an invalid API key comes in, we'll check for that and return a **custom error message**. This pattern -- evaluating a condition and taking subsequent action -- is one of the most fundamental patterns in Edge proxy development. 
 
 
 ### Provision the required entities
 
-We assume you've provisioned the Product, Developer App, and Developer as explained in proxy-3. If you want to redo it, here's how:
+We assume you've provisioned the Product, Developer App, and Developer as explained in `proxy-3`. If you want to redo it, here's how:
 
 1. `cd api-platform-samples/learn-edge/provisioning`.
 2. `./cleanup.sh`.
@@ -20,9 +20,13 @@ Deploy and invoke the proxy. These are the basic steps:
 3. `./invoke.sh`
 4. Compare the output to the `proxy-4` output. 
 
+### View it in the Edge UI
+
+Go to the Edge UI and run a Trace on this API. How does it differ from the Trace you saw in `proxy-3`? You can see where the fault occurs and where control shifts to the error flow. 
+
 ### About what changed
 
-* We added our first **FaultRule** to the Proxy Endpoint. You'll see it in `apiproxy/proxies/default.xml`:
+* We added a **FaultRule** to the Proxy Endpoint. You'll see it in `apiproxy/proxies/default.xml`:
 
     ```xml
     <ProxyEndpoint name="default">
@@ -37,13 +41,13 @@ Deploy and invoke the proxy. These are the basic steps:
       ...
     ```
 
-A fault rule is a special kind of flow that executes whenever a policy throws an error. The VerifyApiKey policy can throw errors upon several conditions, like an invalid API key for example. That's exactly what our fault rule is looking for! When the fault rule's condition is true, a policy called InvalidApiKey executes. 
+A fault rule is a special kind of flow that executes whenever a policy throws an error. When an error occurs, Edge shifts control directly to the "fault rule flow." The VerifyApiKey policy can throw errors upon several conditions, like an invalid API key for example. That's exactly what our fault rule is looking for! When the fault rule's condition is true, a policy called InvalidApiKey executes. 
 
-* We added our second **policy** to the proxy. Hint: it is in the `apiproxy/policies` folder and it is called `InvalidApiKey.xml`:
+* We added an **Assign Message policy** to the proxy. Hint: it is in the `apiproxy/policies` folder and it is called `InvalidApiKey.xml`:
 
     ```xml
-        <AssignMessage async="false" continueOnError="false" enabled="true" name="InvalidApiKeyMessage">
-            <DisplayName>InvalidApiKeyMessage</DisplayName>
+        <AssignMessage async="false" continueOnError="false" enabled="true" name="InvalidApiKey">
+            <DisplayName>Invalid ApiKey Message</DisplayName>
             <Properties/>
             <Set>
                 <Payload contentType="application/json">\{"error": \{"message":"{fault.name}", "detail":"Please provide valid API key in the apikey query parameter.}} </Payload>
@@ -56,13 +60,14 @@ A fault rule is a special kind of flow that executes whenever a policy throws an
     ```
 
 
-This policy is a little more complicated looking, but it's simple to understand. When called, it sets the response body (payload) to a string value, which is a custom error message. It also sets a status code and reason phrase. This information is what the client app will receive if it sends an invalid API key to Edge, as you saw when you invoked this example.
+This policy is a little more complicated looking, but it's simple to understand. When called, it sets the response body (payload) to a string value -- a custom error message. It also sets a status code and reason phrase. This information is what the client app will receive if it sends an invalid API key to Edge, as you saw when you invoked this example.
  
 
-### Important words and concepts
+### Extra reading: important words and concepts
 
 * **Fault rules** Enable you to do error handling within the proxy flow pipline. They are a lot like any flow in the pipeline, but they only execute when an policy throws an error and when the fault rule's condition evaluates to true. 
-* **AssignMessage policy** is a policy, not a concept, but remember that it's one of the most commonly used policies in Apigee Edge! It's used to set request and response headers, query parameters, and form parameters, as well as body payloads, and much more. It's kind of a Swiss Army Knife policy -- it does a lot of different things!
+* **Conditional flows** allow you to control how Edge processes a proxy dynamically. Usually a condition tests the value of a flow variable that was set by another policy or flow event. 
+* **Assign Message policy** is one of the most commonly used policies in Apigee Edge! It's used to set request and response headers, query parameters, and form parameters, as well as body payloads, and much more. It's kind of a Swiss Army Knife policy -- it does a lot of different things!
 
 ### Things to try
 
@@ -71,7 +76,7 @@ This policy is a little more complicated looking, but it's simple to understand.
    ```{"fault":{"faultstring":"Failed to resolve API Key variable request.queryparam.apikey","detail":{"errorcode":"steps.oauth.v2.FailedToResolveAPIKey"}}}
    ```
 
-   Hint: Trap the fault name FailedToResolveAPIKey in another fault rule. How do you cause that error? Try calling the API without the `apikey` query parameter. Like this:  `curl http://<your-org>-test.apigee.net/learn-edge/json`
+   Hint: Trap the fault name FailedToResolveAPIKey in another fault rule. How do you cause that error? Try calling the API without the `apikey` query parameter. Like this:  `curl http://<your-org>-test.apigee.net/learn-edge/json`. The error means that variable where Edge is looking to find the API key does not exist (it can't be resolved).
    
 ### Ask the community
 

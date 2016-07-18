@@ -1,6 +1,6 @@
 # Extract target response data and set custom response headers
 
-In this proxy example, we'll extract data from the target response and set the extracted data into custom response headers. Of course, policies do all the work for us. We'll use the ExtractVariables and AssignMessage policies.  
+In this proxy example, we'll extract data from the target response and set the extracted data into custom response headers. It's not hard to do, and policies do all the work for us. We'll use the ExtractVariables and AssignMessage policies.  
 
 
 ### Provision the required entities
@@ -19,6 +19,10 @@ Deploy and invoke the proxy. These are the basic steps:
 2. `./deploy.sh`
 3. `./invoke.sh`
 4. Compare the output to the `proxy-5` output. 
+
+### View it in the Edge UI
+
+Go to the Edge UI and run a Trace on this API. You can see Extract Variables exectues and the custom headers are populated. 
 
 ### About what changed
 
@@ -39,7 +43,7 @@ Deploy and invoke the proxy. These are the basic steps:
         </ExtractVariables>
     ```
 
-Of interest: It's a good idea to use a VariablePrefix -- it gets prepended onto the variables that are created by this policy. The JSONPath syntax will be familiar to you only if you know JSON Path. If not, you'll have to take our word that this syntax is used to identify specific data within a JSON object. 
+Of interest: It's a good idea to use a VariablePrefix in this policy -- it gets prepended onto the variable names that are created by this policy. The JSONPath syntax will be familiar to you only if you know JSON Path. If not, you'll have to take our word that this syntax is used to identify specific data within a JSON object. It's a really simple JSON to parse, so the JSON Path isn't very complicated. 
 
 * We added another **AssignMessage policy** to the proxy. It grabs the variables we extracted and stores them in custom headers. It is in the `apiproxy/policies` folder and it is called `AssignCustomHeaders.xml`:
 
@@ -59,7 +63,7 @@ Of interest: It's a good idea to use a VariablePrefix -- it gets prepended onto 
 
     Note of interest: The Header tags specify the names of the headers we want to create and the names of the flow variables to extract those names from. These are the same variables we just extracted from the payload. Pay attention to the syntax used in this policy for the variables. They must be enclosed in curly braces. 
 
-* In the `apiproxy/proxies/default.xml` file, we **attach policy** to the ProxyEndpoint. We create a **custom flow** in the endpoint.  
+* In the `apiproxy/proxies/default.xml` file, we **attach the Assign Message policy** to the ProxyEndpoint. Note that we create a **custom flow** in the endpoint. The custom flow is called HandleHeaders. You can see it listed when you look at this proxy in the Edge UI. 
 
     ```xml
         ...
@@ -80,14 +84,14 @@ Of interest: It's a good idea to use a VariablePrefix -- it gets prepended onto 
     ```
 
 
-### Important words and concepts
+### Extra reading: important words and concepts
 
-* **Custom flows:** Something new in our Learn Edge series. You can create any number of custom flows. If you're confused, go to the Edge UI and observe how the custom flow looks in the Develop tab, and watch what happens in the Trace tool -- it's graphical view helps put these flows into perspective! One thing to note: the Preflow and PostFlow always execute. But custom flows can be conditional. In this example, there are no conditions, so the HandleHeaders flow will always execute.
+* **Custom flows:** Something new in our Learn Edge series. You can create any number of custom flows. If you're confused, go to the Edge UI and observe how the custom flow looks in the Develop tab, and watch what happens in the Trace tool -- it's graphical view helps put these flows into perspective! One thing to note: the Preflow and PostFlow always execute. But custom flows can be conditional (like our FaultRule flow as conditional back in `proxy-4`). In this example, there are no conditions, so the HandleHeaders flow will always execute.
 * **Extracting variables:** The ExtractVariables policy is handy for extracting data from requests and response into flow variables. After the data is extracted, it can be used downstream by any policy capable of reading flow variables. Such variables are commonly used in conditions that further affect flow processing. 
 
 ### Things to try
 
-* Try calling another backend service, one you like, and extract data from the response, and return a customized payload. Note, to do this, you'll either have to temporarily remove the VerifyApiKey policy from the proxy or modify the LearnEdgeProduct and add whatever resource you are calling. VerifyAPIKey will only work if the product associated with the API key includes the proxy and resource(s) that are being called. One trick is to specify "/" as the only resource in the Product. This "wildcard" allows any resource path to be called on the proxy. 
+* Try calling another backend service, extract data from the response, and return a customized payload. Note, to do this, you'll need to remove the VerifyAPIKey policy temporarily. Or, you'll have to add the resource you are calling to the API product (Learn Edge Product). 
 
 
 ### Ask the community

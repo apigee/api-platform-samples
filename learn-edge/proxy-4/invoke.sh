@@ -55,3 +55,4 @@ printf "\ncurl http://$org-$env.$api_domain/learn-edge/json?apikey=ZZZZZZZZZZZZZ
 curl -i "http://$org-$env.$api_domain/learn-edge/json?apikey=ZZZZZZZZZZZZZZZZZZZZ"
 
 printf "\nThis is the custom error message defined in the AssignMessage policy. Also note the status was set to 400. "
+printf "\n"
