@@ -15,7 +15,7 @@ We assume you've provisioned the Product, Developer App, and Developer as explai
 
 Deploy and invoke the proxy. These are the basic steps:
 
-1. `cd api-platform-samples/tutorials/proxy-4`.
+1. `cd api-platform-samples/learn-edge/proxy-4`.
 2. `./deploy.sh`
 3. `./invoke.sh`
 4. Compare the output to the `proxy-4` output. 

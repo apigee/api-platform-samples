@@ -6,7 +6,7 @@ We'll modify the first proxy "do-nothing" proxy so that it calls an actual backe
 
 Deploy and invoke the proxy. These are the basic steps:
 
-1. `cd api-platform-samples/tutorials/proxy-2`.
+1. `cd api-platform-samples/learn-edge/proxy-2`.
 2. `./deploy.sh`
 3. `./invoke.sh`
 4. Compare the output to the `proxy-1` output. 

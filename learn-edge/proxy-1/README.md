@@ -10,7 +10,7 @@ Follow these steps to deploy and call the API proxy:
 
     `api-platform-samples/tools/setup/setenv.sh`
 
-1. `cd api-platform-samples/tutorials/proxy-1`.
+1. `cd api-platform-samples/learn-edge/proxy-1`.
 2. `./deploy.sh` 
     
     It's not important to deconstruct `deploy.sh` now. It just uses a command-line tool to deploy the proxy. 

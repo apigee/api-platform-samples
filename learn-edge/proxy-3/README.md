@@ -24,7 +24,7 @@ Enough with the concepts. Let's do something.
 
 Deploy and invoke the proxy. These are the basic steps:
 
-1. `cd api-platform-samples/tutorials/proxy-3`.
+1. `cd api-platform-samples/learn-edge/proxy-3`.
 2. `./deploy.sh`
 3. `./invoke.sh`
 4. Compare the output to the `proxy-2` output. 
