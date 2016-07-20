@@ -9,8 +9,9 @@ This is the recommended path through the examples. But you can do them in any or
 1. [simplest-proxy](./simplest-proxy/README.md)
 2. [proxy-to-a-target](./proxy-to-a-target/README.md)
 3. [apikey-security](./apikey-security/README.md)
-4. [fault-handling-intro](./fault-handling-intro/README.md)
-5. [response-cache](./response-cache/README.md)
+4. [fault-handling-1](./fault-handling-1/README.md)
+5. [response-cache-1](./response-cache-1/README.md)
+6. [response-cache-2](./response-cache-2/README.md)
 6. [extract-json-payload](./extract-json-payload/README.md)
 
 ### Prerequisites
