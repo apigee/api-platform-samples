@@ -38,32 +38,21 @@ key=`curl -u $username:$password $url/v1/o/$org/developers/learn-edge-developer@
 
 printf "\nThe API key (Consumer Key) for the Learn Edge App is $key\n"
 
-printf "\nCall the API a bunch of times in a row. Press Return to contine:\n"
-read
+printf "\nEnter the number of times you want to call the API in a row (Default: 15). Press Return to contine:\n"
+read CALL_COUNTER
+
+if [ -z $CALL_COUNTER ]; then
+  CALL_COUNTER=15
+fi
 
 printf "\ncurl http://$org-$env.$api_domain/learn-edge/json?apikey=$key\n\nResponse:\n"
 
-curl "http://$org-$env.$api_domain/learn-edge/json?apikey=$key"
-printf "\n"
-curl "http://$org-$env.$api_domain/learn-edge/json?apikey=$key"
-printf "\n"
-curl "http://$org-$env.$api_domain/learn-edge/json?apikey=$key"
-printf "\n"
-curl "http://$org-$env.$api_domain/learn-edge/json?apikey=$key"
-printf "\n"
-curl "http://$org-$env.$api_domain/learn-edge/json?apikey=$key"
-printf "\n"
-curl "http://$org-$env.$api_domain/learn-edge/json?apikey=$key"
-printf "\n"
-curl "http://$org-$env.$api_domain/learn-edge/json?apikey=$key"
-printf "\n"
-curl "http://$org-$env.$api_domain/learn-edge/json?apikey=$key"
-printf "\n"
-curl "http://$org-$env.$api_domain/learn-edge/json?apikey=$key"
-printf "\n"
-curl "http://$org-$env.$api_domain/learn-edge/json?apikey=$key"
-printf "\n"
-curl "http://$org-$env.$api_domain/learn-edge/json?apikey=$key"
-printf "\n"
+while [ $CALL_COUNTER -ge 0 ]
+do
+  printf "\n\nAPI Call Number: $CALL_COUNTER \n\n"
+	curl -i "http://$org-$env.$api_domain/learn-edge/json?apikey=$key"
+	printf "\n"
+  ((CALL_COUNTER--))
+done
 
 
