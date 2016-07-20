@@ -38,12 +38,26 @@ key=`curl -u $username:$password $url/v1/o/$org/developers/learn-edge-developer@
 
 printf "\nThe API key (Consumer Key) for the Learn Edge App is $key\n"
 
-printf "\nCall the API with a valid API key. Press Return to contine:\n"
+printf "\nCall the API to get the /json resource with a valid API key. Press Return to contine:\n"
 read
 
 printf "\ncurl http://$org-$env.$api_domain/learn-edge/json?apikey=$key\n\nResponse:\n"
 
 curl "http://$org-$env.$api_domain/learn-edge/json?apikey=$key"
+
+printf "\nCall the API to get the /xml resource with a valid API key. Press Return to contine:\n"
+read
+
+printf "\ncurl http://$org-$env.$api_domain/learn-edge/xml?apikey=$key\n\nResponse:\n"
+
+curl "http://$org-$env.$api_domain/learn-edge/xml?apikey=$key"
+
+printf "\n\nCall the API to with an unsupported resource, /user. Press Return to contine:\n"
+read
+
+printf "\ncurl http://$org-$env.$api_domain/learn-edge/user?apikey=$key\n\nResponse:\n"
+
+curl "http://$org-$env.$api_domain/learn-edge/user?apikey=$key"
 
 
 printf "\n\nCall the API with a bad API key. Press Return to continue:\n"
@@ -53,13 +67,5 @@ printf "\ncurl http://$org-$env.$api_domain/learn-edge/json?apikey=ZZZZZZZZZZZZZ
 
 
 curl "http://$org-$env.$api_domain/learn-edge/json?apikey=ZZZZZZZZZZZZZZZZZZZZ"
-
-
-printf "\n\nCall the API with an invalid resource path. Press return to continue: \n"
-read
-
-printf "\ncurl http://$org-$env.$api_domain/learn-edge/xml?apikey=$key\n\nResponse:\n"
-
-curl "http://$org-$env.$api_domain/learn-edge/xml?apikey=$key"
 
 printf "\n"

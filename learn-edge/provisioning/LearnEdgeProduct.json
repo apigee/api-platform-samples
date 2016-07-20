@@ -1,5 +1,5 @@
 {
-  "apiResources" : [ "/json" ],
+  "apiResources" : [ "/json", "/xml" ],
   "approvalType" : "auto",
   "attributes" : [ ],
   "description" : "You get what you pay for!",

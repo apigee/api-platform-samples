@@ -16,7 +16,7 @@ Run this script to provision an API Product, Developer, and Developer App to Edg
 
 4. Look at the Developer App (called "Learn Edge App"). Notice that it *has* both a Developer **and** a Product (Learn Edge Product). It also *has* two keys, a Consumer Key and a Consumer Secret. 
 
-5. Click the **Product** link in the app page. Notice that the product *has* an API proxy (`learn-edge`). Also, notice that it *has* a resource (`/json`). The Product, Developer, and Developer App form a relationship that enables you to secure and manage proxies or collections of proxies that Apigee calls "bundles".
+5. Click the **Product** link in the app page. Notice that the product *has* an API proxy (`learn-edge`). Also, notice that it *has* two resources: `/json` and `/xml`. This means that for the proxy `learn-edge`, only resource paths `/json` and `xml` will succeed when API key security is enforced. Attempts to call the proxy with any other resource paths will be rejected.
 
 Enough with the concepts. Let's do something.
 
