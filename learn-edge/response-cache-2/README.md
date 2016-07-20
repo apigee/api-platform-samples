@@ -1,6 +1,6 @@
-# Enance performance with response caching
+# Response cache Part 2: Set response headers
 
-**Response caching** is a popular feature in Edge that **speeds up your proxy performance**. The Response Cache policy caches responses from the backend target. When Edge can pull a response from the cache, it circumvents the target entirely, greatly speeding up the overall response time. Naturally, Edge has a Response Cache policy that makes adding this feature easy to employ. 
+In this example, we add one twist to the `response-headers-1` example: we use an Assign Message policy to set headers that show information about the cache including whether there was a cache hit or not.  
 
 
 ### Provision the required entities
@@ -15,37 +15,50 @@ We assume you've provisioned the Product, Developer App, and Developer as explai
 
 Deploy and invoke the proxy. These are the basic steps:
 
-1. `cd api-platform-samples/learn-edge/response-cache`.
+1. `cd api-platform-samples/learn-edge/response-cache-2`.
 2. `./deploy.sh`
 3. `./invoke.sh`
-4. Compare the output to the `fault-handling-intro` output. 
+4. **The thing to notice**: Look at the response headers returned in your terminal. Notice that about every 5 seconds you get a `CACHE-HIT=true` header, and the rest of the time you get `CACHE-HIT=false` header. Why? If you look in the Response Cache policy, you'll see the cache expiration is set for 5 seconds:
+
+```xml
+    <ExpirySettings>
+        <TimeoutInSec>5</TimeoutInSec>
+    </ExpirySettings>
+```
 
 ### View it in the Edge UI
 
-Go to the Edge UI and run a Trace on this API. How does it differ from the Trace you saw in `fault-handling-intro`? It's interesting to trace the flow when caching is enabled. You can see where a response is pulled from the cache, in which case no call is made to the backend target. 
+Go to the Edge UI and run a Trace on this API. The main thing to notice is that the Assign Response Headers policy executes last -- we put it in the ProxyEndpoint PostFlow Response. 
 
 ### About what changed
 
-* We added a **ResponseCache policy** to the proxy. It is in the `apiproxy/policies` folder and it is called `ResponseCache.xml`:
+* We added a **SetResponseHeaders policy** to the proxy. It is in the `apiproxy/policies` folder and it is called `SetResponseHeaders.xml`:
 
     ```xml
-        <ResponseCache async="false" continueOnError="false" enabled="true" name="ResponseCache">
-            <DisplayName>ResponseCache</DisplayName>
-            <CacheKey>
-                <KeyFragment ref="request.uri" type="string"/>
-            </CacheKey>
-            <ExpirySettings>
-                <TimeoutInSec>10</TimeoutInSec>
-            </ExpirySettings>
-        </ResponseCache>
+        <AssignMessage async="false" continueOnError="false" enabled="true" name="SetResponseHeaders">
+            <DisplayName>Set Response Headers</DisplayName>
+            <Properties/>
+            <Set>
+                <Headers>
+                  <Header name="X-CACHE-HIT">{responsecache.ResponseCache.cachehit}</Header>
+                  <Header name="X-CACHE-NAME">{responsecache.ResponseCache.cachename}</Header>
+                  <Header name="X-CACHE-KEY">{responsecache.ResponseCache.cachekey}</Header>
+                  <Header name="X-CACHE-INVALID-ENTRY">{responsecache.ResponseCache.invalidentry}</Header>
+                </Headers>
+            </Set>
+            <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+            <AssignTo createNew="false" transport="http" type="responset"/>
+        </AssignMessage>
     ```
 
-    **Important to note**: The KeyFragment is a string that's concatenated onto the cache key. It allows you to keep caches for different requests separated. The "ref" part of the KeyFragment, `request.uri`, is a **flow variable**. Flow variables are **extremely** important in Edge development -- they allow you to access all kinds data within the context of proxy flows. The `request.uri` variable is a "built-in" variable that's populated automatically on each request. It's basically the entire request URI including query parameters. Anyway, that string value will become part of the cache key.
+    **Important to note**: Whenever the Response Cache policy executes, a number of related flow variables are set. They have the naming pattern `responsecache.<Policy Name>.<Variable Name>`. Most policies set some variables, and they are always listed in the policy documentation. 
 
-* We **attach the policy** to the ProxyEndpoint's Preflow. You can see where in the file `apiproxy/proxies/default.xml`. VerifyAPIKey is still there (it executes first). We don't have to touch it. 
+* We **attach the policy** to the ProxyEndpoint's PostFlow Response. By placing it there, we ensure that it will execute just before a response is sent to the client. (Unless, of course, there's an error - in that case, control is diverted directly to the Error Flow).  
 
     ```xml
-        <PreFlow>
+        <ProxyEndpoint name="default">
+          ...
+          <PreFlow>
             <Request>
               <Step>
                 <Name>VerifyAPIKey</Name>
@@ -54,31 +67,22 @@ Go to the Edge UI and run a Trace on this API. How does it differ from the Trace
                 <Name>ResponseCache</Name>
               </Step>
             </Request>
-        </PreFlow>
+          </PreFlow>
+          <PostFlow>
+            <Response>
+              <Step>
+                <Name>SetResponseHeaders</Name>
+              </Step>
+            </Response>
+          </PostFlow>
         ...
     ```
 
-* The ResponseCache policy is somewhat unique in that it has to be attached in **two places**. The second attachment point is the TargetEndpoint's PostFlow Response flow. You can find it in the `apiproxy/targets/default.xml` file. This flow executes after the response comes back from the target, just before the response is sent back to the client app. You can really see this behavior in action when you use the Trace tool. 
-
-    ```xml
-        <TargetEndpoint name="default">
-            <PostFlow name="PostFlow">
-                <Request/>
-                <Response>
-                    <Step>
-                        <Name>ResponseCache</Name>
-                    </Step>
-                </Response>
-            </PostFlow>
-          ...
-    ```
 
 ### Extra reading: Important words and concepts
 
-* **Response caching:** Caching response data to greatly speed up proxy performance. 
-* **Flow variables:** A huge concept in Edge and important to begin to understand now. Flow variables give you access to the runtime context while proxy requests and responses flow through the Edge pipeline. 
-* **TargetEndpoint PostFlow:** All of the flows have pre and post segments. For now, just remember that the post segment is executed last. 
-* **Variable scope:** All flow variables have scope, and some variables are only available in certain flow segments. The variable we used, `request.uri`, happens to be available in all scopes. The Variables reference in the Edge docs tells you the scope of each built-in flow variable. 
+* **Policy flos variables:** Most, if not all, policies have a set of flow variables that they set when the policy executes. It's extremely common to use these variables in other policies or to set conditional flows. 
+* **ProxyEndpoint PostFlow Response:** This flow always executes before a response is sent to the client, unless there's an error, in which case everything diverts to the Error Flow.  
 
 ### Things to try
 

@@ -1,4 +1,4 @@
-# Enance performance with response caching
+# Enhance performance with response caching
 
 **Response caching** is a popular feature in Edge that **speeds up your proxy performance**. The Response Cache policy caches responses from the backend target. When Edge can pull a response from the cache, it circumvents the target entirely, greatly speeding up the overall response time. Naturally, Edge has a Response Cache policy that makes adding this feature easy to employ. 
 
@@ -15,7 +15,7 @@ We assume you've provisioned the Product, Developer App, and Developer as explai
 
 Deploy and invoke the proxy. These are the basic steps:
 
-1. `cd api-platform-samples/learn-edge/response-cache`.
+1. `cd api-platform-samples/learn-edge/response-cache-1`.
 2. `./deploy.sh`
 3. `./invoke.sh`
 4. Compare the output to the `fault-handling-intro` output. 
