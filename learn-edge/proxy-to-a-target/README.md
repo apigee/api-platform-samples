@@ -1,6 +1,6 @@
 # Proxy to a target service
 
-We'll modify the first proxy "do-nothing" proxy so that it calls an actual backend target service. This proxy does actual work!
+In this Learn Edge example, we will modify the first proxy "do-nothing" proxy so that it calls an actual backend target service. This proxy does actual work!
 
 ### Try it
 
@@ -59,7 +59,7 @@ You deployed a modified proxy that calls a backend target -- a web service used 
 ### Other things to try
 
 * In a browser, hit http://mocktarget.apigee.net/help to see what else the service can do. 
-* Modify the `invoke.sh` script to hit one of the other resources. For example: `curl http://<your org>-test.apigee.net/json`. 
+* Modify the `invoke.sh` script to hit one of the other resources. For example: `curl http://<your org>-test.apigee.net/v1/learn-edge/json`. 
 
   **Notable Concept**: By default, whatever you add to the base path of the API proxy gets passed on unchanged to the target. 
 

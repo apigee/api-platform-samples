@@ -6,6 +6,8 @@ echo "Enter your password for the Apigee Enterprise organization, followed by [E
 
 read -s password
 
+source ../scripts/verify_credentials.sh
+
 echo using $username and $org
 
 echo "Deleting Apps"

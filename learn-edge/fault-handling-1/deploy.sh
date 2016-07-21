@@ -1,34 +1,19 @@
 #!/bin/bash
 
-source ../../setup/setenv.sh
 
-echo "Enter your password for the Apigee Enterprise organization $org, followed by [ENTER]:"
+## Ask the user for input.
 
+source ../scripts/set_env.sh
+source ../scripts/deploy_proxy.sh
+
+printf "\nEnter your password for the Apigee Enterprise organization $org, followed by [ENTER]:\n"
 read -s password
 
-echo Verifying credentials...
+source ../scripts/verify_credentials.sh
 
-response=`curl -s -o /dev/null -I -w "%{http_code}" https://api.enterprise.apigee.com/v1/organizations/$org -u $username:$password`
+## Deploy the proxy using apigeetool.
 
-if [ $response -eq 401 ]
-then
-  echo "Authentication failed!"
-  echo "Please re-run the script using the right username/password."
-  exit
-elif [ $response -eq 403 ]
-then
-  echo Organization $org is invalid!
-  echo Please re-run the script using the right org.
-  exit
-else
-  echo "Verfied! Proceeding with deployment."
-fi;
+deploy_proxy
 
-echo Deploying $proxy to $env on $url using $username and $org
-
-../../tools/deploy.py -n learn-edge -u $username:$password -o $org -h $url -e $env -p / -d ../fault-handling-intro
-
-echo "If 'State: deployed', then your API Proxy is ready to be invoked."
-
-echo "Run 'invoke.sh'"
+## All done.
 

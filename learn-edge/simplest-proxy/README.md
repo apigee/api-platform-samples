@@ -1,6 +1,6 @@
 # The simplest proxy
 
-You're going to deploy a simple API proxy on Apigee Edge. Actually, this is the simplest proxy you can make -- it doesn't actually do anything! All it does is return a 200 response to let you know it's working. 
+In the first Learn Edge project, you will deploy a simple API proxy on Apigee Edge. Actually, this is the simplest proxy you can make -- it doesn't actually do anything! All it does is return a 200 response to let you know it's working. 
 
 ### Try it
 
@@ -26,6 +26,8 @@ Follow these steps to deploy and call the API proxy:
     Did you get back a Status 200. Great! It worked. In [proxy-to-a-target](./proxy-to-a-target), we'll make a few simple changes so the proxy calls an actual backend service.
 
 ### View it in the Edge UI
+
+In every Learn Edge example, we'll remind you to take a look at the Edge UI. Here are the basic steps that you'll repeat again and again:
 
 1. Log in to your Apigee account. 
 2. Go to APIs->API Proxies and click the **learn-edge** proxy. 

@@ -1,21 +1,20 @@
 #!/bin/bash
 
-printf "\nDid you enter your Edge configuration information in ../../setup/setenv.sh? [y/n]:\n\n "
-read setenv
+## Ask the user for input.
 
-if [ -z $setenv ] || [ "$setenv" = "y" ]; then
-  printf ""
-else  
-  printf "\nYou must configure this file before continuing. See the README for details. Press Return to exit."
-  read
-  exit
-fi
+source ../scripts/set_env.sh
 
-source ../../setup/setenv.sh
+printf "\nEnter your password for the Apigee Enterprise organization $org, followed by [ENTER]:\n"
+read -s password
 
-printf "Now, we will call the API proxy with this curl command: curl -i http://$org-$env.$api_domain/learn-edge\n\n"
+source ../scripts/verify_credentials.sh
+
+
+## Call the API
+
+printf "Now, we will call the API proxy with this curl command: curl -i http://$org-$env.$api_domain/v1/learn-edge\n\n"
 printf "Hint: You will see a 200 HTTP status if the call succeeds.\n\n"
 printf "Press return to execute the call: \n"
 read
-curl -i "http://$org-$env.$api_domain/learn-edge"
+curl -i "http://$org-$env.$api_domain/v1/learn-edge"
 

@@ -15,7 +15,7 @@
     </Request>
   </PreFlow>
   <HTTPProxyConnection>
-    <BasePath>/learn-edge</BasePath>
+    <BasePath>/v1/learn-edge</BasePath>
     <VirtualHost>default</VirtualHost>
     <VirtualHost>secure</VirtualHost>
   </HTTPProxyConnection>
