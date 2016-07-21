@@ -17,6 +17,10 @@ This is the recommended path through the examples. But you can do them in any or
 ### Prerequisites
 
 1. You need an **Apigee account**. If you don't have an Apigee account, sign up for one now.
+2. You must install [apigeetool](https://www.npmjs.com/package/apigeetool). We use apigeetool to deploy the proxies. 
+
+    `npm install -g apigeetool`
+
 2. Know the name of your **Edge organization** (typically, you'll use the one that was created when you registered for you Apigee account)
 3. Your **Apigee username** (this is the email address that you gave when you registered for your account)
 2. Download or clone the **api-platform-samples repo** on GitHub.
