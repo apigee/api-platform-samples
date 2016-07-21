@@ -6,6 +6,8 @@ In the first Learn Edge project, you will deploy a simple API proxy on Apigee Ed
 
 Follow these steps to deploy and call the API proxy:
 
+**Final reminder:** You must have [apigeetool](https://www.npmjs.com/package/apigeetool) installed on your machine. The deployment script uses this utility to deploy the Edge proxies. 
+
 1. Edit this file with your Apigee account information (org name, etc). You only have to do this once. 
 
     `api-platform-samples/tools/setup/setenv.sh`
@@ -17,9 +19,9 @@ Follow these steps to deploy and call the API proxy:
 
 3. `./invoke.sh`
 
-    This script executes this curl command, where "your org" is the name of your Apigee Edge organization. 
+    This script executes this curl command, where "your org name" is the name of your Apigee Edge organization and "your environment" is the name of the environment to deploy to. These values are the values you set in `api-platform-samples/tools/setup/setenv.sh`.
 
-    `curl http://<your org name>-test.apigee.net`
+    `curl http://<your org name>-<your environment>.apigee.net/v1/learn-edge`
 
 4. Look at the output.
 

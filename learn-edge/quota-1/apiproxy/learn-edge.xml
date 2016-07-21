@@ -1,0 +1,4 @@
+<APIProxy name="learn-edge">
+  <!-- This is the root of the application -->
+  <Description>Secure the proxy with an API key.</Description>
+</APIProxy>

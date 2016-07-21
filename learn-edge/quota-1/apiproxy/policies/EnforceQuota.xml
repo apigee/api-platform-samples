@@ -1,0 +1,6 @@
+<Quota name="EnforceQuota">
+  <DisplayName>Enforce Quota</DisplayName>
+  <Interval ref="verifyapikey.VerifyAPIKey.apiproduct.developer.quota.interval">100</Interval>
+  <TimeUnit ref="verifyapikey.VerifyAPIKey.apiproduct.developer.quota.timeunit">hour</TimeUnit>
+  <Allow count="20" countRef="verifyapikey.VerifyAPIKey.apiproduct.developer.quota.limit"/>
+</Quota>
