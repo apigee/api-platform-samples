@@ -13,6 +13,7 @@ This is the recommended path through the examples. But you can do them in any or
 5. [response-cache-1](./response-cache-1/README.md)
 6. [response-cache-2](./response-cache-2/README.md)
 6. [extract-json-payload](./extract-json-payload/README.md)
+7. [quota-1](./quota-1/README.md)
 
 ### Prerequisites
 
