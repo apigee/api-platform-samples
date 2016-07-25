@@ -93,6 +93,10 @@ Of interest: It's a good idea to use a VariablePrefix in this policy -- it gets 
 
 * Try calling another backend service, extract data from the response, and return a customized payload. Note, to do this, you'll need to remove the VerifyAPIKey policy temporarily. Or, you'll have to add the resource you are calling to the API product (Learn Edge Product). 
 
+### Next step
+
+The next proxy, [quota-1](../quota-1/README.md), sets a quota limit on the number of API calls that can be made in a given time period.
+
 
 ### Ask the community
 

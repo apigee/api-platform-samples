@@ -91,6 +91,11 @@ Go to the Edge UI and run a Trace on this API. The main thing to notice is that 
 
 `ab -n 100 -c 10 http://your-org-test.apigee.net/learn-edge/json`
 
+
+### Next step
+
+The next proxy, [extract-json-payload](../extract-json-payload/README.md), sets custom response headers with data extracted from a JSON payload.
+
 ### Ask the community
 
 [![alt text](../../images/apigee-community.png "Apigee Community is a great place to ask questions and find answers about developing API proxies. ")](https://community.apigee.com?via=github)

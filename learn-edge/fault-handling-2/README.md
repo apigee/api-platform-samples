@@ -68,6 +68,10 @@ When an invalid key is sent, the proxy goes into the Error Flow and the Fault Ru
 
 * **Fault rules: order of execution** When the proxy goes into the Error Flow, the Fault Rules are evaluated. The LAST Fault Rule that evaluates to TRUE executes. 
 
+
+### Next step
+
+The next proxy, [response-cache-1](../response-cache-1/README.md), illustrates you can have multiple fault rules in a proxy and the order in which fault rules execute.
    
 ### Ask the community
 

@@ -87,6 +87,11 @@ Go to the Edge UI and run a Trace on this API. How does it differ from the Trace
 
 `ab -n 100 -c 10 http://your-org-test.apigee.net/learn-edge/json`
 
+
+### Next step
+
+The next proxy, [response-cache-2](../response-cache-2/README.md), sets custom response headers to indicate cache hits and misses.
+
 ### Ask the community
 
 [![alt text](../../images/apigee-community.png "Apigee Community is a great place to ask questions and find answers about developing API proxies. ")](https://community.apigee.com?via=github)

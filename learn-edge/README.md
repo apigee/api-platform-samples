@@ -11,10 +11,10 @@ This is the recommended path through the examples. But you can do them in any or
 3. [apikey-security](./apikey-security/README.md) - Make sure the client sends a valid API key.
 4. [fault-handling-1](./fault-handling-1/README.md) - Handle an error with a Fault Rule and return a custom error message. 
 5. [fault-handling-2](./fault-handling-2/README.md) - Learn more about how Fault Rules work. 
-5. [response-cache-1](./response-cache-1/README.md)
-6. [response-cache-2](./response-cache-2/README.md)
-6. [extract-json-payload](./extract-json-payload/README.md)
-7. [quota-1](./quota-1/README.md)
+5. [response-cache-1](./response-cache-1/README.md) - Speed up your proxy performance with a response cache. 
+6. [response-cache-2](./response-cache-2/README.md) - Set custom response headers to indicate cache hits and misses.
+6. [extract-json-payload](./extract-json-payload/README.md) - Set custom response headers with data extracted from a JSON payload.
+7. [quota-1](./quota-1/README.md) - Set a quota limit on the number of API calls that can be made in a given time period.
 
 ### Prerequisites
 
