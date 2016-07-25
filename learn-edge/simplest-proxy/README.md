@@ -25,7 +25,7 @@ Follow these steps to deploy and call the API proxy:
 
 4. Look at the output.
 
-    Did you get back a Status 200. Great! It worked. In [proxy-to-a-target](./proxy-to-a-target), we'll make a few simple changes so the proxy calls an actual backend service.
+    Did you get back a Status 200? Great! It worked. In [proxy-to-a-target](./proxy-to-a-target), we'll make a few simple changes so the proxy calls an actual backend service.
 
 ### View it in the Edge UI
 
@@ -46,23 +46,23 @@ You deployed a basic proxy to Edge, called it, and got a 200 response. This may 
 
 ### Extra reading: Important words and concepts
 
-* A **proxy** is an API that fronts for another API. Client apps call the proxy API and Edge then handles tasks like security and calling the backend target services. Edge also provides a rich analytics service so you can monitor and track your APIs. 
-* This is the basic file structure for all Edge API proxies. If you like, explore the XML files in the proxy. For example, the XML file in the `/proxies` folder defines behavior for the client-proxy interface -- what happens to requests that come in to Edge and what happens before a response is sent back. 
+* A **proxy** is an API that fronts for another API. Client apps call the proxy API, and Edge then handles tasks like security and calling the backend target services. Edge also provides a rich analytics service so you can monitor and track your APIs. 
+* This is the basic file structure for all Edge API proxies. If you like, explore the XML files in the proxy. For example, the `default.xml` file in the `/proxies` folder defines behavior for the client-proxy interface -- what happens to requests that come in to Edge and what happens before a response is sent back. 
 
-```
-/apiproxy
-   /proxies
-   /targets
-   /policies
-   /resources
-   proxyname.xml
-```
+   ```
+   /apiproxy
+      /proxies
+      /targets
+      /policies
+      /resources
+      proxyname.xml
+   ```
 
 * This file structure is mapped into the Edge UI, although the UI uses slightly different names for the components. 
 
 [add a picture of the navigator]
 
-* Many developers develop proxies locally and deploy them using a command line tool (like the one used in the `./invoke.sh` file) or tools like Maven and Grunt. It's all about properly packaging and uploading the local files to Edge. You can even package a proxy in a ZIP file and upload it through the Edge UI. 
+* Many developers develop proxies locally and deploy them using a command line tool (like the one used in the `./deploy.sh` file) or tools like Maven and Grunt. It's all about properly packaging and uploading the local files to Edge. You can even package a proxy in a ZIP file and upload it through the Edge UI. 
 
 ### Ask the community
 
