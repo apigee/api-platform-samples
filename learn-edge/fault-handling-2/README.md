@@ -1,6 +1,6 @@
 # The order in which fault rules execute
 
-In this sample, we illustrate that fault rules have a specific order in which they execute. TL;DR: The last fault rule in the XML file that evaluates to TRUE is the one that executes. 
+In this sample, we illustrate that fault rules have a specific order in which they execute. TL;DR: The last fault rule that evaluates to TRUE in a chain of rules is the one that executes.
 
 
 ### Provision the required entities
