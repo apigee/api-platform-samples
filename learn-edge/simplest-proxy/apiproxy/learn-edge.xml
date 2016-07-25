@@ -1,4 +1,0 @@
-<APIProxy name="learn-edge">
-  <!-- This is the root of the application -->
-  <Description>The simplest proxy. It does nothing.</Description>
-</APIProxy>
