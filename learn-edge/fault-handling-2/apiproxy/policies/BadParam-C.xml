@@ -1,0 +1,11 @@
+<AssignMessage async="false" continueOnError="false" enabled="true" name="CatchBadParam-C">
+    <DisplayName>Catch Bad Param C</DisplayName>
+    <Properties/>
+    <Set>
+        <Payload contentType="application/json">\{"error": \{"message":"Bad Query Parameter", "detail":"***** You set bad-param-C to true! *****}} </Payload>
+        <StatusCode>400</StatusCode>
+        <ReasonPhrase>BadRequest</ReasonPhrase>
+    </Set>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+    <AssignTo createNew="false" transport="http" type="responset"/>
+</AssignMessage>

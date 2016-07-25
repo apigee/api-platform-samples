@@ -1,0 +1,44 @@
+<ProxyEndpoint name="default">
+  <FaultRules>
+    <FaultRule name="InvalidApiKey">
+        <Step>
+            <Name>InvalidApiKeyMessage</Name>
+        </Step>
+        <Condition>(fault.name Matches "InvalidApiKey") </Condition>
+    </FaultRule>
+    <FaultRule name="BadParam-A">
+        <Step>
+            <Name>CatchBadParam-A</Name>
+        </Step>
+        <Condition>(request.queryparam.bad-param-A Matches "true") </Condition>
+    </FaultRule>
+    <FaultRule name="BadParam-B">
+        <Step>
+            <Name>CatchBadParam-B</Name>
+        </Step>
+        <Condition>(request.queryparam.bad-param-B Matches "true") </Condition>
+    </FaultRule>
+     <FaultRule name="BadParam-C">
+        <Step>
+            <Name>CatchBadParam-C</Name>
+        </Step>
+        <Condition>(request.queryparam.bad-param-C Matches "true") </Condition>
+    </FaultRule>
+  </FaultRules>
+  <PreFlow>
+    <Request>
+      <Step>
+        <Name>VerifyAPIKey</Name>
+      </Step>
+    </Request>
+  </PreFlow>
+  <HTTPProxyConnection>
+    <BasePath>/v1/learn-edge</BasePath>
+    <VirtualHost>default</VirtualHost>
+    <VirtualHost>secure</VirtualHost>
+  </HTTPProxyConnection>
+  <RouteRule name="default">
+    <!-- This connects our proxy to the target defined in apiproxy/targets/default.xml -->
+    <TargetEndpoint>default</TargetEndpoint>
+  </RouteRule>
+</ProxyEndpoint>
