@@ -74,6 +74,10 @@ Go to the Edge UI and run a Trace on this API. How does it differ from the Trace
 * In a browser, hit http://mocktarget.apigee.net/help to see what else the service can do.
 * Change the VerifyAPIKey policy so that it looks for the API key in a different query parameter. Change it so it looks for the key in a header. **Hint:** Go to the Edge documentation for this policy to see how to use headers instead of query parameters for the key. It's a very simple change.
 
+### Next step
+
+The next proxy, [fault-handling-1](../fault-handling-1/README.md), shows you how to handle errors and return custom error messages.
+
 ### Ask the community
 
 [![alt text](../../images/apigee-community.png "Apigee Community is a great place to ask questions and find answers about developing API proxies. ")](https://community.apigee.com?via=github)

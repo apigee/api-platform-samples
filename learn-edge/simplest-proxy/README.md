@@ -64,6 +64,10 @@ You deployed a basic proxy to Edge, called it, and got a 200 response. This may 
 
 * Many developers develop proxies locally and deploy them using a command line tool (like the one used in the `./deploy.sh` file) or tools like Maven and Grunt. It's all about properly packaging and uploading the local files to Edge. You can even package a proxy in a ZIP file and upload it through the Edge UI. 
 
+### Next step
+
+The next proxy, [proxy-to-a-target](../proxy-to-a-target/README.md), returns data from a backend service. 
+
 ### Ask the community
 
 [![alt text](../../images/apigee-community.png "Apigee Community is a great place to ask questions and find answers about developing API proxies. ")](https://community.apigee.com?via=github)
