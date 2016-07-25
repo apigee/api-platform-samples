@@ -6,11 +6,11 @@ The Learn Edge series is a hands-on, minimalistic learning exprience for beginni
 
 This is the recommended path through the examples. But you can do them in any order you wish:
 
-1. [simplest-proxy](./simplest-proxy/README.md)
-2. [proxy-to-a-target](./proxy-to-a-target/README.md)
-3. [apikey-security](./apikey-security/README.md)
-4. [fault-handling-1](./fault-handling-1/README.md)
-5. [fault-handling-2](./fault-handling-2/README.md)
+1. [simplest-proxy](./simplest-proxy/README.md) - A simple proxy that does nothing!
+2. [proxy-to-a-target](./proxy-to-a-target/README.md) - A simple proxy that returns data from a backend target service. 
+3. [apikey-security](./apikey-security/README.md) - Make sure the client sends a valid API key.
+4. [fault-handling-1](./fault-handling-1/README.md) - Handle an error with a Fault Rule and return a custom error message. 
+5. [fault-handling-2](./fault-handling-2/README.md) - Learn more about how Fault Rules work. 
 5. [response-cache-1](./response-cache-1/README.md)
 6. [response-cache-2](./response-cache-2/README.md)
 6. [extract-json-payload](./extract-json-payload/README.md)
