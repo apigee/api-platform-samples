@@ -7,7 +7,7 @@
             <Header name="Content-Type">application/x-www-form-urlencoded</Header>
         </Headers>
         <FormParams>
-            <FormParam name="grant_type">password</FormParam>
+            <FormParam name="grant_type">{the.grant_type}</FormParam>
             <FormParam name="username">{the.username}</FormParam>
             <FormParam name="password">{the.password}</FormParam>
         </FormParams>

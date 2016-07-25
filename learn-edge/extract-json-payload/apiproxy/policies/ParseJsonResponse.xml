@@ -1,0 +1,12 @@
+<ExtractVariables name="ParseJsonResponse">
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+    <VariablePrefix>mock</VariablePrefix>
+    <JSONPayload>
+        <Variable name="firstName">
+            <JSONPath>$.firstName</JSONPath>
+        </Variable>
+        <Variable name="lastName">
+            <JSONPath>$.lastName</JSONPath>
+        </Variable>
+    </JSONPayload>
+</ExtractVariables>
