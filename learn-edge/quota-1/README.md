@@ -14,7 +14,7 @@ We assume you've provisioned the Product, Developer App, and Developer as explai
 
 Deploy and invoke the proxy. These are the basic steps:
 
-1. `cd api-platform-samples/learn-edge/fault-handling-intro`.
+1. `cd api-platform-samples/learn-edge/quota-1`.
 2. `./deploy.sh`
 3. `./invoke.sh`
 4. The Quota policy in this example is set to allow 3 API calls per minute. Are you surprised by the output?
@@ -24,6 +24,9 @@ Deploy and invoke the proxy. These are the basic steps:
 ### View it in the Edge UI
 
 * In the UI, look at the Product called Learn Edge Product. Notice that the Quota settings in the product are set to allow 3 requests per minute. 
+
+  ![alt text](../../images/quota-1-product-settings.png)
+
 * Go to the Edge UI and run a Trace on this API. Click the Quota policy. Notice that flow variables are set to the values set in the Product.
 
 ### About what changed
@@ -39,7 +42,9 @@ Deploy and invoke the proxy. These are the basic steps:
       </Quota>
     ```
 
-**Important to note:** In the policy, we use **flow variables** to set the values of the quota interval, time unit, and count limit. These variables are set automatically when the VerifyAPIKey policy executes. Remember that each API key has a relationship with a Product. You can see that these values are set in the Learn Edge Product in the UI, or you can see the actual Product XML file that we provisioned earlier, here: `api-proxy-samples/learn-edge/provisioning/LearnEdgeProduct.json`. The relationship between Products and API keys is extremely important in Edge. 
+  **Important to note:** In the policy, we use **flow variables** to set the values of the quota interval, time unit, and count limit. These variables are set automatically when the VerifyAPIKey policy executes. Remember that each API key has a relationship with a Product. You can see that these values are set in the Learn Edge Product in the UI, or you can see the actual Product XML file that we provisioned earlier, here: `api-proxy-samples/learn-edge/provisioning/LearnEdgeProduct.json`. The relationship between Products and API keys is extremely important in Edge. 
+
+  The explicit values for `Interval` (100) and `TimeUnit` (hour) are applied only if the `ref` variables contain no values, for example if you set no quota on the Product itself. But because our Learn Edge Product has quota settings, those are used.
 
 * In the `apiproxy/proxies/default.xml` file, we **attach the policy** to the ProxyEndpoint's Preflow. We place it right after the VerifyAPIKey policy. That way, we can use flow variables set by the VerifyAPIKey policy to configure the Quota policy. 
 
