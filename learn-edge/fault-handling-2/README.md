@@ -15,7 +15,7 @@ We assume you've provisioned the Product, Developer App, and Developer as explai
 
 Deploy and invoke the proxy. These are the basic steps:
 
-1. `cd api-platform-samples/learn-edge/fault-handling-intro`.
+1. `cd api-platform-samples/learn-edge/fault-handling-2`.
 2. `./deploy.sh`
 3. `./invoke.sh`
 4. See which error message is returned for each query parameter value. Hint: The winner is the LAST Fault Rule that evalulates to true, in the order in which the rules appear in the XML.
