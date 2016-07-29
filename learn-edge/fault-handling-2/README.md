@@ -64,7 +64,7 @@ When an invalid key is sent, the proxy goes into the Error Flow and the Fault Ru
 * We added an **Assign Message policy** for each of the fault conditions -- they just return a message to tell the user which Fault Rule exectued. Hint: they are in the `apiproxy/policies` folder and are called `CatchBadParam-A.xml`, `CatchBadParam-B.xml`, `CatchBadParam-C.xml`:
  
 
-### Extra reading: important words and concepts
+### Extra reading: important terms and concepts
 
 * **Fault rules: order of execution** When the proxy goes into the Error Flow, the Fault Rules are evaluated. The LAST Fault Rule that evaluates to TRUE executes. 
 

@@ -63,7 +63,7 @@ A fault rule is a special kind of flow that executes whenever a policy throws an
 This policy is a little more complicated looking, but it's simple to understand. When called, it sets the response body (payload) to a string value -- a custom error message. It also sets a status code and reason phrase. This information is what the client app will receive if it sends an invalid API key to Edge, as you saw when you invoked this example.
  
 
-### Extra reading: important words and concepts
+### Extra reading: important terms and concepts
 
 * **Fault rules** Enable you to do error handling within the proxy flow pipline. They are a lot like any flow in the pipeline, but they only execute when an policy throws an error and when the fault rule's condition evaluates to true. 
 * **Conditional flows** allow you to control how Edge processes a proxy dynamically. Usually a condition tests the value of a flow variable that was set by another policy or flow event. 

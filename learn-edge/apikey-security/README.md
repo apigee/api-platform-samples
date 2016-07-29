@@ -63,7 +63,7 @@ Go to the Edge UI and run a Trace on this API. How does it differ from the Trace
 
  
 
-### Extra reading: important words and concepts
+### Extra reading: important terms and concepts
 
 * **Policies** are a big deal in Apigee Edge. They let you specifiy any actions that you want to perform while the API call is flowing through Edge. In this case, we are implementing a **security action**: verifying the API key. If it's valid the request moves on. If invalid, an error is returned to the calling client.
 * **Flows** are very important. Basically, when a request comes in to Edge, it's processed through a sort of pipeline. The pipeline has multiple stages called flows, and at each stage you can attach policies that do all sorts of things like enforce security, check for threats, enforce quotas, do transformations, read and write state variables, and so on. 

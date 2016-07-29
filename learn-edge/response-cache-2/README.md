@@ -79,7 +79,7 @@ Go to the Edge UI and run a Trace on this API. The main thing to notice is that 
     ```
 
 
-### Extra reading: Important words and concepts
+### Extra reading: Important terms and concepts
 
 * **Policy flos variables:** Most, if not all, policies have a set of flow variables that they set when the policy executes. It's extremely common to use these variables in other policies or to set conditional flows. 
 * **ProxyEndpoint PostFlow Response:** This flow always executes before a response is sent to the client, unless there's an error, in which case everything diverts to the Error Flow.  

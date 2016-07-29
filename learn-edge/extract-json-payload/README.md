@@ -84,7 +84,7 @@ Of interest: It's a good idea to use a VariablePrefix in this policy -- it gets 
     ```
 
 
-### Extra reading: important words and concepts
+### Extra reading: important terms and concepts
 
 * **Custom flows:** Something new in our Learn Edge series. You can create any number of custom flows. If you're confused, go to the Edge UI and observe how the custom flow looks in the Develop tab, and watch what happens in the Trace tool -- it's graphical view helps put these flows into perspective! One thing to note: the Preflow and PostFlow always execute. But custom flows can be conditional (like our FaultRule flow as conditional back in `fault-handling-intro`). In this example, there are no conditions, so the HandleHeaders flow will always execute.
 * **Extracting variables:** The ExtractVariables policy is handy for extracting data from requests and response into flow variables. After the data is extracted, it can be used downstream by any policy capable of reading flow variables. Such variables are commonly used in conditions that further affect flow processing. 

@@ -73,7 +73,7 @@ Go to the Edge UI and run a Trace on this API. How does it differ from the Trace
           ...
     ```
 
-### Extra reading: Important words and concepts
+### Extra reading: Important terms and concepts
 
 * **Response caching:** Caching response data to greatly speed up proxy performance. 
 * **Flow variables:** A huge concept in Edge and important to begin to understand now. Flow variables give you access to the runtime context while proxy requests and responses flow through the Edge pipeline. 

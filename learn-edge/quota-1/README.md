@@ -60,7 +60,7 @@ Deploy and invoke the proxy. These are the basic steps:
 
  
 
-### Extra reading: important words and concepts
+### Extra reading: important terms and concepts
 
 * **Quota** policy enforces a limit on the number of API calls that can be made in an interval of time. 
 * **Quota-specific flow variables** are set automatically when the Verify API Key policy executes successfully. They reflect the values set in the Product associated with an API key.
