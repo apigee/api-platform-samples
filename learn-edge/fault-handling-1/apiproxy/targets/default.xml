@@ -1,0 +1,6 @@
+<TargetEndpoint name="default">
+  <HTTPTargetConnection>
+    <!-- This is where we define the target. For this sample we just use a simple URL. -->
+    <URL>http://mocktarget.apigee.net/</URL>
+  </HTTPTargetConnection>
+</TargetEndpoint>

@@ -1,0 +1,11 @@
+<AssignMessage async="false" continueOnError="false" enabled="true" name="InvalidApiKeyMessage">
+    <DisplayName>InvalidApiKeyMessage</DisplayName>
+    <Properties/>
+    <Set>
+        <Payload contentType="application/json">\{"error": \{"message":"{fault.name}", "detail":"Please provide valid API key in the apikey query parameter.}} </Payload>
+        <StatusCode>400</StatusCode>
+        <ReasonPhrase>BadRequest</ReasonPhrase>
+    </Set>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+    <AssignTo createNew="false" transport="http" type="responset"/>
+</AssignMessage>

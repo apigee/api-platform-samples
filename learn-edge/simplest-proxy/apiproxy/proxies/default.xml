@@ -1,0 +1,12 @@
+<ProxyEndpoint name="default">
+  <PreFlow>
+    <Request/>
+    <Response/>
+  </PreFlow>
+  <HTTPProxyConnection>
+    <BasePath>/v1/learn-edge</BasePath>
+    <VirtualHost>default</VirtualHost>
+    <VirtualHost>secure</VirtualHost>
+  </HTTPProxyConnection>
+  <RouteRule name="noroute"/>
+</ProxyEndpoint>

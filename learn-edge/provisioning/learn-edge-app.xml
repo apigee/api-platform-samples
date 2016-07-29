@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<App name="learn-edge-app">
+    <CallbackUrl></CallbackUrl>
+    <AccessType>read</AccessType>
+    <Attributes>
+      <Attribute>
+          <Name>DisplayName</Name>
+          <Value>Learn Edge App</Value>
+      </Attribute>
+    </Attributes>
+</App>

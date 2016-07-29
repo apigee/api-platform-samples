@@ -1,0 +1,14 @@
+<AssignMessage async="false" continueOnError="false" enabled="true" name="SetResponseHeaders">
+    <DisplayName>Set Response Headers</DisplayName>
+    <Properties/>
+    <Set>
+	    <Headers>
+	      <Header name="X-CACHE-HIT">{responsecache.ResponseCache.cachehit}</Header>
+	      <Header name="X-CACHE-NAME">{responsecache.ResponseCache.cachename}</Header>
+	      <Header name="X-CACHE-KEY">{responsecache.ResponseCache.cachekey}</Header>
+	      <Header name="X-CACHE-INVALID-ENTRY">{responsecache.ResponseCache.invalidentry}</Header>
+	    </Headers>
+    </Set>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+    <AssignTo createNew="false" transport="http" type="responset"/>
+</AssignMessage>
