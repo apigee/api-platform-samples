@@ -4,7 +4,7 @@ This API proxy illustrates perhaps **the** central concept you need to know abou
 
 ### Prerequisites
 
-Be sure to perform the [prerequisites(../learn-edge#prerequisites)] if you haven't already.
+Be sure to perform the [prerequisites(../learn-edge#prerequisites) if you haven't already.
 
 ### Do this quick, one-time setup
 
