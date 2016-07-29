@@ -22,7 +22,7 @@ Deploy and invoke the proxy. These are the basic steps:
 
 ### View it in the Edge UI
 
-Go to the Edge UI and run a Trace on this API. How does it differ from the Trace you saw in `fault-handling-intro`? It's interesting to trace the flow when caching is enabled. You can see where a response is pulled from the cache, in which case no call is made to the backend target. 
+Go to the Edge UI and run a Trace on this API. How does it differ from the Trace you saw in `fault-handling-2`? It's interesting to trace the flow when caching is enabled. You can see where a response is pulled from the cache, in which case no call is made to the backend target. 
 
 ### About what changed
 
