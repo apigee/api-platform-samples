@@ -32,9 +32,9 @@ Follow these steps to deploy and call the API proxy:
 In every Learn Edge example, we'll remind you to take a look at the Edge UI. Here are the basic steps that you'll repeat again and again:
 
 1. Log in to your Apigee account. 
-2. Go to APIs->API Proxies and click the **learn-edge** proxy. 
-5. Click **learn-edge**. 
-6. You're in the **Overview** tab. Notice that the Proxy URL is `http://<your org name>-test.apigee.net/learn-edge`. This is the URL you will use to call the proxy. 
+2. Go to **APIs->API Proxies**. 
+5. Click the proxy named **learn-edge**. 
+6. You're in the **Overview** tab. Notice that the Proxy URL is `http://<your org name>-test.apigee.net/v1/learn-edge`. This is the URL you will use to call the proxy. 
 7. Click the **Develop** tab. This is the "visual representation" of the proxy you deployed. It's also the UI-based development environment. 
 8. Click the **Trace** tab. Click **Start Trace** and send a request. 
 
@@ -44,10 +44,10 @@ In every Learn Edge example, we'll remind you to take a look at the Edge UI. Her
 
 You deployed a basic proxy to Edge, called it, and got a 200 response. This may seem trivial, but you accomplished several important tasks. You deployed an Edge proxy from your work computer to Edge, you called the API proxy, and got back meaningful output. You also poked around the Edge UI and ran a Trace. 
 
-### Extra reading: Important words and concepts
+### Extra reading: Important terms and concepts
 
-* A **proxy** is an API that fronts for another API. Client apps call the proxy API, and Edge then handles tasks like security and calling the backend target services. Edge also provides a rich analytics service so you can monitor and track your APIs. 
-* This is the basic file structure for all Edge API proxies. If you like, explore the XML files in the proxy. For example, the `default.xml` file in the `/proxies` folder defines behavior for the client-proxy interface -- what happens to requests that come in to Edge and what happens before a response is sent back. 
+* An **API proxy** is an API that fronts for another API. Client apps call the proxy API, and Edge then handles tasks like security and calling the backend target services. Edge also provides a rich analytics service so you can monitor and track your APIs. 
+* The basic file structure for all Edge API proxies is shown below; however, in this "simplest-proxy" example, targets, policies, and resources are empty directories, because they aren't used. In later examples, these other directories, and their contents, will be important. 
 
    ```
    /apiproxy

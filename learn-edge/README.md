@@ -18,17 +18,17 @@ This is the recommended path through the examples. But you can do them in any or
 
 ### Prerequisites
 
-1. You need an **Apigee account**. If you don't have an Apigee account, sign up for one now.
+1. You need an **Apigee account**. If you don't have an Apigee account, go to [https://login.apigee.com/login](https://login.apigee.com/login), and click Create Account.
 2. You must install [apigeetool](https://www.npmjs.com/package/apigeetool). We use apigeetool to deploy the proxies. 
 
     `npm install -g apigeetool`
 
-2. Know the name of your **Edge organization** (typically, you'll use the one that was created when you registered for you Apigee account)
-3. Your **Apigee username** (this is the email address that you gave when you registered for your account)
+2. Know the name of your **Edge organization** (typically, you'll use the one that was created when you registered for you Apigee account).
+3. Your **Apigee username** (this is the email address that you gave when you registered for your account).
 2. Download or clone the **api-platform-samples repo** on GitHub.
 3. Edit this file with your account information (org name, etc):
 
-    `api-platform-samples/tools/setup/setenv.sh`
+    `api-platform-samples/setup/setenv.sh`
 
 6. Log in to your Apigee account and go to the API Management section. It'll be good to keep this open as you work, because while you'll mostly be working locally, it's helpful to see how each proxy looks in the UI after you deploy it. 
 
@@ -45,7 +45,7 @@ We don't clutter the lessons with a lot of explanation and background informatio
 * How to deploy Edge proxies from your laptop to Edge
 * Basic debugging techniques
 
-**Tip:** If you want to dive deeper into any concept covered in this series, you can go to the Edge documentation and use Search to look things up (search works very well and even picks up related topics in the Apigee Community). In a few cases, we'll provide a link if we think it will be especially helpful. 
+**Tip:** If you want to dive deeper into any concept covered in this series, you can go to the Edge documentation and use Search to look up topics (search works very well and even picks up related topics in the Apigee Community). In a few cases, we'll provide a link if we think it will be especially helpful. 
 
 ### What you won't learn
 

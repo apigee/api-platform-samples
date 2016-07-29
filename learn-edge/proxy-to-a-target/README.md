@@ -61,9 +61,9 @@ You deployed a modified proxy that calls a backend target -- a web service used 
 * In a browser, hit http://mocktarget.apigee.net/help to see what else the service can do. 
 * Modify the `invoke.sh` script to hit one of the other resources. For example: `curl http://<your org>-test.apigee.net/v1/learn-edge/json`. 
 
-  **Notable Concept**: By default, whatever you add to the base path of the API proxy gets passed on unchanged to the target. 
+  **Notable Concept**: By default, whatever you add to the base path of the API proxy gets passed to the target unchanged. 
 
-* Try changing the proxy to call another service. You might have to supply an API key or some other auth parameter -- many public API keys require some kind of auth.  Test the change (redeploy and invoke). Hint: Edit `apiproxy/targets/default.xml`.
+* Try changing the proxy to call another REST-based backend service of your choosing. Test the change (redeploy and invoke). Hint: Edit `apiproxy/targets/default.xml`.
 
 ### Next step
 
