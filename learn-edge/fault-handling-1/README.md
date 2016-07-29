@@ -2,6 +2,9 @@
 
 Now we will add **error handling** to the proxy. If an invalid API key comes in, we'll check for that and return a **custom error message**. This pattern -- evaluating a condition and taking subsequent action -- is one of the most fundamental patterns in Edge proxy development. 
 
+### Prerequisites
+
+Be sure to perform the [prerequisites](https://github.com/apigee/api-platform-samples/tree/master/learn-edge#prerequisites) if you haven't already.
 
 ### Provision the required entities
 

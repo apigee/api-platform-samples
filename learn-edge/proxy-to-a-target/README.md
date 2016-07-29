@@ -2,6 +2,10 @@
 
 In this Learn Edge example, we will modify the first proxy "do-nothing" proxy so that it calls an actual backend target service. This proxy does actual work!
 
+### Prerequisites
+
+Be sure to perform the [prerequisites](https://github.com/apigee/api-platform-samples/tree/master/learn-edge#prerequisites) if you haven't already.
+
 ### Try it
 
 Deploy and invoke the proxy. These are the basic steps:

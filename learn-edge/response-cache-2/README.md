@@ -2,6 +2,9 @@
 
 In this example, we add one twist to the `response-headers-1` example: we use an Assign Message policy to set headers that show information about the cache including whether there was a cache hit or not.  
 
+### Prerequisites
+
+Be sure to perform the [prerequisites](https://github.com/apigee/api-platform-samples/tree/master/learn-edge#prerequisites) if you haven't already.
 
 ### Provision the required entities
 

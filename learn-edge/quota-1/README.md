@@ -2,6 +2,10 @@
 
 In this example we obtain quota settings from an API product. This is a very common pattern in Edge development where you offer fee-based quota levels to developers. A developer who pays a higher fee obtains an API key associated with a Product that has a higher quota. 
 
+### Prerequisites
+
+Be sure to perform the [prerequisites](https://github.com/apigee/api-platform-samples/tree/master/learn-edge#prerequisites) if you haven't already.
+
 ### Provision the required entities
 
 We assume you've provisioned the Product, Developer App, and Developer as explained in `apikey-security`. If you want to redo it, here's how:

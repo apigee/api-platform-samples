@@ -2,6 +2,9 @@
 
 In this sample, we illustrate that fault rules have a specific order in which they execute. TL;DR: The last fault rule that evaluates to TRUE in a chain of rules is the one that executes.
 
+### Prerequisites
+
+Be sure to perform the [prerequisites](https://github.com/apigee/api-platform-samples/tree/master/learn-edge#prerequisites) if you haven't already.
 
 ### Provision the required entities
 

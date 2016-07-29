@@ -1,7 +1,10 @@
 # Extract target response data and set custom response headers
 
-In this proxy example, we'll extract data from the target response and set the extracted data into custom response headers. It's not hard to do, and policies do all the work for us. We'll use the ExtractVariables and AssignMessage policies.  
+In this proxy example, we'll extract data from the target response and set the extracted data into custom response headers. It's not hard to do, and policies do all the work for us. We'll use the ExtractVariables and AssignMessage policies. 
 
+### Prerequisites
+
+Be sure to perform the [prerequisites](https://github.com/apigee/api-platform-samples/tree/master/learn-edge#prerequisites) if you haven't already. 
 
 ### Provision the required entities
 

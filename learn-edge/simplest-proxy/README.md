@@ -2,28 +2,33 @@
 
 In the first Learn Edge project, you will deploy a simple API proxy on Apigee Edge. Actually, this is the simplest proxy you can make -- it doesn't actually do anything! All it does is return a 200 response to let you know it's working. 
 
+### Prerequisites
+
+Be sure to perform the [prerequisites](https://github.com/apigee/api-platform-samples/tree/master/learn-edge#prerequisites) if you haven't already.
+
 ### Try it
 
 Follow these steps to deploy and call the API proxy:
 
 **Final reminder:** You must have [apigeetool](https://www.npmjs.com/package/apigeetool) installed on your machine. The deployment script uses this utility to deploy the Edge proxies. 
 
-1. Edit this file with your Apigee account information (org name, etc). You only have to do this once. 
+1. Edit this file with your Apigee account information (org name, etc). You only have to do this once. (You do this in the Prerequisites above.)
 
     `api-platform-samples/tools/setup/setenv.sh`
 
-1. `cd api-platform-samples/learn-edge/simplest-proxy`.
-2. `./deploy.sh` 
+2. `cd api-platform-samples/learn-edge/simplest-proxy`.
+
+3. `./deploy.sh` 
     
     It's not important to deconstruct `deploy.sh` now. It just uses a command-line tool to deploy the proxy. 
 
-3. `./invoke.sh`
+4. `./invoke.sh`
 
     This script executes this curl command, where "your org name" is the name of your Apigee Edge organization and "your environment" is the name of the environment to deploy to. These values are the values you set in `api-platform-samples/tools/setup/setenv.sh`.
 
     `curl http://<your org name>-<your environment>.apigee.net/v1/learn-edge`
 
-4. Look at the output.
+5. Look at the output.
 
     Did you get back a Status 200? Great! It worked. In [proxy-to-a-target](./proxy-to-a-target), we'll make a few simple changes so the proxy calls an actual backend service.
 
