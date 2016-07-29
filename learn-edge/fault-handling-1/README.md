@@ -15,7 +15,7 @@ We assume you've provisioned the Product, Developer App, and Developer as explai
 
 Deploy and invoke the proxy. These are the basic steps:
 
-1. `cd api-platform-samples/learn-edge/fault-handling-intro`.
+1. `cd api-platform-samples/learn-edge/fault-handling-1`.
 2. `./deploy.sh`
 3. `./invoke.sh`
 4. Compare the output to the `apikey-security` output. 
