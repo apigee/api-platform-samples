@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<OAuthV2 async="false" continueOnError="false" enabled="true" name="OAuth-v20-Verify-Token">
-    <DisplayName>OAuth v2.0 2</DisplayName>
-    <Operation>VerifyAccessToken</Operation>
-    <GenerateResponse enabled="true"/>
-</OAuthV2>
