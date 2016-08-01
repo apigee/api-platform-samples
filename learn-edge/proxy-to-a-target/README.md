@@ -71,7 +71,7 @@ You deployed a modified proxy that calls a backend target -- a web service used 
 
 ### Next step
 
-The next proxy, [apikey-security](../apikey-security/README.md), secures the API proxy with an API key.
+The next proxy, [apikey-security](../apikey-security-1/README.md), secures the API proxy with an API key.
 
 
 ### Ask the community
