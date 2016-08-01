@@ -1,12 +1,14 @@
 # ![alt text](../images/apigee-logo.png "Apigee Logo")
 
-## Learn Apigee Edge by doing
+## Learn Apigee Edge
 
-The Learn Edge series is a hands-on learning experience for beginning Edge developers. Each step is designed to be quick and easy to try and teaches a core Apigee Edge concept or technique. Each Learn Edge example follows three basic steps:
+The Learn Edge series is a hands-on learning experience for beginning Edge developers. Each step is designed to be quick and easy to do and teaches a core Apigee Edge concept or technique. Each Learn Edge example follows three basic steps:
 
 1. Deploy it.
 2. Run it.
 3. Trace it.
+
+The best way to learn Apigee Edge is by doing!
 
 ### Recommended order of examples
 
