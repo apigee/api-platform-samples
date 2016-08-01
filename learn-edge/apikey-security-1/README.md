@@ -81,7 +81,7 @@ Go to the Edge UI and run a Trace on this API. How does it differ from the Trace
 
 ### Next step
 
-The next proxy, [fault-handling-1](../fault-handling-1/README.md), shows you how to handle errors and return custom error messages.
+The next proxy, [apikey-security-2](../apikey-security-1/README.md), shows you how to remove the API key query parameter from the request to the backend target. 
 
 ### Ask the community
 
