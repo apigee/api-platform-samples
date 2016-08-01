@@ -1,4 +1,4 @@
-# Secure the proxy with an API key
+# Remove the apikey query parameter
 
 In this Learn Edge example, we'll modify [apikey-security-1](../apikey-security-1) example slightly to remove the `apikey` query parameter so that it is not passed to the backend target service. This pattern is commonly used and a good practice. 
 
