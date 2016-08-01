@@ -16,18 +16,18 @@ We assume you've provisioned the Product, Developer App, and Developer as explai
 2. `./cleanup.sh`.
 3. `./setup.sh`.
 
-### Try it
-
-Deploy and invoke the proxy. These are the basic steps:
+### Deploy it
 
 1. `cd api-platform-samples/learn-edge/quota-1`.
 2. `./deploy.sh`
+
+### Run it
 3. `./invoke.sh`
 4. The Quota policy in this example is set to allow 3 API calls per minute. Are you surprised by the output?
 
 **Surprised?** The quota is set to 3 calls per minute. Were you surprised to see that more than 3 calls went through before the quota was exceeded? The reason is that by default, quota counters are not synchronized across Edge message processors. You can read more about [distributed counters](http://docs.apigee.com/api-services/reference/quota-policy) in the Quota policy doc. 
 
-### View it in the Edge UI
+### Trace it
 
 * In the UI, look at the Product called Learn Edge Product. Notice that the Quota settings in the product are set to allow 3 requests per minute. 
 

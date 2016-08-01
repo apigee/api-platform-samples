@@ -14,16 +14,17 @@ We assume you've provisioned the Product, Developer App, and Developer as explai
 2. `./cleanup.sh`.
 3. `./setup.sh`.
 
-### Try it
-
-Deploy and invoke the proxy. These are the basic steps:
+### Deploy it
 
 1. `cd api-platform-samples/learn-edge/response-cache-1`.
 2. `./deploy.sh`
+
+### Run it
+
 3. `./invoke.sh`
 4. Compare the output to the `fault-handling-intro` output. 
 
-### View it in the Edge UI
+### Trace it
 
 Go to the Edge UI and run a Trace on this API. How does it differ from the Trace you saw in `fault-handling-2`? It's interesting to trace the flow when caching is enabled. You can see where a response is pulled from the cache, in which case no call is made to the backend target. 
 

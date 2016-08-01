@@ -16,13 +16,14 @@ We assume you've provisioned the Product, Developer App, and Developer as explai
 2. `./cleanup.sh`.
 3. `./setup.sh`.
 
-### Try it
-
-Deploy and invoke the proxy. These are the basic steps:
+### Deploy it
 
 1. `cd api-platform-samples/learn-edge/response-cache-2`.
 2. `./deploy.sh`
-3. `./invoke.sh`
+
+### Run it
+
+1. `./invoke.sh`
 4. **The thing to notice**: Look at the response headers returned in your terminal. Notice that about every 5 seconds you get a `CACHE-HIT=true` header, and the rest of the time you get `CACHE-HIT=false` header. Why? If you look in the Response Cache policy, you'll see the cache expiration is set for 5 seconds:
 
 ```xml
@@ -31,7 +32,7 @@ Deploy and invoke the proxy. These are the basic steps:
     </ExpirySettings>
 ```
 
-### View it in the Edge UI
+### Trace it
 
 Go to the Edge UI and run a Trace on this API. The main thing to notice is that the Assign Response Headers policy executes last -- we put it in the ProxyEndpoint PostFlow Response. 
 

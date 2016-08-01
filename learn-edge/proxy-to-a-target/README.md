@@ -6,18 +6,18 @@ In this Learn Edge example, we will extend the first proxy "do-nothing" proxy so
 
 Be sure to perform the [prerequisites](https://github.com/apigee/api-platform-samples/tree/master/learn-edge#prerequisites) if you haven't already.
 
-### Try it
-
-Deploy and invoke the proxy. These are the basic steps:
+### Deploy it
 
 1. `cd api-platform-samples/learn-edge/proxy-to-a-target`.
 2. `./deploy.sh`
-3. `./invoke.sh`
-4. Compare the output to the `simplest-proxy` output. 
 
-### View it in the Edge UI
+### Run it
+1. `./invoke.sh`
+2. Compare the output to the `simplest-proxy` output. 
 
-Go to the Edge UI and run a Trace on this API. How does it differ from the Trace you saw in `simplest-proxy`?
+### Trace it
+
+Go to the Edge UI and run a Trace on this API. How does it differ from the Trace you saw in the first Learn Edge example, `simplest-proxy`?
 
 **What's a revision?** You might notice that when you deployed `proxy-to-a-target` you created a new revision of the proxy with the name `learn-edge`. In all of the `deploy.sh` files, the proxy name is always `learn-edge`. The deploy script just creates a new revision each time it deploys. If you want to go back to a previous revision, you can go to the Edge UI and select it from the **Revision** menu. Or, you can just redeploy whichever proxy you want to use from the command-line -- and it will become the current revision.
 

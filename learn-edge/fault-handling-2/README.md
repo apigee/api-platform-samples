@@ -14,16 +14,17 @@ We assume you've provisioned the Product, Developer App, and Developer as explai
 2. `./cleanup.sh`.
 3. `./setup.sh`.
 
-### Try it
-
-Deploy and invoke the proxy. These are the basic steps:
+### Deploy it
 
 1. `cd api-platform-samples/learn-edge/fault-handling-2`.
 2. `./deploy.sh`
-3. `./invoke.sh`
+
+### Run it
+
+2. `./invoke.sh`
 4. See which error message is returned for each query parameter value. Hint: The winner is the LAST Fault Rule that evalulates to true, in the order in which the rules appear in the XML.
 
-### View it in the Edge UI
+### Trace it
 
 Go to the Edge UI and run a Trace on this API. How does it differ from the Trace you saw in `apikey-security`? You can see where the fault occurs and where control shifts to the error flow. 
 

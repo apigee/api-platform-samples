@@ -14,16 +14,17 @@ We assume you've provisioned the Product, Developer App, and Developer as explai
 2. `./cleanup.sh`.
 3. `./setup.sh`.
 
-### Try it
-
-Deploy and invoke the proxy. These are the basic steps:
+### Deploy it
 
 1. `cd api-platform-samples/learn-edge/extract-json-payload`.
 2. `./deploy.sh`
-3. `./invoke.sh`
+
+### Run it
+
+1. `./invoke.sh`
 4. Compare the output to the `response-cache` output. 
 
-### View it in the Edge UI
+### Trace it
 
 Go to the Edge UI and run a Trace on this API. You can see Extract Variables exectues and the custom headers are populated. 
 

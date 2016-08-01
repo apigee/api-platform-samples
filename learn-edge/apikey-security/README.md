@@ -26,16 +26,17 @@ Run this script to provision an API Product, Developer, and Developer App to Edg
 
 Enough with the concepts. Let's do something.
 
-### Try it
-
-Deploy and invoke the proxy. These are the basic steps:
+### Deploy it
 
 1. `cd api-platform-samples/learn-edge/apikey-security`.
 2. `./deploy.sh`
-3. `./invoke.sh` -- Note that the script uses Edge APIs to retrieve the previously generated Consumer key and plug it into the API requests. 
+
+### Run it
+
+1. `./invoke.sh` -- Note that the script uses Edge APIs to retrieve the previously generated Consumer key and plug it into the API requests. 
 4. Compare the output to the `proxy-to-a-target` output. 
 
-### View it in the Edge UI
+### Trace it
 
 Go to the Edge UI and run a Trace on this API. How does it differ from the Trace you saw in `proxy-to-a-target`? Do you see where the VerifyAPIKey policy exectued? Click the policy icon in the Transaction map and notice that when it executed, a whole bunch of variables were created and appear in the Phase Details panel -- they have names like `verifyapikey.VerifyAPIKey.status` and `verifyapikey.VerifyAPIKey.expires_in`. For now, just note that these variables are created. 
 
