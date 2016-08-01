@@ -29,29 +29,4 @@ printf "\ncurl http://$org-$env.$api_domain/v1/learn-edge/json?apikey=$key\n\nRe
 
 curl "http://$org-$env.$api_domain/v1/learn-edge/json?apikey=$key"
 
-## Call the API
-
-printf "\n\nCall the API to get the /xml resource with a valid API key. Press Return to contine:\n"
-read
-printf "\ncurl http://$org-$env.$api_domain/v1/learn-edge/xml?apikey=$key\n\nResponse:\n"
-
-curl "http://$org-$env.$api_domain/v1/learn-edge/xml?apikey=$key"
-
-## Call the API
-
-printf "\n\nCall the API to with an unsupported resource, /user. Press Return to contine:\n"
-read
-printf "\ncurl http://$org-$env.$api_domain/v1/learn-edge/user?apikey=$key\n\nResponse:\n"
-
-curl "http://$org-$env.$api_domain/v1/learn-edge/user?apikey=$key"
-
-## Call the API
-
-printf "\n\nCall the API with a bad API key. Press Return to continue:\n"
-read
-printf "\ncurl http://$org-$env.$api_domain/v1/learn-edge/json?apikey=ZZZZZZZZZZZZZZZZZZZZ\n\nResponse:\n" 
-
-curl "http://$org-$env.$api_domain/v1/learn-edge/json?apikey=ZZZZZZZZZZZZZZZZZZZZ"
-printf "\n"
-
 ## All done.

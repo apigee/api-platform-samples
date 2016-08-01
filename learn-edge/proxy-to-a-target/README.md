@@ -42,7 +42,7 @@ To get our proxy to call a target service, we made a few changes to the simple d
    <TargetEndpoint name="default">
       <HTTPTargetConnection>
         <!-- This is where we define the target. For this sample we just use a simple URL. -->
-        <URL>http://mocktarget.apigee.net/</URL>
+        <URL>http://mocktarget.apigee.net</URL>
       </HTTPTargetConnection>
    </TargetEndpoint>
    ```

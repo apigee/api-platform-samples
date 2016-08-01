@@ -12,7 +12,8 @@ This is the recommended path through the examples. But you can do them in any or
 
 1. [simplest-proxy](./simplest-proxy/README.md) - A simple proxy that does nothing!
 2. [proxy-to-a-target](./proxy-to-a-target/README.md) - A simple proxy that returns data from a backend target service. 
-3. [apikey-security](./apikey-security/README.md) - Make sure the client sends a valid API key.
+3. [apikey-security-1](./apikey-security-1/README.md) - Make sure the client sends a valid API key.
+4.  [apikey-security-2](./apikey-security-1/README.md) - Prevent the API key query parameter from being passed to the backend target service.
 4. [fault-handling-1](./fault-handling-1/README.md) - Handle an error with a Fault Rule and return a custom error message. 
 5. [fault-handling-2](./fault-handling-2/README.md) - Learn more about how Fault Rules work. 
 5. [response-cache-1](./response-cache-1/README.md) - Speed up your proxy performance with a response cache. 
