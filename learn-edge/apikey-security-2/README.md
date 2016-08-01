@@ -4,8 +4,8 @@ In this Learn Edge example, we'll modify [apikey-security-1](../apikey-security-
 
 ### Prerequisites
 
-* If you haven't already, be sure to perform the [prerequisites](https://github.com/apigee/api-platform-samples/tree/master/learn-edge#prerequisites). 
-* If you haven't already, do the provisioning steps in the [apikey-security-1](../apikey-security-1) example. 
+* Be sure to perform the [prerequisites](https://github.com/apigee/api-platform-samples/tree/master/learn-edge#prerequisites), if you haven't already, b 
+* Also, be sure to do the provisioning steps in the [apikey-security-1](../apikey-security-1) example. 
 
 
 ### Deploy it
