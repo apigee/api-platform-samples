@@ -1,6 +1,6 @@
 # Enhance performance with response caching
 
-**Response caching** is a popular feature in Edge that **speeds up your proxy performance**. The Response Cache policy caches responses from the backend target. When Edge can pull a response from the cache, it circumvents the target entirely, greatly speeding up the overall response time. Naturally, Edge has a Response Cache policy that makes adding this feature easy to employ. 
+In this Learn Edge example, we introduce **response chaching** a popular feature in Edge that **speeds up a proxy's performance**. The Response Cache policy caches responses from the backend target. When Edge can pull a response from the cache, it circumvents the target entirely, greatly speeding up the overall response time. Naturally, Edge has a Response Cache policy that makes adding this feature easy to employ. 
 
 ### Prerequisites
 

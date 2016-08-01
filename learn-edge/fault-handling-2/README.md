@@ -1,6 +1,6 @@
 # The order in which fault rules execute
 
-In this sample, we illustrate that fault rules have a specific order in which they execute. TL;DR: The last fault rule that evaluates to TRUE in a chain of rules is the one that executes.
+In this Learn Edge example, we illustrate that Fault Rules have a specific order in which they execute. As you'll see, the **last** fault rule that evaluates to **true** in a chain of rules is the one that executes. This is an important pattern that trips up a lot of new Apigee Edge developers. This example builds on the example in [fault-handling-1](../fault-handling-1/README.md).
 
 ### Prerequisites
 

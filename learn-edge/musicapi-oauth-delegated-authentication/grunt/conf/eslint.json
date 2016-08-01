@@ -1,0 +1,15 @@
+{
+    "rules": {
+        "if-curly-formatting": 2,
+  		"no-undef": 0,
+  		"no-mixed-spaces-and-tabs" : 0,
+  		"quotes" : 0,
+  		"eol-last" : 0,
+  		"semi" : 0,
+  		"no-comma-dangle" : 0,
+  		"camelcase" : 0,
+  		"no-global-strict" : 0,
+  		"no-use-before-define" : 0
+
+    }
+}

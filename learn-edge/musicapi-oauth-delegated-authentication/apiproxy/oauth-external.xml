@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<APIProxy revision="1" name="oauth-external">
+    <ConfigurationVersion majorVersion="4" minorVersion="0"/>
+    <CreatedAt>1415031356156</CreatedAt>
+    <CreatedBy>dzuluaga@apigee.com</CreatedBy>
+    <Description></Description>
+    <DisplayName>oauth-external</DisplayName>
+    <LastModifiedAt>1415046568113</LastModifiedAt>
+    <LastModifiedBy>dzuluaga@apigee.com</LastModifiedBy>
+    <Policies>
+        <Policy>Assign-Message-1</Policy>
+        <Policy>OAuth-v20-1</Policy>
+        <Policy>OAuth-v20-2</Policy>
+    </Policies>
+    <ProxyEndpoints>
+        <ProxyEndpoint>default</ProxyEndpoint>
+    </ProxyEndpoints>
+    <Resources/>
+    <TargetServers/>
+    <TargetEndpoints/>
+    <validate>false</validate>
+</APIProxy>

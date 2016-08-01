@@ -1,6 +1,6 @@
 # The simplest proxy
 
-In the first Learn Edge project, you will deploy a simple API proxy on Apigee Edge. Actually, this is the simplest proxy you can make -- it doesn't actually do anything! All it does is return a 200 response to let you know it's working. 
+This is the first example in the Learn Edge series. In this example, you will deploy a simple API proxy on Apigee Edge. Actually, this is the simplest proxy you can make -- it doesn't actually do anything useful. But it does return a 200 response to let you know it's working. In the next few examples, we'll add more capabilites to this proxy like calling a backend service and API key security. 
 
 ### Prerequisites
 

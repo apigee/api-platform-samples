@@ -1,6 +1,8 @@
 # Response cache Part 2: Set response headers
 
-In this example, we add one twist to the `response-headers-1` example: we use an Assign Message policy to set headers that show information about the cache including whether there was a cache hit or not.  
+In this Learn Edge example, we add a twist to the [response-headers-1](../response-headers-1/README.md) example: we use an Assign Message policy to set headers that show information about the cache including whether there was a cache hit or not.  
+
+**Note:** The Assign Message policy is one of the most commonly used policies in Apigee Edge. 
 
 ### Prerequisites
 

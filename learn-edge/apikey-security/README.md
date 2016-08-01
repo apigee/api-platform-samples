@@ -1,6 +1,6 @@
 # Secure the proxy with an API key
 
-This API proxy illustrates perhaps **the** central concept you need to know about in Apigee Edge: how API Proxies, API Products, and Developer Apps are **related** and how this relationship allows proxies to be secured with keys. After you deploy and execute this proxy, you'll have a basic understanding of these important concepts. 
+In this Learn Edge example you will add API Key security to a proxy. This example illustrates one of the most important concepts you need to know about in Apigee Edge: **how API Proxies, API Products, and Developer Apps are related** and how this relationship allows proxies to be secured with keys. After you deploy and execute this proxy, you'll have a basic understanding of these important concepts. 
 
 ### Prerequisites
 

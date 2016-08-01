@@ -1,10 +1,10 @@
 # Learn Edge by doing
 
-The Learn Edge series is a hands-on, minimalistic learning exprience for beginning Edge developers. Each step is designed to be quick and easy to try and teaches a core concept that all Edge developers must master to be successful with the platform. 
+The Learn Edge series is a hands-on learning exprience for beginning Edge developers. Each step is designed to be quick and easy to try and teaches a core concept or technique that Edge developers must master to be successful with the platform. 
 
 ### Recommended order of examples
 
-This is the recommended path through the examples. But you can do them in any order you wish:
+This is the recommended path through the examples. But you can do them in any order you wish. Each sample can be deployed and run independently:
 
 1. [simplest-proxy](./simplest-proxy/README.md) - A simple proxy that does nothing!
 2. [proxy-to-a-target](./proxy-to-a-target/README.md) - A simple proxy that returns data from a backend target service. 
@@ -38,23 +38,23 @@ That's it! To get started, go to the README for the first example proxy, [simple
 
 We don't clutter the lessons with a lot of explanation and background information. Rather, we expect you to learn by doing, by changing things, and fixing problems. When you complete the series, you will understand:
 
-* Core concepts you'll need to be a successful Edge developer. They include security, fault handling, caching, and others. 
-* What Edge is and some of the most useful things it can do
-* How Edge projects are structured 
-* How to do primary Edge development locally, on your laptop, rather than in the UI
-* How to deploy Edge proxies from your laptop to Edge
-* Basic debugging techniques
+* The basic capabilities of Apigee Edge.
+* Core concepts you'll need to be a successful Edge developer. They include security, fault handling, caching, quotas, and others. 
+* How Edge projects are structured.
+* How to do primary Edge development locally, on your laptop, rather than in the UI.
+* How to deploy Edge proxies from your laptop to Edge.
+* Basic debugging techniques.
 
-**Tip:** If you want to dive deeper into any concept covered in this series, you can go to the Edge documentation and use Search to look up topics (search works very well and even picks up related topics in the Apigee Community). In a few cases, we'll provide a link if we think it will be especially helpful. 
+**Tip:** If you want to dive deeper into any concept covered in this series, you can go to the [Apigee Edge documentation](http://docs.apigee.com/) and use Search to look up topics (search works very well and even picks up related topics in the [Apigee Community](https://community.apigee.com/index.html)). In a few cases, we'll provide a link if we think it will be especially helpful. You can also check out the Apigee Edge [4-Minute Video](https://www.youtube.com/playlist?list=PLIXjuPlujxxxe3iTmLtgfIBgpMo7iD7fk) series. 
 
 ### What you won't learn
 
-* A lot of background, text-book style information. You'll learn by doing. 
-* All of the possible use cases for Edge
-* All of the features included with Edge
-* All of the possible ways to use the features we introduce
+* A lot of background, text-book style information. You'll learn by deploying and running example code on Apigee Edge.
+* All of the possible use cases for Edge.
+* All of the features included with Edge.
+* All of the possible ways to use the features we introduce.
 
-The goal here is to ground you in a few basics so that you can explore on your own using the many sources of information available for Edge, like documentation, Apigee Community, samples repositories, and so on. 
+The goal of this series is to ground you in a few basics so that you can explore on your own using the many sources of information available for Edge, like documentation, Apigee Community, samples repositories, and so on. Welcome to Apigee Edge!
 
 
 

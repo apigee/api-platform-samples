@@ -1,6 +1,6 @@
 # Extract target response data and set custom response headers
 
-In this proxy example, we'll extract data from the target response and set the extracted data into custom response headers. It's not hard to do, and policies do all the work for us. We'll use the ExtractVariables and AssignMessage policies. 
+In this Learn Edge example, we'll extract data from the target response and set the extracted data into custom response headers. It's not hard to do, and policies do all the work for us. We'll use the Extract Variables and Assign Message policies. These two policies are often used together and are two of the most commonly used policies in Apigee Edge. 
 
 ### Prerequisites
 

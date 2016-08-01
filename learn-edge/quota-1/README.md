@@ -1,6 +1,8 @@
 # Set a quota on the proxy
 
-In this example we obtain quota settings from an API product. This is a very common pattern in Edge development where you offer fee-based quota levels to developers. A developer who pays a higher fee obtains an API key associated with a Product that has a higher quota. 
+In this Learn Edge example we explore quotas. Quotas let you limit the number of API calls in a given period of time. Quotas are a commonly used feature in Edge. For example, you might offer fee-based quota levels to developers. As you'll see, you can associate quota levels with API Products. A developer might pay a higher fee to obtain an API key associated with a Product that has a higher quota. 
+
+**Note:** If you're not sure what Products and API keys are, please try the Learn Edge example for [API Key Security](../apikey-security/README.md). 
 
 ### Prerequisites
 

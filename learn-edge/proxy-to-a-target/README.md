@@ -1,6 +1,6 @@
 # Proxy to a target service
 
-In this Learn Edge example, we will modify the first proxy "do-nothing" proxy so that it calls an actual backend target service. This proxy does actual work!
+In this Learn Edge example, we will extend the first proxy "do-nothing" proxy so that it calls an actual backend target service. This proxy does actual work!
 
 ### Prerequisites
 

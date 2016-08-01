@@ -1,6 +1,6 @@
 # Catch an error and return a custom error response
 
-Now we will add **error handling** to the proxy. If an invalid API key comes in, we'll check for that and return a **custom error message**. This pattern -- evaluating a condition and taking subsequent action -- is one of the most fundamental patterns in Edge proxy development. 
+In this Learn Edge example, we will add **error handling** to a proxy. We'll check for an invalid API key and return a **custom error message**. This pattern -- evaluating a condition (in this case, an error condition) and taking subsequent action -- is one of the most fundamental patterns in Edge proxy development. 
 
 ### Prerequisites
 
