@@ -2,7 +2,7 @@
 
 ## Learn Apigee Edge
 
-The Learn Edge series is a hands-on learning experience for beginning Edge developers. Each step is designed to be quick and easy to do and teaches a core Apigee Edge concept or technique. Each Learn Edge example follows three basic steps:
+The Learn Edge series is a hands-on learning experience for beginning Edge developers. Each example is designed to be quick and easy to do, teaches a core Apigee Edge concept or technique, and follows three basic steps:
 
 1. Deploy it.
 2. Run it.
