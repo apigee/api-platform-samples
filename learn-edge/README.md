@@ -1,6 +1,6 @@
 # Learn Edge by doing
 
-![alt text](../../images/apigee-logo.png "Apigee Logo")
+![alt text](../images/apigee-logo.png "Apigee Logo")
 
 The Learn Edge series is a hands-on learning experience for beginning Edge developers. Each step is designed to be quick and easy to try and teaches a core Apigee Edge concept or technique. Each Learn Edge example follows three basic steps:
 
