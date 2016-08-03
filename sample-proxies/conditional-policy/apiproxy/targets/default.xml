@@ -1,6 +1,6 @@
 <TargetEndpoint name="default">
   <Description/>
   <HTTPTargetConnection>
-    <URL>http://weather.yahooapis.com</URL>
+    <URL>http://mocktarget.apigee.net</URL>
   </HTTPTargetConnection>
 </TargetEndpoint>

@@ -9,14 +9,12 @@ The condition in this sample evaluates a custom HTTP header called
 populates custom response headers with metrics from the Apigee gateway. 
 
 
-For a complete list of redefined variables that you can use to build
- conditional logic, please see:
+For a complete list of predefined variables and instructions on constructing conditional statements with those variables, see these topics in the Apigee docs:
 
-http://apigee.com/docs/api/predefined-variables
+* [Variables reference](http://docs.apigee.com/api-services/reference/variables-reference)
 
-For instructions on constructing conditional statement with those variables, please see:
+* [Conditions reference](http://docs.apigee.com/api-services/reference/conditions-reference)
 
-http://apigee.com/docs/api/conditional-operators
 
 # Set up
 
