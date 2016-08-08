@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage name="AssignCompanyIdPayload">
+    <AssignTo createNew="false" type="response"/>
+    <Set>
+        <Payload contentType="application/xml" variablePrefix="{" variableSuffix="}">
+            <root>
+                <companyId>{companyId}</companyId>
+            </root>
+        </Payload>
+    </Set>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+    <DisplayName>Assign Company Id Payload</DisplayName>
+</AssignMessage>

@@ -23,6 +23,7 @@ This is the recommended path through the examples. But you can do them in any or
 5. [response-cache-1](./response-cache-1/README.md) - Speed up your proxy performance with a response cache. 
 6. [response-cache-2](./response-cache-2/README.md) - Set custom response headers to indicate cache hits and misses.
 6. [extract-json-payload](./extract-json-payload/README.md) - Set custom response headers with data extracted from a JSON payload.
+7. [extract-xml-payload](./extract-json-payload/README.md) - Extract data from an XML request body and set a custom XML response body. 
 7. [quota-1](./quota-1/README.md) - Set a quota limit on the number of API calls that can be made in a given time period.
 
 ### Prerequisites

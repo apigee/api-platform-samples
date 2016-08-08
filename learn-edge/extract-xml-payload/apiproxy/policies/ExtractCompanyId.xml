@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ExtractVariables name="ExtractCompanyId">
+    <Source>request</Source>
+    <IgnoreUnresolvedVariables>false</IgnoreUnresolvedVariables>
+    <XMLPayload>
+        <Namespaces>
+            <Namespace prefix="S">http://schemas.xmlsoap.org/soap/envelope/</Namespace>
+            <Namespace prefix="ns1">urn:xxxx.xxxx.xxxxx.com</Namespace>
+        </Namespaces>
+        <Variable name="companyId" type="string">
+            <XPath>/S:Envelope/S:Body/ns1:login/ns1:credential/ns1:companyId/text()</XPath>
+        </Variable>
+    </XMLPayload>
+    <DisplayName>Extract Company Id</DisplayName>
+</ExtractVariables>

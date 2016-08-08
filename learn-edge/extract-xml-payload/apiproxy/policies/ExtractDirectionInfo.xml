@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ExtractVariables name="ExtractDirectionInfo">
+    <Source>request.content</Source>
+    <VariablePrefix>direction_info</VariablePrefix>
+    <XMLPayload>
+        <Namespaces>
+            <Namespace prefix="dir">urn:43BFF88D-D204-4427-B6BA-140AF393142F</Namespace>
+        </Namespaces>
+        <Variable name="status" type="string">
+            <XPath>/dir:Directions/dir:status/text()</XPath>
+        </Variable>
+        <Variable name="travelmode" type="string">
+            <XPath>/dir:Directions/dir:route/dir:leg/dir:step/@mode</XPath>
+        </Variable>
+        <Variable name="duration" type="string">
+            <XPath>/dir:Directions/dir:route/dir:leg/dir:step/dir:duration/dir:value/text()</XPath>
+        </Variable>
+        <Variable name="timeunit" type="string">
+            <XPath>/dir:Directions/dir:route/dir:leg/dir:step/dir:duration/dir:text/text()</XPath>
+        </Variable>
+    </XMLPayload>
+    <DisplayName>Extract Direction Info</DisplayName>
+</ExtractVariables>

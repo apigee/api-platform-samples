@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<APIProxy revision="3" name="2012-nishith-extract">
+    <ConfigurationVersion majorVersion="4" minorVersion="0"/>
+    <CreatedAt>1470412425786</CreatedAt>
+    <CreatedBy>wwitman@apigee.com</CreatedBy>
+    <Description></Description>
+    <DisplayName>Extract XML Payload</DisplayName>
+    <LastModifiedAt>1470415769826</LastModifiedAt>
+    <LastModifiedBy>wwitman@apigee.com</LastModifiedBy>
+    <Policies>
+        <Policy>AssignCompanyIdPayload</Policy>
+        <Policy>AssignDirectionsPayload</Policy>
+        <Policy>ExtractCompanyId</Policy>
+        <Policy>ExtractDirectionInfo</Policy>
+        <Policy>InvalidApiKey</Policy>
+        <Policy>VerifyApiKey</Policy>
+    </Policies>
+    <ProxyEndpoints>
+        <ProxyEndpoint>default</ProxyEndpoint>
+    </ProxyEndpoints>
+    <Resources/>
+    <TargetServers/>
+    <TargetEndpoints/>
+    <validate>false</validate>
+</APIProxy>

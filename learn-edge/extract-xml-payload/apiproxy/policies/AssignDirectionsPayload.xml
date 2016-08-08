@@ -1,0 +1,16 @@
+<AssignMessage name='AssignDirectionsPayload'>
+  <AssignTo createNew="false" type="response"/>
+  <Set>
+    <Payload contentType='application/xml'
+             variablePrefix='{'
+             variableSuffix='}'><root>
+    <status>{direction_info.status}</status>
+    <mode>{direction_info.travelmode}</mode>
+    <duration>{direction_info.duration}</duration>
+    <timeunit>{direction_info.timeunit}</timeunit>
+</root>
+</Payload>
+  </Set>
+  <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+  <DisplayName>Assign Directions Payload</DisplayName>
+</AssignMessage>

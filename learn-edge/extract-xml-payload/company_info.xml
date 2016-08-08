@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<S:Envelope xmlns:S="http://schemas.xmlsoap.org/soap/envelope/">
+  <S:Body>
+    <login xmlns="urn:xxxx.xxxx.xxxxx.com" xmlns:ns2="urn:fault.xxxx.xxxx.com">
+      <credential>
+        <companyId>Apigee</companyId>
+        <username>user</username>
+        <password>password</password>
+      </credential>
+      <param>
+        <name>batchSize</name>
+        <value>200</value>
+      </param>
+    </login>
+  </S:Body>
+</S:Envelope>

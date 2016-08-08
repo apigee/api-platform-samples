@@ -1,0 +1,5 @@
+<VerifyAPIKey name="VerifyAPIKey">
+  <!-- This policy will check the query param &quot;apikey&quot; against the apps defined in our
+       organization, fail the request if it does not match, and then validate the API product -->
+    <APIKey ref="request.queryparam.apikey"/>
+</VerifyAPIKey>

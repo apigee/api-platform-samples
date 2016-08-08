@@ -99,7 +99,7 @@ Of interest: It's a good idea to use a VariablePrefix in this policy -- it gets 
 
 ### Next step
 
-The next proxy, [quota-1](../quota-1/README.md), sets a quota limit on the number of API calls that can be made in a given time period.
+The next proxy, [extract-xml-payload](../extract-xml-payload/README.md), extracts data from an XML request payload and returns it in a custom XML response body. 
 
 
 ### Ask the community

@@ -24,7 +24,7 @@ key=`curl -u $username:$password $url/v1/o/$org/developers/learn-edge-developer@
 printf "\nThe API key (Consumer Key) for the Learn Edge App is $key\n"
 
 
-## Call the API
+## Call the API JSON response
 
 printf "\nCall the API and notice that the custom headers are returned. Press Return to contine:\n"
 read
@@ -35,4 +35,12 @@ curl -i "http://$org-$env.$api_domain/learn-edge/json?apikey=$key"
 printf "\n"
 
 
+## Call the API XML response
 
+printf "\nCall the API and notice that the custom headers are returned. Press Return to contine:\n"
+read
+
+printf "\ncurl -i http://$org-$env.$api_domain/learn-edge/xml?apikey=$key\n\nResponse:\n"
+
+curl -i  "http://$org-$env.$api_domain/learn-edge/xml?apikey=$key"
+printf "\n"
