@@ -74,7 +74,7 @@ Go to the Edge UI and run a Trace on this API. How does it differ from the Trace
   6. If the checks succeed, Edge continues processing the proxy request. 
 
 * **Policies** let you specify any operations that you want to perform while the API call is flowing through Edge. In this case, we are implementing a **security policy**. As we'll see in later lessons, there are policies for enforcing quotas, caching, fault handling, and many many others. 
-* **Flows** -- When a request comes in to Edge, it's processed through a sort of pipeline. The pipeline has multiple stages called flows, and at each stage you can attach policies that do all sorts of things like enforce security, check for threats, enforce quotas, do transformations, read and write state variables, and so on. 
+* **Flows** -- When a request comes in to Edge, it's processed through a sort of pipeline. The pipeline has multiple stages called flows, and at each stage you can attach policies that do all sorts of things like enforce security, check for threats, enforce quotas, do transformations, read and write state variables, execute conditional logic, and so on. 
 * **Products, Developer Apps, and Developers** -- These entities form a relationship that allows you to control which apps can access your API proxies.
 * You can read about the Verify API Key policy (and all policies) [in the Edge docs](http://docs.apigee.com/api-services/reference/verify-api-key-policy).
 
