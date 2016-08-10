@@ -20,7 +20,7 @@ Run this script to provision an API Product, Developer, and Developer App to Edg
 
 ### Deploy it
 
-1. `cd api-platform-samples/learn-edge/apikey-security`.
+1. `cd api-platform-samples/learn-edge/apikey-security-1`.
 2. `./deploy.sh`
 
 ### Run it
