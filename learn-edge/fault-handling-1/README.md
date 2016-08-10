@@ -25,7 +25,7 @@ We assume you've provisioned the Product, Developer App, and Developer as explai
 
 ### Trace it
 
-Go to the Edge UI and run a Trace on this API. How does it differ from the Trace you saw in `apikey-security-1` and `apikey-security-2`? You can see where the fault occurs and where control shifts to the error flow. 
+Go to the Edge UI and run a Trace on this API. How does it differ from the Trace you saw in `apikey-security-1` and `apikey-security-2`? Can you see where the fault occurs and where control shifts to the error flow? 
 
 ### About what changed
 
