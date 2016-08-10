@@ -1,6 +1,6 @@
 # Secure the proxy with an API key
 
-In this Learn Edge example you will add API Key security to a proxy. This example illustrates one of the most important concepts you need to know about in Apigee Edge: **how API Proxies, API Products, and Developer Apps are related** and how this relationship allows proxies to be secured with keys. After you deploy and execute this proxy, you'll have a basic understanding of these important concepts. 
+In this Learn Edge example we secure an API proxy using an API key.  
 
 ### Prerequisites
 
@@ -12,19 +12,11 @@ Run this script to provision an API Product, Developer, and Developer App to Edg
 
 1. `cd api-platform-samples/learn-edge/provisioning`
 
-    **Note:** It's optional, but feel free to examine the script. It uses Apigee Edge Management APIs to upload the entities to Edge. That's why you're required to enter your Apigee password -- it is required whenever you use the management APIs.
+    **Note:** It's optional, but feel free to examine the script. It uses Apigee Edge Management APIs to upload the entities to Edge. That's why you're required to enter your Apigee password -- it is required whenever you use the management APIs. 
 
-2. Note that a Consumer key is returned from the provisioning script. This key will be used later when we call the API proxy. 
+3. Run `./setup.sh` and follow the prompts.
 
-3. Run `./setup.sh`.
-
-4. Go to the Edge UI and look at these uploaded entities under the Publish menu: **Publish->Products**, **Publish->Developers**, and **Publish->Developer Apps**.
-
-5. Look at the Developer App (called "Learn Edge App"). Notice that it has both a Developer **and** a Product (Learn Edge Product). It also has two keys, a Consumer Key and a Consumer Secret. You have to click **Show** to see these key values. Note that the Consumer key is the same value that was returned when you ran the provisioning script. You can always get the key from the UI if you need to. 
-
-6. Click the **Product** link in the app page. Notice that the product has an API proxy (`learn-edge`). Also, notice that it has two resources: `/json` and `/xml`. This means that for the proxy `learn-edge`, only resource paths `/json` and `xml` will succeed when API key security is enforced. Attempts to call the proxy with any other resource paths will be rejected.
-
-Enough with the concepts. Let's do something.
+4. Note that a **Consumer key**, a random string of numbers an letters, is returned from the provisioning script. This is the key that we'll use later to secure the API proxy. 
 
 ### Deploy it
 
@@ -38,20 +30,19 @@ Enough with the concepts. Let's do something.
 
 ### Trace it
 
-Go to the Edge UI and run a Trace on this API. How does it differ from the Trace you saw in `proxy-to-a-target`? Do you see where the VerifyAPIKey policy exectued? Click the policy icon in the Transaction map and notice that when it executed, a whole bunch of variables were created and appear in the Phase Details panel -- they have names like `verifyapikey.VerifyAPIKey.status` and `verifyapikey.VerifyAPIKey.expires_in`. For now, just note that these variables are created. 
+Go to the Edge UI and run a Trace on this API. How does it differ from the Trace you saw in `proxy-to-a-target`? Do you see where the VerifyAPIKey policy executed? Click the policy icon in the Transaction map and notice that when it executed, a whole bunch of variables were created and appear in the Phase Details panel -- they have names like `verifyapikey.VerifyAPIKey.status` and `verifyapikey.VerifyAPIKey.expires_in`. For now, just note that these variables are created. 
 
 ### About what changed
 
-* We added our first **policy** to the proxy. Hint: it is in the `apiproxy/policies` folder and it is called `VerifyApiKey.xml`:
+* We added our first **policy** to the proxy! Hint: it is in the `apiproxy/policies` folder and it is called `VerifyApiKey.xml`:
 
     ```xml
         <VerifyAPIKey name="VerifyAPIKey">
-          <!-- This policy checks the query param "apikey" against the Consumer Keys in all the Developer Apps defined in our organization.-->
             <APIKey ref="request.queryparam.apikey"/>
         </VerifyAPIKey>
     ```
 
-  Can you see that this policy looks for an API key in a query parameter called `apikey`? You can read about this policy (and all policies) [in the Edge docs](http://docs.apigee.com/api-services/reference/verify-api-key-policy). 
+  You can guess that this policy looks for an API key in a query parameter called `apikey`.  
 
 * In the `apiproxy/proxies/default.xml` file, we **attach the policy** to the ProxyEndpoint's Preflow. Just remember that the Preflow is the first flow that is executed when a new request comes in to Apigee Edge. So, the first thing that happens on Edge is that it checks to see if the API key is valid.
 
@@ -69,15 +60,30 @@ Go to the Edge UI and run a Trace on this API. How does it differ from the Trace
 
 ### Extra reading: important terms and concepts
 
-* **Policies** are a big deal in Apigee Edge. They let you specifiy any actions that you want to perform while the API call is flowing through Edge. In this case, we are implementing a **security action**: verifying the API key. If it's valid the request moves on. If invalid, an error is returned to the calling client.
-* **Flows** are very important. Basically, when a request comes in to Edge, it's processed through a sort of pipeline. The pipeline has multiple stages called flows, and at each stage you can attach policies that do all sorts of things like enforce security, check for threats, enforce quotas, do transformations, read and write state variables, and so on. 
-* **Products, Developer Apps, and Developers**. These entities form a relationship that allows you to control who can access your API proxies. More specifically, they allow you to control which **apps** can access your Proxies. 
+* **API Product Logic** - This is an important concept in Edge development. When the VerifyAPIKey policy executes, a whole chain of logic executes behind the scenes. It goes something like this:
+
+  1. The Verify API Key policy executes.
+  2. Edge locates the Developer App that has that API key. 
+
+      In our case, the app is called Learn Edge App. You can find it in the Edge UI. Under the Publish menu, select Developer Apps. Then select Learn Edge App. Take a look at it now if you wish. You can see the API key if you click the **Show** button for the Consumer Key.
+
+  2. Edge iterates through the list of Products in the App (there must be at least one, and there can be many). 
+  3. Edge checks that the proxy path information in the a Product matches the incoming API call. 
+  4. The first Product that matches is used to set a bunch of context variables in the proxy flow. You can see them if you click the VerifyAPIKey policy in the Trace tool! They have names like `verifyapikey.VerifyAPIKey.issued_at`.
+  6. If any of these checks fail, proxy processing stops and an error is returned. 
+  6. If the checks succeed, Edge continues processing the proxy request. 
+
+* **Policies** let you specify any operations that you want to perform while the API call is flowing through Edge. In this case, we are implementing a **security policy**. As we'll see in later lessons, there are policies for enforcing quotas, caching, fault handling, and many many others. 
+* **Flows** -- When a request comes in to Edge, it's processed through a sort of pipeline. The pipeline has multiple stages called flows, and at each stage you can attach policies that do all sorts of things like enforce security, check for threats, enforce quotas, do transformations, read and write state variables, and so on. 
+* **Products, Developer Apps, and Developers** -- These entities form a relationship that allows you to control which apps can access your API proxies.
+* You can read about the Verify API Key policy (and all policies) [in the Edge docs](http://docs.apigee.com/api-services/reference/verify-api-key-policy).
 
 
 ### Things to try
 
 * In a browser, hit http://mocktarget.apigee.net/help to see what else the service can do.
 * Change the VerifyAPIKey policy so that it looks for the API key in a different query parameter. Change it so it looks for the key in a header. **Hint:** Go to the Edge documentation for this policy to see how to use headers instead of query parameters for the key. It's a very simple change.
+* In the Trace tool, examine all the variables that are populated when the policy executes. What variables are populated if the policy fails (if you pass an invalid key)?
 
 ### Next step
 
