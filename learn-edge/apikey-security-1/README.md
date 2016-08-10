@@ -68,7 +68,7 @@ Go to the Edge UI and run a Trace on this API. How does it differ from the Trace
       In our case, the app is called Learn Edge App. You can find it in the Edge UI. Under the Publish menu, select Developer Apps. Then select Learn Edge App. Take a look at it now if you wish. You can see the API key if you click the **Show** button for the Consumer Key.
 
   2. Edge iterates through the list of Products in the App (there must be at least one, and there can be many). 
-  3. Edge checks that the proxy path information in the a Product matches the incoming API call. 
+  3. Edge checks that the proxy path information in a Product matches the incoming API call. 
   4. The first Product that matches is used to set a bunch of context variables in the proxy flow. You can see them if you click the VerifyAPIKey policy in the Trace tool! They have names like `verifyapikey.VerifyAPIKey.issued_at`.
   6. If any of these checks fail, proxy processing stops and an error is returned. 
   6. If the checks succeed, Edge continues processing the proxy request. 
