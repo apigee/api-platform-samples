@@ -15,7 +15,7 @@ In this Learn Edge example, we'll modify [apikey-security-1](../apikey-security-
 
 ### Run it
 
-1. `./invoke.sh` -- Note that the script uses Edge APIs to retrieve the previously generated Consumer key and plug it into the API requests. 
+1. `./invoke.sh` -- Note that the script uses Edge APIs to retrieve the previously generated Consumer key and plugs it into the API requests. 
 
 ### Trace it
 
