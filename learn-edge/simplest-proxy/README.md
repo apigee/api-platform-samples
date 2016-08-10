@@ -68,9 +68,9 @@ You deployed a basic proxy to Edge, called it, and got a 200 response. This may 
 
     Note that in this "simplest-proxy" example, targets, policies, and resources are empty directories, because they aren't used. In later examples, these other directories, and their contents, will be important.
 
-* This file structure is mapped into the Edge UI, although the UI uses slightly different names for the components. 
+* This file structure is mapped into the Edge UI, although the UI uses slightly different names for the components. For example, Policies maps to your local /policies directory. Proxy Endpoints maps to the /proxies directory, and Scripts maps to /resources. 
 
-![alt text](../images/navigator.png "Navigator")
+![alt text](../../images/navigator.png "Navigator")
 
 * Many developers develop proxies locally and deploy them using a command line tool (like `apigeetool` that is used in the `./deploy.sh` file) or tools like Maven or Grunt. It's all about properly packaging and uploading the local files to Edge. You can even package a proxy in a ZIP file and upload it through the Edge UI. 
 
