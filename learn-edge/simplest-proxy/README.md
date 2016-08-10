@@ -68,7 +68,7 @@ You deployed a basic proxy to Edge, called it, and got a 200 response. This may 
 
     Note that in this "simplest-proxy" example, targets, policies, and resources are empty directories, because they aren't used. In later examples, these other directories, and their contents, will be important.
 
-* This file structure is mapped into the Edge UI, although the UI uses slightly different names for the components. For example, Policies maps to your local /policies directory. Proxy Endpoints maps to the /proxies directory, and Scripts maps to /resources. 
+* This file structure is mapped into the Edge UI, although the UI uses slightly different names for the components. For example, **Policies** maps to your local `/policies` directory. **Proxy Endpoints** maps to the `/proxies` directory, and **Scripts** maps to `/resources`. 
 
 ![alt text](../../images/navigator.png "Navigator")
 
