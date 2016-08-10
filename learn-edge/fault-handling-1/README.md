@@ -21,7 +21,7 @@ We assume you've provisioned the Product, Developer App, and Developer as explai
 
 ### Run it 
 1. `./invoke.sh`
-4. Compare the output to the `apikey-security` output. 
+4. Compare the output to output from the previous lessons. 
 
 ### Trace it
 
