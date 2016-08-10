@@ -8,7 +8,7 @@ Be sure to perform the [prerequisites](https://github.com/apigee/api-platform-sa
 
 ### Provision the required entities
 
-We assume you've provisioned the Product, Developer App, and Developer as explained in `apikey-security`. If you want to redo it, here's how:
+We assume you've provisioned the Product, Developer App, and Developer as explained in `apikey-security-1`. If you want to redo it, here's how:
 
 1. `cd api-platform-samples/learn-edge/provisioning`.
 2. `./cleanup.sh`.
