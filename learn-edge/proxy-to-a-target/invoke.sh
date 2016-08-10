@@ -4,9 +4,6 @@
 
 source ../scripts/set_env.sh
 
-printf "\nEnter your password for the Apigee Enterprise organization $org, followed by [ENTER]:\n"
-read -s password
-
 
 ## Call the API
 
