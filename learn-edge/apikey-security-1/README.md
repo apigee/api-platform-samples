@@ -16,7 +16,7 @@ Run this script to provision an API Product, Developer, and Developer App to Edg
 
 3. Run `./setup.sh` and follow the prompts.
 
-4. Note that a **Consumer key**, a random string of numbers and letters, is returned from the provisioning script. This is the key that we'll use later to secure the API proxy. 
+4. Note that a **Consumer key**, a random string of numbers and letters, is returned from the provisioning script. This is the key that we'll use later to secure the API proxy. Later, you'll see exactly where the key comes from.
 
 ### Deploy it
 
