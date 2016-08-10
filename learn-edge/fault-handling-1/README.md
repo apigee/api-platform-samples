@@ -8,7 +8,7 @@ Be sure to perform the [prerequisites](https://github.com/apigee/api-platform-sa
 
 ### Provision the required entities
 
-We assume you've provisioned the Product, Developer App, and Developer as explained in `apikey-security`. If you want to redo it, here's how:
+We assume you've provisioned the Product, Developer App, and Developer as explained in `apikey-security-1`. If you want to redo it, here's how:
 
 1. `cd api-platform-samples/learn-edge/provisioning`.
 2. `./cleanup.sh`.
@@ -21,11 +21,11 @@ We assume you've provisioned the Product, Developer App, and Developer as explai
 
 ### Run it 
 1. `./invoke.sh`
-4. Compare the output to the `apikey-security` output. 
+4. Compare the output to output from the previous lessons. 
 
 ### Trace it
 
-Go to the Edge UI and run a Trace on this API. How does it differ from the Trace you saw in `apikey-security`? You can see where the fault occurs and where control shifts to the error flow. 
+Go to the Edge UI and run a Trace on this API. How does it differ from the Trace you saw in `apikey-security-1` and `apikey-security-2`? Can you see where the fault occurs and where control shifts to the error flow? 
 
 ### About what changed
 
@@ -83,7 +83,7 @@ This policy is a little more complicated looking, but it's simple to understand.
 
 ### Next step
 
-The next proxy, [fault-handling-2](../fault-handling-2/README.md), illustrates you can have multiple fault rules in a proxy and the order in which fault rules execute.
+The next proxy, [fault-handling-2](../fault-handling-2/README.md), illustrates that you can have multiple fault rules in a proxy and the order in which fault rules execute.
    
 ### Ask the community
 
