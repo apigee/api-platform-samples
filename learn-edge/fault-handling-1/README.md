@@ -53,7 +53,7 @@ A fault rule is a special kind of flow that executes whenever a policy throws an
             <DisplayName>Invalid ApiKey Message</DisplayName>
             <Properties/>
             <Set>
-                <Payload contentType="application/json">\{"error": \{"message":"{fault.name}", "detail":"Please provide valid API key in the apikey query parameter.}} </Payload>
+                <Payload contentType="application/json">\{"error": \{"message":"{fault.name}", "detail":"Hello from Learn Edge: Please provide valid API key in the apikey query parameter.}} </Payload>
                 <StatusCode>400</StatusCode>
                 <ReasonPhrase>BadRequest</ReasonPhrase>
             </Set>
