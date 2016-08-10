@@ -42,7 +42,7 @@ Go to the Edge UI and run a Trace on this API. How does it differ from the Trace
         </VerifyAPIKey>
     ```
 
-  You can guess that this policy looks for an API key in a query parameter called `apikey`.  
+  You can guess that this policy looks for an API key in a query parameter called `apikey`, which is exactly how we called the API when we invoked it.
 
 * In the `apiproxy/proxies/default.xml` file, we **attach the policy** to the ProxyEndpoint's Preflow. Just remember that the Preflow is the first flow that is executed when a new request comes in to Apigee Edge. So, the first thing that happens on Edge is that it checks to see if the API key is valid.
 
