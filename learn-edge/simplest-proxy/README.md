@@ -70,7 +70,7 @@ You deployed a basic proxy to Edge, called it, and got a 200 response. This may 
 
 * This file structure is mapped into the Edge UI, although the UI uses slightly different names for the components. 
 
-![alt text](../images/navigator.png "Navigator")
+![alt text](../../images/navigator.png "Navigator")
 
 * Many developers develop proxies locally and deploy them using a command line tool (like `apigeetool` that is used in the `./deploy.sh` file) or tools like Maven or Grunt. It's all about properly packaging and uploading the local files to Edge. You can even package a proxy in a ZIP file and upload it through the Edge UI. 
 
