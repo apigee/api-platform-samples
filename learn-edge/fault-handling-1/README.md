@@ -83,7 +83,7 @@ This policy is a little more complicated looking, but it's simple to understand.
 
 ### Next step
 
-The next proxy, [fault-handling-2](../fault-handling-2/README.md), illustrates you can have multiple fault rules in a proxy and the order in which fault rules execute.
+The next proxy, [fault-handling-2](../fault-handling-2/README.md), illustrates that you can have multiple fault rules in a proxy and the order in which fault rules execute.
    
 ### Ask the community
 
