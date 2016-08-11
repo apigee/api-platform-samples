@@ -75,6 +75,10 @@ Here's what we want you to notice about the trace sessions:
  
 * A little slight-of-hand: we added an Assign Message policy to the Proxy Endpoint to set the X, Y, and Z query parameters (if they are passed in the request) to flow variables. We do this because the request.queryparam.<paramname> variables only persist in the request flow. We need to have these variables show up in the Target Response flow, so we stash them in variables that will be available there.
 
+### Look at the code
+
+This sample is a little more complicated than previous ones, but it isn't hard to understand. We use conditions that check for certain query parameter values to trigger fault rules. We also conditions to trigger the Raise Fault policy. The best way to understand how this proxy works is to look carefully at the code, try it out, and use the Trace tool to see how it looks in runtime.
+
 ### Extra reading: important terms and concepts
 
 * **Fault rules: order of execution** When the proxy goes into the Error Flow, the Fault Rules are evaluated. If the error occurs in the Proxy Endpoint, the LAST Fault Rule that evaluates to TRUE executes. If the error occurs in the Target Endpoint, the FIRST Fault Rule that evaluates to TRUE executes. 
