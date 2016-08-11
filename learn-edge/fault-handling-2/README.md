@@ -3,7 +3,7 @@
 In this Learn Edge example, we illustrate that Fault Rules have a specific order in which they execute:
 
 * When the fault rule is in the Proxy Endpoint, the **last** fault rule that evaluates to **true** in a chain of rules is the one that executes. 
-* When the fault rule is in the Target Endpoint, the **first** fault rule that evaluates to true exectues. 
+* When the fault rule is in the Target Endpoint, the **first** fault rule that evaluates to **true** exectues. 
 
 This is an important pattern that trips up a lot of new Apigee Edge developers. This example builds on the example in [fault-handling-1](../fault-handling-1/README.md).
 
@@ -27,55 +27,57 @@ We assume you've provisioned the Product, Developer App, and Developer as explai
 ### Run it
 
 2. `./invoke.sh`
-4. See which error message is returned for each query parameter value. Hint: The winner is the LAST Fault Rule that evalulates to true, in the order in which the rules appear in the XML.
+4. The error responses are of interest. To understand them, it'll take a little digging into the code, but it'll be worth it! We'll explain more below. 
 
 ### Trace it
 
-Go to the Edge UI and run a Trace on this API. How does it differ from the Trace you saw in `apikey-security`? You can see where the fault occurs and where control shifts to the error flow. 
+Go to the Edge UI and run a Trace on this API. After running `invoke.sh`, there should be three separate traces, one for each API call. Click through them. 
+
+Here's what we want you to notice about the trace sessions:
+
+* First API call: The API flows normally, calls the target, and returns a response. 
+* Second API call: An error is thrown in the Proxy Endpoint. 
+* Third API call: An error is thrown in the Target Endpoint. 
 
 ### About what changed
 
-* We added three Fault Rules to the Proxy Endpoint. They check the truth value of a query parameter. You'll see it in `apiproxy/proxies/default.xml`:
+* We added a Raise Fault policy to the proxy. This is a policy that, when it executes, it throws the proxy into an Error state. We do this so that the Fault Rules will be evaluated. 
+
+* We added three Fault Rules to the **Target Endpoint**. They check the truth value of a query parameter. You'll see it in `apiproxy/targets/default.xml`:
 
     ```xml
         ...
         <FaultRules>
-        <FaultRule name="InvalidApiKey">
-            <Step>
-                <Name>InvalidApiKeyMessage</Name>
-            </Step>
-            <Condition>(fault.name Matches "InvalidApiKey") </Condition>
-        </FaultRule>
-        <FaultRule name="BadParam-A">
-            <Step>
-                <Name>CatchBadParam-A</Name>
-            </Step>
-            <Condition>(request.queryparam.bad-param-A Matches "true") </Condition>
-        </FaultRule>
-        <FaultRule name="BadParam-B">
-            <Step>
-                <Name>CatchBadParam-B</Name>
-            </Step>
-            <Condition>(request.queryparam.bad-param-B Matches "true") </Condition>
-        </FaultRule>
-         <FaultRule name="BadParam-C">
-            <Step>
-                <Name>CatchBadParam-C</Name>
-            </Step>
-            <Condition>(request.queryparam.bad-param-C Matches "true") </Condition>
-        </FaultRule>
-      </FaultRules>
+            <FaultRule name="BadParam-X">
+                <Step>
+                    <Name>CatchBadParam-X</Name>
+                </Step>
+                <Condition>(queryparam.X Matches "true") </Condition>
+            </FaultRule>
+            <FaultRule name="BadParam-Y">
+                <Step>
+                    <Name>CatchBadParam-Y</Name>
+                </Step>
+                <Condition>(queryparam.Y Matches "true") </Condition>
+            </FaultRule>
+             <FaultRule name="BadParam-Z">
+                <Step>
+                    <Name>CatchBadParam-Z</Name>
+                </Step>
+                <Condition>(queryparam.Z Matches "true") </Condition>
+            </FaultRule>
+        </FaultRules>
       ...
     ```
 
-When an invalid key is sent, the proxy goes into the Error Flow and the Fault Rules are evaluated. The LAST Fault Rule that evaluates to TRUE executes. 
 
-* We added an **Assign Message policy** for each of the fault conditions -- they just return a message to tell the user which Fault Rule exectued. Hint: they are in the `apiproxy/policies` folder and are called `CatchBadParam-A.xml`, `CatchBadParam-B.xml`, `CatchBadParam-C.xml`:
+* We added an **Assign Message policy** for each of the fault conditions -- they just return a message to tell the user which Fault Rule exectued. Hint: they are in the `apiproxy/policies` folder and are called `CatchBadParam-X.xml`, `CatchBadParam-Y.xml`, `CatchBadParam-Z.xml`:
  
+* A little slight-of-hand: we added an Assign Message policy to the Proxy Endpoint to set the X, Y, and Z query parameters (if they are passed in the request) to flow variables. We do this because the request.queryparam.<paramname> variables only persist in the request flow. We need to have these variables show up in the Target Response flow, so we stash them in variables that will be available there.
 
 ### Extra reading: important terms and concepts
 
-* **Fault rules: order of execution** When the proxy goes into the Error Flow, the Fault Rules are evaluated. The LAST Fault Rule that evaluates to TRUE executes. 
+* **Fault rules: order of execution** When the proxy goes into the Error Flow, the Fault Rules are evaluated. If the error occurs in the Proxy Endpoint, the LAST Fault Rule that evaluates to TRUE executes. If the error occurs in the Target Endpoint, the FIRST Fault Rule that evaluates to TRUE executes. 
 
 
 ### Next step

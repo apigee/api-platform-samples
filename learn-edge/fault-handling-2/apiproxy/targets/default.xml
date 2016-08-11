@@ -1,23 +1,23 @@
 <TargetEndpoint name="default">
 	<FaultRules>
 		<FaultRule name="BadParam-X">
-        <Step>
-            <Name>CatchBadParam-X</Name>
-        </Step>
-        <Condition>(request.queryparam.X Matches "true") </Condition>
-    </FaultRule>
-    <FaultRule name="BadParam-Y">
-        <Step>
-            <Name>CatchBadParam-Y</Name>
-        </Step>
-        <Condition>(request.queryparam.Y Matches "true") </Condition>
-    </FaultRule>
-     <FaultRule name="BadParam-Z">
-        <Step>
-            <Name>CatchBadParam-Z</Name>
-        </Step>
-        <Condition>(request.queryparam.Z Matches "true") </Condition>
-    </FaultRule>
+            <Step>
+                <Name>CatchBadParam-X</Name>
+            </Step>
+            <Condition>(queryparam.X Matches "true") </Condition>
+        </FaultRule>
+        <FaultRule name="BadParam-Y">
+            <Step>
+                <Name>CatchBadParam-Y</Name>
+            </Step>
+            <Condition>(queryparam.Y Matches "true") </Condition>
+        </FaultRule>
+         <FaultRule name="BadParam-Z">
+            <Step>
+                <Name>CatchBadParam-Z</Name>
+            </Step>
+            <Condition>(queryparam.Z Matches "true") </Condition>
+        </FaultRule>
 	</FaultRules>
     <PostFlow>
         <Response>
