@@ -79,6 +79,10 @@ Here's what we want you to notice about the trace sessions:
 
 This sample is a little more complicated than previous ones, but it isn't hard to understand. We use conditions that check for certain query parameter values to trigger fault rules. We also conditions to trigger the Raise Fault policy. The best way to understand how this proxy works is to look carefully at the code, try it out, and use the Trace tool to see how it looks in runtime.
 
+### Things to try
+
+Call the API with some of the query parameters set to false.
+
 ### Extra reading: important terms and concepts
 
 * **Fault rules: order of execution** When the proxy goes into the Error Flow, the Fault Rules are evaluated. If the error occurs in the Proxy Endpoint, the LAST Fault Rule that evaluates to TRUE executes. If the error occurs in the Target Endpoint, the FIRST Fault Rule that evaluates to TRUE executes. 
