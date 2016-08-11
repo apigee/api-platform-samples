@@ -2,8 +2,8 @@
 
 In this Learn Edge example, we illustrate that Fault Rules have a specific order in which they execute:
 
-* When the fault rule is in the Proxy Endpoint, the **last** fault rule that evaluates to **true** in a chain of rules is the one that executes. 
-* When the fault rule is in the Target Endpoint, the **first** fault rule that evaluates to **true** exectues. 
+* When the fault rule is in the Proxy Endpoint, Edge evaluates the fault rules BOTTOM to TOP (physically in the XML block), and the **first** fault rule that evaluates to **true** in a chain of rules is the one that executes. 
+* When the fault rule is in the Target Endpoint, Edge evaluates the fault rules TOP to BOTTOM (physically in the XML block), the **first** fault rule that evaluates to **true** exectues. 
 
 This is an important pattern that trips up a lot of new Apigee Edge developers. This example builds on the example in [fault-handling-1](../fault-handling-1/README.md).
 
@@ -81,11 +81,11 @@ This sample is a little more complicated than previous ones, but it isn't hard t
 
 ### Things to try
 
-Call the API with some of the query parameters set to false.
+Call the API with some of the query parameters set to different true/false values and see the difference in Trace.
 
 ### Extra reading: important terms and concepts
 
-* **Fault rules: order of execution** When the proxy goes into the Error Flow, the Fault Rules are evaluated. If the error occurs in the Proxy Endpoint, the LAST Fault Rule that evaluates to TRUE executes. If the error occurs in the Target Endpoint, the FIRST Fault Rule that evaluates to TRUE executes. 
+* **Fault rules: order of execution** When the proxy goes into the Error Flow, the Fault Rules are evaluated. If the error occurs in the Proxy Endpoint, Edge evaluates the fault rules BOTTOM to TOP (physically in the XML block), and the FIRST Fault Rule that evaluates to TRUE executes. If the error occurs in the Target Endpoint, Edge evaluates the fault rules TOP to BOTTOM (physically in the XML block), and the FIRST Fault Rule that evaluates to TRUE executes. 
 
 
 ### Next step
