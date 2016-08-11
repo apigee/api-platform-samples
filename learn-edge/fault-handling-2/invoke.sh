@@ -44,7 +44,7 @@ printf "\ncurl http://$org-$env.$api_domain/v1/learn-edge/json?A=true&B=true&C=t
 
 curl -i "http://$org-$env.$api_domain/v1/learn-edge/json?A=true&B=true&C=true&apikey=$key"
 
-printf "\n\n** We triggered an error. The LAST Fault Rule in the chain that evaluates to TRUE executes! Triggered by query param C."
+printf "\n\n** We triggered an error in the Proxy Endpoint. The LAST Fault Rule in the chain that evaluates to TRUE executes! Triggered by query param C."
 
 
 ## Call the API with three query parameters X, Y, and Z. 
@@ -57,7 +57,7 @@ printf "\ncurl http://$org-$env.$api_domain/v1/learn-edge/json?X=true&Y=true&Z=t
 
 curl -i "http://$org-$env.$api_domain/v1/learn-edge/json?X=true&Y=true&Z=true&apikey=$key"
 
-printf "\n\n** We triggered an error. The FIRST Fault Rule in the chain that evaluates to TRUE executes! Triggered by query param X."
+printf "\n\n** We triggered an error in the Target Endpoint. The FIRST Fault Rule in the chain that evaluates to TRUE executes! Triggered by query param X."
 
 
 
