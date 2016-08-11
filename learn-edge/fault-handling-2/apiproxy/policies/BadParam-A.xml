@@ -2,7 +2,7 @@
     <DisplayName>Catch Bad Param A</DisplayName>
     <Properties/>
     <Set>
-        <Payload contentType="application/json">\{"error": \{"message":"Bad Query Parameter", "detail":"***** You set bad-param-A to true! *****}} </Payload>
+        <Payload contentType="application/json">\{"error": \{"message":"Hello from Learn Edge! Bad Query Parameter", "detail":"***** You query param A to true! *****}} </Payload>
         <StatusCode>400</StatusCode>
         <ReasonPhrase>BadRequest</ReasonPhrase>
     </Set>

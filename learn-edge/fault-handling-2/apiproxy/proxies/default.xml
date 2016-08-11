@@ -10,25 +10,35 @@
         <Step>
             <Name>CatchBadParam-A</Name>
         </Step>
-        <Condition>(request.queryparam.bad-param-A Matches "true") </Condition>
+        <Condition>(request.queryparam.A Matches "true") </Condition>
     </FaultRule>
     <FaultRule name="BadParam-B">
         <Step>
             <Name>CatchBadParam-B</Name>
         </Step>
-        <Condition>(request.queryparam.bad-param-B Matches "true") </Condition>
+        <Condition>(request.queryparam.B Matches "true") </Condition>
     </FaultRule>
      <FaultRule name="BadParam-C">
         <Step>
             <Name>CatchBadParam-C</Name>
         </Step>
-        <Condition>(request.queryparam.bad-param-C Matches "true") </Condition>
+        <Condition>(request.queryparam.C Matches "true") </Condition>
     </FaultRule>
   </FaultRules>
   <PreFlow>
     <Request>
       <Step>
         <Name>VerifyAPIKey</Name>
+      </Step>
+      <Step>
+        <Name>RemoveAPIKey</Name>
+      </Step>
+      <Step>
+        <Name>SetFlowVariables</Name>
+      </Step>
+      <Step>
+        <Name>ThrowError</Name>
+        <Condition>(request.queryparam.A Matches "true" || request.queryparam.B Matches "true" || request.queryparam.C Matches "true")</Condition>
       </Step>
     </Request>
   </PreFlow>

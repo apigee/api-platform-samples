@@ -1,0 +1,11 @@
+<AssignMessage async="false" continueOnError="false" enabled="true" name="CatchBadParam-Z">
+    <DisplayName>Catch Bad Param Z</DisplayName>
+    <Properties/>
+    <Set>
+        <Payload contentType="application/json">\{"error": \{"message":"Hello from Learn Edge! Bad Query Parameter", "detail":"***** You set query param Z to true! *****}} </Payload>
+        <StatusCode>400</StatusCode>
+        <ReasonPhrase>BadRequest</ReasonPhrase>
+    </Set>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+    <AssignTo createNew="false" transport="http" type="responset"/>
+</AssignMessage>

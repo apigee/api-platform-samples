@@ -23,65 +23,42 @@ key=`curl -u $username:$password $url/v1/o/$org/developers/learn-edge-developer@
 printf "\nThe API key (Consumer Key) for the Learn Edge App is $key\n"
 
 
-## Call the API
+## Call the API with a valid API key and no other query parameters -- no error is thrown.
 
-printf "\nCall the API with a valid API key. Press Return to contine:\n"
+printf "\nCall the API with a valid key and no other query params -- no error is thrown. Press Return to contine:\n"
 read
 
 printf "\ncurl http://$org-$env.$api_domain/v1/learn-edge/json?apikey=$key\n\nResponse:\n"
 
-curl "http://$org-$env.$api_domain/v1/learn-edge/json?apikey=$key"
+curl -i "http://$org-$env.$api_domain/v1/learn-edge/json?apikey=$key"
 
 
-## Call the API
 
-printf "\n\nCall the API with a bad API key. This causes the proxy to go into the ERROR FLOW. The LAST fault rule that evalutes to true executes: that is the INVALID KEY rule. Press Return to continue:\n"
+## Call the API with three query parameters A, B, and C. 
+
+printf "\n\nCall the API with query parameters A, B, and C to trigger an error on the PROXY REQUEST FLOW. Press Return to continue:\n"
 read
 
-printf "\ncurl http://$org-$env.$api_domain/v1/learn-edge/json?apikey=ZZZZZZZZZZZZZZZZZZZZ\n\nResponse:\n"
+printf "\ncurl http://$org-$env.$api_domain/v1/learn-edge/json?A=true&B=true&C=true&apikey=$key\n\nResponse:\n"
 
 
-curl -i "http://$org-$env.$api_domain/v1/learn-edge/json?apikey=ZZZZZZZZZZZZZZZZZZZZ"
+curl -i "http://$org-$env.$api_domain/v1/learn-edge/json?A=true&B=true&C=true&apikey=$key"
 
-printf "\nThis is the custom error message defined in the AssignMessage policy. Also note the status was set to 400. "
+printf "\n\n** We triggered an error. The LAST Fault Rule in the chain that evaluates to TRUE executes! Triggered by query param C."
 
 
-## Call the API
+## Call the API with three query parameters X, Y, and Z. 
 
-printf "\n\nCall the API with a bad API key. This causes the proxy to go into the ERROR FLOW. Now see what happens when the other query params are set. Press Return to continue:\n"
+printf "\n\nCall the API with query parameters X, Y, and Z to trigger an error on the TARGET RESPONSE FLOW. Press Return to continue:\n"
 read
 
-printf "\ncurl http://$org-$env.$api_domain/v1/learn-edge/json?bad-param-A=true&bad-param-B=true&bad-param-C=true&apikey=ZZZZZZZZZZZZZZZZZZZZ\n\nResponse:\n"
+printf "\ncurl http://$org-$env.$api_domain/v1/learn-edge/json?X=true&Y=true&Z=true&apikey=$key\n\nResponse:\n"
 
 
-curl -i "http://$org-$env.$api_domain/v1/learn-edge/json?bad-param-A=true&bad-param-B=true&bad-param-C=true&apikey=ZZZZZZZZZZZZZZZZZZZZ"
+curl -i "http://$org-$env.$api_domain/v1/learn-edge/json?X=true&Y=true&Z=true&apikey=$key"
 
-printf "\nThe LAST Fault Rule that evaluates to TRUE executes -- That is bad-param-C. "
+printf "\n\n** We triggered an error. The FIRST Fault Rule in the chain that evaluates to TRUE executes! Triggered by query param X."
 
-## Call the API
-
-printf "\n\nCall the API with a bad API key. This causes the proxy to go into the ERROR FLOW. Now see what happens when the other query params are set. Press Return to continue:\n"
-read
-
-printf "\ncurl http://$org-$env.$api_domain/v1/learn-edge/json?bad-param-A=false&bad-param-B=true&bad-param-C=false&apikey=ZZZZZZZZZZZZZZZZZZZZ\n\nResponse:\n"
-
-
-curl -i "http://$org-$env.$api_domain/v1/learn-edge/json?bad-param-A=false&bad-param-B=true&bad-param-C=false&apikey=ZZZZZZZZZZZZZZZZZZZZ"
-
-printf "\nThe LAST Fault Rule that evaluates to TRUE executes -- That is bad-param-B. "
-
-
-## Call the API
-
-printf "\n\nCall the API with a bad API key. This causes the proxy to go into the ERROR FLOW. Now see what happens when the other query params are set. Press Return to continue:\n"
-read
-
-printf "\ncurl http://$org-$env.$api_domain/v1/learn-edge/json?bad-param-A=true&bad-param-B=false&bad-param-C=false&apikey=ZZZZZZZZZZZZZZZZZZZZ\n\nResponse:\n"
-
-
-curl -i "http://$org-$env.$api_domain/v1/learn-edge/json?bad-param-A=true&bad-param-B=false&bad-param-C=false&apikey=ZZZZZZZZZZZZZZZZZZZZ"
-
-printf "\nThe LAST Fault Rule that evaluates to TRUE executes -- That is bad-param-A. \n\n"
 
 
 

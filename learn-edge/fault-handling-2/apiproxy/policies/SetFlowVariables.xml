@@ -1,0 +1,16 @@
+<AssignMessage async="false" continueOnError="false" enabled="true" name="SetFlowVariables">
+    <DisplayName>Set Flow Variables</DisplayName>
+    <AssignVariable>
+	    <Name>queryparam.X</Name>
+	    <Ref>request.queryparam.X</Ref>
+	</AssignVariable>
+	<AssignVariable>
+	    <Name>queryparam.Y</Name>
+	    <Ref>request.queryparam.Y</Ref>
+	</AssignVariable>
+	<AssignVariable>
+	    <Name>queryparam.Z</Name>
+	    <Ref>request.queryparam.Z</Ref>
+	</AssignVariable>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+</AssignMessage>

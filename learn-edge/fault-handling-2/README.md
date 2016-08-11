@@ -1,6 +1,6 @@
 # The order in which fault rules execute
 
-In this Learn Edge example, we illustrate that Fault Rules have a specific order in which they execute. As you'll see:
+In this Learn Edge example, we illustrate that Fault Rules have a specific order in which they execute:
 
 * When the fault rule is in the Proxy Endpoint, the **last** fault rule that evaluates to **true** in a chain of rules is the one that executes. 
 * When the fault rule is in the Target Endpoint, the **first** fault rule that evaluates to true exectues. 
@@ -13,7 +13,7 @@ Be sure to perform the [prerequisites](https://github.com/apigee/api-platform-sa
 
 ### Provision the required entities
 
-We assume you've provisioned the Product, Developer App, and Developer as explained in `apikey-security`. If you want to redo it, here's how:
+We assume you've provisioned the Product, Developer App, and Developer as explained in [apikey-security-1](../apikey-security-1/README.md). If you want to redo it, here's how:
 
 1. `cd api-platform-samples/learn-edge/provisioning`.
 2. `./cleanup.sh`.
