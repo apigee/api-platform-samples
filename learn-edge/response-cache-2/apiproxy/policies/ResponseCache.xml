@@ -5,6 +5,6 @@
         <KeyFragment ref="request.uri" type="string"/>
     </CacheKey>
     <ExpirySettings>
-        <TimeoutInSec>5</TimeoutInSec>
+        <TimeoutInSec>3</TimeoutInSec>
     </ExpirySettings>
 </ResponseCache>

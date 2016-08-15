@@ -2,7 +2,7 @@
 
 In this Learn Edge example, we add a twist to the [response-headers-1](../response-headers-1/README.md) example: we use an Assign Message policy to set headers that show information about the cache including whether there was a cache hit or not.  
 
-**Note:** The Assign Message policy is one of the most commonly used policies in Apigee Edge. 
+**Note:** The [Assign Message policy](http://docs.apigee.com/api-services/reference/assign-message-policy) is one of the most commonly used policies in Apigee Edge. It is used to create and modify HTTP response and request messages (headers, query parameters, message body, and so on).
 
 ### Prerequisites
 
@@ -24,11 +24,11 @@ We assume you've provisioned the Product, Developer App, and Developer as explai
 ### Run it
 
 1. `./invoke.sh`
-4. **The thing to notice**: Look at the response headers returned in your terminal. Notice that about every 5 seconds you get a `CACHE-HIT=true` header, and the rest of the time you get `CACHE-HIT=false` header. Why? If you look in the Response Cache policy, you'll see the cache expiration is set for 5 seconds:
+4. **The thing to notice**: Look at the response headers returned in your terminal. Notice that about every 3 seconds you get a `CACHE-HIT=true` header, and the rest of the time you get `CACHE-HIT=false` header. Why? If you look in the Response Cache policy, you'll see the cache expiration is set for 3 seconds:
 
 ```xml
     <ExpirySettings>
-        <TimeoutInSec>5</TimeoutInSec>
+        <TimeoutInSec>3</TimeoutInSec>
     </ExpirySettings>
 ```
 
@@ -53,7 +53,7 @@ Go to the Edge UI and run a Trace on this API. The main thing to notice is that 
                 </Headers>
             </Set>
             <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
-            <AssignTo createNew="false" transport="http" type="responset"/>
+            <AssignTo createNew="false" transport="http" type="response"/>
         </AssignMessage>
     ```
 
@@ -89,13 +89,6 @@ Go to the Edge UI and run a Trace on this API. The main thing to notice is that 
 
 * **Policy flow variables:** Most, if not all, policies have a set of flow variables that they set when the policy executes. It's extremely common to use these variables in other policies or to set conditional flows. 
 * **ProxyEndpoint PostFlow Response:** This flow always executes before a response is sent to the client, unless there's an error, in which case everything diverts to the Error Flow.  
-
-### Things to try
-
-* Go to the Edge UI and start a Trace session. Then call the API 10 or 15 times. You will be able to see in the Trace output when the cache is either "hit" or "missed". 
-* Try using a benchmark tool like Apache ab to prove that caching improves perforance. Run a benchmark of a hundred or so requests with the cache policies in place. Then, remove them, redeploy, and run the test again. For example:
-
-`ab -n 100 -c 10 http://your-org-test.apigee.net/learn-edge/json`
 
 
 ### Next step
