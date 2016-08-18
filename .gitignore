@@ -5,4 +5,11 @@
 -./sample-proxies/oauth-advanced/webserver-app/apiproxy/policies/SetConfigurationVariables.xml
 -./sample-proxies/oauth-advanced/webserver-app/apiproxy/policies/HTMLIndex.xml
 -./sample-proxies/oauth-advanced/login-app/apiproxy/resources/node/config/config.js
-*.DS_Store
+
+# Mac
+.DS_Store
+
+# Intellij
+.idea/
+*.iml
+*.iws
