@@ -58,6 +58,10 @@ This is the recommended path through the examples. But you can do them in any or
 
     >Set a quota limit on the number of API calls that can be made in a given time period.
 
+8. [service-callout-1](./service-callout-1/README.md)
+
+    > Use the Service Callout policy to call a target service directly. This sample is a refactor of [extract-json-payload](./extract-json-payload/README.md).
+
 
 ### Prerequisites
 
