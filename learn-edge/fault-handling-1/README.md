@@ -68,7 +68,7 @@ This policy is a little more complicated looking, but it's simple to understand.
 
 ### Extra reading: important terms and concepts
 
-* **Fault rules** Enable you to do error handling within the proxy flow pipline. They are a lot like any flow in the pipeline, but they only execute when an policy throws an error and when the fault rule's condition evaluates to true. 
+* **Fault rules** Enable you to do error handling within the proxy flow pipline. They are a lot like any flow in the pipeline, but they only execute when a policy throws an error and when the fault rule's condition evaluates to true. 
 * **Conditional flows** allow you to control how Edge processes a proxy dynamically. Usually a condition tests the value of a flow variable that was set by another policy or flow event. 
 * **Assign Message policy** is one of the most commonly used policies in Apigee Edge! It's used to set request and response headers, query parameters, and form parameters, as well as body payloads, and much more. It's kind of a Swiss Army Knife policy -- it does a lot of different things!
 
