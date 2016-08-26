@@ -26,7 +26,7 @@ printf "\nThe API key (Consumer Key) for the Learn Edge App is $key\n"
 
 ## Call the API -- It returns a custom error message. 
 
-printf "\nCall the API and notice that the custom headers are returned. Press Return to contine:\n"
+printf "\nCall the API and notice that it returns a custom error message. Press Return to contine:\n"
 read
 
 printf "\ncurl -i http://$org-$env.$api_domain/v1/learn-edge/json?apikey=$key\n\nResponse:\n"
