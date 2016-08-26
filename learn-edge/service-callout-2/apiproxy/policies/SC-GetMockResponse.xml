@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ServiceCallout async="false" continueOnError="false" enabled="true" name="SC-GetMockResponse">
+    <DisplayName>SC-GetMockResponse</DisplayName>
+    <Request clearPayload="false" variable="myrequest">
+        <IgnoreUnresolvedVariables>false</IgnoreUnresolvedVariables>
+    </Request>
+    <Response>mockresponse</Response>
+    <HTTPTargetConnection>
+        <Properties/>
+        <URL>http://mocktarget.apigee.net</URL>
+    </HTTPTargetConnection>
+    <Timeout>30000</Timeout>
+</ServiceCallout>

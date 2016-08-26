@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage async="false" continueOnError="false" enabled="true" name="AM-InvalidApiKeyMessage">
+    <DisplayName>AM-InvalidApiKeyMessage</DisplayName>
+    <FaultRules/>
+    <Properties/>
+    <Set>
+        <Payload contentType="application/json">\{&quot;error&quot;: \{&quot;message&quot;:&quot;{fault.name}&quot;, &quot;detail&quot;:&quot;Please provide valid API key in the apikey query parameter.}} </Payload>
+        <StatusCode>400</StatusCode>
+        <ReasonPhrase>BadRequest</ReasonPhrase>
+    </Set>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+    <AssignTo transport="http" createNew="false"></AssignTo>
+</AssignMessage>

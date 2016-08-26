@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<RaiseFault async="false" continueOnError="false" enabled="true" name="RF-RaiseCustomFault">
+    <DisplayName>RF-RaiseCustomFault</DisplayName>
+    <Properties/>
+    <FaultResponse>
+        <Set>
+            <Payload contentType="application/json">\{&quot;error&quot;: \{&quot;message&quot;:&quot;Page Not Found&quot;, &quot;details&quot;:&quot;Hello from Learn Edge! This is a custom message..}} </Payload>
+            <StatusCode>404</StatusCode>
+            <ReasonPhrase>Page not found.</ReasonPhrase>
+        </Set>
+    </FaultResponse>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+</RaiseFault>

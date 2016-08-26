@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<APIProxy revision="85" name="learn-edge">
+    <ConfigurationVersion majorVersion="4" minorVersion="0"/>
+    <CreatedAt>1472142244534</CreatedAt>
+    <CreatedBy>wwitman@apigee.com</CreatedBy>
+    <DisplayName>learn-edge</DisplayName>
+    <LastModifiedAt>1472222815168</LastModifiedAt>
+    <LastModifiedBy>wwitman@apigee.com</LastModifiedBy>
+    <Policies>
+        <Policy>AM-BuildRequest</Policy>
+        <Policy>AssignCustomHeaders</Policy>
+        <Policy>InvalidApiKeyMessage</Policy>
+        <Policy>ParseJsonResponse</Policy>
+        <Policy>RaiseCustomFault</Policy>
+        <Policy>ReadErrorVariables</Policy>
+        <Policy>ReadFaultVariables</Policy>
+        <Policy>ServiceCalloutGetMockResponse</Policy>
+        <Policy>VerifyAPIKey</Policy>
+    </Policies>
+    <ProxyEndpoints>
+        <ProxyEndpoint>default</ProxyEndpoint>
+    </ProxyEndpoints>
+    <Resources>
+        <Resource>jsc://ReadErrorVariables.js</Resource>
+    </Resources>
+    <TargetServers/>
+    <TargetEndpoints/>
+    <validate>false</validate>
+</APIProxy>

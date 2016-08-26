@@ -62,6 +62,10 @@ This is the recommended path through the examples. But you can do them in any or
 
     > Use the Service Callout policy to call a target service directly. This sample is a refactor of [extract-json-payload](./extract-json-payload/README.md).
 
+8. [service-callout-2](./service-callout-2/README.md)
+
+    > Check the response status from the target service. Throw a custom exception if the HTTP response status is 404. This sample is a refactor of [service-callout-1](./service-callout-1/README.md).
+
 
 ### Prerequisites
 

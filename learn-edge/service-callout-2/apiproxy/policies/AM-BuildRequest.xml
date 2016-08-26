@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage async="false" continueOnError="false" enabled="true" name="AM-BuildRequest">
+    <DisplayName>AM-BuildRequest</DisplayName>
+    <FaultRules/>
+    <Properties/>
+    <!-- Force an error by calling a path that does not exist -->
+    <Set>
+        <Path>/make-error</Path>
+    </Set>
+    <AssignVariable>
+        <Name>target.copy.pathsuffix</Name>
+        <Value>false</Value>
+    </AssignVariable>
+    <IgnoreUnresolvedVariables>false</IgnoreUnresolvedVariables>
+    <AssignTo type="request" transport="http" createNew="true">myrequest</AssignTo>
+</AssignMessage>
