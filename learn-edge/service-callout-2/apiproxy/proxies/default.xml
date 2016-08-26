@@ -5,7 +5,6 @@
         <FaultRule name="InvalidApiKey">
             <Condition>(fault.name Matches "InvalidApiKey") </Condition>
             <Step>
-                <FaultRules/>
                 <Name>AM-InvalidApiKeyMessage</Name>
             </Step>
         </FaultRule>
@@ -20,15 +19,12 @@
     <PreFlow name="PreFlow">
         <Request>
             <Step>
-                <FaultRules/>
                 <Name>VerifyAPIKey</Name>
             </Step>
             <Step>
-                <FaultRules/>
                 <Name>AM-BuildRequest</Name>
             </Step>
             <Step>
-                <FaultRules/>
                 <Name>SC-GetMockResponse</Name>
             </Step>
         </Request>
