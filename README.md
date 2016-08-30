@@ -137,6 +137,16 @@ You can deploy all of the samples to your organization at once using a simple se
 
 In addition to the sample proxies, this project includes the following:
 
+### `/learn-edge`
+
+The Learn Edge series is a hands-on learning experience for beginning Edge developers. Each example is designed to be quick and easy to do, teaches a core Apigee Edge concept or technique, and follows three basic steps:
+
+1. Deploy it.
+2. Run it.
+3. Trace it.
+
+The best way to learn Apigee Edge is by doing!
+
 ### `/schemas`
 
 XML schemas that you can  use as a reference when working with policies, API proxy configuration,
