@@ -5,21 +5,6 @@
   <xs:element name="Property" type="propertyBean"/>
   <xs:element name="ValidateSAMLAssertion" type="validateSAMLAssertionBean"/>
   <xs:element name="stepDefinitionBean" type="stepDefinitionBean"/>
-  <xs:complexType name="generateSAMLAssertionBean">
-    <xs:complexContent>
-      <xs:extension base="abstractSAMLAssertionBean">
-        <xs:sequence>
-          <xs:element name="CanonicalizationAlgorithm" type="propertyBean" minOccurs="0"/>
-          <xs:element name="Issuer" type="propertyBean"/>
-          <xs:element name="KeyStore" type="keyStoreEntry" minOccurs="0"/>
-          <xs:element name="OutputVariable" type="outputVariable" minOccurs="0"/>
-          <xs:element name="SignatureAlgorithm" type="propertyBean" minOccurs="0"/>
-          <xs:element name="Subject" type="propertyBean" minOccurs="0"/>
-          <xs:element name="Template" type="template" minOccurs="0"/>
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
   <xs:complexType name="abstractSAMLAssertionBean">
     <xs:complexContent>
       <xs:extension base="stepDefinitionBean">
@@ -42,30 +27,6 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:complexType name="leafBean" abstract="true"/>
-  <xs:complexType name="propertyBean">
-    <xs:simpleContent>
-      <xs:extension base="xs:string">
-        <xs:attribute name="ref" type="xs:string"/>
-        <xs:attribute name="type" type="xs:string"/>
-      </xs:extension>
-    </xs:simpleContent>
-  </xs:complexType>
-  <xs:complexType name="keyStoreEntry">
-    <xs:sequence>
-      <xs:element name="Alias" type="propertyBean"/>
-      <xs:element name="Name" type="propertyBean"/>
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="outputVariable">
-    <xs:sequence>
-      <xs:element name="FlowVariable" type="flowVariable" minOccurs="0"/>
-      <xs:element name="Message" type="message" minOccurs="0"/>
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="flowVariable">
-    <xs:sequence/>
-    <xs:attribute name="name" type="xs:string"/>
-  </xs:complexType>
   <xs:complexType name="message" final="extension restriction">
     <xs:sequence>
       <xs:element name="Namespaces" minOccurs="0">
@@ -86,13 +47,6 @@
       </xs:extension>
     </xs:simpleContent>
   </xs:complexType>
-  <xs:complexType name="template" final="extension restriction">
-    <xs:simpleContent>
-      <xs:extension base="xs:string">
-        <xs:attribute name="ignoreUnresolvedVariables" type="xs:string"/>
-      </xs:extension>
-    </xs:simpleContent>
-  </xs:complexType>
   <xs:complexType name="validateSAMLAssertionBean">
     <xs:complexContent>
       <xs:extension base="abstractSAMLAssertionBean">
@@ -103,5 +57,51 @@
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="propertyBean">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute name="ref" type="xs:string"/>
+        <xs:attribute name="type" type="xs:string"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="generateSAMLAssertionBean">
+    <xs:complexContent>
+      <xs:extension base="abstractSAMLAssertionBean">
+        <xs:sequence>
+          <xs:element name="CanonicalizationAlgorithm" type="propertyBean" minOccurs="0"/>
+          <xs:element name="Issuer" type="propertyBean"/>
+          <xs:element name="KeyStore" type="keyStoreEntry" minOccurs="0"/>
+          <xs:element name="OutputVariable" type="outputVariable" minOccurs="0"/>
+          <xs:element name="SignatureAlgorithm" type="propertyBean" minOccurs="0"/>
+          <xs:element name="Subject" type="propertyBean" minOccurs="0"/>
+          <xs:element name="Template" type="template" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="keyStoreEntry">
+    <xs:sequence>
+      <xs:element name="Alias" type="propertyBean"/>
+      <xs:element name="Name" type="propertyBean"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="outputVariable">
+    <xs:sequence>
+      <xs:element name="FlowVariable" type="flowVariable" minOccurs="0"/>
+      <xs:element name="Message" type="message" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="flowVariable">
+    <xs:sequence/>
+    <xs:attribute name="name" type="xs:string"/>
+  </xs:complexType>
+  <xs:complexType name="template" final="extension restriction">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute name="ignoreUnresolvedVariables" type="xs:string"/>
+      </xs:extension>
+    </xs:simpleContent>
   </xs:complexType>
 </xs:schema>

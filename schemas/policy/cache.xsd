@@ -9,12 +9,17 @@
   <xs:element name="Property" type="propertyBean"/>
   <xs:element name="ResponseCache" type="responseCacheBean"/>
   <xs:element name="stepDefinitionBean" type="stepDefinitionBean"/>
-  <xs:complexType name="lookupCacheBean">
+  <xs:complexType name="responseCacheBean">
     <xs:complexContent>
       <xs:extension base="abstractCacheStepDefinitionBean">
         <xs:sequence>
-          <xs:element name="AssignTo" type="xs:string"/>
+          <xs:element name="ExpirySettings" type="cacheExpiryBean" minOccurs="0"/>
           <xs:element name="CacheLookupTimeoutInSeconds" type="xs:int" minOccurs="0"/>
+          <xs:element name="ExcludeErrorResponse" type="xs:boolean" minOccurs="0"/>
+          <xs:element name="SkipCacheLookup" type="xs:string" minOccurs="0"/>
+          <xs:element name="SkipCachePopulation" type="xs:string" minOccurs="0"/>
+          <xs:element name="UseAcceptHeader" type="xs:boolean" minOccurs="0"/>
+          <xs:element name="UseResponseCacheHeaders" type="xs:boolean" minOccurs="0"/>
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
@@ -44,10 +49,11 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:complexType name="leafBean" abstract="true"/>
-  <xs:complexType name="cacheKeyBean">
+  <xs:complexType name="cacheExpiryBean">
     <xs:sequence>
-      <xs:element name="Prefix" type="xs:string" minOccurs="0"/>
-      <xs:element name="KeyFragment" type="propertyBean" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="ExpiryDate" type="propertyBean" minOccurs="0"/>
+      <xs:element name="TimeOfDay" type="propertyBean" minOccurs="0"/>
+      <xs:element name="TimeoutInSec" type="propertyBean" minOccurs="0"/>
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="propertyBean">
@@ -57,6 +63,22 @@
         <xs:attribute name="type" type="xs:string"/>
       </xs:extension>
     </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="cacheKeyBean">
+    <xs:sequence>
+      <xs:element name="Prefix" type="xs:string" minOccurs="0"/>
+      <xs:element name="KeyFragment" type="propertyBean" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="populateCacheBean">
+    <xs:complexContent>
+      <xs:extension base="abstractCacheStepDefinitionBean">
+        <xs:sequence>
+          <xs:element name="ExpirySettings" type="cacheExpiryBean" minOccurs="0"/>
+          <xs:element name="Source" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
   </xs:complexType>
   <xs:complexType name="invalidateCacheBean">
     <xs:complexContent>
@@ -75,34 +97,12 @@
       <xs:element name="TargetName" type="propertyBean" minOccurs="0"/>
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="populateCacheBean">
+  <xs:complexType name="lookupCacheBean">
     <xs:complexContent>
       <xs:extension base="abstractCacheStepDefinitionBean">
         <xs:sequence>
-          <xs:element name="ExpirySettings" type="cacheExpiryBean" minOccurs="0"/>
-          <xs:element name="Source" type="xs:string"/>
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:complexType name="cacheExpiryBean">
-    <xs:sequence>
-      <xs:element name="ExpiryDate" type="propertyBean" minOccurs="0"/>
-      <xs:element name="TimeOfDay" type="propertyBean" minOccurs="0"/>
-      <xs:element name="TimeoutInSec" type="propertyBean" minOccurs="0"/>
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="responseCacheBean">
-    <xs:complexContent>
-      <xs:extension base="abstractCacheStepDefinitionBean">
-        <xs:sequence>
-          <xs:element name="ExpirySettings" type="cacheExpiryBean" minOccurs="0"/>
+          <xs:element name="AssignTo" type="xs:string"/>
           <xs:element name="CacheLookupTimeoutInSeconds" type="xs:int" minOccurs="0"/>
-          <xs:element name="ExcludeErrorResponse" type="xs:boolean" minOccurs="0"/>
-          <xs:element name="SkipCacheLookup" type="xs:string" minOccurs="0"/>
-          <xs:element name="SkipCachePopulation" type="xs:string" minOccurs="0"/>
-          <xs:element name="UseAcceptHeader" type="xs:boolean" minOccurs="0"/>
-          <xs:element name="UseResponseCacheHeaders" type="xs:boolean" minOccurs="0"/>
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>

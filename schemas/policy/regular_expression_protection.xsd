@@ -136,13 +136,13 @@
   </xs:complexType>
   <xs:simpleType name="type">
     <xs:restriction base="xs:string">
-      <xs:enumeration value="integer"/>
-      <xs:enumeration value="float"/>
       <xs:enumeration value="nodeset"/>
-      <xs:enumeration value="string"/>
-      <xs:enumeration value="boolean"/>
       <xs:enumeration value="long"/>
+      <xs:enumeration value="boolean"/>
+      <xs:enumeration value="integer"/>
+      <xs:enumeration value="string"/>
       <xs:enumeration value="double"/>
+      <xs:enumeration value="float"/>
     </xs:restriction>
   </xs:simpleType>
 </xs:schema>

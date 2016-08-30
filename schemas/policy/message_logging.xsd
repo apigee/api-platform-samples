@@ -39,10 +39,10 @@
   </xs:complexType>
   <xs:simpleType name="logLevel">
     <xs:restriction base="xs:string">
-      <xs:enumeration value="ALERT"/>
-      <xs:enumeration value="INFO"/>
       <xs:enumeration value="WARN"/>
+      <xs:enumeration value="INFO"/>
       <xs:enumeration value="ERROR"/>
+      <xs:enumeration value="ALERT"/>
     </xs:restriction>
   </xs:simpleType>
 </xs:schema>

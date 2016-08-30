@@ -155,19 +155,19 @@
   </xs:simpleType>
   <xs:simpleType name="type">
     <xs:restriction base="xs:string">
+      <xs:enumeration value="float"/>
       <xs:enumeration value="nodeset"/>
       <xs:enumeration value="double"/>
-      <xs:enumeration value="long"/>
-      <xs:enumeration value="float"/>
-      <xs:enumeration value="string"/>
-      <xs:enumeration value="boolean"/>
       <xs:enumeration value="integer"/>
+      <xs:enumeration value="boolean"/>
+      <xs:enumeration value="long"/>
+      <xs:enumeration value="string"/>
     </xs:restriction>
   </xs:simpleType>
   <xs:simpleType name="match">
     <xs:restriction base="xs:string">
-      <xs:enumeration value="first"/>
       <xs:enumeration value="all"/>
+      <xs:enumeration value="first"/>
     </xs:restriction>
   </xs:simpleType>
 </xs:schema>

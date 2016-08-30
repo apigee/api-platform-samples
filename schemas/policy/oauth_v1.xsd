@@ -11,6 +11,69 @@
   <xs:element name="URL" type="oAuthV1URL"/>
   <xs:element name="VerifierCode" type="verifierCode"/>
   <xs:element name="stepDefinitionBean" type="stepDefinitionBean"/>
+  <xs:complexType name="getOAuthInfoBean">
+    <xs:complexContent>
+      <xs:extension base="stepDefinitionBean">
+        <xs:sequence>
+          <xs:element name="AccessToken" type="propertyBean" minOccurs="0"/>
+          <xs:element name="AppKey" type="propertyBean" minOccurs="0"/>
+          <xs:element name="OAuthConfig" type="xs:string" minOccurs="0"/>
+          <xs:element name="ConsumerKey" type="propertyBean" minOccurs="0"/>
+          <xs:element ref="GenerateErrorResponse" minOccurs="0"/>
+          <xs:element name="RequestToken" type="propertyBean" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="stepDefinitionBean" abstract="true">
+    <xs:complexContent>
+      <xs:extension base="leafBean">
+        <xs:sequence>
+          <xs:element name="DisplayName" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+        <xs:attribute name="name" type="xs:string" use="required"/>
+        <xs:attribute name="async" type="xs:string"/>
+        <xs:attribute name="continueOnError" type="xs:string"/>
+        <xs:attribute name="enabled" type="xs:string"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="leafBean" abstract="true"/>
+  <xs:complexType name="propertyBean">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute name="ref" type="xs:string"/>
+        <xs:attribute name="type" type="xs:string"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="generateErrorResponse">
+    <xs:complexContent>
+      <xs:extension base="generateResponse">
+        <xs:sequence>
+          <xs:element name="Realm" type="propertyBean" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="generateResponse">
+    <xs:sequence>
+      <xs:element name="Format" type="format" minOccurs="0"/>
+    </xs:sequence>
+    <xs:attribute name="enabled" type="xs:string"/>
+  </xs:complexType>
+  <xs:complexType name="deleteOAuthInfoBean">
+    <xs:complexContent>
+      <xs:extension base="stepDefinitionBean">
+        <xs:sequence>
+          <xs:element name="AccessToken" type="propertyBean" minOccurs="0"/>
+          <xs:element name="OAuthConfig" type="xs:string" minOccurs="0"/>
+          <xs:element name="RequestToken" type="propertyBean" minOccurs="0"/>
+          <xs:element name="Verifier" type="propertyBean" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
   <xs:complexType name="oAuthV1Bean">
     <xs:complexContent>
       <xs:extension base="stepDefinitionBean">
@@ -43,20 +106,6 @@
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
-  <xs:complexType name="stepDefinitionBean" abstract="true">
-    <xs:complexContent>
-      <xs:extension base="leafBean">
-        <xs:sequence>
-          <xs:element name="DisplayName" type="xs:string" minOccurs="0"/>
-        </xs:sequence>
-        <xs:attribute name="name" type="xs:string" use="required"/>
-        <xs:attribute name="async" type="xs:string"/>
-        <xs:attribute name="continueOnError" type="xs:string"/>
-        <xs:attribute name="enabled" type="xs:string"/>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:complexType name="leafBean" abstract="true"/>
   <xs:complexType name="appUserId">
     <xs:simpleContent>
       <xs:extension base="xs:string">
@@ -70,29 +119,6 @@
         <xs:attribute name="display" type="xs:string"/>
         <xs:attribute name="name" type="xs:string" use="required"/>
         <xs:attribute name="ref" type="xs:string"/>
-      </xs:extension>
-    </xs:simpleContent>
-  </xs:complexType>
-  <xs:complexType name="generateErrorResponse">
-    <xs:complexContent>
-      <xs:extension base="generateResponse">
-        <xs:sequence>
-          <xs:element name="Realm" type="propertyBean" minOccurs="0"/>
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:complexType name="generateResponse">
-    <xs:sequence>
-      <xs:element name="Format" type="format" minOccurs="0"/>
-    </xs:sequence>
-    <xs:attribute name="enabled" type="xs:string"/>
-  </xs:complexType>
-  <xs:complexType name="propertyBean">
-    <xs:simpleContent>
-      <xs:extension base="xs:string">
-        <xs:attribute name="ref" type="xs:string"/>
-        <xs:attribute name="type" type="xs:string"/>
       </xs:extension>
     </xs:simpleContent>
   </xs:complexType>
@@ -132,32 +158,6 @@
       </xs:extension>
     </xs:simpleContent>
   </xs:complexType>
-  <xs:complexType name="getOAuthInfoBean">
-    <xs:complexContent>
-      <xs:extension base="stepDefinitionBean">
-        <xs:sequence>
-          <xs:element name="AccessToken" type="propertyBean" minOccurs="0"/>
-          <xs:element name="AppKey" type="propertyBean" minOccurs="0"/>
-          <xs:element name="OAuthConfig" type="xs:string" minOccurs="0"/>
-          <xs:element name="ConsumerKey" type="propertyBean" minOccurs="0"/>
-          <xs:element ref="GenerateErrorResponse" minOccurs="0"/>
-          <xs:element name="RequestToken" type="propertyBean" minOccurs="0"/>
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:complexType name="deleteOAuthInfoBean">
-    <xs:complexContent>
-      <xs:extension base="stepDefinitionBean">
-        <xs:sequence>
-          <xs:element name="AccessToken" type="propertyBean" minOccurs="0"/>
-          <xs:element name="OAuthConfig" type="xs:string" minOccurs="0"/>
-          <xs:element name="RequestToken" type="propertyBean" minOccurs="0"/>
-          <xs:element name="Verifier" type="propertyBean" minOccurs="0"/>
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
   <xs:simpleType name="format">
     <xs:restriction base="xs:string">
       <xs:enumeration value="FORM_PARAM"/>
@@ -169,9 +169,9 @@
       <xs:enumeration value="ValidateToken"/>
       <xs:enumeration value="GenerateVerifier"/>
       <xs:enumeration value="VerifyAccessToken"/>
-      <xs:enumeration value="GenerateAccessToken"/>
       <xs:enumeration value="GenerateRequestToken"/>
       <xs:enumeration value="InvalidateToken"/>
+      <xs:enumeration value="GenerateAccessToken"/>
     </xs:restriction>
   </xs:simpleType>
 </xs:schema>

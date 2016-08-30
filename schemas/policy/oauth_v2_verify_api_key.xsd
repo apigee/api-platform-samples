@@ -10,59 +10,6 @@
   <xs:element name="SetOAuthV2Info" type="setOAuthV2InfoBean"/>
   <xs:element name="VerifyAPIKey" type="verifyAPIKeyBean"/>
   <xs:element name="stepDefinitionBean" type="stepDefinitionBean"/>
-  <xs:complexType name="verifyAPIKeyBean">
-    <xs:complexContent>
-      <xs:extension base="stepDefinitionBean">
-        <xs:sequence>
-          <xs:element name="APIKey" type="propertyBean" minOccurs="0"/>
-          <xs:element name="OAuthConfig" type="xs:string" minOccurs="0"/>
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:complexType name="stepDefinitionBean" abstract="true">
-    <xs:complexContent>
-      <xs:extension base="leafBean">
-        <xs:sequence>
-          <xs:element name="DisplayName" type="xs:string" minOccurs="0"/>
-        </xs:sequence>
-        <xs:attribute name="name" type="xs:string" use="required"/>
-        <xs:attribute name="async" type="xs:string"/>
-        <xs:attribute name="continueOnError" type="xs:string"/>
-        <xs:attribute name="enabled" type="xs:string"/>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:complexType name="leafBean" abstract="true"/>
-  <xs:complexType name="propertyBean">
-    <xs:simpleContent>
-      <xs:extension base="xs:string">
-        <xs:attribute name="ref" type="xs:string"/>
-        <xs:attribute name="type" type="xs:string"/>
-      </xs:extension>
-    </xs:simpleContent>
-  </xs:complexType>
-  <xs:complexType name="getAPIProductBean">
-    <xs:complexContent>
-      <xs:extension base="stepDefinitionBean">
-        <xs:sequence>
-          <xs:element name="APIProduct" type="propertyBean" minOccurs="0"/>
-          <xs:element name="OAuthConfig" type="xs:string" minOccurs="0"/>
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:complexType name="deleteOAuthV2InfoBean">
-    <xs:complexContent>
-      <xs:extension base="stepDefinitionBean">
-        <xs:sequence>
-          <xs:element name="AccessToken" type="propertyBean" minOccurs="0"/>
-          <xs:element name="AuthorizationCode" type="propertyBean" minOccurs="0"/>
-          <xs:element name="OAuthConfig" type="xs:string" minOccurs="0"/>
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
   <xs:complexType name="oAuthV2Bean">
     <xs:complexContent>
       <xs:extension base="stepDefinitionBean">
@@ -117,6 +64,20 @@
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
+  <xs:complexType name="stepDefinitionBean" abstract="true">
+    <xs:complexContent>
+      <xs:extension base="leafBean">
+        <xs:sequence>
+          <xs:element name="DisplayName" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+        <xs:attribute name="name" type="xs:string" use="required"/>
+        <xs:attribute name="async" type="xs:string"/>
+        <xs:attribute name="continueOnError" type="xs:string"/>
+        <xs:attribute name="enabled" type="xs:string"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="leafBean" abstract="true"/>
   <xs:complexType name="customAttribute">
     <xs:simpleContent>
       <xs:extension base="xs:string">
@@ -140,6 +101,14 @@
       <xs:element name="Format" type="format" minOccurs="0"/>
     </xs:sequence>
     <xs:attribute name="enabled" type="xs:string"/>
+  </xs:complexType>
+  <xs:complexType name="propertyBean">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute name="ref" type="xs:string"/>
+        <xs:attribute name="type" type="xs:string"/>
+      </xs:extension>
+    </xs:simpleContent>
   </xs:complexType>
   <xs:complexType name="propertyExpiryBean">
     <xs:simpleContent>
@@ -172,6 +141,16 @@
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
+  <xs:complexType name="getAPIProductBean">
+    <xs:complexContent>
+      <xs:extension base="stepDefinitionBean">
+        <xs:sequence>
+          <xs:element name="APIProduct" type="propertyBean" minOccurs="0"/>
+          <xs:element name="OAuthConfig" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
   <xs:complexType name="getOAuthV2InfoBean">
     <xs:complexContent>
       <xs:extension base="stepDefinitionBean">
@@ -186,10 +165,31 @@
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
+  <xs:complexType name="deleteOAuthV2InfoBean">
+    <xs:complexContent>
+      <xs:extension base="stepDefinitionBean">
+        <xs:sequence>
+          <xs:element name="AccessToken" type="propertyBean" minOccurs="0"/>
+          <xs:element name="AuthorizationCode" type="propertyBean" minOccurs="0"/>
+          <xs:element name="OAuthConfig" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="verifyAPIKeyBean">
+    <xs:complexContent>
+      <xs:extension base="stepDefinitionBean">
+        <xs:sequence>
+          <xs:element name="APIKey" type="propertyBean" minOccurs="0"/>
+          <xs:element name="OAuthConfig" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
   <xs:simpleType name="format">
     <xs:restriction base="xs:string">
-      <xs:enumeration value="XML"/>
       <xs:enumeration value="FORM_PARAM"/>
+      <xs:enumeration value="XML"/>
     </xs:restriction>
   </xs:simpleType>
 </xs:schema>

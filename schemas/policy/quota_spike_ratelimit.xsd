@@ -12,12 +12,15 @@
   <xs:element name="ResetQuotaStepDefinition" type="quota"/>
   <xs:element name="SpikeArrest" type="spikeArrestBean"/>
   <xs:element name="stepDefinitionBean" type="stepDefinitionBean"/>
-  <xs:complexType name="rateLimitBean" abstract="true">
+  <xs:complexType name="concurrentRatelimitBean">
     <xs:complexContent>
       <xs:extension base="stepDefinitionBean">
         <xs:sequence>
-          <xs:element name="Identifier" type="clientIdentifier" minOccurs="0"/>
-          <xs:element name="MessageWeight" type="messageWeight" minOccurs="0"/>
+          <xs:element ref="AllowConnections"/>
+          <xs:element name="Distributed" type="xs:boolean"/>
+          <xs:element name="TargetIdentifier" type="targetIdentifier"/>
+          <xs:element name="StrictOnTtl" type="xs:boolean"/>
+          <xs:element name="Synchronous" type="xs:boolean"/>
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
@@ -36,13 +39,15 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:complexType name="leafBean" abstract="true"/>
-  <xs:complexType name="clientIdentifier">
+  <xs:complexType name="connectionsAllowedLimit">
     <xs:sequence/>
-    <xs:attribute name="ref" type="xs:string" use="required"/>
+    <xs:attribute name="count" type="xs:long" use="required"/>
+    <xs:attribute name="ttl" type="xs:int" use="required"/>
   </xs:complexType>
-  <xs:complexType name="messageWeight">
+  <xs:complexType name="targetIdentifier">
     <xs:sequence/>
-    <xs:attribute name="ref" type="xs:string" use="required"/>
+    <xs:attribute name="name" type="xs:string"/>
+    <xs:attribute name="ref" type="xs:string"/>
   </xs:complexType>
   <xs:complexType name="resetQuotaBean">
     <xs:complexContent>
@@ -89,16 +94,26 @@
         <xs:sequence>
           <xs:element ref="Allow" minOccurs="0"/>
           <xs:element name="AsynchronousConfiguration" type="asynchronousConfiguration" minOccurs="0"/>
-          <xs:element name="Interval" type="propertyBean"/>
+          <xs:element name="Interval" type="propertyBean" minOccurs="0"/>
           <xs:element name="DataStoreFailureModeOpen" type="xs:boolean"/>
           <xs:element name="Distributed" type="xs:boolean"/>
           <xs:element name="PreciseAtSecondsLevel" type="xs:boolean"/>
           <xs:element ref="Alert" minOccurs="0" maxOccurs="unbounded"/>
           <xs:element name="StartTime" type="xs:string" minOccurs="0"/>
           <xs:element name="Synchronous" type="xs:boolean"/>
-          <xs:element name="TimeUnit" type="propertyBean"/>
+          <xs:element name="TimeUnit" type="propertyBean" minOccurs="0"/>
         </xs:sequence>
         <xs:attribute name="type" type="xs:string"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="rateLimitBean" abstract="true">
+    <xs:complexContent>
+      <xs:extension base="stepDefinitionBean">
+        <xs:sequence>
+          <xs:element name="Identifier" type="clientIdentifier" minOccurs="0"/>
+          <xs:element name="MessageWeight" type="messageWeight" minOccurs="0"/>
+        </xs:sequence>
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
@@ -136,27 +151,13 @@
     </xs:sequence>
     <xs:attribute name="count" type="xs:long" use="required"/>
   </xs:complexType>
-  <xs:complexType name="concurrentRatelimitBean">
-    <xs:complexContent>
-      <xs:extension base="stepDefinitionBean">
-        <xs:sequence>
-          <xs:element ref="AllowConnections"/>
-          <xs:element name="Distributed" type="xs:boolean"/>
-          <xs:element name="TargetIdentifier" type="targetIdentifier"/>
-          <xs:element name="StrictOnTtl" type="xs:boolean"/>
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:complexType name="connectionsAllowedLimit">
+  <xs:complexType name="clientIdentifier">
     <xs:sequence/>
-    <xs:attribute name="count" type="xs:long" use="required"/>
-    <xs:attribute name="ttl" type="xs:int" use="required"/>
+    <xs:attribute name="ref" type="xs:string" use="required"/>
   </xs:complexType>
-  <xs:complexType name="targetIdentifier">
+  <xs:complexType name="messageWeight">
     <xs:sequence/>
-    <xs:attribute name="name" type="xs:string"/>
-    <xs:attribute name="ref" type="xs:string"/>
+    <xs:attribute name="ref" type="xs:string" use="required"/>
   </xs:complexType>
   <xs:complexType name="spikeArrestBean">
     <xs:complexContent>

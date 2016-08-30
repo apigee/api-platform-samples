@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0">
+  <xs:element name="TreatAsArray" type="xml2JSONTreatAsArray"/>
   <xs:element name="XMLToJSON" type="xml2JSONBean"/>
   <xs:element name="stepDefinitionBean" type="stepDefinitionBean"/>
   <xs:complexType name="xml2JSONBean">
@@ -43,6 +44,20 @@
       <xs:element name="AttributePrefix" type="xs:string" minOccurs="0"/>
       <xs:element name="OutputPrefix" type="xs:string" minOccurs="0"/>
       <xs:element name="OutputSuffix" type="xs:string" minOccurs="0"/>
+      <xs:element name="StripLevels" type="xs:int"/>
+      <xs:element ref="TreatAsArray" minOccurs="0"/>
     </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="xml2JSONTreatAsArray">
+    <xs:sequence>
+      <xs:element name="Path" type="path" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="path">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute name="unwrap" type="xs:boolean" use="required"/>
+      </xs:extension>
+    </xs:simpleContent>
   </xs:complexType>
 </xs:schema>
