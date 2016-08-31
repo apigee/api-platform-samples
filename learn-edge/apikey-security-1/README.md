@@ -12,9 +12,9 @@ Run this script to provision an API Product, Developer, and Developer App to Edg
 
 1. `cd api-platform-samples/learn-edge/provisioning`
 
-    **Note:** It's optional, but feel free to examine the script. It uses Apigee Edge Management APIs to upload the entities to Edge. That's why you're required to enter your Apigee password -- it is required whenever you use the management APIs. 
-
 3. Run `./setup.sh` and follow the prompts.
+
+    **Note:** It's optional, but feel free to examine the script. It uses Apigee Edge Management APIs to upload the entities to Edge. That's why you're required to enter your Apigee password -- it is required whenever you use the management APIs.
 
 4. Note that a **Consumer key**, a random string of numbers and letters, is returned from the provisioning script. This is the key that we'll use later to secure the API proxy. Later, you'll see exactly where the key comes from.
 
