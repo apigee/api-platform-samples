@@ -9,9 +9,9 @@ then
   exit
 elif [ $response -eq 403 ]
 then
-  printf Organization $org is invalid!
-  printf Please re-run the script using the right org.
+  printf "\nOrganization $org is invalid!\n"
+  printf "Please re-run the script using the right org.\n"
   exit
 else
   printf "\nCredentials verfied! Proceeding with deployment.\n\n"
-fi;
+fi
