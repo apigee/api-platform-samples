@@ -14,19 +14,27 @@ getTestData(org,env,sample,function(data){
 var url = 'https://' + org + '-' + env + '.apigee.net/v0/hello'
 
 describe('Running test for helloworld', function(){
+    describe('calling ' + url, function(){
+        it('call the proxy', function(done) {
 
-    it('call the proxy', function(done) {
-
-      $.ajax({
-          url:url,
-          method: 'GET',
-          success:function(body){ 
-            console.log(body)
-            assert(body)
-            done()
-          },
-          error: function(xhr,status,error){
-            done(error)
+          $.ajax({
+              url:url,
+              method: 'GET',
+              complete:function(xhr,statusText){ next(null,xhr.status),
+              success:function(body){ 
+                console.log(body)
+                assert(body)
+                done()
+              },
+              function(cberror,codes){
+				var success_200 = 0
+				codes.forEach(function(s){ if (s==200) success_200++})
+				assert.equal(2,success_200)
+				done(cberror),
+              error: function(xhr,status,error){
+                done(error)
+              }
           }
       })
+   })
 })
