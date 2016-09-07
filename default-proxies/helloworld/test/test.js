@@ -1,7 +1,7 @@
 var expect  = require("chai").expect;
 var request = require("request");
 // Configure and uncomment the following for local testing using `npm test`.
-// Then comment the org and env variables further down.
+// Then comment out all vars further down except url.
 // var org = "your_org"; 
 // var env = "test";
 
