@@ -36,4 +36,9 @@ gulp.task('clean',function(){
     opts.proxies = PROXY_NAME
     opts.environments = 'test'
     
+    var sdk = apigeetool.getPromiseSDK()
+    return sdk.undeploy(opts)
+              .then(function(){ return sdk.delete(opts)})
+                console.log(app)
+
 })
