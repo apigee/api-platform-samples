@@ -6,7 +6,6 @@ var request = require("request");
 
 
 var url = "https://" + org + "-" + env + ".apigee.net/v0/hello"
-//var url = "https://apigeedocs-test.apigee.net/v0/hello"
 describe("Running test for helloworld", function(){
     describe("Doing a GET on " + url, function(){
         it("returns status 200", function(done) {
