@@ -12,20 +12,21 @@ getTestData(org,env,sample,function(data){
 })
 
 var url = 'https://' + org + '-' + env + '.apigee.net/v0/hello'
-describe('helloworld', function(){
-	describe('calling ' + url, function(){
-		it('1 API call', function(done){
-			async.times(1,function(n,next){
-				$.ajax({
-					url:url,
-					complete:function(xhr,statusText){ next(null,xhr.status)}
-				})
-			},function(cberror,codes){
-				var success_200 = 0				
-				codes.forEach(function(s){ if (s==200) success_200++}) 
-				assert.equal(2,success_200)
-				done(cberror)
-			})
-		})
-	})
+
+describe('Running test for helloworld', function(){
+
+    it('call the proxy', function(done) {
+
+      $.ajax({
+          url:url,
+          method: 'GET',
+          success:function(body){ 
+            console.log(body)
+            assert(body)
+            done()
+          },
+          error: function(xhr,status,error){
+            done(error)
+          }
+      })
 })
