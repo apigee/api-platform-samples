@@ -16,7 +16,8 @@
   },
   "dependencies":{
     "gulp":"*",
-    "apigeetool" : "https://github.com/mukundha/apigeetool-node"
+    "apigeetool" : "https://github.com/mukundha/apigeetool-node",
+    "seed-sdk" : "https://github.com/mukundha/seed-sdk"
   },
   "author": "fjones@apigee.com",
   "license": "ISC"
