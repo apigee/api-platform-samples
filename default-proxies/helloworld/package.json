@@ -2,12 +2,13 @@
   "name": "helloworld",
   "version": "0.0.1",
   "description": "OOTB hello world proxy that calls http://mocktarget.apigee.net",
-  "main": "index.js",
+  "main": "none",
   "directories": {
-    "test": "tests"
+    "test": "test"
   },
   "scripts": {
-    "test": "mocha "
+    "start": "node deploy/deploy.js",
+    "test": "mocha -R spec"
   },
   "dependencies":{
     "chai":"*",

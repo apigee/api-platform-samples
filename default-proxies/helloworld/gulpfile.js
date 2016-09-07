@@ -33,5 +33,7 @@ gulp.task('deploy',function(){
 
 gulp.task('clean',function(){
 	opts.api = PROXY_NAME
+    opts.proxies = PROXY_NAME
+    opts.environments = 'test'
     
 })
