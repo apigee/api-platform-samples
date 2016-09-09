@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<KeyValueMapOperations async="false" continueOnError="false" enabled="true" name="putKeyValueMap" mapIdentifier="AppKeyMap">
+    <DisplayName>putKeyValueMap</DisplayName>
+    <Properties/>
+    <ExclusiveCache>false</ExclusiveCache>
+    <ExpiryTimeInSecs>300</ExpiryTimeInSecs>
+    <Put override="true">
+        <Key>
+            <Parameter ref="request.queryparam.apikey"/>
+        </Key>
+        <Value ref="developer.app.name"/>
+    </Put>
+    <Scope>environment</Scope>
+</KeyValueMapOperations>
