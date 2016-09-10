@@ -59,6 +59,10 @@ find api-platform-samples -name '*tests.json' -print0 | while IFS= read -r -d ''
 done
 sudo sed -i.bu '\$d' master.json
 echo ']' >> master.json
+find api-platform-samples -name '*.zip' -print0 | while IFS= read -r -d '' file; do
+    cp $file apitestframework/APITestFramework/src/resources/customers/apigee-docs/resources/bundles
+    echo $file
+done
 " > generateJson.sh
 
 rm -f master.json.bu

@@ -36,7 +36,7 @@
   {
     "TestId": "TC-APIGEE-HEALTHCHECK-API-UNDEPLOY",
     "GroupId": "null",
-    "ProxyHost": "null",
+    "ProxyHost": "api.e2e.apigee.net",
     "HttpMethod": "POST",
     "Uri": "/v1/o/apigee-docs/apis/apigee-healthcheck/revisions/#[TC-APIGEE-HEALTHCHECK-API-GET-DEPLOYED-REVISION]@revision/deployments",
     "QueryParam": "action=undeploy;env=test;force=force",
