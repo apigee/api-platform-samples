@@ -83,5 +83,22 @@
     "OutputValueCheck": "name=apigee-docs;value=healthcheck@apigee.com,apigee-healthcheck,/v0/apigee/healthcheck,secure",
     "Skip": "N",
     "TestDesc": "Configure Org for Healthcheck API"
+  },
+  {
+    "TestId": "TC-APIGEE-HEALTHCHECK-DEVELOPER",
+    "GroupId": "null",
+    "ProxyHost": "api.e2e.apigee.net",
+    "HttpMethod": "POST",
+    "Uri": "/v1/o/apigee-docs/developers",
+    "QueryParam": "null",
+    "Headers": "Content-Type=application/json;[Basic Auth]=hdas+func@apigee.com:Apigee123",
+    "Body": "FILE=src/resources/customers/apigee-docs/resources/developer_body.json",
+    "ExpectedResponseCode": "HTTP/1.1 201 Created",
+    "ExpectedResponseMessage": "email=healthcheck@apigee.com;organizationName=apigee-docs",
+    "ResponseType": "json",
+    "StoreResponse": "null",
+    "OutputValueCheck": "null",
+    "Skip": "N",
+    "TestDesc": "Create Developer"
   }
 ]

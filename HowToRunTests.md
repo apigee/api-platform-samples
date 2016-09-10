@@ -59,8 +59,14 @@ find api-platform-samples -name '*tests.json' -print0 | while IFS= read -r -d ''
 done
 sudo sed -i.bu '\$d' master.json
 echo ']' >> master.json
+#find proxy zip files (pattern *.zip)
 find api-platform-samples -name '*.zip' -print0 | while IFS= read -r -d '' file; do
     cp $file apitestframework/APITestFramework/src/resources/customers/apigee-docs/resources/bundles
+    echo $file
+done
+#find POST body files (pattern *_body.* Eg: developer_body.json; healthchk-apiproduct_body.xml)
+find api-platform-samples -name '*_body.*' -print0 | while IFS= read -r -d '' file; do
+    cp $file apitestframework/APITestFramework/src/resources/customers/apigee-docs/resources
     echo $file
 done
 " > generateJson.sh
