@@ -13,9 +13,8 @@
   "dependencies":{
     "gulp":"*",
     "chai":"*",
-    "request":"*",
-    "apigeetool":"*",
-    "seed-sdk":"*"
+    "apigeetool" : "mukundha/apigeetool-node",
+    "seed-sdk" : "mukundha/seed-sdk"
   },
    "author": "fjones@apigee.com",
   "license": "ISC"
