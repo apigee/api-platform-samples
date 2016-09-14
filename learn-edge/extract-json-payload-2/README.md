@@ -1,4 +1,4 @@
-# Extract data from response based on a query string
+# Query for data in a JSON response payload
 
 This Learn Edge example demonstrates a technique to find and extract values from a JSON payload based on a query string. In this case, we pass the query string as a request parameter, and we use some clever coding in the Extract Variables policy to extract the data we queried for. 
 
