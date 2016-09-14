@@ -51,7 +51,7 @@ Go to the Edge UI and run a Trace on this API. Can you see that these custom res
 
 ### About what changed
 
-* Here's the Extract Variables policy that we use to extract a JSON property name given a value. This policy illustrates several ways to parse the JSON, as explained in the comments. 
+* Here's the Extract Variables policy that we use to extract a JSON property name given a value. This policy illustrates several ways to parse the JSON, as explained in the comments. The main thing to notice in this example is the pattern used to extract pod names based on the query parameter `request.queryparam.region`.
 
     ```xml
         <ExtractVariables name="EV-Parse-Json-Response">
