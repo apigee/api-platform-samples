@@ -14,7 +14,7 @@ For example, assume a target service returns this JSON response:
     } ]
 ```
 
-The goal of this example is to configure an Extract Variables policy to extract the name of a "pod" given the name of a "region". So, if we pass "us-west-2" as a query parameter, the policy will extract the value "pod2". We then return the extracted value to the client. 
+The goal of this example is to configure an Extract Variables policy to extract the name of a "pod" given the name of a "region". So, if we pass "us-west-2" as a query parameter, the policy will extract the value "pod2" and return that value to the client. 
 
 ### Prerequisites
 
