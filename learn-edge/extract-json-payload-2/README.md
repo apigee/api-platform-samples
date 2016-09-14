@@ -131,6 +131,7 @@ Go to the Edge UI and run a Trace on this API. Can you see that these custom res
 ### Things to try
 
 * Try invoking the API with different "region" parameters.
+* Configure a Fault Rule to return a custom error message if the query parameter does not match any region in the JSON. See the Learn Edge Fault Rule examples to get started. 
 * Try parsing the JSON response from an real external service (instead of the "fake" response created by the `AM-SetSampleResponse.xml` policy). 
 * Experiment with extracting queried data from an XML payload instead of JSON (to get started, try the `extract-xml-payload` example).
 
