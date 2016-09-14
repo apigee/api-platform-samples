@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage name="AM-Set-Custom-Response">
+    <AssignTo createNew="false" type="response"/>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+    <Set>
+        <Headers>
+            <!-- Variables populated by parsing JSON response with an ExtractVariables policy -->       
+            <Header name="x-first-pod-name-as-string">{desired_mp_pod_name_val}</Header>
+            <Header name="x-all-pod-names-as-array">{mp_pod_names}</Header>
+            <Header name="x-all-region-names-as-array">{mp_pod_regions}</Header>
+            <Header name="x-queried-pod-name-as-array">{desired_mp_pod_name}</Header>
+            <Header name="x-queried-pod-name-as-string">{mp_pod_name_val}</Header>            
+        </Headers>
+    </Set>
+    <Set>
+    <Payload contentType="application/json" variablePrefix="@" variableSuffix="#">
+	        {"name":"@request.queryparam.region#", "region":"@desired_mp_pod_name_val#"}
+	    </Payload>
+	</Set>
+</AssignMessage>

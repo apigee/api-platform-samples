@@ -1,0 +1,16 @@
+<AssignMessage name="AM-Set-Sample-Response">
+  <AssignTo createNew="false" type="response"></AssignTo>
+  <Set>
+    <Payload contentType="application/json">
+      [ {
+		  "name" : "pod1",
+		  "region" : "us-east-1"
+		}, {
+		  "name" : "pod2",
+		  "region" : "us-west-2"
+	 	} 
+	  ]
+    </Payload>
+  </Set>
+  <IgnoreUnresolvedVariables>false</IgnoreUnresolvedVariables>
+</AssignMessage>

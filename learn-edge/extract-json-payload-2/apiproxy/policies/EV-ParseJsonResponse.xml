@@ -1,0 +1,20 @@
+<ExtractVariables name="EV-Parse-Json-Response">
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+    <JSONPayload>
+        <Variable name="mp_pod_name_val">
+            <JSONPath>$.[0].name</JSONPath>            <!-- Returns first value pod1 -->
+        </Variable>
+        <Variable name="mp_pod_names">
+            <JSONPath>$.[*].name</JSONPath>            <!-- Returns array ["pod1","pod2"] -->
+        </Variable>
+        <Variable name="mp_pod_regions">
+            <JSONPath>$.[*].region</JSONPath>          <!-- Returns array ["us-east-1","us-west-2"] -->
+        </Variable>
+        <Variable name="desired_mp_pod_name">
+            <JSONPath>$.[?(@.region=='{request.queryparam.region}')].name</JSONPath>             <!-- Returns specific value as array ["pod1"] -->
+        </Variable>
+        <Variable name="desired_mp_pod_name_val">
+            <JSONPath>$.[?(@.region=='{request.queryparam.region}')].name[0]</JSONPath>             <!-- Returns specific value as string pod1 -->
+        </Variable>
+    </JSONPayload>
+</ExtractVariables>

@@ -26,7 +26,7 @@ We assume you've provisioned the Product, Developer App, and Developer as explai
 
 ### Trace it
 
-Go to the Edge UI and run a Trace on this API. You can see Extract Variables exectues and the custom headers are populated. 
+Go to the Edge UI and run a Trace on this API. You can see Extract Variables executes and the custom headers are populated. 
 
 ### About what changed
 
@@ -99,7 +99,7 @@ Of interest: It's a good idea to use a VariablePrefix in this policy -- it gets 
 
 ### Next step
 
-The next proxy, [extract-xml-payload](../extract-xml-payload/README.md), extracts data from an XML request payload and returns it in a custom XML response body. 
+The next proxy, [extract-json-payload-2](../extract-json-payload-2/README.md), illustrates a clever use of the Extract Variables policy that extracts a data from a JSON response based on a query string. 
 
 
 ### Ask the community
