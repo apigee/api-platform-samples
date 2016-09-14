@@ -50,7 +50,7 @@ This is the recommended path through the examples. But you can do them in any or
 
     >Extract data from a JSON payload and return the data in custom response headers.
     
-7. 6. [extract-json-payload-2](./extract-json-payload-2/README.md)
+7. [extract-json-payload-2](./extract-json-payload-2/README.md)
 
     >Query for data to extract from a JSON response payload.
 
