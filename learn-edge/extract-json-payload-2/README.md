@@ -36,7 +36,7 @@ We assume you've provisioned the Product, Developer App, and Developer as explai
 ### Run it
 
 1. `./invoke.sh`
-4. Compare the output to the `response-cache` output. 
+4. Note that a set of custom headers are returned. They all start with `x-`.  
 
 ### Trace it
 
