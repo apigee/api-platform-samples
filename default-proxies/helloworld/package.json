@@ -1,0 +1,21 @@
+{
+  "name": "helloworld",
+  "version": "0.0.1",
+  "description": "OOTB hello world proxy that calls http://mocktarget.apigee.net",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "start": "node deploy/deploy.js",
+    "test": "mocha --reporter spec"
+  },
+  "dependencies":{
+    "gulp":"*",
+    "chai":"*",
+    "apigeetool" : "mukundha/apigeetool-node",
+    "seed-sdk" : "mukundha/seed-sdk"
+  },
+   "author": "fjones@apigee.com",
+  "license": "ISC"
+}
