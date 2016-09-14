@@ -49,8 +49,12 @@ This is the recommended path through the examples. But you can do them in any or
 6. [extract-json-payload](./extract-json-payload/README.md)
 
     >Extract data from a JSON payload and return the data in custom response headers.
+    
+7. 6. [extract-json-payload-2](./extract-json-payload-2/README.md)
 
-7. [extract-xml-payload](./extract-json-payload/README.md)
+    >Query for data to extract from a JSON response payload.
+
+7. [extract-xml-payload](./extract-xml-payload/README.md)
 
     >Extract data from an XML request body and set a custom XML response body. 
 
