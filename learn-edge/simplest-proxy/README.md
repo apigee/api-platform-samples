@@ -37,7 +37,8 @@ Be sure to perform the [prerequisites](https://github.com/apigee/api-platform-sa
 In every Learn Edge example, we'll remind you to trace API calls in the Edge UI. Here are the basic steps that you'll repeat again and again:
 
 1. Log in to your Apigee account. 
-2. Go to **APIs->API Proxies**. 
+2. If necessary, go to the **API Management** page.
+3. Go to **APIs->API Proxies**. 
 5. Click the proxy named **learn-edge**. 
 6. In the **Overview** tab, notice that the Proxy URL is `http://<your org name>-test.apigee.net/v1/learn-edge`. This is the Proxy URL: you will use this URL to call the proxy. 
 7. Click the **Develop** tab. This is the UI-based development environment for proxies.  
