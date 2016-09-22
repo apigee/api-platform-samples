@@ -1,8 +1,8 @@
 #!/bin/bash
 
-## Ask the user for input.
+## Ensure that user config vars have been set
 
-source ../scripts/set_env.sh
+source ../../setup/userconf.sh
 
 ## Call the API
 

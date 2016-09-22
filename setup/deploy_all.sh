@@ -1,34 +1,12 @@
 #!/bin/bash
 
-source ./setenv.sh
+source ./userconf.sh
 
 echo This script deploys all sample API proxies under ./sample-proxies to your organization on the Apigee API Platform.
 
-echo Be sure to populate values in setenv.sh in this directory before running this script.
-
 echo Using $username in $org.
 
-echo "Enter your password for the Apigee Enterprise organization $org, followed by [ENTER]:"
-
-read -s password
-
-echo Verifying credentials...
-
-response=`curl -s -o /dev/null -I -w "%{http_code}" https://api.enterprise.apigee.com/v1/organizations/$org -u $username:$password`
-
-if [ $response -eq 401 ]
-then
-  echo "Authentication failed!"
-  echo "Please re-run the script using the right username/password."
-  exit
-elif [ $response -eq 403 ]
-then
-  echo Organization $org is invalid!
-  echo Please re-run the script using the right org.
-  exit
-else
-  echo "Verfied! Proceeding with deployment."
-fi;
+get_password
 
 echo Deploying all samples to $env using $username and $org
 
