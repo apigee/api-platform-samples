@@ -128,13 +128,13 @@ Configure Loginapp
 1. Open `login-app/apiproxy/resources/node/config/config.js`
 2. Enter your environment information. The domain will typically be `apigee.net`. Some on-premise installations of Apigee Edge may use a different domain. For example:
 
-      ```
+```
           exports.envInfo = {
              org: 'Your org name on Edge',
              env: 'Your environment on Edge (test or prod)',
              domain: 'apigee.net'
           };
-      ```
+```
 3. Deploy the login-app bundle.
 
 **Provision the webserver-app**
@@ -142,15 +142,15 @@ Configure Loginapp
 2. Open the file `webserver-app.xml` in an editor.
 3. Edit the ```<CallbackUrl>``` element as follows, substituting your Edge organization and environment names:
 
-    ```xml
+```xml
        <CallbackUrl>https://org-env.apigee.net/web/callback<CallbackUrl>
-    ```
+```
 
-    for example:
+for example:
 
-    ```xml
+```xml
        <CallbackUrl>https://myorg-test.apigee.net/web/callback<CallbackUrl>
-    ```
+```
 
 >**Important! Make a note of this exact callback URL. You will need to add it to another configuration file later.**
 
