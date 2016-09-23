@@ -265,6 +265,8 @@ _redo_config()
 # convenience routine to get the password in a standard way.
 # get the password, verify it, try up to some number of times.
 # return 1 on error.
+# the password is stored in the variable "password".
+#
 get_password()
 {
 	local i
