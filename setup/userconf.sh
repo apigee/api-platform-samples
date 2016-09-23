@@ -232,7 +232,7 @@ _print_conf()
 	echo "# ----- User config settings for learn-edge"
 	_hint_comment
 	for var in "${vars[@]}"; do
-		echo "$var=$(_protect "${!var}")"
+		echo "export $var=$(_protect "${!var}")"
 	done
 	# config_ok signifies that the file was completely written
 	echo "config_ok=y"
