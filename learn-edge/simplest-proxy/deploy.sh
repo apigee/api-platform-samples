@@ -2,13 +2,11 @@
 
 ## Ask the user for input.
 
-source ../scripts/set_env.sh
+source ../../setup/userconf.sh || exit 1
+
 source ../scripts/deploy_proxy.sh
 
-printf "\nEnter your password for the Apigee Enterprise organization $org, followed by [ENTER]:\n"
-read -s password
-
-source ../scripts/verify_credentials.sh
+get_password || exit 1
 
 ## Deploy the proxy using apigeetool.
 

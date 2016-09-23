@@ -1,14 +1,12 @@
 #!/bin/bash
 
-source ./setenv.sh
+source ./userconf.sh
 
 echo "Enter directory name for sample proxy to be deployed, followed by [ENTER]:"
 
 read proxy
 
-echo "Enter your password for the Apigee Enterprise organization $org, followed by [ENTER]:"
-
-read -s password
+get_password
 
 echo Deploying $proxy to $env on $url using $username and $org
 
