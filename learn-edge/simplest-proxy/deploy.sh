@@ -2,7 +2,7 @@
 
 ## Ensure configuration variables have been set.
 source ../../setup/userconf.sh || exit 1
-get_password
+get_password || exit 1
 
 source ../scripts/deploy_proxy.sh
 
