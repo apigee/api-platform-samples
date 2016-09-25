@@ -2,7 +2,7 @@
 
 ## Ask the user for input.
 
-source ../scripts/set_env.sh
+source ../../setup/userconf.sh || exit 1
 
 
 ## Call the API
