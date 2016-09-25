@@ -16,7 +16,7 @@ Be sure to perform the [prerequisites](https://github.com/apigee/api-platform-sa
 
 3. `./deploy.sh` 
     
-    It's not important to deconstruct `deploy.sh` now. It just uses a command-line utility (apigeetool) to deploy the proxy. 
+    > Note: It's not important to deconstruct `deploy.sh` now. It just uses a command-line utility (apigeetool) to deploy the proxy. The first time you run deploy.sh, you'll be asked to provide your organization, environment, username, and other Apigee account details. This information is stored in a file `~\.learn-edge.rc`, which `deploy.sh` references on subsequent calls. You only need to enter your account information once unless you delete the `learn-edge.rc` file. 
 
 ### Run it
 
