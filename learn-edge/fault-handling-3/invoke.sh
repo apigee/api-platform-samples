@@ -2,9 +2,13 @@
 
 ## Ask the user for input.
 
+source ../scripts/set_env.sh
+
+printf "\nEnter your password for the Apigee Enterprise organization $org, followed by [ENTER]:\n"
+read -s password
+
+source ../scripts/verify_credentials.sh
 source ../scripts/verify_provisioning.sh
-source ../../setup/userconf.sh || exit 1
-get_password || exit 1
 
 
 ## Use the Edge Management API to get the API key.
@@ -35,12 +39,12 @@ curl -i "http://$org-$env.$api_domain/v1/learn-edge/json?apikey=$key"
 printf "\n\nCall the API with query parameters A, B, and C to trigger an error on the PROXY REQUEST FLOW. Press Return to continue:\n"
 read
 
-printf "\ncurl http://$org-$env.$api_domain/v1/learn-edge/json?A=true&B=false&C=false&apikey=$key\n\nResponse:\n"
+printf "\ncurl http://$org-$env.$api_domain/v1/learn-edge/json?A=true&B=true&C=true&apikey=$key\n\nResponse:\n"
 
 
-curl -i "http://$org-$env.$api_domain/v1/learn-edge/json?A=true&B=false&C=false&apikey=$key"
+curl -i "http://$org-$env.$api_domain/v1/learn-edge/json?A=true&B=true&C=true&apikey=$key"
 
-printf "\n\n** We triggered an error in the Proxy Endpoint. In the Proxy Endpoint, fault rule evaluation goes bottom to top (physically in the XML block), and the FIRST Fault Rule in the chain that evaluates to TRUE executes! Triggered by query param A."
+printf "\n\n** We triggered an error in the Proxy Endpoint. The LAST Fault Rule in the chain that evaluates to TRUE executes! Triggered by query param C."
 
 
 ## Call the API with three query parameters X, Y, and Z. 
@@ -48,12 +52,12 @@ printf "\n\n** We triggered an error in the Proxy Endpoint. In the Proxy Endpoin
 printf "\n\nCall the API with query parameters X, Y, and Z to trigger an error on the TARGET RESPONSE FLOW. Press Return to continue:\n"
 read
 
-printf "\ncurl http://$org-$env.$api_domain/v1/learn-edge/json?X=false&Y=false&Z=true&apikey=$key\n\nResponse:\n"
+printf "\ncurl http://$org-$env.$api_domain/v1/learn-edge/json?X=true&Y=true&Z=true&apikey=$key\n\nResponse:\n"
 
 
-curl -i "http://$org-$env.$api_domain/v1/learn-edge/json?X=false&Y=false&Z=true&apikey=$key"
+curl -i "http://$org-$env.$api_domain/v1/learn-edge/json?X=true&Y=true&Z=true&apikey=$key"
 
-printf "\n\n** We triggered an error in the Target Endpoint. In the Target Endpoint, fault rule evaluation goes top to bottom (physically in the XML block), and the FIRST Fault Rule in the chain that evaluates to TRUE executes! Triggered by query param X."
+printf "\n\n** We triggered an error in the Target Endpoint. The FIRST Fault Rule in the chain that evaluates to TRUE executes! Triggered by query param X."
 
 
 

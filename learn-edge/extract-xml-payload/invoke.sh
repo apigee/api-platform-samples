@@ -1,14 +1,10 @@
 #!/bin/bash
 
-# Ask the user for input.
+## Ask the user for input.
 
-source ../scripts/set_env.sh
-
-printf "\nEnter your password for the Apigee Enterprise organization $org, followed by [ENTER]:\n"
-read -s password
-
-source ../scripts/verify_credentials.sh
 source ../scripts/verify_provisioning.sh
+source ../../setup/userconf.sh || exit 1
+get_password || exit 1
 
 
 
@@ -40,7 +36,7 @@ printf "\n"
 printf "\nCall the API and notice that the company ID is returned in an XML response. Press Return to contine:\n"
 read
 
-printf "\ncurl -i -d @directions.xml -H "Content-Type: application/xml" http://$org-$env.$api_domain/learn-edge/companyId?apikey=$key\n\nResponse:\n"
+printf "\ncurl -i -d @company.xml -H "Content-Type: application/xml" http://$org-$env.$api_domain/learn-edge/companyId?apikey=$key\n\nResponse:\n"
 
 curl -i -d @company_info.xml -H "Content-Type: application/xml" "http://$org-$env.$api_domain/learn-edge/companyId?apikey=$key"
 printf "\n"

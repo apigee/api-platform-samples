@@ -2,10 +2,13 @@
 
 ## Ask the user for input.
 
-source ../scripts/verify_provisioning.sh
-source ../../setup/userconf.sh || exit 1
-get_password || exit 1
+source ../scripts/set_env.sh
 
+printf "\nEnter your password for the Apigee Enterprise organization $org, followed by [ENTER]:\n"
+read -s password
+
+source ../scripts/verify_credentials.sh
+source ../scripts/verify_provisioning.sh
 
 
 ## Use the Edge Management API to get the API key.
@@ -20,7 +23,7 @@ key=`curl -u $username:$password $url/v1/o/$org/developers/learn-edge-developer@
 printf "\nThe API key (Consumer Key) for the Learn Edge App is $key\n"
 
 
-## Call the API
+## Call the API with a valid API key.
 
 printf "\nCall the API with a valid API key. Press Return to contine:\n"
 read
@@ -30,7 +33,7 @@ printf "\ncurl http://$org-$env.$api_domain/v1/learn-edge/json?apikey=$key\n\nRe
 curl "http://$org-$env.$api_domain/v1/learn-edge/json?apikey=$key"
 
 
-## Call the API
+## Call the API with an invalid API key.
 
 printf "\n\nCall the API with a bad API key. Press Return to continue:\n"
 read
@@ -39,5 +42,31 @@ printf "\ncurl http://$org-$env.$api_domain/v1/learn-edge/json?apikey=ZZZZZZZZZZ
 
 
 curl -i "http://$org-$env.$api_domain/v1/learn-edge/json?apikey=ZZZZZZZZZZZZZZZZZZZZ"
+
+printf "\n"
+
+
+## Call the API with a resource path that does not match the key.
+
+printf "\n\nCall the API with a bad resource. Press Return to continue:\n"
+read
+
+printf "\ncurl http://$org-$env.$api_domain/v1/learn-edge/foobar?apikey=$key:\n"
+
+
+curl -i "http://$org-$env.$api_domain/v1/learn-edge/foobar?apikey=$key"
+
+printf "\n"
+
+
+## Call the API without the API key query parameter.
+
+printf "\n\nCall the API with the API key query parameter. Press Return to continue:\n"
+read
+
+printf "\ncurl http://$org-$env.$api_domain/v1/learn-edge/foobar?baz=$key:\n"
+
+
+curl -i "http://$org-$env.$api_domain/v1/learn-edge/foobar?baz=$key"
 
 printf "\n"

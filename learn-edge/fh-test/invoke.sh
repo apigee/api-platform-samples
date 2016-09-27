@@ -2,10 +2,13 @@
 
 ## Ask the user for input.
 
-source ../scripts/verify_provisioning.sh
-source ../../setup/userconf.sh || exit 1
-get_password || exit 1
+source ../scripts/set_env.sh
 
+printf "\nEnter your password for the Apigee Enterprise organization $org, followed by [ENTER]:\n"
+read -s password
+
+source ../scripts/verify_credentials.sh
+source ../scripts/verify_provisioning.sh
 
 
 ## Use the Edge Management API to get the API key.
@@ -27,7 +30,7 @@ read
 
 printf "\ncurl http://$org-$env.$api_domain/v1/learn-edge/json?apikey=$key\n\nResponse:\n"
 
-curl "http://$org-$env.$api_domain/v1/learn-edge/json?apikey=$key"
+curl -i "http://$org-$env.$api_domain/v1/learn-edge/json?apikey=$key"
 
 
 ## Call the API
