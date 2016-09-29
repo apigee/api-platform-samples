@@ -1,0 +1,14 @@
+{
+  "apiResources" : [ ],
+  "approvalType" : "auto",
+  "attributes" : [ ],
+  "description" : "apigee-healthcheck product for Apigee",
+  "displayName" : "apigee-healthcheck",
+  "environments" : [ "test", "prod" ],
+  "name" : "apigee-healthcheck",
+  "proxies" : ["apigee-healthcheck"],
+  "quota" : "5",
+  "quotaInterval" : "1",
+  "quotaTimeUnit" : "minute",
+  "scopes" : [ "" ]
+}

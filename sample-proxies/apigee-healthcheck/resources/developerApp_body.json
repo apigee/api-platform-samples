@@ -1,0 +1,8 @@
+{
+  "apiProducts": ["apigee-healthcheck"],
+  "attributes" : [ ],
+  "callbackUrl" : "http://example.com",
+  "name" : "apigee-healthcheck",
+  "scopes" : [ ],
+  "status" : "approved"
+}
