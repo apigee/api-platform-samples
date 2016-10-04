@@ -8,13 +8,13 @@ echo Be sure to populate values in setenv.sh in this directory before running th
 
 echo Using $username in $org.
 
-echo "Enter your password for the Apigee Enterprise organization $org, followed by [ENTER]:"
+#echo "Enter your password for the Apigee Enterprise organization $org, followed by [ENTER]:"
 
-read -s password
+#read -s password
 
 echo Verifying credentials...
 
-response=`curl -s -o /dev/null -I -w "%{http_code}" https://api.enterprise.apigee.com/v1/organizations/$org -u $username:$password`
+response=`curl -s -o /dev/null -I -w "%{http_code}" $url/v1/organizations/$org -u $username:$password`
 
 if [ $response -eq 401 ]
 then
@@ -34,9 +34,9 @@ echo Deploying all samples to $env using $username and $org
 
 echo Creating caches
 
-curl -X POST -H "Content-type:text/xml" -d @../sample-proxies/outbound-oauth/oauth-token-cache.xml https://api.enterprise.apigee.com/v1/o/$org/environments/$env/caches -u $username:$password
+curl -X POST -H "Content-type:text/xml" -d @../sample-proxies/outbound-oauth/oauth-token-cache.xml $url/v1/o/$org/environments/$env/caches -u $username:$password
 
-curl -X POST -H "Content-type:text/xml" -d @../sample-proxies/pagination/paginationCache.xml https://api.enterprise.apigee.com/v1/o/$org/environments/$env/caches -u $username:$password
+curl -X POST -H "Content-type:text/xml" -d @../sample-proxies/pagination/paginationCache.xml $url/v1/o/$org/environments/$env/caches -u $username:$password
 
 cd ../doc-samples/
 

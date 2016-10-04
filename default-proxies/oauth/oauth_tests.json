@@ -1,0 +1,53 @@
+[
+  {
+    "TestId": "TC-004",
+    "GroupId": "null",
+    "ProxyHost": "null",
+    "HttpMethod": "GET",
+    "Uri": "/v0/hello",
+    "QueryParam": "null",
+    "Headers": "null",
+    "Body": "null",
+    "ExpectedResponseCode": "HTTP/1.1 200 OK",
+    "ExpectedResponseMessage": "Hello, Guest!",
+    "ResponseType": "text/HTML",
+    "StoreResponse": "null",
+    "OutputValueCheck": "null",
+    "Skip": "N",
+    "TestDesc": "Hello Endpoint"
+  },
+  {
+    "TestId": "TC-005",
+    "GroupId": "null",
+    "ProxyHost": "null",
+    "HttpMethod": "GET",
+    "Uri": "/v0/hello/ip",
+    "QueryParam": "null",
+    "Headers": "null",
+    "Body": "null",
+    "ExpectedResponseCode": "HTTP/1.1 200 OK",
+    "ExpectedResponseMessage": "null",
+    "ResponseType": "json",
+    "StoreResponse": "null",
+    "OutputValueCheck": "null",
+    "Skip": "N",
+    "TestDesc": "GET IP Endpoint"
+  },
+  {
+    "TestId": "TC-O06",
+    "GroupId": "null",
+    "ProxyHost": "null",
+    "HttpMethod": "GET",
+    "Uri": "/v0/hello/iloveapis",
+    "QueryParam": "null",
+    "Headers": "null",
+    "Body": "null",
+    "ExpectedResponseCode": "HTTP/1.1 200 OK",
+    "ExpectedResponseMessage": "I <3 APIs",
+    "ResponseType": "text/HTML",
+    "StoreResponse": "null",
+    "OutputValueCheck": "null",
+    "Skip": "N",
+    "TestDesc": "I Love APIs Endpoint"
+  }
+]
