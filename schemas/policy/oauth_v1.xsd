@@ -166,12 +166,12 @@
   </xs:simpleType>
   <xs:simpleType name="operation">
     <xs:restriction base="xs:string">
+      <xs:enumeration value="GenerateAccessToken"/>
       <xs:enumeration value="ValidateToken"/>
       <xs:enumeration value="GenerateVerifier"/>
+      <xs:enumeration value="InvalidateToken"/>
       <xs:enumeration value="VerifyAccessToken"/>
       <xs:enumeration value="GenerateRequestToken"/>
-      <xs:enumeration value="InvalidateToken"/>
-      <xs:enumeration value="GenerateAccessToken"/>
     </xs:restriction>
   </xs:simpleType>
 </xs:schema>

@@ -50,8 +50,8 @@
   </xs:complexType>
   <xs:simpleType name="Operation">
     <xs:restriction base="xs:string">
-      <xs:enumeration value="Encode"/>
       <xs:enumeration value="Decode"/>
+      <xs:enumeration value="Encode"/>
     </xs:restriction>
   </xs:simpleType>
 </xs:schema>

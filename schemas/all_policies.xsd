@@ -12,6 +12,7 @@
     <xs:include schemaLocation="policy/basic_authentication.xsd"/>
     <xs:include schemaLocation="policy/cache.xsd"/>
     <xs:include schemaLocation="policy/extract_variables.xsd"/>
+    <xs:include schemaLocation="policy/flow_callout.xsd"/>
     <xs:include schemaLocation="policy/java_callout.xsd"/>
     <xs:include schemaLocation="policy/java_script.xsd"/>
     <xs:include schemaLocation="policy/json_threat_protection.xsd"/>

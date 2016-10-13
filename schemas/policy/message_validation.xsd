@@ -43,8 +43,8 @@
   </xs:complexType>
   <xs:simpleType name="soapVersion">
     <xs:restriction base="xs:string">
-      <xs:enumeration value="1.1"/>
       <xs:enumeration value="1.2"/>
+      <xs:enumeration value="1.1"/>
     </xs:restriction>
   </xs:simpleType>
 </xs:schema>

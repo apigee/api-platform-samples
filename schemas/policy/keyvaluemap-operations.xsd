@@ -24,6 +24,7 @@
           </xs:choice>
           <xs:element name="Scope" type="xs:string" minOccurs="0"/>
         </xs:sequence>
+        <xs:attribute name="encrypted" type="xs:boolean"/>
         <xs:attribute name="mapIdentifier" type="xs:string"/>
       </xs:extension>
     </xs:complexContent>

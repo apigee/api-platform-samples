@@ -143,6 +143,8 @@
 
   <xs:element name="Server" type="serverReferenceBean"/>
 
+  <xs:element name="SharedFlowBundle" type="sharedFlowBundleRevisionBean"/>
+
   <xs:element name="Statistics" type="statistics"/>
 
   <xs:element name="Step" type="step"/>
@@ -966,8 +968,16 @@
               </xs:sequence>
             </xs:complexType>
           </xs:element>
+          <xs:element name="ListenOptions" minOccurs="0">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="ListenOption" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
           <xs:element name="MaximumKeepAliveClientCount" type="xs:string" minOccurs="0"/>
           <xs:element name="Port" type="xs:string"/>
+          <xs:element ref="Properties" minOccurs="0"/>
           <xs:element ref="SSLInfo" minOccurs="0"/>
         </xs:sequence>
       </xs:extension>
@@ -1276,6 +1286,7 @@
     <xs:complexContent>
       <xs:extension base="branchBean">
         <xs:sequence>
+          <xs:element name="Basepaths" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
           <xs:element ref="ConfigurationVersion" minOccurs="0"/>
           <xs:element name="CreatedAt" type="xs:long" minOccurs="0"/>
           <xs:element name="CreatedBy" type="xs:string" minOccurs="0"/>
@@ -1304,6 +1315,8 @@
               </xs:sequence>
             </xs:complexType>
           </xs:element>
+          <xs:element name="Spec" type="xs:string" minOccurs="0"/>
+          <xs:element name="subType" type="xs:string" minOccurs="0"/>
           <xs:element name="TargetServers" minOccurs="0">
             <xs:complexType>
               <xs:sequence>
@@ -1321,7 +1334,6 @@
           <xs:element name="validate" type="xs:string" minOccurs="0"/>
         </xs:sequence>
         <xs:attribute name="revision" type="xs:string"/>
-        <xs:attribute name="SubType" type="xs:string"/>
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
@@ -1330,6 +1342,22 @@
     <xs:sequence/>
     <xs:attribute name="majorVersion" type="xs:int" use="required"/>
     <xs:attribute name="minorVersion" type="xs:int" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="sharedFlowBundleRevisionBean">
+    <xs:complexContent>
+      <xs:extension base="applicationRevisionBean">
+        <xs:sequence>
+          <xs:element name="SharedFlows" minOccurs="0">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="SharedFlow" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
   </xs:complexType>
 
   <xs:complexType name="appStatus">
