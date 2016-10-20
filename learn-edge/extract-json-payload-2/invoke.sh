@@ -24,8 +24,8 @@ printf "\nThe API key (Consumer Key) for the Learn Edge App is $key\n"
 printf "\nCall the API and pass in a region name. Press Return to contine:\n"
 read
 
-printf "\ncurl -i http://$org-$env.$api_domain/learn-edge/json?apikey=$key&region=us-east-1\n\nResponse:\n"
+printf "\ncurl -i http://$org-$env.$api_domain/v1/learn-edge/json?apikey=$key&region=us-east-1\n\nResponse:\n"
 
-curl -i "http://$org-$env.$api_domain/learn-edge/json?apikey=$key&region=us-east-1"
+curl -i "http://$org-$env.$api_domain/v1/learn-edge/json?apikey=$key&region=us-east-1"
 printf "\n"
 
