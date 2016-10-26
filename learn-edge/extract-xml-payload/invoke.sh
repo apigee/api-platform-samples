@@ -25,9 +25,9 @@ printf "\nThe API key (Consumer Key) for the Learn Edge App is $key\n"
 printf "\nCall the API and notice that the directions information is returned in an XML response. Press Return to contine:\n"
 read
 
-printf "\ncurl -i -d @directions.xml -H "Content-Type: application/xml" http://$org-$env.$api_domain/learn-edge/directions?apikey=$key\n\nResponse:\n"
+printf "\ncurl -i -d @directions.xml -H "Content-Type: application/xml" http://$org-$env.$api_domain/v1/learn-edge/directions?apikey=$key\n\nResponse:\n"
 
-curl -i -d @directions.xml -H "Content-Type: application/xml" "http://$org-$env.$api_domain/learn-edge/directions?apikey=$key"
+curl -i -d @directions.xml -H "Content-Type: application/xml" "http://$org-$env.$api_domain/v1/learn-edge/directions?apikey=$key"
 printf "\n"
 
 
@@ -36,9 +36,9 @@ printf "\n"
 printf "\nCall the API and notice that the company ID is returned in an XML response. Press Return to contine:\n"
 read
 
-printf "\ncurl -i -d @company.xml -H "Content-Type: application/xml" http://$org-$env.$api_domain/learn-edge/companyId?apikey=$key\n\nResponse:\n"
+printf "\ncurl -i -d @company.xml -H "Content-Type: application/xml" http://$org-$env.$api_domain/v1/learn-edge/companyId?apikey=$key\n\nResponse:\n"
 
-curl -i -d @company_info.xml -H "Content-Type: application/xml" "http://$org-$env.$api_domain/learn-edge/companyId?apikey=$key"
+curl -i -d @company_info.xml -H "Content-Type: application/xml" "http://$org-$env.$api_domain/v1/learn-edge/companyId?apikey=$key"
 printf "\n"
 
 

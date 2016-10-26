@@ -2,7 +2,7 @@
 <ProxyEndpoint name="default">
     <Description>Default Proxy</Description>
     <HTTPProxyConnection>
-        <BasePath>/learn-edge</BasePath>
+        <BasePath>/v1/learn-edge</BasePath>
         <Properties/>
         <VirtualHost>default</VirtualHost>
         <VirtualHost>secure</VirtualHost>
