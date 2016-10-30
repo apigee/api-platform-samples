@@ -12,8 +12,7 @@ Think "Hello World". This very simple API proxy calls a backend target. This is 
         <!-- This is where we define the target. For this sample we just use a simple URL. -->
         <URL>http://mocktarget.apigee.net</URL>
       </HTTPTargetConnection>
-   </TargetEndpoint>
-   ```
+   </TargetEndpoint>```
 
 * To connect the target to this proxy, the proxy refers to the target in its `<RouteRule>` element. You'll find that code in the `apiproxy/proxies/default.xml` file. The `<TargetEndpoint>` element's value is "default" -- the `name` attribute value of the TargetEndpoint.
 
