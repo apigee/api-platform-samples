@@ -1,0 +1,19 @@
+{
+  "name": "basic-apikey-security",
+  "version": "0.0.1",
+  "description": "Verifying an API key",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "mocha "
+  },
+  "dependencies": {
+    "apigeetool": "mukundha/apigeetool-node",
+    "gulp": "*",
+    "gulp-util": "^3.0.7"
+  },
+  "author": "mukundha@apigee.com",
+  "license": "ISC"
+}
