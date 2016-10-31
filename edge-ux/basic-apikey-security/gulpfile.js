@@ -25,7 +25,7 @@ var apps =[ {
 
 gulp.task('deploy',[], function () {
     var opts = baseopts()
-    
+
     return edge.run(apilist, edge.deployApis).then (function () {
         console.log('API creation failed, continue');
         return edge.run(apilist, edge.deployApis)
@@ -51,9 +51,3 @@ gulp.task('deploy',[], function () {
     })
 })
 
-function baseopts () {
-    var opts = {
-        baseuri: 'https://api.e2e.apigee.net'
-    }
-    return opts
-}
