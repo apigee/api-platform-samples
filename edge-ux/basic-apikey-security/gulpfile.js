@@ -24,8 +24,6 @@ var apps =[ {
 }]
 
 gulp.task('deploy',[], function () {
-    var opts = baseopts()
-
     return edge.run(apilist, edge.deployApis).then (function () {
         console.log('API creation failed, continue');
         return edge.run(apilist, edge.deployApis)
