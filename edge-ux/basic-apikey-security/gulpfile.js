@@ -31,13 +31,13 @@ gulp.task('deploy',[], function () {
         return edge.run(developers, edge.createDevelopers)
     },
     function () {
-        console.log('api deploy failed');
+        console.log('API deploy failed');
         return edge.run(developers, edge.createDevelopers)
     }).then(function () {
         return edge.run(apiProducts, edge.createProducts)
     },
     function () {
-        console.log('developer might already exist');
+        console.log('Developer might already exist');
         return edge.run(apiProducts, edge.createProducts)
     }).then(function () {
         return edge.run(apps, edge.createApps)
