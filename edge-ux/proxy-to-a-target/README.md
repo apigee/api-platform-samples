@@ -23,8 +23,6 @@ Think "Hello World". This very simple API proxy calls a backend target. This is 
    </RouteRule>
    ```
    
-> **What's a revision?** You might notice that when you deployed `proxy-to-a-target` you created a new revision of the proxy with the name `learn-edge`. The deploy script just creates a new revision each time it deploys. If you want to go back to a previous revision, you can go to the Edge UI and select it from the **Revision** menu. Or, you can just redeploy whichever proxy you want to use from the command-line -- and it will become the current revision.
-
 ### Extra reading: important terms and concepts
 
 * [**What's an API proxy?**](http://docs.apigee.com/api-services/content/understanding-apis-and-api-proxies#whatisanapiproxy) -- An API proxy is a way to expose APIs for loose coupling, security, and performance.
