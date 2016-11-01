@@ -1,6 +1,6 @@
 # Catch an error and return a custom error response
 
-Handle the error that occurs when an API key is invalid. Handling faults is how you manage or communicate errors inside a proxy.
+Handles the error that occurs when an API key is invalid. Handling faults is how you manage or communicate errors inside a proxy.
 
 This example adds **error handling** to a proxy. It checks for an invalid API key and returns a **custom error message**. This pattern -- evaluating a condition (in this case, an error condition) and taking subsequent action -- is one of the most fundamental patterns in Edge proxy development. 
 
@@ -46,12 +46,10 @@ This example adds **error handling** to a proxy. It checks for an invalid API ke
  
 ### Extra reading: important terms and concepts
 
-* **Fault rules** Enable you to do error handling within the proxy flow pipline. They are a lot like any flow in the pipeline, but they only execute when an policy throws an error and when the fault rule's condition evaluates to true. 
-* **Conditional flows** allow you to control how Edge processes a proxy dynamically. Usually a condition tests the value of a flow variable that was set by another policy or flow event. 
-* **Assign Message policy** is one of the most commonly used policies in Apigee Edge! It's used to set request and response headers, query parameters, and form parameters, as well as body payloads, and much more. It's kind of a Swiss Army Knife policy -- it does a lot of different things!
+* [**Fault rules**](http://docs.apigee.com/api-services/content/fault-handling#creatingfaultrules) Enable you to do error handling within the proxy flow pipline. They are a lot like any flow in the pipeline, but they only execute when an policy throws an error and when the fault rule's condition evaluates to true. 
+* [**Conditional flows**](http://docs.apigee.com/api-services/content/flow-configurations#aboutconditionalflows) allow you to control how Edge processes a proxy dynamically. Usually a condition tests the value of a flow variable that was set by another policy or flow event. 
+* [**Assign Message policy**](http://docs.apigee.com/api-services/reference/assign-message-policy) is one of the most commonly used policies in Apigee Edge! It's used to set request and response headers, query parameters, and form parameters, as well as body payloads, and much more. It's kind of a Swiss Army Knife policy -- it does a lot of different things!
 
-The next proxy, [fault-handling-2](../fault-handling-2/README.md), illustrates you can have multiple fault rules in a proxy and the order in which fault rules execute.
-   
 ### Ask the community
 
 [![alt text](../../images/apigee-community.png "Apigee Community is a great place to ask questions and find answers about developing API proxies. ")](https://community.apigee.com?via=github)
