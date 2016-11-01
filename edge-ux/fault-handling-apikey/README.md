@@ -8,7 +8,7 @@ This example adds **error handling** to a proxy. It checks for an invalid API ke
 
 * This sample knows how to handle a bad API key. When the API key sent by a client app is invalid, the sample returns an error message to the client.
 
-* Its **FaultRule** element in the Proxy Endpoint defines the condition that provokes its execution. You'll see it in [`apiproxy/proxies/default.xml`](https://github.com/apigee/api-platform-samples/blob/master/edge-ux/fault-handling-apikey/apiproxy/proxies/default.xml#L3-L8):
+* Its **FaultRule** element in the Proxy Endpoint defines the condition that provokes its execution. You'll see it in [apiproxy/proxies/default.xml](https://github.com/apigee/api-platform-samples/blob/master/edge-ux/fault-handling-apikey/apiproxy/proxies/default.xml#L3-L8):
 
     ```xml
     <ProxyEndpoint name="default">
@@ -23,22 +23,22 @@ This example adds **error handling** to a proxy. It checks for an invalid API ke
       ...
     ```
 
- A fault rule is a special kind of flow that executes whenever a policy throws an error. When an error occurs, Edge shifts control directly to the "fault rule flow." The VerifyApiKey policy can throw errors upon several conditions, like an invalid API key, for example. That's exactly what our fault rule is looking for! When the fault rule's condition is true, a policy called InvalidApiKey (in [`apiproxy/policies/InvalidApiKey.xml`](https://github.com/apigee/api-platform-samples/blob/master/edge-ux/fault-handling-apikey/apiproxy/policies/InvalidApiKey.xml)) executes. 
+ A fault rule is a special kind of flow that executes whenever a policy throws an error. When an error occurs, Edge shifts control directly to the "fault rule flow." The VerifyApiKey policy can throw errors upon several conditions, like an invalid API key, for example. That's exactly what our fault rule is looking for! When the fault rule's condition is true, a policy called InvalidApiKey (in [apiproxy/policies/InvalidApiKey.xml](https://github.com/apigee/api-platform-samples/blob/master/edge-ux/fault-handling-apikey/apiproxy/policies/InvalidApiKey.xml)) executes. 
 
-* The proxy contains an **Assign Message policy** (in the [`apiproxy/policies/InvalidApiKey.xml`](https://github.com/apigee/api-platform-samples/blob/master/edge-ux/fault-handling-apikey/apiproxy/policies/InvalidApiKey.xml) file):
+* The proxy contains an **Assign Message policy** (in the [apiproxy/policies/InvalidApiKey.xml](https://github.com/apigee/api-platform-samples/blob/master/edge-ux/fault-handling-apikey/apiproxy/policies/InvalidApiKey.xml) file):
 
     ```xml
-        <AssignMessage async="false" continueOnError="false" enabled="true" name="InvalidApiKey">
-            <DisplayName>Invalid ApiKey Message</DisplayName>
-            <Properties/>
-            <Set>
-                <Payload contentType="application/json">\{"error": \{"message":"{fault.name}", "detail":"Please provide valid API key in the apikey query parameter.}} </Payload>
-                <StatusCode>400</StatusCode>
-                <ReasonPhrase>BadRequest</ReasonPhrase>
-            </Set>
-            <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
-            <AssignTo createNew="false" transport="http" type="response"/>
-        </AssignMessage>
+    <AssignMessage async="false" continueOnError="false" enabled="true" name="InvalidApiKey">
+        <DisplayName>Invalid ApiKey Message</DisplayName>
+        <Properties/>
+        <Set>
+          <Payload contentType="application/json">\{"error": \{"message":"{fault.name}", "detail":"Please provide valid API key in the apikey query parameter.}} </Payload>
+          <StatusCode>400</StatusCode>
+          <ReasonPhrase>BadRequest</ReasonPhrase>
+        </Set>
+        <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+        <AssignTo createNew="false" transport="http" type="response"/>
+    </AssignMessage>
     ```
 
 
@@ -52,7 +52,7 @@ This example adds **error handling** to a proxy. It checks for an invalid API ke
 
 ### Ask the community
 
-[![alt text](../../images/apigee-community.png "Apigee Community is a great place to ask questions and find answers about developing API proxies. ")](https://community.apigee.com?via=github)
+[Apigee Community](https://community.apigee.com?via=github) is a great place to ask questions and find answers about developing API proxies.
 
 ---
 

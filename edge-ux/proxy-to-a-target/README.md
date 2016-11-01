@@ -4,7 +4,7 @@ Think "Hello World". This very simple API proxy calls a backend target. This is 
 
 ### What's interesting about this sample
 
-* To define a backend target, this sample includes a TargetEndpoint in a file called `apiproxy/targets/default.xml`. In that file, this XML block specifies the target of the proxy, a web service called `mocktarget.apigee.net`:
+* To define a backend target, this sample includes a TargetEndpoint in a file called [apiproxy/targets/default.xml](https://github.com/apigee/api-platform-samples/blob/master/edge-ux/proxy-to-a-target/apiproxy/targets/default.xml#L2-L5). In that file, this XML block specifies the target of the proxy, a web service called `mocktarget.apigee.net`:
 
    ```xml
    <TargetEndpoint name="default">
@@ -14,7 +14,7 @@ Think "Hello World". This very simple API proxy calls a backend target. This is 
       </HTTPTargetConnection>
    </TargetEndpoint>```
 
-* To connect the target to this proxy, the proxy refers to the target in its `<RouteRule>` element. You'll find that code in the `apiproxy/proxies/default.xml` file. The `<TargetEndpoint>` element's value is "default" -- the `name` attribute value of the TargetEndpoint.
+* To connect the target to this proxy, the proxy refers to the target in its `<RouteRule>` element. You'll find that code in the [apiproxy/proxies/default.xml](https://github.com/apigee/api-platform-samples/blob/master/edge-ux/proxy-to-a-target/apiproxy/proxies/default.xml#L11-L14) file. The `<TargetEndpoint>` element's value is "default" -- the `name` attribute value of the TargetEndpoint.
 
    ```xml
    <RouteRule name="default">
@@ -31,14 +31,9 @@ Think "Hello World". This very simple API proxy calls a backend target. This is 
 * [**RouteRule**](http://docs.apigee.com/api-services/content/understanding-routes#determiningtheurlofthetargetendpoint) -- Specifies which target endpoint definition file to call. Route rules can have logic to route calls conditionally to different targets. 
 * [**HTTPTargetConnection**](https://docs.apigee.com/api-services/reference/api-proxy-configuration-reference#targetendpoint-targetendpointconfigurationelements) -- Defines the target to which to send the request. Usually a URL. 
 
-### Other things to try
-
-* In a browser, hit http://mocktarget.apigee.net/help to see what else the service can do. 
-* Try changing the proxy to call another REST-based backend service of your choosing. Test the change (redeploy and invoke). Hint: Edit `apiproxy/targets/default.xml`.
-
 ### Ask the community
 
-[![alt text](../../images/apigee-community.png "Apigee Community is a great place to ask questions and find answers about developing API proxies. ")](https://community.apigee.com?via=github)
+[Apigee Community](https://community.apigee.com?via=github) is a great place to ask questions and find answers about developing API proxies.
 
 ---
 
