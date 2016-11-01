@@ -6,17 +6,18 @@ Think "Hello World". This very simple API proxy calls a backend target. This is 
 
 * To define a backend target, this sample includes a TargetEndpoint in a file called [apiproxy/targets/default.xml](https://github.com/apigee/api-platform-samples/blob/master/edge-ux/proxy-to-a-target/apiproxy/targets/default.xml#L2-L5). In that file, this XML block specifies the target of the proxy, a web service called `mocktarget.apigee.net`:
 
-   ```xml
+   ```
    <TargetEndpoint name="default">
       <HTTPTargetConnection>
         <!-- This is where we define the target. For this sample we just use a simple URL. -->
         <URL>http://mocktarget.apigee.net</URL>
       </HTTPTargetConnection>
-   </TargetEndpoint>```
+   </TargetEndpoint>
+   ```
 
 * To connect the target to this proxy, the proxy refers to the target in its `<RouteRule>` element. You'll find that code in the [apiproxy/proxies/default.xml](https://github.com/apigee/api-platform-samples/blob/master/edge-ux/proxy-to-a-target/apiproxy/proxies/default.xml#L11-L14) file. The `<TargetEndpoint>` element's value is "default" -- the `name` attribute value of the TargetEndpoint.
 
-   ```xml
+   ```
    <RouteRule name="default">
         <!-- This connects our proxy to the target defined in apiproxy/targets/default.xml -->
         <TargetEndpoint>default</TargetEndpoint>
