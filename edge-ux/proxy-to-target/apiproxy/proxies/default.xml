@@ -4,7 +4,7 @@
     <Response/>
   </PreFlow>
   <HTTPProxyConnection>
-    <BasePath>/v1/learn-edge</BasePath>
+    <BasePath>/v1/proxy-to-target</BasePath>
     <VirtualHost>default</VirtualHost>
     <VirtualHost>secure</VirtualHost>
   </HTTPProxyConnection>
