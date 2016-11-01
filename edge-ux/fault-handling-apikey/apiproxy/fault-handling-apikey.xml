@@ -1,0 +1,4 @@
+<APIProxy name="fault-handling-apikey">
+  <!-- This is the root of the application -->
+  <Description>Catch an error and return a custom error response.</Description>
+</APIProxy>
