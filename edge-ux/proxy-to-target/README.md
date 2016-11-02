@@ -9,7 +9,6 @@ Think "Hello World". This very simple API proxy calls a backend target. This is 
    ```
    <TargetEndpoint name="default">
       <HTTPTargetConnection>
-        <!-- This is where we define the target. For this sample we just use a simple URL. -->
         <URL>http://mocktarget.apigee.net</URL>
       </HTTPTargetConnection>
    </TargetEndpoint>
@@ -19,7 +18,6 @@ Think "Hello World". This very simple API proxy calls a backend target. This is 
 
    ```
    <RouteRule name="default">
-        <!-- This connects our proxy to the target defined in apiproxy/targets/default.xml -->
         <TargetEndpoint>default</TargetEndpoint>
    </RouteRule>
    ```
