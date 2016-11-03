@@ -22,6 +22,7 @@ org="Enter your Apigee Edge organization name"
 username="Enter your Apigee Edge email address"
 url="https://api.enterprise.apigee.com"
 env="Enter the environment to deploy to (test or prod)"
+api_domain="apigee.net"
 
 ## Do not change the settings below
 ## --------------------------------------

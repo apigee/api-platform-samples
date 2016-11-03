@@ -6,4 +6,10 @@ source ../../setup/setenv.sh
 
 set -x
 
-curl -i -H "responsetime:true" "http://$org-$env.$api_domain/timer/json"
+echo Pass header as true:
+
+curl -i -H "responsetime:true" "http://$org-$env.$api_domain/v1/timer"
+
+echo Now pass header as false:
+
+curl -i -H "responsetime:false" "http://$org-$env.$api_domain/v1/timer"

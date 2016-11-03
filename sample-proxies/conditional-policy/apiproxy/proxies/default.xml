@@ -9,7 +9,7 @@
 		</Response>
 	</PreFlow>
 	<HTTPProxyConnection>
-		<BasePath>/timer</BasePath>
+		<BasePath>/v1/timer</BasePath>
 		<VirtualHost>default</VirtualHost>
 	</HTTPProxyConnection>
 	<RouteRule name="default">
