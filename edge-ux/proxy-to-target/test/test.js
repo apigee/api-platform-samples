@@ -9,11 +9,11 @@ var sample = splits[7]
 var url = 'https://' + org + '-' + env + '.apigee.net/v1/' + sample;
 
 describe('Simple proxy for a backend target', function () {
-    it('Retrieve the API key', function (done) {
+    it('Make a call that reaches a simple backend service.', function (done) {
         $.ajax({
             url: url,
             complete: function (xhr, statusText) {
-                done()
+                done(xhr.responseText)
             },
             error: function (xhr, err) {
                 done(err)
