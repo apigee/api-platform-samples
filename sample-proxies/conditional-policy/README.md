@@ -72,7 +72,7 @@ This screen shot from the [Apigee Edge trace tool](http://apigee.com/docs/api-se
 
 ### More information
 
-** Policy used in this sample**
+Policy used in this sample
 
 * [Python Script policy](http://docs.apigee.com/api-services/reference/python-script-policy)
 
