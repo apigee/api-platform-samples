@@ -116,7 +116,7 @@ def printDeployments(dep):
         if 'error' in d:
             print '  Error: %s' % d['error']
 
-ApigeeHost = 'https://api.e2e.apigee.net'
+ApigeeHost = 'https://api.enterprise.apigee.com'
 UserPW = None
 Directory = None
 Organization = None
