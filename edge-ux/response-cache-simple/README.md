@@ -6,7 +6,7 @@ This example introduces **response caching**, a popular feature in Edge that **s
 
 ### What's interesting about this sample
 
-* A **ResponseCache policy** (configured in [`apiproxy/policies/ResponseCache.xml`]()) sets typical caching properties: a cache key ():
+* A **ResponseCache policy** (configured in [apiproxy/policies/ResponseCache.xml](https://github.com/apigee/api-platform-samples/blob/b8840b4fd6d0cc2a4ac0a2aab50a53ead8067490/edge-ux/response-cache-simple/apiproxy/policies/ResponseCache.xml#L2-L10)) sets typical caching properties. This includes a cache key to uniquely identify the cache entry and an expiration setting specifying how long a cache entry should be considered fresh:
 
     ```xml
     <ResponseCache async="false" continueOnError="false" 
@@ -23,7 +23,7 @@ This example introduces **response caching**, a popular feature in Edge that **s
 
     **Important to note**: The KeyFragment is a string that's concatenated onto the cache key. It allows you to keep caches for different requests separated. The "ref" part of the KeyFragment, `request.uri`, is a **flow variable**. Flow variables are **extremely** important in Edge development -- they allow you to access all kinds data within the context of proxy flows. The `request.uri` variable is a "built-in" variable that's populated automatically on each request. It's basically the entire request URI including query parameters. 
 
-* The ResponseCache policy is somewhat unique in that it has to be attached in **two places**. First, it's attached the ProxyEndpoint's Preflow. You can see where in the file `apiproxy/proxies/default.xml`.
+* The ResponseCache policy is somewhat unique in that it has to be attached in **two places**. First, it's attached the ProxyEndpoint's Preflow. You can see where in the file [apiproxy/proxies/default.xml](https://github.com/apigee/api-platform-samples/blob/b8840b4fd6d0cc2a4ac0a2aab50a53ead8067490/edge-ux/response-cache-simple/apiproxy/proxies/default.xml#L5-L7).
 
     ```xml
     <PreFlow>
@@ -36,7 +36,7 @@ This example introduces **response caching**, a popular feature in Edge that **s
     ...
     ```
 
-* Then, the policy is attached to the TargetEndpoint's PostFlow Response flow. You can find it in the `apiproxy/targets/default.xml` file. This flow executes after the response comes back from the target, just before the response is sent back to the client app. You can really see this behavior in action when you use the Trace tool. 
+* Then, the policy is attached to the TargetEndpoint's PostFlow Response flow. You can find it in the [apiproxy/targets/default.xml](https://github.com/apigee/api-platform-samples/blob/b8840b4fd6d0cc2a4ac0a2aab50a53ead8067490/edge-ux/response-cache-simple/apiproxy/targets/default.xml#L5-L7) file. This flow executes after the response comes back from the target, just before the response is sent back to the client app. You can really see this behavior in action when you use the Trace tool. 
 
     ```xml
     <TargetEndpoint name="default">
