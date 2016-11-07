@@ -1,0 +1,19 @@
+{
+  "name": "proxy-to-target",
+  "version": "0.0.1",
+  "description": "Accessing a backend target from a proxy",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "mocha "
+  },
+  "dependencies": {
+    "apigeetool": "mukundha/apigeetool-node",
+    "gulp": "*",
+    "gulp-util": "^3.0.7"
+  },
+  "author": "mukundha@apigee.com",
+  "license": "ISC"
+}

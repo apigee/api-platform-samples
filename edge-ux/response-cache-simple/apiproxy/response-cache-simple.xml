@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<APIProxy revision="2" name="response-cache-simple">
+    <Basepaths>/v1/response-cache-simple</Basepaths>
+    <Description>Enance performance with response caching.</Description>
+    <DisplayName>response-cache-simple</DisplayName>
+    <Policies>
+        <Policy>ResponseCache</Policy>
+    </Policies>
+    <ProxyEndpoints>
+        <ProxyEndpoint>default</ProxyEndpoint>
+    </ProxyEndpoints>
+    <TargetEndpoints>
+        <TargetEndpoint>default</TargetEndpoint>
+    </TargetEndpoints>
+</APIProxy>

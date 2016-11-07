@@ -1,0 +1,14 @@
+<TargetEndpoint name="default">
+	<PostFlow name="PostFlow">
+	    <Request/>
+	    <Response>
+	        <Step>
+	            <Name>ResponseCache</Name>
+	        </Step>
+	    </Response>
+	</PostFlow>
+	<HTTPTargetConnection>
+		<!-- This is where we define the target. For this sample we just use a simple URL. -->
+		<URL>http://mocktarget.apigee.net</URL>
+	</HTTPTargetConnection>
+</TargetEndpoint>
