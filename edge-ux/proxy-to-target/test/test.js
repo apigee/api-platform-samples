@@ -2,9 +2,9 @@ var assert = chai.assert;
 
 var pathname = window.location.pathname
 var splits = pathname.split('/')
-var org = splits[3]
-var env = splits[5]
-var sample = splits[7]
+var org = splits[4]
+var env = splits[6]
+var sample = splits[8]
 
 var url = 'https://' + org + '-' + env + '.apigee.net/v1/' + sample;
 
