@@ -8,9 +8,9 @@ echo Be sure to populate values in setenv.sh in this directory before running th
 
 echo Using $username in $org.
 
-#echo "Enter your password for the Apigee Enterprise organization $org, followed by [ENTER]:"
+echo "Enter your password for the Apigee Enterprise organization $org, followed by [ENTER]:"
 
-#read -s password
+read -s password
 
 echo Verifying credentials...
 
