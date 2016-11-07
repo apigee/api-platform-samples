@@ -1,8 +1,8 @@
 echo "For OAuth, you need to run setup.sh in /setup/provisioning directory to install sample API products, developers and apps in your org."
 
-echo "Do you want to run now? ([yes]/no):"
+#echo "Do you want to run now? ([yes]/no):"
 
-read provision
+#read provision
 
 if [ -z $provision ] || [ "$provision" = "yes" ]; then
         cd provisioning

@@ -1,10 +1,10 @@
 #!/bin/sh
 
-source ../setenv.sh
+source ./../setenv.sh
 
-echo "Enter your password for the Apigee Enterprise organization, followed by [ENTER]:"
+#echo "Enter your password for the Apigee Enterprise organization, followed by [ENTER]:"
 
-read -s password
+#read -s password
 
 echo using $username and $org
 
