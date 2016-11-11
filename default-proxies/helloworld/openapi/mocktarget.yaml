@@ -11,7 +11,7 @@ paths:
   /:
     get:
       summary: View personalized greeting
-      operationId: View a personalized greeting
+      operationId: ViewAPersonalizedGreeting
       description: View a personalized greeting for the specified or guest user.
       produces:
         - text/plain
@@ -27,7 +27,7 @@ paths:
   /help:
     get:
       summary: Get help
-      operationId: Get help
+      operationId: GetHelp
       description: View help information about available resources in HTML format.
       produces:
         - text/html
@@ -37,7 +37,7 @@ paths:
   /user:
     get:
       summary: View personalized greeting
-      operationId: View personalized greeting
+      operationId: ViewPersonalizedGreeting
       description: View a personalized greeting for the specified or guest user.
       produces:
         - text/plain
@@ -53,7 +53,7 @@ paths:
   /iloveapis:
     get:
       summary: View API affirmation
-      operationId: View API affirmation
+      operationId: ViewAPIAffirmation
       description: View API affirmation in HTML format.
       produces:
         - text/html
@@ -63,7 +63,7 @@ paths:
   /ip:
     get:
       summary: View IP address
-      operationId: View IP address
+      operationId: ViewIPAddress
       description: View the IP address of the client in JSON format.
       produces:
         - application/json
@@ -73,7 +73,7 @@ paths:
   /xml:
     get:
       summary: View XML response
-      operationId: View XML response
+      operationId: ViewXMLResponse
       description: View a sample response in XML format.
       produces:
         - application/xml
@@ -83,7 +83,7 @@ paths:
   /json:
     get:
       summary: View JSON response
-      operationId: View JSON response
+      operationId: ViewJSONResponse
       description: View a sample response in JSON format.
       produces:
         - application/json
@@ -93,7 +93,7 @@ paths:
   /echo:
     get:
       summary: View request headers and body
-      operationId: View request headers and body
+      operationId: ViewRequestHeadersAndBody
       description: View the request headers and body in JSON format.
       produces:
         - application/json
