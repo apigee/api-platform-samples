@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage name="AssignCustomHeaders">
+    <AssignTo createNew="false" type="response"/>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+    <Set>
+        <Headers>
+            <!-- Variables populated by parsing JSON response with an ExtractVariables policy -->
+            <Header name="x-firstName">{mock.firstName}</Header>
+            <Header name="x-lastName">{mock.lastName}</Header>
+        </Headers>
+    </Set>
+</AssignMessage>
