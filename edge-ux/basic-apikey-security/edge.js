@@ -150,7 +150,6 @@ function run(arr, func){
 
 function baseopts () {
     var opts = {
-        baseuri: 'https://api.e2e.apigee.net',
         organization: gutil.env.org,
         token: gutil.env.token,
         environments: gutil.env.env,    
