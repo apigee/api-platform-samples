@@ -1,0 +1,8 @@
+<Quota name="EnforceQuota">
+  <DisplayName>Enforce Quota</DisplayName>
+  <FaultRules/>
+  <Properties/>
+  <Interval>1</Interval>
+  <TimeUnit>minute</TimeUnit>
+  <Allow count="1"/>
+</Quota>

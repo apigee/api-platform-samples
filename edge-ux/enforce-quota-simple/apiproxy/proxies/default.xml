@@ -1,0 +1,18 @@
+<ProxyEndpoint name="default">
+  <PreFlow>
+    <Request>
+      <Step>
+        <Name>EnforceQuota</Name>
+      </Step>
+    </Request>
+  </PreFlow>
+  <HTTPProxyConnection>
+    <BasePath>/v1/enforce-quota-simple</BasePath>
+    <VirtualHost>default</VirtualHost>
+    <VirtualHost>secure</VirtualHost>
+  </HTTPProxyConnection>
+  <RouteRule name="default">
+    <!-- This connects our proxy to the target defined in apiproxy/targets/default.xml -->
+    <TargetEndpoint>default</TargetEndpoint>
+  </RouteRule>
+</ProxyEndpoint>

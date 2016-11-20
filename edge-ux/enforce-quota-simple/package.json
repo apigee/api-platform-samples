@@ -1,0 +1,19 @@
+{
+  "name": "enforce-quota-simple",
+  "version": "0.0.1",
+  "description": "Enforcing a quota on the number of requests",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "mocha "
+  },
+  "dependencies": {
+    "apigeetool": "mukundha/apigeetool-node",
+    "gulp": "*",
+    "gulp-util": "^3.0.7"
+  },
+  "author": "straut@apigee.com",
+  "license": "ISC"
+}
