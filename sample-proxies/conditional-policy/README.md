@@ -15,13 +15,13 @@ This sample uses this policy:
 
 This sample demonstrates conditional policy enforcement on the Apigee API Platform.  Conditional policy enforcement enables you to execute a policy based on a condition defined on a flow.
 
-The condition in this sample evaluates a custom HTTP header called “responsetime”. When “true”, a Python script executes to populates custom response headers with metrics about the request. When “responsetime” is “false” or is omitted from the request, the Python script is bypassed and the metrics do not appear in the response.
+The condition in this sample evaluates a custom HTTP header called "responsetime". When “true”, a Python script executes to populates custom response headers with metrics about the request. When "responsetime" is "false" or is omitted from the request, the Python script is bypassed and the metrics do not appear in the response.
 
-For example, the following cURL command passes the “responsetime” header as "true": 
+For example, the following cURL command passes the "responsetime" header as "true": 
 
 `curl -i -H "responsetime:true" "http://$org-$env.$api_domain/v1/timer"`
 
-The response body always contains the string "Hello, Guest!". When “responsetime” is "true", the response alson contains the headers prefixed by "X-Apigee":
+The response body always contains the string "Hello, Guest!". When "responsetime" is "true", the response also contains the headers prefixed by "X-Apigee":
 
 ```
 HTTP/1.1 200 OK
