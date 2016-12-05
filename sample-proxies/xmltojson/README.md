@@ -12,7 +12,7 @@ This sample uses this policy:
 
 ### About
 
-The sample API proxy calls a backend weather service that returns weather data in XML format by default. We use the XML to JSON policy on the response flow to transform the response to JSON. 
+The sample API proxy calls a backend service that returns data in XML format by default. We use the XML to JSON policy on the response flow to transform the response to JSON. 
 
 ### Set up, deploy, invoke
 
@@ -20,32 +20,31 @@ See the main project [README](../../README.md) file for information about settin
 
 ### Result
 
-Weather information for Palo Alto, CA in JSON format. Tip: To get nicely formatted JSON like below, you can try piping the command to a formatting utility. For example: `curl <command> | python -mjson.tool`
+The information returned by the backend service is in XML format by default:
 
 ```
-{
-    "rss": {
-        "channel": {
-            "astronomy": {
-                "sunrise": "6:46 am",
-                "sunset": "7:23 pm"
-            },
-            "atmosphere": {
-                "humidity": "69",
-                "pressure": "29.89",
-                "rising": "1",
-                "visibility": ""
-            },
-            "description": "Yahoo! Weather for Palo Alto, CA",
-            "image": {
-                "height": "18",
-                "link": "http://weather.yahoo.com",
-                "title": "Yahoo! Weather",
-                "url": "http://l.yimg.com/a/i/brand/purplelogo//uh/us/news-wea.gif",
-                "width": "142"
-            }
-...
+<root>
+    <city>San Jose</city>
+    <firstName>John</firstName>
+    <lastName>Doe</lastName>
+    <state>CA</state>
+</root>
 ```
+
+After processing by the XML to JSON policy, the JSON data returned by the API call is:
+
+```
+{"root":{"city":"San Jose","firstName":"John","lastName":"Doe","state":"CA"}}
+```
+ 
+### Set up, deploy, invoke
+
+See the main project [README](../../README.md) file for information about setting up, deploying, and invoking sample proxies. 
+
+To deploy, run `$ sh deploy.sh`
+
+To test, run `$ sh invoke.sh`
+
 
 ### Trace
 
@@ -68,7 +67,7 @@ This screen shot from the [Apigee Edge trace tool](http://apigee.com/docs/api-se
 
 ---
 
-Copyright © 2015 Apigee Corporation
+Copyright © 2016 Apigee Corporation
 
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use
 this file except in compliance with the License. You may obtain a copy

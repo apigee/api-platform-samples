@@ -7,7 +7,7 @@
     </Response>
   </PreFlow>
   <HTTPProxyConnection>
-    <BasePath>/xmltojson</BasePath>    
+    <BasePath>/v1/xmltojson</BasePath>    
     <VirtualHost>default</VirtualHost>
   </HTTPProxyConnection>
   <RouteRule name="Route">

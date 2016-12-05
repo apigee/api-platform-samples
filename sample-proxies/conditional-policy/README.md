@@ -56,11 +56,6 @@ To deploy, run `$ sh deploy.sh`
 
 To test, run `$ sh invoke.sh`
 
-If you open invoke.sh take a look at the cURL call:
-
-`curl -i -H "responsetime:true" "http://$org-$env.$api_domain/v1/timer"`
-
-Try passing `responsetime:false` and compare the responses.
 
 
 ### Trace
