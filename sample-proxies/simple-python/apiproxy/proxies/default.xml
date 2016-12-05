@@ -10,7 +10,7 @@
 	</Response>
     </PreFlow>
     <HTTPProxyConnection>
-        <BasePath>/python</BasePath>
+        <BasePath>/v1/python</BasePath>
         <VirtualHost>default</VirtualHost>
     </HTTPProxyConnection>     
     <RouteRule name="default">

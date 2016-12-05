@@ -6,4 +6,4 @@ source ../../setup/setenv.sh
 
 set -x
 
-curl -i http://$org-$env.$api_domain/python
+curl -i http://$org-$env.$api_domain/v1/python
