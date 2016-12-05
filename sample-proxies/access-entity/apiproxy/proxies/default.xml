@@ -10,7 +10,7 @@
 </Flows>
   <HTTPProxyConnection>
     <!-- Define a URI to create the path to this proxy. -->	
-    <BasePath>/access-entity</BasePath>  
+    <BasePath>/v1/access-entity</BasePath>  
     <!-- Listen on HTTP URL defined in the VirtualHost named 'default'. -->	
     <VirtualHost>default</VirtualHost>
   </HTTPProxyConnection>

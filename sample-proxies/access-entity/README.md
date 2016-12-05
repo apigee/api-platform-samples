@@ -14,15 +14,11 @@ This sample uses these policies:
 
 ### About
 
-This sample shows how to retrieve profiles for entities from the Apigee Edge
-datastore. Using this policy, you can retrieve profiles for things like
-apps, developers, and API products. Sometimes you need this information 
-to enable dynamic behavior in policies or code running on Apigee Edge.
+This sample shows how to retrieve profiles for entities from the Apigee Edge datastore. Using this policy, you can retrieve profiles for things like apps, developers, and API products. Sometimes you need this information to enable dynamic behavior in policies or code running on Apigee Edge.
 
-This example shows you how to get a developer's email address based on 
-an API key. This works because an API key can be used to uniquely identify a developer associated with a developer app. 
+This example shows you how to get a developer's email address based on an API key. This works because an API key can be used to uniquely identify a developer associated with a developer app. 
 
-In this sample, we use the `invoke.sh` to call the API with a valid API key. 
+The API proxy in this example does not make a request to a backend server, therefore there is no target endpoint definited. This proxy is an echo service that returns data directly from Edge.
 
 ### Quick task before you run the sample
 
@@ -38,6 +34,7 @@ You need to grab a valid API key from your Apigee Edge org and add it to the `in
     `KEY="t3AyRHIfbNJwJ6ZbBAxGmNj5YWljAeB"`
 
 7. Save the file. 
+8. Run `$ sh invoke.sh`
 
 
 ### Result
@@ -53,6 +50,15 @@ When you invoke this proxy, it returns an HTTP response to your terminal, shown 
     Content-Length: 0
     Connection: keep-alive
     ```
+
+### Set up, deploy, invoke
+
+See the main project [README](../../README.md) file for information about setting up, deploying, and invoking sample proxies. 
+
+To deploy, run `$ sh deploy.sh`
+
+To test, run `$ sh invoke.sh`
+
 
 ### Trace
 
@@ -74,7 +80,7 @@ This screen shot from the [Apigee Edge trace tool](http://apigee.com/docs/api-se
 
 ---
 
-Copyright © 2015 Apigee Corporation
+Copyright © 2016 Apigee Corporation
 
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use
 this file except in compliance with the License. You may obtain a copy
