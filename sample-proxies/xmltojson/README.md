@@ -14,9 +14,6 @@ This sample uses this policy:
 
 The sample API proxy calls a backend service that returns data in XML format by default. We use the XML to JSON policy on the response flow to transform the response to JSON. 
 
-### Set up, deploy, invoke
-
-See the main project [README](../../README.md) file for information about setting up, deploying, and invoking sample proxies. 
 
 ### Result
 
