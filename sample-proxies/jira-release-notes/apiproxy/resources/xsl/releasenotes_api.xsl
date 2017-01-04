@@ -4,15 +4,27 @@
         <html>
             <body>
                 <p>[toc]</p>
-                <p>On {DAY_OF_WEEK}, {MONTH} {DAY_NUMBER}, 2016, we released a new version of Apigee Edge for Public Cloud.</p>
+                <p>On {DAY_OF_WEEK}, {MONTH} {DAY_NUMBER}, 2016, we began releasing a new version of Apigee Edge for Public Cloud.</p>
                 <div class="note">
     <p><strong>Private Cloud customers</strong>: Is this cloud release included in your Private Cloud version? See your version's release notes to see which cloud releases it contains. Also, see <a href="/release-notes/content/apigee-edge-release-process">About release numbering</a> to understand how you can figure it out by comparing release numbers.</p>
     <p><strong>Questions or issues?</strong> <a href="https://community.apigee.com/page/apigee-customer-support">Get help here</a>.</p>
     <p><strong>Release notifications</strong>: Go to <a href="http://status.apigee.com">http://status.apigee.com</a> and click <strong>Subscribe to Updates</strong>.</p>
     <p><a href="/release-notes/content/apigee-release-notes">Release notes home page</a></p>
 </div>
-                <h2>New features and enhancements</h2>
-                <p>Following are the new features and enhancements in this release.</p>
+                <h2>Deprecations and retirements</h2>
+                <p>The following features are being deprecated or retired. See the <a href="/deprecation">Edge deprecation policy</a> for more information.</p>
+                <xsl:for-each select="Root/issues">
+                    <xsl:if test="fields/customfield_22400/value='Yes'">
+                        <h3>
+                            <xsl:value-of select="fields/summary"/>
+                        </h3>
+                        <p>
+                            <xsl:value-of select="fields/customfield_13000"/> (<xsl:value-of select="key"/>)
+                        </p>
+                    </xsl:if>
+                </xsl:for-each>
+                <h2>New features and updates</h2>
+                <p>Following are the new features and updates in this release.</p>
                 <xsl:for-each select="Root/issues">
                     <xsl:if test="fields/labels='new_feature'">
                         <h3>
