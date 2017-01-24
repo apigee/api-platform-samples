@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<APIProxy revision="3" name="shared-flow-client-proxy">
+    <Basepaths>/shared-flow-client-proxy</Basepaths>
+    <ConfigurationVersion majorVersion="4" minorVersion="0"/>
+    <CreatedAt>1485208896402</CreatedAt>
+    <CreatedBy>gladys@example.com</CreatedBy>
+    <Description></Description>
+    <DisplayName>shared-flow-client-proxy</DisplayName>
+    <LastModifiedAt>1485208896402</LastModifiedAt>
+    <LastModifiedBy>gladys@example.com</LastModifiedBy>
+    <Policies>
+        <Policy>Auth-Flow-Callout</Policy>
+    </Policies>
+    <ProxyEndpoints>
+        <ProxyEndpoint>default</ProxyEndpoint>
+    </ProxyEndpoints>
+    <Resources/>
+    <Spec></Spec>
+    <TargetServers/>
+    <TargetEndpoints>
+        <TargetEndpoint>default</TargetEndpoint>
+    </TargetEndpoints>
+</APIProxy>

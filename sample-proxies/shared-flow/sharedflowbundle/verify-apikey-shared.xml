@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<SharedFlowBundle revision="2" name="verify-apikey-shared">
+    <ConfigurationVersion majorVersion="4" minorVersion="0"/>
+    <CreatedAt>1485208909473</CreatedAt>
+    <CreatedBy>gladys@example.com</CreatedBy>
+    <Description>Shared flow to verify API key</Description>
+    <DisplayName>verify-apikey-shared</DisplayName>
+    <LastModifiedAt>1485208909473</LastModifiedAt>
+    <LastModifiedBy>gladys@example.com</LastModifiedBy>
+    <Policies>
+        <Policy>Verify-API-Key</Policy>
+    </Policies>
+    <Resources/>
+    <Spec></Spec>
+    <subType>SharedFlow</subType>
+    <SharedFlows>
+        <SharedFlow>default</SharedFlow>
+    </SharedFlows>
+</SharedFlowBundle>
