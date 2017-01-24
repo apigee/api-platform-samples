@@ -2,26 +2,32 @@
 
 This directory contains a sample illustrating a shared flow. Included are:
 
-- verify-apikey-shared. This is a shared flow that simply checks for a valid incoming API key.
-- shared-flow-client-proxy. This is a simple API proxy that calls out to the verify-apikey-shared shared flow using a Flow Callout policy.
+- apiproxy/verify-apikey-shared. This is a shared flow that simply checks for a valid incoming API key.
+- sharedflowbundle/shared-flow-client-proxy. This is a simple API proxy that calls out to the verify-apikey-shared shared flow using a Flow Callout policy.
+
+When invoked, this sample merely takes an API key, passes the key to a shared flow for verification, then (if the key is valid) makes a request to a backend service. A successful request returns a Hello, Guest! response. If the API key is invalid, the sample returns an "Invalid ApiKey" response.
+
+For documentation on share flows, see [Developing reusable shared flows](http://docs.apigee.com/api-services/content/shared-flows).
 
 # Set up
 
-Set up details to come.
+You'll need the username and password for an admin user in an Edge org. You must be an admin user to import or create a shared flow.
 
 # Configure 
 
-Configuration details to come.
+Update `/setup/setenv.sh` with your environment details.
 
 # Import and deploy sample project
 
-Deploy and test details to come.
+To import and deploy the shared flow and client API proxy, run `$ sh deploy.sh`. Remember that you must be an admin user for the org in order to create or import a shared flow.
+
+To test, run `$ sh invoke.sh`. This sends a request to the API proxy, which in turn makes a request for API key validation to the shared flow.
 
 # Get help
 
 For assistance, please use [Apigee Support](https://community.apigee.com/content/apigee-customer-support).
 
-Copyright © 2014, 2015 Apigee Corporation
+Copyright © 2017 Apigee Corporation
 
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use
 this file except in compliance with the License. You may obtain a copy
