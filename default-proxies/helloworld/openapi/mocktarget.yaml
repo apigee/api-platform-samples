@@ -7,6 +7,10 @@ host: mocktarget.apigee.net
 schemes:
   - http
   - https
+securityDefinitions:
+  basicAuth:
+    type: basic
+    description: HTTP Basic Authentication.
 paths:
   /:
     get:
@@ -115,6 +119,34 @@ paths:
           required: true
           schema:
             $ref: '#/definitions/request-body'
+      responses:
+        '200':
+          description: Success
+  /statuscode/{code}:
+    get:
+      summary: View status code and message
+      operationId: View status code and message
+      description: View status code and message for the specified value.
+      produces:
+        - application/json
+      parameters:
+        - name: code
+          in: path
+          description: HTTP status code.
+          required: true
+          type: string
+      responses:
+        '200':
+          description: Success
+  /auth:
+    get:
+      security:
+      - basicAuth: []
+      summary: Validate access using basic authentication
+      operationId: Validate access using basic authentication
+      description: Validate access using basic authentication.
+      produces:
+        - application/json
       responses:
         '200':
           description: Success
