@@ -25,7 +25,7 @@ Be sure to perform the [prerequisites](https://github.com/apigee/api-platform-sa
 
     `curl http://<your org name>-<your environment>.apigee.net/v1/learn-edge`
 
-    where "your org name" is the name of your Apigee Edge organization and "your environment" is the name of the environment to deploy to. These values are the ones you set in `api-platform-samples/tools/setup/setenv.sh`.
+    where "your org name" is the name of your Apigee Edge organization and "your environment" is the name of the environment to deploy to. These values are the ones you set when you first ran `deploy.sh` and were asked to supply configuration settings.
 
 2. Look at the output.
 
