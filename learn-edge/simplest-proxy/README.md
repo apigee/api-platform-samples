@@ -29,7 +29,7 @@ Be sure to perform the [prerequisites](https://github.com/apigee/api-platform-sa
 
 2. Look at the output.
 
-    Did you get back a Status 200? Perfect! The proxy is deployed and able to accept requests. In [proxy-to-a-target](./proxy-to-a-target), we'll make a few simple changes so the proxy calls an actual backend service.
+    Did you get back a Status 200? Perfect! The proxy is deployed and able to accept requests. In [proxy-to-a-target](../proxy-to-a-target), we'll make a few simple changes so the proxy calls an actual backend service.
 
 ### Trace it
 
