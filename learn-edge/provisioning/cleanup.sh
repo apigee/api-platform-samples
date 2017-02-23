@@ -4,7 +4,6 @@
 source ../../setup/userconf.sh || exit 1
 get_password || exit 1
 
-
 echo using $username and $org
 
 echo "Deleting Apps"
