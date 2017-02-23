@@ -1,12 +1,9 @@
 #!/bin/sh
 
-source ../../setup/setenv.sh
 
-echo "Enter your password for the Apigee Enterprise organization, followed by [ENTER]:"
-
-read -s password
-
-source ../scripts/verify_credentials.sh
+## Ensure configuration variables have been set.
+source ../../setup/userconf.sh || exit 1
+get_password || exit 1
 
 echo using $username and $org
 
