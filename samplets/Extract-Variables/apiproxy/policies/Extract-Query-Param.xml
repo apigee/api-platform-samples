@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ExtractVariables name="Extract-Query-Param">
+    <DisplayName>Extract Query Param</DisplayName>
+    <Source>request</Source>
+    <QueryParam name="code">
+        <Pattern ignoreCase="true">DBN{dbncode}</Pattern>
+    </QueryParam>
+    <VariablePrefix>queryinfo</VariablePrefix>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+</ExtractVariables>
