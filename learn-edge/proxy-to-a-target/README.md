@@ -25,7 +25,7 @@ Go to the Edge UI and run a Trace on this API. How does it differ from the Trace
 
 To get our proxy to call a target service, we made a few changes to the simple do-nothing proxy we deployed before. 
 
-* In the `apiproxy/proxies/default.xml` file, we modified the `<RouteRule>` element.  
+* In the [apiproxy/proxies/default.xml](./apiproxy/proxies/default.xml) file, we modified the `<RouteRule>` element.  
 
   **Tip:** It might help if you open these files and look at them in their entirety.
 
@@ -38,7 +38,7 @@ To get our proxy to call a target service, we made a few changes to the simple d
 
     The `name` attribute (set to `default`) is arbitrary and can be anything you wish. The `<TargetEndpoint>` element refers to a TargetEndpoint definition. It must exist and have the name "default". Read on to learn about the TargetEndpoint!
 
-* We defined the TargetEndpoint in a file called `apiproxy/targets/default.xml`. In that file, we added this XML block, which specifies the target of the proxy, an HTTP web service called `mocktarget.apigee.net`.
+* We defined the TargetEndpoint in a file called [apiproxy/targets/default.xml](./apiproxy/targets/default.xml). In that file, we added this XML block, which specifies the target of the proxy, an HTTP web service called `mocktarget.apigee.net`.
 
    ```xml
    <TargetEndpoint name="default">
