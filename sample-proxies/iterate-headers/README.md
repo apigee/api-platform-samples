@@ -1,4 +1,4 @@
-# Iterate through response headers in a JavaScript policy
+# Iterate through response headers in JavaScript
 
 This API proxy sample demonstrates how to iterate through the list of response headers returned from an `httpClient.get()` method call. The [httpClient object](http://docs.apigee.com/api-services/reference/javascript-object-model#makingjavascriptcalloutswithhttpclient) is part of the Apigee Edge JavaScript Object model. This  object lets you make HTTP requests to backend targets from within a [JavaScript policy](http://docs.apigee.com/api-services/reference/javascript-policy). 
 
