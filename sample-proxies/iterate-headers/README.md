@@ -30,8 +30,8 @@ if (response) { // retrieve the pending request from the context variable
 
 **API request:**
 
-```curl http://willwitman-test.apigee.net/iterate-headers
-```
+`curl http://willwitman-test.apigee.net/iterate-headers`
+
 
 **API response:**
 
