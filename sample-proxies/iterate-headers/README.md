@@ -57,9 +57,9 @@ To test, run `$ sh invoke.sh`
 
 ## Doc references
 
-[JavaScript policy](http://docs.apigee.com/api-services/reference/javascript-policy)
-[httpClient function](http://docs.apigee.com/api-services/reference/javascript-object-model#makingjavascriptcalloutswithhttpclient)
-[Related community post](https://community.apigee.com/questions/40579/how-to-access-httpclient-response-headers-in-javas.html)
+* [JavaScript policy](http://docs.apigee.com/api-services/reference/javascript-policy)
+* [httpClient function](http://docs.apigee.com/api-services/reference/javascript-object-model#makingjavascriptcalloutswithhttpclient)
+* [Related community post](https://community.apigee.com/questions/40579/how-to-access-httpclient-response-headers-in-javas.html)
 
 ## Ask the community
 
