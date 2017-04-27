@@ -28,13 +28,14 @@ if (response) { // retrieve the pending request from the context variable
 
 ## Example
 
-```
 **API request:**
 
-curl http://willwitman-test.apigee.net/iterate-headers
+```curl http://willwitman-test.apigee.net/iterate-headers
+```
 
 **API response:**
 
+```
 Access-Control-Allow-Origin --> *
 Connection --> keep-alive
 Content-Length --> 68
@@ -43,7 +44,6 @@ Date --> Thu, 27 Apr 2017 19:16:42 GMT
 ETag --> W/"44-rA5eRt/mMLik54NvbWbSzg"
 X-Powered-By --> Apigee
 ```
-
 
 ## Configure 
 
