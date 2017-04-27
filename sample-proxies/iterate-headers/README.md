@@ -1,8 +1,30 @@
 # Iterate through httpClient() response headers
 
-This proxy demonstrates how to iterate through the list of response headers returned from an httpClient() call. The httpClient function lets you make HTTP API calls from within a JavaScript policy. 
+This proxy demonstrates how to iterate through the list of response headers returned from an httpClient() call. The httpClient function lets you make HTTP requests to backend targets from within a JavaScript policy. 
 
 The JavaScript code iterates through the response headers and concatenates them into a string, with a little extra formatting for clarity. 
+
+## JavaScript code
+Following is the code used in the JavaScript policy:
+
+```
+var response = httpClient.get("http://mocktarget.apigee.net/json");
+// set the pending request into a context variable
+context.setVariable('pendingResponse', response); 
+
+var headers = "";
+
+var response = context.getVariable('pendingResponse');
+if (response) { // retrieve the pending request from the context variable 
+    response.waitForComplete();
+    if (response.isSuccess()) {
+        for (var n in response.getResponse().headers) { 
+            headers = headers + n + " --> " + response.getResponse().headers[n] + "\n";
+        }
+    }
+    context.setVariable("response_headers", headers);
+}
+```
 
 ## Example
 
@@ -23,19 +45,27 @@ X-Powered-By --> Apigee
 ```
 
 
-# Configure 
+## Configure 
 
 Update `/setup/setenv.sh` with your Apigee account and Edge organization details. For more information, see ["Apigee Edge sample API proxies"](https://github.com/apigee/api-platform-samples).
 
-# Import and deploy sample project
+## Deploy and test the API proxy
 
 To deploy, run `$ sh deploy.sh`
 
 To test, run `$ sh invoke.sh`
 
-# Ask the community
+## Doc references
+
+[JavaScript policy](http://docs.apigee.com/api-services/reference/javascript-policy)
+[httpClient function](http://docs.apigee.com/api-services/reference/javascript-object-model#makingjavascriptcalloutswithhttpclient)
+[Related community post](https://community.apigee.com/questions/40579/how-to-access-httpclient-response-headers-in-javas.html)
+
+## Ask the community
 
 [![alt text](../../images/apigee-community.png "Apigee Community is a great place to ask questions and find answers about developing API proxies. ")](https://community.apigee.com?via=github)
+
+
 
 ---
 
