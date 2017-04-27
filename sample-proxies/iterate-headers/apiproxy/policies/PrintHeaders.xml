@@ -1,0 +1,4 @@
+<!-- This policy references the JavaScript under /resources/jsc. Use this policy to attach the JavaScript to Flow in the ProxyEndpoint configuration (/proxies/default.xml). -->
+<Javascript name="PrintHeaders" timeout="10000">
+  <ResourceURL>jsc://Print_Headers.js</ResourceURL>
+</Javascript>
