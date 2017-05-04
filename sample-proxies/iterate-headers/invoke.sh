@@ -6,4 +6,4 @@ source ../../setup/setenv.sh
 
 set -x
 
-curl "http://$org-$env.$api_domain/iterate-headers"
+curl "http://$org-$env.$api_domain/v1/iterate-headers"
