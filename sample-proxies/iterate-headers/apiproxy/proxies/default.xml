@@ -11,7 +11,7 @@
   <!-- the inbound network configuration that this API proxy will listen on. -->
   <HTTPProxyConnection>
     <!-- Define a URI that defines the address for this API proxy -->
-    <BasePath>/iterate-headers</BasePath>
+    <BasePath>/v1/iterate-headers</BasePath>
     <!-- Listen on both HTTP. For HTTPS change 'default' to 'secure' -->
     <VirtualHost>default</VirtualHost>
   </HTTPProxyConnection>
