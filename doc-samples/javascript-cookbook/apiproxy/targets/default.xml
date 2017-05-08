@@ -2,7 +2,7 @@
     <!-- Outbound HTTP configuration -->
     <HTTPTargetConnection>
 	    <!-- The URL for outbound requests -->
-        <URL>http://weather.yahooapis.com</URL>
+        <URL>http://mocktarget.apigee.net</URL>
     </HTTPTargetConnection>
 </TargetEndpoint>
 
