@@ -3,10 +3,6 @@
 This sample provides a simple implementation of a proxy that uses the JavaCallout policy and
 that implements Apigee's JavaCallout Java API.
 
-For a complete description of this proxy sample, see the API Proxy Cookbook topic at:
-
-http://apigee.com/docs/api-platform/content/use-java-customize-api 
-
 Javadoc for the Apigee JavaCallout API Java classes are included in this sample download in:
 
 /api-platform-samples/doc-samples/java-cookbook/javdocs-javacallout
@@ -15,7 +11,7 @@ Additional code samples are provided for reference in the '/java/src/com/apigees
 These additional samples demonstrate various blocking and non-blocking patterns you can
 use with JavaCallout. They are commented.
 
-This sample proxy uses the Yahoo Weather API for a target endpoint, and maps WEOID IDs to city names on behalf of the user.
+This sample proxy uses the Apigee Mock Target for a target endpoint. In this example, the target returns some JSON data. 
 
 **Reserved package names**: The package name prefixes `com.apigee.*` and `io.apigee.*` are reserved. To avoid collisions and errors, don't use these in your Java Callout package names.
 
@@ -25,7 +21,7 @@ This sample proxy uses the Yahoo Weather API for a target endpoint, and maps WEO
  - The name of the organization in which you have an account. 
  - Log in to enterprise.apigee.com and check account settings.
 
-# Configure 
+# Configure
 
 Update `/setup/setenv.sh` with your environment details.
 
@@ -34,6 +30,24 @@ Update `/setup/setenv.sh` with your environment details.
 To deploy, run `$ sh deploy.sh`
 
 To test, run `$ sh invoke.sh`
+
+The proxy returns headers and JSON data that have been converted to uppercase. For example:
+
+```
+< HTTP/1.1 200 OK
+< Date: Tue, 09 May 2017 16:36:10 GMT
+< Content-Type: APPLICATION/JSON; CHARSET=UTF-8
+< Content-Length: 68
+< Connection: keep-alive
+< Access-Control-Allow-Origin: *
+< ETag: W/"44-RA5ERT/MMLIK54NVBWBSZG"
+< X-Powered-By: APIGEE
+< Server: Apigee Router
+<
+* Curl_http_done: called premature == 0
+* Connection #0 to host willwitman-test.apigee.net left intact
+{"FIRSTNAME":"JOHN","LASTNAME":"DOE","CITY":"SAN JOSE","STATE":"CA"}
+```
 
 # Compiling and repackaging the source code
 
@@ -57,10 +71,10 @@ steps to compile, package, and redeploy. Be sure to compile with the [supported 
  1. In /apiproxy/policies/cityLookUp.xml, make sure the `<ClassName>` is correct.
  2. cd ../api-platform-samples/doc-samples/java-cookbook/java
  3. mkdir bin
- 4. javac -d bin -sourcepath src -classpath ../lib/expressions-1.0.0.jar:../lib/message-flow-1.0.0.jar src/com/apigeesample/CityLookup.java
+ 4.  javac -d bin -classpath ../lib/expressions-1.0.0.jar:../lib/message-flow-1.0.0.jar:. src/com/apigeesample/ResponseUppercase.java
  5. cd bin
- 6. jar -cvf CityLookup.jar ./com
- 7. cp CityLookup.jar ../../apiproxy/resources/java
+ 6. jar -cvf ResponseUppercase.jar ./com
+ 7. cp ResponseUppercase.jar ../../apiproxy/resources/java
  8. Redeploy the proxy by running the deploy.sh script.
  9. Test the redeployed proxy by running the invoke.sh script.
 
