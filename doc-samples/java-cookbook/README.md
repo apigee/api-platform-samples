@@ -5,9 +5,9 @@ that implements Apigee's JavaCallout Java API.
 
 Javadoc for the Apigee JavaCallout API Java classes are included in this sample download in:
 
-/api-platform-samples/doc-samples/java-cookbook/javdocs-javacallout
+`/api-platform-samples/doc-samples/java-cookbook/javdocs-javacallout`
 
-Additional code samples are provided for reference in the '/java/src/com/apigeesample' directory.
+Additional code samples are provided for reference in the `/java/src/com/apigeesample` directory.
 These additional samples demonstrate various blocking and non-blocking patterns you can
 use with JavaCallout. They are commented.
 
@@ -68,15 +68,15 @@ The dependent libraries are located in:
 If you make any changes to the Java source code for this cookbook sample, follow these
 steps to compile, package, and redeploy. Be sure to compile with the [supported version of Java](http://apigee.com/docs/api-services/reference/supported-software).
 
- 1. In /apiproxy/policies/cityLookUp.xml, make sure the `<ClassName>` is correct.
- 2. cd ../api-platform-samples/doc-samples/java-cookbook/java
+ 1. In `/apiproxy/policies/cityLookUp.xml`, make sure the `<ClassName>` is correct.
+ 2. `cd ../api-platform-samples/doc-samples/java-cookbook/java`
  3. mkdir bin
- 4.  javac -d bin -classpath ../lib/expressions-1.0.0.jar:../lib/message-flow-1.0.0.jar:. src/com/apigeesample/ResponseUppercase.java
- 5. cd bin
- 6. jar -cvf ResponseUppercase.jar ./com
- 7. cp ResponseUppercase.jar ../../apiproxy/resources/java
- 8. Redeploy the proxy by running the deploy.sh script.
- 9. Test the redeployed proxy by running the invoke.sh script.
+ 4.  `javac -d bin -classpath ../lib/expressions-1.0.0.jar:../lib/message-flow-1.0.0.jar:. src/com/apigeesample/ResponseUppercase.java`
+ 5. `cd bin`
+ 6. `jar -cvf ResponseUppercase.jar ./com`
+ 7. `cp ResponseUppercase.jar ../../apiproxy/resources/java`
+ 8. Redeploy the proxy by running the `deploy.sh` script.
+ 9. Test the redeployed proxy by running the `invoke.sh` script.
 
 # Ask the community
 
