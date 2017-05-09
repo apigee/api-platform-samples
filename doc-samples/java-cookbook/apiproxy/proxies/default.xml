@@ -1,28 +1,4 @@
 <ProxyEndpoint name="default">
-    <FaultRules>
-    	<FaultRule name="MissingCityName">
-            <Condition>fault.name = "ExecutionReturnedFailure"</Condition>
-            <Step>
-                <Name>Fault.MissingCityName</Name>
-            </Step>
-        </FaultRule>
-    </FaultRules>
-       
-    <Flows>
-        <Flow name="forecast">
-            <Description>weather forecast</Description>
-			<Condition>(proxy.pathsuffix MatchesPath &quot;/forecastrss&quot;) and (request.verb = &quot;GET&quot;)</Condition>
-			<!-- for every request lookupCityName policy -->
-            <Request>
-			<!-- Java extension-->
-				<Step>
-					<Name>cityLookUp</Name>
-				</Step>
-			</Request>			
-			<Response/>
-        </Flow>
-    </Flows>
-
     <HTTPProxyConnection>
         <BasePath>java-cookbook</BasePath>
         <Properties/>

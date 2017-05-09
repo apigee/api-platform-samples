@@ -1,6 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <TargetEndpoint name="default">
+    <Flows>
+        <Flow name="headers">
+            <Description>Make response content and headers uppercase</Description>
+            <Condition>(proxy.pathsuffix MatchesPath "/json") and (request.verb = "GET")</Condition>
+            <Response>
+                <Step>
+                    <Name>responseUppercase</Name>
+                </Step>
+            </Response>
+            <Request/>
+        </Flow>
+    </Flows>
     <HTTPTargetConnection>
         <Properties/>
-        <URL>http://weather.yahooapis.com/</URL>
+        <URL>http://mocktarget.apigee.net</URL>
     </HTTPTargetConnection>
 </TargetEndpoint>
