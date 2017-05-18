@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<APIProxy revision="1" name="Hello">
+    <Basepaths>/nodejs-hello</Basepaths>
+    <ConfigurationVersion majorVersion="4" minorVersion="0"/>
+    <CreatedAt>1495071724684</CreatedAt>
+    <CreatedBy>willwitman@google.com</CreatedBy>
+    <Description></Description>
+    <DisplayName>Hello</DisplayName>
+    <LastModifiedAt>1495071724684</LastModifiedAt>
+    <LastModifiedBy>willwitman@google.com</LastModifiedBy>
+    <Policies/>
+    <ProxyEndpoints>
+        <ProxyEndpoint>default</ProxyEndpoint>
+    </ProxyEndpoints>
+    <Resources>
+        <Resource>node://hello-world.js</Resource>
+    </Resources>
+    <Spec></Spec>
+    <TargetServers/>
+    <TargetEndpoints>
+        <TargetEndpoint>default</TargetEndpoint>
+    </TargetEndpoints>
+</APIProxy>
