@@ -1,6 +1,6 @@
 # Java Callout Sample
 
-This sample provides a simple implementation of a proxy that uses the JavaCallout policy. The policy executes custom Java code that implements Apigee's JavaCallout Java API. The Java callout converts response headers and response content to uppercase characters.  
+This sample provides a simple implementation of a proxy that uses the JavaCallout policy. The policy executes custom Java code that implements Apigee's Java Callout Java API. The Java callout converts response headers and response content to uppercase characters.  
 
 ## Running the sample
 1. Add your account and Edge environment information to `api-platform-samples/setenv/setup.sh`. You will need your Apigee username and the name of the organization in which you have an account. 
