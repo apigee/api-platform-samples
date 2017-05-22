@@ -1,36 +1,17 @@
 # Java Callout Sample
 
-This sample provides a simple implementation of a proxy that uses the JavaCallout policy and
-that implements Apigee's JavaCallout Java API.
+This sample provides a simple implementation of a proxy that uses the JavaCallout policy. The polcy executes custom Java code that implements Apigee's JavaCallout Java API. The Java callout converts response headers and response content to uppercase characters.  
 
-Javadoc for the Apigee JavaCallout API Java classes are included in this sample download in:
+## Running the sample
+1. Add your account and Edge environment information to `api-platform-samples/setenv/setup.sh`. You will need your Apigee username and password and the name of the organization in which you have an account. 
+2. Deploy the proxy:
 
-`/api-platform-samples/doc-samples/java-cookbook/javdocs-javacallout`
+    `./deploy.sh`
 
-Additional code samples are provided for reference in the `/java/src/com/apigeesample` directory.
-These additional samples demonstrate various blocking and non-blocking patterns you can
-use with JavaCallout. They are commented.
+3. Send a request to the proxy:
 
-This sample proxy uses the Apigee Mock Target for a target endpoint. In this example, the target returns some JSON data. 
-
-**Reserved package names**: The package name prefixes `com.apigee.*` and `io.apigee.*` are reserved. To avoid collisions and errors, don't use these in your Java Callout package names.
-
-# Set up
-
- - The username and password that you use to log in to enterprise.apigee.com.
- - The name of the organization in which you have an account. 
- - Log in to enterprise.apigee.com and check account settings.
-
-# Configure
-
-Update `/setup/setenv.sh` with your environment details.
-
-# Deploy and invoke the sample proxy.
-
-To deploy, run `$ sh deploy.sh`
-
-To test, run `$ sh invoke.sh`
-
+    `./invoke.sh`
+	
 The proxy returns headers and JSON data that have been converted to uppercase. For example:
 
 ```
@@ -49,7 +30,8 @@ The proxy returns headers and JSON data that have been converted to uppercase. F
 {"FIRSTNAME":"JOHN","LASTNAME":"DOE","CITY":"SAN JOSE","STATE":"CA"}
 ```
 
-# Compiling and repackaging the source code
+
+## Compiling and repackaging the source code
 
 This sample includes Java source code and two dependent packages. If you want to modify
 any of the source code, you need to follow the instructions here for compiling, packaging,
@@ -62,7 +44,7 @@ NOTE: The source code for this sample is located in:
 
 The dependent libraries are located in:
 
-    api-platform-samples/java-cookbook/lib. 
+    api-platform-samples/java-cookbook/lib
 ----------------------------------------------------------------------------------------
 
 If you make any changes to the Java source code for this cookbook sample, follow these
@@ -78,13 +60,23 @@ steps to compile, package, and redeploy. Be sure to compile with the [supported 
  8. Redeploy the proxy by running the `deploy.sh` script.
  9. Test the redeployed proxy by running the `invoke.sh` script.
 
-# Ask the community
+**Reserved package names**: The package name prefixes `com.apigee.*` and `io.apigee.*` are reserved. To avoid collisions and errors, don't use these in your Java Callout package names.
+
+## More information
+- Javadoc for the Apigee JavaCallout API Java classes are included in this sample download in:
+
+    `/api-platform-samples/doc-samples/java-cookbook/javdocs-javacallout`
+
+- Additional code samples are provided for reference in the `/java/src/com/apigeesample` directory.
+
+
+## Ask the community
 
 [![alt text](../../images/apigee-community.png "Apigee Community is a great place to ask questions and find answers about developing API proxies. ")](https://community.apigee.com?via=github)
 
 ---
 
-Copyright © 2015 Apigee Corporation
+Copyright © 2017 Apigee Corporation
 
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use
 this file except in compliance with the License. You may obtain a copy
