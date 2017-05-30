@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ProxyEndpoint name="default">
+    <Description/>
+    <FaultRules/>
+    <PreFlow name="PreFlow">
+        <Request>
+            <Step>
+                <Name>CopyHeader</Name>
+            </Step>
+        </Request>
+        <Response>
+            <Step>
+                <Name>hello-java</Name>
+            </Step>
+        </Response>
+    </PreFlow>
+    <PostFlow name="PostFlow">
+        <Request/>
+        <Response/>
+    </PostFlow>
+    <Flows/>
+    <HTTPProxyConnection>
+        <BasePath>/java-hello</BasePath>
+        <Properties/>
+        <VirtualHost>default</VirtualHost>
+        <VirtualHost>secure</VirtualHost>
+    </HTTPProxyConnection>
+    <RouteRule name="noroute"/>
+</ProxyEndpoint>
