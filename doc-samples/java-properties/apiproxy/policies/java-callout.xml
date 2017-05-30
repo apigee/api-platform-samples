@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<JavaCallout name="java-callout">
+        <ClassName>com.apigeesample.JavaProperties</ClassName>
+        <ResourceURL>java://edge-custom-policy-java-properties.jar</ResourceURL>
+        <Properties>
+		    <Property name="prop">WORLD!</Property>
+		</Properties>
+</JavaCallout>
