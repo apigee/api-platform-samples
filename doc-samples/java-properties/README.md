@@ -1,4 +1,4 @@
-# Java Callout Sample
+# Using properties in a Java callout
 
 This sample is a simple proxy that uses a Java Callout policy. In this sample, we demonstrate how to use the \<Properties> element of the Java callout policy. Properties set in the policy can be retrieved in your Java code at runtime. This sample is designed to be used with the Apigee Edge doc topic [How to use properties in a Java callout](http://docs.apigee.com/api-services/content/how-use-properties-java-callout). Please refer to that topic to learn more.
 
