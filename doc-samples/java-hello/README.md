@@ -1,4 +1,4 @@
-# Java Callout Sample
+# Using a Java callout: hello world
 
 This sample is a simple proxy that uses a Java Callout policy. This sample is designed to be used with the Apigee Edge doc topic [How to use a Java Callout(http://docs.apigee.com/api-reference/content/how-create-java-callout). Please refer to that topic to learn more.
 
