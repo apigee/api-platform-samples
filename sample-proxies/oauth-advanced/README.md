@@ -33,6 +33,8 @@ To run this sample, you'll need:
 * Install oauth-auth-code-grant-sample generator:
     `npm install generator-oauth-auth-code-grant-sample -g`
 
+* Please note that the sample does not run properly in Windows 10.  Please run in macOS or Linux for full compatibility.
+
 ## <a name="deploy">tl;dr: Deploy
 
 1. Call Yeoman:
