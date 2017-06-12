@@ -1,4 +1,4 @@
-//Parse the original response from Yahoo weather into a JSON object
+//Parse the original response into a JSON object
 var res = JSON.parse(context.proxyResponse.content);
 
 //Pull out only the information we want to see in the response.

@@ -4,9 +4,9 @@
       <!-- Steps reference policies under /apiproxy/policies -->
       <!-- First, set a few HTTP headers with variables for this transaction. -->
       <Step><Name>setHeaders</Name></Step>
-      <!-- Next, transform the weather report from XML to JSON for easier parsing with JavaScript -->
+      <!-- Next, transform from XML to JSON for easier parsing with JavaScript -->
       <Step><Name>transform</Name></Step>
-      <!-- Finally, use JavaScript to create minimized, mobile-friendly weather report. -->
+      <!-- Finally, use JavaScript to create minimized, mobile-friendly response. -->
       <Step><Name>minimize</Name></Step>
     </Response>
   </PostFlow>
