@@ -19,31 +19,31 @@ This sample API proxy illustrates how to change the target endpoint URL using a 
 1. Deploy the proxy. 
 1. Send this request to Apigee Edge. 
 
-    **Note:** The proxy is configured with a base path of `/WOEID`. The incoming request must contain that base path or the request will not be processed. Tip: Take a look at the `apiproxy/proxies/default.xml` to see where this base path is configured.
+    **Note:** The proxy is configured with a base path of `/zip`. The incoming request must contain that base path or the request will not be processed. Tip: Take a look at the `apiproxy/proxies/default.xml` to see where this base path is configured.
 
-    `curl http://myorg-test.apigee.net/WOEID/2467861`
+    `curl http://myorg-test.apigee.net/zip/80301`
 
-2. An [Extract Variables policy](http://apigee.com/docs/api-services/reference/extract-variables-policy) extracts the part of the path that comes after the `/WOEID` base path. 
+2. An [Extract Variables policy](http://apigee.com/docs/api-services/reference/extract-variables-policy) extracts the part of the path that comes after the `/zip` base path. 
 
-3. The policy stores the value `2467861` in a flow variable called `WOEID.location`. This value is specific to the back-end API. It identifies the locale for which to return weather data. Here is the policy XML:
+3. The policy stores the value of the zip code in a flow variable called `LOCATION.zip`. This value is specific to the back-end API. It identifies the locale for which to return geographical data. Here is the policy XML:
 
     ```xml
-    <ExtractVariables name="extractId">
-        <DisplayName>getWOEIDNumberfromPath</DisplayName>
+    <ExtractVariables name="extractZip">
+        <DisplayName>getZipfromPath</DisplayName>
         <URIPath>
-            <Pattern ignoreCase="true">/{location}</Pattern>
+            <Pattern ignoreCase="true">/{zip}</Pattern>
         </URIPath>
         <IgnoreUnresolvedVariables>false</IgnoreUnresolvedVariables>
-        <VariablePrefix>WOEID</VariablePrefix>
+        <VariablePrefix>LOCATION</VariablePrefix>
     </ExtractVariables>
     ```
 
 
-4. A [JavaScript policy](http://apigee.com/docs/api-services/reference/javascript-policy) rewrites the target URL by setting the `target.url` flow variable. This expression also appends the `WOEID.location` value to the query parameter `w`.
+4. A [JavaScript policy](http://apigee.com/docs/api-services/reference/javascript-policy) rewrites the target URL by setting the `target.url` flow variable. This expression also appends the `LOCATION.zip` value to the query parameter `address`.
 
-    `context.setVariable("target.url", "http://weather.yahooapis.com/forecastrss?w="+context.getVariable("WOEID.location"));`
+    `context.setVariable("target.url", "http://maps.googleapis.com/maps/api/geocode/json?address="+context.getVariable("LOCATION.zip"));`
 
-5. Finally, the newly formed target request is sent to the backend target, the Yahoo weather API, and the weather forecast for the specified locale is returned. 
+5. Finally, the newly formed target request is sent to the backend target, the Google maps API, and the geographical information for the specified zip code is returned. 
 
 ### Set up, deploy, invoke
 
@@ -72,7 +72,7 @@ This screen shot from the [Apigee Edge trace tool](http://apigee.com/docs/api-se
 
 ---
 
-Copyright © 2015 Apigee Corporation
+Copyright © 2017 Apigee Corporation
 
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use
 this file except in compliance with the License. You may obtain a copy
