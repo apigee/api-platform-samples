@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ProxyEndpoint name="default">
+    <PreFlow name="PreFlow">
+        <!-- During the request flow, extract the zip code that was presented in the request. -->
+        <Request>
+            <Step>
+                <Name>extractZip</Name>
+            </Step>
+        </Request>
+    </PreFlow>
+    <HTTPProxyConnection>
+        <!-- All requests sent to '{org-name}-test.apigee.net/zip' will be handled by this API proxy. -->
+        <BasePath>/zip</BasePath>
+        <!-- Use the default virtual host configuration to set the network address for this proxy: '{org-name}-test.apigee.net -->
+        <VirtualHost>default</VirtualHost>
+    </HTTPProxyConnection>
+    <RouteRule name="GoogleApiRoute">
+        <!-- Forward requests to the TargetEndpoint configuration named 'default'. -->
+        <TargetEndpoint>default</TargetEndpoint>
+    </RouteRule>
+</ProxyEndpoint>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ExtractVariables name="extractZip">
+    <DisplayName>getZipfromPath</DisplayName>
+    <!-- Pull the zip from the request path and populate a variable called 'zip'. 
+	The prefix LOCATION is defined below, to create the variable LOCATION.zip. 
+	-->
+    <URIPath>
+        <Pattern ignoreCase="true">/{zip}</Pattern>
+    </URIPath>
+    <!-- Continue processing without an error if the zip variable cannot be resolved (a bad request for example). -->
+    <IgnoreUnresolvedVariables>false</IgnoreUnresolvedVariables>
+    <!-- The prefix for the variable name that will be referenced by the JavaScript. -->
+    <VariablePrefix>LOCATION</VariablePrefix>
+</ExtractVariables>

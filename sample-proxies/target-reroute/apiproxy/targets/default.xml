@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<TargetEndpoint name="default">
+    <Description/>
+    <FaultRules/>
+    <Flows/>
+    <PreFlow>
+        <Request>
+            <Step>
+                <FaultRules/>
+                <Name>rewriteTargetUrl</Name>
+            </Step>
+        </Request>
+    </PreFlow>
+    <HTTPTargetConnection>
+        <Properties/>
+        <URL>http://mocktarget.apigee.net</URL>
+    </HTTPTargetConnection>
+</TargetEndpoint>

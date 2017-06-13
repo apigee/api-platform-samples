@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<APIProxy revision="2" name="target-reroute">
+    <Basepaths>/WOEID</Basepaths>
+    <ConfigurationVersion majorVersion="4" minorVersion="0"/>
+    <CreatedAt>1497366251711</CreatedAt>
+    <CreatedBy>willwitman@google.com</CreatedBy>
+    <DisplayName>target-reroute</DisplayName>
+    <LastModifiedAt>1497366251711</LastModifiedAt>
+    <LastModifiedBy>willwitman@google.com</LastModifiedBy>
+    <Policies>
+        <Policy>extractZip</Policy>
+        <Policy>rewriteTargetUrl</Policy>
+    </Policies>
+    <ProxyEndpoints>
+        <ProxyEndpoint>default</ProxyEndpoint>
+    </ProxyEndpoints>
+    <Resources>
+        <Resource>jsc://rewriteTargetUrl.js</Resource>
+    </Resources>
+    <Spec></Spec>
+    <TargetServers/>
+    <TargetEndpoints>
+        <TargetEndpoint>default</TargetEndpoint>
+    </TargetEndpoints>
+</APIProxy>
