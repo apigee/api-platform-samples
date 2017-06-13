@@ -6,4 +6,4 @@ source ../../setup/setenv.sh
 
 set -x
 
-curl http://$org-$env.$api_domain/WOEID/2467861
+curl http://$org-$env.$api_domain/zip/80301
