@@ -1,5 +1,9 @@
 # Javascript async callout
 
+### Note about usage
+
+This sample calls the Yahoo weather API. Since this sample was created, this API began requiring an API key. To execute this sample, you'll need to obtain a key and add it to the JavaScript code in the proxy that calls the API. 
+
 ### Sample use case
 
 Make async callouts where other policies can still process rather than waiting on a response from the callout.

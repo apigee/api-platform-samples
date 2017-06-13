@@ -1,6 +1,9 @@
 # Response Caching
 
 ![alt text](https://github.com/apigee/api-platform-samples/blob/master/images/icon_policy_traffic-management.jpg)
+### Note about usage
+
+This sample API proxy calls the Yahoo weather API as its backend target. Since this sample was created, this API began requiring an API key. To execute this sample, you'll need to obtain a key and add modify the proxy to use it.  
 
 ### Sample use case
 
