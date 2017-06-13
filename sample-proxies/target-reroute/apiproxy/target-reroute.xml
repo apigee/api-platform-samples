@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <APIProxy revision="2" name="target-reroute">
-    <Basepaths>/WOEID</Basepaths>
+    <Basepaths>/zip</Basepaths>
     <ConfigurationVersion majorVersion="4" minorVersion="0"/>
     <CreatedAt>1497366251711</CreatedAt>
     <CreatedBy>willwitman@google.com</CreatedBy>
