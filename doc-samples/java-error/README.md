@@ -5,7 +5,9 @@ This sample is a simple proxy that demonstrates error handling patterns that you
 * return custom error messages and headers back to the client
 * set flow variables in Edge that can be used for debugging
 
-This sample is designed to be used with the Apigee Edge doc topic [How to handle Java Callout errors](http://docs.apigee.com/api-services/content/how-handle-java-callout-errors). Please refer to that topic to learn more.
+This sample is designed to be used with the Apigee Edge doc topic [How to handle Java Callout errors](http://docs.apigee.com/api-services/content/how-handle-java-callout-errors). Please refer to that topic to learn how to build and deploy this sample.
+
+>Note: This example `pom.xml` and related build files are intended as examples only. If you create a Java callout project, you may need to add dependencies or make other modifications that are beyond the scope of this example.
 
 
 # Ask the community
