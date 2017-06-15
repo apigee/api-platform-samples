@@ -1,6 +1,8 @@
 # How to create a Java callout
 
-This sample is a simple proxy that uses a Java Callout policy. This sample is designed to be used with the Apigee Edge doc topic [How to use a Java Callout](http://docs.apigee.com/api-reference/content/how-create-java-callout). Please refer to that topic to learn more.
+This sample is a simple proxy that uses a Java Callout policy. This sample is designed to be used with the Apigee Edge doc topic [How to use a Java Callout](http://docs.apigee.com/api-reference/content/how-create-java-callout). Please refer to that topic to learn about compiling and running the sample.
+
+>Note: This example `pom.xml` and related build files are intended as examples only. If you create a Java callout project, you may need to add dependencies or make other modifications that are beyond the scope of this example. 
 
 
 # Ask the community
