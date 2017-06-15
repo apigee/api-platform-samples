@@ -1,0 +1,3 @@
+<APIProxy name="java-error">
+	  <Description>Demonstrates error handling pattern for Java callouts</Description>
+</APIProxy>
