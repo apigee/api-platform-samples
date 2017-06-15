@@ -4,8 +4,7 @@ source ../../setup/setenv.sh
 
 echo "Enter your password for the Apigee Enterprise organization $org, followed by [ENTER]:"
 
-#read -s password
-password=DustyEatsM1ce
+read -s password
 
 echo Deploying $proxy to $env on $url using $username and $org
 
