@@ -1,6 +1,8 @@
 # Java callout sample
 
-This sample is a simple proxy that uses a Java Callout policy. The Java callout converts the API proxy response content and headers to uppercase. This sample is designed to be used with the Apigee Edge doc topic [Convert the response to uppercase with a Java callout](http://docs.apigee.com/api-services/cookbook/use-java-customize-api). Please refer to that topic to learn more.
+This sample is a simple proxy that uses a Java Callout policy. The Java callout converts the API proxy response content and headers to uppercase. This sample is designed to be used with the Apigee Edge doc topic [Convert the response to uppercase with a Java callout](http://docs.apigee.com/api-services/cookbook/use-java-customize-api). Please refer to that topic to about building and deploying this sample.
+
+>Note: This example `pom.xml` and related build files are intended as examples only. If you create a Java callout project, you may need to add dependencies or make other modifications that are beyond the scope of this example.
 
 
 # Ask the community
