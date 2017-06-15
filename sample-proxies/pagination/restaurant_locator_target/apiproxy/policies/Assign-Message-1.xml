@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage async="false" continueOnError="false" enabled="true" name="Assign-Message-1">
+    <DisplayName>Assign Message-1</DisplayName>
+    <Set>
+        <Payload contentType="application/xml">
+            <RestaurantLocator>
+                <Restaurant>Tofoo Com Chay</Restaurant>
+                <Restaurant>Dishdash</Restaurant>
+                <Restaurant>Faz</Restaurant>
+                <Restaurant>In-N-Out Burger</Restaurant>
+                <Restaurant>Falafel STOP</Restaurant>
+            </RestaurantLocator>
+        </Payload>
+    </Set>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+    <AssignTo createNew="false" transport="http" type="response"/>
+</AssignMessage>
