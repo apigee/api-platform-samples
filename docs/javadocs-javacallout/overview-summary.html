@@ -137,5 +137,17 @@
 <!--   -->
 </a></div>
 <!-- ======== END OF BOTTOM NAVBAR ======= -->
+<h2>Making Java callouts</h2>
+<p>The Apigee Edge Java Callout policy lets you implement in Java custom behavior  that is not included out-of-the-box by Apigee policies. In your Java code, you can access message properties (headers, query parameters, content) and flow variables in the proxy flow. </p>
+<p>If you're just getting started with this policy, see <a href="http://docs.apigee.com/api-reference/content/how-create-java-callout#whatyouneedtoknowaboutjavacallout">How to create a Java Callout</a>. The topic explains how to write, compile, package, deploy, and test a simple Java callout project. </p>
+<p>This Javadoc describes the classes and methods that are required for writing Java callouts. The basic pattern is to implement the <code>Execution.execute()</code> method. This method gives you access to two important objects: MessageContext and ExecutionContext. Methods on these objects let you access request and response properties, such as headers, query parameters, and message content. You can also access flow variables in the Edge proxy flow. </p>
+<p>To learn more about making Java callouts, refer to these topics and how-to examples:</p>
+<ul>
+  <li><a href="http://docs.apigee.com/api-services/reference/java-callout-policy">Java Callout policy reference</a></li>
+  <li><a href="http://docs.apigee.com/api-reference/content/how-create-java-callout#whatyouneedtoknowaboutjavacallout">How to create a Java Callout</a></li>
+  <li><a href="http://docs.apigee.com/api-services/content/how-handle-java-callout-errors">How to handle Java Callout errors</a></li>
+  <li><a href="http://docs.apigee.com/api-services/content/how-use-properties-java-callout">How to use properties in a Java Callout</a></li>
+</ul>
+
 </body>
 </html>
