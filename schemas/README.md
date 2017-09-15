@@ -7,7 +7,7 @@ The policy schemas are currently under construction (and a little out of date) a
 
 * If you do try to use the schemas to build or validate policies, assume no element ordering in most cases even when the schema says ordering is required.
 
-* On the Update an [API Proxy Revision management API call](http://docs.apigee.com/management/apis/post/organizations/%7Borg_name%7D/apis/%7Bapi_name%7D/revisions/%7Brevision_number%7D-0), be sure to set the `validate=true` query parameter. If the bundle isn't valid, you should get a list of errors back without a failed deployment.
+* On the [Update an API Proxy Revision management API call](http://docs.apigee.com/management/apis/post/organizations/%7Borg_name%7D/apis/%7Bapi_name%7D/revisions/%7Brevision_number%7D-0), be sure to set the `validate=true` query parameter. If the bundle isn't valid, you should get a list of errors back without a failed deployment.
 
 
 # Ask the community
