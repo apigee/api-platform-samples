@@ -1,16 +1,14 @@
-# Working with schemas
 
-In Apigee Edge, API proxies, policies, and other entities are configured in XML. Use these schemas to help construct your XML configurations, either as reference material or imported into an XML editing environment.
+# Schemas are under construction
 
-`/configuration` - Contains the schemas for other-than-policy entities in Edge, such as API proxies, proxy endpoints, target endpoints, HTTP target connections, and so on.
+The policy schemas are currently under construction (and a little out of date) and will undergo a full update at a time TBD. We don't recommend using them in their current state to build or validate policies. Instead:
 
-`/policy` - Contains the schemas for Edge policies.
+* Use the [policy reference docs](http://apigee.com/docs/api-services/reference/reference-overview-policy) as guidance.
 
-Importing `all.xsd` into an XML editing environment lets you construct all entities and policies in a single view; or you can import individual policy schemas to build single policies.
+* If you do try to use the schemas to build or validate policies, assume no element ordering in most cases even when the schema says ordering is required.
 
-**Note:** Some policies, such as Message Logging and LDAP, have elements in the `/configuration/configuration_schemas.xsd` schema as well. This is a known issue that Apigee will address in the future. In the meantime, consult the [policy reference docs](http://apigee.com/docs/api-services/reference/reference-overview-policy) for guidance.
+* On the Update an [API Proxy Revision management API call](http://docs.apigee.com/management/apis/post/organizations/%7Borg_name%7D/apis/%7Bapi_name%7D/revisions/%7Brevision_number%7D-0), be sure to set the `validate=true` query parameter. If the bundle isn't valid, you should get a list of errors back without a failed deployment.
 
-**Bug:** There is a known bug where some schemas enforce a specific element order. In each policy, all direct child elements can be used in any order.
 
 # Ask the community
 
@@ -18,7 +16,7 @@ Importing `all.xsd` into an XML editing environment lets you construct all entit
 
 ---
 
-Copyright © 2016 Apigee Corporation
+Copyright © 2017 Google Inc.
 
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use
 this file except in compliance with the License. You may obtain a copy
