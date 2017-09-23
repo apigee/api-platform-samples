@@ -26,7 +26,7 @@ This is the recommended path through the examples. But you can do them in any or
 
     >Secure an API with an API key. 
 
-4.  [apikey-security-2](./apikey-security-1/README.md)
+4.  [apikey-security-2](./apikey-security-2/README.md)
 
     >Prevent an API key from being passed to the backend target service.
 
