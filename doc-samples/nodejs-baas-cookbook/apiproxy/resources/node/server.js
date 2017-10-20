@@ -9,12 +9,13 @@ app.use(express.bodyParser());
 // Initialize Usergrid
 
 var client = new usergrid.client({
-	'orgName' : config.organization,
-	'appName' : config.application,
-	'clientId' : config.clientId,
-	'clientSecret' : config.clientSecret,
-	'authType' : usergrid.AUTH_CLIENT_ID,
-	logging : config.logging
+      orgName      : config.organization,
+      appName      : config.application,
+      clientId     : config.clientId,
+      clientSecret : config.clientSecret,
+      authType     : usergrid.AUTH_CLIENT_ID,
+      URI          : config.URI || 'https://apibaas-trial.apigee.net',
+      logging      : config.logging
 });
 
 
@@ -23,100 +24,102 @@ var client = new usergrid.client({
 // GET /
 
 var rootTemplate = {
-	'employees' : {
-		'href' : './employees'
-	}
+        'employees' : {
+                'href' : '/profiles'
+        }
 };
 
 app.get('/', function(req, resp) {
-	resp.jsonp(rootTemplate);
+        resp.jsonp(rootTemplate);
 });
 
 // GET /profiles
 
-app.get('/profiles', function(req, res) {	
-		getProfiles(req, res);
+app.get('/profiles', function(req, res) {
+                getProfiles(req, res);
 });
 
 function getProfiles(req, res) {
-	client.createCollection({
-		type : 'employees'
-	}, function(err, employees) {
-		if (err) {
-			res.jsonp(500, {
-				'error' : JSON.stringify(err)
-			});
-			return;
-		}
+        client.createCollection({
+                type : 'employees'
+        }, function(err, employees) {
+                if (err) {
+                        res.jsonp(500, {
+                                'error' : JSON.stringify(err)
+                        });
+                        return;
+                }
 
-		var emps = [];
-		while (employees.hasNextEntity()) {
-			var emp = employees.getNextEntity().get();
-			var e = {
-				'id' : emp.id,
-				'firstName' : emp.firstName,
-				'lastName' : emp.lastName,
-				'phone' : emp.phone
-			};
-			emps.push(e);
-		}
-		res.jsonp(emps);
-	});
+                var emps = [];
+                while (employees.hasNextEntity()) {
+                        var emp = employees.getNextEntity().get();
+                        var e = {
+                                'id' : emp.id,
+                                'firstName' : emp.firstName,
+                                'lastName' : emp.lastName,
+                                'phone' : emp.phone
+                        };
+                        emps.push(e);
+                }
+                res.jsonp(emps);
+        });
 }
 
 // POST /profile
 
 app.post('/profile', function(req, res) {
-	if (!req.is('json')) {
-		res.jsonp(400, {
-			error : 'Bad request'
-		});
-		return;
-	}
+        if (!req.is('json')) {
+                res.jsonp(400, {
+                        error : 'Bad request'
+                });
+                return;
+        }
 
-	var b = req.body;
-	var e = {
-		'id' : b.id,
-		'firstName' : b.firstName,
-		'lastName' : b.lastName,
-		'phone' : b.phone
-	};
+        var b = req.body;
+        var e = {
+                'id' : b.id,
+                'firstName' : b.firstName,
+                'lastName' : b.lastName,
+                'phone' : b.phone
+        };
 
-	if ((e.id === undefined) || (e.firstName === undefined)
-			|| (e.lastName === undefined) || (e.phone === undefined)) {
-		res.jsonp(400, {
-			error : 'Bad request'
-		});
-		return;
-	}
+        if ((e.id === undefined) || (e.firstName === undefined)
+                        || (e.lastName === undefined) || (e.phone === undefined)) {
+                res.jsonp(400, {
+                        error : 'Bad request'
+                });
+                return;
+        }
 
-	createProfile(e, req, res);
+        createProfile(e, req, res);
 });
 
 function createProfile(e, req, res) {
-	var opts = {
-		type : 'employees',
-		name : e.id
-	};
+        var opts = {
+                type : 'employees',
+                name : e.id
+        };
 
-	client.createEntity(opts, function(err, o) {
-		if (err) {
-			res.jsonp(500, err);
-			return;
-		}
-		o.set(e);
-		o.save(function(err) {
-			if (err) {
-				res.jsonp(500, err);
-				return;
-			}
-			res.send(201);
-		});
-	});
+        client.createEntity(opts, function(err, o) {
+                if (err) {
+                        res.jsonp(500, err);
+                        return;
+                }
+                o.set(e);
+                o.save(function(err) {
+                        if (err) {
+                                res.jsonp(500, err);
+                                return;
+                        }
+                        res.send(201);
+                });
+        });
 }
 
 
 // Listen for requests until the server is stopped
 
-app.listen(process.env.PORT || 9000);
-console.log('The server is running!');
+var port = process.env.PORT || 9000;
+app.listen(port, function(){
+  console.log('The server is listening on port %d', port);
+});

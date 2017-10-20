@@ -1,0 +1,19 @@
+{
+  "name": "nodejs-baas-cookbook-example",
+  "version": "0.1.0",
+  "description": "server that connects to baas using client credentials",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author":  "docs@apigee.com",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "express": "^3.17.8",
+    "usergrid": "0.10.11"
+  },
+  "engines": {
+    "node": "0.10.x",
+    "npm": "1.2.x"
+  }
+}
