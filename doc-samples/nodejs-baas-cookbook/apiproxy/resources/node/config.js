@@ -1,10 +1,10 @@
-/*
- * Edit the defaults for your environment
- */
+// settings for your organization and application
 
-exports.organization = 'Enter your organization name here.'
-exports.application = 'Enter your application name here'
-exports.clientId = 'Enter the Client ID here.'
-exports.clientSecret = 'Enter the Client Secret ID here.'
-exports.tokenExpiration = 60000
-exports.logging = true
+module.exports = {
+  organization    : 'Enter your organization name here',
+  application     : 'employees',
+  clientId        : 'Enter the Client ID here',
+  clientSecret    : 'Enter the Client Secret here',
+  tokenExpiration : 60000,
+  logging         : true
+};
