@@ -30,7 +30,7 @@ We assume you've provisioned the Product, Developer App, and Developer as explai
 
 ### Deploy it
 
-1. `cd api-platform-samples/learn-edge/extract-json-payload`.
+1. `cd api-platform-samples/learn-edge/extract-json-payload-2`.
 2. `./deploy.sh`
 
 ### Run it
