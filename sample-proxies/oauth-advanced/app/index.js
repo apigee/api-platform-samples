@@ -98,15 +98,15 @@ module.exports = yeoman.generators.Base.extend({
 
     // deploy user-mgmt-v1
     shell.cd('user-mgmt-v1');
-    shell.exec('apigeetool deployproxy -u '+this.uname+' -p '+this.password+' -o '+this.orgname+' -e '+this.envname+ ' -n user-mgmt-v1 -d .');
+	shell.exec('apigeetool deployproxy -u '+this.uname+' -p \''+this.password+'\' -o '+this.orgname+' -e '+this.envname+ ' -n user-mgmt-v1 -d .');
 
     // deploy oauth2
     shell.cd('../oauth2');
-    shell.exec('apigeetool deployproxy -u '+this.uname+' -p '+this.password+' -o '+this.orgname+' -e '+this.envname+ ' -n oauth2 -d .');
+    shell.exec('apigeetool deployproxy -u '+this.uname+' -p \''+this.password+'\' -o '+this.orgname+' -e '+this.envname+ ' -n oauth2 -d .');
 
     // provision login-app
     shell.cd('../provisioning');
-    shell.exec('./provision-login-app.sh '+this.uname+' '+this.password+' '+this.orgname+' '+this.envname+' '+this.mgmtapiurl);
+    shell.exec('./provision-login-app.sh '+this.uname+' \''+this.password+'\' '+this.orgname+' '+this.envname+' '+this.mgmtapiurl);
 
     // npm install for login-app
     shell.cd('../login-app/apiproxy/resources/node');
@@ -114,15 +114,15 @@ module.exports = yeoman.generators.Base.extend({
 
     // deploy login-app
     shell.cd('../../..');
-    shell.exec('apigeetool deployproxy -u '+this.uname+' -p '+this.password+' -o '+this.orgname+' -e '+this.envname+ ' -n login-app -d . -U');
+    shell.exec('apigeetool deployproxy -u '+this.uname+' -p \''+this.password+'\' -o '+this.orgname+' -e '+this.envname+ ' -n login-app -d . -U');
 
     // provision webserver
     shell.cd('../provisioning');
-    shell.exec('./provision-webserver.sh '+this.uname+' '+this.password+' '+this.orgname+' '+this.envname+' '+this.mgmtapiurl);
+    shell.exec('./provision-webserver.sh '+this.uname+' \''+this.password+'\' '+this.orgname+' '+this.envname+' '+this.mgmtapiurl);
 
     //capture clientID and secret from last step and put in webserver-app bundle
-    var webserverappkey = shell.exec("curl -H 'Accept: application/json' -u "+this.uname+":"+this.password+" "+this.mgmtapiurl+"/v1/o/"+this.orgname+"/developers/webdev@example.com/apps/webserver-app 2>/dev/null | grep consumerKey | awk -F '\"' '{ print $4 }'").output;
-    var webserverappsecret = shell.exec("curl -H 'Accept: application/json' -u "+this.uname+":"+this.password+" "+this.mgmtapiurl+"/v1/o/"+this.orgname+"/developers/webdev@example.com/apps/webserver-app 2>/dev/null | grep consumerSecret | awk -F '\"' '{ print $4 }'").output;
+    var webserverappkey = shell.exec("curl -H 'Accept: application/json' -u '"+this.uname+":"+this.password+"' "+this.mgmtapiurl+"/v1/o/"+this.orgname+"/developers/webdev@example.com/apps/webserver-app 2>/dev/null | grep consumerKey | awk -F '\"' '{ print $4 }'").output;
+    var webserverappsecret = shell.exec("curl -H 'Accept: application/json' -u '"+this.uname+":"+this.password+"' "+this.mgmtapiurl+"/v1/o/"+this.orgname+"/developers/webdev@example.com/apps/webserver-app 2>/dev/null | grep consumerSecret | awk -F '\"' '{ print $4 }'").output;
     // remove trailing whitespace
     webserverappkey = webserverappkey.replace(/\n$/, "");
     webserverappsecret = webserverappsecret.replace(/\n$/, "");
@@ -142,7 +142,7 @@ module.exports = yeoman.generators.Base.extend({
 
     shell.cd('webserver-app');
     //deploy webserver-app bundle
-    shell.exec('apigeetool deployproxy -u '+this.uname+' -p '+this.password+' -o '+this.orgname+' -e '+this.envname+ ' -n webserver-app -d .');
+    shell.exec('apigeetool deployproxy -u '+this.uname+' -p \''+this.password+'\' -o '+this.orgname+' -e '+this.envname+ ' -n webserver-app -d .');
 
   },
 
