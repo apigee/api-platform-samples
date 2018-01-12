@@ -1,6 +1,6 @@
 {
   "name": "generator-oauth-auth-code-grant-sample",
-  "version": "0.1.6",
+  "version": "0.1.8",
   "description": "Generator for OAuth authorization code grant type using Apigee",
   "files": [
     "app",
@@ -23,14 +23,11 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/dzuluaga/oauth-auth-code-grant-sample.git"
-  },
+  "repository": "github:apigee/api-platform-samples/sample-proxies/oauth-advanced",
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/dzuluaga/oauth-auth-code-grant-sample/issues"
+    "url": "https://github.com/apigee/api-platform-samples/issues"
   },
-  "homepage": "https://github.com/dzuluaga/oauth-auth-code-grant-sample#readme"
+  "homepage": "https://github.com/apigee/api-platform-samples/tree/master/sample-proxies/oauth-advanced#readme"
 }
