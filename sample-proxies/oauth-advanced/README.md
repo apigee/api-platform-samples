@@ -30,7 +30,7 @@ To run this sample, you'll need:
 
 * Yeoman [installed](http://yeoman.io/)
 
-* Install oauth-auth-code-grant-sample generator:
+* Install oauth-auth-code-grant-sample generator (You can find the source code [here](https://github.com/apigee/api-platform-samples/blob/master/sample-proxies/oauth-advanced/app/index.js)):
     `npm install generator-oauth-auth-code-grant-sample -g`
 
 * Please note that the sample does not run properly in Windows 10.  Please run in macOS or Linux for full compatibility.
