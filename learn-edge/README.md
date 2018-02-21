@@ -88,10 +88,10 @@ trouble with the script (for example, it's using the wrong organization
 or the URL to invoke is incorrect), find and delete `$HOME/.learn-edge.rc`
 on your local file system. Then re-deploy the sample.
 
-**Troubleshooting:** If you've previously tried to run the sample and you run into
+**Troubleshooting:** If you've previously tried to run the sample and have
 trouble with the script (for example, it's using the wrong organization
-or the URL to invoke is incorrect), find and delete the `HOME/learn-edge.rc`
-file on your local system. Then re-deploy the sample.
+or the URL to invoke is incorrect), find and delete `HOME/learn-edge.rc`
+on your local file system. Then re-deploy the sample.
 
 That's it! To get started, go to the README for the first example proxy, [simplest-proxy](./simplest-proxy), and follow the instructions. On your filesystem, it is in the folder `api-platform-samples/learn-edge/simplest-proxy`.
 
