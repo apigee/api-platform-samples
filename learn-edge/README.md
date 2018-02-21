@@ -83,10 +83,10 @@ This is the recommended path through the examples. But you can do them in any or
 2. Download or clone the [api-platform-samples](https://github.com/apigee/api-platform-samples) GitHub repo.
 6. In a browser, sign in to your [Apigee account](http://apigee.com) and go to the API Management section. It'll be good to keep this browser window open as you work so you can view and trace the Learn Edge proxies in the UI.
 
-**Troubleshooting:** If you've previously tried to run the sample and you run into
+**Troubleshooting:** If you've previously tried to run the sample and have
 trouble with the script (for example, it's using the wrong organization
-or the URL to invoke is incorrect), find and delete the `HOME/learn-edge.rc`
-file on your local system. Then re-deploy the sample.
+or the URL to invoke is incorrect), find and delete `HOME/learn-edge.rc`
+on your local file system. Then re-deploy the sample.
 
 That's it! To get started, go to the README for the first example proxy, [simplest-proxy](./simplest-proxy), and follow the instructions. On your filesystem, it is in the folder `api-platform-samples/learn-edge/simplest-proxy`.
 
