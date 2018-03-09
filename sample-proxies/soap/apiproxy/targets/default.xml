@@ -1,6 +1,5 @@
 <TargetEndpoint name="default">
   <HTTPTargetConnection>
-    <URL>http://graphical.weather.gov/xml/SOAP_server/ndfdXMLserver.php</URL>
+    <URL>https://graphical.weather.gov/xml/SOAP_server/ndfdXMLserver.php</URL>
   </HTTPTargetConnection>
 </TargetEndpoint>
-

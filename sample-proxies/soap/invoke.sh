@@ -6,4 +6,4 @@ source ../../setup/setenv.sh
 
 set -x
 
-curl http://$org-$env.$api_domain/simplesoap?wsdl
+curl https://$org-$env.$api_domain/simplesoap?wsdl

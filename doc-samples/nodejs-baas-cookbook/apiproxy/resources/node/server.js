@@ -65,9 +65,9 @@ function getProfiles(req, res) {
         });
 }
 
-// POST /profile
+// POST /profiles
 
-app.post('/profile', function(req, res) {
+app.post('/profiles', function(req, res) {
         if (!req.is('json')) {
                 res.jsonp(400, {
                         error : 'Bad request'
