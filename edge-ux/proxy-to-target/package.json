@@ -11,8 +11,8 @@
   },
   "dependencies": {
     "apigeetool": "mukundha/apigeetool-node",
-    "gulp": "*",
-    "gulp-util": "^3.0.7"
+    "gulp": ">3.9.1",
+    "gulp-util": "^3.0.8"
   },
   "author": "mukundha@apigee.com",
   "license": "ISC"

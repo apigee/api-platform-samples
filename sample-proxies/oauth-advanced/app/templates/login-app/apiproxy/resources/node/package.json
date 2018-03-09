@@ -13,7 +13,7 @@
     "express-session": "^1.9.1",
     "less-middleware": "^0.1.12",
     "serve-favicon": "^2.1.6",
-    "validator": "^1.3.0"
+    "validator": ">2.0.0"
   },
   "devDependencies": {},
   "scripts": {
