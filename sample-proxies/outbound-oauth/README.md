@@ -67,9 +67,9 @@ A demo application that performs a search and renders the results in HTML is inc
 1. Sign up for [Microsoft Translator API](http://www.microsofttranslator.com/dev/) access,
 and replace the `clientId` and `clientSecret` in `apiproxy/resources/jsc/api-config.js` with your application credentials.
 
-2. Create a cache in the organization and environment you will be deploying the bundle in, using the definition in `twitter-translate-cache.xml`. This is used to cache the Translator API access token across requests. Try the following command:
+2. Create a cache in the organization and environment you will be deploying the bundle in, using the definition in `oauth-token-cache.xml`. This is used to cache the Translator API access token across requests. Try the following command:
 
-    ```curl -v -X POST -H "Content-Type: application/xml" -d @twitter-translate-cache.xml https://api.enterprise.apigee.com/v1/organizations/$ORG/environments/$ENV/caches -u myname:mypass```
+    ```curl -v -X POST -H "Content-Type: application/xml" -d @oauth-token-cache.xml https://api.enterprise.apigee.com/v1/organizations/$ORG/environments/$ENV/caches -u myname:mypass```
 
 * The username and password that you use to login to enterprise.apigee.com.
 * The name of the organization in which you have an account. Log in to 
