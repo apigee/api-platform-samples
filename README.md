@@ -15,11 +15,11 @@
 
 ## <a name="who"></a>Audience
 
-You are an Apigee Edge API proxy developer, or you would like to learn about developing APIs that run on Apigee Edge. At a minimum, we assume you're familiar with Apigee Edge and how to create simple API proxies. To learn more, we recommend this [getting-started tutorial](http://apigee.com/docs/api-services/tutorials/create-your-first-api). 
+You are an Apigee Edge API proxy developer, or you would like to learn about developing APIs that run on Apigee Edge. At a minimum, we assume you're familiar with Apigee Edge and how to create simple API proxies. To learn more, we recommend this [getting-started tutorial](https://docs.apigee.com/api-platform/tutorials/add-and-configure-your-first-api). 
 
 ## <a name="intro"></a>Intro
 
-This repository contains a collection of sample API proxies that you can deploy and run on [Apigee Edge](http://apigee.com/about/products/api-management). 
+This repository contains a collection of sample API proxies that you can deploy and run on [Apigee Edge](https://apigee.com/api-management/#/products). 
 
 ![alt text](./images/sample-proxies-1.png)
 
@@ -42,7 +42,7 @@ In addition, you'll find:
 
 ## <a name="using"></a>Using the sample proxies
 
-Most developers begin by identifying an interesting sample based on a specific use case or need. You'll find the samples in the `./api-platform-samples/sample-proxies` folder. The Apigee doc site also has a handy [samples overview page](http://apigee.com/docs/api-services/samples/samples-reference). 
+Most developers begin by identifying an interesting sample based on a specific use case or need. You'll find the samples in the `./api-platform-samples/sample-proxies` folder. The Apigee doc site also has a handy [samples overview page](https://docs.apigee.com/api-platform/samples/samples-reference). 
 
 
 For example, if you're interested in doing XML to JSON transformations, check out `api-platform-samples/sample-proxies/xmltojson`. 
@@ -158,7 +158,7 @@ API products, apps, and developers.
 Simple scripts to help you deploy the sample API proxies and profiles that they 
 rely on, including API products, developers, and apps.
 
-Set you Apigee API Platform account settings in `setenv.sh` ([Register for a free Apigee account](http://eneterprise.apigee.com/signup))
+Set you Apigee API Platform account settings in `setenv.sh` ([Register for a free Apigee account](https://docs.apigee.com/api-platform/get-started/creating-apigee-edge-account))
 
 To deploy a single sample, run `deploy.sh proxyName`, where `proxyName` is the name of the directory under `/sample-proxies` that contains the proxy you want to deploy.
 
@@ -178,7 +178,7 @@ To deploy all samples and API products, run `deploy_all.sh`
 
 ## <a name="docs"></a>Apigee Edge documentation
 
-The Apigee Edge docs are [here](http://apigee.com/docs). 
+The Apigee Edge docs are [here](https://docs.apigee.com). 
 
 ---
 
