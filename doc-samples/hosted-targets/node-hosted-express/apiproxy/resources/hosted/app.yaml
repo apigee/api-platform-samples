@@ -1,0 +1,8 @@
+runtime: node
+runtimeVersion: 8
+application: my-express-app
+env:
+  - name: NODE_ENV
+    value: production
+  - name: LOG_LEVEL
+    value: 3

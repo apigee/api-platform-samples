@@ -1,0 +1,7 @@
+get_token && apigeetool deployproxy \
+      -o apigee-hf-testing \
+      -e test \
+      --json \
+      --token "$(< ~/.sso-cli/valid_token.dat)" \
+      --api node-hosted-express \
+      --directory .

@@ -1,0 +1,13 @@
+{
+    "name": "hello-world",
+    "version": "1.0.0",
+    "main": "index.js",
+    "scripts": {
+        "start": "node index.js"
+    },
+    "author": "",
+    "license": "",
+    "description": "Hello World Application",
+    "dependencies": {
+    }
+}
