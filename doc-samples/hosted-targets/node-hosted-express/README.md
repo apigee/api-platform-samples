@@ -80,7 +80,7 @@ This sample is a Node.js proxy that uses [express](https://www.npmjs.com/package
 
 # Ask the community
 
-[![alt text](../../images/apigee-community.png "Apigee Community is a great place to ask questions and find answers about developing API proxies. ")](https://community.apigee.com?via=github)
+[![alt text](../../../images/apigee-community.png "Apigee Community is a great place to ask questions and find answers about developing API proxies. ")](https://community.apigee.com?via=github)
 
 ---
 
@@ -99,3 +99,4 @@ See the License for the specific language governing permissions and
 limitations under the License.
 
 http://docs.apigee.com/api-services/reference/supported-software
+
