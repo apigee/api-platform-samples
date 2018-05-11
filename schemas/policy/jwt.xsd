@@ -1,30 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<xs:schema version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0">
   <xs:element name="DecodeJWT" type="decodeJWTStepDefinitionBean"/>
-
-  <xs:element name="FaultRule" type="faultRuleBean"/>
-
   <xs:element name="GenerateJWT" type="generateJWTStepDefinitionBean"/>
-
-  <xs:element name="Policy" type="policy"/>
-
-  <xs:element name="Properties" type="jaxbProperties"/>
-
   <xs:element name="Property" type="propertyBean"/>
-
-  <xs:element name="Step" type="step"/>
-
   <xs:element name="VerifyJWT" type="verifyJWTStepDefinitionBean"/>
-
-  <xs:element name="beanImpl" type="beanImpl"/>
-
-  <xs:element name="inlineBean" type="inlineBean"/>
-
-  <xs:element name="jaxbPropertyEntry" type="jaxbPropertyEntry"/>
-
   <xs:element name="stepDefinitionBean" type="stepDefinitionBean"/>
-
   <xs:complexType name="verifyJWTStepDefinitionBean">
     <xs:complexContent>
       <xs:extension base="stepDefinitionBean">
@@ -57,44 +37,20 @@
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
-
   <xs:complexType name="stepDefinitionBean" abstract="true">
     <xs:complexContent>
       <xs:extension base="leafBean">
         <xs:sequence>
-          <xs:element name="Description" type="xs:string" minOccurs="0"/>
           <xs:element name="DisplayName" type="xs:string" minOccurs="0"/>
-          <xs:element name="FaultRules" minOccurs="0">
-            <xs:complexType>
-              <xs:sequence>
-                <xs:element ref="FaultRule" minOccurs="0" maxOccurs="unbounded"/>
-              </xs:sequence>
-            </xs:complexType>
-          </xs:element>
-          <xs:element ref="Properties" minOccurs="0"/>
         </xs:sequence>
+        <xs:attribute name="name" type="xs:string" use="required"/>
         <xs:attribute name="async" type="xs:string"/>
         <xs:attribute name="continueOnError" type="xs:string"/>
         <xs:attribute name="enabled" type="xs:string"/>
-        <xs:attribute name="version" type="xs:string"/>
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
-
-  <xs:complexType name="leafBean" abstract="true">
-    <xs:complexContent>
-      <xs:extension base="beanImpl">
-        <xs:sequence/>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-
-  <xs:complexType name="beanImpl" abstract="true">
-    <xs:sequence/>
-    <xs:attribute name="isHybrid" type="xs:boolean"/>
-    <xs:attribute name="name" type="xs:string"/>
-  </xs:complexType>
-
+  <xs:complexType name="leafBean" abstract="true"/>
   <xs:complexType name="claim">
     <xs:simpleContent>
       <xs:extension base="xs:string">
@@ -105,7 +61,6 @@
       </xs:extension>
     </xs:simpleContent>
   </xs:complexType>
-
   <xs:complexType name="audienceBean">
     <xs:simpleContent>
       <xs:extension base="propertyBean">
@@ -113,7 +68,6 @@
       </xs:extension>
     </xs:simpleContent>
   </xs:complexType>
-
   <xs:complexType name="propertyBean">
     <xs:simpleContent>
       <xs:extension base="xs:string">
@@ -122,7 +76,6 @@
       </xs:extension>
     </xs:simpleContent>
   </xs:complexType>
-
   <xs:complexType name="publicKeyBean">
     <xs:complexContent>
       <xs:extension base="keyBean">
@@ -132,14 +85,12 @@
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
-
   <xs:complexType name="keyBean">
     <xs:sequence>
       <xs:element name="Value" type="propertyBean" minOccurs="0"/>
     </xs:sequence>
     <xs:attribute name="timeToLive" type="xs:string"/>
   </xs:complexType>
-
   <xs:complexType name="secretKeyBean">
     <xs:complexContent>
       <xs:extension base="encryptingKeyBean">
@@ -147,7 +98,6 @@
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
-
   <xs:complexType name="encryptingKeyBean">
     <xs:complexContent>
       <xs:extension base="keyBean">
@@ -157,70 +107,6 @@
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
-
-  <xs:complexType name="faultRuleBean">
-    <xs:complexContent>
-      <xs:extension base="inlineBean">
-        <xs:sequence>
-          <xs:element name="Condition" type="xs:string" minOccurs="0"/>
-          <xs:element name="Description" type="xs:string" minOccurs="0"/>
-          <xs:choice minOccurs="0" maxOccurs="unbounded">
-            <xs:element ref="Step"/>
-            <xs:element ref="Policy"/>
-          </xs:choice>
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-
-  <xs:complexType name="inlineBean" abstract="true">
-    <xs:complexContent>
-      <xs:extension base="beanImpl">
-        <xs:sequence/>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-
-  <xs:complexType name="step">
-    <xs:complexContent>
-      <xs:extension base="inlineBean">
-        <xs:sequence>
-          <xs:element name="Condition" type="xs:string" minOccurs="0"/>
-          <xs:element name="FaultRules" minOccurs="0">
-            <xs:complexType>
-              <xs:sequence>
-                <xs:element ref="FaultRule" minOccurs="0" maxOccurs="unbounded"/>
-              </xs:sequence>
-            </xs:complexType>
-          </xs:element>
-          <xs:element name="Name" type="xs:string"/>
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-
-  <xs:complexType name="policy">
-    <xs:complexContent>
-      <xs:extension base="step">
-        <xs:sequence/>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-
-  <xs:complexType name="jaxbProperties">
-    <xs:sequence>
-      <xs:element name="Property" type="jaxbPropertyEntry" minOccurs="0" maxOccurs="unbounded"/>
-    </xs:sequence>
-  </xs:complexType>
-
-  <xs:complexType name="jaxbPropertyEntry">
-    <xs:simpleContent>
-      <xs:extension base="xs:string">
-        <xs:attribute name="name" type="xs:string"/>
-      </xs:extension>
-    </xs:simpleContent>
-  </xs:complexType>
-
   <xs:complexType name="generateJWTStepDefinitionBean">
     <xs:complexContent>
       <xs:extension base="stepDefinitionBean">
@@ -254,7 +140,6 @@
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
-
   <xs:complexType name="privateKeyBean">
     <xs:complexContent>
       <xs:extension base="encryptingKeyBean">
@@ -264,14 +149,7 @@
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
-
-  <xs:complexType name="keyStoreSource">
-    <xs:sequence>
-      <xs:element name="Alias" type="propertyBean"/>
-      <xs:element name="Name" type="propertyBean"/>
-    </xs:sequence>
   </xs:complexType>
-
   <xs:complexType name="decodeJWTStepDefinitionBean">
     <xs:complexContent>
       <xs:extension base="stepDefinitionBean">
@@ -283,4 +161,3 @@
     </xs:complexContent>
   </xs:complexType>
 </xs:schema>
-

@@ -182,8 +182,8 @@
   </xs:complexType>
   <xs:simpleType name="messageType">
     <xs:restriction base="xs:string">
-      <xs:enumeration value="response"/>
       <xs:enumeration value="request"/>
+      <xs:enumeration value="response"/>
     </xs:restriction>
   </xs:simpleType>
 </xs:schema>
