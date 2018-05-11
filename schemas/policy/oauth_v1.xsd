@@ -62,18 +62,6 @@
     </xs:sequence>
     <xs:attribute name="enabled" type="xs:string"/>
   </xs:complexType>
-  <xs:complexType name="deleteOAuthInfoBean">
-    <xs:complexContent>
-      <xs:extension base="stepDefinitionBean">
-        <xs:sequence>
-          <xs:element name="AccessToken" type="propertyBean" minOccurs="0"/>
-          <xs:element name="OAuthConfig" type="xs:string" minOccurs="0"/>
-          <xs:element name="RequestToken" type="propertyBean" minOccurs="0"/>
-          <xs:element name="Verifier" type="propertyBean" minOccurs="0"/>
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
   <xs:complexType name="oAuthV1Bean">
     <xs:complexContent>
       <xs:extension base="stepDefinitionBean">
@@ -158,20 +146,32 @@
       </xs:extension>
     </xs:simpleContent>
   </xs:complexType>
+  <xs:complexType name="deleteOAuthInfoBean">
+    <xs:complexContent>
+      <xs:extension base="stepDefinitionBean">
+        <xs:sequence>
+          <xs:element name="AccessToken" type="propertyBean" minOccurs="0"/>
+          <xs:element name="OAuthConfig" type="xs:string" minOccurs="0"/>
+          <xs:element name="RequestToken" type="propertyBean" minOccurs="0"/>
+          <xs:element name="Verifier" type="propertyBean" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
   <xs:simpleType name="format">
     <xs:restriction base="xs:string">
-      <xs:enumeration value="FORM_PARAM"/>
       <xs:enumeration value="XML"/>
+      <xs:enumeration value="FORM_PARAM"/>
     </xs:restriction>
   </xs:simpleType>
   <xs:simpleType name="operation">
     <xs:restriction base="xs:string">
-      <xs:enumeration value="GenerateAccessToken"/>
-      <xs:enumeration value="ValidateToken"/>
-      <xs:enumeration value="GenerateVerifier"/>
-      <xs:enumeration value="InvalidateToken"/>
-      <xs:enumeration value="VerifyAccessToken"/>
       <xs:enumeration value="GenerateRequestToken"/>
+      <xs:enumeration value="GenerateAccessToken"/>
+      <xs:enumeration value="VerifyAccessToken"/>
+      <xs:enumeration value="GenerateVerifier"/>
+      <xs:enumeration value="ValidateToken"/>
+      <xs:enumeration value="InvalidateToken"/>
     </xs:restriction>
   </xs:simpleType>
 </xs:schema>
