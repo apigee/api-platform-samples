@@ -17,6 +17,7 @@
     <xs:include schemaLocation="policy/java_script.xsd"/>
     <xs:include schemaLocation="policy/json_threat_protection.xsd"/>
     <xs:include schemaLocation="policy/json_to_xml.xsd"/>
+    <xs:include schemaLocation="policy/jwt.xsd"/>
     <xs:include schemaLocation="policy/keyvaluemap-operations.xsd"/>
     <xs:include schemaLocation="policy/ldap.xsd"/>
     <xs:include schemaLocation="policy/message_logging.xsd"/>
