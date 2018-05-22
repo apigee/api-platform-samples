@@ -7,6 +7,8 @@
 
   <xs:element name="Admin" type="admin"/>
 
+  <xs:element name="AliasInfo" type="alias"/>
+
   <xs:element name="ApiProduct" nillable="true" type="xs:anyType"/>
 
   <xs:element name="ApiProductAppsList" type="apiProductAppsList"/>
@@ -89,10 +91,6 @@
 
   <xs:element name="Host" type="host"/>
 
-  <xs:element name="JMSHost" type="jmsHostBean"/>
-
-  <xs:element name="JmsProxyConnection" type="jmsProxyConnection"/>
-
   <xs:element name="KeyStore" type="keyStoreBean"/>
 
   <xs:element name="LDAP" type="ldapBean"/>
@@ -112,6 +110,8 @@
   <xs:element name="OAuthV2Service" type="oAuthV2ConfigBean"/>
 
   <xs:element name="Policy" type="policy"/>
+
+  <xs:element name="PropagateTLSInformationBean" type="propagateTLSInformationBean"/>
 
   <xs:element name="Properties" type="jaxbProperties"/>
 
@@ -173,50 +173,31 @@
 
   <xs:element name="serviceConfigBean" type="serviceConfigBean"/>
 
-  <xs:complexType name="appCredentialResponse">
+  <xs:complexType name="routeRuleBean">
     <xs:complexContent>
-      <xs:extension base="attributeResource">
+      <xs:extension base="inlineBean">
         <xs:sequence>
-          <xs:element name="Attributes" minOccurs="0">
-            <xs:complexType>
-              <xs:sequence>
-                <xs:element ref="Attribute" minOccurs="0" maxOccurs="unbounded"/>
-              </xs:sequence>
-            </xs:complexType>
-          </xs:element>
-          <xs:element name="ConsumerKey" type="xs:string" minOccurs="0"/>
-          <xs:element name="ConsumerSecret" type="xs:string" minOccurs="0"/>
-          <xs:element name="ExpiresAt" type="xs:long" minOccurs="0"/>
-          <xs:element name="IssuedAt" type="xs:long" minOccurs="0"/>
-          <xs:element name="ApiProducts" minOccurs="0">
-            <xs:complexType>
-              <xs:sequence>
-                <xs:element ref="ApiProduct" minOccurs="0" maxOccurs="unbounded"/>
-              </xs:sequence>
-            </xs:complexType>
-          </xs:element>
-          <xs:element name="Scopes" minOccurs="0">
-            <xs:complexType>
-              <xs:sequence>
-                <xs:element name="Scope" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
-              </xs:sequence>
-            </xs:complexType>
-          </xs:element>
-          <xs:element name="Status" type="xs:string" minOccurs="0"/>
+          <xs:element name="Condition" type="xs:string" minOccurs="0"/>
+          <xs:any processContents="lax" namespace="##other"/>
+          <xs:element name="TargetEndpoint" type="xs:string" minOccurs="0"/>
+          <xs:element name="URL" type="xs:string" minOccurs="0"/>
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
 
-  <xs:complexType name="attributeResource" abstract="true">
-    <xs:sequence/>
+  <xs:complexType name="inlineBean" abstract="true">
+    <xs:complexContent>
+      <xs:extension base="beanImpl">
+        <xs:sequence/>
+      </xs:extension>
+    </xs:complexContent>
   </xs:complexType>
 
-  <xs:complexType name="attribute">
-    <xs:sequence>
-      <xs:element name="Name" type="xs:string" minOccurs="0"/>
-      <xs:element name="Value" type="xs:string" minOccurs="0"/>
-    </xs:sequence>
+  <xs:complexType name="beanImpl" abstract="true">
+    <xs:sequence/>
+    <xs:attribute name="isHybrid" type="xs:boolean"/>
+    <xs:attribute name="name" type="xs:string"/>
   </xs:complexType>
 
   <xs:complexType name="apiProductReference">
@@ -226,163 +207,63 @@
     </xs:sequence>
   </xs:complexType>
 
-  <xs:complexType name="httpTargetSessionCacheBean">
-    <xs:sequence>
-      <xs:element name="KeyType" type="keyType" minOccurs="0"/>
-      <xs:element name="SessionKey" type="xs:string" minOccurs="0"/>
-      <xs:element name="SessionTimeoutInSec" type="propertyBean" minOccurs="0"/>
-    </xs:sequence>
+  <xs:complexType name="fileDestinationBean">
+    <xs:complexContent>
+      <xs:extension base="destinationBean">
+        <xs:sequence>
+          <xs:element name="FileName" type="xs:string"/>
+          <xs:element ref="FileRotationOptions" minOccurs="0"/>
+          <xs:element name="FlushAfterEachWrite" type="xs:boolean"/>
+          <xs:element ref="Message"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
   </xs:complexType>
 
-  <xs:complexType name="propertyBean">
+  <xs:complexType name="destinationBean" abstract="true">
+    <xs:complexContent>
+      <xs:extension base="inlineBean">
+        <xs:sequence/>
+        <xs:attribute name="async" type="xs:string"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="fileRotationOptions">
+    <xs:sequence>
+      <xs:element name="MaxFileSizeInMB" type="xs:int"/>
+      <xs:element name="MaxFilesToRetain" type="xs:int"/>
+      <xs:element ref="RotationFrequency" minOccurs="0"/>
+      <xs:element name="FileRotationType" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+    <xs:attribute name="rotateFileOnStartup" type="xs:string"/>
+  </xs:complexType>
+
+  <xs:complexType name="rotationFrequency">
     <xs:simpleContent>
-      <xs:extension base="xs:string">
-        <xs:attribute name="ref" type="xs:string"/>
-        <xs:attribute name="type" type="xs:string"/>
+      <xs:extension base="xs:int">
+        <xs:attribute name="unit" type="xs:string" use="required"/>
       </xs:extension>
     </xs:simpleContent>
   </xs:complexType>
 
-  <xs:complexType name="webSocketTargetConnectionBean">
-    <xs:sequence>
-      <xs:element name="ErrorResponse" type="httpResponseBean" minOccurs="0"/>
-      <xs:element ref="HealthMonitor" minOccurs="0"/>
-      <xs:element ref="LoadBalancer" minOccurs="0"/>
-      <xs:element name="SessionCache" type="httpTargetSessionCacheBean" minOccurs="0"/>
-      <xs:element ref="SSLInfo" minOccurs="0"/>
-      <xs:element name="Path" type="xs:string" minOccurs="0"/>
-      <xs:element ref="Properties" minOccurs="0"/>
-      <xs:element name="URL" type="xs:string" minOccurs="0"/>
-    </xs:sequence>
-  </xs:complexType>
-
-  <xs:complexType name="httpResponseBean">
-    <xs:sequence>
-      <xs:element ref="Header" minOccurs="0" maxOccurs="unbounded"/>
-      <xs:element name="ResponseCode" type="xs:int" minOccurs="0" maxOccurs="unbounded"/>
-    </xs:sequence>
-  </xs:complexType>
-
-  <xs:complexType name="httpHeaderBean">
+  <xs:complexType name="messageTemplateBean">
     <xs:simpleContent>
       <xs:extension base="xs:string">
-        <xs:attribute name="name" type="xs:string" use="required"/>
+        <xs:attribute name="defaultVariableValue" type="xs:string"/>
+        <xs:attribute name="resourceURL" type="xs:string"/>
+        <xs:attribute name="variablePrefix" type="xs:string"/>
+        <xs:attribute name="variableSuffix" type="xs:string"/>
       </xs:extension>
     </xs:simpleContent>
   </xs:complexType>
 
-  <xs:complexType name="healthMonitorBean">
-    <xs:sequence>
-      <xs:element name="IsEnabled" type="xs:boolean"/>
-      <xs:element ref="HTTPMonitor" minOccurs="0"/>
-      <xs:element name="IntervalInSec" type="xs:int"/>
-      <xs:element ref="TCPMonitor" minOccurs="0"/>
-    </xs:sequence>
-  </xs:complexType>
-
-  <xs:complexType name="httpMonitorBean">
-    <xs:sequence>
-      <xs:element ref="Request" minOccurs="0"/>
-      <xs:element name="SuccessResponse" type="httpResponseBean" minOccurs="0"/>
-    </xs:sequence>
-  </xs:complexType>
-
-  <xs:complexType name="httpRequestBean">
-    <xs:sequence>
-      <xs:element name="ConnectTimeoutInSec" type="xs:int"/>
-      <xs:element ref="Header" minOccurs="0" maxOccurs="unbounded"/>
-      <xs:element name="Path" type="xs:string" minOccurs="0"/>
-      <xs:element name="Payload" type="xs:string" minOccurs="0"/>
-      <xs:element name="Port" type="xs:int"/>
-      <xs:element name="IsSSL" type="xs:boolean" minOccurs="0"/>
-      <xs:element name="SocketReadTimeoutInSec" type="xs:int"/>
-      <xs:element name="Verb" type="xs:string" minOccurs="0"/>
-    </xs:sequence>
-  </xs:complexType>
-
-  <xs:complexType name="tcpMonitorBean">
-    <xs:sequence>
-      <xs:element name="ConnectTimeoutInSec" type="xs:int"/>
-      <xs:element name="Port" type="xs:int"/>
-    </xs:sequence>
-  </xs:complexType>
-
-  <xs:complexType name="httpTargetLoadBalancerBean">
-    <xs:sequence>
-      <xs:element name="Algorithm" type="xs:string" minOccurs="0"/>
-      <xs:element name="MaxFailures" type="xs:int"/>
-      <xs:element name="RetryEnabled" type="xs:boolean"/>
-      <xs:element ref="Server" minOccurs="0" maxOccurs="unbounded"/>
-    </xs:sequence>
-  </xs:complexType>
-
-  <xs:complexType name="serverReferenceBean">
-    <xs:sequence>
-      <xs:element name="IsEnabled" type="xs:boolean"/>
-      <xs:element name="IsFallback" type="xs:boolean"/>
-      <xs:element name="Weight" type="xs:int"/>
-    </xs:sequence>
-    <xs:attribute name="name" type="xs:string"/>
-  </xs:complexType>
-
-  <xs:complexType name="sslInfo">
-    <xs:sequence>
-      <xs:element name="CRLStore" type="xs:string" minOccurs="0"/>
-      <xs:element name="Ciphers" minOccurs="0">
-        <xs:complexType>
-          <xs:sequence>
-            <xs:element name="Cipher" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
-          </xs:sequence>
-        </xs:complexType>
-      </xs:element>
-      <xs:element name="ClientAuthEnabled" type="xs:string" minOccurs="0"/>
-      <xs:element ref="CommonName" minOccurs="0"/>
-      <xs:element name="Enabled" type="xs:string" minOccurs="0"/>
-      <xs:element name="IgnoreValidationErrors" type="xs:boolean"/>
-      <xs:element name="KeyAlias" type="xs:string" minOccurs="0"/>
-      <xs:element name="KeyStore" type="xs:string" minOccurs="0"/>
-      <xs:element name="Protocols" minOccurs="0">
-        <xs:complexType>
-          <xs:sequence>
-            <xs:element name="Protocol" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
-          </xs:sequence>
-        </xs:complexType>
-      </xs:element>
-      <xs:element name="TrustStore" type="xs:string" minOccurs="0"/>
-    </xs:sequence>
-  </xs:complexType>
-
-  <xs:complexType name="commonName">
-    <xs:simpleContent>
-      <xs:extension base="xs:string">
-        <xs:attribute name="wildcardMatch" type="xs:boolean" use="required"/>
-      </xs:extension>
-    </xs:simpleContent>
-  </xs:complexType>
-
-  <xs:complexType name="jaxbProperties">
-    <xs:sequence>
-      <xs:element name="Property" type="jaxbPropertyEntry" minOccurs="0" maxOccurs="unbounded"/>
-    </xs:sequence>
-  </xs:complexType>
-
-  <xs:complexType name="jaxbPropertyEntry">
-    <xs:simpleContent>
-      <xs:extension base="xs:string">
-        <xs:attribute name="name" type="xs:string"/>
-      </xs:extension>
-    </xs:simpleContent>
-  </xs:complexType>
-
-  <xs:complexType name="regexUrlConstants" abstract="true">
-    <xs:sequence/>
-  </xs:complexType>
-
-  <xs:complexType name="targetBean">
+  <xs:complexType name="proxyBean">
     <xs:complexContent>
       <xs:extension base="endpointBean">
         <xs:sequence>
           <xs:any processContents="lax" namespace="##other"/>
+          <xs:element ref="RouteRule" minOccurs="0" maxOccurs="unbounded"/>
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
@@ -425,11 +306,6 @@
     </xs:complexContent>
   </xs:complexType>
 
-  <xs:complexType name="beanImpl" abstract="true">
-    <xs:sequence/>
-    <xs:attribute name="name" type="xs:string"/>
-  </xs:complexType>
-
   <xs:complexType name="defaultFaultRuleBean">
     <xs:complexContent>
       <xs:extension base="faultRuleBean">
@@ -451,14 +327,6 @@
             <xs:element ref="Policy"/>
           </xs:choice>
         </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-
-  <xs:complexType name="inlineBean" abstract="true">
-    <xs:complexContent>
-      <xs:extension base="beanImpl">
-        <xs:sequence/>
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
@@ -533,6 +401,202 @@
     </xs:sequence>
   </xs:complexType>
 
+  <xs:complexType name="webSocketProxyConnectionBean">
+    <xs:complexContent>
+      <xs:extension base="httpProxyConnection">
+        <xs:sequence/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="httpProxyConnection">
+    <xs:complexContent>
+      <xs:extension base="httpEndpointConnection">
+        <xs:sequence>
+          <xs:element name="BasePath" type="xs:string" minOccurs="0"/>
+          <xs:element ref="Properties" minOccurs="0"/>
+          <xs:element name="VirtualHost" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="httpEndpointConnection" abstract="true">
+    <xs:sequence/>
+  </xs:complexType>
+
+  <xs:complexType name="jaxbProperties">
+    <xs:sequence>
+      <xs:element name="Property" type="jaxbPropertyEntry" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="jaxbPropertyEntry">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute name="name" type="xs:string"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+
+  <xs:complexType name="appCredentialRequest">
+    <xs:sequence>
+      <xs:element name="ApiProducts" minOccurs="0">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="ApiProduct" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="Attributes" minOccurs="0">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element ref="Attribute" minOccurs="0" maxOccurs="unbounded"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ConsumerKey" type="xs:string" minOccurs="0"/>
+      <xs:element name="ConsumerSecret" type="xs:string" minOccurs="0"/>
+      <xs:element name="CredentialMethod" type="xs:string" minOccurs="0"/>
+      <xs:element name="Scopes" minOccurs="0">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Scope" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="attribute">
+    <xs:sequence>
+      <xs:element name="Name" type="xs:string" minOccurs="0"/>
+      <xs:element name="Value" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="regexUrlConstants" abstract="true">
+    <xs:sequence/>
+  </xs:complexType>
+
+  <xs:complexType name="apiProduct">
+    <xs:complexContent>
+      <xs:extension base="attributeResource">
+        <xs:sequence>
+          <xs:element name="ApiResources" minOccurs="0">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="ApiResource" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="ApprovalType" type="xs:string" minOccurs="0"/>
+          <xs:element name="Attributes" minOccurs="0">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element ref="Attribute" minOccurs="0" maxOccurs="unbounded"/>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="CreatedAt" type="xs:long" minOccurs="0"/>
+          <xs:element name="CreatedBy" type="xs:string" minOccurs="0"/>
+          <xs:element name="Description" type="xs:string" minOccurs="0"/>
+          <xs:element name="DisplayName" type="xs:string" minOccurs="0"/>
+          <xs:element name="Environments" minOccurs="0">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="Environment" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="LastModifiedAt" type="xs:long" minOccurs="0"/>
+          <xs:element name="LastModifiedBy" type="xs:string" minOccurs="0"/>
+          <xs:element name="Proxies" minOccurs="0">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="Proxy" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="Quota" type="xs:string" minOccurs="0"/>
+          <xs:element name="QuotaInterval" type="xs:string" minOccurs="0"/>
+          <xs:element name="QuotaTimeUnit" type="xs:string" minOccurs="0"/>
+          <xs:element name="Scopes" minOccurs="0">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="Scope" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:sequence>
+        <xs:attribute name="name" type="xs:string"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="attributeResource" abstract="true">
+    <xs:sequence/>
+  </xs:complexType>
+
+  <xs:complexType name="appStatus">
+    <xs:sequence>
+      <xs:element name="id" type="xs:long"/>
+      <xs:element name="status" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="healthMonitorBean">
+    <xs:sequence>
+      <xs:element name="IsEnabled" type="xs:boolean"/>
+      <xs:element ref="HTTPMonitor" minOccurs="0"/>
+      <xs:element name="IntervalInSec" type="xs:int"/>
+      <xs:element ref="TCPMonitor" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="httpMonitorBean">
+    <xs:sequence>
+      <xs:element ref="Request" minOccurs="0"/>
+      <xs:element name="SuccessResponse" type="httpResponseBean" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="httpRequestBean">
+    <xs:sequence>
+      <xs:element name="ConnectTimeoutInSec" type="xs:int"/>
+      <xs:element ref="Header" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="Path" type="xs:string" minOccurs="0"/>
+      <xs:element name="Payload" type="xs:string" minOccurs="0"/>
+      <xs:element name="Port" type="xs:int"/>
+      <xs:element name="IsSSL" type="xs:boolean" minOccurs="0"/>
+      <xs:element name="SocketReadTimeoutInSec" type="xs:int"/>
+      <xs:element name="TrustAllSSL" type="xs:boolean" minOccurs="0"/>
+      <xs:element name="Verb" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="httpHeaderBean">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute name="name" type="xs:string" use="required"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+
+  <xs:complexType name="httpResponseBean">
+    <xs:sequence>
+      <xs:element ref="Header" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="ResponseCode" type="xs:int" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="tcpMonitorBean">
+    <xs:sequence>
+      <xs:element name="ConnectTimeoutInSec" type="xs:int"/>
+      <xs:element name="Port" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
   <xs:complexType name="crlBean">
     <xs:complexContent>
       <xs:extension base="leafBean">
@@ -570,6 +634,88 @@
     </xs:sequence>
   </xs:complexType>
 
+  <xs:complexType name="apiProductsList">
+    <xs:sequence>
+      <xs:element ref="ApiProduct" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="compressionSettingsBean">
+    <xs:sequence>
+      <xs:element name="MinimumSizeInKB" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="httpTargetSessionCacheBean">
+    <xs:sequence>
+      <xs:element name="KeyType" type="keyType" minOccurs="0"/>
+      <xs:element name="SessionKey" type="xs:string" minOccurs="0"/>
+      <xs:element name="SessionTimeoutInSec" type="propertyBean" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="propertyBean">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute name="ref" type="xs:string"/>
+        <xs:attribute name="type" type="xs:string"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+
+  <xs:complexType name="resourceFiles">
+    <xs:sequence>
+      <xs:element ref="ResourceFile" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="resourceFile">
+    <xs:sequence/>
+    <xs:attribute name="name" type="xs:string" use="required"/>
+    <xs:attribute name="type" type="xs:string"/>
+  </xs:complexType>
+
+  <xs:complexType name="appCredentialResponses">
+    <xs:sequence>
+      <xs:element ref="Credential" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="appCredentialResponse">
+    <xs:complexContent>
+      <xs:extension base="attributeResource">
+        <xs:sequence>
+          <xs:element name="Attributes" minOccurs="0">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element ref="Attribute" minOccurs="0" maxOccurs="unbounded"/>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="ConsumerKey" type="xs:string" minOccurs="0"/>
+          <xs:element name="ConsumerSecret" type="xs:string" minOccurs="0"/>
+          <xs:element name="ExpiresAt" type="xs:long" minOccurs="0"/>
+          <xs:element name="IssuedAt" type="xs:long" minOccurs="0"/>
+          <xs:element name="ApiProducts" minOccurs="0">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element ref="ApiProduct" minOccurs="0" maxOccurs="unbounded"/>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="Scopes" minOccurs="0">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="Scope" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="Status" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
   <xs:complexType name="localTargetConnection">
     <xs:sequence>
       <xs:element name="APIProxy" type="xs:string" minOccurs="0"/>
@@ -577,6 +723,188 @@
       <xs:element name="ProxyEndpoint" type="xs:string" minOccurs="0"/>
       <xs:element ref="Properties" minOccurs="0"/>
       <xs:element name="VirtualHost" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="keyStoreBean">
+    <xs:complexContent>
+      <xs:extension base="branchBean">
+        <xs:sequence>
+          <xs:element name="Aliases" minOccurs="0">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="Alias" type="alias" minOccurs="0" maxOccurs="unbounded"/>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="Certs" minOccurs="0">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="Cert" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="Keys" minOccurs="0">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="Key" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="branchBean" abstract="true">
+    <xs:complexContent>
+      <xs:extension base="beanImpl">
+        <xs:sequence/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="alias" final="extension restriction">
+    <xs:sequence>
+      <xs:element name="AliasName" type="xs:string" minOccurs="0"/>
+      <xs:element name="Cert" type="xs:string" minOccurs="0"/>
+      <xs:element name="Key" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="sslInfo">
+    <xs:sequence>
+      <xs:element name="CRLStore" type="xs:string" minOccurs="0"/>
+      <xs:element name="CertAlias" type="xs:string" minOccurs="0"/>
+      <xs:element name="Ciphers" minOccurs="0">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Cipher" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ClientAuthEnabled" type="xs:string" minOccurs="0"/>
+      <xs:element ref="CommonName" minOccurs="0"/>
+      <xs:element name="Enabled" type="xs:string" minOccurs="0"/>
+      <xs:element name="IgnoreValidationErrors" type="xs:boolean"/>
+      <xs:element name="KeyAlias" type="xs:string" minOccurs="0"/>
+      <xs:element name="KeyHsm" type="xs:string" minOccurs="0"/>
+      <xs:element name="KeyStore" type="xs:string" minOccurs="0"/>
+      <xs:element name="Protocols" minOccurs="0">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Protocol" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="TrustStore" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="commonName">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute name="wildcardMatch" type="xs:boolean" use="required"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+
+  <xs:complexType name="apiProducts">
+    <xs:sequence>
+      <xs:element name="ApiProduct" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="virtualHostBean">
+    <xs:complexContent>
+      <xs:extension base="leafBean">
+        <xs:sequence>
+          <xs:element name="BaseUrl" type="xs:string" minOccurs="0"/>
+          <xs:element name="Description" type="xs:string" minOccurs="0"/>
+          <xs:element name="HostAliases" minOccurs="0">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="HostAlias" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="IOTimeoutInMilliSeconds" type="xs:string" minOccurs="0"/>
+          <xs:element name="Interfaces" minOccurs="0">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="Interface" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="ListenOptions" minOccurs="0">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="ListenOption" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="MaximumKeepAliveClientCount" type="xs:string" minOccurs="0"/>
+          <xs:element name="OCSPStapling" type="xs:string" minOccurs="0"/>
+          <xs:element name="Port" type="xs:string" minOccurs="0"/>
+          <xs:element name="PropagateTLSInformation" type="propagateTLSInformationBean" minOccurs="0"/>
+          <xs:element ref="Properties" minOccurs="0"/>
+          <xs:element name="RetryOptions" minOccurs="0">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="RetryOption" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element ref="SSLInfo" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="propagateTLSInformationBean">
+    <xs:sequence>
+      <xs:element name="ClientProperties" type="xs:boolean"/>
+      <xs:element name="ConnectionProperties" type="xs:boolean"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="organizationCredentialMethod">
+    <xs:sequence>
+      <xs:element name="Default" type="xs:boolean"/>
+      <xs:element name="Name" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="credentialMethod">
+    <xs:sequence>
+      <xs:element name="id" type="xs:long"/>
+      <xs:element name="name" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="resourceBean">
+    <xs:complexContent>
+      <xs:extension base="leafBean">
+        <xs:sequence>
+          <xs:element name="Type" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="targetBean">
+    <xs:complexContent>
+      <xs:extension base="endpointBean">
+        <xs:sequence>
+          <xs:any processContents="lax" namespace="##other"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="apps">
+    <xs:sequence>
+      <xs:element ref="App" minOccurs="0" maxOccurs="unbounded"/>
     </xs:sequence>
   </xs:complexType>
 
@@ -637,651 +965,6 @@
     </xs:complexContent>
   </xs:complexType>
 
-  <xs:complexType name="appCredentialRequest">
-    <xs:sequence>
-      <xs:element name="ApiProducts" minOccurs="0">
-        <xs:complexType>
-          <xs:sequence>
-            <xs:element name="ApiProduct" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
-          </xs:sequence>
-        </xs:complexType>
-      </xs:element>
-      <xs:element name="Attributes" minOccurs="0">
-        <xs:complexType>
-          <xs:sequence>
-            <xs:element ref="Attribute" minOccurs="0" maxOccurs="unbounded"/>
-          </xs:sequence>
-        </xs:complexType>
-      </xs:element>
-      <xs:element name="ConsumerKey" type="xs:string" minOccurs="0"/>
-      <xs:element name="ConsumerSecret" type="xs:string" minOccurs="0"/>
-      <xs:element name="CredentialMethod" type="xs:string" minOccurs="0"/>
-      <xs:element name="Scopes" minOccurs="0">
-        <xs:complexType>
-          <xs:sequence>
-            <xs:element name="Scope" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
-          </xs:sequence>
-        </xs:complexType>
-      </xs:element>
-    </xs:sequence>
-  </xs:complexType>
-
-  <xs:complexType name="routeRuleBean">
-    <xs:complexContent>
-      <xs:extension base="inlineBean">
-        <xs:sequence>
-          <xs:element name="Condition" type="xs:string" minOccurs="0"/>
-          <xs:any processContents="lax" namespace="##other"/>
-          <xs:element name="TargetEndpoint" type="xs:string" minOccurs="0"/>
-          <xs:element name="URL" type="xs:string" minOccurs="0"/>
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-
-  <xs:complexType name="applicationBean">
-    <xs:complexContent>
-      <xs:extension base="branchBean">
-        <xs:sequence>
-          <xs:element ref="MetaData" minOccurs="0"/>
-          <xs:element name="Name" type="xs:string" minOccurs="0"/>
-          <xs:element name="Revision" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-
-  <xs:complexType name="branchBean" abstract="true">
-    <xs:complexContent>
-      <xs:extension base="beanImpl">
-        <xs:sequence/>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-
-  <xs:complexType name="entityMetaData">
-    <xs:sequence>
-      <xs:element name="CreatedAt" type="xs:long" minOccurs="0"/>
-      <xs:element name="CreatedBy" type="xs:string" minOccurs="0"/>
-      <xs:element name="LastModifiedAt" type="xs:long" minOccurs="0"/>
-      <xs:element name="LastModifiedBy" type="xs:string" minOccurs="0"/>
-      <xs:element name="SubType" type="xs:string" minOccurs="0"/>
-    </xs:sequence>
-  </xs:complexType>
-
-  <xs:complexType name="appCredentialResponses">
-    <xs:sequence>
-      <xs:element ref="Credential" minOccurs="0" maxOccurs="unbounded"/>
-    </xs:sequence>
-  </xs:complexType>
-
-  <xs:complexType name="oAuthV2ConfigBean">
-    <xs:complexContent>
-      <xs:extension base="serviceConfigBean">
-        <xs:sequence>
-          <xs:element name="Password" type="xs:string" minOccurs="0"/>
-          <xs:element name="URL" type="xs:string"/>
-          <xs:element name="UserName" type="xs:string" minOccurs="0"/>
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-
-  <xs:complexType name="serviceConfigBean">
-    <xs:complexContent>
-      <xs:extension base="leafBean">
-        <xs:sequence>
-          <xs:element name="Description" type="xs:string" minOccurs="0"/>
-        </xs:sequence>
-        <xs:attribute name="version" type="xs:string"/>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-
-  <xs:complexType name="jmsHostBean">
-    <xs:complexContent>
-      <xs:extension base="leafBean">
-        <xs:sequence>
-          <xs:element name="ConnectionFactory" type="xs:string"/>
-          <xs:element name="ConnectionFactoryClass" type="xs:string"/>
-          <xs:element name="ConnectionPassword" type="xs:string" minOccurs="0"/>
-          <xs:element name="ConnectionURL" type="xs:string"/>
-          <xs:element name="ConnectionUsername" type="xs:string" minOccurs="0"/>
-          <xs:element name="Connections" type="xs:string"/>
-          <xs:element name="Context" type="xs:string"/>
-          <xs:element name="ContextPassword" type="xs:string" minOccurs="0"/>
-          <xs:element name="ContextUsername" type="xs:string" minOccurs="0"/>
-          <xs:element name="Description" type="xs:string" minOccurs="0"/>
-          <xs:element ref="Properties" minOccurs="0"/>
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-
-  <xs:complexType name="gatewayEnvironmentBean">
-    <xs:complexContent>
-      <xs:extension base="branchBean">
-        <xs:sequence>
-          <xs:element ref="Properties" minOccurs="0"/>
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-
-  <xs:complexType name="resourceFiles">
-    <xs:sequence>
-      <xs:element ref="ResourceFile" minOccurs="0" maxOccurs="unbounded"/>
-    </xs:sequence>
-  </xs:complexType>
-
-  <xs:complexType name="resourceFile">
-    <xs:sequence/>
-    <xs:attribute name="name" type="xs:string" use="required"/>
-    <xs:attribute name="type" type="xs:string"/>
-  </xs:complexType>
-
-  <xs:complexType name="appsCollection">
-    <xs:sequence>
-      <xs:element ref="Apps" minOccurs="0" maxOccurs="unbounded"/>
-    </xs:sequence>
-  </xs:complexType>
-
-  <xs:complexType name="apps">
-    <xs:sequence>
-      <xs:element ref="App" minOccurs="0" maxOccurs="unbounded"/>
-    </xs:sequence>
-  </xs:complexType>
-
-  <xs:complexType name="appCredentials">
-    <xs:sequence>
-      <xs:element ref="Credential" minOccurs="0" maxOccurs="unbounded"/>
-    </xs:sequence>
-  </xs:complexType>
-
-  <xs:complexType name="appCredential">
-    <xs:sequence>
-      <xs:element name="ApiProduct" type="xs:string" minOccurs="0"/>
-      <xs:element name="ConsumerKey" type="xs:string" minOccurs="0"/>
-      <xs:element name="ConsumerSecret" type="xs:string" minOccurs="0"/>
-    </xs:sequence>
-  </xs:complexType>
-
-  <xs:complexType name="apiProducts">
-    <xs:sequence>
-      <xs:element name="ApiProduct" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
-    </xs:sequence>
-  </xs:complexType>
-
-  <xs:complexType name="compressionSettingsBean">
-    <xs:sequence>
-      <xs:element name="MinimumSizeInKB" type="xs:int"/>
-    </xs:sequence>
-  </xs:complexType>
-
-  <xs:complexType name="apiProduct">
-    <xs:complexContent>
-      <xs:extension base="attributeResource">
-        <xs:sequence>
-          <xs:element name="ApiResources" minOccurs="0">
-            <xs:complexType>
-              <xs:sequence>
-                <xs:element name="ApiResource" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
-              </xs:sequence>
-            </xs:complexType>
-          </xs:element>
-          <xs:element name="ApprovalType" type="xs:string" minOccurs="0"/>
-          <xs:element name="Attributes" minOccurs="0">
-            <xs:complexType>
-              <xs:sequence>
-                <xs:element ref="Attribute" minOccurs="0" maxOccurs="unbounded"/>
-              </xs:sequence>
-            </xs:complexType>
-          </xs:element>
-          <xs:element name="CreatedAt" type="xs:long" minOccurs="0"/>
-          <xs:element name="CreatedBy" type="xs:string" minOccurs="0"/>
-          <xs:element name="Description" type="xs:string" minOccurs="0"/>
-          <xs:element name="DisplayName" type="xs:string" minOccurs="0"/>
-          <xs:element name="Environments" minOccurs="0">
-            <xs:complexType>
-              <xs:sequence>
-                <xs:element name="Environment" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
-              </xs:sequence>
-            </xs:complexType>
-          </xs:element>
-          <xs:element name="LastModifiedAt" type="xs:long" minOccurs="0"/>
-          <xs:element name="LastModifiedBy" type="xs:string" minOccurs="0"/>
-          <xs:element name="Proxies" minOccurs="0">
-            <xs:complexType>
-              <xs:sequence>
-                <xs:element name="Proxy" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
-              </xs:sequence>
-            </xs:complexType>
-          </xs:element>
-          <xs:element name="Quota" type="xs:string" minOccurs="0"/>
-          <xs:element name="QuotaInterval" type="xs:string" minOccurs="0"/>
-          <xs:element name="QuotaTimeUnit" type="xs:string" minOccurs="0"/>
-          <xs:element name="Scopes" minOccurs="0">
-            <xs:complexType>
-              <xs:sequence>
-                <xs:element name="Scope" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
-              </xs:sequence>
-            </xs:complexType>
-          </xs:element>
-        </xs:sequence>
-        <xs:attribute name="name" type="xs:string"/>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-
-  <xs:complexType name="syslogDestinationBean">
-    <xs:complexContent>
-      <xs:extension base="destinationBean">
-        <xs:sequence>
-          <xs:element name="FormatMessage" type="xs:string" minOccurs="0"/>
-          <xs:element name="Host" type="xs:string" minOccurs="0"/>
-          <xs:element ref="Message"/>
-          <xs:element name="Port" type="xs:int"/>
-          <xs:element name="Protocol" type="xs:string" minOccurs="0"/>
-          <xs:element ref="SSLInfo" minOccurs="0"/>
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-
-  <xs:complexType name="destinationBean" abstract="true">
-    <xs:complexContent>
-      <xs:extension base="inlineBean">
-        <xs:sequence/>
-        <xs:attribute name="async" type="xs:string"/>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-
-  <xs:complexType name="messageTemplateBean">
-    <xs:simpleContent>
-      <xs:extension base="xs:string">
-        <xs:attribute name="defaultVariableValue" type="xs:string"/>
-        <xs:attribute name="resourceURL" type="xs:string"/>
-        <xs:attribute name="variablePrefix" type="xs:string"/>
-        <xs:attribute name="variableSuffix" type="xs:string"/>
-      </xs:extension>
-    </xs:simpleContent>
-  </xs:complexType>
-
-  <xs:complexType name="scriptTarget">
-    <xs:sequence>
-      <xs:element name="Arguments" minOccurs="0">
-        <xs:complexType>
-          <xs:sequence>
-            <xs:element name="Argument" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
-          </xs:sequence>
-        </xs:complexType>
-      </xs:element>
-      <xs:element name="EnvironmentVariables" minOccurs="0">
-        <xs:complexType>
-          <xs:sequence>
-            <xs:element ref="EnvironmentVariable" minOccurs="0" maxOccurs="unbounded"/>
-          </xs:sequence>
-        </xs:complexType>
-      </xs:element>
-      <xs:element name="ResourceURL" type="xs:string" minOccurs="0"/>
-      <xs:element ref="Properties" minOccurs="0"/>
-    </xs:sequence>
-  </xs:complexType>
-
-  <xs:complexType name="environmentVariableBean">
-    <xs:simpleContent>
-      <xs:extension base="xs:string">
-        <xs:attribute name="name" type="xs:string"/>
-      </xs:extension>
-    </xs:simpleContent>
-  </xs:complexType>
-
-  <xs:complexType name="appFilter">
-    <xs:sequence>
-      <xs:element name="appFamily" type="xs:string" minOccurs="0"/>
-      <xs:element name="appName" type="xs:string" minOccurs="0"/>
-      <xs:element name="appType" type="xs:string" minOccurs="0"/>
-      <xs:element name="organization" type="xs:string" minOccurs="0"/>
-      <xs:element name="parentId" type="xs:string" minOccurs="0"/>
-      <xs:element name="status" type="xs:string" minOccurs="0"/>
-    </xs:sequence>
-  </xs:complexType>
-
-  <xs:complexType name="virtualHostBean">
-    <xs:complexContent>
-      <xs:extension base="leafBean">
-        <xs:sequence>
-          <xs:element name="Description" type="xs:string" minOccurs="0"/>
-          <xs:element name="HostAliases" minOccurs="0">
-            <xs:complexType>
-              <xs:sequence>
-                <xs:element name="HostAlias" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
-              </xs:sequence>
-            </xs:complexType>
-          </xs:element>
-          <xs:element name="IOTimeoutInMilliSeconds" type="xs:string" minOccurs="0"/>
-          <xs:element name="Interfaces" minOccurs="0">
-            <xs:complexType>
-              <xs:sequence>
-                <xs:element name="Interface" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
-              </xs:sequence>
-            </xs:complexType>
-          </xs:element>
-          <xs:element name="ListenOptions" minOccurs="0">
-            <xs:complexType>
-              <xs:sequence>
-                <xs:element name="ListenOption" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
-              </xs:sequence>
-            </xs:complexType>
-          </xs:element>
-          <xs:element name="MaximumKeepAliveClientCount" type="xs:string" minOccurs="0"/>
-          <xs:element name="Port" type="xs:string"/>
-          <xs:element ref="Properties" minOccurs="0"/>
-          <xs:element ref="SSLInfo" minOccurs="0"/>
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-
-  <xs:complexType name="apiProductAppsList">
-    <xs:sequence>
-      <xs:element name="Apps" minOccurs="0">
-        <xs:complexType>
-          <xs:sequence>
-            <xs:element name="App" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
-          </xs:sequence>
-        </xs:complexType>
-      </xs:element>
-      <xs:element name="AppsCount" type="xs:int"/>
-      <xs:element name="KeysCount" type="xs:int"/>
-      <xs:element name="Keys" minOccurs="0">
-        <xs:complexType>
-          <xs:sequence>
-            <xs:element name="Key" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
-          </xs:sequence>
-        </xs:complexType>
-      </xs:element>
-    </xs:sequence>
-  </xs:complexType>
-
-  <xs:complexType name="certInfo">
-    <xs:sequence>
-      <xs:element name="BasicConstraints" type="xs:string" minOccurs="0"/>
-      <xs:element name="ExpiryDate" type="xs:long"/>
-      <xs:element name="Issuer" type="xs:string" minOccurs="0"/>
-      <xs:element name="PublicKey" type="xs:string" minOccurs="0"/>
-      <xs:element name="SerialNumber" type="xs:string" minOccurs="0"/>
-      <xs:element name="SigAlgName" type="xs:string" minOccurs="0"/>
-      <xs:element name="Subject" type="xs:string" minOccurs="0"/>
-      <xs:element name="SubjectAlternativeNames" minOccurs="0">
-        <xs:complexType>
-          <xs:sequence>
-            <xs:element name="SubjectAlternativeName" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
-          </xs:sequence>
-        </xs:complexType>
-      </xs:element>
-      <xs:element name="isValid" type="xs:string" minOccurs="0"/>
-      <xs:element name="ValidFrom" type="xs:long"/>
-      <xs:element name="Version" type="xs:int" minOccurs="0"/>
-    </xs:sequence>
-  </xs:complexType>
-
-  <xs:complexType name="certsInfo">
-    <xs:sequence>
-      <xs:element ref="CertInfo" minOccurs="0" maxOccurs="unbounded"/>
-      <xs:element name="certName" type="xs:string" minOccurs="0"/>
-    </xs:sequence>
-  </xs:complexType>
-
-  <xs:complexType name="httpTargetConnection">
-    <xs:complexContent>
-      <xs:extension base="httpEndpointConnection">
-        <xs:sequence>
-          <xs:element name="ErrorResponse" type="httpResponseBean" minOccurs="0"/>
-          <xs:element ref="HealthMonitor" minOccurs="0"/>
-          <xs:element ref="LoadBalancer" minOccurs="0"/>
-          <xs:element name="Path" type="xs:string" minOccurs="0"/>
-          <xs:element name="SessionCache" type="httpTargetSessionCacheBean" minOccurs="0"/>
-          <xs:element ref="SSLInfo" minOccurs="0"/>
-          <xs:element ref="Properties" minOccurs="0"/>
-          <xs:element name="URL" type="xs:string" minOccurs="0"/>
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-
-  <xs:complexType name="httpEndpointConnection" abstract="true">
-    <xs:sequence/>
-  </xs:complexType>
-
-  <xs:complexType name="crlStoreBean">
-    <xs:complexContent>
-      <xs:extension base="branchBean">
-        <xs:sequence>
-          <xs:element name="CRLs" minOccurs="0">
-            <xs:complexType>
-              <xs:sequence>
-                <xs:element name="CRL" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
-              </xs:sequence>
-            </xs:complexType>
-          </xs:element>
-          <xs:element name="Certs" minOccurs="0">
-            <xs:complexType>
-              <xs:sequence>
-                <xs:element name="Cert" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
-              </xs:sequence>
-            </xs:complexType>
-          </xs:element>
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-
-  <xs:complexType name="organizationCredentialMethod">
-    <xs:sequence>
-      <xs:element name="Default" type="xs:boolean"/>
-      <xs:element name="Name" type="xs:string" minOccurs="0"/>
-    </xs:sequence>
-  </xs:complexType>
-
-  <xs:complexType name="resourceBean">
-    <xs:complexContent>
-      <xs:extension base="leafBean">
-        <xs:sequence>
-          <xs:element name="Type" type="xs:string"/>
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-
-  <xs:complexType name="webSocketProxyConnectionBean">
-    <xs:complexContent>
-      <xs:extension base="httpProxyConnection">
-        <xs:sequence/>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-
-  <xs:complexType name="httpProxyConnection">
-    <xs:complexContent>
-      <xs:extension base="httpEndpointConnection">
-        <xs:sequence>
-          <xs:element name="BasePath" type="xs:string" minOccurs="0"/>
-          <xs:element ref="Properties" minOccurs="0"/>
-          <xs:element name="VirtualHost" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-
-  <xs:complexType name="fileDestinationBean">
-    <xs:complexContent>
-      <xs:extension base="destinationBean">
-        <xs:sequence>
-          <xs:element name="FileName" type="xs:string"/>
-          <xs:element ref="FileRotationOptions" minOccurs="0"/>
-          <xs:element name="FlushAfterEachWrite" type="xs:boolean"/>
-          <xs:element ref="Message"/>
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-
-  <xs:complexType name="fileRotationOptions">
-    <xs:sequence>
-      <xs:element name="MaxFileSizeInMB" type="xs:int"/>
-      <xs:element name="MaxFilesToRetain" type="xs:int"/>
-      <xs:element ref="RotationFrequency" minOccurs="0"/>
-      <xs:element name="FileRotationType" type="xs:string" minOccurs="0"/>
-    </xs:sequence>
-    <xs:attribute name="rotateFileOnStartup" type="xs:string"/>
-  </xs:complexType>
-
-  <xs:complexType name="rotationFrequency">
-    <xs:simpleContent>
-      <xs:extension base="xs:int">
-        <xs:attribute name="unit" type="xs:string" use="required"/>
-      </xs:extension>
-    </xs:simpleContent>
-  </xs:complexType>
-
-  <xs:complexType name="cacheBean">
-    <xs:complexContent>
-      <xs:extension base="leafBean">
-        <xs:sequence>
-          <xs:element name="ExpirySettings" type="cacheExpiryBean" minOccurs="0"/>
-          <xs:element ref="Compression" minOccurs="0"/>
-          <xs:element name="Description" type="xs:string" minOccurs="0"/>
-          <xs:element name="DiskSizeInMB" type="xs:long"/>
-          <xs:element name="Distributed" type="xs:boolean"/>
-          <xs:element name="InMemorySizeInKB" type="xs:long"/>
-          <xs:element name="MaxElementsInMemory" type="xs:long"/>
-          <xs:element name="MaxElementsOnDisk" type="xs:long"/>
-          <xs:element name="SkipCacheIfElementSizeInKBExceeds" type="xs:long" minOccurs="0"/>
-          <xs:element name="OverflowToDisk" type="xs:boolean"/>
-          <xs:element name="Persistent" type="xs:boolean"/>
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-
-  <xs:complexType name="cacheExpiryBean">
-    <xs:sequence>
-      <xs:element name="ExpiryDate" type="propertyBean" minOccurs="0"/>
-      <xs:element name="TimeOfDay" type="propertyBean" minOccurs="0"/>
-      <xs:element name="TimeoutInSec" type="propertyBean" minOccurs="0"/>
-    </xs:sequence>
-  </xs:complexType>
-
-  <xs:complexType name="proxyBean">
-    <xs:complexContent>
-      <xs:extension base="endpointBean">
-        <xs:sequence>
-          <xs:any processContents="lax" namespace="##other"/>
-          <xs:element ref="RouteRule" minOccurs="0" maxOccurs="unbounded"/>
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-
-  <xs:complexType name="attributeKeys">
-    <xs:sequence>
-      <xs:element ref="AttributeKey" minOccurs="0" maxOccurs="unbounded"/>
-    </xs:sequence>
-  </xs:complexType>
-
-  <xs:complexType name="attributeKey">
-    <xs:sequence>
-      <xs:element name="IsMandatory" type="xs:boolean"/>
-      <xs:element name="Name" type="xs:string" minOccurs="0"/>
-    </xs:sequence>
-  </xs:complexType>
-
-  <xs:complexType name="keyStoreBean">
-    <xs:complexContent>
-      <xs:extension base="branchBean">
-        <xs:sequence>
-          <xs:element name="Certs" minOccurs="0">
-            <xs:complexType>
-              <xs:sequence>
-                <xs:element name="Cert" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
-              </xs:sequence>
-            </xs:complexType>
-          </xs:element>
-          <xs:element name="Keys" minOccurs="0">
-            <xs:complexType>
-              <xs:sequence>
-                <xs:element name="Key" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
-              </xs:sequence>
-            </xs:complexType>
-          </xs:element>
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-
-  <xs:complexType name="organizationBase">
-    <xs:complexContent>
-      <xs:extension base="branchBean">
-        <xs:sequence/>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-
-  <xs:complexType name="oAuthV1ConfigBean">
-    <xs:complexContent>
-      <xs:extension base="serviceConfigBean">
-        <xs:sequence>
-          <xs:element name="AllowVariableAccessorSecrets" type="xs:boolean"/>
-          <xs:element name="AllowSignatureMethod" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
-          <xs:element name="Password" type="xs:string" minOccurs="0"/>
-          <xs:element name="AllowedTimeOffset" type="xs:long"/>
-          <xs:element name="URL" type="xs:string" minOccurs="0"/>
-          <xs:element name="UserName" type="xs:string" minOccurs="0"/>
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-
-  <xs:complexType name="credentialMethod">
-    <xs:sequence>
-      <xs:element name="id" type="xs:long"/>
-      <xs:element name="name" type="xs:string" minOccurs="0"/>
-    </xs:sequence>
-  </xs:complexType>
-
-  <xs:complexType name="apiProductsList">
-    <xs:sequence>
-      <xs:element ref="ApiProduct" minOccurs="0" maxOccurs="unbounded"/>
-    </xs:sequence>
-  </xs:complexType>
-
-  <xs:complexType name="smtpDestinationBean">
-    <xs:complexContent>
-      <xs:extension base="destinationBean">
-        <xs:sequence>
-          <xs:element name="Body" type="messageTemplateBean" minOccurs="0"/>
-          <xs:element name="CharSet" type="xs:string" minOccurs="0"/>
-          <xs:element name="ContentType" type="xs:string" minOccurs="0"/>
-          <xs:element name="From" type="xs:string" minOccurs="0"/>
-          <xs:element ref="Recipient" minOccurs="0" maxOccurs="unbounded"/>
-          <xs:element name="ReplyTo" type="xs:string" minOccurs="0"/>
-          <xs:element name="Severity" type="xs:string" minOccurs="0"/>
-          <xs:element name="Subject" type="messageTemplateBean" minOccurs="0"/>
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-
-  <xs:complexType name="recipient">
-    <xs:simpleContent>
-      <xs:extension base="xs:string">
-        <xs:attribute name="type" type="xs:string"/>
-      </xs:extension>
-    </xs:simpleContent>
-  </xs:complexType>
-
   <xs:complexType name="applicationRevisionBean">
     <xs:complexContent>
       <xs:extension base="branchBean">
@@ -1294,6 +977,7 @@
           <xs:element name="DisplayName" type="xs:string" minOccurs="0"/>
           <xs:element name="LastModifiedAt" type="xs:long" minOccurs="0"/>
           <xs:element name="LastModifiedBy" type="xs:string" minOccurs="0"/>
+          <xs:element name="ManifestVersion" type="xs:string" minOccurs="0"/>
           <xs:element name="Policies" minOccurs="0">
             <xs:complexType>
               <xs:sequence>
@@ -1331,7 +1015,6 @@
               </xs:sequence>
             </xs:complexType>
           </xs:element>
-          <xs:element name="validate" type="xs:string" minOccurs="0"/>
         </xs:sequence>
         <xs:attribute name="revision" type="xs:string"/>
       </xs:extension>
@@ -1360,64 +1043,43 @@
     </xs:complexContent>
   </xs:complexType>
 
-  <xs:complexType name="appStatus">
+  <xs:complexType name="apiProductAppsList">
     <xs:sequence>
-      <xs:element name="id" type="xs:long"/>
-      <xs:element name="status" type="xs:string" minOccurs="0"/>
+      <xs:element name="Apps" minOccurs="0">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="App" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="AppsCount" type="xs:int"/>
+      <xs:element name="KeysCount" type="xs:int"/>
+      <xs:element name="Keys" minOccurs="0">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Key" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
     </xs:sequence>
   </xs:complexType>
 
-  <xs:complexType name="attributes">
+  <xs:complexType name="appCredential">
     <xs:sequence>
-      <xs:element ref="Attribute" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="ApiProduct" type="xs:string" minOccurs="0"/>
+      <xs:element name="ConsumerKey" type="xs:string" minOccurs="0"/>
+      <xs:element name="ConsumerSecret" type="xs:string" minOccurs="0"/>
     </xs:sequence>
   </xs:complexType>
 
-  <xs:complexType name="targetServerBean">
+  <xs:complexType name="gatewayEnvironmentBean">
     <xs:complexContent>
-      <xs:extension base="leafBean">
+      <xs:extension base="branchBean">
         <xs:sequence>
-          <xs:element name="Description" type="xs:string" minOccurs="0"/>
-          <xs:element name="IsEnabled" type="xs:boolean"/>
-          <xs:element name="Host" type="xs:string"/>
-          <xs:element name="Port" type="xs:int"/>
-          <xs:element ref="SSLInfo" minOccurs="0"/>
+          <xs:element ref="Properties" minOccurs="0"/>
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
-  </xs:complexType>
-
-  <xs:complexType name="jmsProxyConnection">
-    <xs:complexContent>
-      <xs:extension base="jmsConnection">
-        <xs:sequence>
-          <xs:element name="DefaultResponseQueue" type="xs:string" minOccurs="0"/>
-          <xs:element name="Destination" type="xs:string" minOccurs="0"/>
-          <xs:element name="JmsHost" type="xs:string"/>
-          <xs:element name="JmsResponseHost" type="xs:string" minOccurs="0"/>
-          <xs:element name="MessageSelector" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
-          <xs:element name="transportProperties">
-            <xs:complexType>
-              <xs:sequence>
-                <xs:element name="entry" minOccurs="0" maxOccurs="unbounded">
-                  <xs:complexType>
-                    <xs:sequence>
-                      <xs:element name="key" minOccurs="0" type="xs:anyType"/>
-                      <xs:element name="value" minOccurs="0" type="xs:anyType"/>
-                    </xs:sequence>
-                  </xs:complexType>
-                </xs:element>
-              </xs:sequence>
-            </xs:complexType>
-          </xs:element>
-        </xs:sequence>
-        <xs:attribute name="state" type="xs:string"/>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-
-  <xs:complexType name="jmsConnection" abstract="true">
-    <xs:sequence/>
   </xs:complexType>
 
   <xs:complexType name="externalLdapBean">
@@ -1475,6 +1137,328 @@
         <xs:attribute name="port" type="xs:int"/>
       </xs:extension>
     </xs:simpleContent>
+  </xs:complexType>
+
+  <xs:complexType name="cacheBean">
+    <xs:complexContent>
+      <xs:extension base="leafBean">
+        <xs:sequence>
+          <xs:element name="ExpirySettings" type="cacheExpiryBean" minOccurs="0"/>
+          <xs:element ref="Compression" minOccurs="0"/>
+          <xs:element name="Description" type="xs:string" minOccurs="0"/>
+          <xs:element name="DiskSizeInMB" type="xs:long"/>
+          <xs:element name="Distributed" type="xs:boolean"/>
+          <xs:element name="InMemorySizeInKB" type="xs:long"/>
+          <xs:element name="MaxElementsInMemory" type="xs:long"/>
+          <xs:element name="MaxElementsOnDisk" type="xs:long"/>
+          <xs:element name="SkipCacheIfElementSizeInKBExceeds" type="xs:long" minOccurs="0"/>
+          <xs:element name="OverflowToDisk" type="xs:boolean"/>
+          <xs:element name="Persistent" type="xs:boolean"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="cacheExpiryBean">
+    <xs:sequence>
+      <xs:element name="ExpiryDate" type="propertyBean" minOccurs="0"/>
+      <xs:element name="TimeOfDay" type="propertyBean" minOccurs="0"/>
+      <xs:element name="TimeoutInSec" type="propertyBean" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="certInfo">
+    <xs:sequence>
+      <xs:element name="BasicConstraints" type="xs:string" minOccurs="0"/>
+      <xs:element name="ExpiryDate" type="xs:long"/>
+      <xs:element name="Issuer" type="xs:string" minOccurs="0"/>
+      <xs:element name="PublicKey" type="xs:string" minOccurs="0"/>
+      <xs:element name="SerialNumber" type="xs:string" minOccurs="0"/>
+      <xs:element name="SigAlgName" type="xs:string" minOccurs="0"/>
+      <xs:element name="Subject" type="xs:string" minOccurs="0"/>
+      <xs:element name="SubjectAlternativeNames" minOccurs="0">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="SubjectAlternativeName" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="isValid" type="xs:string" minOccurs="0"/>
+      <xs:element name="ValidFrom" type="xs:long"/>
+      <xs:element name="Version" type="xs:int" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="certsInfo">
+    <xs:sequence>
+      <xs:element ref="CertInfo" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="certName" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="applicationBean">
+    <xs:complexContent>
+      <xs:extension base="branchBean">
+        <xs:sequence>
+          <xs:element ref="MetaData" minOccurs="0"/>
+          <xs:element name="Name" type="xs:string" minOccurs="0"/>
+          <xs:element name="Revision" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="entityMetaData">
+    <xs:sequence>
+      <xs:element name="CreatedAt" type="xs:long" minOccurs="0"/>
+      <xs:element name="CreatedBy" type="xs:string" minOccurs="0"/>
+      <xs:element name="LastModifiedAt" type="xs:long" minOccurs="0"/>
+      <xs:element name="LastModifiedBy" type="xs:string" minOccurs="0"/>
+      <xs:element name="SubType" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="httpTargetConnection">
+    <xs:complexContent>
+      <xs:extension base="httpEndpointConnection">
+        <xs:sequence>
+          <xs:element name="ErrorResponse" type="httpResponseBean" minOccurs="0"/>
+          <xs:element ref="HealthMonitor" minOccurs="0"/>
+          <xs:element ref="LoadBalancer" minOccurs="0"/>
+          <xs:element name="Path" type="xs:string" minOccurs="0"/>
+          <xs:element name="SessionCache" type="httpTargetSessionCacheBean" minOccurs="0"/>
+          <xs:element ref="SSLInfo" minOccurs="0"/>
+          <xs:element ref="Properties" minOccurs="0"/>
+          <xs:element name="URL" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="httpTargetLoadBalancerBean">
+    <xs:sequence>
+      <xs:element name="Algorithm" type="xs:string" minOccurs="0"/>
+      <xs:element name="MaxFailures" type="xs:int"/>
+      <xs:element name="RetryEnabled" type="xs:boolean"/>
+      <xs:element ref="Server" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="TargetDisableSecs" type="xs:long" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="serverReferenceBean">
+    <xs:sequence>
+      <xs:element name="IsEnabled" type="xs:boolean"/>
+      <xs:element name="IsFallback" type="xs:boolean"/>
+      <xs:element name="Weight" type="xs:int"/>
+    </xs:sequence>
+    <xs:attribute name="name" type="xs:string"/>
+  </xs:complexType>
+
+  <xs:complexType name="targetServerBean">
+    <xs:complexContent>
+      <xs:extension base="leafBean">
+        <xs:sequence>
+          <xs:element name="Description" type="xs:string" minOccurs="0"/>
+          <xs:element name="IsEnabled" type="xs:boolean"/>
+          <xs:element name="Host" type="xs:string"/>
+          <xs:element name="Port" type="xs:int"/>
+          <xs:element ref="SSLInfo" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="organizationBase">
+    <xs:complexContent>
+      <xs:extension base="branchBean">
+        <xs:sequence/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="attributes">
+    <xs:sequence>
+      <xs:element ref="Attribute" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="smtpDestinationBean">
+    <xs:complexContent>
+      <xs:extension base="destinationBean">
+        <xs:sequence>
+          <xs:element name="Body" type="messageTemplateBean" minOccurs="0"/>
+          <xs:element name="CharSet" type="xs:string" minOccurs="0"/>
+          <xs:element name="ContentType" type="xs:string" minOccurs="0"/>
+          <xs:element name="From" type="xs:string" minOccurs="0"/>
+          <xs:element ref="Recipient" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element name="ReplyTo" type="xs:string" minOccurs="0"/>
+          <xs:element name="Severity" type="xs:string" minOccurs="0"/>
+          <xs:element name="Subject" type="messageTemplateBean" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="recipient">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute name="type" type="xs:string"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+
+  <xs:complexType name="scriptTarget">
+    <xs:sequence>
+      <xs:element name="Arguments" minOccurs="0">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Argument" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="EnvironmentVariables" minOccurs="0">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element ref="EnvironmentVariable" minOccurs="0" maxOccurs="unbounded"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ResourceURL" type="xs:string" minOccurs="0"/>
+      <xs:element ref="Properties" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="environmentVariableBean">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute name="name" type="xs:string"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+
+  <xs:complexType name="webSocketTargetConnectionBean">
+    <xs:sequence>
+      <xs:element name="ErrorResponse" type="httpResponseBean" minOccurs="0"/>
+      <xs:element ref="HealthMonitor" minOccurs="0"/>
+      <xs:element ref="LoadBalancer" minOccurs="0"/>
+      <xs:element name="SessionCache" type="httpTargetSessionCacheBean" minOccurs="0"/>
+      <xs:element ref="SSLInfo" minOccurs="0"/>
+      <xs:element name="Path" type="xs:string" minOccurs="0"/>
+      <xs:element ref="Properties" minOccurs="0"/>
+      <xs:element name="URL" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="attributeKey">
+    <xs:sequence>
+      <xs:element name="IsMandatory" type="xs:boolean"/>
+      <xs:element name="Name" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="attributeKeys">
+    <xs:sequence>
+      <xs:element ref="AttributeKey" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="oAuthV2ConfigBean">
+    <xs:complexContent>
+      <xs:extension base="serviceConfigBean">
+        <xs:sequence>
+          <xs:element name="Password" type="xs:string" minOccurs="0"/>
+          <xs:element name="URL" type="xs:string"/>
+          <xs:element name="UserName" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="serviceConfigBean">
+    <xs:complexContent>
+      <xs:extension base="leafBean">
+        <xs:sequence>
+          <xs:element name="Description" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+        <xs:attribute name="version" type="xs:string"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="oAuthV1ConfigBean">
+    <xs:complexContent>
+      <xs:extension base="serviceConfigBean">
+        <xs:sequence>
+          <xs:element name="AllowVariableAccessorSecrets" type="xs:boolean"/>
+          <xs:element name="AllowSignatureMethod" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element name="Password" type="xs:string" minOccurs="0"/>
+          <xs:element name="AllowedTimeOffset" type="xs:long"/>
+          <xs:element name="URL" type="xs:string" minOccurs="0"/>
+          <xs:element name="UserName" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="crlStoreBean">
+    <xs:complexContent>
+      <xs:extension base="branchBean">
+        <xs:sequence>
+          <xs:element name="CRLs" minOccurs="0">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="CRL" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="Certs" minOccurs="0">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="Cert" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="appsCollection">
+    <xs:sequence>
+      <xs:element ref="Apps" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="appCredentials">
+    <xs:sequence>
+      <xs:element ref="Credential" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="syslogDestinationBean">
+    <xs:complexContent>
+      <xs:extension base="destinationBean">
+        <xs:sequence>
+          <xs:element name="FormatMessage" type="xs:string" minOccurs="0"/>
+          <xs:element name="Host" type="xs:string" minOccurs="0"/>
+          <xs:element ref="Message"/>
+          <xs:element name="Port" type="xs:int"/>
+          <xs:element name="Protocol" type="xs:string" minOccurs="0"/>
+          <xs:element ref="SSLInfo" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="appFilter">
+    <xs:sequence>
+      <xs:element name="appFamily" type="xs:string" minOccurs="0"/>
+      <xs:element name="appName" type="xs:string" minOccurs="0"/>
+      <xs:element name="appType" type="xs:string" minOccurs="0"/>
+      <xs:element name="organization" type="xs:string" minOccurs="0"/>
+      <xs:element name="parentId" type="xs:string" minOccurs="0"/>
+      <xs:element name="status" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
   </xs:complexType>
 
   <xs:simpleType name="keyType">
