@@ -1,7 +1,5 @@
 
-# Schemas are under construction
-
-The policy schemas are currently under construction (and a little out of date) and will undergo a full update at a time TBD. We don't recommend using them in their current state to build or validate policies. Instead:
+## How to use the policy schemas
 
 * Use the [policy reference docs](http://apigee.com/docs/api-services/reference/reference-overview-policy) as guidance.
 
@@ -10,13 +8,13 @@ The policy schemas are currently under construction (and a little out of date) a
 * On the [Update an API Proxy Revision management API call](http://docs.apigee.com/management/apis/post/organizations/%7Borg_name%7D/apis/%7Bapi_name%7D/revisions/%7Brevision_number%7D-0), be sure to set the `validate=true` query parameter. If the bundle isn't valid, you should get a list of errors back without a failed deployment.
 
 
-# Ask the community
+## Ask the community
 
 [![alt text](../images/apigee-community.png "Apigee Community is a great place to ask questions and find answers about developing API proxies. ")](https://community.apigee.com?via=github)
 
 ---
 
-Copyright © 2017 Google Inc.
+Copyright © 2018 Google Inc.
 
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use
 this file except in compliance with the License. You may obtain a copy
