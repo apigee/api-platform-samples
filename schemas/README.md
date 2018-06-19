@@ -1,7 +1,7 @@
 
 ## How to use the policy schemas
 
-* Use the [policy reference docs](http://apigee.com/docs/api-services/reference/reference-overview-policy) as guidance.
+* Use the [policy reference docs](http://apigee.com/docs/api-services/reference/reference-overview-policy) as the primary source of information on using policies. 
 
 * If you do try to use the schemas to build or validate policies, assume no element ordering in most cases even when the schema says ordering is required.
 
