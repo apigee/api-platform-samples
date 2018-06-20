@@ -1,30 +1,176 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0">
+<xs:schema version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:element name="CommonName" type="commonName"/>
+
+  <xs:element name="FaultRule" type="faultRuleBean"/>
+
   <xs:element name="Javascript" type="javascriptBean"/>
+
+  <xs:element name="Policy" type="policy"/>
+
+  <xs:element name="Properties" type="jaxbProperties"/>
+
+  <xs:element name="SSLInfo" type="sslInfo"/>
+
+  <xs:element name="Step" type="step"/>
+
+  <xs:element name="beanImpl" type="beanImpl"/>
+
+  <xs:element name="inlineBean" type="inlineBean"/>
+
+  <xs:element name="jaxbPropertyEntry" type="jaxbPropertyEntry"/>
+
   <xs:element name="stepDefinitionBean" type="stepDefinitionBean"/>
+
   <xs:complexType name="javascriptBean">
     <xs:complexContent>
       <xs:extension base="stepDefinitionBean">
         <xs:sequence>
           <xs:element name="IncludeURL" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
-          <xs:element name="ResourceURL" type="xs:string"/>
+          <xs:element name="ResourceURL" type="xs:string" minOccurs="0"/>
+          <xs:element name="Source" type="xs:string" minOccurs="0"/>
+          <xs:element ref="SSLInfo" minOccurs="0"/>
         </xs:sequence>
         <xs:attribute name="timeLimit" type="xs:long" use="required"/>
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
+
   <xs:complexType name="stepDefinitionBean" abstract="true">
     <xs:complexContent>
       <xs:extension base="leafBean">
         <xs:sequence>
+          <xs:element name="Description" type="xs:string" minOccurs="0"/>
           <xs:element name="DisplayName" type="xs:string" minOccurs="0"/>
+          <xs:element name="FaultRules" minOccurs="0">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element ref="FaultRule" minOccurs="0" maxOccurs="unbounded"/>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element ref="Properties" minOccurs="0"/>
         </xs:sequence>
-        <xs:attribute name="name" type="xs:string" use="required"/>
         <xs:attribute name="async" type="xs:string"/>
         <xs:attribute name="continueOnError" type="xs:string"/>
         <xs:attribute name="enabled" type="xs:string"/>
+        <xs:attribute name="version" type="xs:string"/>
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
-  <xs:complexType name="leafBean" abstract="true"/>
+
+  <xs:complexType name="leafBean" abstract="true">
+    <xs:complexContent>
+      <xs:extension base="beanImpl">
+        <xs:sequence/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="beanImpl" abstract="true">
+    <xs:sequence/>
+    <xs:attribute name="isHybrid" type="xs:boolean"/>
+    <xs:attribute name="name" type="xs:string"/>
+  </xs:complexType>
+
+  <xs:complexType name="sslInfo">
+    <xs:sequence>
+      <xs:element name="CRLStore" type="xs:string" minOccurs="0"/>
+      <xs:element name="CertAlias" type="xs:string" minOccurs="0"/>
+      <xs:element name="Ciphers" minOccurs="0">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Cipher" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ClientAuthEnabled" type="xs:string" minOccurs="0"/>
+      <xs:element ref="CommonName" minOccurs="0"/>
+      <xs:element name="Enabled" type="xs:string" minOccurs="0"/>
+      <xs:element name="IgnoreValidationErrors" type="xs:boolean"/>
+      <xs:element name="KeyAlias" type="xs:string" minOccurs="0"/>
+      <xs:element name="KeyHsm" type="xs:string" minOccurs="0"/>
+      <xs:element name="KeyStore" type="xs:string" minOccurs="0"/>
+      <xs:element name="Protocols" minOccurs="0">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Protocol" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="TrustStore" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="commonName">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute name="wildcardMatch" type="xs:boolean" use="required"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+
+  <xs:complexType name="faultRuleBean">
+    <xs:complexContent>
+      <xs:extension base="inlineBean">
+        <xs:sequence>
+          <xs:element name="Condition" type="xs:string" minOccurs="0"/>
+          <xs:element name="Description" type="xs:string" minOccurs="0"/>
+          <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:element ref="Step"/>
+            <xs:element ref="Policy"/>
+          </xs:choice>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="inlineBean" abstract="true">
+    <xs:complexContent>
+      <xs:extension base="beanImpl">
+        <xs:sequence/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="step">
+    <xs:complexContent>
+      <xs:extension base="inlineBean">
+        <xs:sequence>
+          <xs:element name="Condition" type="xs:string" minOccurs="0"/>
+          <xs:element name="FaultRules" minOccurs="0">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element ref="FaultRule" minOccurs="0" maxOccurs="unbounded"/>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="Name" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="policy">
+    <xs:complexContent>
+      <xs:extension base="step">
+        <xs:sequence/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="jaxbProperties">
+    <xs:sequence>
+      <xs:element name="Property" type="jaxbPropertyEntry" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="jaxbPropertyEntry">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute name="name" type="xs:string"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
 </xs:schema>
