@@ -1,8 +1,8 @@
 # Jira release notes generator 
 
-This sample leverages a [Jira API](https://docs.atlassian.com/jira/REST/6.2.7/) to return issues that are tagged in Jira with a 'release_notes' label. The proxy converts Jira's JSON response to XML, then applies an XSL stylesheet that generates HTML-formatted release notes. The stylesheet grabs text from a 'Release Notes Summary' field in Jira.
+This sample leverages a [Jira API](https://docs.atlassian.com/jira/REST/6.2.7/) to return issues that are tagged in Jira with a `release_notes` label. The proxy converts Jira's JSON response to XML, then applies an XSL stylesheet that generates HTML-formatted release notes. The stylesheet grabs text from a "Release Notes Summary" field in Jira.
 
-You can also add 'new_feature' and 'known_issue' labels in Jira. Issues with those tags are automatically added to the respective sections of the generated HTML.
+You can also add `new_feature` and `known_issue` labels in Jira. Issues with those tags are automatically added to the respective sections of the generated HTML.
 
 If your Jira environment uses different fields, modify the URI query parameters accordingly (in invoke.sh as well, if you want to use that script), and modify the .xsl resource file accordingly.
 
@@ -32,11 +32,13 @@ To deploy, run `$ sh deploy.sh`
 
 To test, run `$ sh invoke.sh`
 
-# Get help
+# What's New in the Docs API proxy
 
-For assistance, please use [Apigee Support](https://community.apigee.com/content/apigee-customer-support).
+The `jira_whatsnew_proxy.zip` file is an API proxy similar to the release notes proxy. It generates an HTML page of items to be included in a "What's New in the Docs" topic, similar to [this page in the Apigee docs](https://apigee.devsite.corp.google.com/release/whats-new-docs).
 
-Copyright © 2014, 2015 Apigee Corporation
+
+
+Copyright © 2014, 2018 Apigee Corporation
 
 
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use
