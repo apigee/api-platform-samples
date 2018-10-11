@@ -60,12 +60,14 @@ console.log("authUrl: " + authUrl);
 	var errors = validateLoginForm(username, password);
 	if (typeof errors !== 'undefined' && errors.length > 0) {
 		console.log(errors);
+		var basePath = utils.getBasePath(req);
 		res.render ('login',
 			{
 				result: 'validation_failed',
 				errors: errors,
 				username: username,
-				password: password
+				password: password,
+				basePath: basePath
 			});
 		return;
 	}
