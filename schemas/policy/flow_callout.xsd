@@ -6,6 +6,7 @@
     <xs:complexContent>
       <xs:extension base="stepDefinitionBean">
         <xs:sequence>
+          <xs:element name="Parameters" type="parameters"/>
           <xs:element name="SharedFlowBundle" type="xs:string"/>
         </xs:sequence>
       </xs:extension>
@@ -24,5 +25,19 @@
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
+  <xs:complexType name="parameters">
+    <xs:sequence>
+      <xs:element name="Parameter" type="parameter"/>
+    </xs:sequence>
+  </xs:complexType>  
+  <xs:complexType name="parameter">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute name="name" type="xs:string" use="required"/>
+        <xs:attribute name="ref" type="xs:string"/>
+        <xs:attribute name="value" type="xs:string"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>  
   <xs:complexType name="leafBean" abstract="true"/>
 </xs:schema>
