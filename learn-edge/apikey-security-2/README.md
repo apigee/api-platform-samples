@@ -10,7 +10,7 @@ In this Learn Edge example, we'll modify [apikey-security-1](../apikey-security-
 
 ### Deploy it
 
-1. `cd api-platform-samples/learn-edge/apikey-security`.
+1. `cd api-platform-samples/learn-edge/apikey-security-2`.
 2. `./deploy.sh`
 
 ### Run it
