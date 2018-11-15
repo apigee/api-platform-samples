@@ -81,7 +81,7 @@ This is the recommended path through the examples. But you can do them in any or
 2. Know the name of your **Edge organization** (typically, you'll use the one that was created when you registered for your Apigee account).
 3. Know your **Apigee username** (this is the email address that you gave when you registered for your account).
 2. Download or clone the [api-platform-samples](https://github.com/apigee/api-platform-samples) GitHub repo.
-6. In a browser, sign in to your [Apigee account](http://apigee.com) and go to the API Management section. It'll be good to keep this browser window open as you work so you can view and trace the Learn Edge proxies in the UI.
+6. In a browser, sign in to your [Apigee account](http://apigee.com). It'll be good to keep this browser window open as you work so you can view and trace the Learn Edge proxies in the UI.
 
 **Troubleshooting:** If you've previously tried to run the sample and have
 trouble with the script (for example, it's using the wrong organization
