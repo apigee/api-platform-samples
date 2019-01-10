@@ -1,0 +1,19 @@
+{
+    "name": "hello-conversion",
+    "version": "0.0.0",
+    "description": "Simple application saying hello in three languages",
+    "main": "index.js",
+    "author": "",
+    "license": "ICS",
+    "private": true,
+    "scripts": {
+        "start": "node ."
+    },
+    "dependencies": {
+        "express": "^4.16.0",
+        "say-hello": "1.0.0"
+    },
+    "bundledDependencies": [
+        "say-hello"
+    ]
+}
