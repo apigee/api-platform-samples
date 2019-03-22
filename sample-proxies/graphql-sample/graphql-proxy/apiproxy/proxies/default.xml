@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ProxyEndpoint name="default">
+    <Description/>
+    <FaultRules>
+        <FaultRule name="GraphQLAuthZ">
+            <Condition>(graphql.authz.authorized = "false")</Condition>
+            <Step>
+                <Name>AddCORS</Name>
+            </Step>
+            <Step>
+                <Name>UnAuthorizedGraphQL</Name>
+            </Step>
+        </FaultRule>
+    </FaultRules>
+    <DefaultFaultRule>
+        <Step>
+            <Name>AddCORS</Name>
+        </Step>
+    </DefaultFaultRule>
+    <PreFlow name="PreFlow">
+        <Request>
+            <Step>
+                <Name>SpikeArrest</Name>
+            </Step>
+        </Request>
+        <Response/>
+    </PreFlow>
+    <Flows>
+        <Flow name="OPTS-CORS">
+            <Description/>
+            <Condition>(proxy.pathsuffix ~~ ".*") and (request.verb = "OPTIONS") AND (request.header.origin != null) AND (request.header.Access-Control-Request-Method != null)</Condition>
+            <Request/>
+            <Response/>
+        </Flow>
+        <Flow name="POST-GraphQLFlow">
+            <Condition>(proxy.pathsuffix ~~ ".*") and (request.verb = "POST")</Condition>
+            <Request>
+                <Step>
+                    <Name>GetQueryFromPayload</Name>
+                </Step>
+                <Step>
+                    <Name>GetEntitlementsMap</Name>
+                </Step>
+                <Step>
+                    <Name>ScopesToEntitlements</Name>
+                </Step>
+                <Step>
+                    <Name>GraphQLAuthZ</Name>
+                </Step>
+            </Request>
+            <Response/>
+        </Flow>
+        <Flow name="GET-GraphQLFlow">
+            <Condition>(proxy.pathsuffix ~~ ".*")  and (request.verb = "GET")</Condition>
+            <Request>
+                <Step>
+                    <Name>GetQueryFromQueryParam</Name>
+                </Step>
+                <Step>
+                    <Name>GetEntitlementsMap</Name>
+                </Step>
+                <Step>
+                    <Name>ScopesToEntitlements</Name>
+                </Step>
+                <Step>
+                    <Name>GraphQLAuthZ</Name>
+                </Step>
+            </Request>
+            <Response/>
+        </Flow>
+        <Flow name="ERR-BadMethod">
+            <Description/>
+            <Request>
+                <Step>
+                    <Name>BadMethod</Name>
+                </Step>
+            </Request>
+            <Response/>
+            <Condition>!(request.verb ~~ "^(POST|GET)$")</Condition>
+        </Flow>
+        <Flow name="ERR-BadRequest">
+            <Description/>
+            <Request>
+                <Step>
+                    <Name>BadRequest</Name>
+                </Step>
+            </Request>
+            <Response/>
+        </Flow>
+    </Flows>
+    <PostFlow name="PostFlow">
+        <Request/>
+        <Response>
+            <Step>
+                <Name>AddCORS</Name>
+            </Step>
+        </Response>
+    </PostFlow>
+    <HTTPProxyConnection>
+        <BasePath>/graphql</BasePath>
+        <Properties/>
+        <VirtualHost>default</VirtualHost>
+        <VirtualHost>secure</VirtualHost>
+    </HTTPProxyConnection>
+    <RouteRule name="noRoute">
+        <Condition>(proxy.pathsuffix ~~ ".*") and (request.verb = "OPTIONS") AND (request.header.origin != null) AND (request.header.Access-Control-Request-Method != null)</Condition>
+    </RouteRule>
+    <RouteRule name="default">
+        <TargetEndpoint>default</TargetEndpoint>
+    </RouteRule>
+</ProxyEndpoint>

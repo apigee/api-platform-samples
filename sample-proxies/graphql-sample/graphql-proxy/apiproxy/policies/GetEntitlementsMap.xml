@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<KeyValueMapOperations async="false" continueOnError="false" enabled="true" name="GetEntitlementsMap" mapIdentifier="graphql">
+    <DisplayName>GetEntitlementsMap</DisplayName>
+    <Properties/>
+    <Get assignTo="graphql_entitlements_map">
+        <Key>
+            <Parameter>entitlements_map</Parameter>
+        </Key>
+    </Get>
+    <Scope>environment</Scope>
+</KeyValueMapOperations>

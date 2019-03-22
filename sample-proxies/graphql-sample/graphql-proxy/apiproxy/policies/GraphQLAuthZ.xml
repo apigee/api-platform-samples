@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Javascript async="false" continueOnError="false" enabled="true" timeLimit="200" name="GraphQLAuthZ">
+    <DisplayName>GraphQLAuthZ</DisplayName>
+    <Properties>
+        <Property name="input">{query}</Property>
+        <Property name="entitlements">{entitlements}</Property>
+        <Property name="debug">true</Property>
+    </Properties>
+    <ResourceURL>jsc://graphql.jsc.js</ResourceURL>
+</Javascript>
