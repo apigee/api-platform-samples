@@ -56,17 +56,17 @@ e.g.
 
 ### Architecture
 
-![Architecture](/docs/images/arch.png)
+![Architecture](docs/images/arch.png)
 
 ### Sample schema
 
 The following demo uses this sample schema as viewed in [GraphQL Voyager](https://github.com/APIs-guru/graphql-voyager):
 
 Query root:
-![Query](/docs/images/query.png)
+![Query](docs/images/query.png)
 
 Mutation root:
-![Mutation](/docs/images/mutation.png)
+![Mutation](docs/images/mutation.png)
 
 ### Design
 
@@ -161,7 +161,7 @@ While it's not necessary to have a scopes-to-entitlements map, it's a practical 
 
 Scopes are filtered at the Apigee API Product level. As an example, you could have a set Apigee API Products designed like this:
 
-![Products](/docs/images/prods.png)
+![Products](docs/images/prods.png)
 
 This approach plays specially well with Apigee's consumption model with OAuth, Apps, and API Products. You could enforce that subscriptions to the `GraphQL Platinum` product require approval, where as the `GraphQL Bronze` product is open to all. 
 
@@ -171,24 +171,24 @@ Once you have deployed the sample Apigee proxy, you can start testing it. Log in
 
 Next, click on the `Develop` tab and copy the URL.
 
-![Overview](/docs/images/overview.png)
+![Overview](docs/images/overview.png)
 
 To test the sample proxy, you can use the [GraphQL playground](https://legacy.graphqlbin.com), and point it to the GraphQL endpoint above.
 
 As soon as the GraphQL playground opens up, it sends a couple of introspection queries to the Apigee proxy.
 You can open the [Apigee Trace Tool](https://docs.apigee.com/api-platform/debug/using-trace-tool-0) and refresh the playground to see the introspection query arriving.
  
-![Playground200](/docs/images/introspect_trace.png)
+![Playground200](docs/images/introspect_trace.png)
 
 Note that this proxy configured such that all requests are implicitly granted the entitlements needed to introspect the schema. That's why this first request goes through successfully.
 
 However, if you try to send additional queries, you will see that Apigee blocks them. 
  
-![Playground200](/docs/images/playground_403.png)
+![Playground200](docs/images/playground_403.png)
 
 You have to open the **Headers** tab in the playground, and add a **scope** header.
 
-![Playground200](/docs/images/playground_200.png)
+![Playground200](docs/images/playground_200.png)
 
 In this example, we are passing the scope as a header manually to demonstrate the authorization logic. However, in a production scenario the scope would likely be associated with something like an OAuth bearer token or a JWT.
 
@@ -206,7 +206,7 @@ curl -X POST \
 
 ### References
 
-1) [graphql-authz](TBD) - Repo is used for building the JavaScript callout that executes the authorization logic in this sample proxy. Visit that repo to learn more about how it works.
+1) [graphql-authz](https://github.com/apigee/graphql-authz) - Repo is used for building the JavaScript callout that executes the authorization logic in this sample proxy. Visit that repo to learn more about how it works.
 
 
 ## Not Google Product Clause
