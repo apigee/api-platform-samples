@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<RaiseFault async="false" continueOnError="false" enabled="true" name="BadMethod">
+    <DisplayName>BadMethod</DisplayName>
+    <Properties/>
+    <FaultResponse>
+        <Set>
+            <StatusCode>405</StatusCode>
+            <ReasonPhrase>Method Not Allowed</ReasonPhrase>
+            <Payload contentType="application/json">
+    {
+      "error": "BadMethod",
+      "message": "GraphQL endpoint supports only POST or GET methods."
+    }
+            </Payload>
+        </Set>
+    </FaultResponse>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+</RaiseFault>

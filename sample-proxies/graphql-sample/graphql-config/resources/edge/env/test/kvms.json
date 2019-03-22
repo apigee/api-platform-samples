@@ -1,0 +1,11 @@
+[
+  {
+    "entry": [
+      {
+        "name": "entitlements_map",
+        "value": "{\n  \"instrospect\": [\n    \"query.__schema.**\"\n  ],\n  \"reader\": [\n    \"query.__schema.**\",\n    \"query.resorts.**\"\n  ],\n  \"site:admin\": [\n    \"query.__schema.**\",\n    \"query.resorts.**\",\n    \"mutation.resorts.create.**\",\n    \"mutation.resorts.delete.**\",\n    \"mutation.resorts.update.**\"\n  ],\n  \"resort:admin\": [\n    \"query.__schema.**\",\n    \"query.resorts.**\",\n    \"mutation.resorts.update.**\",\n    \"mutation.resorts.update.lifts.create.**\",\n    \"mutation.resorts.update.lifts.update.**\",\n    \"mutation.resorts.update.lifts.delete.**\",\n    \"mutation.resorts.update.trails.create.**\",\n    \"mutation.resorts.update.trails.update.**\",\n    \"mutation.resorts.update.trails.delete.**\"\n  ],\n  \"resort:manager\": [\n    \"query.__schema.**\",\n    \"query.resorts.**\",\n    \"mutation.resorts.update.resort.**\",\n    \"mutation.resorts.update.lifts.update.**\",\n    \"mutation.resorts.update.trails.update.**\"\n  ]\n}"  
+      }
+    ],
+    "name": "graphql"
+  }
+]

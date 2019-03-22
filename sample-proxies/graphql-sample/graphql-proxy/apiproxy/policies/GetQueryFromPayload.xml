@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ExtractVariables async="false" continueOnError="false" enabled="true" name="GetQueryFromPayload">
+    <DisplayName>GetQueryFromPayload</DisplayName>
+    <Properties/>
+    <JSONPayload>
+        <Variable name="query">
+            <JSONPath>$.query</JSONPath>
+        </Variable>
+    </JSONPayload>
+    <Source clearPayload="false">request</Source>
+</ExtractVariables>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<APIProxy revision="19" name="graphql-proxy">
+    <Basepaths>/graphql</Basepaths>
+    <ConfigurationVersion majorVersion="4" minorVersion="0"/>
+    <CreatedAt>1551319295021</CreatedAt>
+    <CreatedBy>miguelmendoza@google.com</CreatedBy>
+    <Description>Performs OAuth and authZ before passing along to GraphQL server</Description>
+    <DisplayName>graphql-proxy</DisplayName>
+    <LastModifiedAt>1553044190787</LastModifiedAt>
+    <LastModifiedBy>miguelmendoza@google.com</LastModifiedBy>
+    <ManifestVersion>SHA-512:3f777942f2605a486f3907d6fd715a7a0083377ce36c09cf67551700b9270583e6fbe4b9cd666ff00a6411eb534872f39df8d7846cff46cf8af5aae0595897d2</ManifestVersion>
+    <Policies>
+        <Policy>AddCORS</Policy>
+        <Policy>BadMethod</Policy>
+        <Policy>BadRequest</Policy>
+        <Policy>GetEntitlementsMap</Policy>
+        <Policy>GetQueryFromPayload</Policy>
+        <Policy>GetQueryFromQueryParam</Policy>
+        <Policy>GraphQLAuthZ</Policy>
+        <Policy>ScopesToEntitlements</Policy>
+        <Policy>SetTarget</Policy>
+        <Policy>SpikeArrest</Policy>
+        <Policy>UnAuthorizedGraphQL</Policy>
+    </Policies>
+    <ProxyEndpoints>
+        <ProxyEndpoint>default</ProxyEndpoint>
+    </ProxyEndpoints>
+    <Resources>
+        <Resource>jsc://graphql.jsc.js</Resource>
+        <Resource>jsc://scopesToEntitlements.js</Resource>
+        <Resource>jsc://setTarget.js</Resource>
+    </Resources>
+    <Spec></Spec>
+    <TargetServers/>
+    <TargetEndpoints>
+        <TargetEndpoint>default</TargetEndpoint>
+    </TargetEndpoints>
+</APIProxy>

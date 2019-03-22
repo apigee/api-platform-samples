@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage async="false" continueOnError="false" enabled="true" name="GetQueryFromQueryParam">
+    <DisplayName>GetQueryFromQueryParam</DisplayName>
+    <Properties/>
+    <AssignVariable>
+        <Name>query</Name>
+        <Ref>request.queryparam.query</Ref>
+    </AssignVariable>
+    <AssignTo createNew="false" type="request"/>
+</AssignMessage>
