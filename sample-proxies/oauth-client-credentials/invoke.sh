@@ -40,7 +40,7 @@ printf "\nRetrieved secret: $secret\n"
 
 printf "\n\nBase64 encrypt the key:secret values for the Basic Auth header: "
 
-auth=`echo -n $key:$secret | base64`
+auth=$(printf $key:$secret | base64)
 
 printf "\nBasic: $auth"
 
