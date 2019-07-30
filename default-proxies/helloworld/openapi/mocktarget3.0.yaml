@@ -1,0 +1,144 @@
+openapi: 3.0.0
+info:
+  description: OpenAPI Specification for the Apigee mock target service endpoint.
+  version: 1.0.0
+  title: Mock Target API
+paths:
+  /:
+    get:
+      summary: View personalized greeting
+      operationId: View a personalized greeting
+      description: View a personalized greeting for the specified or guest user.
+      parameters:
+        - name: user
+          in: query
+          description: Your user name.
+          required: false
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+  /help:
+    get:
+      summary: Get help
+      operationId: Get help
+      description: View help information about available resources in HTML format.
+      responses:
+        "200":
+          description: Success
+  /user:
+    get:
+      summary: View personalized greeting
+      operationId: View personalized greeting
+      description: View a personalized greeting for the specified or guest user.
+      parameters:
+        - name: user
+          in: query
+          description: Your user name.
+          required: false
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+  /iloveapis:
+    get:
+      summary: View API affirmation
+      operationId: View API affirmation
+      description: View API affirmation in HTML format.
+      responses:
+        "200":
+          description: Success
+  /ip:
+    get:
+      summary: View IP address
+      operationId: View IP address
+      description: View the IP address of the client in JSON format.
+      responses:
+        "200":
+          description: Success
+  /xml:
+    get:
+      summary: View XML response
+      operationId: View XML response
+      description: View a sample response in XML format.
+      responses:
+        "200":
+          description: Success
+  /json:
+    get:
+      summary: View JSON response
+      operationId: View JSON response
+      description: View a sample response in JSON format.
+      responses:
+        "200":
+          description: Success
+  /echo:
+    get:
+      summary: View request headers and body
+      operationId: View request headers and body
+      description: View the request headers and body in JSON format.
+      responses:
+        "200":
+          description: Success
+    post:
+      summary: Send request and view request headers and body
+      operationId: Send request and view request headers and body
+      description: "Send a request and view the resulting request headers and body in JSON
+        format.
+The request payload can be specified using one of the
+        following formats: application/json, application/x-www-form-urlencoded,
+        or application/xml."
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/request-body"
+        description: Request payload in application/json,
+          application/x-www-form-urlencoded, or application/xml format.
+        required: true
+      responses:
+        "200":
+          description: Success
+  "/statuscode/{code}":
+    get:
+      summary: View status code and message
+      operationId: View status code and message
+      description: View status code and message for the specified value.
+      parameters:
+        - name: code
+          in: path
+          description: HTTP status code.
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+  /auth:
+    get:
+      security:
+        - basicAuth: []
+      summary: Validate access using basic authentication
+      operationId: Validate access using basic authentication
+      description: Validate access using basic authentication.
+      responses:
+        "200":
+          description: Success
+servers:
+  - url: http://mocktarget.apigee.net
+  - url: https://mocktarget.apigee.net
+components:
+  securitySchemes:
+    basicAuth:
+      type: http
+      description: HTTP Basic Authentication.
+      scheme: basic
+  schemas:
+    request-body:
+      properties:
+        replace-me:
+          type: object
+          description: Replace with request payload in application/json,
+            application/x-www-form-urlencoded, or application/xml format.
