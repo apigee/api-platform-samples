@@ -22,7 +22,9 @@ and long-polling with no additional configuration.
 
 However, when developing apps that rely on architectures like Comet, 
 you need to explicitly configure HTTP streaming, as is demonstrated by 
-this sample API proxy. 
+this sample API proxy.
+
+**Caution**: While streaming can help you work around the request/response size limit enforced by the product, Apigee doesn't recommend exceeding that limit when streaming and can't support issues that arise as a result of exceeding that limit, such as performance issues, timeouts, and so on. For payloads larger than 10 MB, Apigee recommends using a signed URLs pattern within an Apigee JavaCallout, illustrated by the [Edge Callout: Signed URL Generator](https://github.com/DinoChiesa/ApigeeEdge-Java-GoogleUrlSigner) example.
 
 ### Set up, deploy, invoke
 
