@@ -1242,7 +1242,7 @@
       <xs:element name="RetryEnabled" type="xs:boolean"/>
       <xs:element ref="Server" minOccurs="0" maxOccurs="unbounded"/>
       <xs:element name="TargetDisableSecs" type="xs:long" minOccurs="0"/>
-      <xs:element name="ServerUnhealthyResponse" type="valuelist" minOccurs="0"/>
+      <xs:element name="ServerUnhealthyResponse" type="httpResponseBean" minOccurs="0"/>
     </xs:sequence>
   </xs:complexType>
 
@@ -1467,9 +1467,4 @@
       <xs:enumeration value="Cookie"/>
     </xs:restriction>
   </xs:simpleType>
-
-  <xs:simpleType name="valuelist">
-    <xs:list itemType="xs:integer"/>
-  </xs:simpleType>
-</xs:schema>
 
