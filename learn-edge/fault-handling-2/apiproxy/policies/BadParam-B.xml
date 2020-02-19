@@ -7,5 +7,5 @@
         <ReasonPhrase>BadRequest</ReasonPhrase>
     </Set>
     <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
-    <AssignTo createNew="false" transport="http" type="responset"/>
+    <AssignTo createNew="false" transport="http" type="response"/>
 </AssignMessage>
