@@ -22,6 +22,7 @@
     <xs:include schemaLocation="policy/ldap.xsd"/>
     <xs:include schemaLocation="policy/message_logging.xsd"/>
     <xs:include schemaLocation="policy/message_validation.xsd"/>
+    <xs:include schemaLocation="policy/oas_validation.xsd"/>
     <xs:include schemaLocation="policy/oauth_v1.xsd"/>
     <xs:include schemaLocation="policy/oauth_v2_verify_api_key.xsd"/>
     <xs:include schemaLocation="policy/quota_spike_ratelimit.xsd"/>
