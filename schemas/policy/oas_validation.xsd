@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:element name="FaultRule" type="faultRuleBean"/>
+
+  <xs:element name="OASValidation" type="oasValidationBean"/>
+
+  <xs:element name="Policy" type="policy"/>
+
+  <xs:element name="Properties" type="jaxbProperties"/>
+
+  <xs:element name="Step" type="step"/>
+
+  <xs:element name="Template" type="templateBean"/>
+
+  <xs:element name="beanImpl" type="beanImpl"/>
+
+  <xs:element name="inlineBean" type="inlineBean"/>
+
+  <xs:element name="jaxbPropertyEntry" type="jaxbPropertyEntry"/>
+
+  <xs:element name="stepDefinitionBean" type="stepDefinitionBean"/>
+
+  <xs:complexType name="oasValidationBean">
+    <xs:complexContent>
+      <xs:extension base="stepDefinitionBean">
+        <xs:sequence>
+          <xs:element name="OASResource" type="templateBean" minOccurs="0"/>
+          <xs:element name="Options" type="oasValidationOptions" minOccurs="0"/>
+          <xs:element name="Source" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="stepDefinitionBean" abstract="true">
+    <xs:complexContent>
+      <xs:extension base="leafBean">
+        <xs:sequence>
+          <xs:element name="Description" type="xs:string" minOccurs="0"/>
+          <xs:element name="DisplayName" type="xs:string" minOccurs="0"/>
+          <xs:element name="FaultRules" minOccurs="0">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element ref="FaultRule" minOccurs="0" maxOccurs="unbounded"/>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element ref="Properties" minOccurs="0"/>
+        </xs:sequence>
+        <xs:attribute name="async" type="xs:string"/>
+        <xs:attribute name="continueOnError" type="xs:string"/>
+        <xs:attribute name="enabled" type="xs:string"/>
+        <xs:attribute name="version" type="xs:string"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="leafBean" abstract="true">
+    <xs:complexContent>
+      <xs:extension base="beanImpl">
+        <xs:sequence/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="beanImpl" abstract="true">
+    <xs:sequence/>
+    <xs:attribute name="isHybrid" type="xs:boolean"/>
+    <xs:attribute name="name" type="xs:string"/>
+  </xs:complexType>
+
+  <xs:complexType name="templateBean">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute name="ref" type="xs:string"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+
+  <xs:complexType name="oasValidationOptions">
+    <xs:sequence>
+      <xs:element name="ValidateMessageBody" type="xs:boolean"/>
+      <xs:element name="AllowUnspecifiedParameters" type="strictOptions" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="strictOptions">
+    <xs:sequence>
+      <xs:element name="Header" type="xs:boolean"/>
+      <xs:element name="Query" type="xs:boolean"/>
+      <xs:element name="Cookie" type="xs:boolean"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="faultRuleBean">
+    <xs:complexContent>
+      <xs:extension base="inlineBean">
+        <xs:sequence>
+          <xs:element name="Condition" type="xs:string" minOccurs="0"/>
+          <xs:element name="Description" type="xs:string" minOccurs="0"/>
+          <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:element ref="Step"/>
+            <xs:element ref="Policy"/>
+          </xs:choice>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="inlineBean" abstract="true">
+    <xs:complexContent>
+      <xs:extension base="beanImpl">
+        <xs:sequence/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="step">
+    <xs:complexContent>
+      <xs:extension base="inlineBean">
+        <xs:sequence>
+          <xs:element name="Condition" type="xs:string" minOccurs="0"/>
+          <xs:element name="FaultRules" minOccurs="0">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element ref="FaultRule" minOccurs="0" maxOccurs="unbounded"/>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="Name" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="policy">
+    <xs:complexContent>
+      <xs:extension base="step">
+        <xs:sequence/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="jaxbProperties">
+    <xs:sequence>
+      <xs:element name="Property" type="jaxbPropertyEntry" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="jaxbPropertyEntry">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute name="name" type="xs:string"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+</xs:schema>
+
