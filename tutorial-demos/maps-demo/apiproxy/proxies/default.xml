@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ProxyEndpoint name="default">
+    <PreFlow name="PreFlow">
+        <Request>
+            <Step>
+                <Name>Get-Maps-Key</Name>
+            </Step>
+            <Step>
+                <Name>set-gmaps-key</Name>
+            </Step>
+        </Request>
+        <Response/>
+    </PreFlow>
+    <Flows>
+        <Flow name="client">
+            <Description/>
+            <Request/>
+            <Response>
+                <Step>
+                    <Name>set-client</Name>
+                </Step>
+            </Response>
+            <Condition>(proxy.pathsuffix MatchesPath "/client") and (request.verb = "GET")</Condition>
+        </Flow>
+    </Flows>
+    <PostFlow name="PostFlow">
+        <Request/>
+        <Response/>
+    </PostFlow>
+    <HTTPProxyConnection>
+        <BasePath>/kaleo-map</BasePath>
+        <VirtualHost>secure</VirtualHost>
+    </HTTPProxyConnection>
+    <RouteRule name="noroute">
+        <Condition>(proxy.pathsuffix MatchesPath "/client") and (request.verb = "GET")</Condition>
+    </RouteRule>
+    <RouteRule name="gmaps">
+        <TargetEndpoint>gmaps</TargetEndpoint>
+    </RouteRule>
+</ProxyEndpoint>

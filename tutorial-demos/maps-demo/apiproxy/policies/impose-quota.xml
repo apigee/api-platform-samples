@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Quota async="false" continueOnError="false" enabled="true" name="impose-quota">
+    <DisplayName>Impose Quota</DisplayName>
+    <Allow countRef="verifyapikey.verify-api-key.apiproduct.developer.quota.limit" count="30"/>
+    <Interval ref="verifyapikey.verify-api-key.apiproduct.developer.quota.interval">1</Interval>
+    <Distributed>true</Distributed>
+    <Synchronous>true</Synchronous>
+    <TimeUnit ref="verifyapikey.verify-api-key.apiproduct.developer.quota.timeunit">minute</TimeUnit>
+</Quota>

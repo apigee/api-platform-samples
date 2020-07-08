@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ServiceCallout async="false" continueOnError="false" enabled="true" name="Weather-Callout">
+    <DisplayName>Weather-Callout</DisplayName>
+    <Properties/>
+    <Request clearPayload="true" variable="myRequest">
+        <IgnoreUnresolvedVariables>false</IgnoreUnresolvedVariables>
+        <Set>
+            <QueryParams>
+                <QueryParam name="lat">{lat}</QueryParam>
+                <QueryParam name="lon">{lon}</QueryParam>
+                <QueryParam name="APPID">{weatherkey}</QueryParam>
+            </QueryParams>
+        </Set>
+    </Request>
+    <Response>calloutResponse</Response>
+    <HTTPTargetConnection>
+        <Properties/>
+        <URL>https://api.openweathermap.org/data/2.5/weather</URL>
+    </HTTPTargetConnection>
+</ServiceCallout>

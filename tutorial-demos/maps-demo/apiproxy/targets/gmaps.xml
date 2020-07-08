@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<TargetEndpoint name="gmaps">
+    <PreFlow name="PreFlow">
+        <Request>
+            <Step>
+                <Name>verify-api-key</Name>
+            </Step>
+            <Step>
+                <Name>remove-query-param-apikey</Name>
+            </Step>
+            <Step>
+                <Name>impose-quota</Name>
+            </Step>
+        </Request>
+        <Response>
+            <Step>
+                <Name>add-cors</Name>
+            </Step>
+        </Response>
+    </PreFlow>
+    <Flows>
+        <Flow name="v1 place">
+            <Description/>
+            <Request>
+                <Step>
+                    <Name>set-maps-url</Name>
+                </Step>
+            </Request>
+            <Response/>
+            <Condition>(proxy.pathsuffix MatchesPath "/v1/place") and (request.verb = "GET")</Condition>
+        </Flow>
+        <Flow name="v2 place">
+            <Description/>
+            <Request>
+                <Step>
+                    <Name>set-maps-url</Name>
+                </Step>
+            </Request>
+            <Response>
+                <Step>
+                    <Name>Get-Weather-Key</Name>
+                </Step>
+                <Step>
+                    <Name>Get-lat-lng</Name>
+                </Step>
+                <Step>
+                    <Name>Weather-Callout</Name>
+                </Step>
+                <Step>
+                    <Name>add-weather</Name>
+                </Step>
+            </Response>
+            <Condition>(proxy.pathsuffix MatchesPath "/v2/place") and (request.verb = "GET")</Condition>
+        </Flow>
+        <Flow name="v3 place">
+            <Description/>
+            <Request>
+                <Step>
+                    <Name>set-maps-url</Name>
+                </Step>
+            </Request>
+            <Response>
+                <Step>
+                    <Name>Get-Weather-Key</Name>
+                </Step>
+                <Step>
+                    <Name>Get-lat-lng</Name>
+                </Step>
+                <Step>
+                    <Name>Weather-Callout</Name>
+                </Step>
+                <Step>
+                    <Name>add-weather</Name>
+                </Step>
+                <Step>
+                    <Name>add-pizza</Name>
+                </Step>
+            </Response>
+            <Condition>(proxy.pathsuffix MatchesPath "/v3/place") and (request.verb = "GET")</Condition>
+        </Flow>
+        <Flow name="js">
+            <Description/>
+            <Request>
+                <Step>
+                    <Name>set-maps-js-url</Name>
+                </Step>
+            </Request>
+            <Response/>
+            <Condition>(proxy.pathsuffix MatchesPath "/js") and (request.verb = "GET")</Condition>
+        </Flow>
+    </Flows>
+    <PostFlow name="PostFlow">
+        <Request/>
+        <Response/>
+    </PostFlow>
+    <HTTPTargetConnection>
+        <URL>https://maps.googleapis.com</URL>
+    </HTTPTargetConnection>
+</TargetEndpoint>
