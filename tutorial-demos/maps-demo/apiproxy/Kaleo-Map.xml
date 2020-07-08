@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<APIProxy revision="7" name="Kaleo-Map">
+    <Basepaths>/kaleo-map</Basepaths>
+    <ConfigurationVersion majorVersion="4" minorVersion="0"/>
+    <CreatedAt>1592830530798</CreatedAt>
+    <CreatedBy>defaultUser</CreatedBy>
+    <Description></Description>
+    <DisplayName>kaleo-map</DisplayName>
+    <LastModifiedAt>1594184684416</LastModifiedAt>
+    <LastModifiedBy>defaultUser</LastModifiedBy>
+    <ManifestVersion>SHA-512:897b263b76312608862f5da12052733d01851e074a1478e061285c8116a196e5d27f67fb32c113df6644b3623cd17d3607879ee82747a446d1b2874ab6c23896</ManifestVersion>
+    <Policies>
+        <Policy>Get-Maps-Key</Policy>
+        <Policy>Get-Weather-Key</Policy>
+        <Policy>Get-lat-lng</Policy>
+        <Policy>Weather-Callout</Policy>
+        <Policy>add-cors</Policy>
+        <Policy>add-pizza</Policy>
+        <Policy>add-weather</Policy>
+        <Policy>impose-quota</Policy>
+        <Policy>mock-response</Policy>
+        <Policy>remove-query-param-apikey</Policy>
+        <Policy>set-client</Policy>
+        <Policy>set-gmaps-key</Policy>
+        <Policy>set-maps-js-url</Policy>
+        <Policy>set-maps-url</Policy>
+        <Policy>verify-api-key</Policy>
+    </Policies>
+    <ProxyEndpoints>
+        <ProxyEndpoint>default</ProxyEndpoint>
+    </ProxyEndpoints>
+    <Resources>
+        <Resource>jsc://add-pizza.js</Resource>
+        <Resource>jsc://add-weather.js</Resource>
+        <Resource>jsc://set-client.js</Resource>
+        <Resource>jsc://set-maps-js-url.js</Resource>
+        <Resource>jsc://set-maps-url.js</Resource>
+    </Resources>
+    <Spec></Spec>
+    <TargetServers/>
+    <TargetEndpoints>
+        <TargetEndpoint>gmaps</TargetEndpoint>
+    </TargetEndpoints>
+</APIProxy>

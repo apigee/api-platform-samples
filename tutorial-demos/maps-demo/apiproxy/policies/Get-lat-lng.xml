@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ExtractVariables async="false" continueOnError="false" enabled="true" name="Get-lat-lng">
+    <DisplayName>Get-lat-lng</DisplayName>
+    <Properties/>
+    <URIPath name="name"/>
+    <QueryParam name="name"/>
+    <Header name="name"/>
+    <FormParam name="name"/>
+    <Variable name="name"/>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+    <JSONPayload>
+        <Variable name="lat">
+            <JSONPath>$.candidates[0].geometry.location.lat</JSONPath>
+        </Variable>
+        <Variable name="lon">
+            <JSONPath>$.candidates[0].geometry.location.lng</JSONPath>
+        </Variable>
+    </JSONPayload>
+    <Source clearPayload="false">response</Source>
+    <VariablePrefix/>
+</ExtractVariables>
