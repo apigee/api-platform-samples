@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Manifest name="manifest">
+    <Policies>
+        <VersionInfo resourceName="Get-Maps-Key" version="SHA-512:5e9b9b42a36adc5864bb8dde0d39ce964411254e89f298e523e22401be3a4a61f5837a3ec1e349d67d151ede596f18726026c992e3dd981a66ac6d6440d08a6a"/>
+        <VersionInfo resourceName="Get-Weather-Key" version="SHA-512:b8f54c0124265f28ec6f4e27753f3d2160b74eef73b27bac328338795e5eff2bbe6115b05273bc4cefe3442aeca4edd2ae855cd82d449f9a64156aa1623979df"/>
+        <VersionInfo resourceName="Get-lat-lng" version="SHA-512:47a695d2bbfe96b43c04e93eed3013ff9ab0b9858195adca1610e32634ce8bc1d40124f3cd9532acc03a4316a3b2127a055be65d65f75da4a75267ec54c73e22"/>
+        <VersionInfo resourceName="Weather-Callout" version="SHA-512:807c55d2c6eab83134b8aec824a15415c8440a5b08bf01e9e8838ed1a448227d3e291548af38269e27fa7619186e414a053e5f515acd25a06d15b5589371f3c3"/>
+        <VersionInfo resourceName="add-cors" version="SHA-512:52bbfc2e8b7fb33a67ceed04e5902c4c9cec39751102f5eb238416d948a69a9fc50d5f9e2af686e8ea54c21fb27e190c661012bc7cc76d59b33985855fcb4e32"/>
+        <VersionInfo resourceName="add-pizza" version="SHA-512:288e7db25665eacab01784b37107b8688d80102a2d0a480731ca54fa8917fb6e9cd5c685d03f20bfe8bcc2ad6056fd6796f548ef13c42e26be35416ea07fcc6e"/>
+        <VersionInfo resourceName="add-weather" version="SHA-512:db6fd95a2db0acdba016faf7cac2fb618d02fe86e0145185ea27f2ae456d97680ee1f13edb48ef53471a7ba463557934c923a84536b7163b0e018b77074d0d0c"/>
+        <VersionInfo resourceName="impose-quota" version="SHA-512:7d7e05d79d72ab152cc564e85ac2ebcf35dc5205f1131d516ea9a8348ee3bd7420e822f0fde34f812a8e9fab3a05224144a4266b88bbc556c25938a3c59b70dc"/>
+        <VersionInfo resourceName="mock-response" version="SHA-512:91dbd5c6d9c51cb7f99cb1c2d98a58113bbe02e18838c8dec1e2f2d45d19489b035da33a2ea4efee1f280be5010190bc2ffe0c1df25be2cf5a413af9770a3694"/>
+        <VersionInfo resourceName="remove-query-param-apikey" version="SHA-512:bebd2e662024f852231175e62f9aa7367aec21aa9ab4541f19e85d7d0f5d8dabe69cd2aea0ef00676549e0e7867693a907b8f661a0a7a4773587fd135a3b5f09"/>
+        <VersionInfo resourceName="set-client" version="SHA-512:823669ca8a6ea4ad1e0bc206a5d065e69ada10027f13efd1ec80e7bbd5ddb737f57c8cca7c6b265be51d1d11dc55636a3ea3bfc620dae32473536da928049daf"/>
+        <VersionInfo resourceName="set-gmaps-key" version="SHA-512:124e6226e7195b0a3c53382fd915f193778dfc56f81713b24a16d964723754565b345fee8e63caf8e7b42b43f2a4bdbc4237e124489655dcb5b3263ba1ec8697"/>
+        <VersionInfo resourceName="set-maps-js-url" version="SHA-512:2822b540485e3c6031b85c991b6aa03feb9e1289fcc10eb4b31f13e1c3d3e2889b45b9d9d43a64c458c7dcb3dd53e185f10d022897d39ab5eba02367bb224321"/>
+        <VersionInfo resourceName="set-maps-url" version="SHA-512:447a50c65fdea81cc226c0c2cef1a97d0aad2b234eb392f4bbfd39cbd5568e7eb784f7eef7e5439d3914d0334ad5815ca4a157b88abd755edb1176ab4c77ff95"/>
+        <VersionInfo resourceName="verify-api-key" version="SHA-512:6595defb9a0b6d7fce111a9fe959f5e8a7aa03ffb301373c4c4e20e814648b42d5858631e95e4a8d698b5fe2139390c252e9011d9f1be8c3a35de73c1c269f97"/>
+    </Policies>
+    <ProxyEndpoints>
+        <VersionInfo resourceName="default" version="SHA-512:f0a34083a09a6947e693316aa0144a4e56628b97c0bfb3bceb9ce06e50bc34997f1dd39724ab42243a24312eb36f83bfe9d638e7d74c543b64666eda9d38da5e"/>
+    </ProxyEndpoints>
+    <Resources>
+        <VersionInfo resourceName="jsc://add-pizza.js" version="SHA-512:5fa55c67b560df8fef96de5c669abdb67fa0a984b74afba2579158d715cc1ce73026a482f135d34cc5e83971eefc8b08867184a561656e40e0b76f1601f8d5f7"/>
+        <VersionInfo resourceName="jsc://add-weather.js" version="SHA-512:2380b118746545f2c8973926622db2b176edf8c7679f0281f413b209ea28c8f210c99a6282aef44e913674ef8a408ae1404d4f6a64d1203408a72e4219552d05"/>
+        <VersionInfo resourceName="jsc://set-client.js" version="SHA-512:2c675045462b8d83c56ba6d701e782b436630aa6ad8c9392e5a851ae884b7f41b4798d78ee1180d25c8220f5fe4e4f530f7c7b4599d60beaf7009d87607e6c41"/>
+        <VersionInfo resourceName="jsc://set-maps-js-url.js" version="SHA-512:e4b681e82ad10060f2865896fb9ddbfe60b1c7483ff15e55d38066cf6b0c5adcec70cda2f755d4b0bdbcdfad8c7b6fef0dbedbb17d1a5923fb3835c2370a87dd"/>
+        <VersionInfo resourceName="jsc://set-maps-url.js" version="SHA-512:fe7c1a4d769172de9dfaf9e1d6088d74e664e6c2d1f11f1b9d85d59584360c31ce0bd4b62424cca81d9003d00c27466a16ba843d7b9d529a893e45f6244a7590"/>
+    </Resources>
+    <SharedFlows/>
+    <TargetEndpoints>
+        <VersionInfo resourceName="gmaps" version="SHA-512:4fea07346ce7420fb3fd70b7cf297ca6e5df2786b69159df7964acdc59db244abaef98677f789b7b2d147a1778b089547e0c16a01ce41015c2ee4358a2a8ce4e"/>
+    </TargetEndpoints>
+</Manifest>

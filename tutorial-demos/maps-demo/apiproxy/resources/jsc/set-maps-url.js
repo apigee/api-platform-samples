@@ -1,0 +1,2 @@
+var path = context.getVariable("target.url") + "/maps/api/place/findplacefromtext/json?" + context.getVariable("request.querystring").replace("%25", "%") + "&inputtype=textquery&fields=formatted_address,name,geometry";
+context.setVariable("target.url", path);
