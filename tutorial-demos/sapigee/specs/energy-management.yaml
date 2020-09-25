@@ -38,7 +38,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ArrayOfMeterMeasurements'  
+                $ref: '#/components/schemas/ArrayOfMeters'  
     post:
       summary: 'Creates a new meter configuration'
       description: 'Creates a new meter configuration'
@@ -146,6 +146,11 @@ components:
         source:
           description: 'The type of the meter reading'
           type: string
+    ArrayOfMeters:
+      title: ArrayOfMeters
+      type: array
+      items: 
+        $ref: '#/components/schemas/Meter'          
     ArrayOfMeterMeasurements:
       title: ArrayOfMeterMeasurements
       type: array
