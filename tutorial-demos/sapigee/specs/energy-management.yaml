@@ -96,7 +96,21 @@ paths:
               $ref: '#/components/schemas/Meter'            
       responses:
         '201':
-          description: item updated        
+          description: item updated     
+  '/readings':
+    # This is an HTTP operation
+    get:
+      summary: 'Get all meter readings data.'
+      description: 'Get all meter readings data'
+      responses:
+        # Response code
+        '200':
+          description: Successful response
+          # Response body content.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ArrayOfMeterMeasurements'          
   '/readings/{meterid}':
     # This is an HTTP operation
     get:
