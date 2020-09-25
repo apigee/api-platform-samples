@@ -96,7 +96,74 @@ paths:
               $ref: '#/components/schemas/Meter'            
       responses:
         '201':
-          description: item created          
+          description: item updated        
+  '/readings/{meterid}':
+    # This is an HTTP operation
+    get:
+      summary: 'Get the meter readings data.'
+      description: 'Get the meter readings data'
+      parameters:
+        # An example parameter that is in query and is required
+        - name: meterid
+          in: path
+          description: |
+            Unique identifier of the desired person object.
+          required: true
+          schema:
+            type: string
+      responses:
+        # Response code
+        '200':
+          description: Successful response
+          # Response body content.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ArrayOfMeterMeasurements'
+    post:
+      summary: 'Adds a meter reading'
+      description: 'Adds a meter reading'
+      parameters:
+        # An example parameter that is in query and is required
+        - name: meterid
+          in: path
+          description: |
+            Unique identifier of the desired person object.
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: 'Meter object'
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Meter'            
+      responses:
+        '201':
+          description: item updated                 
+    put:
+      summary: 'Updates a meter reading'
+      description: 'Updates a meter reading'
+      parameters:
+        # An example parameter that is in query and is required
+        - name: meterid
+          in: path
+          description: |
+            Unique identifier of the desired person object.
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: 'Meter object'
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Meter'            
+      responses:
+        '201':
+          description: item updated                  
 components:
   securitySchemes:
     ApiKeyAuth:
@@ -133,6 +200,20 @@ components:
       title: MeterMeasurement
       type: object
       properties:
+        meterId:
+          description: |
+            [Resource Name](https://aip.dev/122) of a meter.
+            Format: `meters/{meterId}`
+          type: string
+          example: "a353-x51d"
+          pattern: '[a-z0-9-]+'
+        readingId:
+          description: |
+            [Resource Name](https://aip.dev/122) of a meter.
+            Format: `readings/{readingId}`
+          type: string
+          example: "a353-x51d"
+          pattern: '[a-z0-9-]+'             
         timestamp:
           description: "The timestamp of the meter reading"
           format: date-time
