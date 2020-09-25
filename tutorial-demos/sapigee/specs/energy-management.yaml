@@ -1,0 +1,154 @@
+# Example OpenAPI YAML to get you started quickly.
+# Note: YAML has indentation based coping.
+# Code completion support is available so start typing for
+# available options.
+# This example follows the recommendations of the API 
+# Improvement Proposals for common API patterns. Find more
+# at https://google.aip.dev/
+
+# Find the full OpenAPI reference at:
+# https://github.com/OAI/OpenAPI-Specification
+openapi: 3.0.3
+
+# This is your document metadata.
+info:
+  version: 0.0.1
+  title: Energy Data Services
+  description: |
+    Allows you to manage and access measurement data and related Utilities devices in SAP Cloud for Energy.
+
+# Servers where this API is hosted
+servers: 
+  - url: https://amer-partner3-prod.apigee.net/energy-management
+
+security:
+  - ApiKeyAuth: []
+  
+# Describe your paths here
+paths:
+  '/meters':
+    get:
+      summary: 'Get all meter configuration data.'
+      description: 'Get all meter configuration data.'
+      responses:
+        # Response code
+        '200':
+          description: Successful response
+          # Response body content.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ArrayOfMeterMeasurements'  
+    post:
+      summary: 'Creates a new meter configuration'
+      description: 'Creates a new meter configuration'
+      requestBody:
+        description: 'Meter object'
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Meter'            
+      responses:
+        '201':
+          description: item created    
+  '/meters/{meterid}':
+    # This is an HTTP operation
+    get:
+      summary: 'Get the meter configuration data.'
+      description: 'Get the meter configuration data'
+      parameters:
+        # An example parameter that is in query and is required
+        - name: meterid
+          in: path
+          description: |
+            Unique identifier of the desired person object.
+          required: true
+          schema:
+            type: string
+      responses:
+        # Response code
+        '200':
+          description: Successful response
+          # Response body content.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Meter'
+    put:
+      summary: 'Updates a meter configuration'
+      description: 'Updates a meter configuration'
+      parameters:
+        # An example parameter that is in query and is required
+        - name: meterid
+          in: path
+          description: |
+            Unique identifier of the desired person object.
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: 'Meter object'
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Meter'            
+      responses:
+        '201':
+          description: item created          
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: x-apikey
+  # Schemas is a map of names to Schema objects
+  schemas:
+    Meter:
+      title: Meter
+      type: object
+      properties:
+        meterId:
+          description: |
+            [Resource Name](https://aip.dev/122) of a meter.
+            Format: `meters/{meterid}`
+          type: string
+          example: "meters/a353-x51d"
+          pattern: 'meters\/[a-z0-9-]+'
+        displayName:
+          description: 'Display name of a meter.'
+          type: string
+          example: "Meter_345332"
+        location:
+          description: 'The location of the meter'
+          type: string
+          example: "52.517568, 10.959388"
+        readings:
+          description: 'The meter readings'
+          type: array
+          items:
+            $ref: '#/components/schemas/MeterMeasurement'
+    MeterMeasurement:
+      title: MeterMeasurement
+      type: object
+      properties:
+        timestamp:
+          description: "The timestamp of the meter reading"
+          format: date-time
+          type: string
+        reading:
+          description: 'Meter reading value'
+          type: number
+        quality:
+          description: 'The quality of the reading'
+          type: string
+        source:
+          description: 'The type of the meter reading'
+          type: string
+    ArrayOfMeterMeasurements:
+      title: ArrayOfMeterMeasurements
+      type: array
+      items: 
+        $ref: '#/components/schemas/MeterMeasurement'
+        
