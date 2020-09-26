@@ -110,7 +110,20 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ArrayOfMeterMeasurements'          
+                $ref: '#/components/schemas/ArrayOfMeterMeasurements'
+    post:
+      summary: 'Adds a meter reading'
+      description: 'Adds a meter reading'
+      requestBody:
+        description: 'Meter object'
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MeterMeasurement'
+      responses:
+        '201':
+          description: item updated                   
   '/readings/{meterid}':
     # This is an HTTP operation
     get:
@@ -134,28 +147,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ArrayOfMeterMeasurements'
-    post:
-      summary: 'Adds a meter reading'
-      description: 'Adds a meter reading'
-      parameters:
-        # An example parameter that is in query and is required
-        - name: meterid
-          in: path
-          description: |
-            Unique identifier of the desired person object.
-          required: true
-          schema:
-            type: string
-      requestBody:
-        description: 'Meter object'
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Meter'            
-      responses:
-        '201':
-          description: item updated                 
     put:
       summary: 'Updates a meter reading'
       description: 'Updates a meter reading'
@@ -174,7 +165,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Meter'            
+              $ref: '#/components/schemas/MeterMeasurement'
       responses:
         '201':
           description: item updated                  
