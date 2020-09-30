@@ -110,7 +110,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ArrayOfMeterMeasurements'
+                $ref: '#/components/schemas/ArrayOfMeterReadings'
     post:
       summary: 'Adds a meter reading'
       description: 'Adds a meter reading'
@@ -120,7 +120,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/MeterMeasurement'
+              $ref: '#/components/schemas/MeterReading'
       responses:
         '201':
           description: item updated                   
@@ -146,7 +146,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ArrayOfMeterMeasurements'
+                $ref: '#/components/schemas/ArrayOfMeterReadings'
     put:
       summary: 'Updates a meter reading'
       description: 'Updates a meter reading'
@@ -165,10 +165,28 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/MeterMeasurement'
+              $ref: '#/components/schemas/MeterReading'
       responses:
         '201':
-          description: item updated                  
+          description: item updated       
+  '/vision':
+    post:
+      summary: Analyzes the posted image using cloud vision AI and returns the labels and scores of the objects found in the image.
+      description: Analyzes the posted image using cloud vision AI and returns the labels and scores of the objects found in the image.  Used in combination with meter reading reporting using a camera to capture data.
+      requestBody:
+        description: 'Image object to analyze'
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ImageRequest'          
+      responses:
+        '200':
+          description: "Successful response"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ImageResponse'
 components:
   securitySchemes:
     ApiKeyAuth:
@@ -200,9 +218,9 @@ components:
           description: 'The meter readings'
           type: array
           items:
-            $ref: '#/components/schemas/MeterMeasurement'
-    MeterMeasurement:
-      title: MeterMeasurement
+            $ref: '#/components/schemas/MeterReading'
+    MeterReading:
+      title: MeterReading
       type: object
       properties:
         meterId:
@@ -232,14 +250,85 @@ components:
         source:
           description: 'The type of the meter reading'
           type: string
+        type:
+          description: 'The type of the meter reading'
+          type: string
+          enum: [error, measure]
+        message:
+          description: 'Additional message info from the reading'
+          type: string        
     ArrayOfMeters:
       title: ArrayOfMeters
       type: array
       items: 
         $ref: '#/components/schemas/Meter'          
-    ArrayOfMeterMeasurements:
+    ArrayOfMeterReadings:
       title: ArrayOfMeterMeasurements
       type: array
       items: 
-        $ref: '#/components/schemas/MeterMeasurement'
+        $ref: '#/components/schemas/MeterReading'
+    ImageRequest:
+      type: object
+      properties:
+        requests:
+          description: The image container object containing the image
+          type: array
+          items:
+            $ref: '#/components/schemas/ImageContainer'
+    ImageContainer:
+      type: object
+      properties:
+        image:
+          $ref: '#/components/schemas/Image'
+    Image:
+      type: object
+      properties:
+        content:
+          description: The base64 encoded image to analyze
+          type: string
+        features:
+          description: The features that the image analysis should use
+          type: array
+          items:
+            $ref: '#/components/schemas/Feature'
+    Feature:
+      description: The feature object contains the types of features to use for analyzing the iamge.
+      type: object
+      properties:
+        type:
+          description: The only valid option to use here is LABEL_DETECTION
+          type: string
+    ImageResponse:
+      type: object
+      properties:
+        responses:
+          description: The image analysis response labels
+          type: array
+          items:
+            $ref: '#/components/schemas/LabelAnnotations'  
+    LabelAnnotations:
+      type: object
+      properties:
+        labelAnnotations:
+          description: The label annotations from the image analysis
+          type: array
+          items:
+            $ref: '#/components/schemas/LabelAnnotation'
+    LabelAnnotation:
+      type: object
+      properties:
+        mid:
+          description: The knowledge graph id of the object, can be used to query the Google Knowledge Graph for more information
+          type: string
+        description: 
+          description: Text description of the object
+          type: string
+        score:
+          description: How accurate the object recognition was
+          type: number
+          format: double
+        topicality:
+          description: How topical the object is, relating to the score.
+          type: number
+          format: double        
         
