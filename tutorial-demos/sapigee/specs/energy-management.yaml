@@ -210,6 +210,10 @@ components:
           description: 'Display name of a meter.'
           type: string
           example: "Meter_345332"
+        status:
+          description: 'Status of the meter.'
+          type: string
+          enum: ["error", "normal"]        
         location:
           description: 'The location of the meter'
           type: string
