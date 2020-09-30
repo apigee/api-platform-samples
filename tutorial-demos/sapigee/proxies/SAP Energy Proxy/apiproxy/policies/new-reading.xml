@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Javascript async="false" continueOnError="false" enabled="true" timeLimit="200" name="new-reading">
+    <DisplayName>new reading</DisplayName>
+    <Properties/>
+    <ResourceURL>jsc://new-reading.js</ResourceURL>
+</Javascript>

@@ -1,0 +1,50 @@
+{
+  "responses": [
+    {
+      "labelAnnotations": [
+        {
+          "mid": "/m/09g5pq",
+          "description": "Empty Room",
+          "score": 0.9789592,
+          "topicality": 0.9789592
+        },
+        {
+          "mid": "/m/033lpr",
+          "description": "Airport",
+          "score": 0.8813923,
+          "topicality": 0.8813923
+        },
+        {
+          "mid": "/m/081pkj",
+          "description": "Security",
+          "score": 0.8688019,
+          "topicality": 0.8688019
+        },
+        {
+          "mid": "/m/07bsy",
+          "description": "Deserted",
+          "score": 0.83513474,
+          "topicality": 0.83513474
+        },
+        {
+          "mid": "/m/039jbq",
+          "description": "Urban area",
+          "score": 0.7497135,
+          "topicality": 0.7497135
+        },
+        {
+          "mid": "/m/01n32",
+          "description": "City",
+          "score": 0.64202905,
+          "topicality": 0.64202905
+        },
+        {
+          "mid": "/m/07bxq",
+          "description": "Tourism",
+          "score": 0.5114329,
+          "topicality": 0.5114329
+        }
+      ]
+    }
+  ]
+}
