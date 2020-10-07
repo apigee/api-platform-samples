@@ -1,0 +1,123 @@
+# Example OpenAPI YAML to get you started quickly.
+# Note: YAML has indentation based coping.
+# Code completion support is available so start typing for
+# available options.
+# This example follows the recommendations of the API 
+# Improvement Proposals for common API patterns. Find more
+# at https://google.aip.dev/
+
+# Find the full OpenAPI reference at:
+# https://github.com/OAI/OpenAPI-Specification
+openapi: 3.0.3
+
+# This is your document metadata.
+info:
+  version: 0.0.1
+  title: Joke API
+  description: API to get and maintain jokes
+# Servers where this API is hosted
+servers: 
+  - url: https://emea-poc13-prod.apigee.net/jokes
+
+security:
+  - ApiKeyAuth: []
+  
+# Describe your paths here
+paths:
+  '/jokes':
+    get:
+      summary: 'Get all joke data.'
+      description: 'Get all joke data.'
+      responses:
+        # Response code
+        '200':
+          description: Successful response
+          # Response body content.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ArrayOfJokes'  
+    post:
+      summary: 'Creates a new Joke configuration'
+      description: 'Creates a new Joke configuration'
+      requestBody:
+        description: 'Joke object'
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Joke'            
+      responses:
+        '201':
+          description: item created    
+  '/jokes/{jokeid}':
+    # This is an HTTP operation
+    get:
+      summary: 'Get the joke data.'
+      description: 'Get the joke data'
+      parameters:
+        # An example parameter that is in query and is required
+        - name: jokeid
+          in: path
+          description: |
+            Unique identifier of the desired joke object.
+          required: true
+          schema:
+            type: string
+      responses:
+        # Response code
+        '200':
+          description: Successful response
+          # Response body content.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Joke'
+    put:
+      summary: 'Updates a Joke configuration'
+      description: 'Updates a Joke configuration'
+      parameters:
+        # An example parameter that is in query and is required
+        - name: jokeid
+          in: path
+          description: |
+            Unique identifier of the desired joke object.
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: 'joke object'
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Joke'            
+      responses:
+        '201':
+          description: item updated     
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: x-apikey
+  # Schemas is a map of names to Schema objects
+  schemas:
+    Joke:
+      title: Joke
+      type: object
+      properties:
+        JokeId:
+          description: |
+            [Resource Name](https://aip.dev/122) of a joke.
+            Format: `meters/{meterid}`
+          type: string
+        Text:
+          description: 'Text of a joke.'
+          type: string
+    ArrayOfJokes:
+      title: ArrayOfJokes
+      type: array
+      items: 
+        $ref: '#/components/schemas/Joke'          
+

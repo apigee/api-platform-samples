@@ -1,7 +1,9 @@
 // importing the dependencies
+const fs = require('fs');
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
+const parser = require('xml2json');
 const helmet = require('helmet');
 const morgan = require('morgan');
 const dotenv = require('dotenv');
@@ -22,20 +24,29 @@ app.use(cors());
 // adding morgan to log HTTP requests
 app.use(morgan('combined'));
 
-// defining an endpoint to return all ads
-app.get('/', (req, res) => {
-  // req.body.param1
-  // process.env.PORT
+var meters = {};
+var readings = {};
 
-  // res.send(ads);
+fs.readFile( './data/meter-data.xml', function(err, data) {
+  var json = JSON.parse(parser.toJson(data));
+  meters["Meters"] = json["Meters"]["Meter"];
 });
 
-app.get('/ads/:adid', (req, res) => {
-  var adid = req.params.adid;
+fs.readFile( './data/reading-data.xml', function(err, data) {
+  var json = JSON.parse(parser.toJson(data));
+  readings["MeterReadings"] = json["MeterReadings"]["MeterReading"];
+});
 
+// defining an endpoint to return all meters
+app.get('/meters', (req, res) => {
+  res.send(meters);
+});
+
+app.get('/readings', (req, res) => {
+  res.send(readings);
 });
 
 // starting the server
 app.listen(8080, () => {
-  console.log('listening on port 8080’);
+  console.log('listening on port 8080');
 });
