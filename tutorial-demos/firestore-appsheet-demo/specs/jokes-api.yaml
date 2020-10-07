@@ -17,7 +17,7 @@ info:
   description: API to get and maintain jokes
 # Servers where this API is hosted
 servers: 
-  - url: https://emea-poc13-prod.apigee.net/jokes
+  - url: https://emea-poc13-prod.apigee.net/firebasequick
 
 security:
   - ApiKeyAuth: []
