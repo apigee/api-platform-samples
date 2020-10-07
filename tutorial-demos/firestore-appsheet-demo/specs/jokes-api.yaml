@@ -50,14 +50,14 @@ paths:
       responses:
         '201':
           description: item created    
-  '/jokes/{jokeid}':
+  '/jokes/{id}':
     # This is an HTTP operation
     get:
       summary: 'Get the joke data.'
       description: 'Get the joke data'
       parameters:
         # An example parameter that is in query and is required
-        - name: jokeid
+        - name: id
           in: path
           description: |
             Unique identifier of the desired joke object.
@@ -78,7 +78,7 @@ paths:
       description: 'Updates a Joke configuration'
       parameters:
         # An example parameter that is in query and is required
-        - name: jokeid
+        - name: id
           in: path
           description: |
             Unique identifier of the desired joke object.
@@ -107,12 +107,12 @@ components:
       title: Joke
       type: object
       properties:
-        JokeId:
+        id:
           description: |
             [Resource Name](https://aip.dev/122) of a joke.
             Format: `meters/{meterid}`
           type: string
-        Text:
+        text:
           description: 'Text of a joke.'
           type: string
     ArrayOfJokes:
