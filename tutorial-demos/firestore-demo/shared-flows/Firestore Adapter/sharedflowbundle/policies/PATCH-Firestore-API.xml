@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ServiceCallout async="false" continueOnError="false" enabled="true" name="PATCH-Firestore-API">
+    <DisplayName>PATCH Firestore API</DisplayName>
+    <Properties/>
+    <Request clearPayload="true" variable="firebase.request">
+        <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+        <Set>
+            <Headers>
+                <Header name="Authorization">Bearer {firestore.token}</Header>
+            </Headers>
+            <Verb>PATCH</Verb>
+            <Payload>
+                {firestore.payload}
+            </Payload>
+        </Set>
+    </Request>
+    <Response>firestore.response</Response>
+    <HTTPTargetConnection>
+        <Properties/>
+        <URL>https://firestore.googleapis.com/v1/projects/{firestore.project}/databases/(default)/documents/{firestore.collection}/{firestore.document}</URL>
+    </HTTPTargetConnection>
+</ServiceCallout>

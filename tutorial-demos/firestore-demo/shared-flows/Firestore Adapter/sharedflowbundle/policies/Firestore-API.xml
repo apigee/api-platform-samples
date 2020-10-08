@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ServiceCallout async="false" continueOnError="false" enabled="true" name="Firestore-API">
+    <DisplayName>GET/DEL Firestore API</DisplayName>
+    <Properties/>
+    <Request clearPayload="true" variable="firestore.request">
+        <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+        <Set>
+            <Headers>
+                <Header name="Authorization">Bearer {firestore.token}</Header>
+            </Headers>
+            <Verb>{request.verb}</Verb>
+        </Set>
+    </Request>
+    <Response>serviceResponse</Response>
+    <HTTPTargetConnection>
+        <Properties/>
+        <URL>https://firestore.googleapis.com/v1/projects/{firestore.project}/databases/(default)/documents/{firestore.collection}/{firestore.document}</URL>
+    </HTTPTargetConnection>
+</ServiceCallout>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<SharedFlow name="default">
+    <Step>
+        <Name>Assign-Google-Key</Name>
+    </Step>
+    <Step>
+        <Name>Generate-JWT-1</Name>
+    </Step>
+    <Step>
+        <Name>Get-Token</Name>
+    </Step>
+    <Step>
+        <Name>Extract-Token</Name>
+    </Step>
+    <Step>
+        <Name>Add-Bearer-Token</Name>
+    </Step>
+    <Step>
+        <Name>Set-Body</Name>
+        <Condition>request.verb = "POST" or request.verb = "PUT"</Condition>
+    </Step>
+    <Step>
+        <Name>Firestore-API</Name>
+        <Condition>request.verb = "GET" or request.verb = "DELETE"</Condition>
+    </Step>
+    <Step>
+        <Name>PATCH-Firestore-API</Name>
+        <Condition>request.verb = "POST" or request.verb = "PUT"</Condition>
+    </Step>
+    <Step>
+        <Name>Set-Response</Name>
+    </Step>
+    <Step>
+        <Name>Convert-Response</Name>
+    </Step>
+</SharedFlow>

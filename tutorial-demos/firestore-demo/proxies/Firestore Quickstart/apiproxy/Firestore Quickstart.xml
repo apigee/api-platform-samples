@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<APIProxy revision="2" name="Firestore Quickstart">
+    <Basepaths>/importantstuff</Basepaths>
+    <ConfigurationVersion majorVersion="4" minorVersion="0"/>
+    <CreatedAt>1602160821771</CreatedAt>
+    <CreatedBy>defaultUser</CreatedBy>
+    <Description></Description>
+    <DisplayName>Firestore Quickstart</DisplayName>
+    <LastModifiedAt>1602163293230</LastModifiedAt>
+    <LastModifiedBy>defaultUser</LastModifiedBy>
+    <ManifestVersion>SHA-512:f55c15016835194ad271386c01805f23ab7de0f0150b4fe54abdbef4e3234c63d192850e55867d31fcce62f54651cbbc1858305b57ebd95a7743dd1b455c5087</ManifestVersion>
+    <Policies>
+        <Policy>Add-Bearer-Token</Policy>
+        <Policy>Assign-Message-2</Policy>
+        <Policy>Extract-Token</Policy>
+        <Policy>Generate-JWT-1</Policy>
+        <Policy>Get-Token</Policy>
+        <Policy>Get-Url-Variables</Policy>
+        <Policy>Remove-Key</Policy>
+        <Policy>Set-Firestore-Variables</Policy>
+        <Policy>Set-Verb</Policy>
+        <Policy>Verify-API-Key-1</Policy>
+        <Policy>set-request</Policy>
+        <Policy>set-response</Policy>
+    </Policies>
+    <ProxyEndpoints>
+        <ProxyEndpoint>default</ProxyEndpoint>
+    </ProxyEndpoints>
+    <Resources>
+        <Resource>jsc://set-request.js</Resource>
+        <Resource>jsc://set-response.js</Resource>
+    </Resources>
+    <Spec></Spec>
+    <TargetServers/>
+    <TargetEndpoints>
+        <TargetEndpoint>default</TargetEndpoint>
+    </TargetEndpoints>
+</APIProxy>
