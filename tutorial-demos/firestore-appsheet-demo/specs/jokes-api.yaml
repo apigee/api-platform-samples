@@ -95,6 +95,21 @@ paths:
       responses:
         '201':
           description: item updated     
+    delete:
+      summary: 'Deletes a Joke configuration'
+      description: 'Deletes a Joke configuration'
+      parameters:
+        # An example parameter that is in query and is required
+        - name: id
+          in: path
+          description: |
+            Unique identifier of the desired joke object.
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: success           
 components:
   securitySchemes:
     ApiKeyAuth:
