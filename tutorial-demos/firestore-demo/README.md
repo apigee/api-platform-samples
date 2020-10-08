@@ -75,6 +75,4 @@ This proxy then offers REST CRUD APIs with this much nicer structure:
 ```
 The OpenAPI spec for the example is under /specs, and can also be used to create an AppSheet app based on the API.
 
-Here is an example AppSheet app using this API proxy.
-
-<iframe src="https://www.appsheet.com/start/8a3ad802-67c5-4796-9bc6-7dbe1a3ced3d#_currentLat=39.385364&_currentLng=-80.437768&_mapType=roadmap&_zoom=4&appName=JokesApp-1224517&page=google-map&table=jokes&view=Map" title="Jokes App" width="400" height="700"></iframe>
+Here is an example AppSheet app using this API proxy: https://www.appsheet.com/Template/mobilepreview?appId=8a3ad802-67c5-4796-9bc6-7dbe1a3ced3d
