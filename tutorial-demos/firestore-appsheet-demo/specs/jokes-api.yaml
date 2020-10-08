@@ -14,10 +14,10 @@ openapi: 3.0.3
 info:
   version: 0.0.1
   title: Joke API
-  description: API to get and maintain jokes
+  description: API to get and maintain the best, and worst, jokes on the planet
 # Servers where this API is hosted
 servers: 
-  - url: https://emea-poc13-prod.apigee.net/firebasequick
+  - url: https://emea-poc13-prod.apigee.net/importantstuff
 
 security:
   - ApiKeyAuth: []
@@ -132,7 +132,21 @@ components:
           type: string
         punchline:
           description: 'Punchline of a joke.'
-          type: string          
+          type: string
+        location:
+          description: 'The location of the joke'
+          type: string
+          example: "52.517568, 10.959388"     
+        timestamp:
+          description: "The timestamp of the moment of inspiration for the joke"
+          format: date-time
+          type: string
+        funny:
+          description: "The scientific measurement if the joke is funny."
+          type: boolean
+        imagePath:
+          description: "An image that gives the joke away"
+          type: string
     ArrayOfJokes:
       title: ArrayOfJokes
       type: object
