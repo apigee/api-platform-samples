@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<GenerateJWT async="false" continueOnError="false" enabled="true" name="Generate-JWT-1">
+    <Algorithm>RS256</Algorithm>
+    <IgnoreUnresolvedVariables>false</IgnoreUnresolvedVariables>
+    <PrivateKey>
+        <Value ref="private.gkey"/>
+    </PrivateKey>
+    <Subject>GCP_SVC_EMAIL</Subject>
+    <Issuer>GCP_SVC_EMAIL</Issuer>
+    <Audience>https://www.googleapis.com/oauth2/v4/token</Audience>
+    <ExpiresIn>60m</ExpiresIn>
+    <Id/>
+    <AdditionalClaims>
+        <Claim name="scope">https://www.googleapis.com/auth/datastore</Claim>
+    </AdditionalClaims>
+    <OutputVariable>google-jwt</OutputVariable>
+</GenerateJWT>

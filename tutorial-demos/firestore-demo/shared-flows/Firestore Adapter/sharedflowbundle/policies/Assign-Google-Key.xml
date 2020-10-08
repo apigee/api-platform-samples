@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage async="false" continueOnError="false" enabled="true" name="Assign-Google-Key">
+    <DisplayName>Assign Google Key</DisplayName>
+    <Properties/>
+    <AssignVariable>
+        <Name>private.gkey</Name>
+        <Value>
+        GCP_SVC_KEY
+        </Value>
+        <Ref/>
+    </AssignVariable>
+    <IgnoreUnresolvedVariables>false</IgnoreUnresolvedVariables>
+    <AssignTo createNew="false" transport="http" type="request"/>
+</AssignMessage>

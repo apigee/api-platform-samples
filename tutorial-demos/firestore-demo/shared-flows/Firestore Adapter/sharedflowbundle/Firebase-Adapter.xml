@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<SharedFlowBundle revision="11" name="Firebase-Adapter">
+    <ConfigurationVersion majorVersion="4" minorVersion="0"/>
+    <CreatedAt>1601709479741</CreatedAt>
+    <CreatedBy>defaultUser</CreatedBy>
+    <Description>undefined</Description>
+    <DisplayName>Firebase-Adapter</DisplayName>
+    <LastModifiedAt>1602161156393</LastModifiedAt>
+    <LastModifiedBy>defaultUser</LastModifiedBy>
+    <ManifestVersion>SHA-512:0ca69693e533bbbc25e73fa42d5ff40d670cdf1a4f2882792fc7390c6e3658708eff90cf143053674bd1b614d39dc487be7ee66730f7d5103bfcf090e012235c</ManifestVersion>
+    <Policies>
+        <Policy>Add-Bearer-Token</Policy>
+        <Policy>Assign-Google-Key</Policy>
+        <Policy>Convert-Response</Policy>
+        <Policy>Extract-Token</Policy>
+        <Policy>Firestore-API</Policy>
+        <Policy>Generate-JWT-1</Policy>
+        <Policy>Get-Token</Policy>
+        <Policy>PATCH-Firestore-API</Policy>
+        <Policy>Set-Body</Policy>
+        <Policy>Set-Response</Policy>
+    </Policies>
+    <Resources>
+        <Resource>jsc://set-body.js</Resource>
+        <Resource>jsc://set-response.js</Resource>
+    </Resources>
+    <Spec></Spec>
+    <subType>SharedFlow</subType>
+    <SharedFlows>
+        <SharedFlow>default</SharedFlow>
+    </SharedFlows>
+</SharedFlowBundle>
