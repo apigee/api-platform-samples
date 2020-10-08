@@ -130,9 +130,16 @@ components:
         text:
           description: 'Text of a joke.'
           type: string
+        punchline:
+          description: 'Punchline of a joke.'
+          type: string          
     ArrayOfJokes:
       title: ArrayOfJokes
-      type: array
-      items: 
-        $ref: '#/components/schemas/Joke'          
+      type: object
+      properties:
+        jokes:
+          description: array of jokes
+          type: array
+          items: 
+            $ref: '#/components/schemas/Joke'          
 
