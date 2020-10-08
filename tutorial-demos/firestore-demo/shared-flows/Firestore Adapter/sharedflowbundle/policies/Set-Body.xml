@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Javascript async="false" continueOnError="false" enabled="true" timeLimit="200" name="Set-Body">
+    <DisplayName>Set Body</DisplayName>
+    <Properties/>
+    <ResourceURL>jsc://set-body.js</ResourceURL>
+</Javascript>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage async="false" continueOnError="false" enabled="true" name="Set-Firestore-Variables">
+    <DisplayName>Set Firestore Variables</DisplayName>
+    <Properties/>
+    <AssignVariable>
+        <Name>firestore.project</Name>
+        <Value>GCP_PROJECT</Value>
+    </AssignVariable>
+    <AssignVariable>
+        <Name>firestore.document</Name>
+        <Value/>
+    </AssignVariable>
+    <AssignVariable>
+        <Name>firestore.input</Name>
+        <Ref>request.content</Ref>
+    </AssignVariable>
+    <AssignVariable>
+        <Name>firestore.key</Name>
+        <Value>id</Value>
+    </AssignVariable>
+    <AssignVariable>
+        <Name>private.gkey</Name>
+        <Value>
+        GCP_SVC_KEY         
+        </Value>
+    </AssignVariable>
+    <AssignVariable>
+        <Name>firestore.serviceemail</Name>
+        <Value>GCP_SVC_EMAIL</Value>
+    </AssignVariable>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+    <AssignTo createNew="false" transport="http" type="request"/>
+</AssignMessage>

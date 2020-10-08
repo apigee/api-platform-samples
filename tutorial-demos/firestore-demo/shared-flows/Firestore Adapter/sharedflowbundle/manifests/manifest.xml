@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Manifest name="manifest">
+    <Policies>
+        <VersionInfo resourceName="Add-Bearer-Token" version="SHA-512:520649d6bb24834e4883965d37a3b15a99a38a7c6b0dd593c64870221330c9febf3b5d6c5114923feeb2535342155664dd4a0d205791f8364e2ec9346124b6c5"/>
+        <VersionInfo resourceName="Assign-Google-Key" version="SHA-512:7ad7d758ceb1c57134b363dd58135dfbdf3e02399d15624c368a4a2e51002256d6327c5f1766ecff47abf12e429c2c37b173ea47b8cc1012b03ea0cf5cc7def1"/>
+        <VersionInfo resourceName="Convert-Response" version="SHA-512:de67da818e4d71b55423ec17e2213be50c6b608c4b6c12b34161dead09bad4cba0120b7c38d5bb9af43aeb8397a501fb4174e062f0ab03c1b0b31736a7bfb2df"/>
+        <VersionInfo resourceName="Extract-Token" version="SHA-512:4f4270a4ed5d1002201079227cadc3253ad782d975dac8c11fc008078fe9ea5b81f854997b65177b671eef415533a7c2ce3bd3f276c2e50bda3fb0a593b416b8"/>
+        <VersionInfo resourceName="Firestore-API" version="SHA-512:c4d30417279245d68534d66ca98ff26af69f714f7214be4a98ccc3cc3b032af894ccb990587df4c8625154e73302a5827d67ff2b3634e8fafcda60c778c131a5"/>
+        <VersionInfo resourceName="Generate-JWT-1" version="SHA-512:30ed555763fea8531a923bfa4ce863b5b313ee106c169088cb25e59d2434c4f292d2850df8fdd83454dc590423715d2d967fe1db5e550ee1b1ad128a2b0d7c61"/>
+        <VersionInfo resourceName="Get-Token" version="SHA-512:d4ac90e3b0ac6b99a90d6053f08eaccec7266a9f434653ea2790d035a6bb04f4408831cbf8c71725c1595ce1651a69847ae2764d9a6201647b0831ce78fd0770"/>
+        <VersionInfo resourceName="PATCH-Firestore-API" version="SHA-512:3e2949b46d2a37fde3343860047db34e0cc73d616acb36fb88f6cf8fb13403f732fb00af37c3f80e5b98e4c6025558117b91e5db5e95741da773eb1803caf124"/>
+        <VersionInfo resourceName="Set-Body" version="SHA-512:b38c104d619545776c3312f14023ca465f3895ea159a8555a5f8da51eba669d677e4df3a477ebb035a25e3ab178a439ca732650a1aaa719b6dd67cab0813d2f2"/>
+        <VersionInfo resourceName="Set-Response" version="SHA-512:7f439ee42e52998c09f8b5e57a6591ecfad69fb280152cabc2738bfa5647d69d1a688db5b6b141164db0d173a9643fb47af317d37a0ecf6ab6771b00fa454610"/>
+    </Policies>
+    <ProxyEndpoints/>
+    <Resources>
+        <VersionInfo resourceName="jsc://set-body.js" version="SHA-512:5e9cdd4bbac92e2931913079278b7119e1893eadfba4233dbe3307c092be761778d2ecd8e5c0045044bc84f6f61296a572ce394c58a674a9f302b45adb8b2de0"/>
+        <VersionInfo resourceName="jsc://set-response.js" version="SHA-512:46ba610227f8b89d9ff005a90eda3495f214527deba3c0cb93ce4fcf2c959dce6796c6a2193bb02fd453869b1f8b8476186f87d32c945e369a447de5c80b385d"/>
+    </Resources>
+    <SharedFlows>
+        <VersionInfo resourceName="default" version="SHA-512:bec232adf4b0cecaad5cf4576bfb9401da7d1fb6b9ff66177bf4a22418c6c92f013401dc96053a85202dd97fc26ebed1dd569a207156f5827c16afaf19c3d456"/>
+    </SharedFlows>
+    <TargetEndpoints/>
+</Manifest>

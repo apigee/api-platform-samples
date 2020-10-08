@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ServiceCallout async="false" continueOnError="false" enabled="true" name="Get-Token">
+    <DisplayName>Get-Google-Token</DisplayName>
+    <Properties/>
+    <Request clearPayload="true" variable="googletokenrequest">
+        <Set>
+            <Headers>
+                <Header name="Content-Type">application/x-www-form-urlencoded</Header>
+            </Headers>
+            <QueryParams>
+                <QueryParam name="grant_type">urn:ietf:params:oauth:grant-type:jwt-bearer</QueryParam>
+                <QueryParam name="assertion">{google-jwt}</QueryParam>
+            </QueryParams>
+            <FormParams/>
+            <Payload/>
+            <ReasonPhrase/>
+            <StatusCode/>
+            <Path/>
+            <Version>1.1</Version>
+            <Verb>POST</Verb>
+        </Set>
+        <IgnoreUnresolvedVariables>false</IgnoreUnresolvedVariables>
+    </Request>
+    <Response>google-token-response</Response>
+    <HTTPTargetConnection>
+        <Properties/>
+        <URL>https://www.googleapis.com/oauth2/v4/token</URL>
+    </HTTPTargetConnection>
+</ServiceCallout>
