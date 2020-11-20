@@ -314,7 +314,7 @@ jQuery(document).ready(function($) {
 					data: JSON.stringify({
 						machineId: checkpointId,
 						displayName: checkpointId,
-						location: getRandomInRange(0, 705, 0) + ", " + getRandomInRange(0, 600, 0)
+						location: getRandomInRange(0, 89, 6) + ", " + getRandomInRange(0, 93, 6)
 					}),
 					success: function(data) {
 						console.log(data);

@@ -163,13 +163,13 @@
             </select>
             <br>
             <div>
-              <label for="checkpointLabel">Meter Id</label>
-              <input type="email" class="form-control" id="checkpointInput" aria-describedby="checkpointHelp" placeholder="Enter Checkpoint Id" disabled>
+              <label for="checkpointLabel">Machine Id</label>
+              <input type="email" class="form-control" id="checkpointInput" aria-describedby="checkpointHelp" placeholder="Enter Machine Id">
               <small id="emailHelp" class="form-text text-muted">This Id is used to identity the device being monitored.</small>
             </div>          
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="checkpointId = $('#checkpointInput').val(); localStorage.setItem('checkpointId', checkpointId); location.reload();">Close</button>
           </div>
         </div>
       </div>

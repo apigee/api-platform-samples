@@ -205,6 +205,9 @@ components:
           description: 'Display name of a device.'
           type: string
           example: "device_345332"
+        image:
+          description: 'Image of the device.'
+          type: string
         status:
           description: 'Status of the device.'
           type: string
