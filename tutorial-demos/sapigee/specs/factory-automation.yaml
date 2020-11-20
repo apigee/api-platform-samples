@@ -1,0 +1,333 @@
+# Example OpenAPI YAML to get you started quickly.
+# Note: YAML has indentation based coping.
+# Code completion support is available so start typing for
+# available options.
+# This example follows the recommendations of the API 
+# Improvement Proposals for common API patterns. Find more
+# at https://google.aip.dev/
+
+# Find the full OpenAPI reference at:
+# https://github.com/OAI/OpenAPI-Specification
+openapi: 3.0.3
+
+# This is your document metadata.
+info:
+  version: 0.0.1
+  title: Factory Automation API
+  description: |
+    Allows you to manage and access factory device data and services.
+
+# Servers where this API is hosted
+servers: 
+  - url: https://amer-partner3-prod.apigee.net/factory
+
+security:
+  - ApiKeyAuth: []
+  
+# Describe your paths here
+paths:
+  '/machines':
+    get:
+      summary: 'Get all device configuration data.'
+      description: 'Get all device configuration data.'
+      responses:
+        # Response code
+        '200':
+          description: Successful response
+          # Response body content.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ArrayOfMachines'  
+    post:
+      summary: 'Creates a new device configuration'
+      description: 'Creates a new device configuration'
+      requestBody:
+        description: 'device object'
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Machine'            
+      responses:
+        '201':
+          description: item created    
+  '/machines/{machineid}':
+    get:
+      summary: 'Get the device configuration data.'
+      description: 'Get the device configuration data'
+      parameters:
+        - name: machineid
+          in: path
+          description: |
+            Unique identifier of the desired device object.
+          required: true
+          schema:
+            type: string
+      responses:
+        # Response code
+        '200':
+          description: Successful response
+          # Response body content.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Machine'
+    put:
+      summary: 'Updates a device configuration'
+      description: 'Updates a device configuration'
+      parameters:
+        - name: machineid
+          in: path
+          description: |
+            Unique identifier of the desired device object.
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: 'device object'
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Machine'            
+      responses:
+        '201':
+          description: item updated     
+  '/readings':
+    # This is an HTTP operation
+    get:
+      summary: 'Get all device readings data.'
+      description: 'Get all device readings data'
+      responses:
+        # Response code
+        '200':
+          description: Successful response
+          # Response body content.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ArrayOfMachineReadings'
+    post:
+      summary: 'Adds a device reading'
+      description: 'Adds a device reading'
+      requestBody:
+        description: 'device object'
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MachineReading'
+      responses:
+        '201':
+          description: item updated                   
+  '/readings/{deviceid}':
+    # This is an HTTP operation
+    get:
+      summary: 'Get the device readings data.'
+      description: 'Get the device readings data'
+      parameters:
+        - name: deviceid
+          in: path
+          description: |
+            Unique identifier of the desired device object.
+          required: true
+          schema:
+            type: string
+      responses:
+        # Response code
+        '200':
+          description: Successful response
+          # Response body content.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ArrayOfMachineReadings'
+    put:
+      summary: 'Updates a device reading'
+      description: 'Updates a device reading'
+      parameters:
+        - name: deviceid
+          in: path
+          description: |
+            Unique identifier of the desired device object.
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: 'device object'
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MachineReading'
+      responses:
+        '201':
+          description: item updated       
+  '/vision':
+    post:
+      summary: Analyzes the posted image using cloud vision AI and returns the labels and scores of the objects found in the image.
+      description: Analyzes the posted image using cloud vision AI and returns the labels and scores of the objects found in the image.  Used in combination with device reading reporting using a camera to capture data.
+      requestBody:
+        description: 'Image object to analyze'
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ImageRequest'          
+      responses:
+        '200':
+          description: "Successful response"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ImageResponse'
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: x-apikey
+  # Schemas is a map of names to Schema objects
+  schemas:
+    Machine:
+      title: Machine
+      type: object
+      properties:
+        machineId:
+          description: |
+            [Resource Name](https://aip.dev/122) of a device.
+            Format: `devices/{deviceid}`
+          type: string
+          example: "devices/a353-x51d"
+          pattern: 'devices\/[a-z0-9-]+'
+        displayName:
+          description: 'Display name of a device.'
+          type: string
+          example: "device_345332"
+        status:
+          description: 'Status of the device.'
+          type: string
+          enum: ["error", "normal"]        
+        location:
+          description: 'The location of the device'
+          type: string
+          example: "52.517568, 10.959388"
+        readings:
+          description: 'The device readings'
+          type: array
+          items:
+            $ref: '#/components/schemas/MachineReading'
+    MachineReading:
+      title: MachineReading
+      type: object
+      properties:
+        machineId:
+          description: |
+            [Resource Name](https://aip.dev/122) of a device.
+            Format: `machines/{machineId}`
+          type: string
+          example: "a353-x51d"
+          pattern: '[a-z0-9-]+'
+        readingId:
+          description: |
+            [Resource Name](https://aip.dev/122) of a device.
+            Format: `readings/{readingId}`
+          type: string
+          example: "a353-x51d"
+          pattern: '[a-z0-9-]+'             
+        timestamp:
+          description: "The timestamp of the device reading"
+          format: date-time
+          type: string
+        reading:
+          description: 'device reading value'
+          type: number
+        quality:
+          description: 'The quality of the reading'
+          type: string
+        source:
+          description: 'The type of the device reading'
+          type: string
+        type:
+          description: 'The type of the device reading'
+          type: string
+          enum: [error, measure]
+        message:
+          description: 'Additional message info from the reading'
+          type: string        
+    ArrayOfMachines:
+      title: ArrayOfMachines
+      type: array
+      items: 
+        $ref: '#/components/schemas/Machine'          
+    ArrayOfMachineReadings:
+      title: ArrayOfMachineReadings
+      type: array
+      items: 
+        $ref: '#/components/schemas/MachineReading'
+    ImageRequest:
+      type: object
+      properties:
+        requests:
+          description: The image container object containing the image
+          type: array
+          items:
+            $ref: '#/components/schemas/ImageContainer'
+    ImageContainer:
+      type: object
+      properties:
+        image:
+          $ref: '#/components/schemas/Image'
+    Image:
+      type: object
+      properties:
+        content:
+          description: The base64 encoded image to analyze
+          type: string
+        features:
+          description: The features that the image analysis should use
+          type: array
+          items:
+            $ref: '#/components/schemas/Feature'
+    Feature:
+      description: The feature object contains the types of features to use for analyzing the iamge.
+      type: object
+      properties:
+        type:
+          description: The only valid option to use here is LABEL_DETECTION
+          type: string
+    ImageResponse:
+      type: object
+      properties:
+        responses:
+          description: The image analysis response labels
+          type: array
+          items:
+            $ref: '#/components/schemas/LabelAnnotations'  
+    LabelAnnotations:
+      type: object
+      properties:
+        labelAnnotations:
+          description: The label annotations from the image analysis
+          type: array
+          items:
+            $ref: '#/components/schemas/LabelAnnotation'
+    LabelAnnotation:
+      type: object
+      properties:
+        mid:
+          description: The knowledge graph id of the object, can be used to query the Google Knowledge Graph for more information
+          type: string
+        description: 
+          description: Text description of the object
+          type: string
+        score:
+          description: How accurate the object recognition was
+          type: number
+          format: double
+        topicality:
+          description: How topical the object is, relating to the score.
+          type: number
+          format: double        
+        
