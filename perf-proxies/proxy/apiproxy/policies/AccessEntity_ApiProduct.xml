@@ -1,0 +1,5 @@
+<AccessEntity enabled="true" continueOnError="false" async="false" name="AccessEntity_ApiProduct">
+    <EntityType  value="apiproduct"/>
+    <EntityIdentifier ref="request.queryparam.id" /> 
+</AccessEntity>
+

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<XMLToJSON enabled="true" continueOnError="false" async="false" name="XMLToJSON">
+    <DisplayName>XMLToJSON</DisplayName>
+    <FaultRules/>
+    <Properties/>
+    <Format>yahoo</Format>
+</XMLToJSON>

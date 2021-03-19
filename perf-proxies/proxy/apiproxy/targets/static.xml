@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<TargetEndpoint name="static">
+    <Description/>
+    <FaultRules/>
+    <Flows/>
+    <PostFlow name="PostFlow"/>
+    <PreFlow name="PreFlow"/>
+    <HTTPTargetConnection>
+        <Properties>
+            <Property name="keepalive.timeout.millis">5000</Property>
+        </Properties>
+        <URL>http://104.197.43.2</URL>
+    </HTTPTargetConnection>
+    <DefaultFaultRule name="DefaultFaultRule">
+        <AlwaysEnforce>true</AlwaysEnforce>
+    </DefaultFaultRule>
+</TargetEndpoint>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Javascript async="false" continueOnError="false" enabled="true" timeLimit="200" name="GenerateRandomNumber">
+    <DisplayName>GenerateRandomNumber</DisplayName>
+    <FaultRules/>
+    <Properties/>
+    <ResourceURL>jsc://RandomNumber.js</ResourceURL>
+</Javascript>

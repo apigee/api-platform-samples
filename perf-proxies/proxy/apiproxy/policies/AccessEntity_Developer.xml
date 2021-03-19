@@ -1,0 +1,5 @@
+<AccessEntity enabled="true" continueOnError="false" async="false" name="AccessEntity_Developer">
+    <EntityType  value="developer"/>
+    <EntityIdentifier ref="request.queryparam.id" /> 
+</AccessEntity>
+
