@@ -163,25 +163,7 @@ paths:
               $ref: '#/components/schemas/MachineReading'
       responses:
         '201':
-          description: item updated       
-  '/vision':
-    post:
-      summary: Analyzes the posted image using cloud vision AI and returns the labels and scores of the objects found in the image.
-      description: Analyzes the posted image using cloud vision AI and returns the labels and scores of the objects found in the image.  Used in combination with device reading reporting using a camera to capture data.
-      requestBody:
-        description: 'Image object to analyze'
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/ImageRequest'          
-      responses:
-        '200':
-          description: "Successful response"
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ImageResponse'
+          description: item updated
 components:
   securitySchemes:
     ApiKeyAuth:
