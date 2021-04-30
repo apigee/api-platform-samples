@@ -117,15 +117,17 @@ def printDeployments(dep):
             print '  Error: %s' % d['error']
 
 ApigeeHost = 'https://api.enterprise.apigee.com'
-UserPW = None
+User = None
+PW = None
 Directory = None
 Organization = None
 Environment = None
 Name = None
 BasePath = '/'
 ShouldDeploy = True
+PassSpecified = False
 
-Options = 'h:u:d:e:n:p:o:i:z:'
+Options = 'h:u:d:e:n:p:o:i:z:P:'
 
 opts = getopt.getopt(sys.argv[1:], Options)[0]
 
@@ -143,25 +145,38 @@ for o in opts:
     elif o[0] == '-p':
         BasePath = o[1]
     elif o[0] == '-u':
-        UserPW = o[1]
+        User = o[1]
+    elif o[0] == '-P':
+        PW = o[1]
+	PassSpecified = True
     elif o[0] == '-i':
         ShouldDeploy = False
     elif o[0] == '-z':
         ZipFile = o[1]
+if PW == '!':
+    PW = raw_input("Password: ")
+    PW = str(PW)
 
-if UserPW == None or \
+if User == None or \
         (Directory == None and ZipFile == None) or \
         Environment == None or \
         Name == None or \
-        Organization == None:
+        Organization == None or \
+	(PW == None and PassSpecified == True):
     print """Usage: deploy -n [name] (-d [directory name] | -z [zipfile])
-              -e [environment] -u [username:password] -o [organization]
-              [-p [base path] -h [apigee API url] -i]
+              -e [environment] (-u [username:password] | -u [username] -P [password:!])
+               -o [organization][-p [base path] -h [apigee API url] -i] 
     base path defaults to "/"
     Apigee URL defaults to "https://api.enterprise.apigee.com"
     -i denotes to import only and not actually deploy
+    Specifying -P ! will prompt for password
     """
     sys.exit(1)
+
+if PW == None:
+    UserPW = User
+else:
+    UserPW = User + ':' + PW
 
 url = urlparse.urlparse(ApigeeHost)
 httpScheme = url[0]
