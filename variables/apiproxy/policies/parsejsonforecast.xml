@@ -1,0 +1,124 @@
+<ExtractVariables name="parsejsonforecast"> 
+  <Source>message</Source>
+  <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>  
+  <VariablePrefix>weather</VariablePrefix> 
+  <JSONPayload> 
+    <Variable name="description"> 
+      <JSONPath>$.rss.channel.description</JSONPath> 
+    </Variable> 
+    <Variable name="condition"> 
+      <JSONPath>$.rss.atmosphere.humidity</JSONPath> 
+    </Variable> 
+  </JSONPayload> 
+</ExtractVariables>
+
+
+
+<!-- Sample JSON response
+
+     {
+    "rss": {
+        "channel": {
+            "astronomy": {
+                "sunrise": "6:16 am", 
+                "sunset": "8:10 pm"
+            }, 
+            "atmosphere": {
+                "humidity": "82", 
+                "pressure": "30.02", 
+                "rising": "1", 
+                "visibility": "10"
+            }, 
+            "description": "Yahoo! Weather for Palo Alto, CA", 
+            "image": {
+                "height": "18", 
+                "link": "http://weather.yahoo.com", 
+                "title": "Yahoo! Weather", 
+                "url": "http://l.yimg.com/a/i/brand/purplelogo//uh/us/news-wea.gif", 
+                "width": "142"
+            }, 
+            "item": {
+                "condition": {
+                    "code": "26", 
+                    "date": "Tue, 06 Aug 2013 7:46 am PDT", 
+                    "temp": "59", 
+                    "text": "Cloudy"
+                }, 
+                "description": "\n<img src=\"http://l.yimg.com/a/i/us/we/52/26.gif\"/><br />\n<b>Current Conditions:</b><br />\nCloudy, 59 F<BR />\n<BR /><b>Forecast:</b><BR />\nTue - AM Clouds/PM Sun. High: 73 Low: 55<br />\nWed - AM Clouds/PM Sun. High: 73 Low: 54<br />\nThu - AM Clouds/PM Sun. High: 72 Low: 54<br />\nFri - Partly Cloudy. High: 73 Low: 54<br />\nSat - AM Clouds/PM Sun. High: 73 Low: 53<br />\n<br />\n<a href=\"http://us.rd.yahoo.com/dailynews/rss/weather/Palo_Alto__CA/*http://weather.yahoo.com/forecast/USCA1093_f.html\">Full Forecast at Yahoo! Weather</a><BR/><BR/>\n(provided by <a href=\"http://www.weather.com\" >The Weather Channel</a>)<br/>\n", 
+                "forecast": [
+                    {
+                        "code": "30", 
+                        "date": "6 Aug 2013", 
+                        "day": "Tue", 
+                        "high": "73", 
+                        "low": "55", 
+                        "text": "AM Clouds/PM Sun"
+                    }, 
+                    {
+                        "code": "30", 
+                        "date": "7 Aug 2013", 
+                        "day": "Wed", 
+                        "high": "73", 
+                        "low": "54", 
+                        "text": "AM Clouds/PM Sun"
+                    }, 
+                    {
+                        "code": "30", 
+                        "date": "8 Aug 2013", 
+                        "day": "Thu", 
+                        "high": "72", 
+                        "low": "54", 
+                        "text": "AM Clouds/PM Sun"
+                    }, 
+                    {
+                        "code": "30", 
+                        "date": "9 Aug 2013", 
+                        "day": "Fri", 
+                        "high": "73", 
+                        "low": "54", 
+                        "text": "Partly Cloudy"
+                    }, 
+                    {
+                        "code": "30", 
+                        "date": "10 Aug 2013", 
+                        "day": "Sat", 
+                        "high": "73", 
+                        "low": "53", 
+                        "text": "AM Clouds/PM Sun"
+                    }
+                ], 
+                "guid": {
+                    "": "USCA1093_2013_08_10_7_00_PDT", 
+                    "isPermaLink": "false"
+                }, 
+                "lat": "37.4", 
+                "link": "http://us.rd.yahoo.com/dailynews/rss/weather/Palo_Alto__CA/*http://weather.yahoo.com/forecast/USCA1093_f.html", 
+                "long": "-122.17", 
+                "pubDate": "Tue, 06 Aug 2013 7:46 am PDT", 
+                "title": "Conditions for Palo Alto, CA at 7:46 am PDT"
+            }, 
+            "language": "en-us", 
+            "lastBuildDate": "Tue, 06 Aug 2013 7:46 am PDT", 
+            "link": "http://us.rd.yahoo.com/dailynews/rss/weather/Palo_Alto__CA/*http://weather.yahoo.com/forecast/USCA1093_f.html", 
+            "location": {
+                "city": "Palo Alto", 
+                "country": "United States", 
+                "region": "CA"
+            }, 
+            "title": "Yahoo! Weather - Palo Alto, CA", 
+            "ttl": "60", 
+            "units": {
+                "distance": "mi", 
+                "pressure": "in", 
+                "speed": "mph", 
+                "temperature": "F"
+            }, 
+            "wind": {
+                "chill": "59", 
+                "direction": "340", 
+                "speed": "8"
+            }
+        }, 
+        "version": "2.0"
+    }
+} -->
