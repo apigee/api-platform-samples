@@ -1,0 +1,41 @@
+{
+  "HotelReservations": {
+    "HotelReservation": {
+      "-CreateDateTime": "2009-01-24T17:21:16.137-05:00",
+      "-LastModifyDateTime": "2009-01-24T17:21:16.137-05:00",
+      "UniqueID": {
+        "-Type": "14.UIT",
+        "-ID": "ABCD1234",
+        "-ID_Context": "Test"
+      },
+      "RoomStays": {
+        "RoomStay": {
+          "RoomTypes": {
+            "RoomType": { "-NumberOfUnits": "1" }
+          },
+          "RoomRates": {
+            "RoomRate": {
+              "-RatePlanCode": "BAVA",
+              "Rates": {
+                "Rate": {
+                  "-EffectiveDate": "2012-02-19",
+                  "-ExpireDate": "2012-02-20",
+                  "-RateTimeUnit": "Day"
+                }
+              }
+            }
+          },
+          "BasicPropertyInfo": {
+            "-HotelCode": "NYCMQ",
+            "-HotelCodeContext": "Marriott"
+          }
+        }
+      },
+      "ResGlobalInfo": {
+        "GuestCounts": {
+          "GuestCount": { "-Count": "2" }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ProxyEndpoint name="default">
+    <Description>Default Proxy to create flows on an API</Description>
+	
+    <FaultRules>
+
+    </FaultRules>
+	
+	 <PreFlow>
+	    <Request>
+	 		<Step><Name>jsontoplist</Name></Step>
+		</Request>
+		<Response/>
+	 </PreFlow>    
+    <Flows>
+    </Flows>
+	
+	
+	<PostFlow/>
+	
+   
+    <HTTPProxyConnection>
+	    <BasePath>/jsontoplist</BasePath>
+        <Properties/>
+        <VirtualHost>default</VirtualHost>
+    </HTTPProxyConnection>
+    <RouteRule name="noRoute">
+    </RouteRule>
+</ProxyEndpoint>
