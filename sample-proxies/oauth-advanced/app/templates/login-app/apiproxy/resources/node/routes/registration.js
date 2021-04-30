@@ -24,6 +24,7 @@ exports.post = function(req, res){
 	var errors = validateForm(title, firstname, lastname, email, password, verifypassword);
 	if (typeof errors !== 'undefined' && errors.length > 0) {
 		console.log(errors);
+		var basePath = utils.getBasePath(req);
 		res.render ('registration',
 			{
 				result: 'validation_failed',
@@ -31,7 +32,8 @@ exports.post = function(req, res){
 				title: title,
 				firstname: firstname,
 				lastname: lastname,
-				email: email
+				email: email,
+				basePath: basePath
 			});
 		return;
 	}
@@ -46,7 +48,7 @@ exports.post = function(req, res){
 
 	// Set the user authentication endpoint information here
 	//var authUrl = 'witman-prod.apigee.net';
-        var authUrl = config.envInfo.org + "-" + config.envInfo.env + "." + config.envInfo.domain;
+	var authUrl = config.envInfo.org + "-" + config.envInfo.env + "." + config.envInfo.domain;
 	var authPath = '/v1/users';
 	var authPort = 443;
 	var authMethod = 'POST';
@@ -101,10 +103,11 @@ exports.post = function(req, res){
 	  	  			var message = 'Unknown failure.';
 	  	  		}
 
+				var basePath = utils.getBasePath(req);
 	  	  		res.render('registration', {
 	  	  			result: 'reg_failed',
-	  	  			message: message
-
+	  	  			message: message,
+					basePath: basePath
 	  	  		});
 	  	  	}
 	  	});
