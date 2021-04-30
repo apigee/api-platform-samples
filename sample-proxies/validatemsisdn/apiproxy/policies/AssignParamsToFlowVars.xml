@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ExtractVariables  name="AssignParamsToFlowVars">
+    <DisplayName>Extract Variables Policy for URI extraction</DisplayName>
+    <URIPath>
+        <Pattern ignoreCase="true">/{countryCode}/{mobileNumber}</Pattern>
+    </URIPath>
+    <VariablePrefix>flow</VariablePrefix>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+</ExtractVariables>
