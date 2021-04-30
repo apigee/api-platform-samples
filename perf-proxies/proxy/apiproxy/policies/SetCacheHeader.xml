@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage enabled="true" continueOnError="false" async="false" name="SetCacheHeader">
+    <DisplayName>SetCacheHeader</DisplayName>
+    <FaultRules/>
+    <Properties/>
+    <Set>
+        <Headers>
+            <Header name="X-CacheHit">{responsecache.ResponseCache.cachehit}</Header>
+        </Headers>
+    </Set>
+    <IgnoreUnresolvedVariables>false</IgnoreUnresolvedVariables>
+</AssignMessage>

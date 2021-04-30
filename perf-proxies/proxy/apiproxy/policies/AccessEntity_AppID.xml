@@ -1,0 +1,4 @@
+<AccessEntity enabled="true" continueOnError="false" async="false" name="AccessEntity_AppID">
+    <EntityType  value="app"/>
+    <EntityIdentifier ref="request.queryparam.id" type="appid"/> 
+</AccessEntity>

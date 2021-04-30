@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<GenerateJWT async="false" continueOnError="false" enabled="true" name="GenerateJWT">
+    <DisplayName>GenerateJWT</DisplayName>
+    <Algorithm>RS256</Algorithm>
+    <PrivateKey>
+        <Value ref="private.privatekey"/>
+        <Id>optional-unique-identifier-for-privatekey-here</Id>
+    </PrivateKey>
+    <!-- including the optional Id element tells Apigee to generate a unique identifier for the JWT -->
+    <Id/>
+    <Subject ref="request.queryparam.subject"/>
+    <!-- issuer can be specified by ref= as well -->
+    <Issuer>urn://apigee-edge-JWT-policy-demonstration</Issuer>
+    <Audience>urn://Apigee</Audience>
+    <!-- specifying expiry is recommended but optional -->
+    <ExpiresIn>60m</ExpiresIn>
+    <OutputVariable>output-jwt</OutputVariable>
+</GenerateJWT>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<MessageValidation enabled="true" continueOnError="false" async="false" name="ValidMessage">
+    <DisplayName>ValidMessage</DisplayName>
+    <FaultRules/>
+    <Properties/>
+    <Source>message</Source>
+</MessageValidation>

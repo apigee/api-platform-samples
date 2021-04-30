@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Quota enabled="true" continueOnError="false" async="false" name="LimitBySlowQuota">
+    <DisplayName>LimitBySlowQuota</DisplayName>
+    <FaultRules/>
+    <Properties/>
+    <Identifier ref="request.queryparam.quota"/>
+    <Allow count="5000000"/>
+    <Interval>1</Interval>
+    <Distributed>true</Distributed>
+    <PreciseAtSecondsLevel>false</PreciseAtSecondsLevel>
+    <Synchronous>true</Synchronous>
+    <TimeUnit>minute</TimeUnit>
+</Quota>

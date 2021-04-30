@@ -1,0 +1,8 @@
+<KeyValueMapOperations name="getURL" mapIdentifier="urlMapper">
+   <Scope>apiproxy</Scope>
+   <Get assignTo="private.urlencoding.shorturl" index='1'>
+      <Key>
+         <Parameter ref="messageid"/> 
+      </Key>
+   </Get>
+</KeyValueMapOperations>

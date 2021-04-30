@@ -1,0 +1,14 @@
+<SharedFlowBundle revision="1" name="hybridperf-sfassignmessage">
+    <DisplayName>hybridperf-sfassignmessage</DisplayName>
+    <Description>hybridperf-sfassignmessage</Description>
+    <CreatedAt>1595354743584</CreatedAt>
+    <LastModifiedAt>1595354931425</LastModifiedAt>
+    <Policies>
+        <Policy>AssignMessage</Policy>
+    </Policies>
+    <Resources></Resources>
+    <SharedFlows>
+        <SharedFlow>default</SharedFlow>
+    </SharedFlows>
+    <subType>SharedFlow</subType>
+</SharedFlowBundle>

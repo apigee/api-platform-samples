@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<OAuthV2 enabled="true" continueOnError="false" async="false" name="GenerateAccessToken">
+    <DisplayName>GenerateAccessToken</DisplayName>
+    <FaultRules/>
+    <Properties/>
+    <Attributes/>
+    <ExpiresIn>86400000</ExpiresIn>
+    <ExternalAuthorization>false</ExternalAuthorization>
+    <GrantType>request.queryparam.grant_type</GrantType>
+    <Operation>GenerateAccessToken</Operation>
+    <GenerateResponse enabled="true">
+        <Format>FORM_PARAM</Format>
+    </GenerateResponse>
+    <SupportedGrantTypes>
+        <GrantType>client_credentials</GrantType>
+    </SupportedGrantTypes>
+    <Tokens/>
+</OAuthV2>

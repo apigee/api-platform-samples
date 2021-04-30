@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<VerifyJWT async="false" continueOnError="false" enabled="true" name="VerifyJWT">
+    <DisplayName>VerifyJWT</DisplayName>
+    <Algorithm>RS256</Algorithm>
+    <Source>output-jwt</Source>
+    <PublicKey>
+        <Value ref="public.publickey"/>
+    </PublicKey>
+    <Audience>urn://Apigee</Audience>
+</VerifyJWT>
