@@ -1,0 +1,18 @@
+<AssignMessage name="AM-Create-Authenticate-Request">
+  <!-- create a new Message of type request -->
+  <AssignTo createNew="true" transport="http" type="request">authenticate.request</AssignTo>
+  <Set>
+    <Headers>
+      <Header name="Content-Type">application/x-www-form-urlencoded</Header>
+    </Headers>
+    <!-- copy fomrparams from the inbound request to this new request -->
+    <FormParams>
+      <FormParam name="grant_type">{request.formparam.grant_type}</FormParam>
+      <FormParam name="username">{request.formparam.username}</FormParam>
+      <FormParam name="password">{request.formparam.password}</FormParam>
+    </FormParams>
+    <Verb>POST</Verb>
+    <Path/>
+  </Set>
+  <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+</AssignMessage>

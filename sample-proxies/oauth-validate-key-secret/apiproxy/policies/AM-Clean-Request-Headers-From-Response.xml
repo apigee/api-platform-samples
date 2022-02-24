@@ -1,0 +1,18 @@
+<AssignMessage name='AM-Clean-Request-Headers-From-Response'>
+  <Remove>
+    <Headers>
+      <Header name='Host'/>
+      <Header name='Accept'/>
+      <Header name='Authorization'/>
+      <Header name='user-agent'/>
+      <Header name='X-Request-id'/>
+      <Header name='X-Powered-By'/>
+      <Header name='X-b3-traceid'/>
+      <Header name='X-b3-spanid'/>
+      <Header name='X-b3-sampled'/>
+      <Header name='X-Forwarded-For'/>
+      <Header name='X-Forwarded-Port'/>
+      <Header name='X-Forwarded-Proto'/>
+    </Headers>
+  </Remove>
+</AssignMessage>
