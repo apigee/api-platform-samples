@@ -15,7 +15,7 @@
 
 ## <a name="who"></a>Audience
 
-You are an Apigee Edge API proxy developer, or you would like to learn about developing APIs that run on Apigee Edge. At a minimum, we assume you're familiar with Apigee Edge and how to create simple API proxies. To learn more, we recommend this [getting-started tutorial](https://docs.apigee.com/api-platform/tutorials/add-and-configure-your-first-api). 
+You are an Apigee Edge API proxy developer, or you would like to learn about developing APIs that run on Apigee Edge. At a minimum, we assume you're familiar with Apigee Edge and how to create simple API proxies. To learn more, we recommend this [getting-started tutorial](https://docs.apigee.com/api-platform/get-started/get-started). 
 
 ## <a name="intro"></a>Intro
 
