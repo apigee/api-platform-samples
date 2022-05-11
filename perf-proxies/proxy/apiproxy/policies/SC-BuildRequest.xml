@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage async="false" continueOnError="false" enabled="true" name="SC-BuildRequest">
+    <DisplayName>SC-BuildRequest</DisplayName>
+    <AssignTo createNew="true" type="request">screquest</AssignTo>
+    <IgnoreUnresolvedVariables>false</IgnoreUnresolvedVariables>
+    <Set>
+        <Path>/perf/weather-5k.xml</Path>
+    </Set>
+    <AssignVariable>
+        <Name>target.copy.pathsuffix</Name>
+        <Value>false</Value>
+    </AssignVariable>
+</AssignMessage>

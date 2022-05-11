@@ -1,0 +1,6 @@
+<AssignMessage name="SetPayload_AccessEntity_ApiProduct">
+    <DisplayName>Set Payload</DisplayName>
+    <Set>
+        <Payload contentType="application/xml" variablePrefix="%" variableSuffix="#">%AccessEntity.AccessEntity_ApiProduct#</Payload>
+    </Set>
+</AssignMessage>

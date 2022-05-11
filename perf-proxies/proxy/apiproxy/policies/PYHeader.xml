@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Script enabled="true" continueOnError="false" async="false" name="PYHeader">
+    <DisplayName>PYHeader</DisplayName>
+    <FaultRules/>
+    <Properties/>
+    <ResourceURL>py://pyheader.py</ResourceURL>
+</Script>

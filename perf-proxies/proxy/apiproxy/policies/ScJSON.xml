@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<XMLToJSON async="false" continueOnError="false" enabled="true" name="ScJSON">
+    <DisplayName>ScJSON</DisplayName>
+    <Properties/>
+    <Format>yahoo</Format>
+    <OutputVariable>SCResponse</OutputVariable>
+    <Source>SCResponse</Source>
+</XMLToJSON>
