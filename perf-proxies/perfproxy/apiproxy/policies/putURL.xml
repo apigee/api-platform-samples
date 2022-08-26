@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<KeyValueMapOperations name="putURL" mapIdentifier="urlMapper">
+    <Scope>apiproxy</Scope>
+    <Put override="true">
+        <Key>
+            <Parameter ref="messageid"/>
+        </Key>
+        <Value ref="messageid"/>
+        <Value ref="request.queryparam.url"/>
+    </Put>
+</KeyValueMapOperations>

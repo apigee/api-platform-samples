@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage async="false" continueOnError="false" enabled="true" name="AM-PrivateKey">
+    <DisplayName>AM-PrivateKey</DisplayName>
+    <Properties/>
+    <AssignVariable>
+        <Name>private.privatekey</Name>
+        <!-- better to have this stored in the KVM, but this is a demo -->
+        <Value>
+-----BEGIN PRIVATE KEY-----
+MIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQDBA291eZAwdoKP
+5wo6FoFJUYyyASUu4ChTjKIe/80V6lA4q3mbeBzIre3WwTacxZ5tNAfVAsL18A1E
+55dWkmfTkTnst99HdEWntsVPx0jo4bvGWnKlRzDUoTHoPa5NFDb0ZK2rb+cz4c27
+pG0cmLgL5nd0hSxbudXQWNVkiwLEDXP988VXLysYRFpFH61YdOblTaMpcTDeKV5S
+/ssaBYxQybG6pbarKuRtU0L6DIjYAqZRX1uj+otrQGsXFSsradEmXGYadIDT2zkI
+YqLHaE8bEEK87jAdDVa3U9nMM798qWTFiIJ0AsufxXApLcmqAiec9QOXW1GLp8MS
+EveUoU8nAgMBAAECggEAPOhhnteaqcBsGQ8WihgZ+lISrQVxf2ZbM2pYqqGcTUMg
+x5FNEcOIicdhG3jjS/uMr/dQVWbGsSdseIcAmeAfhYL5nXq0qe7GIFOr1i4UEvFQ
++RoHvaJGhYLMpfX47/fmE59Fsqjgc93Yt1L+35xNz+uNXKa9xcBR+apexJidadIs
+pcXTrmyANwjaKKM6t/HIHK7tiOnX/HSrYinSsDTsLQkxkToQrWxFv8U6DS3sQQGU
+Yjc0gqpgbj0JnlC6ekMYCTk3Loit9MmqkdYidPHCKi3z1sH0+Yo5xQwGbF+CumZk
+m2RDDGGC3/F44kM8QnHT8XJ9O8w16BgHqMVBcUnLGQKBgQDkPLKcupPoS1j9/Hqd
+XFJGmGB+pUBaRRD9+Uz/dR3uN9rfhDY47I+9rjOo0pqiI3ATYFYFGbf4OfrF97+m
+TT1vkg7WxnnfzU7z9MP3aAylINjABpRTqVEWsgRfHy/sT7wSO0l+dZTwSUwM0taq
+OuWKdM9hfKZiOGrTWW4u9Vir7QKBgQDYfd9WiG1g1iP6NxMqNns7GbQctR5L581T
+00xnqZ0IRLYLuvoOtAkSBkAsF3oaT+/z4VVO8PdJpOTYyTM4gUP7uZinwQK7Ge/2
+QaWSsFLABjj4lYaWiDgkjKje+Vd3GvCHQ0T21wV6XwxV4pZe2mUvLsbLAwJBNIpE
+nZXXFgDM4wKBgDHiYleHIBTBgy3gJRyHtSPg4hZMIAia19/qwT2EZ4pNgvUffIps
+ie43SOs5PLr7a9+QSrzKpj8GzRy/zY+Xijn8fmnK75BO21bOxJYqk7jzuOwfhAPV
+GfgP6Iyx0FOiCcUiWCnfoTHzkz+qRWjnfowIg9sW13bYReDzxvVUgpDxAoGAX0nX
++dCGxC69Gy8Oom/kgbjojBI0SZi3yYOhh6ciVTdZIYSk97/KlkJmEIIs3lP8+81c
+rShmz+ViTQESKHbNI4knZf8QYqYh9rQiWpR9d8PFY7T8zlkazQuUcMAy/VvALuku
++67c3GXlmg/nu8xI6SGfok+quGSVz2nFQCyRIZ0CgYBLt/uYBJokcuC5uNsy84uZ
+WqEjrJem/JjPsmlJFOxSfMWPPeXFwno8o4qoFpPyxUN9rPPTC4wIusWDvfXX1eHB
+yc4C9HX8qjg2nn1oVLO7CVEIxmrwUNcoS+wiyYJIhygViege6lshS5DjpQc4UQh+
+SXJJ2CgUNZdFEN8y0L3JXA==
+-----END PRIVATE KEY-----
+        </Value>
+    </AssignVariable>
+</AssignMessage>

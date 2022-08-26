@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<TargetEndpoint name="static">
+    <Description/>
+    <FaultRules/>
+    <Flows/>
+    <PostFlow name="PostFlow"/>
+    <PreFlow name="PreFlow"/>
+    <HTTPTargetConnection>
+    <!-- This is where we define the target endpoint. For this sample we just use a simple URL. -->
+        <Properties>
+            <Property name="keepalive.timeout.millis">5000</Property>
+        </Properties>
+        <URL>https://mocktarget.apigee.net</URL>
+    </HTTPTargetConnection>
+    <DefaultFaultRule name="DefaultFaultRule">
+        <AlwaysEnforce>true</AlwaysEnforce>
+    </DefaultFaultRule>
+</TargetEndpoint>

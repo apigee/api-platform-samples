@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<XSL enabled="true" continueOnError="false" async="false" name="XSLT">
+    <DisplayName>XSLT</DisplayName>
+    <FaultRules/>
+    <Properties/>
+    <ResourceURL>xsl://weatherxsl</ResourceURL>
+</XSL>
