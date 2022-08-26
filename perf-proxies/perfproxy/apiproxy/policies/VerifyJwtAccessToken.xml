@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<OAuthV2 async="false" continueOnError="false" enabled="true" name="VerifyJwtAccessToken">
+    <DisplayName>VerifyJwtAccessToken</DisplayName>
+    <Operation>VerifyJWTAccessToken</Operation>
+    <Algorithm>HS256</Algorithm>
+    <SecretKey>
+        <Value ref="private.hs256.validSecretKey"/>
+    </SecretKey>
+</OAuthV2>

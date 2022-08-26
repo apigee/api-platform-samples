@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<SpikeArrest enabled="true" continueOnError="false" async="false" name="LimitTotal">
+    <DisplayName>LimitTotal</DisplayName>
+    <FaultRules/>
+    <Properties/>
+    <Rate>100000ps</Rate>
+    <UseEffectiveCount>true</UseEffectiveCount>
+</SpikeArrest>
