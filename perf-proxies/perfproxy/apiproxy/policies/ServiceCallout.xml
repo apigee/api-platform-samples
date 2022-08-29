@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ServiceCallout async="false" continueOnError="false" enabled="true" name="ServiceCallout">
+    <DisplayName>ServiceCallout</DisplayName>
+    <Properties/>
+    <Request variable="screquest"/>
+    <Response>SCResponse</Response>
+    <HTTPTargetConnection>
+        <Properties/>
+        <URL>https://mocktarget.apigee.net</URL>
+    </HTTPTargetConnection>
+</ServiceCallout>

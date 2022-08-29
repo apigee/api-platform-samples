@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ResponseCache enabled="true" continueOnError="false" async="false" name="ResponseCache">
+    <DisplayName>ResponseCache</DisplayName>
+    <FaultRules/>
+    <Properties/>
+    <CacheKey>
+        <KeyFragment ref="request.queryparam.cache"></KeyFragment>
+    </CacheKey>
+    <Scope>Exclusive</Scope>
+    <ExpirySettings>
+        <TimeoutInSec>60</TimeoutInSec>
+    </ExpirySettings>
+</ResponseCache>

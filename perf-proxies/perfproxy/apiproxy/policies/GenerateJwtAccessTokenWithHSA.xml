@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<OAuthV2 enabled="true" continueOnError="false" async="false" name="GenerateJwtAccessTokenWithHSA">
+    <DisplayName>GenerateJwtAccessTokenWithHSA</DisplayName>
+    <ExpiresIn>86400000</ExpiresIn>
+    <GrantType>request.queryparam.grant_type</GrantType>
+    <Operation>GenerateJWTAccessToken</Operation>
+    <GenerateResponse enabled="true">
+    </GenerateResponse>
+    <SupportedGrantTypes>
+        <GrantType>client_credentials</GrantType>
+        <GrantType>password</GrantType>
+    </SupportedGrantTypes>
+    <Algorithm>HS256</Algorithm>
+    <SecretKey>
+        <Value ref="private.hs256.validSecretKey"/>
+    </SecretKey>
+</OAuthV2>

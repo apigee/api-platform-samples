@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<GraphQL name="GraphQL">
+    <Source>request</Source>
+    <MaxDepth>10</MaxDepth>
+    <OperationType>query_mutation</OperationType>
+    <Action>parse_verify</Action>
+    <MaxCount>10</MaxCount>
+    <ResourceURL>graphql://schema.graphql</ResourceURL>
+</GraphQL>

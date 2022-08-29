@@ -1,0 +1,325 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ProxyEndpoint name="proxy">
+    <Description/>
+    <FaultRules/>
+    <Flows>
+        <Flow name="createAccessToken">
+            <Request>
+                <Step>
+                    <FaultRules/>
+                    <Name>GenerateAccessToken</Name>
+                </Step>
+            </Request>
+            <Response/>
+            <Condition>proxy.pathsuffix MatchesPath "/accesstoken"</Condition>
+        </Flow>
+        <Flow name="createJwtAccessToken">
+            <Request>
+                <Step>
+                    <Name>AM-OAuthJwtSecrets</Name>
+                </Step>
+                <Step>
+                    <Name>GenerateJwtAccessTokenWithHSA</Name>
+                </Step>
+            </Request>
+            <Condition>proxy.pathsuffix MatchesPath "/jwtAccessToken"</Condition>
+        </Flow>
+        <Flow name="passthrough">
+            <Request/>
+            <Response/>
+            <Condition>request.queryparam.test = "passthrough"</Condition>
+        </Flow>
+        <Flow name="assignmessage">
+            <Request/>
+            <Response>
+                <Step>
+                    <FaultRules/>
+                    <Name>assign-header</Name>
+                </Step>
+            </Response>
+            <Condition>request.queryparam.test = "assignmessage"</Condition>
+        </Flow>
+        <Flow name="xslt">
+            <Request/>
+            <Response>
+                <Step>
+                    <FaultRules/>
+                    <Name>XSLT</Name>
+                </Step>
+            </Response>
+            <Condition>request.queryparam.test = "xslt"</Condition>
+        </Flow>
+        <Flow name="jsheader">
+            <Request/>
+            <Response>
+                <Step>
+                    <FaultRules/>
+                    <Name>JSHeader</Name>
+                </Step>
+            </Response>
+            <Condition>request.queryparam.test = "jsheader"</Condition>
+        </Flow>
+        <Flow name="spikearrest">
+            <Request/>
+            <Response>
+                 <Step>
+                    <FaultRules/>
+                    <Name>LimitTotal</Name>
+                </Step>
+                <Step>
+                    <FaultRules/>
+                    <Name>LimitByIP</Name>
+                </Step>
+            </Response>
+            <Condition>request.queryparam.test = "spikearrest"</Condition>
+        </Flow>
+        <Flow name="monetizationlimitscheck">
+            <Request/>
+            <Response>
+                <Step>
+                    <FaultRules/>
+                    <Name>ValidateKey</Name>
+                </Step>
+                <Step>
+                    <FaultRules/>
+                    <Name>MonetizationLimitsCheck</Name>
+                </Step>
+            </Response>
+            <Condition>request.queryparam.test = "monetizationlimitscheck"</Condition>
+        </Flow>
+        <Flow name="verifyAPIKey">
+            <Request/>
+            <Response>
+                <Step>
+                    <FaultRules/>
+                    <Name>ValidateKey</Name>
+                </Step>
+            </Response>
+            <Condition>request.queryparam.test = "validkey"</Condition>
+        </Flow>
+        <Flow name="validateOAuthAccessToken">
+            <Request/>
+            <Response>
+                <Step>
+                    <FaultRules/>
+                    <Name>ValidateOAuth</Name>
+                </Step>
+            </Response>
+            <Condition>request.queryparam.test = "oauth"</Condition>
+        </Flow>
+        <Flow name="verifyJwtAccessToken">
+            <Request/>
+            <Response>
+                <Step>
+                    <Name>AM-OAuthJwtSecrets</Name>
+                </Step>
+                <Step>
+                    <FaultRules/>
+                    <Name>VerifyJwtAccessToken</Name>
+                </Step>
+            </Response>
+            <Condition>request.queryparam.test = "verifyJwtAccessToken"</Condition>
+        </Flow>
+        <Flow name="quota">
+            <Request>
+                <Step>
+                    <FaultRules/>
+                    <Name>LimitByQuota</Name>
+                </Step>
+            </Request>
+            <Response/>
+            <Condition>request.queryparam.test = "distributed-quota"</Condition>
+        </Flow>
+        <Flow name="slowquota">
+            <Request>
+                <Step>
+                    <FaultRules/>
+                    <Name>LimitBySlowQuota</Name>
+                </Step>
+            </Request>
+            <Response/>
+            <Condition>request.queryparam.test = "synchronous-distributed-quota"</Condition>
+        </Flow>
+        <Flow name="cache">
+            <Request>
+                <Step>
+                    <FaultRules/>
+                    <Name>ResponseCache</Name>
+                </Step>
+            </Request>
+            <Response>
+                <Step>
+                    <FaultRules/>
+                    <Name>ResponseCache</Name>
+                </Step>
+                <Step>
+                    <FaultRules/>
+                    <Name>SetCacheHeader</Name>
+                </Step>
+            </Response>
+            <Condition>request.queryparam.test = "cache"</Condition>
+        </Flow>
+        <Flow name="get-kvm">
+            <Description/>
+            <Request>
+                <Step>
+                    <Name>getURL</Name>
+                </Step>
+            </Request>
+            <Response/>
+            <Condition>request.queryparam.test = "get-kvm"</Condition>
+        </Flow>
+        <Flow name="put-kvm">
+            <Description/>
+            <Request>
+                <Step>
+                    <Name>putURL</Name>
+                </Step>
+            </Request>
+            <Response/>
+            <Condition>request.queryparam.test = "put-kvm"</Condition>
+        </Flow>
+        <Flow name="get-put-kvm">
+            <Description/>
+            <Request>
+                <Step>
+                    <Name>putURL</Name>
+                </Step>
+                <Step>
+                    <Name>getURL</Name>
+                </Step>
+            </Request>
+            <Response/>
+            <Condition>request.queryparam.test = "get-put-kvm"</Condition>
+        </Flow>
+        <Flow name="raisefault">
+            <Description>raisefault</Description>
+            <Request>
+                <Step>
+                    <FaultRules/>
+                    <Name>Raise-Fault</Name>
+                </Step>
+            </Request>
+            <Response/>
+            <Condition>request.queryparam.test = "raisefault"</Condition>
+        </Flow>
+        <Flow name="nulltarget">
+            <Description>nulltarget</Description>
+            <Request/>
+            <Response>
+                <Step>
+                    <Name>add-cors</Name>
+                </Step>
+                <Step>
+                    <Name>ResponsePayload</Name>
+                </Step>
+            </Response>
+            <Condition>request.queryparam.test = "nulltarget"</Condition>
+        </Flow>
+        <Flow name="flowcallout">
+            <Description>flowcallout</Description>
+            <Request>
+                <Step>
+                    <FaultRules/>
+                    <Name>FlowCallout</Name>
+                </Step>
+            </Request>
+            <Response/>
+            <Condition>request.queryparam.test = "flowcallout"</Condition>
+        </Flow>
+        <Flow name="service-callout-flow">
+            <Description/>
+            <Request>
+                <Step>
+                    <FaultRules/>
+                    <Name>SC-BuildRequest</Name>
+                </Step>
+                <Step>
+                    <FaultRules/>
+                    <Name>ServiceCallout</Name>
+                </Step>
+            </Request>
+            <Response>
+                <Step>
+                    <Name>ScJSON</Name>
+                </Step>
+                <Step>
+                    <Name>ExtractSCResponse</Name>
+                </Step>
+                <Step>
+                    <Name>AssignSCResponse</Name>
+                </Step>
+            </Response>
+            <Condition>request.queryparam.test = "sc"</Condition>
+        </Flow>
+        <Flow name="graphql">
+            <Request>
+                <Step>
+                    <FaultRules/>
+                    <Name>GraphQL</Name>
+                </Step>
+            </Request>
+            <Response/>
+            <Condition>request.queryparam.test = "graphql"</Condition>
+        </Flow>
+        <Flow name="jwt-create-validate">
+            <Description/>
+            <Request>
+                <Step>
+                    <Condition>request.queryparam.subject = null</Condition>
+                    <Name>RF-MissingParam</Name>
+                </Step>
+                <Step>
+                    <Name>AM-PrivateKey</Name>
+                </Step>
+                <Step>
+                    <Name>GenerateJWT</Name>
+                </Step>
+                <Step>
+                    <Name>AM-JwtAuthorization</Name>
+                </Step>
+                <Step>
+                    <Name>VerifyJWT</Name>
+                </Step>
+            </Request>
+            <Response>
+                <Step>
+                    <Name>AM-Response</Name>
+                </Step>
+            </Response>
+            <Condition>request.queryparam.test = "gvjwt"</Condition>
+        </Flow>
+        <Flow name="fallback">
+            <Request>
+                <Step>
+                    <FaultRules/>
+                    <Name>RejectURI</Name>
+                </Step>
+            </Request>
+            <Response/>
+        </Flow>
+    </Flows>
+    <PostFlow name="PostFlow">
+        <Request/>
+        <Response/>
+    </PostFlow>
+    <PreFlow name="PreFlow">
+        <Request/>
+        <Response/>
+    </PreFlow>
+    <HTTPProxyConnection>
+        <BasePath>/v1/perf</BasePath>
+        <Properties/>
+        <VirtualHost>default</VirtualHost>
+        <VirtualHost>secure</VirtualHost>
+        <Properties>
+            <Property name="response.streaming.enabled">true</Property>
+        </Properties>
+    </HTTPProxyConnection>
+    <RouteRule name="noRoute">
+        <Condition>request.queryparam.test = "sc" OR request.queryparam.test = "graphql" OR request.queryparam.test = "gvjwt" OR request.queryparam.test = "nulltarget"</Condition>
+    </RouteRule>
+    <RouteRule name="default">
+        <TargetEndpoint>static</TargetEndpoint>
+    </RouteRule>
+</ProxyEndpoint>

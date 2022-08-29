@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage async="false" continueOnError="false" enabled="true" name="ResponsePayload">
+  <DisplayName>ResponsePayload</DisplayName>
+  <Set>
+    <Headers>
+      <Header name="user-agent">{request.header.user-agent}</Header>
+    </Headers>
+    <Payload contentType="text/plain">Hello world</Payload>
+    <Path/>
+    <StatusCode>200</StatusCode>
+  </Set>
+  <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+  <AssignTo createNew="false" transport="http" type="response"/>
+</AssignMessage>

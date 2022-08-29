@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ExtractVariables async="false" continueOnError="true" enabled="true" name="ExtractSCResponse">
+    <DisplayName>ExtractSCResponse</DisplayName>
+    <Properties/>
+    <Source clearPayload="false">SCResponse</Source>
+    <JSONPayload>
+        <Variable name="scjsonres" type="nodeset">
+            <JSONPath>$.[*]</JSONPath>
+        </Variable>
+    </JSONPayload>
+</ExtractVariables>

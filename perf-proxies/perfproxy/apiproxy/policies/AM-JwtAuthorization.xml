@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage async="false" continueOnError="false" enabled="true" name="AM-JwtAuthorization">
+    <DisplayName>AM-JwtAuthorization</DisplayName>
+    <Properties/>
+    <Add>
+        <Headers/>
+        <Header name="Authorization">Bearer {output-jwt}</Header>
+    </Add>
+    <AssignVariable>
+        <Name>public.publickey</Name>
+        <!-- better to have this stored in the KVM, but this is a demo -->
+        <Value>
+        -----BEGIN PUBLIC KEY-----
+        MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAwQNvdXmQMHaCj+cKOhaB
+        SVGMsgElLuAoU4yiHv/NFepQOKt5m3gcyK3t1sE2nMWebTQH1QLC9fANROeXVpJn
+        05E57LffR3RFp7bFT8dI6OG7xlpypUcw1KEx6D2uTRQ29GStq2/nM+HNu6RtHJi4
+        C+Z3dIUsW7nV0FjVZIsCxA1z/fPFVy8rGERaRR+tWHTm5U2jKXEw3ileUv7LGgWM
+        UMmxuqW2qyrkbVNC+gyI2AKmUV9bo/qLa0BrFxUrK2nRJlxmGnSA09s5CGKix2hP
+        GxBCvO4wHQ1Wt1PZzDO/fKlkxYiCdALLn8VwKS3JqgInnPUDl1tRi6fDEhL3lKFP
+        JwIDAQAB
+        -----END PUBLIC KEY-----
+        </Value>
+    </AssignVariable>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+    <AssignTo createNew="false" transport="http" type="request"/>
+</AssignMessage>

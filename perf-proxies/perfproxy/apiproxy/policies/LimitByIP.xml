@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<SpikeArrest enabled="true" continueOnError="false" async="false" name="LimitByIP">
+    <DisplayName>LimitByIP</DisplayName>
+    <FaultRules/>
+    <Properties/>
+    <Identifier ref="client.ip"/>
+    <Rate>50000ps</Rate>
+    <UseEffectiveCount>true</UseEffectiveCount>
+</SpikeArrest>
