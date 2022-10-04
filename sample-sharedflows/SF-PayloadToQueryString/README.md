@@ -15,6 +15,8 @@ create flow callout policy in your proxy
 </FlowCallout>
 ```
 
+---
+
 ## Call the proxy
 
 ```sh
