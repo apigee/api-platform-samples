@@ -1,6 +1,6 @@
 ## USAGE
 
-create flow callout policy in your proxy
+**create flow callout policy in your proxy**
 
 ```xml
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
