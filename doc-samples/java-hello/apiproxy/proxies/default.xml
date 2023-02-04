@@ -5,7 +5,7 @@
     <PreFlow name="PreFlow">
         <Request>
             <Step>
-                <Name>CopyHeader</Name>
+                <Name>copy-header</Name>
             </Step>
         </Request>
         <Response>
