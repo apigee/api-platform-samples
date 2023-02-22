@@ -25,7 +25,7 @@ A client calls an Edge proxy with this URL:
 
 `http://myorg-test.apigee.net/extract-variables?code=DBNabc123`
 
-You want to extract the variable value `abc123` into a flow variable called `queryinfo.id`. 
+You want to extract the variable value `abc123` into a flow variable called `queryinfo.dbncode`. 
 
 This is a common use case, where the extracted value can be used in another policy elsewhere in the proxy flow.
 
