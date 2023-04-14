@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ProxyEndpoint name="default">
+    <Description></Description>
+    <FaultRules/>
+    <Flows>
+        <Flow name="content-listing">
+            <Description></Description>
+            <Request>
+            </Request>
+            <Response>
+                <Step>
+                    <FaultRules/>
+                    <Name>ContentListings</Name>
+                </Step>
+            </Response>
+            <Condition>(proxy.pathsuffix MatchesPath &quot;/content-listing&quot;) and (request.verb = &quot;GET&quot;)</Condition>
+        </Flow>
+    </Flows>
+    <PostFlow name="PostFlow">
+        <Request/>
+        <Response>
+        	<Step>
+                <FaultRules/>
+                <Name>add-cors</Name>
+            </Step>
+        </Response>
+        
+    </PostFlow>
+    <PreFlow name="PreFlow">
+        <Request/>
+        <Response/>
+    </PreFlow>
+    <HTTPProxyConnection>
+        <BasePath>/v1/cors</BasePath>
+        <Properties/>
+        <VirtualHost>default</VirtualHost>
+        <VirtualHost>secure</VirtualHost>
+    </HTTPProxyConnection>
+    <RouteRule name="noroute"/>
+</ProxyEndpoint>
