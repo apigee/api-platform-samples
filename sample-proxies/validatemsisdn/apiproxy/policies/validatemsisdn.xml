@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<JavaCallout name="validatemsisdn">
+	<ClassName>com.samples.apigee.phone.ValidateNumber</ClassName>
+       <ResourceURL>java://ValidateNumber.jar</ResourceURL>
+</JavaCallout>
