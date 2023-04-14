@@ -1,0 +1,38 @@
+<AssignMessage name="variables">
+  <AssignTo createNew="false" type="response"></AssignTo>
+  <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+  <Set>
+    <Headers>
+    <Header name="system.timestamp">{system.timestamp}</Header>
+    <Header name="system.time">{system.time}</Header>
+    <Header name="organization.name">{organization.name}</Header>
+    <Header name="apiproxy.name">{apiproxy.name}</Header>
+    <Header name="apiproxy.revision">{apiproxy.revision}</Header>
+    <Header name="proxy.basepath">{proxy.basepath}</Header>
+    <Header name="proxy.name">{apiproxy.name}</Header>
+    <Header name="proxy.pathsuffix">{proxy.pathsuffix}</Header>
+    <Header name="message.headers.count">{message.headers.count}</Header>
+    <Header name="message.headers.names">{message.headers.names}</Header>
+    <Header name="client.ip">{client.ip}</Header>
+    <Header name="request.uri">{request.uri}</Header>
+    <Header name="request.headers.names">{request.headers.names}</Header>
+    <Header name="request.header.user-agent.values">{request.header.user-agent.values}</Header>
+    <Header name="request.path">{request.path}</Header>
+    <Header name="request.querystring">{request.querystring}</Header>
+    <Header name="request.queryparams.names">{request.queryparams.names}</Header>
+    <Header name="request.queryparam.w">{request.queryparam.w}</Header>
+    <Header name="request.verb">{request.verb}</Header>
+    <Header name="target.url">{target.url}</Header>
+    <Header name="target.host">{target.host}</Header>
+    <Header name="target.ip">{target.ip}</Header>
+    <!-- Variables populated by parsing XML response with an ExtractVariables policy -->
+    <Header name="weather.location">{weather.location}</Header>
+    <Header name="weather.condition">{weather.condition}</Header>
+    <Header name="weather.forecast_today">{weather.forecast_today}</Header>
+    <Header name="weather.forecast_tomorrow">{weather.forecast_tomorrow}</Header>
+    <!-- Variables populated by parsing JSON response with an ExtractVariables policy -->
+    <Header name="weather.description">{weather.description}</Header>
+    <Header name="weather.humidity">{weather.humidity}</Header>
+    </Headers>
+  </Set>
+</AssignMessage>
