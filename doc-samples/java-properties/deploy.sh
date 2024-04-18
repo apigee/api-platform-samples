@@ -2,6 +2,7 @@
 
 source ../../setup/setenv.sh
 
+echo "NOTICE: THIS WORKS ONLY WITH APIGEE EDGE."
 echo "Enter your password for the Apigee Enterprise organization $org, followed by [ENTER]:"
 
 read -s password

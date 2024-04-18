@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<JavaCallout name="responseUppercase">
-        <ClassName>com.apigeesample.ResponseUppercase</ClassName>
-        <ResourceURL>java://ResponseUppercase.jar</ResourceURL>
-</JavaCallout>

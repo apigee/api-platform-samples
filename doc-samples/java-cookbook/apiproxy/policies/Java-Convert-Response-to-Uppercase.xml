@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<JavaCallout name="Java-Convert-Response-to-Uppercase">
+  <Properties>
+    <Property name='code'>just-an-example</Property>
+  </Properties>
+  <ClassName>com.apigeesample.ResponseUppercase</ClassName>
+  <ResourceURL>java://apigee-sample-callout-ResponseUppercase.jar</ResourceURL>
+</JavaCallout>
