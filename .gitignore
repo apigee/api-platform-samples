@@ -14,3 +14,9 @@
 *.iml
 *.iws
 *.tgz
+
+**/target/
+**/node_modules/
+**/*.*~
+
+**/*.class

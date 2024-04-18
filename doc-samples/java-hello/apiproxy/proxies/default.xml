@@ -5,12 +5,12 @@
     <PreFlow name="PreFlow">
         <Request>
             <Step>
-                <Name>copy-header</Name>
+                <Name>AM-Copy-Username-Header</Name>
             </Step>
         </Request>
         <Response>
             <Step>
-                <Name>hello-java</Name>
+                <Name>Java-Hello</Name>
             </Step>
         </Response>
     </PreFlow>

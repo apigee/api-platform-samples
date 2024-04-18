@@ -1,0 +1,10 @@
+<AssignMessage name="AM-Remove-All-Headers">
+  <!--
+      By default, when there is no target, Apigee copies all inbound
+      headers to the response. This policy, when attached to the response flow,
+      removes those.
+  -->
+  <Remove>
+    <Headers/>
+  </Remove>
+</AssignMessage>

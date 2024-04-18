@@ -6,7 +6,7 @@
             <Condition>(proxy.pathsuffix MatchesPath "/json") and (request.verb = "GET")</Condition>
             <Response>
                 <Step>
-                    <Name>responseUppercase</Name>
+                    <Name>Java-Convert-Response-to-Uppercase</Name>
                 </Step>
             </Response>
             <Request/>

@@ -1,10 +1,25 @@
 <ProxyEndpoint name="default">
-    <HTTPProxyConnection>
-        <BasePath>java-cookbook</BasePath>
-        <Properties/>
-        <VirtualHost>default</VirtualHost>
-    </HTTPProxyConnection>
-    <RouteRule name="default">
-        <TargetEndpoint>default</TargetEndpoint>
-    </RouteRule>
+  <HTTPProxyConnection>
+    <BasePath>/java-cookbook</BasePath>
+    <Properties/>
+    <VirtualHost>default</VirtualHost>
+  </HTTPProxyConnection>
+
+  <Flows>
+    <Flow name="allowed-1">
+      <Condition>(proxy.pathsuffix MatchesPath "/json") and (request.verb = "GET")</Condition>
+    </Flow>
+    <Flow name="unknown-request">
+      <Request>
+        <Step>
+          <Name>RF-Unknown-Request</Name>
+        </Step>
+      </Request>
+      <Response/>
+    </Flow>
+  </Flows>
+
+  <RouteRule name="default">
+    <TargetEndpoint>default</TargetEndpoint>
+  </RouteRule>
 </ProxyEndpoint>
