@@ -6,7 +6,7 @@
         <Request/>
         <Response>
             <Step>
-                <Name>java-callout</Name>
+                <Name>Java-Read-Properties-From-Policy-Configuration</Name>
             </Step>
         </Response>
     </PreFlow>

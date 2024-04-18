@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<JavaCallout name="Java-Produce-Greeting">
+  <Properties>
+    <Property name='source-variable'>preserved-username</Property>
+  </Properties>
+  <ClassName>com.apigeesample.JavaError</ClassName>
+  <ResourceURL>java://apigee-custom-policy-java-error.jar</ResourceURL>
+</JavaCallout>

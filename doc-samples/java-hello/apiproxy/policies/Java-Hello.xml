@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<JavaCallout name="Java-Hello">
+  <ClassName>com.apigeesample.HelloJava</ClassName>
+  <ResourceURL>java://apigee-custom-policy-java-hello.jar</ResourceURL>
+</JavaCallout>
