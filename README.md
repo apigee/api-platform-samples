@@ -15,12 +15,16 @@
 
 ## <a name="who"></a>Audience
 
-You are an Apigee Edge API proxy developer, or you would like to learn about developing APIs that run on Apigee Edge. At a minimum, we assume you're familiar with Apigee Edge and how to create simple API proxies. To learn more, we recommend this [getting-started tutorial](https://docs.apigee.com/api-platform/get-started/get-started). 
+You are an Apigee Edge API proxy developer, or you would like to learn about
+developing APIs that run on Apigee Edge. At a minimum, we assume you're familiar
+with Apigee Edge and how to create simple API proxies. To learn more, we
+recommend this [getting-started
+tutorial](https://docs.apigee.com/api-platform/get-started/get-started).
 
 > These samples were built to work with Apigee EDGE. The current version of
 > Apigee is known as Apigee X. Most of these samples will work with Apigee X,
 > but the deployment scripts will not, and the instructions for administrative
-> actions (eg, sign up for an account at apigee.com ) will not work either. In
+> actions (eg, sign up for an account at apigee.com) will not work either. In
 > those cases, you will need to substitute the appropriate actions relating to
 > Apigee X!
 
@@ -28,11 +32,11 @@ You are an Apigee Edge API proxy developer, or you would like to learn about dev
 
 ## <a name="intro"></a>Intro
 
-This repository contains a collection of sample API proxies that you can deploy and run on [Apigee Edge](https://apigee.com/api-management/#/products). 
+This repository contains a collection of sample API proxies that you can deploy and run on [Apigee Edge](https://apigee.com/api-management/#/products).
 
 ![alt text](./images/sample-proxies-1.png)
 
-The samples provide a jump-start for developers who wish to design and create Apigee Edge API proxies. Each proxy sample includes a `deploy.sh` and `invoke.sh` script. These scripts let you easily deploy and run the proxies. 
+The samples provide a jump-start for developers who wish to design and create Apigee Edge API proxies. Each proxy sample includes a `deploy.sh` and `invoke.sh` script. These scripts let you easily deploy and run the proxies.
 
 In addition, you'll find:
 
@@ -51,14 +55,14 @@ In addition, you'll find:
 
 ## <a name="using"></a>Using the sample proxies
 
-Most developers begin by identifying an interesting sample based on a specific use case or need. You'll find the samples in the `./api-platform-samples/sample-proxies` folder. The Apigee doc site also has a handy [samples overview page](https://docs.apigee.com/api-platform/samples/samples-reference). 
+Most developers begin by identifying an interesting sample based on a specific use case or need. You'll find the samples in the `./api-platform-samples/sample-proxies` folder. The Apigee doc site also has a handy [samples overview page](https://docs.apigee.com/api-platform/samples/samples-reference).
 
 
-For example, if you're interested in doing XML to JSON transformations, check out `api-platform-samples/sample-proxies/xmltojson`. 
+For example, if you're interested in doing XML to JSON transformations, check out `api-platform-samples/sample-proxies/xmltojson`.
 
 ## <a name="initial"></a>Setting up
 
-Set up your deployment environment. 
+Set up your deployment environment.
 
 1. Open the file `./api-platform-samples/setup/setenv.sh` in a text editor.|
 
@@ -79,17 +83,17 @@ We make it easy:
 
 1. Be sure you've updated `./api-platform-samples/setup/setenv.sh` as explained previously.
 
-2. cd to one of the sample proxy folders in `./api-platform-samples/sample-proxies`. 
+2. cd to one of the sample proxy folders in `./api-platform-samples/sample-proxies`.
 
 3. Be sure you can execute the `deploy.sh` script. For example:
 
    `chmod 744 deploy.sh`
 
-4. Execute the deploy script. 
+4. Execute the deploy script.
 
     `./deploy.sh`
 
-**Note:** If you already have the proxy deployed, the script will undeploy it first, then redeploy a new revision. 
+**Note:** If you already have the proxy deployed, the script will undeploy it first, then redeploy a new revision.
 
 Output like this means a successful deployment:
 
@@ -109,7 +113,7 @@ We make this easy too! Each sample API proxy directory contains a script, `invok
 
 1. Be sure you've updated `./api-platform-samples/setup/setenv.sh` as explained previously.
 
-2. cd to one of the sample proxy folders in `./api-platform-samples/sample-proxies`. 
+2. cd to one of the sample proxy folders in `./api-platform-samples/sample-proxies`.
 
 3. Be sure you can execute the `invoke.sh` script. For example:
 
@@ -117,20 +121,20 @@ We make this easy too! Each sample API proxy directory contains a script, `invok
 
 4. Open the `invoke.sh` file and take a look at the code. Basically, the invoke scripts make `curl` requests to Apigee Edge. In some cases, `invoke.sh` performs other setup tasks, such as creating products, developer apps, and other entities on Edge.
 
-    **Tip:** Always open `invoke.sh` and look through it before executing it -- this will give you valuable insight into how the API proxy is called and any setup steps that are performed. 
+    **Tip:** Always open `invoke.sh` and look through it before executing it -- this will give you valuable insight into how the API proxy is called and any setup steps that are performed.
 
-4. Execute the `invoke.sh` script. 
+4. Execute the `invoke.sh` script.
 
     `./invoke.sh`
 
 
 ## <a name="modifying"></a>Modifying a sample proxy
 
-Feel free to modify and build upon the sample proxies. You can make changes in the Edge management UI or by editing the proxy XML files locally and redeploying. Whichever approach is comfortable for you. 
+Feel free to modify and build upon the sample proxies. You can make changes in the Edge management UI or by editing the proxy XML files locally and redeploying. Whichever approach is comfortable for you.
 
->Tip: If you use Sublime for local development, check out the [Sweetlime](https://github.com/apigee/Sweetlime) project on GitHub. Sweetlime is a Sublime plugin for developing API proxies for Apigee Edge. 
+>Tip: If you use Sublime for local development, check out the [Sweetlime](https://github.com/apigee/Sweetlime) project on GitHub. Sweetlime is a Sublime plugin for developing API proxies for Apigee Edge.
 
-Simply redeploy the proxies for changes to take effect. 
+Simply redeploy the proxies for changes to take effect.
 
 ## <a name="bulk"></a>Bulk deployment
 
@@ -164,7 +168,7 @@ API products, apps, and developers.
 
 ### `/setup`
 
-Simple scripts to help you deploy the sample API proxies and profiles that they 
+Simple scripts to help you deploy the sample API proxies and profiles that they
 rely on, including API products, developers, and apps.
 
 Set you Apigee API Platform account settings in `setenv.sh` ([Register for a free Apigee account](https://docs.apigee.com/api-platform/get-started/creating-apigee-edge-account))
@@ -187,14 +191,14 @@ To deploy all samples and API products, run `deploy_all.sh`
 
 ## <a name="docs"></a>Apigee Edge documentation
 
-The Apigee Edge docs are [here](https://docs.apigee.com). 
+The Apigee Edge docs are [here](https://docs.apigee.com).
 
 ---
 
-Copyright © 2018 Apigee Corporation
+Copyright © 2018 Apigee Corporation, 2024 Google LLC
 
-Licensed under the Apache License, Version 2.0 (the "License"); you may 
-not use this file except in compliance with the License. You may obtain 
+Licensed under the Apache License, Version 2.0 (the "License"); you may
+not use this file except in compliance with the License. You may obtain
 a copy of the License at
 
 http://www.apache.org/licenses/LICENSE-2.0

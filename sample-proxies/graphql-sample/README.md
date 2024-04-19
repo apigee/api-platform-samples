@@ -45,7 +45,7 @@ Run the following command to deploy both the `graphql-config` and `graphql-proxy
     mvn install -Ptest -Dorg=<APIGEE_ORG> -Denv=<APIGEE_ENV> -Dusername=<APIGEE_USERNAME> -Dpassword=<APIGEE_PASSWORD>
 ```
 
-Optionally, you can deploy each of the sub-modules independently by running the same command within the specific directory. 
+Optionally, you can deploy each of the sub-modules independently by running the same command within the specific directory.
 
 e.g.
 
@@ -76,7 +76,7 @@ The sample Apigee proxy is designed to be simple, yet concise, in order to conve
   2. **A KVM policy** to retrieve a scopes map
   3. **A JavaScript policy** to convert scopes to GraphQL entitlements
   4. **A JavaScript Callout** to validate and authorize the GraphQL query.
-    
+
 The JavaScript Callout (in step 4), uses the [graphql-js](https://github.com/graphql/graphql-js) library to parse and syntactically validate the incoming GraphQL query. Upon validation, it proceeds to list the paths that are being accessed within the GraphQL query.
 
 For example, this query:
@@ -98,7 +98,7 @@ query.resorts.name
 ```
 
 In order to authorize the query, the JavaScript callout then compares the paths that are being accessed against the paths that the client is entitled to access. For a client request to be successfully authorized, the client entitlements must contain the paths being accessed in the query.
-    
+
 This is what the configuration looks like for the JavaScript callout (in step 4)
 
 ```
@@ -155,7 +155,7 @@ For this sample Apigee proxy, we are building the client entitlements list by us
 }
 ```
 
-Given the above map, if the arriving request has `reader` scope, it means that the client is entitled to execute introspection queries as well as read resorts related data. 
+Given the above map, if the arriving request has `reader` scope, it means that the client is entitled to execute introspection queries as well as read resorts related data.
 
 While it's not necessary to have a scopes-to-entitlements map, it's a practical abstraction that allows you to logically group a set of entitlements and segment access to your GraphQL schema.
 
@@ -163,7 +163,7 @@ Scopes are filtered at the Apigee API Product level. As an example, you could ha
 
 ![Products](docs/images/prods.png)
 
-This approach plays specially well with Apigee's consumption model with OAuth, Apps, and API Products. You could enforce that subscriptions to the `GraphQL Platinum` product require approval, where as the `GraphQL Bronze` product is open to all. 
+This approach plays specially well with Apigee's consumption model with OAuth, Apps, and API Products. You could enforce that subscriptions to the `GraphQL Platinum` product require approval, where as the `GraphQL Bronze` product is open to all.
 
 ### Using GraphQL Playground to test the API Proxy
 
@@ -177,13 +177,13 @@ To test the sample proxy, you can use the [GraphQL playground](https://legacy.gr
 
 As soon as the GraphQL playground opens up, it sends a couple of introspection queries to the Apigee proxy.
 You can open the [Apigee Trace Tool](https://docs.apigee.com/api-platform/debug/using-trace-tool-0) and refresh the playground to see the introspection query arriving.
- 
+
 ![Playground200](docs/images/introspect_trace.png)
 
 Note that this proxy configured such that all requests are implicitly granted the entitlements needed to introspect the schema. That's why this first request goes through successfully.
 
-However, if you try to send additional queries, you will see that Apigee blocks them. 
- 
+However, if you try to send additional queries, you will see that Apigee blocks them.
+
 ![Playground200](docs/images/playground_403.png)
 
 You have to open the **Headers** tab in the playground, and add a **scope** header.
