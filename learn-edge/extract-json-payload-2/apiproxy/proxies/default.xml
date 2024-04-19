@@ -1,12 +1,18 @@
 <ProxyEndpoint name="default">
+  <HTTPProxyConnection>
+    <BasePath>/v1/learn-edge</BasePath>
+    <VirtualHost>secure</VirtualHost>
+  </HTTPProxyConnection>
+
   <FaultRules>
     <FaultRule name="InvalidApiKey">
         <Step>
-            <Name>InvalidApiKeyMessage</Name>
+            <Name>AM-Invalid-API-Key-Message</Name>
         </Step>
-        <Condition>(fault.name Matches "InvalidApiKey") </Condition>
+        <Condition>fault.name Matches "InvalidApiKey"</Condition>
     </FaultRule>
   </FaultRules>
+
   <PreFlow>
     <Request>
       <Step>
@@ -14,11 +20,6 @@
       </Step>
     </Request>
   </PreFlow>
-  <HTTPProxyConnection>
-    <BasePath>/v1/learn-edge</BasePath>
-    <VirtualHost>default</VirtualHost>
-    <VirtualHost>secure</VirtualHost>
-  </HTTPProxyConnection>
   <RouteRule name="default">
     <!-- This connects our proxy to the target defined in apiproxy/targets/default.xml -->
     <TargetEndpoint>default</TargetEndpoint>

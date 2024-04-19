@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<AssignMessage name="AM-InvalidApiKeyMessage">
+<AssignMessage name="AM-Invalid-Api-Key-Message">
     <Set>
         <Payload contentType="application/json">{
   "error": {
@@ -12,4 +11,5 @@
         <ReasonPhrase>BadRequest</ReasonPhrase>
     </Set>
     <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+
 </AssignMessage>

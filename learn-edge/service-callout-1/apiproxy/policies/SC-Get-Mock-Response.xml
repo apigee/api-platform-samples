@@ -1,0 +1,7 @@
+<ServiceCallout name='SC-Get-Mock-Response'>
+  <Request variable="myrequest"/>
+  <Response>mockresponse</Response>
+  <HTTPTargetConnection>
+    <URL>http://mocktarget.apigee.net</URL>
+  </HTTPTargetConnection>
+</ServiceCallout>

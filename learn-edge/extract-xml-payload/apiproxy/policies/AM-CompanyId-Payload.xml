@@ -1,0 +1,10 @@
+<AssignMessage name="AM-CompanyId-Payload">
+    <Set>
+        <Payload contentType="application/xml">
+<root>
+  <companyId>{companyId}</companyId>
+</root>
+</Payload>
+    </Set>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+</AssignMessage>

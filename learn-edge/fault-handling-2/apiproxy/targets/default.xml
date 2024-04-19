@@ -1,34 +1,37 @@
 <TargetEndpoint name="default">
-	<FaultRules>
-		<FaultRule name="BadParam-X">
-            <Step>
-                <Name>CatchBadParam-X</Name>
-            </Step>
-            <Condition>(queryparam.X Matches "true") </Condition>
-        </FaultRule>
-        <FaultRule name="BadParam-Y">
-            <Step>
-                <Name>CatchBadParam-Y</Name>
-            </Step>
-            <Condition>(queryparam.Y Matches "true") </Condition>
-        </FaultRule>
-         <FaultRule name="BadParam-Z">
-            <Step>
-                <Name>CatchBadParam-Z</Name>
-            </Step>
-            <Condition>(queryparam.Z Matches "true") </Condition>
-        </FaultRule>
-	</FaultRules>
-    <PostFlow>
-        <Response>
-            <Step>
-                <Name>ThrowError</Name>
-                <Condition>(queryparam.X Matches "true" || queryparam.Y Matches "true" || queryparam.Z Matches "true")</Condition>
-          </Step>
-        </Response>
-    </PostFlow>
-    <HTTPTargetConnection>
-      <!-- This is where we define the target. For this sample we just use a simple URL. -->
-      <URL>http://mocktarget.apigee.net</URL>
-    </HTTPTargetConnection>
+  <FaultRules>
+    <FaultRule name="BadParam-X">
+      <Step>
+        <Name>AM-BadParam-X</Name>
+      </Step>
+      <Condition>queryparam.X Matches "true"</Condition>
+    </FaultRule>
+    <FaultRule name="BadParam-Y">
+      <Step>
+        <Name>AM-BadParam-Y</Name>
+      </Step>
+      <Condition>queryparam.Y Matches "true"</Condition>
+    </FaultRule>
+    <FaultRule name="BadParam-Z">
+      <Step>
+        <Name>AM-BadParam-Z</Name>
+      </Step>
+      <Condition>queryparam.Z Matches "true"</Condition>
+    </FaultRule>
+  </FaultRules>
+
+  <PostFlow>
+    <Response>
+      <Step>
+        <Name>RF-Contrived-Error</Name>
+        <Condition>(queryparam.X Matches "true" ||
+        queryparam.Y Matches "true" ||
+        queryparam.Z Matches "true")</Condition>
+      </Step>
+    </Response>
+  </PostFlow>
+
+  <HTTPTargetConnection>
+    <URL>http://mocktarget.apigee.net</URL>
+  </HTTPTargetConnection>
 </TargetEndpoint>

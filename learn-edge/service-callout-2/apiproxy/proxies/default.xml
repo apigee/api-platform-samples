@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <ProxyEndpoint name="default">
-    <Description/>
+    <HTTPProxyConnection>
+        <BasePath>/v1/learn-edge</BasePath>
+        <Properties/>
+        <VirtualHost>secure</VirtualHost>
+    </HTTPProxyConnection>
+
     <FaultRules>
         <FaultRule name="InvalidApiKey">
             <Condition>(fault.name Matches "InvalidApiKey") </Condition>
@@ -16,6 +21,7 @@
             </Step>
         </FaultRule>
     </FaultRules>
+
     <PreFlow name="PreFlow">
         <Request>
             <Step>
@@ -30,11 +36,7 @@
         </Request>
         <Response/>
     </PreFlow>
-    <HTTPProxyConnection>
-        <BasePath>/v1/learn-edge</BasePath>
-        <Properties/>
-        <VirtualHost>default</VirtualHost>
-        <VirtualHost>secure</VirtualHost>
-    </HTTPProxyConnection>
+
     <RouteRule name="noroute"/>
+
 </ProxyEndpoint>

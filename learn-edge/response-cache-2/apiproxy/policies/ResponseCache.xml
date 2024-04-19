@@ -1,10 +1,9 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ResponseCache async="false" continueOnError="false" enabled="true" name="ResponseCache">
+<ResponseCache name="ResponseCache">
     <DisplayName>ResponseCache</DisplayName>
     <CacheKey>
         <KeyFragment ref="request.uri" type="string"/>
     </CacheKey>
     <ExpirySettings>
-        <TimeoutInSec>3</TimeoutInSec>
+        <TimeoutInSeconds>12</TimeoutInSeconds>
     </ExpirySettings>
 </ResponseCache>

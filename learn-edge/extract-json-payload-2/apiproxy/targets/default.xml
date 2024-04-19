@@ -1,20 +1,27 @@
 <TargetEndpoint name="default">
-	<PostFlow name="PostFlow">
-	    <Request/>
-	    <Response>
-	        <Step>
-	            <Name>AM-Set-Sample-Response</Name>
-	        </Step>
-	        <Step>
-	            <Name>EV-Parse-Json-Response</Name>
-	        </Step>   
-	        <Step>
-	            <Name>AM-Set-Custom-Response</Name>
-	        </Step>       
-	    </Response>
-	</PostFlow>
-	<HTTPTargetConnection>
-		<!-- This is where we define the target. For this sample we just use a simple URL. -->
-		<URL>http://mocktarget.apigee.net</URL>
-	</HTTPTargetConnection>
+  <PostFlow name="PostFlow">
+
+    <!--
+        Because this is the response flow, Apigee executes these steps
+        after the response has been received from the target.
+    -->
+    <Response>
+      <Step>
+        <!-- overwrite the response! -->
+        <Name>AM-Set-Sample-Response</Name>
+      </Step>
+      <Step>
+        <!-- extract things from it via JSONPath -->
+        <Name>EV-Parse-Json-Response</Name>
+      </Step>
+      <Step>
+        <!-- set a new response -->
+        <Name>AM-Set-Custom-Response</Name>
+      </Step>
+    </Response>
+  </PostFlow>
+  <HTTPTargetConnection>
+    <!-- This is where we define the target. For this sample we just use a simple URL. -->
+    <URL>http://mocktarget.apigee.net</URL>
+  </HTTPTargetConnection>
 </TargetEndpoint>

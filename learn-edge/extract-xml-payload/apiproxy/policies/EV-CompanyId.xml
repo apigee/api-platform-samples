@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ExtractVariables name="ExtractCompanyId">
+<ExtractVariables name="EV-CompanyId">
     <Source>request</Source>
     <IgnoreUnresolvedVariables>false</IgnoreUnresolvedVariables>
     <XMLPayload>
@@ -11,5 +10,4 @@
             <XPath>/S:Envelope/S:Body/ns1:login/ns1:credential/ns1:companyId/text()</XPath>
         </Variable>
     </XMLPayload>
-    <DisplayName>Extract Company Id</DisplayName>
 </ExtractVariables>

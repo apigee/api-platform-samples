@@ -1,42 +1,45 @@
 <ProxyEndpoint name="default">
+  <HTTPProxyConnection>
+    <BasePath>/v1/learn-edge</BasePath>
+    <VirtualHost>secure</VirtualHost>
+  </HTTPProxyConnection>
+
   <FaultRules>
     <FaultRule name="InvalidApiKey">
         <Step>
-            <Name>InvalidApiKeyMessage</Name>
+            <Name>AM-Invalid-API-Key-Message</Name>
         </Step>
-        <Condition>(fault.name Matches "InvalidApiKey") </Condition>
+        <Condition>fault.name Matches "InvalidApiKey"</Condition>
     </FaultRule>
   </FaultRules>
+
   <PreFlow>
     <Request>
       <Step>
         <Name>VerifyAPIKey</Name>
       </Step>
       <Step>
-        <Name>AM-BuildRequest</Name>
+        <Name>AM-Build-Request</Name>
       </Step>
       <Step>
-        <Name>ServiceCalloutGetMockResponse</Name>
+        <Name>SC-Get-Mock-Response</Name>
       </Step>
     </Request>
   </PreFlow>
+
   <Flows>
     <Flow name="HandleHeaders">
       <Response>
         <Step>
-            <Name>ParseJsonResponse</Name>
+            <Name>EV-Parse-Json-Response</Name>
         </Step>
         <Step>
-            <Name>AssignCustomHeaders</Name>
+            <Name>AM-Inject-Response-Headers</Name>
         </Step>
       </Response>
-      <Request/>
     </Flow>
+
   </Flows>
-  <HTTPProxyConnection>
-    <BasePath>/v1/learn-edge</BasePath>
-    <VirtualHost>default</VirtualHost>
-    <VirtualHost>secure</VirtualHost>
-  </HTTPProxyConnection>
+
   <RouteRule name="noroute"/>
 </ProxyEndpoint>
