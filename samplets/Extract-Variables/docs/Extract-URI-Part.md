@@ -1,57 +1,60 @@
 # Save part of the request URL in a flow variable
 
-#### Date 
-12/2/15
+## Goal
 
-#### Proxy name:
-extract-variables
+Parse in incoming request URL and save part of the URL path into a flow variable.
 
-#### Goal 
+For example,
+given input like: `/resource1/420DDB2C` ,  
+the desired result is that the value `420DDB2C` is extracted and stored in a flow variable.
 
-* Use the Extract Variables policy to parse the incoming request URL and save part of the URL in a flow variable. 
-* Return the extracted value in the response
+## Story
 
-#### Policies used
+A client calls an Apigee proxy with this URL:
 
-* Extract Variables -- Parses the request URL, extracts a value from the URL, and stores it in a variable. Attached to the ProxyEndpoint PreFlow.
-* JavaScript -- Reads the extracted value from the flow variable and returns it in the response. Attached to the ProxyEndpoint PreFlow.
+`https://my-apigee-host.net/samplet-extract-variables/resource1/420DDB2C`
 
-##### Story
+You want to extract the variable value `420DDB2C` into a flow variable called
+`urirequest.id`.
 
-Let's say the request URL looks like this:
+This is a common use case, where the extracted value can be used in a subsequent
+step elsewhere in the proxy flow.
 
-`http://myorg-test.apigee.net/samplet-extract-variables/resource1/123456`
+## Policy XML
 
-We want to extract the value `123456` into a flow variable called `urirequest.id`. This is a common use case, where the extracted value can be used in another policy elsewhere in the proxy flow.
-
-We use the Extract Variables policy shown below. The policy says: If the incoming request URI path (technically, the `proxy.pathsuffix`) matches the specified pattern, parse out the value of the {id} part of the path, and store that value in a variable called `urirequest.id`. 
+Here is the XML for [the relevant Extract Variables policy](../apiproxy/policies/EV-Path-Component.xml):
 
 ```xml
-        <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-        <ExtractVariables name="Extract-Path-Component">
-            <DisplayName>Extract Path Component</DisplayName>
-            <Source>request</Source>
-            <URIPath>
-                <Pattern ignoreCase="true">/extract-variables/resource1/{id}</Pattern>
-            </URIPath>
-            <VariablePrefix>urirequest</VariablePrefix>
-            <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
-        </ExtractVariables>
+<ExtractVariables name="EV-Path-Component">
+  <Source>request</Source>
+  <URIPath>
+    <Pattern ignoreCase="true">/resource1/{id}</Pattern>
+  </URIPath>
+  <VariablePrefix>urirequest</VariablePrefix>
+  <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+</ExtractVariables>
 ```
 
-In our samplet, the value of {id} is `123456`, and that's what gets saved. You can call the API and replace `123456` with any value you wish, and it will save that value. 
+Results: Sending in a request like
+```
+GET $apigeehost/samplet-extract-variables/resource1/420DDB2C
+```
+
+...to this samplet, the variable `urirequest.id` gets the value `420DDB2C`.
+
+You can call the API and replace `420DDB2C` with any value you wish in the
+path segment, and it will save that value.
 
 
-#### Sample input:
+## Sample output:
 
-`http://myorg-test.apigee.net/parse-request-url/samplet-extract-variables/resource1/123456`
-
-#### Sample output:
+The samplet returns this output to the client:
 
 ```json
-    {
-        "Feature demonstrated": "Extract value of {id} parsed from the proxypath.suffix: /extract-variables/resource1/{id}.",
-        "Data extracted": "helloworld",
-        "Policy demonstrated": "Extract Variables"
-    }
+{
+  "Feature demonstrated": "Extract value of {id} parsed from the proxypath.suffix: /extract-variables/resource1/{id}.",
+  "Data extracted": "420DDB2C",
+  "Policy demonstrated": "Extract Variables",
+  "Flow variable written/read": "urirequest.id"
+}
 ```

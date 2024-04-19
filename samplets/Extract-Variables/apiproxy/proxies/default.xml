@@ -1,46 +1,68 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <ProxyEndpoint name="default">
-    <Description/>
-    <PreFlow name="PreFlow">
-        <Request/>
-        <Response/>
-    </PreFlow>
-    <Flows>
-        <Flow name="Extract URI Path">
-            <Description>Use the Extract Variables policy to parse the request URL</Description>
-            <Request>
-                <Step>
-                    <Name>Extract-Path-Component</Name>
-                </Step>
-                <Step>
-                    <Name>ReadURIPath</Name>
-                </Step>
-            </Request>
-            <Response/>
-            <Condition>(proxy.pathsuffix MatchesPath "/resource1/{id}") and (request.verb = "GET")</Condition>
-        </Flow>
-        <Flow name="Extract Query Param">
-            <Description>Use the Extract Variables policy to parse the request URL</Description>
-            <Request>
-                <Step>
-                    <Name>Extract-Query-Param</Name>
-                </Step>
-                <Step>
-                    <Name>ReadQueryParam</Name>
-                </Step>
-            </Request>
-            <Response/>
-            <Condition>(request.queryparam.code.values.count = 1) and (request.verb = "GET")</Condition>
-        </Flow>
-    </Flows>
-    <PostFlow name="PostFlow">
-        <Request/>
-        <Response/>
-    </PostFlow>
+    <Description>demonstrates how to use ExtractVariables to extract a value from a query parameter.</Description>
     <HTTPProxyConnection>
         <BasePath>/samplet-extract-variables</BasePath>
-        <VirtualHost>default</VirtualHost>
         <VirtualHost>secure</VirtualHost>
     </HTTPProxyConnection>
+
+    <PreFlow name="PreFlow">
+      <Request/>
+      <Response>
+        <Step>
+          <Name>AM-Remove-Inbound-Headers</Name>
+        </Step>
+      </Response>
+    </PreFlow>
+
+    <Flows>
+      <Flow name="Extract URI Path">
+        <Description>Use the Extract Variables policy to parse the request URL</Description>
+        <Request>
+          <Step>
+            <Name>EV-Path-Component</Name>
+          </Step>
+          <Step>
+            <Name>JS-Produce-Response-for-Read-URI-Path</Name>
+          </Step>
+        </Request>
+        <Response/>
+        <Condition>(proxy.pathsuffix MatchesPath "/resource1/{id}") and (request.verb = "GET")</Condition>
+      </Flow>
+
+      <Flow name="Extract Query Param">
+        <Description>Use the Extract Variables policy to parse the request URL</Description>
+        <Request>
+          <Step>
+            <Name>RF-Invalid-Query-Param</Name>
+            <Condition>NOT (request.queryparam.code.values.count = 1)</Condition>
+          </Step>
+          <Step>
+            <Name>EV-Query-Param</Name>
+          </Step>
+        </Request>
+        <Response>
+          <Step>
+            <Name>JS-Produce-Response-for-Read-Query-Param</Name>
+          </Step>
+        </Response>
+        <Condition>(proxy.pathsuffix = "") and (request.verb = "GET")</Condition>
+      </Flow>
+
+      <Flow name="unknown-request">
+        <Request>
+          <Step>
+            <Name>RF-Unknown-Request</Name>
+          </Step>
+        </Request>
+        <Response/>
+      </Flow>
+
+    </Flows>
+
+    <PostFlow name="PostFlow">
+      <Request/>
+      <Response/>
+    </PostFlow>
     <RouteRule name="noroute"/>
 </ProxyEndpoint>

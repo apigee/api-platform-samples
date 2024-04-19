@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<APIProxy revision="4" name="samplet-extract-variables">
+    <ConfigurationVersion majorVersion="4" minorVersion="0"/>
+    <Description>Demonstrates how to use the Extract Variables proxy to parse a request URL.</Description>
+</APIProxy>

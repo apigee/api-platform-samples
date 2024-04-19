@@ -1,0 +1,5 @@
+<AssignMessage name='AM-Remove-Inbound-Headers'>
+  <Remove>
+    <Headers/>
+  </Remove>
+</AssignMessage>

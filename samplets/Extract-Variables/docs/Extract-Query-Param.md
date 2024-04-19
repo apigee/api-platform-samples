@@ -1,64 +1,69 @@
 # Save part of a query parameter to a flow variable
 
-#### Date 
-12/2/15
+## Goal
 
-#### Proxy name:
+Parse in incoming request URL and save _part of a query parameter_ into a flow
+variable.
 
-Extract Variables
+For example,
+given input like: `?code=DNCabc123`,
+the desired result is that the value `abc123` is extracted and stored in a flow variable.
 
-##### Goal 
+## Story
 
-* Parse in incoming request URL and save part of a query parameter in a flow variable.  
+A client calls an Apigee proxy with this URL:
 
-##### Sample input:
+`https://my-apigee-host.net/samplet-extract-variables?code=DBNabc123`
 
-`http://myorg-test.apigee.net/parse-request-url/samplet-extract-variables?DNCabc123`
+You want to extract the variable value `abc123` into a flow variable called
+`queryinfo.dbncode`.
 
-##### Sample result:
+This is a common use case, where the extracted value can be used in a subsequent
+step elsewhere in the proxy flow.
 
-The value `abc123` is extracted and stored in a flow variable. 
+## Policy XML
 
-##### Story
-
-A client calls an Edge proxy with this URL:
-
-`http://myorg-test.apigee.net/extract-variables?code=DBNabc123`
-
-You want to extract the variable value `abc123` into a flow variable called `queryinfo.dbncode`. 
-
-This is a common use case, where the extracted value can be used in another policy elsewhere in the proxy flow.
-
-##### Policy XML
-
-Here is the XML for the Extract Variables policy: 
+Here is the XML for [the relevant Extract Variables policy](../apiproxy/policies/EV-Query-Param.xml):
 
 ```xml
-    <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-    <ExtractVariables name="Extract-Query-Param">
-        <DisplayName>Extract Query Param</DisplayName>
-        <Source>request</Source>
-        <QueryParam name="code">
-            <Pattern ignoreCase="true">DBN{dbncode}</Pattern>
-        </QueryParam>
-        <VariablePrefix>queryinfo</VariablePrefix>
-        <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
-    </ExtractVariables>
+<ExtractVariables name="EV-Query-Param">
+  <Source>request</Source>
+  <QueryParam name="code">
+    <Pattern ignoreCase="true">DBN{dbncode}</Pattern>
+  </QueryParam>
+  <VariablePrefix>queryinfo</VariablePrefix>
+  <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+</ExtractVariables>
 ```
 
-In our samplet, the value of {dbncode} is `abc123`, and that's what gets saved. You can call the API and replace `abc123` with any value you wish in the query param, and it will save that value. 
+Results: Sending in a request like
+```
+GET $apigeehost/samplet-extract-variables?code=DBNabc123
+```
 
-#### Sample output:
+..to our samplet, the variable `queryinfo.dbncode` gets the value `abc123`.
+
+You can call the API and replace `abc123` with any value you wish in the
+query param, and it will save that value.
+
+| provided query parameter input | value stored into `queryinfo.dbncode` |
+| ------------------------------ | ------------------------------------- |
+| `code=DBNA1`                   | `A1`                                  |
+| `code=DBNabc123`               | `abc123`                              |
+| `code=a123`                    | -none-                                |
+| `code=DBN`                     | -empty-                               |
+
+
+## Sample output:
 
 The samplet returns this output to the client:
 
 ```json
-    {
-      "Feature demonstrated": "Extract value of {dbncode} parsed from the code query parameter: ?code=DBN{dbncode}",
-      "Data extracted": "abc123",
-      "Policy demonstrated": "Extract Variables"
-    }
+{
+  "Feature demonstrated": "Extracted value of {dbncode} parsed from query param: /extract-variables?code=DBN{dbncode}.",
+  "Data extracted": null,
+  "Policy demonstrated": "Extract Variables",
+  "Flow variable written/read": "queryinfo.dbncode"
+}
 ```
-
-
 
