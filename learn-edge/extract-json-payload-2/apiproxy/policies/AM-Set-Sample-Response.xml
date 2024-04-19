@@ -1,0 +1,24 @@
+<AssignMessage name="AM-Set-Sample-Response">
+  <Set>
+    <Payload contentType="application/json">
+[
+  {
+    "name": "pod1",
+    "region": "us-east1"
+  },
+  {
+    "name": "pod2",
+    "region": "us-west2"
+  }
+]
+    </Payload>
+  </Set>
+  <IgnoreUnresolvedVariables>false</IgnoreUnresolvedVariables>
+
+  <AssignVariable>
+    <Name>desired-region</Name>
+    <Ref>request.queryparam.region</Ref>
+    <!-- default value if the above variable is not defined -->
+    <Value>us-west2</Value>
+  </AssignVariable>
+</AssignMessage>

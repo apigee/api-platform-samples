@@ -1,58 +1,63 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <ProxyEndpoint name="default">
-    <Description>Default Proxy</Description>
-    <HTTPProxyConnection>
-        <BasePath>/v1/learn-edge</BasePath>
-        <Properties/>
-        <VirtualHost>default</VirtualHost>
-        <VirtualHost>secure</VirtualHost>
-    </HTTPProxyConnection>
-    <FaultRules>
-        <FaultRule name="InvalidApiKey">
-            <Step>
-                <Name>InvalidApiKeyMessage</Name>
-            </Step>
-            <Condition>(fault.name Matches "InvalidApiKey") </Condition>
-        </FaultRule>
-    </FaultRules>    <PreFlow name="PreFlow">
-        <Request>
-          <Step>
-            <Name>VerifyAPIKey</Name>
-          </Step>
-        </Request>
-        <Response/>
-    </PreFlow>
-    <PostFlow name="PostFlow">
-        <Request/>
-        <Response/>
-    </PostFlow>
-    <Flows>
-        <Flow name="Extract Direction Info">
-            <Request>
-                <Step>
-                    <Name>ExtractDirectionInfo</Name>
-                </Step>
-            </Request>
-            <Response>
-                <Step>
-                    <Name>AssignDirectionsPayload</Name>
-                </Step>
-            </Response>
-            <Condition>(proxy.pathsuffix MatchesPath "/directions") and (request.verb = "POST")</Condition>
-        </Flow>
-        <Flow name="Extract Company Id">
-            <Request>
-                <Step>
-                    <Name>ExtractCompanyId</Name>
-                </Step>
-            </Request>
-            <Response>
-                <Step>
-                    <Name>AssignCompanyIdPayload</Name>
-                </Step>
-            </Response>
-            <Condition>(proxy.pathsuffix MatchesPath "/companyId") and (request.verb = "POST")</Condition>
-        </Flow>
-    </Flows>
-    <RouteRule name="noroute"/>
+  <Description>Default Proxy</Description>
+  <HTTPProxyConnection>
+    <BasePath>/v1/learn-edge</BasePath>
+    <Properties/>
+    <VirtualHost>secure</VirtualHost>
+  </HTTPProxyConnection>
+
+  <FaultRules>
+    <FaultRule name="InvalidApiKey">
+      <Step>
+        <Name>AM-Invalid-API-Key-Message</Name>
+      </Step>
+      <Condition>fault.name Matches "InvalidApiKey"</Condition>
+    </FaultRule>
+  </FaultRules>
+
+  <PreFlow name="PreFlow">
+    <Request>
+      <Step>
+        <Name>VerifyAPIKey</Name>
+      </Step>
+    </Request>
+    <Response/>
+  </PreFlow>
+
+  <PostFlow name="PostFlow">
+    <Request/>
+    <Response/>
+  </PostFlow>
+
+  <Flows>
+    <Flow name="Extract Direction Info">
+      <Request>
+        <Step>
+          <Name>EV-Direction-Info</Name>
+        </Step>
+      </Request>
+      <Response>
+        <Step>
+          <Name>AM-Directions-Payload</Name>
+        </Step>
+      </Response>
+      <Condition>(proxy.pathsuffix MatchesPath "/directions") and (request.verb = "POST")</Condition>
+    </Flow>
+
+    <Flow name="Extract Company Id">
+      <Request>
+        <Step>
+          <Name>EV-CompanyId</Name>
+        </Step>
+      </Request>
+      <Response>
+        <Step>
+          <Name>AM-CompanyId-Payload</Name>
+        </Step>
+      </Response>
+      <Condition>(proxy.pathsuffix MatchesPath "/companyId") and (request.verb = "POST")</Condition>
+    </Flow>
+  </Flows>
+  <RouteRule name="noroute"/>
 </ProxyEndpoint>

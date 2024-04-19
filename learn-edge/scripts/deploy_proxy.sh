@@ -7,6 +7,6 @@ function deploy_proxy {
         printf "\nIf the deployment is successful, then your API Proxy is ready to be invoked.\n"
         printf "\nRun 'invoke.sh'\n"
     else
-        printf "\n\n****Exiting: You must install apigeetool: npm -install apigeetool -g\n\n" 
+        printf "\n\n****Exiting: You must install apigeetool: npm install apigeetool -g\n\n" 
     fi
 }

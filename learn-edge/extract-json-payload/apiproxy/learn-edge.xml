@@ -1,4 +1,4 @@
 <APIProxy name="learn-edge">
   <!-- This is the root of the application -->
-  <Description>Enance performance with response caching.</Description>
+  <Description>Demonstrate Extraction of data via ExtractVariables and JSONPath.</Description>
 </APIProxy>

@@ -1,0 +1,7 @@
+<AssignMessage name="AM-Remove-API-Key">
+  <Remove>
+    <QueryParams>
+      <QueryParam name="apikey"/>
+    </QueryParams>
+  </Remove>
+</AssignMessage>

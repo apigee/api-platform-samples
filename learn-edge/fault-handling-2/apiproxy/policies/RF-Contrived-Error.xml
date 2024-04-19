@@ -1,0 +1,18 @@
+<RaiseFault name="RF-Contrived-Error">
+ <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+ <FaultResponse>
+   <Set>
+     <StatusCode>500</StatusCode>
+     <ReasonPhrase>This is a fake error.</ReasonPhrase>
+     <Payload>{
+  "fault": {
+    "faultstring": "Hello from Learn Edge! Raising fault. Fault name : ThrowError",
+    "detail": {
+      "errorcode": "messaging.runtime.RaiseFault"
+    }
+  }
+}
+</Payload>
+   </Set>
+ </FaultResponse>
+</RaiseFault>

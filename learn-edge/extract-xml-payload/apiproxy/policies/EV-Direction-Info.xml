@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ExtractVariables name="ExtractDirectionInfo">
+<ExtractVariables name="EV-Direction-Info">
     <Source>request.content</Source>
     <VariablePrefix>direction_info</VariablePrefix>
     <XMLPayload>
