@@ -1,0 +1,8 @@
+<ExtractVariables name="EV-Path-Component">
+  <Source>request</Source>
+  <URIPath>
+    <Pattern ignoreCase="true">/resource1/{id}</Pattern>
+  </URIPath>
+  <VariablePrefix>urirequest</VariablePrefix>
+  <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+</ExtractVariables>
