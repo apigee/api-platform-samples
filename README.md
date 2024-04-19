@@ -17,6 +17,15 @@
 
 You are an Apigee Edge API proxy developer, or you would like to learn about developing APIs that run on Apigee Edge. At a minimum, we assume you're familiar with Apigee Edge and how to create simple API proxies. To learn more, we recommend this [getting-started tutorial](https://docs.apigee.com/api-platform/get-started/get-started). 
 
+> These samples were built to work with Apigee EDGE. The current version of
+> Apigee is known as Apigee X. Most of these samples will work with Apigee X,
+> but the deployment scripts will not, and the instructions for administrative
+> actions (eg, sign up for an account at apigee.com ) will not work either. In
+> those cases, you will need to substitute the appropriate actions relating to
+> Apigee X!
+
+> Bear with us, please!
+
 ## <a name="intro"></a>Intro
 
 This repository contains a collection of sample API proxies that you can deploy and run on [Apigee Edge](https://apigee.com/api-management/#/products). 
