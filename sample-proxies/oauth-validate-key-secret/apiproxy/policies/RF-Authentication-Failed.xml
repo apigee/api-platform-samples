@@ -1,0 +1,14 @@
+<RaiseFault name="RF-Authentication-Failed">
+  <FaultResponse>
+    <Set>
+      <Headers/>
+      <!--
+          <Payload contentType="text/plain">Invalid user credentials</Payload>
+      -->
+      <Payload contentType="text/plain">{authenticate.response.content}</Payload>
+      <StatusCode>401</StatusCode>
+      <ReasonPhrase>Unauthorized</ReasonPhrase>
+    </Set>
+  </FaultResponse>
+  <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+</RaiseFault>

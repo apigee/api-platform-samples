@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>[DEM] Digital Energy Monitor</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta name="author" content="Free-Template.co" />
+    <link rel="shortcut icon" href="favicon.png" type="image/png">
+
+    <!-- update the version number as needed -->
+    <script defer src="/__/firebase/6.2.4/firebase-app.js"></script>
+    <!-- include only the Firebase features as you need -->
+    <script defer src="/__/firebase/6.2.4/firebase-auth.js"></script>
+    <script defer src="/__/firebase/6.2.4/firebase-firestore.js"></script>
+    <script defer src="/__/firebase/6.2.4/firebase-messaging.js"></script>
+    <script defer src="/__/firebase/6.2.4/firebase-storage.js"></script>
+    <script defer src="/__/firebase/6.2.4/firebase-functions.js"></script>
+    <!-- initialize the SDK after all desired features are loaded -->
+    <script defer src="/__/firebase/init.js"></script>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,700,900|Display+Playfair:200,300,400,700"> 
+    <link rel="stylesheet" href="fonts/icomoon/style.css">
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/magnific-popup.css">
+    <link rel="stylesheet" href="css/jquery-ui.css">
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+
+    <link rel="stylesheet" href="css/bootstrap-datepicker.css">
+
+    <link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
+
+    <link rel="stylesheet" href="css/aos.css">
+
+    <link rel="stylesheet" href="css/style.css">
+    
+  </head>
+  <body data-spy="scroll" data-target=".site-navbar-target" data-offset="200">
+  
+  <!-- <div class="site-wrap"> -->   
+
+    <div class="site-mobile-menu site-navbar-target">
+      <div class="site-mobile-menu-header">
+        <div class="site-mobile-menu-close mt-3">
+          <span class="icon-close2 js-menu-toggle"></span>
+        </div>
+      </div>
+      <div class="site-mobile-menu-body"></div>
+    </div>
+    
+    <header class="site-navbar py-3 js-site-navbar site-navbar-target" role="banner" id="site-navbar">
+
+      <div class="container">
+        <div class="row align-items-center">
+          
+          <div class="col-11 col-xl-2 site-logo">
+            <h1 class="mb-0"><a href="index.html" style="white-space: nowrap;" class="text-white h2 mb-0">Digital Energy Monitor</a></h1>
+          </div>
+          <div class="col-12 col-md-10 d-none d-xl-block">
+            <nav class="site-navigation position-relative text-right" role="navigation">
+              <ul class="site-menu js-clone-nav mx-auto d-none d-lg-block">
+                <li><a href="#section-home" class="nav-link js-menu-hide">Home</a></li>
+                <li><a href="https://amer-partner3-sapsolutions.apigee.io/" target="_blank">Developer Portal</a></li>
+                <li><a href="#section-map" class="nav-link js-menu-hide">Energy Map</a></li>
+                <li><a href="#section-how-it-works" class="nav-link js-menu-hide">How It Works</a></li>
+                <li><a href="https://www.appsheet.com/start/175130cf-be43-4f84-8861-44351c4e6b96" class="external" target="_blank">Management App</a></li>
+                <li><a data-toggle="modal" data-target="#settings-modal" class="nav-link js-menu-hide">Settings</a></li>
+              </ul>
+            </nav>
+          </div>
+
+
+          <div class="d-inline-block d-xl-none ml-md-0 mr-auto py-3" style="position: relative; top: 3px;"><a href="#" class="site-menu-toggle js-menu-toggle"><span class="icon-menu h3"></span></a></div>
+
+          </div>
+
+        </div>
+      </div>
+      
+    </header>
+
+  
+
+    <div class="site-blocks-cover overlay" style="background-image: url(images/hero_bg_2.jpg);" data-aos="fade" data-stellar-background-ratio="0.5" id="section-home">
+      <div class="container">
+        <div class="row align-items-center justify-content-center text-center">
+          <div class="col-md-12" data-aos="fade-up" data-aos-delay="400">
+              <!-- <img width="120" src="images/camera.png" style="position: relative; bottom: -4px;"> -->
+            <div id="container" class="container">
+
+              <div class="row">
+                <div class="col">
+                    <canvas class="w-100" id="canvas"></canvas>                    
+                </div>
+                <div class="col" style="text-align: left">
+                  <button id="start-button" type="button" class="btn btn-primary w-100" style="margin-bottom: 5px;">Start Camera</button>
+                  <button id="saved-images-button" data-toggle="modal" data-target="#pictures-modal" type="button" class="btn btn-primary w-100" style="margin-bottom: 5px;">Select test image</button>
+                  <!-- <input type="file" id="inp" class="btn btn-primary w-100"> -->
+                  <video autoplay="true" id="videoElement"></video>
+                </div>
+              </div>
+
+
+            </div>               
+
+            <h1 id="dashboard-label" class="text-white font-weight-light text-uppercase font-weight-bold" data-aos="fade-up">Real-time Dashboard</h1>
+            <h5 id="status-label" class="text-white font-weight-light text-uppercase font-weight-bold" data-aos="fade-up"></h5>
+          
+          </div>
+          <div id="highAlert" class="alert alert-danger pulse" style="position: fixed; bottom: 2px; display: none;" role="alert">
+            Equipment error detected
+          </div>
+          <div id="lowAlert" class="alert alert-success" role="alert"  style="position: fixed; bottom: 2px;">  
+            Equipment running normally
+          </div>          
+        </div>
+      </div>
+    </div>  
+
+    <div class="site-section" id="section-map">
+      <div class="container">
+        
+        <div class="row mb-5">
+          <div class="col-md-12" style="text-align: center;">
+              <div class="text-left pb-1 border-primary mb-4">
+                  <h2 class="text-primary">Energy Map</h2>
+                </div>  
+                <img src="images/map.png" style="width: 100%">
+          </div>  
+        </div>
+          
+      </div>
+    </div>
+    
+    <!-- Settings Modal -->
+    <div class="modal fade" id="settings-modal" tabindex="-1" style="z-index: 2000;" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Settings</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <!-- <div class="custom-control custom-switch" style="margin-left: 21px;">
+              <input id="ml-switch" type="checkbox" class="custom-control-input">
+              <label class="custom-control-label" for="ml-switch">Use Google AutoML</label>
+            </div> -->
+            <div class="custom-control custom-switch">
+              <input id="offline-switch" type="checkbox" class="custom-control-input">
+              <label class="custom-control-label" for="offline-switch">Test Mode - use test data for vision service</label>
+            </div>  
+            <br>
+            <label for="vision-select">AI Vision Service</label>
+            <select class="form-control" id="vision-select">
+              <option>Google Cloud Vision API</option>
+              <option>Google Cloud AutoML - Manufacturing Dataset</option>
+            </select>
+            <br>
+            <div>
+              <label for="checkpointLabel">Meter Id</label>
+              <input type="email" class="form-control" id="checkpointInput" aria-describedby="checkpointHelp" placeholder="Enter Checkpoint Id" disabled>
+              <small id="emailHelp" class="form-text text-muted">This Id is used to identity the device being monitored.</small>
+            </div>          
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pictures Modal -->
+    <div class="modal fade" id="pictures-modal" tabindex="-1" style="z-index: 2000;" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Saved Images</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="container">
+              <div class="row">
+                <div class="col mt-1">
+                  <a class="test-image-select" href="#"><img src="images/meter5.jpg" width="150px" height="100px"></a>
+                </div>
+                <div class="col mt-1">
+                  <a class="test-image-select" href="#"><img src="images/meter2.jpg" width="150px" height="100px"></a>
+                </div>
+                <div class="col mt-1">
+                  <a class="test-image-select" href="#"><img src="images/meter3.jpg" width="150px" height="100px"></a>
+                </div>
+                <div class="col mt-1">
+                  <a class="test-image-select" href="#"><img src="images/meter4.jpg" width="150px" height="100px"></a>
+                </div>    
+                <div class="col mt-1">
+                  <a class="test-image-select" href="#"><img src="images/meter6.jpg" width="150px" height="100px"></a>
+                </div>                              
+              </div>
+            </div>          
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>    
+
+    <div class="site-section bg-image overlay" style="background-image: url('images/hero_bg_4.jpg');" id="section-how-it-works">
+      <div class="container">
+        <div class="row justify-content-center mb-5">
+          <div class="col-md-7 text-center border-primary">
+            <h2 class="font-weight-light text-primary" data-aos="fade">How It Works</h2>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6 col-lg-4 mb-5 mb-lg-0" data-aos="fade" data-aos-delay="100">
+            <div class="how-it-work-item">
+              <span class="number">1</span>
+              <div class="how-it-work-body">
+                <h2>Turn on Airport Security</h2>
+                <p class="mb-5">Start the analysis by either starting the camera, which will use real camera footage, or by selecting a test image.</p>
+                <ul class="ul-check list-unstyled success">
+                  <li class="text-white">Start analysis</li>
+                  <li class="text-white">Observe results (image analysis results should be visible on the screen)</li>
+                  <li class="text-white">If a crowd result is there, then a security queue alert should be triggered</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-4 mb-5 mb-lg-0" data-aos="fade" data-aos-delay="200">
+            <div class="how-it-work-item">
+              <span class="number">2</span>
+              <div class="how-it-work-body">
+                <h2>Open the Airline App</h2>
+                <p class="mb-5">Open the Airline App from the header menu.</p>
+                <ul class="ul-check list-unstyled success">
+                  <li class="text-white">If a queue alert was triggered, then it should also be visible in the Airline App</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-4 mb-5 mb-lg-0" data-aos="fade" data-aos-delay="300">
+            <div class="how-it-work-item">
+              <span class="number">3</span>
+              <div class="how-it-work-body">
+                <h2>Empty the queue</h2>
+                <p class="mb-5">After triggering the queue alert, now either turn the camera to a non-congested view, or select a non-congested sampel image.</p>
+                <ul class="ul-check list-unstyled success">
+                  <li class="text-white">The queue alert should disappear in the Airport Security App</li>
+                  <li class="text-white">The queue alert should also disappear from the Airline App</li>
+               </ul>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+
+    <div class="site-blocks-cover overlay inner-page-cover" style="background-image: url(images/hero_bg_2.jpg); background-attachment: fixed;">
+      <div class="container">
+        <div class="row align-items-center justify-content-center text-center">
+
+          <div class="col-md-7" data-aos="fade-up">
+            <a href="https://www.youtube.com/watch?v=jWwmWvhI40Q" class="play-single-big mb-4 d-inline-block popup-youtube"><span class="icon-play"></span></a>
+            <h2 class="text-white font-weight-light mb-5 h1">Watch The Video</h2>
+            
+          </div>
+        </div>
+      </div>
+    </div>  
+    
+    <div class="site-section border-bottom">
+      <div class="container">
+
+        <div class="row justify-content-center mb-5">
+          <div class="col-md-7 text-center border-primary">
+            <h2 class="font-weight-light text-primary">Testimonials</h2>
+          </div>
+        </div>
+
+        <div class="slide-one-item home-slider owl-carousel">
+          <div>
+            <div class="testimonial">
+              <figure class="mb-4">
+                <img src="images/person_1.jpg" alt="Image" class="img-fluid mb-3">
+                
+              </figure>
+              <blockquote>
+                <p>&ldquo;The Airport Security Queue functionality provided by Apigee totally saved my trip, I really would have missed my flight without it!&rdquo;</p>
+                <p class="author"> &mdash; John Travis</p>
+              </blockquote>
+            </div>
+          </div>
+          <div>
+            <div class="testimonial">
+              <figure class="mb-4">
+                <img src="images/person_2.jpg" alt="Image" class="img-fluid mb-3">
+                
+              </figure>
+              <blockquote>
+                <p>&ldquo;I've had some bad experiences with security queues in the past, but no more!  Now I know how much time I have to plan!&rdquo;</p>
+                <p class="author"> &mdash; Sue Moore</p>
+              </blockquote>
+            </div>
+          </div>
+
+          <div>
+            <div class="testimonial">
+              <figure class="mb-4">
+                <img src="images/person_4.jpg" alt="Image" class="img-fluid mb-3">
+              </figure>
+              <blockquote>
+                <p>&ldquo;I was sitting in a cafe drinking my sixth coffee, thinking I had all the time in the world, when I got the alert that I would need some extra time at the airport.  Thanks Apigee, you're the best!&rdquo;</p>
+                <p class="author"> &mdash; Ben Carson</p>
+              </blockquote>
+            </div>
+          </div>
+
+          <div>
+            <div class="testimonial">
+              <figure class="mb-4">
+                <img src="images/person_5.jpg" alt="Image" class="img-fluid mb-3">
+              </figure>
+              <blockquote>
+                <p>&ldquo;I had missed 7 out of 8 of my last flights, but the Security Queue alert really changed my habits, and now I catch every single flight I have! &rdquo;</p>
+                <p class="author"> &mdash; Jed Smith</p>
+              </blockquote>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    
+    <footer class="site-footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-9">
+            <div class="row">
+              <div class="col-md-5 mr-auto">
+                <h2 class="footer-heading mb-4">About Us</h2>
+                <p>Visit us at apigee.com, and read our latest updates on our <a href="https://cloud.google.com/blog/products/apigee" target="_blank">blog</a>.</p>
+              </div>
+              
+              <div class="col-md-3">
+                <h2 class="footer-heading mb-4">Quick Links</h2>
+                <ul class="list-unstyled">
+                  <li><a href="https://docs.apigee.com/api-platform/get-started/what-apigee-edge">About Us</a></li>
+                  <li><a href="https://cloud.google.com/blog/products/gcp/apigee-named-a-leader-in-the-gartner-magic-quadrant-for-full-life-cycle-api-management-for-the-third-consecutive-time">Testimonials</a></li>
+                  <li><a href="https://cloud.google.com/contact-apigee/">Contact Us</a></li>
+                </ul>
+              </div>
+              <div class="col-md-3">
+                <h2 class="footer-heading mb-4">Follow Us</h2>
+                <a href="https://www.facebook.com/apigee/" class="pl-0 pr-3"><span class="icon-facebook"></span></a>
+                <a href="https://twitter.com/Apigee" class="pl-3 pr-3"><span class="icon-twitter"></span></a>
+                <a href="https://www.linkedin.com/company/apigee" class="pl-3 pr-3"><span class="icon-linkedin"></span></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row pt-5 mt-5 text-center">
+          <div class="col-md-12">
+            <div class="border-top pt-5">
+              <p>
+              <small class="block">&copy; <script>document.write(new Date().getFullYear());</script> Logis Free Template. All Rights Reserved. <br> Designed &amp; Developed by <a href="https://free-template.co/" target="_blank">Free-Template.co</a></small> 
+              </p>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    </footer>
+  <!-- </div> -->
+
+  <script src="js/jquery-3.3.1.min.js"></script>
+  <script src="js/jquery-migrate-3.0.1.min.js"></script>
+  <script src="js/jquery-ui.js"></script>
+  <script src="js/jquery.easing.1.3.js"></script>
+  <script src="js/popper.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/owl.carousel.min.js"></script>
+  <script src="js/jquery.stellar.min.js"></script>
+  <script src="js/jquery.countdown.min.js"></script>
+  <script src="js/jquery.magnific-popup.min.js"></script>
+  <script src="js/bootstrap-datepicker.min.js"></script>
+  <script src="js/aos.js"></script>
+
+  <script>
+
+window.onload = () => {
+  'use strict';
+
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker
+             .register('./js/sw.js');
+  }
+}
+
+    document.addEventListener('DOMContentLoaded', function() {
+      // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
+      // // The Firebase SDK is initialized and available here!
+      //
+      // firebase.auth().onAuthStateChanged(user => { });
+      // firebase.database().ref('/path/to/ref').on('value', snapshot => { });
+      // firebase.messaging().requestPermission().then(() => { });
+      // firebase.storage().ref('/path/to/ref').getDownloadURL().then(() => { });
+      //
+      // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
+
+      try {
+        let app = firebase.app();
+        let features = ['auth', 'database', 'messaging', 'storage'].filter(feature => typeof app[feature] === 'function');
+        // document.getElementById('load').innerHTML = `Firebase SDK loaded with ${features.join(', ')}`;
+      } catch (e) {
+        console.error(e);
+        // document.getElementById('load').innerHTML = 'Error loading the Firebase SDK, check the console.';
+      }
+    });
+  </script> 
+  
+  <script src="js/main.js"></script>
+
+  </body>
+</html>

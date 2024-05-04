@@ -1,0 +1,70 @@
+<ProxyEndpoint name="endpoint1">
+  <HTTPProxyConnection>
+    <BasePath>/oauth-validate-key-secret</BasePath>
+    <Properties/>
+    <VirtualHost>secure</VirtualHost>
+  </HTTPProxyConnection>
+  <DefaultFaultRule>
+    <AlwaysEnforce>true</AlwaysEnforce>
+    <Step>
+      <Name>AM-Inject-Proxy-Revision-Header</Name>
+    </Step>
+  </DefaultFaultRule>
+  <FaultRules/>
+  <PreFlow>
+    <Request/>
+    <Response>
+      <Step>
+        <Name>AM-Clean-Request-Headers-From-Response</Name>
+      </Step>
+    </Response>
+  </PreFlow>
+  <PostFlow>
+    <Request/>
+    <Response>
+      <Step>
+        <Name>AM-Inject-Proxy-Revision-Header</Name>
+      </Step>
+    </Response>
+  </PostFlow>
+  <Flows>
+    <Flow name="Token - Password">
+      <Request>
+        <Step>
+          <Condition>NOT (request.formparam.grant_type = "password")</Condition>
+          <Name>RF-Unsupported-Grant-Type</Name>
+        </Step>
+        <Step>
+          <Name>OA-VerifyAPIKey-and-Secret</Name>
+        </Step>
+        <Step>
+          <Name>AM-Create-Authenticate-Request</Name>
+        </Step>
+        <Step>
+          <Name>SC-Authenticate-User</Name>
+        </Step>
+        <Step>
+          <Condition>authenticate.response.status.code != 200</Condition>
+          <Name>RF-Authentication-Failed</Name>
+        </Step>
+        <Step>
+          <Name>OA-GenerateAccessToken-Password</Name>
+        </Step>
+      </Request>
+      <Response/>
+      <Condition>(request.verb = "POST") and (proxy.pathsuffix MatchesPath "/token")</Condition>
+    </Flow>
+
+    <Flow name="unknown-request">
+      <Request>
+        <Step>
+          <Name>RF-Unknown-Request</Name>
+        </Step>
+      </Request>
+      <Response/>
+      <!-- no Condition means this is a "catch all" flow -->
+    </Flow>
+
+  </Flows>
+  <RouteRule name="NoRoute"/>
+</ProxyEndpoint>

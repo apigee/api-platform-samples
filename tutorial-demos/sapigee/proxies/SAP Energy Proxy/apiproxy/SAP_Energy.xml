@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<APIProxy revision="15" name="SAP_Energy">
+    <Basepaths>/digital-meter</Basepaths>
+    <ConfigurationVersion majorVersion="4" minorVersion="0"/>
+    <CreatedAt>1601472459127</CreatedAt>
+    <CreatedBy>defaultUser</CreatedBy>
+    <Description></Description>
+    <DisplayName>Kaleo-Energy</DisplayName>
+    <LastModifiedAt>1601472459127</LastModifiedAt>
+    <LastModifiedBy>defaultUser</LastModifiedBy>
+    <ManifestVersion>SHA-512:430cca403073074b4acc4837d945b08fe89d4a55fb47d544c94ed2834c4e69f87f55a5ee5d1dcb5e5b481e88711832f7d49e9f9aeb46372168301bbb6849a2ed</ManifestVersion>
+    <Policies>
+        <Policy>Get-Firestore-Key</Policy>
+        <Policy>Get-Meter-Data</Policy>
+        <Policy>No-Path</Policy>
+        <Policy>NotFound</Policy>
+        <Policy>Quota-1</Policy>
+        <Policy>SetVerb</Policy>
+        <Policy>Spike-Arrest-1</Policy>
+        <Policy>Verify-API-Key-1</Policy>
+        <Policy>add-key</Policy>
+        <Policy>get-measurements-mock</Policy>
+        <Policy>get-meterid</Policy>
+        <Policy>new-meter</Policy>
+        <Policy>new-reading</Policy>
+        <Policy>remove-api-key</Policy>
+        <Policy>set-defaults</Policy>
+        <Policy>set-key</Policy>
+        <Policy>set-path</Policy>
+        <Policy>set-readings</Policy>
+        <Policy>transform-firebase-response</Policy>
+    </Policies>
+    <ProxyEndpoints>
+        <ProxyEndpoint>default</ProxyEndpoint>
+    </ProxyEndpoints>
+    <Resources>
+        <Resource>jsc://get-measurements-mock.js</Resource>
+        <Resource>jsc://new-meter.js</Resource>
+        <Resource>jsc://new-reading.js</Resource>
+        <Resource>jsc://transform-firebase-readings.js</Resource>
+        <Resource>jsc://transform-firebase-response.js</Resource>
+    </Resources>
+    <Spec></Spec>
+    <TargetServers/>
+    <TargetEndpoints>
+        <TargetEndpoint>Cloud Vision Service</TargetEndpoint>
+        <TargetEndpoint>Firestore</TargetEndpoint>
+        <TargetEndpoint>NoTarget</TargetEndpoint>
+    </TargetEndpoints>
+</APIProxy>

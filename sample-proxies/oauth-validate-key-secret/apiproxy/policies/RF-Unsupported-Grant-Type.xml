@@ -1,0 +1,9 @@
+<RaiseFault name="RF-Unsupported-Grant-Type">
+  <FaultResponse>
+    <Set>
+      <Payload contentType="text/plain">unsupported grant_type</Payload>
+      <StatusCode>400</StatusCode>
+      <ReasonPhrase>Bad Request</ReasonPhrase>
+    </Set>
+  </FaultResponse>
+</RaiseFault>

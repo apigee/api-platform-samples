@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ProxyEndpoint name="default">
+    <PreFlow name="PreFlow">
+        <Request>
+            <Step>
+                <Name>Spike-Arrest-1</Name>
+            </Step>
+            <Step>
+                <Name>Verify-API-Key-1</Name>
+            </Step>
+            <Step>
+                <Name>remove-api-key</Name>
+            </Step>
+            <Step>
+                <Name>Quota-1</Name>
+            </Step>
+            <Step>
+                <Name>Get-Firestore-Key</Name>
+            </Step>
+            <Step>
+                <Name>set-defaults</Name>
+            </Step>
+        </Request>
+        <Response/>
+    </PreFlow>
+    <Flows>
+        <Flow name="vision">
+            <Description/>
+            <Request/>
+            <Response/>
+            <Condition>(proxy.pathsuffix MatchesPath "/vision") and (request.verb = "POST")</Condition>
+        </Flow>
+        <Flow name="meters">
+            <Description>meters</Description>
+            <Request>
+                <Step>
+                    <Name>get-meterid</Name>
+                </Step>
+                <Step>
+                    <Condition>request.verb = "POST"</Condition>
+                    <Name>new-meter</Name>
+                </Step>
+            </Request>
+            <Response>
+                <Step>
+                    <Name>transform-firebase-response</Name>
+                </Step>
+            </Response>
+            <Condition>proxy.pathsuffix StartsWith "/meters"</Condition>
+        </Flow>
+        <Flow name="readings">
+            <Description>meter readings</Description>
+            <Request>
+                <Step>
+                    <Name>get-meterid</Name>
+                </Step>
+                <Step>
+                    <Condition>request.verb = "POST"</Condition>
+                    <Name>Get-Meter-Data</Name>
+                </Step>
+                <Step>
+                    <Condition>request.verb = "POST"</Condition>
+                    <Name>new-reading</Name>
+                </Step>
+            </Request>
+            <Response>
+                <Step>
+                    <Name>set-readings</Name>
+                </Step>
+            </Response>
+            <Condition>proxy.pathsuffix StartsWith "/readings"</Condition>
+        </Flow>
+    </Flows>
+    <PostFlow name="PostFlow">
+        <Request/>
+        <Response/>
+    </PostFlow>
+    <HTTPProxyConnection>
+        <BasePath>/energy-management</BasePath>
+        <VirtualHost>secure</VirtualHost>
+    </HTTPProxyConnection>
+    <RouteRule name="readings">
+        <Condition>proxy.pathsuffix StartsWith "/readings" or proxy.pathsuffix StartsWith "/meters"</Condition>
+        <TargetEndpoint>Firestore</TargetEndpoint>
+    </RouteRule>
+    <RouteRule name="vision">
+        <Condition>(proxy.pathsuffix MatchesPath "/vision")</Condition>
+        <TargetEndpoint>Cloud Vision Service</TargetEndpoint>
+    </RouteRule>
+    <RouteRule name="notarget">
+        <TargetEndpoint>NoTarget</TargetEndpoint>
+    </RouteRule>
+</ProxyEndpoint>

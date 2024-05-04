@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Javascript async="false" continueOnError="false" enabled="true" timeLimit="200" name="transform-firebase-response">
+    <DisplayName>transform-firebase-response</DisplayName>
+    <Properties/>
+    <ResourceURL>jsc://transform-firebase-response.js</ResourceURL>
+</Javascript>

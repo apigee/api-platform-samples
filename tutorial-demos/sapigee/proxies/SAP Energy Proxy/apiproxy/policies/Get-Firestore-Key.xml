@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<KeyValueMapOperations async="false" continueOnError="false" enabled="true" name="Get-Firestore-Key" mapIdentifier="SAP_KVM">
+    <DisplayName>Get Keys</DisplayName>
+    <Properties/>
+    <ExclusiveCache>false</ExclusiveCache>
+    <ExpiryTimeInSecs>300</ExpiryTimeInSecs>
+    <Get assignTo="firestorekey">
+        <Key>
+            <Parameter>energy_fskey</Parameter>
+        </Key>
+    </Get>
+    <Get assignTo="firestoreproject">
+        <Key>
+            <Parameter>energy_fsproject</Parameter>
+        </Key>
+    </Get>
+    <Get assignTo="visionkey" index="1">
+        <Key>
+            <Parameter>visionkey</Parameter>
+        </Key>
+    </Get>
+    <Scope>environment</Scope>
+</KeyValueMapOperations>
