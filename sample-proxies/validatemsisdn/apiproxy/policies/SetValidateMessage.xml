@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage async="false" continueOnError="false" enabled="true" name="SetValidateMessage">
+    <DisplayName>SetValidateMessage</DisplayName>
+    <FaultRules/>
+    <Properties/>
+    <Set>
+   		<Payload contentType="text/xml">
+        	<Phone>
+        		<isValid>{flow.isValidMobileNumber}</isValid>
+        		<International>{flow.mobileNumberInternational}</International>
+        		<National>{flow.mobileNumberNational}</National>
+        		<E164>{flow.mobileNumberE164}</E164>
+        	</Phone>
+    	</Payload>
+    </Set>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+</AssignMessage>

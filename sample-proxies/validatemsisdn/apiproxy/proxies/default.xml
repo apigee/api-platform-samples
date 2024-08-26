@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ProxyEndpoint name="default">
+    <Description>Default Proxy to create flows on an API</Description>
+    <FaultRules>
+    </FaultRules>
+	 <PreFlow>
+	    	<Request>
+			</Request>
+		<Response/>
+	 </PreFlow>    
+     <Flows>
+        <Flow name="Phone">
+            <Description>Country code and Phone</Description>
+            <Request>
+                <Step>
+                    <Name>AssignParamsToFlowVars</Name>
+                </Step>
+                <Step>
+                    <Name>validatemsisdn</Name>
+                </Step>
+                <Step>
+                    <FaultRules/>
+                    <Name>raisefault-invalidphone</Name>
+                    <Condition>flow.validatenumbersuccess = false</Condition>
+                </Step>
+                <Step>
+                    <Name>SetValidateMessage</Name>
+                </Step>
+            </Request>
+            <Response/>
+            <Condition>(proxy.pathsuffix MatchesPath &quot;/{code}/{phone}&quot;) and (request.verb = &quot;GET&quot;)</Condition>
+        </Flow>
+    </Flows>
+	<PostFlow/>
+    <HTTPProxyConnection>
+	    <BasePath>/validatemsisdn</BasePath>
+        <Properties/>
+        <VirtualHost>default</VirtualHost>
+    </HTTPProxyConnection>
+    <RouteRule name="noRoute">
+    </RouteRule>
+</ProxyEndpoint>
