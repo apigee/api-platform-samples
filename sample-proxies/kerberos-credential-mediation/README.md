@@ -13,8 +13,7 @@ Note: This sample is applicable only for on-premise installation.
 
 # Set up
 
-Edit the properties in ```apiporxy/policies/credentialdelegation.xml``` 
-
+1. Edit the properties in ```apiproxy/policies/credentialdelegation.xml``` 
 ```
 <Properties>
       <Property name="krb5Conf">krb5.conf</Property>
@@ -23,9 +22,31 @@ Edit the properties in ```apiporxy/policies/credentialdelegation.xml```
       <Property name="serverPrincipal">http@server-backend</Property>
 </Properties>  
 ```
-```krb5.conf```, ```login.conf``` and the necessary keytab files need to be present in the ```APIGEE_INSTALL_ROOT```
 
-```loginModule``` is the module name to choose from the ```login.conf```
+2. ```krb5.conf```, ```login.conf``` and the necessary keytab files need to be present in the ```/opt``` directory on **all** message-processor nodes. 
+```loginModule``` is the module name to choose from ```login.conf```
+
+3. Ensure that the ```apigee``` user can read these files
+```
+chown apigee:apigee /opt/login.conf
+chown apigee:apigee /opt/krb5.conf
+```
+
+4. Edit the properties in ```/opt/apigee/customer/application/message-processor.properties``` on **all** message-processor nodes by adding the following two lines to the end of the file
+```
+conf/system.properties+java.security.auth.login.config=/opt/login.conf
+conf/system.properties+java.security.krb5.conf=/opt/krb5.conf
+```
+
+5. Restart **all** message-processor nodes
+```
+/opt/apigee/apigee-service/bin/apigee-service edge-message-processor restart
+```
+
+6. Verify the properties have been properly added (you should see the two properites added above)
+```
+cat /opt/apigee/edge-message-processor/conf/system.properties
+```
 
 # Import and deploy sample project
 
@@ -47,7 +68,7 @@ ServicePrincipalLoginContext
       useKeyTab=true
       storeKey=true
       debug=true;      
-}
+};
 ```
 
 krb5.conf
