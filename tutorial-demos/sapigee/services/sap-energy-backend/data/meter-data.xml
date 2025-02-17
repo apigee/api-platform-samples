@@ -1,0 +1,29 @@
+<Meters>
+  <Meter>
+    <mRID>12345</mRID>
+    <formNumber>12345</formNumber>
+    <IotNumber>12345</IotNumber>
+    <serialNumber>12345</serialNumber>
+    <type>meter</type>
+    <utcNumber>12345</utcNumber>
+    <status>normal</status>
+  </Meter>
+  <Meter>
+    <mRID>12345</mRID>
+    <formNumber></formNumber>
+    <IotNumber></IotNumber>
+    <serialNumber></serialNumber>
+    <type></type>
+    <utcNumber></utcNumber>
+    <status></status>
+  </Meter>
+  <Meter>
+    <mRID></mRID>
+    <formNumber></formNumber>
+    <IotNumber></IotNumber>
+    <serialNumber></serialNumber>
+    <type></type>
+    <utcNumber></utcNumber>
+    <status></status>
+  </Meter>    
+</Meters>

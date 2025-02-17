@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Manifest name="manifest">
+    <Policies>
+        <VersionInfo resourceName="Get-Firestore-Key" version="SHA-512:be32465105987562bf33c0169d9da365f9b4e197ad4593a2053d466100832042f4b49bfff99945aeba95250fa90936b4f2863a8e9aa46b63263cc63db72fdb7a"/>
+        <VersionInfo resourceName="Get-Meter-Data" version="SHA-512:60b7fa813f3916be341726024d21a7b41323b8c1b07734f6a295fcf25b6395fe344e0e2c896c4e7a5b0642ee89f6f2e534bf9bbda71b09029ebfed46a424ff22"/>
+        <VersionInfo resourceName="No-Path" version="SHA-512:68934ca829026a3852c1737eb6485ce9cd5d50afcf4f9c8bc9851b78a33270dbba5a6fa45dcf7800a1256a5b946a7d09a9bbc266572f03cde0c85481f40a0cc7"/>
+        <VersionInfo resourceName="NotFound" version="SHA-512:ba6dd6716887a978a4315bd09df6a4b57c90ebce2247003a5d5f324f4e8469aa5eb3a6f4d8fa246dd12541e218be16018b1ed08528bd138874779fcc3fa1b76a"/>
+        <VersionInfo resourceName="Quota-1" version="SHA-512:b7fa0beccc2e68b74ec908bd28fd446fdd7f8356ad5b6215101ea728bf9886707e8cc24bd75cc4b869adb4d1b349236b10cae75e7b0582e40a2241c6bddbfe77"/>
+        <VersionInfo resourceName="SetVerb" version="SHA-512:1e74c3d83f8f47be3c47d034790482d030a7baa4a004835e233e2a0920190af0c8bbc8725277e227d16db75c5d6f64976723d08e9522e1ccdb626ee8c526e055"/>
+        <VersionInfo resourceName="Spike-Arrest-1" version="SHA-512:92245c1d6aadc8692907f4ec70dd70df3fa00b113f374bc47dc0cb99c154e77585b23eca2e739b5339e9900bac762df4b78d51b39e9ece8998d806900285c9b2"/>
+        <VersionInfo resourceName="Verify-API-Key-1" version="SHA-512:3e3239ea7b9ef55d645d8f9c142eaeb86c9491b8e59ddc8863356df764f0860165e8707447f69dcfe970c4f22a188d4649de2f64ec410cfe2c4c765a68d0da16"/>
+        <VersionInfo resourceName="add-key" version="SHA-512:a6420096dc704db8d78cda2621b7ad14adb1a64c41c24b1db9fa3b2008fe41481ba3e2f85762c5e1cf42e2dabde774430d33d96f578314ccdcc0e3f8c263ee41"/>
+        <VersionInfo resourceName="get-measurements-mock" version="SHA-512:1d1df997588eb4f1912ecdc1ba02dd1734478fa706018f368c98cbccba54636104be3b142fa5a5888c337920d72aa8e0c7756d3a778ce2c7abb41ad236b2e250"/>
+        <VersionInfo resourceName="get-meterid" version="SHA-512:54384b7e66744e96398e90d9ac2487d491d53af1b57db8ac321610c11d7af3698216669bbd588cf0753a9d078e87a2a7d9b26d7820058258a5c27712f49c637c"/>
+        <VersionInfo resourceName="new-meter" version="SHA-512:8949259d514a4703f97cbb7c0d8d7af93fa35c4598839d98b109a95e6ed1584112259887a3ac083cd6a72d3cf80fb166ad022fe825b8fb84a039702dff93e260"/>
+        <VersionInfo resourceName="new-reading" version="SHA-512:b98fd7e6da52aaf272d5a9ff63e907807edb8c0788d2376b90d91d7010b0311e7c2b6b11e945019717674b247738be13d98e2630b5d115178202e7927c452e6c"/>
+        <VersionInfo resourceName="remove-api-key" version="SHA-512:3ebe75a0b41f2d8e35b352b5c64e799b17b0fd6e07da30b9a26adeb433b67ac02379cefb73038f2557e60402c19897c0359c6213547a69410626bab8a4e744c9"/>
+        <VersionInfo resourceName="set-defaults" version="SHA-512:4a37726282a213e945ca7bf3aba4982901dcbe24579311ae136c64ef6d87a81c8ab92871639a664af13baa5d2da8a235fc4c87d161a31626fadced9b7def51fa"/>
+        <VersionInfo resourceName="set-key" version="SHA-512:183a7fcb46ec9e7f497b37050ac39fc8125b95d016142e54c87a6d4c5111cbbdf05cc504412e38e9299f60fd1c4ccd604a046762e56d6fd30f55479e031dbe6b"/>
+        <VersionInfo resourceName="set-path" version="SHA-512:4e54b0854d683c4289494ee67881b1c62a48c77e95b2b94b6d8aeaeb8f884548917dae99fde1f210e5ca657f689583b288820a270e65e62ad74c417c6a4078fe"/>
+        <VersionInfo resourceName="set-readings" version="SHA-512:d6f8db018e447572709958ab55b7ee585fd997b39599cf257c52ea4d45773b29a30158c18b65757e0258b11f033da987f7d4ccd3c12b24c088fb5862968fbc67"/>
+        <VersionInfo resourceName="transform-firebase-response" version="SHA-512:6449edc1477d50f80f8e2298a0a86a751d8250ecb6b7b661fef0ca505fbee54414d642c34158edc7553fec972cf27554189ccaf8418e1a5cc64c3cae30d7e174"/>
+    </Policies>
+    <ProxyEndpoints>
+        <VersionInfo resourceName="default" version="SHA-512:753915aa8ea85c5e22fe221b2c8edcf7bb4715475c3e476ae5b80feb7b9d37ee67129a96db5262f86acadf16ed5c418491f2ae4df3c1b47759f73ff972bd61d9"/>
+    </ProxyEndpoints>
+    <Resources>
+        <VersionInfo resourceName="jsc://get-measurements-mock.js" version="SHA-512:281c94249ca111391e4d2baf99e9fa63968066bc4312806b154a91af63f0c2ff09c9ea319c6b778fb5d5b0a64f6bd4b7064301e97e3642473d33889db8ae8bd3"/>
+        <VersionInfo resourceName="jsc://new-meter.js" version="SHA-512:684f04a267287b0b384795568a1283f8d0a7cd5476470d7f3dbfb882410e3df8bc9c897078f75ef728a60a04ce6d186c4dc80c985954402c6e7e9a1923f072e2"/>
+        <VersionInfo resourceName="jsc://new-reading.js" version="SHA-512:6bc924c344c1b47bbdc6719e0072dd1eb9932e33f740a6c7acc996dce37103b08b1d7e28a1539063563c1a5de319ea9891f40dd74a0bc6b6e67f21a62b0f0ece"/>
+        <VersionInfo resourceName="jsc://transform-firebase-readings.js" version="SHA-512:f24e77e625a3c8fce109f3d0eddefdafa2944842c757e03cd8df7bc17aa915b86954fd8edcf6eef3d53db5ff0c87b67801f198bda6e7e4949a5b3f80fe2b5761"/>
+        <VersionInfo resourceName="jsc://transform-firebase-response.js" version="SHA-512:8b2e7fb408f6b6d63677584577efc9f7e5ae7a81b474dabb39aff2e29748347f5c6cfef675c2ae57bc25e3a1c9a043d4c173f8a5dd288814ee3d9daecc4d8a51"/>
+    </Resources>
+    <SharedFlows/>
+    <TargetEndpoints>
+        <VersionInfo resourceName="Cloud Vision Service" version="SHA-512:c065c934aff92328974b70e9fa1c722e73520fbecc9e350991eef734235da00fbba8151564bb12b5e9e200b02b0b6553bf591ce2b64e0c6e728743a98dcac4dc"/>
+        <VersionInfo resourceName="Firestore" version="SHA-512:589a73e45c9ccbcb5a6fd9d6ee539f4555a42a28420e69268d7d14f66f2fdba705fc65d54f00afd21de9e6e003cb40b3b9b902f654d486823a67246d0ac19a87"/>
+        <VersionInfo resourceName="NoTarget" version="SHA-512:811e43b67f3ecc7604b63f8315cad5e7bb70059ae19c54274c95c32da680bfe456bdeb8e5be94824fc937bd6f5683be45634e48bc6fd82674f49ddd3444f7d08"/>
+    </TargetEndpoints>
+</Manifest>

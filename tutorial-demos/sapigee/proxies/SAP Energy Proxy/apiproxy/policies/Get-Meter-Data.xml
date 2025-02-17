@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ServiceCallout async="false" continueOnError="false" enabled="true" name="Get-Meter-Data">
+    <DisplayName>Get Meter Data</DisplayName>
+    <Properties/>
+    <Request clearPayload="true" variable="myRequest">
+        <IgnoreUnresolvedVariables>false</IgnoreUnresolvedVariables>
+        <Set>
+            <Headers/>
+            <QueryParams>
+                <QueryParam name="key">{firestorekey}</QueryParam>
+            </QueryParams>
+            <FormParams/>
+            <Payload/>
+            <ReasonPhrase/>
+            <StatusCode/>
+            <Path/>
+            <Version>1.1</Version>
+            <Verb>GET</Verb>
+        </Set>
+    </Request>
+    <Response>calloutResponse</Response>
+    <HTTPTargetConnection>
+        <Properties/>
+        <URL>https://firestore.googleapis.com/v1/projects/digital-energy-monitor/databases/(default)/documents/meters/{meter.meterid}</URL>
+    </HTTPTargetConnection>
+</ServiceCallout>

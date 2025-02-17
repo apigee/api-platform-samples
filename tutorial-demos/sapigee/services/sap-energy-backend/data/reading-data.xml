@@ -1,0 +1,18 @@
+<MeterReadings>
+  <MeterReading>
+    <Meter>
+      <Names>
+        <Name>12345</Name>
+        <status>normal</status>
+      </Names>
+    </Meter>
+    <Readings>
+      <Reading>
+        <reason></reason>
+        <reportedDateTime></reportedDateTime>
+        <value></value>
+        <ReadingQualities></ReadingQualities>
+      </Reading>
+    </Readings>
+  </MeterReading>
+</MeterReadings>

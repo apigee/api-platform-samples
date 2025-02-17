@@ -1,0 +1,235 @@
+
+#queue-normal {
+  width: 87%;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: -12px;
+}
+
+#queue-warning {
+  width: 87%;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: -12px;
+  -webkit-animation-name: redPulse;
+  -webkit-animation-duration: 2s;
+  -webkit-animation-iteration-count: infinite;
+}
+
+@-webkit-keyframes redPulse {
+  from { background-color: #f8d7da; -webkit-box-shadow: 0 0 0px #f8d7da; }
+  50% { background-color: #ff8e97; -webkit-box-shadow: 0 0 18px #ff8e97; }
+  to { background-color: #f8d7da; -webkit-box-shadow: 0 0 0px #f8d7da; }
+}
+
+/*--------------------
+Body
+--------------------*/
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  margin: 0;
+  background: radial-gradient(ellipse farthest-corner at center top, #ECECEC, #999);
+  color: #363c44;
+  font-size: 14px;
+  font-family: 'Roboto', sans-serif;
+}
+
+/*--------------------
+Boarding Pass
+--------------------*/
+.boarding-pass {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  width: 400px;
+  height: 422px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 5px 30px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  text-transform: uppercase;
+  /*--------------------
+  Header
+  --------------------*/
+  /*--------------------
+  Cities
+  --------------------*/
+  /*--------------------
+  Infos
+  --------------------*/
+  /*--------------------
+  Strap
+  --------------------*/
+}
+.boarding-pass small {
+  display: block;
+  font-size: 11px;
+  color: #A2A9B3;
+  margin-bottom: 2px;
+}
+.boarding-pass strong {
+  font-size: 15px;
+  display: block;
+}
+.boarding-pass header {
+  background: linear-gradient(to bottom, #36475f, #2c394f);
+  padding: 12px 20px;
+  height: 53px;
+}
+.boarding-pass header .logo {
+  float: left;
+  width: 104px;
+  height: 31px;
+}
+.boarding-pass header .flight {
+  float: right;
+  color: #fff;
+  text-align: right;
+}
+.boarding-pass header .flight small {
+  font-size: 8px;
+  margin-bottom: 2px;
+  opacity: 0.8;
+}
+.boarding-pass header .flight strong {
+  font-size: 18px;
+}
+.boarding-pass .cities {
+  position: relative;
+}
+.boarding-pass .cities::after {
+  content: '';
+  display: table;
+  clear: both;
+}
+.boarding-pass .cities .city {
+  padding: 20px 18px;
+  float: left;
+}
+.boarding-pass .cities .city:nth-child(2) {
+  float: right;
+}
+.boarding-pass .cities .city strong {
+  font-size: 40px;
+  font-weight: 300;
+  line-height: 1;
+}
+.boarding-pass .cities .city small {
+  margin-bottom: 0px;
+  margin-left: 3px;
+}
+.boarding-pass .cities .airplane {
+  position: absolute;
+  width: 30px;
+  height: 25px;
+  top: 57%;
+  left: 30%;
+  opacity: 0;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  -webkit-animation: move 3s infinite;
+          animation: move 3s infinite;
+}
+@-webkit-keyframes move {
+  40% {
+    left: 50%;
+    opacity: 1;
+  }
+  100% {
+    left: 70%;
+    opacity: 0;
+  }
+}
+@keyframes move {
+  40% {
+    left: 50%;
+    opacity: 1;
+  }
+  100% {
+    left: 70%;
+    opacity: 0;
+  }
+}
+.boarding-pass .infos {
+  display: flex;
+  border-top: 1px solid #99D298;
+}
+.boarding-pass .infos .places,
+.boarding-pass .infos .times {
+  width: 50%;
+  padding: 10px 0;
+}
+.boarding-pass .infos .places::after,
+.boarding-pass .infos .times::after {
+  content: '';
+  display: table;
+  clear: both;
+}
+.boarding-pass .infos .times strong {
+  -webkit-transform: scale(0.9);
+          transform: scale(0.9);
+  -webkit-transform-origin: left bottom;
+          transform-origin: left bottom;
+}
+.boarding-pass .infos .places {
+  background: #ECECEC;
+  border-right: 1px solid #99D298;
+}
+.boarding-pass .infos .places small {
+  color: #97A1AD;
+}
+.boarding-pass .infos .places strong {
+  color: #239422;
+}
+.boarding-pass .infos .box {
+  padding: 10px 20px 10px;
+  width: 47%;
+  float: left;
+}
+.boarding-pass .infos .box small {
+  font-size: 10px;
+}
+.boarding-pass .strap {
+  clear: both;
+  position: relative;
+  border-top: 1px solid #99D298;
+}
+.boarding-pass .strap::after {
+  content: '';
+  display: table;
+  clear: both;
+}
+.boarding-pass .strap .box {
+  padding: 23px 0 20px 20px;
+}
+.boarding-pass .strap .box div {
+  margin-bottom: 15px;
+}
+.boarding-pass .strap .box div small {
+  font-size: 10px;
+}
+.boarding-pass .strap .box div strong {
+  font-size: 13px;
+}
+.boarding-pass .strap .box sup {
+  font-size: 8px;
+  position: relative;
+  top: -5px;
+}
+.boarding-pass .strap .qrcode {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 80px;
+  height: 80px;
+}

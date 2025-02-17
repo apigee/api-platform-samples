@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ExtractVariables async="false" continueOnError="true" enabled="true" name="get-meterid">
+    <DisplayName>Extract Meter Id</DisplayName>
+    <URIPath>
+        <Pattern ignoreCase="true">/*/{meterid}</Pattern>
+    </URIPath>
+    <JSONPayload>
+        <Variable name="meterid" type="string">
+            <JSONPath>$.meterId</JSONPath>
+        </Variable>
+    </JSONPayload>
+    <VariablePrefix>meter</VariablePrefix>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+    <Source clearPayload="false">request</Source>
+</ExtractVariables>
